@@ -10,6 +10,7 @@ from pathlib import Path
 from openfootball.backfill import run_backfill
 from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
+from openfootball.export import export_all, verify_continuity
 from openfootball.scopes import load_scopes
 from openfootball.store import FreezeRefused, SeasonFrozen, freeze
 from openfootball.parse.league import league_teams, season_label
@@ -302,6 +303,35 @@ def freeze_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def export_cmd(args: argparse.Namespace) -> int:
+    con = connect(args.db)
+    migrate(con)
+    m = export_all(con, args.out)
+    n = sum(len(s["files"]) for s in m["seasons"].values()) + len(m["tables"])
+    print(f"{n} fichiers Parquet + manifest.json dans {args.out}")
+    for label, s in m["seasons"].items():
+        c = s["coverage"]
+        print(f"  {label} [{s['status']}] {c['with_squad']}/{c['club_seasons']} effectifs, {c['known_gaps']} trou(s)")
+    if args.previous:
+        errors = verify_continuity(m, json.loads(Path(args.previous).read_text(encoding="utf-8")))
+        if errors:
+            print("CONTINUITÉ ROMPUE avec la release précédente :")
+            for e in errors:
+                print("  ", e)
+            return 1
+        print("continuité OK avec la release précédente")
+    return 0
+
+
+def verify_release_cmd(args: argparse.Namespace) -> int:
+    errors = verify_continuity(json.loads(Path(args.new).read_text(encoding="utf-8")),
+                               json.loads(Path(args.previous).read_text(encoding="utf-8")))
+    for e in errors:
+        print("ERREUR", e)
+    print("continuité OK" if not errors else f"{len(errors)} violation(s)")
+    return 1 if errors else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="openfootball")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -343,6 +373,15 @@ def main(argv: list[str] | None = None) -> int:
     f = sub.add_parser("freeze", help="fige une saison si les invariants passent (D3)")
     common(f)
     f.set_defaults(func=freeze_cmd)
+    e = sub.add_parser("export", help="exporte Parquet + manifest.json (release, D9)")
+    e.add_argument("--db", default=DB_DEFAULT)
+    e.add_argument("--out", default="dist/data")
+    e.add_argument("--previous", help="manifest.json de la release précédente (garde de continuité)")
+    e.set_defaults(func=export_cmd)
+    v = sub.add_parser("verify-release", help="compare deux manifests : une saison figée ne doit pas changer")
+    v.add_argument("--new", required=True)
+    v.add_argument("--previous", required=True)
+    v.set_defaults(func=verify_release_cmd)
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     return args.func(args)

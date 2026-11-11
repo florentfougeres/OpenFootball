@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.13** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.15** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -167,11 +167,16 @@ Aucune question ouverte à ce stade.
 - **D7 — Images** : **logos de clubs uniquement**, issus de l'infobox de la page Wikipedia du club ; **aucune photo de joueur**. Hotlink vers Wikimedia (pas de rehébergement), avec lien vers la page du fichier. **Risque connu** : beaucoup de logos de clubs sont des fichiers *non libres* (usage loyal) hébergés par en.wikipedia, autorisés sur Wikipedia mais pas sur un site tiers ; l'affichage reste à la charge du mainteneur. Le pipeline stocke, pour chaque logo, sa licence (champ `imageinfo` de l'API) pour pouvoir masquer les non libres sans nouveau backfill.
 
 - **D8 — Stockage et exécution** :
-  - **Source de vérité durable** = les fichiers **Parquet + `manifest.json` committés dans git** (publiés tels quels par GitHub Pages). Le fichier DuckDB de travail est **local, jetable, hors git** (`.gitignore`) et se reconstruit depuis les Parquet. Les caches de téléchargement sont également hors git.
+  - *(amendé par D9)* **Source de vérité durable** = ~~les fichiers Parquet + `manifest.json` committés dans git~~ → assets de la dernière release GitHub (publiés tels quels par GitHub Pages). Le fichier DuckDB de travail est **local, jetable, hors git** (`.gitignore`) et se reconstruit depuis les Parquet. Les caches de téléchargement sont également hors git.
   - **Exécution locale** : `backfill`, `freeze`, `amend` **et `update`** tournent sur la machine du mainteneur. Une GitHub Action planifiée pour `update` est une option **ultérieure**, hors v1. GitHub Actions ne sert en v1 qu'à la CI et au déploiement du site.
   - **Garde d'immutabilité au niveau du dépôt** : la CI recalcule le hash de chaque partition `frozen` et le compare au `manifest.json` ; toute différence fait échouer la CI (seul `amend`, consigné dans `amendment_log`, peut changer un hash, avec mise à jour explicite du manifest).
   - **Traçabilité** : chaque ligne d'effectif `wikipedia_season` conserve l'`oldid` (identifiant de révision) de la page Wikipedia lue, et la date de lecture ; idem pour la révision Wikidata si `wikidata_p54`.
   - **Clôture de Q8** : `.duckdb`, caches et sorties temporaires sont exclus de git.
+
+- **D9 — Distribution par releases GitHub** (amende D5 et D8). La source de vérité durable n'est plus « Parquet committés dans git » mais **les assets de la dernière release GitHub** (Parquet par saison + `manifest.json`) ; git ne contient aucune donnée. Le navigateur ne peut pas lire un asset de release directement (testé : pas d'en-tête CORS ; range requests OK) : un **workflow GitHub Actions déclenché par la publication d'une release télécharge ses assets côté serveur, les copie dans le site et redéploie GitHub Pages** (lecture same-origin avec range requests). Retour arrière = redéployer une release antérieure.
+  - **Garde de continuité** : avant publication, `verify-release` compare le `manifest.json` à celui de la release précédente ; toute saison `frozen` dont le `content_hash` change ou disparaît fait échouer la publication (seul `amend`, journalisé, l'autorise).
+  - **Sauvegarde** : une release est supprimable ; le DuckDB local reste la copie de travail, et `openfootball restore` (à écrire) reconstruit la base depuis la dernière release.
+  - Nommage : `<table>/<saison>.<sha8>.parquet` (D5 inchangé) ; `manifest.json` = point d'entrée du site.
 
 Conséquence : la couverture des pages « saison du club » **n'est connue que pour 2020-2025 et 3 clubs français**. Elle est à mesurer *avant* d'écrire le pipeline, sur les 4 championnats et 2010-2019 (cf. M0).
 
@@ -230,6 +235,8 @@ Commande : `openfootball backfill --season 2023` (puis `status`, `known-gap`, `f
 - Invariants : **0 bloquant, 62 avertissements** (joueur dans deux clubs avec statut inconnu : prêts non reconnus des deux côtés, transferts d'hiver non parsés — C1).
 - Défauts trouvés et corrigés pendant le run : tableaux de buteurs, de renouvellements de contrat et lignes de total pris pour des joueurs (sections exclues + nom sans lettre ou date rejeté).
 - **La saison n'est pas figée** : le gel reste une décision manuelle (D3).
+
+**Export (D9)** : `openfootball export --out dist/data [--previous manifest.json]` produit 6 fichiers Parquet + `manifest.json` ; **88 Ko** pour une saison (2 703 lignes d'effectif, 62 Ko) → ≈ 1 Mo estimé pour 15 saisons ; la limite de taille de GitHub Pages n'est pas un sujet. `verify-release --new … --previous …` implémente la garde de continuité (une saison figée ne change pas).
 
 **Limites connues** : (1) identité des joueurs = lien Wikipedia par langue ; un même joueur lu en anglais puis en italien/français est deux lignes `player` tant que le rapprochement Wikidata n'est pas fait ; (2) `arrived_mid` / `left_mid` jamais renseignés (tableaux Transfers non parsés) ; (3) « plausible » ≠ « exact » : pas de vérité externe pour valider les effectifs.
 
