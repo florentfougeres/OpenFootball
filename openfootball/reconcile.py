@@ -160,8 +160,10 @@ def reconcile_by_infobox(con: duckdb.DuckDBPyConnection, pages, search, qids, *,
     from openfootball.parse.infobox import parse_career          # import local : évite un cycle au chargement
 
     report = ReconcileReport()
-    loose = con.execute("SELECT p.id, p.name FROM player p LEFT JOIN player_wikidata w ON w.player_id = p.id "
-                        "WHERE w.player_id IS NULL AND (p.link_title IS NULL) ORDER BY p.id").fetchall()
+    loose = [(pid, name) for pid, name in con.execute(
+        "SELECT p.id, p.name FROM player p LEFT JOIN player_wikidata w ON w.player_id = p.id "
+        "WHERE w.player_id IS NULL AND (p.link_title IS NULL) ORDER BY p.id").fetchall()
+        if not re.search(r"[{}\[\]|<>#]", name)]                  # un nom qui contient du code wiki n'est pas un titre de page
     stays: dict[int, list[tuple]] = defaultdict(list)
     for pid, club, year in con.execute("""SELECT pcs.player_id, cl.wikipedia_title, s.start_year FROM player_club_season pcs
             JOIN club_season cs ON cs.id = pcs.club_season_id JOIN club cl ON cl.id = cs.club_id
@@ -180,41 +182,63 @@ def reconcile_by_infobox(con: duckdb.DuckDBPyConnection, pages, search, qids, *,
         return list(dict.fromkeys(out))
 
     matched: list[tuple[int, str]] = []
+
+    def flush() -> None:
+        """Enregistre les identifications en attente : une interruption ne perd que le lot en cours."""
+        if not matched:
+            return
+        titles = sorted({t for _, t in matched})
+        found_qids: dict[str, str | None] = {}
+        for i in range(0, len(titles), 50):
+            found_qids.update(qids(titles[i:i + 50]))
+        for pid, title in matched:
+            qid = found_qids.get(title)
+            if not qid:
+                report.unresolved += 1
+                continue
+            owner = con.execute("SELECT player_id FROM player_wikidata WHERE qid = ?", [qid]).fetchone()
+            if owner is None:
+                con.execute("INSERT INTO player_wikidata VALUES (?, ?)", [pid, qid])
+                report.resolved += 1
+            elif owner[0] != pid:
+                if _frozen_rows(con, pid) or _frozen_rows(con, owner[0]):
+                    report.blocked.append(f"{qid}: fusion {pid}->{owner[0]} touche une saison figée")
+                    continue
+                _merge(con, owner[0], pid)
+                report.merged += 1
+        matched.clear()
+
+    def warm(titles: list[str]) -> None:
+        """Lit d'un coup les pages de tout un lot (le client les met en cache) : un appel pour 50 joueurs, pas un par joueur."""
+        try:
+            pages(list(dict.fromkeys(titles)))
+        except Exception as exc:                                # une page illisible ne doit pas arrêter tout le lot
+            log(f"  lecture groupée impossible ({exc}); reprise joueur par joueur")
+
     remaining = []
     for i in range(0, len(loose), batch):                      # 1) le nom comme titre (redirections comprises)
+        warm([name for _, name in loose[i:i + batch]])
         for pid, name in loose[i:i + batch]:
             found = proven(pid, name, [name])
             if len(found) == 1:
                 matched.append((pid, found[0]))
             else:
                 remaining.append((pid, name))
-        log(f"  {min(i + batch, len(loose))}/{len(loose)} joueurs (titre direct)")
-    for n, (pid, name) in enumerate(remaining, 1):             # 2) recherche, pour ceux dont le titre est qualifié
-        found = proven(pid, name, search(name))
-        if len(found) == 1:
-            matched.append((pid, found[0]))
-        else:
-            report.unresolved += 1
-        if n % 200 == 0:
-            log(f"  {n}/{len(remaining)} joueurs (recherche)")
-    titles = sorted({t for _, t in matched})
-    found_qids: dict[str, str | None] = {}
-    for i in range(0, len(titles), batch):
-        found_qids.update(qids(titles[i:i + batch]))
-    for pid, title in matched:
-        qid = found_qids.get(title)
-        if not qid:
-            report.unresolved += 1
-            continue
-        owner = con.execute("SELECT player_id FROM player_wikidata WHERE qid = ?", [qid]).fetchone()
-        if owner is None:
-            con.execute("INSERT INTO player_wikidata VALUES (?, ?)", [pid, qid])
-            report.resolved += 1
-        elif owner[0] != pid:
-            if _frozen_rows(con, pid) or _frozen_rows(con, owner[0]):
-                report.blocked.append(f"{qid}: fusion {pid}->{owner[0]} touche une saison figée")
-                continue
-            _merge(con, owner[0], pid)
-            report.merged += 1
+        flush()
+        log(f"  {min(i + batch, len(loose))}/{len(loose)} joueurs (titre direct) : {report.resolved + report.merged} identifiés")
+    GROUP = 25
+    for g in range(0, len(remaining), GROUP):                  # 2) recherche, pour ceux dont le titre est qualifié
+        group = remaining[g:g + GROUP]
+        found_titles = {pid: [t for t in dict.fromkeys(search(name)) if _name_matches(name, t)] for pid, name in group}
+        warm([t for ts in found_titles.values() for t in ts])
+        for pid, name in group:
+            found = proven(pid, name, found_titles[pid])
+            if len(found) == 1:
+                matched.append((pid, found[0]))
+            else:
+                report.unresolved += 1
+        flush()
+        log(f"  {min(g + GROUP, len(remaining))}/{len(remaining)} joueurs (recherche) : {report.resolved + report.merged} identifiés")
+    flush()
     return report
 

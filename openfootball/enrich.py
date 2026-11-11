@@ -47,6 +47,52 @@ def enrich_wiki_links(con: duckdb.DuckDBPyConnection, wd, qids: list[str], langs
     return written
 
 
+NON_LATIN = r"[^\p{Latin}\p{Common}\p{Inherited}]"       # RE2 : une lettre hors alphabet latin (cyrillique, arabe, CJK…)
+
+
+def enrich_context_labels(con: duckdb.DuckDBPyConnection, wd, *, log: Callable[[str], None] = print) -> int:
+    """Libellé ANGLAIS (Wikidata) du stade, du championnat et de la ville des clubs dont le nom publié est en
+    alphabet non latin : le site affiche l'anglais plutôt que du russe, de l'arabe ou du chinois."""
+    qids: list[str] = []
+    for text, qid in (("stadium", "stadium_qid"), ("league", "league_qid"), ("city", "city_qid")):
+        qids += [r[0] for r in con.execute(
+            f"SELECT DISTINCT {qid} FROM club WHERE {qid} IS NOT NULL AND regexp_matches({text}, '{NON_LATIN}')").fetchall()]
+    done = {r[0] for r in con.execute("SELECT qid FROM entity_label WHERE lang = 'en'").fetchall()}
+    todo = [q for q in dict.fromkeys(qids) if q not in done]
+    written = 0
+    for chunk in _chunks(todo, BATCH):
+        ents = wd.entities(chunk, props="labels", languages="en")
+        con.execute("BEGIN")
+        for qid in chunk:
+            label = (ents.get(qid, {}).get("labels", {}).get("en") or {}).get("value")
+            if label:
+                con.execute("INSERT INTO entity_label VALUES (?, 'en', ?) ON CONFLICT DO NOTHING", [qid, label])
+                written += 1
+        con.execute("COMMIT")
+    log(f"  libellés anglais (stades, championnats, villes) : {len(todo)} entités lues, {written} libellés écrits")
+    return written
+
+
+def enrich_career_clubs(con: duckdb.DuckDBPyConnection, wp, *, log: Callable[[str], None] = print) -> int:
+    """Résout en QID les titres de clubs cités dans les carrières (redirections comprises) qui ne sont pas déjà
+    le titre d'un club connu : la ligne de carrière retrouve alors la fiche et le logo du club."""
+    from openfootball.sources.wikidata import club_qids
+    todo = [r[0] for r in con.execute("""SELECT DISTINCT club_link FROM player_career
+        WHERE club_link IS NOT NULL
+          AND club_link NOT IN (SELECT wikipedia_title FROM club WHERE wikipedia_title IS NOT NULL)
+          AND club_link NOT IN (SELECT link_title FROM club_link_qid) ORDER BY club_link""").fetchall()]
+    found = 0
+    for chunk in _chunks(todo, BATCH):
+        qids = club_qids(wp, chunk)
+        con.execute("BEGIN")
+        for title in chunk:
+            con.execute("INSERT INTO club_link_qid VALUES (?, ?) ON CONFLICT DO NOTHING", [title, qids.get(title)])
+            found += 1 if qids.get(title) else 0
+        con.execute("COMMIT")
+    log(f"  clubs des carrières : {len(todo)} titres résolus, {found} avec un QID")
+    return found
+
+
 def parse_birth(rows: list[dict]) -> dict[str, tuple[date, int]]:
     """Lignes SPARQL (?p ?dob ?prec) -> {qid: (date, précision)} ; si plusieurs, la plus précise."""
     best: dict[str, tuple[date, int]] = {}

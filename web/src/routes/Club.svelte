@@ -37,7 +37,8 @@
   const country = $derived(d?.ours ? countryOf(d.ours.country_code).name : d?.w?.country_iso ? countryName(d.w.country_iso) : "");
   const name = $derived(d ? (d.ours ? clubName(d.ours) : app.lang === "fr" ? d.w?.name_local : d.w?.name_en || d.w?.name_local) : "");
   const sub = $derived(d?.w && d.w.name_en && d.w.name_en !== name ? d.w.name_en : d?.w && d.w.name_local !== name ? d.w.name_local : "");
-  const logo = $derived({ logo_url: d?.ours?.logo_url || d?.w?.logo_url || commonsLogo(d?.w?.logo_commons_url) });
+  const logo = $derived({ logo_url: d?.ours?.logo_url || d?.w?.logo_url || commonsLogo(d?.w?.logo_commons_url),
+    colors_hex: d?.ours?.colors_hex || d?.w?.colors_hex, name_en: d?.ours?.name_en || d?.w?.name_en, name_local: d?.w?.name_local, wikipedia_title: d?.ours?.wikipedia_title });
   const lastSquad = $derived(d?.seasons.find((r) => r.players) ?? d?.seasons[0]);
   const colors = $derived(d?.w?.colors_hex ? String(d.w.colors_hex).split(" | ") : []);
   const colorNames = $derived(d?.w?.colors ? String(d.w.colors).split(" | ") : []);

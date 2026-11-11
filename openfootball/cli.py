@@ -10,7 +10,7 @@ from pathlib import Path
 from openfootball.backfill import run_backfill
 from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
-from openfootball.enrich import enrich_birth_dates, enrich_logos, enrich_wiki_links
+from openfootball.enrich import enrich_birth_dates, enrich_career_clubs, enrich_context_labels, enrich_logos, enrich_wiki_links
 from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_careers, import_careers_by_qid
@@ -388,7 +388,7 @@ def enrich_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     wd, wp = WikidataClient(args.wd_cache), WikipediaClient(args.cache)
-    what = set(args.what or ["clubs", "players", "logos"])
+    what = set(args.what or ["clubs", "players", "logos", "labels", "careerclubs"])
     if "clubs" in what:
         qids = [r[0] for r in con.execute("SELECT wikidata_qid FROM club WHERE wikidata_qid IS NOT NULL AND EXISTS "
                                           "(SELECT 1 FROM club_season cs WHERE cs.club_id = club.id)").fetchall()]
@@ -397,6 +397,10 @@ def enrich_cmd(args: argparse.Namespace) -> int:
         qids = [r[0] for r in con.execute("SELECT qid FROM player_wikidata").fetchall()]
         enrich_wiki_links(con, wd, qids, ("en", "fr"))
         enrich_birth_dates(con, wd)
+    if "careerclubs" in what:
+        enrich_career_clubs(con, wp)
+    if "labels" in what:
+        enrich_context_labels(con, wd)
     if "logos" in what:
         enrich_logos(con, wp, refresh=args.refresh_logos, all_clubs=args.all_clubs, limit=args.logo_limit)
     return 0
@@ -488,7 +492,7 @@ def main(argv: list[str] | None = None) -> int:
     ca.set_defaults(func=careers_cmd)
     en = sub.add_parser("enrich", help="liens wiki par langue, noms fr, dates de naissance, logos")
     en.add_argument("--db", default=DB_DEFAULT)
-    en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos"])
+    en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos", "labels", "careerclubs"])
     en.add_argument("--refresh-logos", action="store_true", help="efface puis refait tous les logos")
     en.add_argument("--logo-limit", type=int, help="ne traite que N clubs (les plus notoires d'abord)")
     en.add_argument("--all-clubs", action="store_true", help="logos de TOUS les clubs ayant une page anglaise (sinon : clubs à effectifs)")

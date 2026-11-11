@@ -17,6 +17,7 @@ from pathlib import Path
 import duckdb
 
 from openfootball.countries import flag_code
+from openfootball.enrich import NON_LATIN
 
 _SQUAD = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
@@ -51,8 +52,11 @@ ORDER BY cl.wikipedia_title"""
 
 _CAREER = """
 SELECT w.qid AS player_qid, p.name AS player, c.seq, c.start_year, c.end_year, c.years_raw, c.club_name,
-       c.club_link, c.loan, c.apps, c.goals, c.source_lang, c.source_title, c.source_revid
+       c.club_link, coalesce(cl.wikidata_qid, m.qid) AS club_qid, c.loan, c.apps, c.goals,
+       c.source_lang, c.source_title, c.source_revid
 FROM player_career c JOIN player p ON p.id = c.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+LEFT JOIN club cl ON cl.wikipedia_title = c.club_link
+LEFT JOIN club_link_qid m ON m.link_title = c.club_link
 ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
 
 _NATIONAL = """
@@ -60,16 +64,30 @@ SELECT w.qid AS player_qid, p.name AS player, n.seq, n.years_raw, n.team_name, n
 FROM player_national n JOIN player p ON p.id = n.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
 ORDER BY coalesce(w.qid, 'name:' || p.name), n.seq"""
 
+def _latin_or_english(col: str, label: str) -> str:
+    """Texte publié tel quel s'il est en alphabet latin ; sinon son libellé anglais Wikidata (ou NULL : on n'affiche
+    pas du russe, de l'arabe ou du chinois à un lecteur qui ne le lit pas)."""
+    return f"CASE WHEN regexp_matches(c.{col}, '{NON_LATIN}') THEN {label}.label ELSE c.{col} END"
+
+
 _GLOBAL = {
     "club": "SELECT c.wikidata_qid, c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, "
-            "coalesce(lf.label, c.name_fr) AS name_fr, c.name_local, c.nickname, c.category, c.country_code, "
-            "c.country_iso, c.country, c.city, c.stadium, c.stadium_capacity, c.division, c.league, c.founded, "
+            "coalesce(lf.label, c.name_fr) AS name_fr, "
+            f"CASE WHEN regexp_matches(c.name_local, '{NON_LATIN}') AND c.name_en IS NOT NULL THEN c.name_en ELSE c.name_local END AS name_local, "
+            f"CASE WHEN regexp_matches(c.nickname, '{NON_LATIN}') THEN NULL ELSE c.nickname END AS nickname, "
+            "c.category, c.country_code, "
+            f"c.country_iso, c.country, {_latin_or_english('city', 'ci')} AS city, "
+            f"{_latin_or_english('stadium', 'st')} AS stadium, c.stadium_capacity, c.division, "
+            f"{_latin_or_english('league', 'lg')} AS league, c.founded, "
             "c.colors, c.colors_hex, c.website, c.logo_url, c.logo_license, c.logo_commons_url, "
             "c.wikipedia_en_url, c.wikipedia_local_url, c.wikipedia_count, c.lon, c.lat, c.transfermarkt_id, "
             "c.fbref_id, c.worldfootball_id, "
             "EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id) AS has_squads FROM club c "
             "LEFT JOIN entity_label le ON le.qid = c.wikidata_qid AND le.lang = 'en' "
             "LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr' "
+            "LEFT JOIN entity_label ci ON ci.qid = c.city_qid AND ci.lang = 'en' "
+            "LEFT JOIN entity_label st ON st.qid = c.stadium_qid AND st.lang = 'en' "
+            "LEFT JOIN entity_label lg ON lg.qid = c.league_qid AND lg.lang = 'en' "
             "ORDER BY c.wikidata_qid NULLS LAST, c.id",
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",

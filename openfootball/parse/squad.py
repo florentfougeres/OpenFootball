@@ -168,6 +168,22 @@ def _players_region(text: str) -> list[tuple[str, str]]:
     return blocks
 
 
+def _split_cells(body: str) -> list[str]:
+    """Découpe sur « || » et « !! » HORS {{…}} et [[…]] : `{{sortname|Brahim|Díaz||Diaz, Brahim}}` reste une cellule."""
+    parts, depth, cur, i = [], 0, [], 0
+    while i < len(body):
+        two = body[i:i + 2]
+        if two in ("{{", "[["):
+            depth += 1; cur.append(two); i += 2; continue
+        if two in ("}}", "]]"):
+            depth -= 1; cur.append(two); i += 2; continue
+        if depth <= 0 and two in ("||", "!!"):
+            parts.append("".join(cur)); cur = []; i += 2; continue
+        cur.append(body[i]); i += 1
+    parts.append("".join(cur))
+    return parts
+
+
 def _row_cells(row: str) -> list[tuple[str, str]]:
     """Cellules d'une ligne de tableau : [(« | » ou « ! », contenu)]."""
     cells: list[tuple[str, str]] = []
@@ -177,7 +193,7 @@ def _row_cells(row: str) -> list[tuple[str, str]]:
             continue
         if line[0] in "|!":
             kind, body = line[0], line[1:]
-            segs = re.split(r"\|\||!!", body)
+            segs = _split_cells(body)
             for seg in segs:
                 parts = split_top_level(seg, "|")   # « style=… | contenu »
                 content = parts[-1] if len(parts) > 1 and "=" in parts[0] else seg

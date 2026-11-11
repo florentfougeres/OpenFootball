@@ -7,6 +7,7 @@
   import Crumbs from "../components/Crumbs.svelte";
   import ErrorBox from "../components/ErrorBox.svelte";
   import Flag from "../components/Flag.svelte";
+  import Logo from "../components/Logo.svelte";
   import Spinner from "../components/Spinner.svelte";
   import WikiButton from "../components/WikiButton.svelte";
 
@@ -18,8 +19,8 @@
     if (!p || !p.name) return null;
     let birth: any = null;
     if (p.qid && app.has.birth) birth = (await q(`SELECT birth_date, precision FROM birth WHERE player_qid = ?`, [p.qid]))[0] ?? null;
-    const career = app.has.career ? await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title, w.wikidata_qid AS club_qid
-        FROM career c LEFT JOIN club w ON w.wikipedia_title = c.club_link WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]) : [];
+    const career = app.has.career ? await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title, w.wikidata_qid AS club_qid, w.logo_url AS club_logo, w.colors_hex AS club_colors
+        FROM career c LEFT JOIN club w ON ${app.careerHasClubQid ? "w.wikidata_qid = c.club_qid" : "w.wikipedia_title = c.club_link"} WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]) : [];
     const national = app.has.national ? await q(`SELECT years_raw, team_name, team_link, caps, goals FROM national
         WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]) : [];
     const urls: Record<string, string> = {};
@@ -81,11 +82,16 @@
             {#each d.career as r (r.seq)}
               <tr>
                 <td class="whitespace-nowrap">{r.years_raw ?? ""}{#if isOngoing(r.years_raw)} <span class="text-muted">{t("ongoing")}</span>{/if}</td>
-                <td>{#if r.loan}<span class="text-muted">→ </span>{/if}
-                  {#if r.club_qid}<a class="link" href={href("club", r.club_qid)}>{r.club_name}</a>
-                  {:else if r.club_link}<a class="link" href={wikiUrl("en", r.club_link)} hreflang="en" target="_blank" rel="noopener">{r.club_name}</a>
-                  {:else}{r.club_name}{/if}
-                  {#if r.loan} <Badge kind="info">{t("loanTag")}</Badge>{/if}</td>
+                <td>
+                  <span class="flex items-center gap-2.5">
+                    <Logo club={{ logo_url: r.club_logo, colors_hex: r.club_colors, club_name: r.club_name }} size={24} />
+                    <span>{#if r.loan}<span class="text-muted">→ </span>{/if}
+                      {#if r.club_qid}<a class="link" href={href("club", r.club_qid)}>{r.club_name}</a>
+                      {:else if r.club_link}<a class="link" href={wikiUrl("en", r.club_link)} hreflang="en" target="_blank" rel="noopener">{r.club_name}</a>
+                      {:else}{r.club_name}{/if}
+                      {#if r.loan} <Badge kind="info">{t("loanTag")}</Badge>{/if}</span>
+                  </span>
+                </td>
                 <td class="num">{r.apps ?? ""}</td><td class="num">{r.goals ?? ""}</td>
               </tr>
             {/each}

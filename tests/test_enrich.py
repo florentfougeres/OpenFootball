@@ -132,3 +132,38 @@ def test_display_options_after_the_file_name_are_dropped(con):
             return super()._call(params)
 
     assert enrich_logos(con, Wp(), all_clubs=True, log=lambda s: None) == 1          # le fichier est trouvé malgré « {{!}}class=… »
+
+
+def test_non_latin_stadium_and_league_get_an_english_label_and_are_exported(con, tmp_path):
+    from openfootball.enrich import enrich_context_labels
+    from openfootball.export import export_all
+    con.execute("INSERT INTO club (id, name_en, name_local, country_code, wikipedia_title, wikidata_qid, stadium, stadium_qid,"
+                " league, league_qid, city, nickname) VALUES (2, 'Spartak', 'Спартак', 'FRA', 'Spartak', 'Q2', 'Открытие Банк Арена', 'Q10',"
+                " 'Премьер-лига', 'Q11', 'Moscow', 'Красно-белые')")
+    wd = FakeWd(entities={"Q10": {"labels": {"en": {"value": "Otkritie Arena"}}}, "Q11": {"labels": {"en": {"value": "Russian Premier League"}}}})
+    assert enrich_context_labels(con, wd, log=lambda *_: None) == 2
+    assert enrich_context_labels(con, wd, log=lambda *_: None) == 0            # déjà fait : pas de nouvelle requête
+    export_all(con, tmp_path)
+    import glob
+    f = glob.glob(str(tmp_path / "club" / "*.parquet"))[0]
+    row = duckdb.sql(f"SELECT stadium, league, city, name_local, nickname FROM read_parquet('{f}') WHERE wikidata_qid = 'Q2'").fetchone()
+    assert row == ("Otkritie Arena", "Russian Premier League", "Moscow", "Spartak", None)   # latin gardé ; surnom non latin masqué
+
+
+def test_career_club_titles_are_resolved_to_qids_once(con):
+    from openfootball.enrich import enrich_career_clubs
+    con.execute("INSERT INTO player (id, name) VALUES (901, 'X')")
+    con.execute("INSERT INTO player_career (id, player_id, seq, club_name, club_link, source_lang, source_title) VALUES "
+                "(901, 901, 1, 'PSG', 'Paris Saint-Germain FC', 'en', 'X'), (902, 901, 2, 'OM', 'Olympique de Marseille', 'en', 'X'),"
+                " (903, 901, 3, 'Nowhere', 'Nowhere FC', 'en', 'X')")
+
+    class Wp:
+        calls = 0
+        def _call(self, params):
+            Wp.calls += 1
+            return {"query": {"pages": [{"title": t, **({"pageprops": {"wikibase_item": "Q483020"}} if t.startswith("Paris") else {})}
+                                        for t in params["titles"].split("|")]}}
+
+    assert enrich_career_clubs(con, Wp(), log=lambda *_: None) == 1                      # « Olympique… » est déjà un club connu
+    assert con.execute("SELECT link_title, qid FROM club_link_qid ORDER BY 1").fetchall() == [("Nowhere FC", None), ("Paris Saint-Germain FC", "Q483020")]
+    assert enrich_career_clubs(con, Wp(), log=lambda *_: None) == 0 and Wp.calls == 1     # rien de redemandé

@@ -263,3 +263,17 @@ def test_bold_shirt_numbers_are_read():
 def test_int_handles_markup():
     from openfootball.parse.squad import _int
     assert [_int(x) for x in ("7", "'''16'''", "''9''", "<b>10</b>", "{{sort|3|3}}", "—", "", None)] == [7, 16, 9, 10, None, None, None, None]
+
+
+def test_sortname_template_containing_a_double_pipe_stays_in_one_cell():
+    from openfootball.parse.squad import parse_squad
+    wt = """== Squad ==
+{| class="wikitable"
+! No. !! Pos. !! Nat. !! Player
+|-
+|| 21 || MF || {{flagicon|ESP}} || {{sortname|Brahim|Díaz||Diaz, Brahim}}
+|-
+|| 1 || GK || {{flagicon|ESP}} || {{sortname||}}
+|}"""
+    got = parse_squad(wt)
+    assert [e.name for e in got] == ["Brahim Díaz"]
