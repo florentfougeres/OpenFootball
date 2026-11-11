@@ -1,0 +1,324 @@
+<!-- revid=1383808392 title=2015–16 Juventus FC season -->
+==Players==
+
+===Squad information===
+<small>Players and squad numbers last updated on 18 September 2015.</small><ref>{{cite web|url=http://www.juventus.com/en/teams/first-team/all/index.php|title=FIRST TEAM 2015/16|publisher=Juventus FC|accessdate=18 September 2015}}</ref><ref>{{cite web|url=http://www.juventus.com/en/news/news/2015/squad-numbers-for-the-2015-16-season.php|title=Juventus submits its squad numbers to Serie A for the 2015/16 season|publisher=Juventus FC|accessdate=6 August 2015}}</ref><ref>{{cite web|url=http://www.juventus.com/en/news/news/2015/juventus-submits-champions-league-squad-.php|title=Juventus submits Champions League squad|publisher=Juventus FC|accessdate=1 September 2015}}</ref><br><small>Note: Flags indicate national team as has been defined under [[FIFA eligibility rules]]. Players may hold more than one non-FIFA nationality.</small>
+{| class="wikitable" style="text-align: left; font-size:90%" width=100%
+|-
+! style="background:#000000; color:white; text-align:center;"| No.
+! style="background:#000000; color:white; text-align:center;"| Name
+! style="background:#000000; color:white; text-align:center;"| Nat
+! style="background:#000000; color:white; text-align:center;"| Position(s)
+! style="background:#000000; color:white; text-align:center;"| Date of birth (Age at end of season)
+! style="background:#000000; color:white; text-align:center;"| Signed in
+! style="background:#000000; color:white; text-align:center;"| Contract ends
+! style="background:#000000; color:white; text-align:center;"| Signed from
+! style="background:#000000; color:white; text-align:center;"| Transfer Fee
+! style="background:#000000; color:white; text-align:center;"| Notes
+|-
+! colspan=10 style="background:#DCDCDC; text-align:center;"| Goalkeepers
+|-
+| 1
+| [[Gianluigi Buffon]]
+| {{flagicon|ITA}}
+| [[Goalkeeper (association football)|GK]]
+| {{Birth date and age2|2016|6|30|df=yes|1978|1|28}}
+| 2001
+| 2017
+| {{flagicon|ITA}} [[Parma F.C.|Parma]]
+| €45M<ref>{{cite news|url=https://news.bbc.co.uk/sport2/hi/football/europe/1422132.stm|title=Juve land £23m Buffon|date=4 July 2001|publisher=bbc.co.uk|access-date=15 May 2015}}</ref>
+| [[Captain (association football)|Captain]]
+|-
+| 25
+| [[Neto (footballer, born 1989)|Neto]]
+| {{flagicon|BRA}}
+| [[Goalkeeper (association football)|GK]]
+| {{birth date and age2|2016|6|30|df=yes|1989|7|19}}
+| 2015
+| 2019
+| {{flagicon|ITA}} [[ACF Fiorentina|Fiorentina]]
+| Free<ref name="Neto joins Juventus">{{cite web|url=http://www.juventus.com/en/news/news/2015/neto-joins-juventus.php|title=Neto joins Juventus|publisher=Juventus FC|accessdate=3 July 2015}}</ref>
+|
+|-
+| 34
+| [[Rubinho (footballer)|Rubinho]]
+| {{flagicon|BRA}}
+| [[Goalkeeper (association football)|GK]]
+| {{birth date and age2|2016|6|30|df=yes|1982|8|4}}
+| 2012
+| 2016
+| Unattached
+| Free<ref name="Juventus sign Storari and Martinez">{{cite web|url=http://www.calciomercato.com/english-news/juventus-sign-storari-and-martinez|title=Juventus sign Storari and Martinez|publisher=calciomercato.com|accessdate=15 May 2015}}{{Dead link|date=September 2026 |bot=InternetArchiveBot }}</ref>
+|
+|-
+| 38
+| [[Emil Audero]]
+| {{flagicon|ITA}}
+| [[Goalkeeper (association football)|GK]]
+| {{birth date and age2|2016|6|30|df=yes|1997|1|18}}
+| 2015<ref>{{cite news|title=Juventus submits Champions League squad|url=http://www.juventus.com/en/news/news/2015/juventus-submits-champions-league-squad-.php|publisher=Juventus FC|date=1 September 2015}}</ref>
+| 
+| {{flagicon|ITA}} [[Juventus F.C. Youth Sector|Youth Sector]]
+| N/A
+| 
+|-
+! colspan=10 style="background:#DCDCDC; text-align:center;"| Defenders
+|-
+| 3
+| [[Giorgio Chiellini]]
+| {{flagicon|ITA}}
+| [[Defender (association football)#Centre-back|CB]] / [[Defender (association football)#Full-back|LB]]
+| {{birth date and age2|2016|6|30|df=yes|1984|8|14}}
+| 2005
+| 2018
+| {{flagicon|ITA}} [[ACF Fiorentina|Fiorentina]]
+| €7.4M<ref>{{cite web|url=http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2004-2005/comunicato%2031082004%20cannavaro_chiellini%20eng.pdf|title=Juventus Football Club: Operations concerning players' registration rights|publisher=Juventus FC|accessdate=10 August 2015|archive-date=5 March 2016|archive-url=https://web.archive.org/web/20160305021508/http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2004-2005/comunicato%2031082004%20cannavaro_chiellini%20eng.pdf|url-status=dead}}</ref><ref>{{cite web|url=http://www.repubblica.it/2005/f/sezioni/sport/calcio/calciomerc/calciomerc/calciomerc.html|title=Comproprietà, Chiellini alla Juve per Miccoli si andrà alle buste|publisher=repubblica.it|accessdate=10 August 2015}}</ref><ref>{{cite web|url=http://salernitanafans.forumfree.it/?t=3926730|title=La Juventus riscatta Chiellini|publisher=salernitanafans.forumfree.it|accessdate=10 August 2015}}</ref>
+| [[Captain (association football)|Vice-captain]]
+|-
+| 4
+| [[Martín Cáceres]]
+| {{flagicon|URU}}
+| [[Defender (association football)#Centre-back|CB]] / [[Defender (association football)#Full-back|RB]]
+| {{birth date and age2|2016|6|30|df=yes|1987|4|7}}
+| 2012
+| 2016
+| {{flagicon|ESP}} [[Sevilla FC|Sevilla]]
+| €8M<ref>{{cite web|url=http://www.juventus.com/wps/wcm/connect/10c02afc-17fa-457f-b2db-6590e114b03a/comunicato+25052012+caceres+eng.pdf?MOD=AJPERES&CACHEID=10c02afc-17fa-457f-b2db-6590e114b03a|title=Exercise of the Option Right for the player Martin Caceres|publisher=Juventus FC|accessdate=15 May 2015|archive-date=18 May 2015|archive-url=https://web.archive.org/web/20150518090332/http://www.juventus.com/wps/wcm/connect/10c02afc-17fa-457f-b2db-6590e114b03a/comunicato+25052012+caceres+eng.pdf?MOD=AJPERES&CACHEID=10c02afc-17fa-457f-b2db-6590e114b03a|url-status=dead}}</ref>
+| 
+|-
+| 12
+| [[Alex Sandro]]
+| {{flagicon|BRA}}
+| [[Defender (association football)#Full-back|LB]]
+| {{birth date and age2|2016|6|30|df=yes|1991|1|26}}
+| 2015
+| 2020
+| {{flagicon|POR}} [[FC Porto|Porto]]
+| €26M<ref name="alex sandro">{{cite web|url=http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2015-2016/comunicato%2020082015%20alexsandro%20eng.pdf|title=Agreement with Porto for the Acquisition of the player Alex Sandro|publisher=Juventus FC|accessdate=20 August 2015|archive-date=27 January 2016|archive-url=https://web.archive.org/web/20160127223533/http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2015-2016/comunicato%2020082015%20alexsandro%20eng.pdf|url-status=dead}}</ref>
+| 
+|-
+| 15
+| [[Andrea Barzagli]]
+| {{flagicon|ITA}}
+| [[Defender (association football)#Centre-back|CB]]
+| {{birth date and age2|2016|6|30|df=yes|1981|5|8}}
+| 2011
+| 2016
+| {{flagicon|GER}} [[VfL Wolfsburg|Wolfsburg]]
+| €0.3M<ref>{{cite web|url=http://www.juventus.com/wps/portal/juve/en/news-gallery/2011/1/NEWS_newsseriea_80A82CE1A643418FA21371A630AB8915.asp/!ut/p/b1/zZNbs2NAFIV_y_wARyOaPDq5aHGLELQX1cQtQhMS4ddPZub5zHmc2ftpV61a9a1dtdiIDdmoJc-qIGNFW3L7dUcwdgBQ15-cAoClC0Dbb11HPNicrq_YgA0RnqUt1ab9bhOXZH-VAsGgL3Cf0v0OaTMZutI1qIzrveLmnFzb6SBO_M7v4xkszfNoaGiJfVRz0zC6heblhfmpRJPHbypDZAQumdRQuXBG4e8qQyoP-HVbLp6-mflp2WSEWjvZNobX0MiMAUGCpKNbCs86WzMYJlvFFBI3Qa-uiaLkHOqVSehNw-K-D-4p1YPrhdKMjAAu57QRLB8BZYETaeUf7_D4HR58MQr4_jfRb8lfHPBbIH3tIbAeG4JV7F6nTlhTcNyis1WN7tHYlLpnri1Oi815fbG8erFd64zcMq0jmNDTq0-aGUfqrcGQo6SDSd-UVRRktOnImcBXh4Oe3A7lUKsE34LHvf18FlApFFu75u43YBr4T8E2_D8DO7BRlTQfU9p8gA8oizLHCZwoyxACKLB-iyWrGt4t0YJcrMQxGe_9RcWhy_GaXYwvCTlXgnkANrh8nLp1xphy4UypvV1PK9XkGIY_SJ9pgZWiVC-0g-m0yw5rVXLU0eRzZZhPhy0cFBtaBxIYVigVXj-hsBSZPrYkuy_5wq9U5vxwUlPtQpRnLccQXxUdee9W-qjPq8A-RQt9-C5q3_18qPh2k-W2rp5B-DSd0M_G4b6H6pC6HoLWhUdbem-jSSZwrvNrQisecdUq9895XKmBnMiOc3Q9ZmEtRJuM7ZqnAXPrz66UHz8B-YD3OQ!!/dl4/d5/L2dBISEvZ0FBIS9nQSEh/?pragma=no-cache|title=Andrea Barzagli is now Bianconero|publisher=Juventus FC|accessdate=15 May 2015}}</ref>
+| 
+|-
+| 19
+| [[Leonardo Bonucci]]
+| {{flagicon|ITA}}
+| [[Defender (association football)#Centre-back|CB]]
+| {{birth date and age2|2016|6|30|df=yes|1987|5|1}}
+| 2010
+| 2020<ref>{{cite news|title=Bonucci extends contract until 2020|url=http://www.juventus.com/en/news/news/2015/bonucci-extends-contract-until-2020-.php|publisher=Juventus FC|date=28 July 2015}}</ref>
+| {{flagicon|ITA}} [[F.C. Bari 1908|Bari]]
+| €15.5M<ref>{{cite web|url=http://www.juventus.com/wps/wcm/connect/d4f9d633-19d8-474b-9047-7abda4d81747/comunicato_01072010_bonucci_eng.pdf?MOD=AJPERES&CACHEID=d4f9d633-19d8-474b-9047-7abda4d81747|title=Agreement with A.S. Bari for the Acquisition of the Registration Rights of the Player Leonardo Bonucci|publisher=Juventus FC|accessdate=15 May 2015}}</ref>
+| 
+|-
+| 24
+| [[Daniele Rugani]]
+| {{flagicon|ITA}}
+| [[Defender (association football)#Centre-back|CB]]
+| {{birth date and age2|2016|6|30|df=yes|1994|7|29}}
+| 2015
+| 2020<ref name="Bod Approves Figures For The First Half Of 2015/16" />
+| {{flagicon|ITA}} [[Empoli F.C.|Empoli]]
+| €3.5M<ref name="Juventus complete full Rugani purchase">{{cite web|url=https://www.juventus.com/en/news/articles/juventus-complete-full-rugani-purchase|title=Juventus complete full Rugani purchase|publisher=Juventus FC|accessdate=2 July 2015|date=2 February 2015}}</ref>
+| 
+|-
+| 26
+| [[Stephan Lichtsteiner]]
+| {{flagicon|SUI}}
+| [[Defender (association football)#Full-back|RB]] / [[Defender (association football)#Wing-back|RWB]]
+| {{birth date and age2|2016|6|30|df=yes|1984|1|16}}
+| 2011
+| 2017
+| {{flagicon|ITA}} [[S.S. Lazio|Lazio]]
+| €10M<ref>{{cite web|url=http://www.gazzetta.it/Calcio/SerieA/Juventus/10-07-2011/lichtsteiner-non-ha-dubbi-801947977793.shtml|title=Lichtsteiner non ha dubbi "La Juve è sempre la Juve"|publisher=gazzetta.it|accessdate=15 May 2015}}</ref>
+| 
+|-
+| 33
+| [[Patrice Evra]]
+| {{flagicon|FRA|1974}}
+| [[Defender (association football)#Full-back|LB]]
+| {{birth date and age2|2016|6|30|df=yes|1981|5|15}}
+| 2014
+| 2016
+| {{flagicon|ENG}} [[Manchester United F.C.|Manchester United]]
+| €1.6M<ref>{{cite web|url=http://www.juventus.com/wps/wcm/connect/1438ebd3-7f98-4aa8-b018-f3945c06d504/comunicato+21072014+evra+eng.pdf?MOD=AJPERES&CACHEID=1438ebd3-7f98-4aa8-b018-f3945c06d504|title=Agreement with Manchester United for the Acquisition of the player Patrice Evra|publisher=Juventus FC|accessdate=15 May 2015|archive-date=18 May 2015|archive-url=https://web.archive.org/web/20150518084753/http://www.juventus.com/wps/wcm/connect/1438ebd3-7f98-4aa8-b018-f3945c06d504/comunicato+21072014+evra+eng.pdf?MOD=AJPERES&CACHEID=1438ebd3-7f98-4aa8-b018-f3945c06d504|url-status=dead}}</ref>
+| 
+|-
+! colspan=10 style="background:#DCDCDC; text-align:center;"| Midfielders
+|-
+| 6
+| [[Sami Khedira]]
+| {{flagicon|GER}}
+| [[Midfielder#Defensive midfielder|DM]] / [[Midfielder#Central midfielder|CM]]
+| {{birth date and age2|2016|6|30|df=yes|1987|4|4}}
+| 2015
+| 2019
+| {{flagicon|ESP}} [[Real Madrid C.F.|Real Madrid]]
+| Free<ref>{{cite web|url=http://www.juventus.com/juve/en/news/khedira+signs+for+juventus|title=Khedira signs for Juventus|publisher=Juventus FC|accessdate=9 June 2015}}</ref>
+| 
+|-
+| 8
+| [[Claudio Marchisio]]
+| {{flagicon|ITA}}
+| [[Midfielder#Central midfielder|CM]] / [[Midfielder#Attacking midfielder|AM]]
+| {{birth date and age2|2016|6|30|df=yes|1986|1|19}}
+| 2006
+| 2020<ref>{{cite news|title=Marchisio excited for the future|url=http://www.juventus.com/en/news/news/2015/marchisio-excited-for-the-future.php|publisher=Juventus FC|date=6 July 2015}}</ref>
+| {{flagicon|ITA}} [[Juventus F.C. Youth Sector|Youth Sector]]
+| N/A
+| [[Captain (association football)|Second vice-captain]]
+|-
+| 10
+| [[Paul Pogba]]
+| {{flagicon|FRA|1974}}
+| [[Midfielder#Defensive midfielder|DM]] / [[Midfielder#Central midfielder|CM]]
+| {{birth date and age2|2016|6|30|df=yes|1993|3|15}}
+| 2012
+| 2019
+| {{flagicon|ENG}} [[Manchester United F.C.|Manchester United]]
+| Free<ref>{{cite web|url=http://www.juventus.com/juve/en/news/3aug2012_pogba|title=Pogba completes Juventus move|publisher=Juventus FC|accessdate=15 May 2015}}</ref>
+| 
+|-
+| 11
+| [[Hernanes]]
+| {{flagicon|BRA}}
+| [[Midfielder#Central midfielder|CM]]
+| {{birth date and age2|2016|6|30|df=yes|1985|5|29}}
+| 2015
+| 2018
+| {{flagicon|ITA}} [[Inter Milan|Internazionale]]
+| €11M<ref name="hernanes-signs-for-juventus">{{cite web|url=http://www.juventus.com/en/news/news/2015/hernanes-signs-for-juventus-.php|title=Hernanes signs for Juventus|publisher=Juventus FC|accessdate=31 August 2015}}</ref>
+| 
+|-
+| 18
+| [[Mario Lemina]]
+| {{flagicon|GAB}}
+| [[Midfielder#Defensive midfielder|DM]] / [[Midfielder#Central midfielder|CM]]
+| {{birth date and age2|2016|6|30|df=yes|1993|9|1}}
+| 2015
+| 2016
+| {{flagicon|FRA|1974}} [[Olympique de Marseille|Marseille]]
+| €0.5M <ref>{{cite web|url=http://www.juventus.com/en/news/news/2015/lemina-completes-juve-loan-switch.php|title=Lemina completes Juve loan switch|publisher=Juventus FC|accessdate=31 August 2015}}</ref>
+| On loan
+|-
+| 20
+| [[Simone Padoin]]
+| {{flagicon|ITA}}
+| [[Midfielder#Wide midfielder|RM]] / [[Midfielder#Central midfielder|CM]] / [[Defender (association football)#Full-back|RB]]
+| {{birth date and age2|2016|6|30|df=yes|1984|3|18}}
+| 2012
+| 2017<ref name="Bod Approves Figures For The First Half Of 2015/16">{{cite web|title=Bod Approves Figures For The First Half Of 2015/16|url=http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2015-2016/comunicato%2024022016%20semestrale%20eng.pdf|publisher=Juventus FC|date=25 Feb 2016|access-date=25 February 2016|archive-date=5 March 2016|archive-url=https://web.archive.org/web/20160305140917/http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2015-2016/comunicato%2024022016%20semestrale%20eng.pdf|url-status=dead}}</ref>
+| {{flagicon|ITA}} [[Atalanta B.C.|Atalanta]]
+| €5M<ref>{{cite web|url=http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2011-2012/2012-2013/comunicato%2031012012%20padoin%20eng.pdf|title=Agreement with Atalanta for the acquisition of the player Simone Padoin|publisher=Juventus FC|accessdate=24 Feb 2016}}</ref>
+| 
+|-
+| 22
+| [[Kwadwo Asamoah]]
+| {{flagicon|GHA}}
+| [[Midfielder#Central midfielder|CM]] / [[Midfielder#Wide midfielder|LM]] / [[Defender (association football)#Wing-back|LWB]]
+| {{birth date and age2|2016|6|30|df=yes|1988|12|9}}
+| 2012
+| 2018
+| {{flagicon|ITA}} [[Udinese Calcio|Udinese]]
+| €18M<ref>{{cite web|url=http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2011-2012/2012-2013/comunicato%2002072012%20accordi%20con%20udinese%20eng.pdf|title=Agreements with Udinese Calcio S.P.A|publisher=Juventus FC|accessdate=10 August 2015|archive-date=5 March 2016|archive-url=https://web.archive.org/web/20160305220645/http://www.juventus.com/media/native/investor-relations-docs/english/price-sensitive-press-releases/2011-2012/2012-2013/comunicato%2002072012%20accordi%20con%20udinese%20eng.pdf|url-status=dead}}</ref><ref>{{cite web|url=http://www.juventus.com/en/news/news/2012/co-ownership-agreement-summary.php|title=Co-ownership agreement summary|publisher=Juventus FC|accessdate=10 August 2015}}</ref>
+| 
+|-
+| 27
+| [[Stefano Sturaro]]
+| {{flagicon|ITA}}
+| [[Midfielder#Defensive midfielder|DM]] / [[Midfielder#Central midfielder|CM]]
+| {{birth date and age2|2016|6|30|df=yes|1993|3|9}}
+| 2014
+| 2019
+| {{flagicon|ITA}} [[Genoa C.F.C.|Genoa]]
+| €5.5M<ref>{{cite web|url=http://www.juventus.com/juve/en/news/juventus-sign-sturaro|title=Juventus sign Sturaro|publisher=Juventus FC|accessdate=15 May 2015}}</ref>
+| 
+|-
+| 37
+| [[Roberto Pereyra]]
+| {{flagicon|ARG}}
+| [[Midfielder#Attacking midfielder|AM]] / [[Midfielder#Winger|LW]]
+| {{birth date and age2|2016|6|30|df=yes|1991|1|7}}
+| 2014
+| 2020<ref name="Bod Approves Figures For The First Half Of 2015/16" />
+| {{flagicon|ITA}} [[Udinese Calcio|Udinese]]
+| €14M<ref>{{cite web|url=http://www.juventus.com/juve/en/news/roberto-pereyra-permanent-switch-juventus|title=Pereyra completes permanent Juve switch|publisher=Juventus FC|accessdate=23 June 2015}}</ref>
+| 
+|-
+! colspan=10 style="background:#DCDCDC; text-align:center;"| Forwards
+|-
+| 7
+| [[Simone Zaza]]
+| {{flagicon|ITA}}
+| [[Forward (association football)#Striker|ST]] / [[Forward (association football)#Centre-forward|CF]]
+| {{birth date and age2|2016|6|30|df=yes|1991|6|25}}
+| 2015
+| 2020
+| {{flagicon|ITA}} [[U.S. Sassuolo Calcio|Sassuolo]]
+| €18M<ref name="Zaza joins Juventus">{{cite web|url=http://www.juventus.com/en/news/news/2015/zaza-joins-juventus.php|title=Zaza joins Juventus |publisher=Juventus FC|accessdate=7 July 2015}}</ref>
+| 
+|-
+| 9
+| [[Álvaro Morata]]
+| {{flagicon|ESP}}
+| [[Forward (association football)#Striker|ST]] / [[Forward (association football)#Centre-forward|CF]] / [[Forward (association football)#Second striker|SS]]
+| {{birth date and age2|2016|6|30|df=yes|1992|10|23}}
+| 2014
+| 2020<ref>{{cite web|url=http://www.football-italia.net/76935/official-morata-extends-juve-deal|title=Official: Morata extends Juve deal|publisher=Football Italia|date=10 December 2015|accessdate=10 December 2015}}</ref>
+| {{flagicon|ESP}} [[Real Madrid C.F.|Real Madrid]]
+| €20M<ref>{{cite web|url=http://www.juventus.com/juve/en/news/morata-completes-juventus-switch|title=Morata signs for Juventus|publisher=Juventus FC|accessdate=15 May 2015}}</ref>
+| 
+|-
+| 16
+| [[Juan Cuadrado]]
+| {{flagicon|COL}}
+| | [[Midfielder#Winger|RW]] / [[Defender (association football)#Wing-back|RWB]]
+| {{birth date and age2|2016|6|30|df=yes|1988|5|26}}
+| 2015
+| 2016
+| {{flagicon|ENG}} [[Chelsea F.C.|Chelsea]]
+| €1.5M<ref name="Cuadrado joins Juventus on loan">{{Cite web|url=http://www.juventus.com/en/news/news/2015/cuadrado-joins-juventus-on-loan.php|title = Cuadrado joins Juventus on loan|publisher=Juventus FC}}</ref>
+| On loan
+|-
+| 17
+| [[Mario Mandžukić]]
+| {{flagicon|CRO}}
+| [[Forward (association football)#Striker|ST]] / [[Forward (association football)#Centre-forward|CF]]
+| {{birth date and age2|2016|6|30|df=yes|1986|5|21}}
+| 2015
+| 2019
+| {{flagicon|ESP}} [[Atlético Madrid]]
+| €19M<ref>{{cite web|url=http://www.juventus.com/wps/wcm/connect/d5483d7b-b923-4bdb-a43f-46589d957f65/comunicato+22062015+mandzukic+eng.pdf?MOD=AJPERES&CACHEID=d5483d7b-b923-4bdb-a43f-46589d957f65|title=Agreement with Atletico Madrid for the Acquisition of the player Mario Mandzukic|publisher=Juventus FC|accessdate=22 June 2015|archive-url=https://web.archive.org/web/20150622204536/http://www.juventus.com/wps/wcm/connect/d5483d7b-b923-4bdb-a43f-46589d957f65/comunicato+22062015+mandzukic+eng.pdf?MOD=AJPERES&CACHEID=d5483d7b-b923-4bdb-a43f-46589d957f65|archive-date=2015-06-22|url-status=dead}}</ref>
+| 
+|-
+| 21
+| [[Paulo Dybala]]
+| {{flagicon|ARG}}
+| [[Forward (association football)#Striker|ST]] / [[Forward (association football)#Centre-forward|CF]] / [[Forward (association football)#Second striker|SS]]
+| {{birth date and age2|2016|6|30|df=yes|1993|11|15}}
+| 2015
+| 2020
+| {{flagicon|ITA}} [[U.S. Città di Palermo|Palermo]]
+| €32M<ref>{{cite web|url=http://www.juventus.com/wps/wcm/connect/2415f0d0-9cb1-4394-bb43-0b49efd52466/comunicato+04062015+dybala+ita.pdf?MOD=AJPERES&CACHEID=2415f0d0-9cb1-4394-bb43-0b49efd52466|title=Accordo con il Palermo per l'aquisizione del calciatore Paulo Dybala|publisher=Juventus FC|accessdate=6 June 2015|archive-url=https://web.archive.org/web/20150630181915/http://www.juventus.com/wps/wcm/connect/2415f0d0-9cb1-4394-bb43-0b49efd52466/comunicato+04062015+dybala+ita.pdf?MOD=AJPERES&CACHEID=2415f0d0-9cb1-4394-bb43-0b49efd52466|archive-date=2015-06-30|url-status=dead}}</ref>
+| 
+|-
+| 39
+| [[Andrea Favilli (footballer)|Andrea Favilli]]
+| {{flagicon|ITA}}
+| [[Forward (association football)#Striker|ST]] / [[Forward (association football)#Centre-forward|CF]]
+| {{birth date and age2|2016|6|30|df=yes|1997|5|17}}
+| 2015
+| 2016
+| {{flagicon|ITA}} [[A.S. Livorno Calcio|Livorno]]
+| €0.15M<ref>{{cite web|url=http://www.juventus.com/it/news/news/2014/i-movimenti-di-mercato.php|title=I movimenti di mercato|language=Italian|publisher=Juventus FC|accessdate=1 March 2016}}</ref>
+| On loan
+|}
+

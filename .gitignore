@@ -1,0 +1,13 @@
+# Environnement
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.DS_Store
+.remember/
+
+# D8 : base de travail et caches locaux, jamais dans git
+*.duckdb
+*.duckdb.wal
+data/work/
+cache/

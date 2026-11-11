@@ -1,0 +1,152 @@
+<!-- revid=1357662773 title=2010–11 Arsenal F.C. season -->
+== Players ==
+
+=== Squad information ===
+{{Fb si header |age=y }}
+
+{{Fb si player |bg= |p=[[Manuel Almunia]]          |nb=ESP |n=1  |pos=GK |eu=y |age={{Age|1977|5|19|2011|5|23}}  |s=2004 |a=175
+|g=0  |e=undisclosed<ref name="Almunia contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/almunia-i-d-like-to-stay-for-rest-of-my-career |title=Arsenal F.C.–Almunia–I'd like to stay for rest of my career |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20120404134631/http://www.arsenal.com/news/news-archive/almunia-i-d-like-to-stay-for-rest-of-my-career |archive-date=4 April 2012 |url-status=dead}}</ref> |f=£0.5M<ref name="Almunia fee">{{Cite web |url=http://soccernet.espn.go.com/players/profile?id=14582&cc=5739 |title=ESPN Soccernet–Manuel Almunia Bio |access-date=11 May 2010 |archive-date=9 April 2010 |archive-url=https://web.archive.org/web/20100409162344/http://soccernet.espn.go.com/players/profile?id=14582&cc=5739 |url-status=dead }}</ref>}}
+
+{{Fb si player |bg=y |p=[[Abou Diaby]]                |nb=FRA |n=2  |pos=MF |eu=y |age={{Age|1986|5|11|2011|5|23}}  |s=2006 |a=158
+|g=19 |e=undisclosed<ref name="Diaby contract">{{Cite web|url=https://news.bbc.co.uk/sport2/hi/football/teams/a/arsenal/8436163.stm|title=Arsenal seal Diaby deal extension|date=31 December 2009|via=news.bbc.co.uk}}</ref> |f=£2.0M<ref name="Diaby fee">{{Cite web|url=https://www.telegraph.co.uk/sport/football/teams/arsenal/5037424/Arsene-Wenger-wants-Abou-Diaby-to-emulate-Patrick-Vieira.html|title=Arsene Wenger wants Abou Diaby to emulate Patrick Vieira|website=The Telegraph |date=23 March 2009 }}</ref> |tw=w }}
+
+{{Fb si player |bg= |p=[[Bacary Sagna]]              |nb=FRA |n=3  |pos=DF |eu=y |age={{Age|1983|2|14|2011|5|23}}  |s=2007 |a=176
+|g=3  |e=2014<ref name="Sagna contract">{{Cite web|url=https://www.skysports.com/football/news/11670/3647884/sagna-pens-gunners-deal|title=Sagna pens Gunners deal|website=Sky Sports}}</ref> |f=€9M plus possible 2M in bonuses<ref>{{cite news |title=Sagna signe jeudi à Arsenal |url=https://www.lequipe.fr/Football/breves2007/20070712_100450Dev.html |access-date=9 September 2020 |work=L'Équipe |date=12 July 2007 |archive-url=https://web.archive.org/web/20111202192633/https://www.lequipe.fr/Football/breves2007/20070712_100450Dev.html |archive-date=2 December 2011 |url-status=dead |language=fr}}</ref>}}
+
+{{Fb si player |bg=y |p=[[Cesc Fàbregas]]     |nb=ESP |n=4  |pos=MF |eu=y |age={{Age|1987|5|4|2011|5|23}}   |s=2003 |a=303
+|g=57 |e=2014<ref name="Fàbregas contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/fabregas-my-delight-at-signing-long-term-contract |title=Arsenal F.C.–Fabregas–My delight at signing long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20100524111520/http://www.arsenal.com/news/news-archive/fabregas-my-delight-at-signing-long-term-contract |archive-date=24 May 2010 |url-status=dead}}</ref> |f=[[Free transfer (football)|Free]] |cap=y }}
+
+{{Fb si player |bg= |p=[[Thomas Vermaelen]]      |nb=BEL |n=5 |pos=DF |eu=y |age={{Age|1985|11|14|2011|5|23}} |s=2009 |a=50
+|g=8  |e=undisclosed<ref name="Vermaelen contract">{{Cite web|url=http://www.arsenal.com/news/news-archive/thomas-vermaelen-completes-move-to-arsenal|title=Arsenal F.C.–Thomas Vermaelen completes move to Arsenal}}</ref> |f=£10.0M<ref name="Vermaelen fee">{{Cite web|url=https://news.bbc.co.uk/sport2/hi/football/teams/a/arsenal/8109969.stm|title=Arsenal confirm Vermaelen signing|date=19 June 2009|via=news.bbc.co.uk}}</ref> }}
+
+{{Fb si player |bg=y |p=[[Laurent Koscielny]]           |nb=FRA|n=6 |pos=DF |eu=y |age={{Age|1985|9|10|2011|5|23}}  |s=2010 |a=43
+|g=3  |e=undisclosed<ref name="Koscielny contract" /> |f=£8.5M<ref name="Koscielny fee" />}}
+
+{{Fb si player |bg= |p=[[Tomáš Rosický]]           |nb=CZE |n=7  |pos=MF |eu=y |age={{Age|1980|10|4|2011|5|23}}  |s=2006 |a=128
+|g=17 |e=undisclosed<ref name="Rosický contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/tomas-rosicky-signs-new-contract |title=Arsenal F.C.–Rosicky signs new contract with Arsenal |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20100107094219/http://www.arsenal.com/news/news-archive/tomas-rosicky-signs-new-contract |archive-date=7 January 2010 |url-status=dead}}</ref> |f=£6.8M<ref name="Rosický fee">{{Cite web|url=http://www.theguardian.com/football/2006/may/23/newsstory.sport5|title=Arsenal move for £6.8m midfielder Rosicky|date=23 May 2006|website=The Guardian}}</ref> }}
+
+{{Fb si player |bg=y |p=[[Samir Nasri]]               |nb=FRA |n=8  |pos=MF |eu=y |age={{Age|1987|6|26|2011|5|23}}  |s=2008 |a=124
+|g=27  |e=2012<ref name="Nasri contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/wenger-hopeful-on-nasri-and-clichy-deals |title=Arsenal F.C.–Wenger hopeful on Nasri and Clichy deals |access-date=6 November 2010 |archive-url=https://web.archive.org/web/20101107063800/http://www.arsenal.com/news/news-archive/wenger-hopeful-on-nasri-and-clichy-deals |archive-date=7 November 2010 |url-status=dead}}</ref> |f=£12.0M<ref name="Nasri fee">{{Cite web|url=https://www.skysports.com/football/news/11670/3805050/arsenal-seal-nasri-capture|title=Arsenal seal Nasri capture|website=Sky Sports}}</ref> }}
+
+{{Fb si player |bg= |p=[[Robin van Persie]]      |nb=NED |n=10 |pos=ST  |eu=y |age={{Age|1983|8|6|2011|5|23}}   |s=2004 |a=230
+|g=95 |e=2013<ref>{{cite news |last1=Ornstein |first1=David |title=Robin van Persie: Man Utd agree £24m deal with Arsenal for striker|url=https://www.bbc.com/sport/football/19179833 |access-date=20 January 2021 |work=BBC Sport |date=15 August 2012}}</ref> |f=£2.75M<ref name="van Persie fee">{{Cite web|url=https://www.telegraph.co.uk/sport/football/leagues/premierleague/arsenal/4542512/Robin-van-Persie-becomes-a-leader-from-the-front-for-Arsenal.html|archive-url=https://web.archive.org/web/20090210124251/http://www.telegraph.co.uk/sport/football/leagues/premierleague/arsenal/4542512/Robin-van-Persie-becomes-a-leader-from-the-front-for-Arsenal.html|url-status=dead|archive-date=2009-02-10|title=The Telegraph–Robin van Persie becomes a leader from the front for Arsenal}}</ref> |vc=vice-captain }}
+
+{{Fb si player |bg=y |p=[[Carlos Vela]]                |nb=MEX |n=11 |pos=ST  |eu=y |age={{Age|1989|3|1|2011|5|23}}   |s=2005 |a=62
+|g=11  |e=undisclosed<ref name="Vela contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/carlos-vela-signs-new-long-term-contract |title=Arsenal F.C.–Carlos Vela signs new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20091213114203/http://www.arsenal.com/news/news-archive/carlos-vela-signs-new-long-term-contract |archive-date=13 December 2009 |url-status=dead}}</ref> |f=£0.5M<ref name="Vela fee">[http://www.timesonline.co.uk/tol/sport/football/premier_league/arsenal/article4837568.ece The Sunday Times–Arsene Wenger's generation game]{{dead link|date=September 2024|bot=medic}}{{cbignore|bot=medic}}</ref> |notes=On loan to [[West Bromwich Albion F.C.|West Bromwich Albion]] }}
+
+{{Fb si player |bg= |p=[[Jens Lehmann]]            |nb=GER |n=13  |pos=GK |eu=y |age={{Age|1969|11|10|2011|5|23}} |s=2011 |a=200*
+|g=0 |e=2011<ref name="Lehmann contract" /> |f=Free }}
+
+{{Fb si player |bg=y |p=[[Theo Walcott]]            |nb=ENG |n=14 |pos=MF  |eu=y |age={{Age|1989|3|16|2011|5|23}}  |s=2006 |a=174
+|g=31 |e=undisclosed<ref name="Walcott contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/walcott-signs-a-new-long-term-contract |title=Arsenal F.C.–Walcott signs a new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20090510001640/http://www.arsenal.com/news/news-archive/walcott-signs-a-new-long-term-contract |archive-date=10 May 2009 |url-status=dead}}</ref> |f=£9.1M<ref>{{cite news  |url=https://www.telegraph.co.uk/sport/football/2296011/Southampton-lose-2.9m-over-Theo-Walcott.html |title=Southampton lose £2.9m over Theo Walcott |first=Jeremy |last=Wilson |newspaper=The Daily Telegraph |location=London |date=1 April 2008 |access-date=22 February 2014}}</ref> |tw=w }}
+
+{{Fb si player |bg= |p=[[Denílson Pereira Neves|Denílson]] |nb=BRA |n=15 |pos=MF |eu=n |age={{Age|1988|2|16|2011|5|23}}  |s=2006 |a=153
+|g=10  |e=undisclosed<ref name="Denilson contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/denilson-signs-a-new-long-term-contract |title=Arsenal F.C.–Denilson signs a new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20120908021550/http://www.arsenal.com/news/news-archive/denilson-signs-a-new-long-term-contract |archive-date=8 September 2012 |url-status=dead}}</ref> |f=£3.5M<ref name="Denilson fee">{{Cite web|url=http://www.theguardian.com/football/2007/jan/31/newsstory.sport12|title=Denilson times his run to perfection|date=31 January 2007|website=The Guardian}}</ref> }}
+
+{{Fb si player |bg=y |p=[[Aaron Ramsey]]             |nb=WAL |n=16 |pos=MF |eu=y |age={{Age|1990|12|26|2011|5|23}} |s=2008 |a=59
+|g=6  |e=undisclosed<ref name="Ramsey contract" /> |f=£4.8M<ref name="Ramsey fee">{{Cite web|url=https://www.walesonline.co.uk/sport/football/football-news/arsenal-claim-discount-ramsey-deal-2167584|archiveurl=https://web.archive.org/web/20080805004837/http://www.walesonline.co.uk/footballnation/cardiff-city-fc/2008/07/31/arsenal-claim-discount-on-ramsey-deal-91466-21440756/|url-status=dead|title=Arsenal claim discount on Ramsey deal|first=Terry|last=Phillips|date=30 July 2008|archivedate=5 August 2008|website=WalesOnline}}</ref> }}
+
+{{Fb si player |bg= |p=[[Alex Song]]             |nb=CMR |n=17 |pos=MF |eu=y |age={{Age|1987|9|9|2011|5|23}}   |s=2005 |a=158
+|g=9  |e=2014<ref name="Song contract">{{Cite web|url=https://www.skysports.com/football/news/11670/5717481/song-agrees-new-contract|title=Song agrees new contract|website=Sky Sports}}</ref> |f=£1.0M<ref name="Song fee">{{Cite web |url=http://soccernet.espn.go.com/players/profile?id=43447&cc=5739 |title=ESPN Soccernet–Alexandre Song Billong Bio |access-date=11 May 2010 |archive-date=3 March 2010 |archive-url=https://web.archive.org/web/20100303034203/http://soccernet.espn.go.com/players/profile?id=43447&cc=5739 |url-status=dead }}</ref> }}
+
+{{Fb si player |bg=y |p=[[Sébastien Squillaci]]   |nb=FRA |n=18 |pos=DF |eu=y |age={{Age|1980|8|11|2011|5|23}}  |s=2010 |a=32
+|g=2  |e=2013<ref name="Squillaci fee" /> |f=£3.3M<ref name="Squillaci fee" /> }}
+
+{{Fb si player |bg= |p=[[Jack Wilshere]]          |nb=ENG |n=19 |pos=MF |eu=y |age={{Age|1992|1|1|2011|5|23}}   |s=2008 |a=64
+|g=3  |e=undisclosed<ref name="Wilshere contract" /> |f=YS }}
+
+{{Fb si player |bg=y |p=[[Johan Djourou]]           |nb=SUI |n=20 |pos=DF |eu=y |age={{Age|1987|1|18|2011|5|23}}  |s=2003 |a=115
+|g=1  |e=undisclosed<ref name="Djourou contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/johan-djourou-signs-new-long-term-contract |title=Arsenal F.C.–Johan Djourou signs new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20080923181537/http://www.arsenal.com/news/news-archive/johan-djourou-signs-new-long-term-contract |archive-date=23 September 2008 |url-status=dead}}</ref> |f=YS }}
+
+{{Fb si player |bg= |p=[[Łukasz Fabiański]]      |nb=POL |n=21 |pos=GK |eu=y |age={{Age|1985|4|18|2011|5|23}}  |s=2007 |a=56
+|g=0  |e=undisclosed<ref name="Fabiański contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/fabianski-signs-new-long-term-contract |title=Arsenal F.C.–Fabianski signs new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20110428034336/http://www.arsenal.com/news/news-archive/fabianski-signs-new-long-term-contract |archive-date=28 April 2011 |url-status=dead}}</ref> |f=£2.0M<ref name="Fabiański fee">{{Cite web|url=https://news.bbc.co.uk/sport1/hi/football/eng_prem/6733191.stm|title=Premier League ins and outs|date=7 August 2007|via=news.bbc.co.uk}}</ref> }}
+
+{{Fb si player |bg=y |p=[[Gaël Clichy]]              |nb=FRA |n=22 |pos=DF |eu=y |age={{Age|1985|7|26|2011|5|23}}  |s=2003 |a=264
+|g=2  |e=2012<ref name="Clichy contract">{{Cite web|url=https://www.skysports.com/football/news/11670/3731596/clichy-jumped-at-new-deal|title=Clichy jumped at new deal|website=Sky Sports}}</ref> |f=£0.25M<ref name="Clichy fee">{{Cite web|url=https://news.bbc.co.uk/sport2/hi/football/eng_prem/2947620.stm|title=Premiership ins and outs|date=1 September 2003|via=news.bbc.co.uk}}</ref> }}
+
+{{Fb si player |bg= |p=[[Andrey Arshavin]]        |nb=RUS |n=23 |pos=MF |eu=n |age={{Age|1981|5|29|2011|5|23}}  |s=2009 |a=106
+|g=28  |e=2013<ref name="Arshavin contract">{{Cite web|url=http://www.goal.com/en-ie/news/3919/exclusive/2012/02/01/2879711/andrey-arshavin-will-reject-approach-from-anzhi-and-stay-at |title=Andrey Arshavin will reject approach from Anzhi and stay at Arsenal until the summer – agent| date=1 February 2012|access-date=8 February 2012|publisher=Goal.com }}</ref> |f=£15.0M<ref name="Arshavin fee">{{Cite web|url=http://www.theguardian.com/sport/2009/feb/03/andrei-arshavin-joins-arsenal-record-deal|title=Football: Andrei Arshavin finally signs for Arsenal for club record fee of £15m|date=3 February 2009|website=The Guardian}}</ref> |tw=w }}
+
+{{Fb si player |bg=y |p=[[Vito Mannone]]            |nb=ITA |n=24 |pos=GK |eu=y |age={{Age|1988|3|2|2011|5|23}}   |s=2005 |a=9
+|g=0  |e=2014<ref name="Mannone contract">{{Cite web|url=https://www.skysports.com/football/news/11670/6432293/mannone-questions-rivals|title=Mannone questions rivals|website=Sky Sports}}</ref> |f=£0.35M<ref name="Mannone fee">{{Cite web|url=http://www.skysports.com/football/player/0,19754,11670_325859,00.html|title=Sky Sports–Vito Mannone}}</ref> |notes=On loan to [[Hull City A.F.C.|Hull City]] }}
+
+{{Fb si player |bg= |p=[[Emmanuel Eboué]]            |nb=CIV |n=27 |pos=MF |eu=y |age={{Age|1983|6|4|2011|5|23}}   |s=2005 |a=215
+|g=10  |e=undisclosed<ref name="Eboué contract" /> |f=£1.54M<ref name="Eboué fee">{{Cite web|url=https://www.theguardian.com/sport/2007/feb/04/features.sport6|title=The Ivorians are coming ...|first=Oliver|last=Price|work=The Guardian |date=4 February 2007|via=www.theguardian.com}}</ref> |tw=w }}
+
+{{Fb si player |bg=y |p=[[Kieran Gibbs]]              |nb=ENG |n=28 |pos=DF |eu=y |age={{Age|1989|9|26|2011|5|23}}  |s=2007  |a=50
+|g=0  |e=undisclosed<ref name="Gibbs contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/gibbs-signs-new-long-term-contract |title=Arsenal F.C.–Gibbs signs new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20090918194002/http://www.arsenal.com/news/news-archive/gibbs-signs-new-long-term-contract |archive-date=18 September 2009 |url-status=dead}}</ref> |f=YS}}
+
+{{Fb si player |bg= |p=[[Marouane Chamakh]]           |nb=MAR |n=29 |pos=ST |eu=y |age={{Age|1984|1|10|2011|5|23}}  |s=2010 |a=44
+|g=11  |e=undisclosed<ref name="Chamakh contract" /> |f=[[Free transfer (football)|Free]] }}
+
+{{Fb si player |bg=y |p=[[Armand Traoré]]            |nb=FRA |n=30 |pos=DF |eu=y |age={{Age|1989|10|8|2011|5|23}}  |s=2005 |a=30
+|g=0  |e=undisclosed<ref name="Traoré contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/young-frenchman-signs-long-term-contract |title=Arsenal F.C.–Young Frenchman signs long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20120825204116/http://www.arsenal.com/news/news-archive/young-frenchman-signs-long-term-contract |archive-date=25 August 2012 |url-status=dead}}</ref> |f=YS |notes=On loan to [[Juventus FC|Juventus]] }}
+
+{{Fb si player |bg= |p=[[Emmanuel Frimpong]]          |nb=ENG |n=35 |pos=MF |eu=y |age={{Age|1992|1|10|2011|5|23}}  |s=2008 |a=0
+|g=0  |e=undisclosed<ref name="Frimpong contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/frimpong-signs-professional-terms-with-club |title=Arsenal F.C. - Frimpong signs professional terms with Club |access-date=31 July 2011 |archive-url=https://web.archive.org/web/20121014155046/http://www.arsenal.com/news/news-archive/frimpong-signs-professional-terms-with-club |archive-date=14 October 2012 |url-status=dead}}</ref> |f=YS }}
+
+{{Fb si player |bg=y |p=[[Nicklas Bendtner]]       |nb=DEN |n=52 |pos=ST  |eu=y |age={{Age|1988|1|16|2011|5|23}}  |s=2004 |a=156
+|g=45 |e=undisclosed<ref name="Bendtner contract">{{Cite web |url=http://www.arsenal.com/news/news-archive/danish-forward-signs-new-long-term-deal |title=Arsenal F.C.–Bendtner signs a new long-term contract |access-date=11 May 2010 |archive-url=https://web.archive.org/web/20120908021533/http://www.arsenal.com/news/news-archive/danish-forward-signs-new-long-term-deal |archive-date=8 September 2012 |url-status=dead}}</ref> |f=YS }}
+
+{{Fb si player |bg= |p=[[Wojciech Szczęsny]]      |nb=POL |n=53 |pos=GK |eu=y |age={{Age|1990|04|18|2011|5|23}}  |s=2006 |a=25
+|g=0  |e=undisclosed<ref name="Szczęsny contract" /> |f=YS|nts  =}}
+
+{{Fb si footer|u=22 May 2011 |c=ENG |ss=2010 |o=squad number |s=[http://www.arsenal.com/first-team/players Arsenal F.C.] and [http://www.footballdatabase.com/index.php?page=club&Id=4&b=true&cont=Europe&cln=Arsenal footballdatabase.com] (for EU passport, country as international player, contract ending and transfer fee) |date=May 2010}}<small>* - Lehmann made 199 appearances during his first spell at Arsenal between 2003 and 2008.</small>
+
+=== Reserve squad ===
+{{Fs start}}
+{{Fs player|no=34|nat=England|pos=MF|name=[[Chuks Aneke]]}}
+{{Fs player|no=37|nat=Ghana|pos=DF|name=[[Daniel Boateng]]}}
+{{Fs player|no=38|nat=England|pos=DF|name=[[Thomas Cruise (footballer)|Thomas Cruise]]}}
+{{Fs player|no=39|nat=England|pos=FW|name=[[Roarie Deacon]]}}
+{{Fs player|no=44|nat=Republic of Ireland|pos=MF|name=[[Conor Henderson]]}}
+{{Fs player|no=45|nat=England|pos=DF|name=[[Gavin Hoyte]]}}
+{{Fs player|no=48|nat=Spain|pos=DF|name=[[Ignasi Miquel]]}}
+{{Fs mid}}
+{{Fs player|no=49|nat=England|pos=FW|name=[[Rhys Murphy]]}}
+{{Fs player|no=51|nat=Turkey|pos=MF|name=[[Oğuzhan Özyakup]]}}
+{{Fs player|no=55|nat=England|pos=GK|name=[[James Shea]]}}
+{{Fs player|no=56|nat=England|pos=FW|name=[[Luke Freeman]]}}
+{{Fs player|no=58|nat=England|pos=DF|name=[[Nico Yennaris]]}}
+{{Fs player|no=59|nat=Argentina|pos=GK|name=[[Emiliano Martínez]]}}
+{{Fs end}}
+
+=== Transfers ===
+
+==== In ====
+{|width=90% class="wikitable sortable" style="text-align:center; font-size:95%; text-align:left"
+!#
+!Position 
+!Player 
+!Transferred from
+!Fee 
+!Date 
+!Team
+!Source
+|-
+|29
+|{{sort|?|FW}}
+|{{sort|Chamakh, Marouane|{{Flagicon|MAR}} [[Marouane Chamakh]]}}
+|{{Flagicon|FRA}} [[FC Girondins de Bordeaux|Bordeaux]]
+|Free transfer
+|{{dts|21 May 2010}}
+|[[Arsenal F.C.|First-team]]
+|<ref name="Chamakh">{{Cite web|url=http://www.arsenal.com/news/news-archive/marouane-chamakh-completes-move-to-arsenal|title=Marouane Chamakh completes move to Arsenal|date=21 May 2010|access-date=26 July 2012|publisher=Arsenal F.C.|archive-url=https://web.archive.org/web/20100524020844/http://www.arsenal.com/news/news-archive/marouane-chamakh-completes-move-to-arsenal|archive-date=24 May 2010|url-status=dead}}</ref>
+|-
+|
+|{{sort|?|FW}}
+|{{sort|Roberts, Philip|{{Flagicon|IRE}} [[Philip Roberts]]}}
+|{{Flagicon|ENG}} [[Norwich City F.C.|Norwich City]]
+|Free transfer
+|{{dts|3 June 2010}}
+|[[Arsenal F.C. Reserves|Reserves]]
+|<ref name="Jenkinson">{{Cite web|url=http://younggunsblog.co.uk/2010/06/player-profile-new-signing-philip-roberts/#.UBEW7JEzcUo|title=Player Profile: New Signing Philip Roberts|date=3 June 2010|access-date=26 July 2012|publisher=Young Guns|archive-date=8 March 2012|archive-url=https://web.archive.org/web/20120308182530/http://younggunsblog.co.uk/2010/06/player-profile-new-signing-philip-roberts/#.UBEW7JEzcUo|url-status=dead}}</ref>
+|-
+|
+|{{sort|?|MF}}
+|{{sort|Ebecilio, Kyle|{{Flagicon|NED}} [[Kyle Ebecilio]]}}
+|{{Flagicon|NED}} [[Feyenoord]]
+|Free transfer
+|{{dts|17 June 2010}}
+|[[Arsenal F.C. Reserves|Reserves]]
+|<ref name="Ebecilio">{{Cite web|url=http://www.goal.com/en-gb/news/2896/premier-league/2010/06/17/1981034/arsenal-sign-

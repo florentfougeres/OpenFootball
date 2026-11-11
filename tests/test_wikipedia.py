@@ -1,0 +1,70 @@
+import pytest
+
+from openfootball.sources.wikipedia import (
+    WikipediaClient, WikipediaError, _Retry, resolve_batch,
+)
+
+
+def page(title, revid, text):
+    return {"title": title, "revisions": [{"revid": revid, "slots": {"main": {"content": text}}}]}
+
+
+def test_resolve_batch_handles_normalization_redirect_and_missing():
+    q = {
+        "normalized": [{"from": "foo bar", "to": "Foo bar"}],
+        "redirects": [{"from": "Foo bar", "to": "Foo Bar"}],
+        "pages": [page("Foo Bar", 42, "texte"), {"title": "Absente", "missing": True}],
+    }
+    got = resolve_batch(["foo bar", "Absente"], q)
+    assert got[0].exists and got[0].revid == 42 and got[0].resolved_title == "Foo Bar"
+    assert got[0].title == "foo bar" and got[0].wikitext == "texte"
+    assert not got[1].exists and got[1].revid is None
+
+
+def make_client(tmp_path, responses):
+    calls = []
+    sleeps = []
+
+    def transport(params):
+        calls.append(params)
+        r = responses.pop(0)
+        if isinstance(r, Exception):
+            raise r
+        return r
+
+    c = WikipediaClient(tmp_path, transport=transport, sleep=sleeps.append)
+    return c, calls, sleeps
+
+
+def test_429_is_retried_and_never_treated_as_missing(tmp_path):
+    ok = {"query": {"pages": [page("A", 1, "x")]}}
+    c, calls, sleeps = make_client(tmp_path, [_Retry("HTTP 429", None), _Retry("HTTP 429", 7), ok])
+    [p] = c.get_pages(["A"])
+    assert p.exists and p.revid == 1
+    assert len(calls) == 3 and 7 in sleeps          # Retry-After respecté
+
+
+def test_persistent_failure_raises_instead_of_reporting_absent(tmp_path):
+    c, _, _ = make_client(tmp_path, [_Retry("HTTP 429", None)] * 10)
+    with pytest.raises(WikipediaError):
+        c.get_pages(["A"])
+    assert list(tmp_path.glob("*.json")) == []       # rien de mémorisé
+
+
+def test_results_are_cached_including_genuine_absence(tmp_path):
+    resp = {"query": {"pages": [page("A", 1, "x"), {"title": "B", "missing": True}]}}
+    c, calls, _ = make_client(tmp_path, [resp])
+    first = c.get_pages(["A", "B"])
+    second = c.get_pages(["B", "A"])                 # 2e appel : cache, 0 requête
+    assert len(calls) == 1
+    assert [p.exists for p in first] == [True, False]
+    assert [p.title for p in second] == ["B", "A"]
+
+
+def test_batches_are_split(tmp_path):
+    titles = [f"T{i}" for i in range(45)]
+    responses = [{"query": {"pages": [page(t, i, "x") for t in titles[a:a + 20]]}}
+                 for i, a in enumerate(range(0, 45, 20))]
+    c, calls, _ = make_client(tmp_path, responses)
+    assert len(c.get_pages(titles)) == 45
+    assert len(calls) == 3

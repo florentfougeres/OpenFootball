@@ -1,0 +1,188 @@
+<!-- revid=1384572747 title=2012–13 Real Madrid CF season -->
+==Players==
+===Squad information===
+{{fb si header |age=y}}
+
+{{fb si player |bg=  |p={{sortname|Iker|Casillas}}                     |eu=y |nb=ESP |n=1  |pos=GK |age={{Age|1981|05|20|2013|8|31}} |s={{sort|1999.0|1999}} |a=654 |g=0  |e=2017 |f=YS |cap=Y }}
+{{fb si player |bg=y |p={{sortname|Raphaël|Varane||Varane, Raphael}}   |eu=y |nb=FRA |n=2  |pos=CB |age={{Age|1993|04|25|2013|8|31}} |s={{sort|2011.4|2011}} |a=48  |g=4  |e=2017 |f={{ntsh|10}}€20M }}
+{{fb si player |bg=  |p={{sortname||Pepe|Pepe (footballer, born 1983)}} |eu=y |ni=POR |n=3  |pos=CB |age={{Age|1983|02|26|2013|8|31}} |s={{sort|2007.3|2007}} |a=199 |g=5  |e=2016 |f={{ntsh|30}}€30M |notes=Second nationality: Brazil }}
+{{fb si player |bg=y |p={{sortname|Sergio|Ramos}}                      |eu=y |nb=ESP |n=4  |pos=CB |age={{Age|1986|03|30|2013|8|31}} |s={{sort|2005.0|2005}} |a=352 |g=41 |e=2017 |f={{ntsh|28}}€28M|vc=vice-captain }}
+{{fb si player |bg=  |p={{sortname|Fábio|Coentrão||Coentrao, Fabio}}   |eu=y |nb=POR |n=5  |pos=LB |age={{Age|1988|03|11|2013|8|31}} |s={{sort|2011.3|2011}} |a=63  |g=1  |e=2017 |f={{ntsh|30}}€30M }}
+{{fb si player |bg=y |p={{sortname|Sami|Khedira}}                      |eu=y |nb=GER |n=6  |pos=DM |age={{Age|1987|04|04|2013|8|31}} |s={{sort|2010.3|2010}} |a=126 |g=8  |e=2015 |f={{ntsh|12}}€12M |notes=Second nationality: Tunisia }}
+{{fb si player |bg=  |p={{sortname|Cristiano|Ronaldo}}                 |eu=y |nb=POR |n=7  |pos=LW |age={{Age|1985|02|05|2013|8|31}} |s={{sort|2009.4|2009}} |a=199 |g=201 |e=2015 |f={{ntsh|94}}€94M }}
+{{fb si player |bg=y |p={{sortname||Kaká||Kaka}}                       |eu=y |nb=BRA |n=8  |pos=AM |age={{Age|1982|04|22|2013|8|31}} |s={{sort|2009.2|2009}} |a=119 |g=29 |e=2015 |f={{ntsh|65}}€65M |notes=Second nationality: Italy }}
+{{fb si player |bg=  |p={{sortname|Karim|Benzema}}                     |eu=y |nb=FRA |n=9  |pos=ST |age={{Age|1987|12|19|2013|8|31}} |s={{sort|2009.5|2009}} |a=183 |g=87 |e=2015 |f={{ntsh|35}}€35M |notes=Second nationality: Algeria }}
+{{fb si player |bg=y |p={{sortname|Mesut|Özil||Ozil, Mesut}}           |eu=y |nb=GER |n=10 |pos=AM |age={{Age|1988|10|15|2013|8|31}} |s={{sort|2010.5|2010}} |a=157 |g=27 |e=2016 |f={{ntsh|15}}€15M }}
+{{fb si player |bg=  |p={{sortname|Ricardo|Carvalho}}                  |eu=y |nb=POR |n=11 |pos=CB |age={{Age|1978|05|18|2013|8|31}} |s={{sort|2010.1|2010}} |a=77  |g=3  |e=2013 |f={{ntsh|8.5}}€8.5M }}
+{{fb si player |bg=y |p={{sortname||Marcelo|Marcelo (footballer, born 1988)}}           |eu=y |nb=BRA |n=12 |pos=LB |age={{Age|1988|05|12|2013|8|31}} |s={{sort|2007.2|2007}} |a=228 |g=17 |e=2018 |f={{ntsh|6.5}}€6.5M |tw=w|vc=vice-captain |notes=Second nationality: Spain }}
+{{fb si player |bg=  |p={{sortname|Antonio|Adán||Adan, Antonio}}       |eu=y |nb=ESP |n=13 |pos=GK |age={{Age|1987|05|13|2013|8|31}} |s={{sort|2010.4|2010}} |a=18  |g=0  |e=2014 |f=YS }}
+{{fb si player |bg=y |p={{sortname|Xabi|Alonso}}                       |eu=y |nb=ESP |n=14 |pos=CM |age={{Age|1981|11|25|2013|8|31}} |s={{sort|2009.7|2009}} |a=192 |g=6  |e=2014 |f={{ntsh|30}}€30M }}
+{{fb si player |bg=  |p={{sortname|Michael|Essien}}                    |eu=y |nb=GHA |n=15 |pos=DM |age={{Age|1982|12|03|2013|8|31}} |s={{sort|2012.3|2012}} |a=35  |g=2  |e=2013 |f={{ntsh|0}}N/A |notes=Second nationality: France }}
+{{fb si player |bg=y |p={{sortname|Álvaro|Arbeloa||Arbeloa, Alvaro}}   |eu=y |nb=ESP |n=17 |pos=RB |age={{Age|1983|01|17|2013|8|31}} |s={{sort|2009.3|2009}} |a=164 |g=3  |e=2016 |f={{ntsh|4.5}}€4.5M |notes=Originally from [[youth system]] }}
+{{fb si player |bg=  |p={{sortname|Raúl|Albiol||Albiol, Raul}}         |eu=y |nb=ESP |n=18 |pos=CB |age={{Age|1985|09|04|2013|8|31}} |s={{sort|2009.3|2009}} |a=118 |g=2  |e=2017 |f={{ntsh|15}}€15M }}
+{{fb si player |bg=y |p={{sortname|Luka|Modrić||Modric, Luka}}         |eu=y |nb=CRO |n=19 |pos=CM |age={{Age|1985|09|09|2013|8|31}} |s={{sort|2012.2|2012}} |a=53  |g=4  |e=2017 |f={{ntsh|30}}€30M }}
+{{fb si player |bg=  |p={{sortname|Gonzalo|Higuaín||Higuain, Gonzalo}} |eu=y |ni=ARG |n=20 |pos=ST |age={{Age|1987|12|10|2013|8|31}} |s={{sort|2007.1|2007}} |a=264 |g=121 |e=2016 |f={{ntsh|13}}€13M |tw=w|vc=vice-captain |notes=Second nationality: France }}
+{{fb si player |bg=y |p={{sortname|José|Callejón||Callejon, Jose}} |eu=y|nb=ESP |n=21|pos=RW |age={{Age|1987|02|11|2013|8|31}} |s={{sort|2011.1|2011}} |a=78 |g=20 |e=2016 |f={{ntsh|5}}€5M |notes=Originally from [[youth system]] }}
+{{fb si player |bg=  |p={{sortname|Ángel|Di María||Di Maria, Angel}}   |eu=n |ni=ARG |n=22 |pos=RW |age={{Age|1988|02|14|2013|8|31}} |s={{sort|2010.7|2010}} |a=136 |g=25 |e=2018 |f={{ntsh|25}}€25M }}
+{{fb si player |bg=y |p={{sortname|Diego|López|Diego López Rodríguez|Lopez, Diego}} |eu=y |nb=ESP |n=25 |pos=GK |age={{Age|1981|11|02|2013|8|31}} |s={{sort|2013.0|2013}} |a=28 |g=0 |e=2017 |f={{ntsh|4}}€4M |tw=w |notes=Originally from [[youth system]]; No. 41 in [[UEFA Champions League|UCL]] }}
+{{fb si player |bg=  |p={{sortname||Nacho|Nacho (footballer, born 1990)}} |eu=y |nb=ESP |n=27 |pos=CB |age={{Age|1990|01|18|2013|8|31}} |s={{sort|2012.4|2012}} |a=16  |g=0  |e=2017 |f=YS |notes=#24 in [[UEFA Champions League|UCL]]}}
+{{fb si player |bg=y |p={{sortname|Álvaro|Morata||Morata, Alvaro}}     |eu=y |nb=ESP |n=29 |pos=ST |age={{Age|1992|10|23|2013|8|31}} |s={{sort|2012.0|2012}} |a=18  |g=2  |e=2015 |f=YS }}
+{{fb si player |bg=  |p={{sortname|Álex|Fernández|Álex Fernández (footballer, born 1992)|Fernandez, Alex}}   |eu=y |nb=ESP |n=30 |pos=CM |age={{Age|1992|10|15|2013|8|31}} |s={{sort|2012.5|2012}} |a=2   |g=0  |e=2013 |f=YS |notes=Member of [[youth system]]}}
+{{fb si player |bg=y |p={{sortname||Fabinho|Fabinho (footballer, born 1993)}}            |eu=n |nb=BRA |n=33 |pos=RB |age={{Age|1993|10|23|2013|8|31}} |s={{sort|2013.2|2013}} |a=1   |g=0  |e=2013 |f=YS |notes=Member of [[youth system]]}}
+{{fb si player |bg=  |p={{sortname|José|Rodríguez|José Rodríguez Martínez|Rodriguez, Jose}} |eu=y |nb=ESP |n=34 |pos=CM |age={{Age|1994|12|16|2013|8|31}} |s={{sort|2012.6|2012}} |a=4   |g=1  |e=2017 |f=YS |notes=Member of [[youth system]]}}
+{{fb si player |bg=y |p={{sortname|Jesús|Fernández|Jesús Fernández Collado|Jesus}} |eu=y |nb=ESP |n=35|pos=GK |age={{Age|1988|06|11|2013|8|31}} |s={{sort|2012.1|2012}} |a=2   |g=0  |e=2013 |f=YS |notes=#25 in [[UEFA Champions League|UCL]]}}
+{{fb si player |bg=  |p={{sortname|Denis|Cheryshev}}                   |eu=y |nb=RUS |n=36 |pos=LW |age={{Age|1990|12|26|2013|8|31}} |s={{sort|2012.7|2012}} |a=1   |g=0  |e=2014 |f=YS |notes=Member of [[youth system]]; No. 23 in [[UEFA Champions League|UCL]]}}
+{{fb si player |bg=y |p={{sortname|Diego|Llorente}}                    |eu=y |nb=ESP |n=37 |pos=CB |age={{Age|1993|08|16|2013|8|31}} |s={{sort|2013.3|2013}} |a=1   |g=0  |e=2014 |f=YS |notes=Member of [[youth system]] }}
+{{fb si player |bg=  |p={{sortname||Casemiro}}                         |eu=n |nb=BRA |n=38 |pos=CM |age={{Age|1992|02|23|2013|8|31}} |s={{sort|2013.1|2013}} |a=1   |g=0  |e=2013 |f=YS |notes=Member of [[youth system]]; on loan from [[São Paulo FC|São Paulo]]}}
+{{fb si player |bg=y |p={{sortname|Omar|Mascarell}}                    |eu=y |nb=ESP |n=39 |pos=CM |age={{Age|1993|02|02|2013|8|31}} |s={{sort|2013.2|2013}} |a=1   |g=0  |e=2013 |f=YS |notes=Member of [[youth system]]; second nationality: Equatorial Guinea }}
+{{Fb si footer|u=1 June 2013 |c=ESP |ss=2012–13 |o=squad number |s=<span class="plainlinks"> realmadrid.com, Wikipedia players' articles (for players' numbers, appearances, and goals) </span>|date=January 2011}}
+
+===In===
+{{fb in2 header}}
+{{fb in2 player |tc=ESP |bg=  |p={{sortname|David|Mateos}}    |type=Loan return |eu=y |nb=ESP |n=  |pos=CB |age={{Age|1987|04|22|2012|07|01}} |fcl=[[Real Zaragoza|Zaragoza]]|fcnat=ESP|w=S |f=N/A |e=2013 |os=[https://www.realzaragoza.com/noticias/20113 RealZaragoza.com] }}
+{{fb in2 player |tc=ESP |bg=y |p={{sortname|Fernando|Gago}}   |type=Loan return |eu=y |nb=ARG |n=  |pos=DM |age={{Age|1986|04|10|2012|07|01}} |fcl=[[A.S. Roma|Roma]]|fcnat=ITA|w=S |f=N/A |e=2013 |os=[http://www.asroma.it/pdf/corporate/operazioni_di_mercato/2011-08-31_acquisizione_a_titolo_temporaneo_dei_diritti_alle_prestazioni_sportive_del_calciatore_fernando_ruben_gago.pdf ASRoma.it], RealMadrid.com }}
+{{fb in2 player |tc=ESP |bg=  |p={{sortname|Royston|Drenthe}} |type=Loan return |eu=y |nb=NED |n=  |pos=LM |age={{Age|1987|04|08|2012|07|01}} |fcl=[[Everton F.C.|Everton]]|fcnat=ENG|w=S |f=N/A |e=2012 |os=[http://www.evertonfc.com/news/archive/2012/05/18/six-players-released EvertonFC.com], RealMadrid.com}}
+{{fb in2 player |tc=ESP |bg=y |p={{sortname|Álvaro|Morata||Morata, Álvaro}}   |type=Promoted |eu=y |nb=ESP |n=29  |pos=ST |age={{Age|1992|10|23|2012|08|17}} |fcl=YS     |w=S |f=N/A |e=2015 |os=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330117611446/noticia/Noticia/Nacho_Fernandez_joins_the_dynamics_of_the_first_team.htm RealMadrid.com] }}
+{{fb in2 player |tc=ESP |bg=  |p={{sortname|Jesús|Fernández|Jesús Fernández Collado|Jesus}} |type=Promoted |eu=y |nb=ESP |n=35  |pos=GK |age={{Age|1988|06|11|2012|08|17}} |fcl=YS  |w=S |f=N/A |e=2013 |os=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330117611446/noticia/Noticia/Nacho_Fernandez_joins_the_dynamics_of_the_first_team.htm RealMadrid.com] }}
+{{fb in2 player |tc=ESP |bg=y |p={{sortname|Luka|Modrić||Modrić, Luka}} |type=Transfer |eu=y |nb=CRO |n=19 |pos=CM |age={{Age|1985|09|09|2012|08|27}} |fcl=[[Tottenham Hotspur F.C.|Tottenham Hotspur]]|fcnat=ENG|w=S |f=€30M |e=2017 |os=[https://web.archive.org/web/20120829231611/http://www.tottenhamhotspur.com/spurs/News/club-announcement-27082012.page TottenhamHotspur.com], RealMadrid.com}}
+{{fb in2 player |tc=ESP |bg=  |p={{sortname|Michael|Essien}} |type=Loan |eu=y |nb=GHA |n=15   |pos=DM |age={{Age|1982|12|08|2012|08|31}} |fcl=[[Chelsea F.C.|Chelsea]]|fcnat=ENG|w=S |f=N/A |e=2013 |os=[https://web.archive.org/web/20120902175405/http://www.chelseafc.com/news-article/article/2906850/title/essien-loaned-to-real-madrid ChelseaFC.com], RealMadrid.com }}
+{{fb in2 player |tc=ESP |bg=y |p={{sortname||Nacho|Nacho (footballer, born 1990)}} |type=Promoted |eu=y |nb=ESP |n=27  |pos=CB |age={{Age|1990|01|18|2012|09|06}} |fcl=YS     |w=S |f=N/A |e=2013 |os=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330117611446/noticia/Noticia/Nacho_Fernandez_joins_the_dynamics_of_the_first_team.htm RealMadrid.com] }}
+{{fb in2 player |tc=ESP |bg=  |p={{sortname|Diego López||Diego López Rodríguez|Lopez, Diego}} |type=Transfer |eu=y |nb=ESP |n=25  |pos=GK |age={{Age|1981|11|03|2013|01|25}} |fcl=[[Sevilla FC|Sevilla]]|fcnat=ESP|w=W |f=€4M |e=2017 |os=[http://www.realmadrid.com/cs/Satellite/es/Actualidad_Primer_Equipo/1330134911038/noticia/ComunicadoOficial/Comunicado_Oficial_2013-01-25.htm RealMadrid.com] SevillaFC.es}}
+{{fb in footer|date=July 2012}}
+<small>Total expenditure: €34 million</small>
+
+===Out===
+{{fb out2 header }}
+{{fb out2 player |tc=ESP |bg=  |type=Demoted         |p={{sortname|David|Mateos}}     |eu=y |nb=ESP |n=  |pos=CB |age={{Age|1987|04|22|2012|06|21}} |ncl=[[Real Madrid Castilla]]|ncnat=ESP|w=S |f=Free |os= }}
+{{fb out2 player |tc=ESP |bg=y |type=End of contract |p={{sortname|Royston|Drenthe}}  |eu=y |nb=NED |n=  |pos=LM |age={{Age|1987|04|08|2012|07|01}} |ncl=[[FC Alania Vladikavkaz|Alania Vladikavkaz]]|ncnat=RUS|w=S |f=Free |os= }}
+{{fb out2 player |tc=ESP |bg=  |type=Transfer        |p={{sortname|Hamit|Altıntop||Altintop, Hamit}}   |eu=y |ni=TUR |n=16 |pos=RM |age={{Age|1982|12|08|2012|07|13}} |ncl=[[Galatasaray S.K. (football team)|Galatasaray]]|ncnat=TUR|w=S |f={{ntsh|3.5}}€3.5M |os=[http://www.realmadrid.com/cs/Satellite/en/Actualidad/1330111089920/noticia/ComunicadoOficial/Official_Announcement_2012-07-13.htm RealMadrid.com], Galatasaray.org }}
+{{fb out2 player |tc=ESP |bg=y |type=Transfer        |p={{sortname|Fernando|Gago}}    |eu=y |nb=ARG |n=  |pos=DM |age={{Age|1986|04|10|2012|07|19}} |ncl=[[Valencia CF|Valencia]]|ncnat=ESP|w=S |f={{ntsh|3.5}}€3.5M |os=[https://web.archive.org/web/20120722005415/http://www.valenciacf.com/contenidos/Actualidad/Noticias/2012/07/Noticia_38882.html?__locale=es ValenciaCF.com], RealMadrid.com }}
+{{fb out2 player |tc=ESP |bg=  |type=Transfer        |p={{sortname|Sergio|Canales}}   |eu=y |nb=ESP |n=  |pos=AM |age={{Age|1991|02|16|2012|08|09}} |ncl=[[Valencia CF|Valencia]]|ncnat=ESP|w=S |f={{ntsh|8}}€8M |os=[https://web.archive.org/web/20121216184942/http://www.valenciacf.com/contenidos/Actualidad/Noticias/2012/08/Noticia_39016.html?__locale=en ValenciaCF.com], RealMadrid.com }}
+{{fb out2 player |tc=ESP |bg=y |type=Loan            |p={{sortname|Nuri|Şahin||Sahin, Nuri}}   |eu=y |ni=TUR |n=15  |pos=CM |age={{Age|1988|09|05|2012|08|25}} |ncl=[[Liverpool F.C.|Liverpool]]|ncnat=ENG|w=S |f={{ntsh|5}}€5M |os=[https://web.archive.org/web/20120826012647/http://www.liverpoolfc.com/news/latest-news/reds-agree-sahin-loan LiverpoolFC.com], RealMadrid.com }}
+{{fb out2 player |tc=ESP |bg=  |type=Transfer        |p={{sortname|Esteban|Granero}}  |eu=y |nb=ESP |n=11 |pos=CM |age={{Age|1987|07|02|2012|08|30}} |ncl=[[Queens Park Rangers F.C.|Queens Park Rangers]]|ncnat=ENG|w=S |f={{ntsh|8}}€8M |os=[http://www.qpr.co.uk/news/article/300812-granero-signs-343656.aspx QPR.co.uk], RealMadrid.com }}
+{{fb out2 player |tc=ESP |bg=y |type=Transfer        |p={{sortname|Lassana|Diarra}}   |eu=y |nb=FRA |n=24 |pos=DM |age={{Age|1985|03|10|2012|08|31}} |ncl=[[FC Anzhi Makhachkala|Anzhi&nbsp;Makhachkala]]|ncnat=RUS|w=S |f={{ntsh|5}}€5M |os=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330116411839/noticia/ComunicadoOficial/Official_Announcement:_Lass.htm RealMadrid.com] }}
+{{fb out2 player |tc=ENG |bg=  |type=Loan            |p={{sortname|Nuri|Şahin||Sahin, Nuri}}   |eu=y |ni=TUR |n=    |pos=CM |age={{Age|1988|09|05|2013|01|11}} |ncl=[[Borussia Dortmund]]|ncnat=GER|w=W |f={{ntsh|1}}€1M |os=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330133439442/noticia/ComunicadoOficial/Official_Press_Release.htm RealMadrid.com] BVB.de }}
+{{fb in footer|date=August 2012}}
+<small>Total income: €34 million</small>
+<small>Net income: €0</small>
+
+==Pre-season and friendlies==
+{{legend2|#CCFFCC|Win|border=1px solid #AAAAAA}}
+{{legend2|#FFFFCC|Draw|border=1px solid #AAAAAA}}
+{{legend2|#FFCCCC|Loss|border=1px solid #AAAAAA}}
+{{football box collapsible
+|round=Friendly
+|date=24 July 2012
+|time=19:45 [[Central European Summer Time|CEST]] ([[UTC+02:00]])
+|team1=[[Real Oviedo]] 
+|score=1–5
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330111618149/noticia/Cronica/1-5:_Real_Madrid_start_with_a_big_win.htm Report]
+|team2= [[Real Madrid C.F.|Real Madrid]]
+|goals1=Diop {{goal|52}}
+|goals2=[[Lucas Vázquez|Vázquez]] {{goal|9}}<br />[[Denis Cheryshev|Cheryshev]] {{goal|39}}<br />[[Esteban Granero|Granero]] {{goal|41}}<br />[[Ángel Di María|Di María]] {{goal|55||73}}
+|stadium=[[Estadio Carlos Tartiere]]
+|location=[[Oviedo]], Spain
+|attendance=12,000<ref>{{cite news |title=El Madrid disfruta como un niño |url=https://www.marca.com/2012/07/24/futbol/equipos/real_madrid/1343158729.html |last=Melero |first=Delfín |work=[[Marca (newspaper)|Marca]] |date=24 July 2012 |access-date=24 July 2012 |language=es }}</ref>
+|referee=José Ramón Alonso de la Lama ([[Royal Asturias Football Federation|Asturias]])
+|motm=
+|result=W
+}}
+
+{{football box collapsible
+|round=[[Eusébio Cup#2012|Eusébio Cup]]
+|date=27 July 2012
+|time=19:00 [[Western European Summer Time|WEST]] ([[UTC+01:00]])
+|team1=[[S.L. Benfica|Benfica]] 
+|score=5–2
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330111796767/noticia/Cronica/5-2:_The_Eusebio_Cup_went_to_Benfica.htm Report]
+|team2= [[Real Madrid C.F.|Real Madrid]]
+|goals1=[[Javi García|García]] {{goal|4}}<br />[[Axel Witsel|Witsel]] {{goal|22}}<br />[[Enzo Pérez|Pérez]] {{goal|53||85}}<br />[[Carlos Martins (footballer)|Martins]] {{goal|58}}
+|goals2=[[José Callejón|Callejón]] {{goal|18||20}}<br />[[Iván González López|Iván]] {{yel|45}}<br />[[Esteban Granero|Granero]] {{yel|67}}
+|stadium=[[Estádio da Luz]]
+|location=[[Lisbon]], Portugal
+|attendance=35,476
+|referee=[[Bruno Paixão]] ([[Portuguese Football Federation|Portugal]])
+|motm=
+|result=L
+|note=Real Madrid did not wear a shirt sponsor.
+}}
+
+{{football box collapsible
+|round=[[2012 World Football Challenge|2012 WFC]]
+|date=2 August 2012
+|time=19:30 [[Pacific Daylight Time|PDT]] ([[UTC−07:00]])
+|team1=[[LA Galaxy]] 
+|score=1–5
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330112301652/noticia/Cronica/1-5:_Real_Madrid_play_in_exciting_goal-fest.htm Report]
+|team2= [[Real Madrid C.F.|Real Madrid]]
+|goals1=[[David Lopes|Lopes]] {{goal|23}}
+|goals2=[[Gonzalo Higuaín|Higuaín]] {{goal|2}}<br />[[Ángel Di María|Di María]] {{goal|11}}<br />[[José Callejón|Callejón]] {{goal|36}}<br />[[Álvaro Morata|Morata]] {{goal|49}}<br />[[Jesé]] {{goal|84}}
+|stadium=[[The Home Depot Center]]
+|location=[[Carson, California|Carson]], California, United States
+|attendance=30,317
+|referee=[[Ricardo Salazar]] ([[United States Soccer Federation|United States]])
+|motm=
+|result=W
+}}
+
+{{football box collapsible
+|round=[[2012 World Football Challenge|2012 WFC]]
+|date=5 August 2012
+|time=20:00 [[Pacific Daylight Time|PDT]] ([[UTC−07:00]])
+|team1=[[Club Santos Laguna|Santos Laguna]]
+|score=1–2
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330112508126/noticia/Cronica/2-1:_Real_Madrid_keep_winning_in_the_US.htm Report]
+|team2= [[Real Madrid C.F.|Real Madrid]]
+|goals1=[[Christian Suárez|Suárez]] {{goal|26}}<br />[[Herculez Gomez|Gomez]] {{yel|66}}
+|goals2=[[Xabi Alonso|Alonso]] {{goal|14}}, {{yel|38}}<br />[[Pepe (footballer, born 1983)|Pepe]] {{yel|64}}<br />[[Sami Khedira|Khedira]] {{goal|72}}
+|stadium=[[Sam Boyd Stadium]]
+|location=[[Whitney, Nevada|Whitney]], Nevada, United States
+|attendance=29,152
+|referee=Baldomero Toledo ([[United States Soccer Federation|United States]])
+|motm=
+|result=W
+}}
+
+{{football box collapsible
+|round=[[2012 World Football Challenge|2012 WFC]]
+|date=8 August 2012
+|time=20:00 [[Eastern Daylight Time|EDT]] ([[UTC−04:00]])
+|team1=[[A.C. Milan|Milan]] 
+|score=1–5
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330112737883/noticia/Cronica/5-1:_Real_Madrid_put_on_a_show_against_Milan.htm Report]
+|team2= [[Real Madrid C.F.|Real Madrid]]
+|goals1=[[Antonio Nocerino|Nocerino]] {{yel|27}}<br />[[Robinho]] {{goal|33}}<br />[[Kevin-Prince Boateng|Boateng]] {{yel|55}}
+|goals2=[[Ángel Di María|Di María]] {{goal|24}}<br />[[Cristiano Ronaldo|Ronaldo]] {{goal|49||66}}<br />[[Sergio Ramos|Ramos]] {{goal|81}}<br />[[José Callejón|Callejón]] {{goal|89}}
+|stadium=[[Yankee Stadium]]
+|location=New York City, United States
+|attendance=49,474
+|referee=[[Jair Marrufo]] ([[United States Soccer Federation|United States]])
+|motm=
+|result=W
+}}
+
+{{football box collapsible
+|round=[[2012 World Football Challenge|2012 WFC]]
+|date=11 August 2012
+|time=14:00 [[Eastern Daylight Time|EDT]] ([[UTC−04:00]])
+|team1=[[Celtic F.C.|Celtic]] 
+|score=0–2
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Primer_Equipo_en/1330113015796/noticia/Cronica/2-0:_Real_Madrid_finish_their_tour_undefeated.htm Report]
+|team2= [[Real Madrid C.F.|Real Madrid]]
+|goals1=
+|goals2=[[José Callejón|Callejón]] {{goal|22}}<br />[[Sergio Ramos|Ramos]] {{yel|42}}<br />[[Karim Benzema|Benzema]] {{goal|67}}
+|stadium=[[Lincoln Financial Field]]
+|location=[[Philadelphia]], Pennsylvania, United States
+|attendance=34,018
+|referee=Sorin Stoica ([[United States Soccer Federation|United States]])
+|motm=
+|result=W
+}}
+
+{{football box collapsible
+|round=[[Trofeo Santiago Bernabéu|Bernabéu Trophy]]
+|date=26 September 2012
+|time=20:30 [[Central European Summer Time|CEST]] ([[UTC+02:00]])
+|team1=[[Real Madrid C.F.|Real Madrid]] 
+|score=8–0
+|report=[http://www.realmadrid.com/cs/Satellite/en/Actualidad_Prime

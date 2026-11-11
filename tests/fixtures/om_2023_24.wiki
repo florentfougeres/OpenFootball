@@ -1,0 +1,36 @@
+<!-- revid=1384765932 title=2023–24 Olympique de Marseille season -->
+== Players ==
+=== First-team squad ===
+{{updated|1 February 2024}}<ref>{{cite web |url=https://www.om.fr/fr/teams |title=Equipe professionnelle 2023–2024 |publisher=Olympique de Marseille |access-date=30 June 2023 |archive-date=4 December 2019 |archive-url=https://web.archive.org/web/20191204095635/https://www.om.fr/fr/teams |url-status=live }}</ref>
+{{Fs start}}
+{{Fs player|no=1|nat=CMR|name=[[Simon Ngapandouetnbu]]|pos=GK}}
+{{Fs player|no=3|nat=FRA|pos=DF|name=[[Quentin Merlin]]}}
+{{Fs player|no=4|nat=FRA|name=[[Samuel Gigot]]|pos=DF|other=[[Vice-captain (association football)|vice-captain]]}} 
+{{Fs player|no=5|nat=ARG|name=[[Leonardo Balerdi]]|pos=DF}}
+{{Fs player|no=6|nat=SUI|name=[[Ulisses Garcia]]|pos=DF}}
+{{Fs player|no=7|nat=FRA|name=[[Jonathan Clauss]]|pos=DF}}
+{{Fs player|no=8|nat=MAR|name=[[Azzedine Ounahi]]|pos=MF}}
+{{Fs player|no=10|nat=GAB|name=[[Pierre-Emerick Aubameyang]]|pos=FW}} 
+{{Fs player|no=11|nat=MAR|name=[[Amine Harit]]|pos=MF}}
+{{Fs player|no=14|nat=CMR|name=[[Faris Moumbagna]]|pos=FW}}
+{{Fs player|no=16|nat=ESP|name=[[Pau López]]|pos=GK}}
+{{Fs player|no=17|nat=CMR|name=[[Jean Onana]]|other=on loan from [[Beşiktaş J.K.|Beşiktaş]]|pos=MF}}
+{{Fs player|no=18|nat=CIV|name=[[Bamo Meïté]]|pos=DF|other=on loan from [[FC Lorient|Lorient]]}}
+{{Fs mid}}
+{{Fs player|no=19|nat=CAF|name=[[Geoffrey Kondogbia]]|pos=MF|other=[[Vice-captain (association football)|3rd captain]]}} 
+{{Fs player|no=20|nat=ARG|name=[[Joaquín Correa]]|pos=FW|other=on loan from [[Inter Milan]]}}
+{{Fs player|no=21|nat=FRA|name=[[Valentin Rongier]]|pos=MF|other=[[Captain (association football)|captain]]}}
+{{Fs player|no=22|nat=SEN|name=[[Pape Gueye]]|pos=MF}}
+{{Fs player|no=23|nat=SEN|name=[[Ismaïla Sarr]]|pos=FW}}
+{{Fs player|no=27|nat=FRA|name=[[Jordan Veretout]]|pos=MF}}
+{{Fs player|no=29|nat=SEN|name=[[Iliman Ndiaye]]|pos=FW}}
+{{Fs player|no=34|nat=MAR|name=[[Bilal Nadir]]|pos=MF}}
+{{Fs player|no=36|nat=ESP|name=[[Rubén Blanco]]|pos=GK}}
+{{Fs player|no=37|nat=ENG|name=[[Emran Soglo]]|pos=MF}}
+{{Fs player|no=44|nat=BRA|name=[[Luis Henrique (footballer, born 2001)|Luis Henrique]]|pos=FW}}
+{{Fs player|no=62|nat=PAN|name=[[Michael Amir Murillo]]|pos=DF}}
+{{Fs player|no=99|nat=COD|name=[[Chancel Mbemba]]|pos=DF}}
+{{Fs end}}
+
+===Out on loan===
+
