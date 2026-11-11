@@ -40,8 +40,10 @@ _REGION_END = re.compile(
     r"season review|friendly matches|match(es)?|results|notes|references|"
     r"coaching staff|management)\b", re.I)
 _EXCLUDED_SECTION = re.compile(
-    r"reserve|academy|youth|under-?\d|u-?\d{2}|b team|staff|manage|"
-    r"goals?\b|assists?|disciplin|contract|award|clean sheet|top scor|hat-?trick|player of the", re.I)
+    r"reserve|academy|youth|under-?\d|u-?\d{2}|b team|"
+    r"coaching staff|^staff\b|managerial|^management|"
+    r"^goals?$|goalscorers?|top scor|assists?|disciplin|contract|award|clean sheet|hat-?trick|player of the",
+    re.I)
 
 
 _NO_LETTERS = re.compile(r"^[^A-Za-zÀ-ÿ]*$")

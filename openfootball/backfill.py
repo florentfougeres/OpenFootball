@@ -43,6 +43,10 @@ def plausible(entries: list[SquadEntry]) -> list[SquadEntry] | None:
     return None
 
 
+def _first_plausible(attempts, parse) -> bool:
+    return any(p.exists and plausible(parse(p.wikitext)) for p, _ in attempts)
+
+
 def _ensure_scope_rows(con, sc: Scope) -> int:
     con.execute("INSERT INTO country VALUES (?, ?, ?) ON CONFLICT DO NOTHING",
                 [sc.code, sc.name_en, sc.name_fr])
@@ -57,7 +61,15 @@ def _ensure_scope_rows(con, sc: Scope) -> int:
 
 
 def _ensure_club(con, title: str, country: str, qid: str | None) -> int:
-    row = con.execute("SELECT id FROM club WHERE wikipedia_title = ?", [title]).fetchone()
+    """Un club = un QID Wikidata. Le titre Wikipedia varie d'une saison à l'autre (« F.C. » / « FC »,
+    redirections) : on retrouve donc d'abord par QID, puis par titre, sans jamais dupliquer."""
+    row = None
+    if qid:
+        row = con.execute("SELECT id FROM club WHERE wikidata_qid = ?", [qid]).fetchone()
+    if row is None:
+        row = con.execute("SELECT id, wikidata_qid FROM club WHERE wikipedia_title = ?", [title]).fetchone()
+        if row and qid and row[1] is None:
+            con.execute("UPDATE club SET wikidata_qid = ? WHERE id = ?", [qid, row[0]])
     if row:
         return row[0]
     club_id = _next_id(con, "club")
@@ -102,25 +114,40 @@ def run_backfill(
             club_id = _ensure_club(con, team, sc.code, qids.get(team))
             cs_id = _ensure_club_season(con, club_id, season_id, competition_id)
             chosen = None
+            arts = None                      # articles par langue, via Wikidata P5138 (chargés au besoin)
+
+            def articles() -> dict:
+                nonlocal arts
+                if arts is None:
+                    arts = season_articles(wd.season_items(qids[team])) if qids.get(team) else {}
+                return arts
+
             for lang in LANG_ORDER:
+                constructed = f"{label} {team} season"
                 if lang == "en":
-                    page, title = en_page, f"{label} {team} season"
+                    # Le titre construit peut différer du vrai (« Celta de Vigo » / « RC Celta de Vigo »).
+                    attempts = [(en_page, constructed)]
+                    attempts_lazy = lambda: ([(p, t) for t in [articles().get((start_year, "en"))]
+                                              if t and t != constructed
+                                              for p in wp.get_pages([t])])
                     parse = parse_squad
                 else:
-                    if not qids.get(team):
-                        continue
-                    title = season_articles(wd.season_items(qids[team])).get((start_year, lang))
+                    title = articles().get((start_year, lang))
                     if not title:
                         continue
-                    [page] = lang_clients[lang].get_pages([title])
+                    attempts = [(p, title) for p in lang_clients[lang].get_pages([title])]
+                    attempts_lazy = lambda: []
                     parse = PARSERS[lang]
-                if not page.exists:
-                    continue
-                main = plausible(parse(page.wikitext))
-                if main:
-                    n = write_squad(con, cs_id, main, lang=lang, revid=page.revid,
-                                    source_title=page.resolved_title or title)
-                    chosen = ClubResult(sc.code, team, lang, n, page.resolved_title or title)
+                for page, title in attempts + (attempts_lazy() if not _first_plausible(attempts, parse) else []):
+                    if not page.exists:
+                        continue
+                    main = plausible(parse(page.wikitext))
+                    if main:
+                        n = write_squad(con, cs_id, main, lang=lang, revid=page.revid,
+                                        source_title=page.resolved_title or title)
+                        chosen = ClubResult(sc.code, team, lang, n, page.resolved_title or title)
+                        break
+                if chosen:
                     break
             res = chosen or ClubResult(sc.code, team, None, 0, None)
             results.append(res)

@@ -118,3 +118,42 @@ def test_backfill_refused_on_frozen_season(con):
     freeze(con, 1)
     with pytest.raises(SeasonFrozen):
         run(con, setup_pages())
+
+
+def test_same_club_under_two_titles_is_one_club(con):
+    """« Club 5 » (2023) puis « Club 5 F.C. » (autre saison) avec le même QID : une seule ligne club."""
+    from openfootball.backfill import _ensure_club
+    con.execute("INSERT INTO country VALUES ('FRA', 'France', 'France')")
+    a = _ensure_club(con, "Paris Saint-Germain F.C.", "FRA", "Q1886")
+    b = _ensure_club(con, "Paris Saint-Germain FC", "FRA", "Q1886")
+    c = _ensure_club(con, "Paris Saint-Germain F.C.", "FRA", None)         # sans QID : par titre
+    assert a == b == c
+    assert con.execute("SELECT count(*) FROM club").fetchone()[0] == 1
+
+
+def test_club_found_by_title_gets_its_qid_later(con):
+    from openfootball.backfill import _ensure_club
+    con.execute("INSERT INTO country VALUES ('FRA', 'France', 'France')")
+    a = _ensure_club(con, "Olympique de Marseille", "FRA", None)
+    assert _ensure_club(con, "Olympique de Marseille", "FRA", "Q132885") == a
+    assert con.execute("SELECT wikidata_qid FROM club WHERE id = ?", [a]).fetchone()[0] == "Q132885"
+
+
+def test_league_teams_handles_wrapped_names_and_duplicate_codes():
+    from openfootball.parse.league import league_teams
+    wt = ("== League table ==\n|name_ATM={{nobr|[[Atlético Madrid]]}}\n|name_BAR=[[FC Barcelona|Barça]]\n"
+          "== Results ==\n|name_FCB=[[FC Barcelona]]\n|name_ATM={{nobr|[[Atlético Madrid]]}}\n")
+    assert league_teams(wt) == ["Atlético Madrid", "FC Barcelona"]
+
+
+def test_english_title_from_wikidata_when_constructed_title_is_wrong(con):
+    real = "2023–24 Club One season"                     # le vrai titre diffère de « 2023–24 Club 1 season »
+    pages = setup_pages(missing_en={"Club 1"})
+    pages[real] = page(real, squad_wikitext("One"))
+    items = {"Q1": [{"article": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Club_One_season"}]}
+    res = run_backfill(
+        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(pages),
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})}, wd=FakeWikidata(items),
+        qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None)
+    r = next(x for x in res if x.club == "Club 1")
+    assert (r.lang, r.title, r.players) == ("en", real, 14)

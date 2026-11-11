@@ -7,7 +7,7 @@ import duckdb
 
 MIN_PLAYERS = 11                 # invariant 6
 MAX_UNKNOWN_POSITION_RATIO = 0.10
-_COMPATIBLE_STINTS = {frozenset({"left_mid", "arrived_mid"}), frozenset({"loan_out", "loan_in"})}
+MAX_PLAUSIBLE_SQUAD = 60
 
 
 @dataclass(frozen=True)
@@ -48,6 +48,9 @@ def run_checks(con: duckdb.DuckDBPyConnection, season_id: int) -> list[Problem]:
         if n < MIN_PLAYERS or gk == 0:
             problems.append(Problem("implausible_squad", "blocking", scope,
                                     f"{n} joueurs, {gk} gardien(s) (min {MIN_PLAYERS} et 1 gardien)"))
+        if n > MAX_PLAUSIBLE_SQUAD:
+            problems.append(Problem("oversized_squad", "warning", scope,
+                                    f"{n} joueurs (> {MAX_PLAUSIBLE_SQUAD}) : prêts/réserve à vérifier"))
         if n and unk / n > MAX_UNKNOWN_POSITION_RATIO:
             problems.append(Problem("unknown_positions", "warning", scope,
                                     f"{unk}/{n} postes non identifiés"))
@@ -64,9 +67,10 @@ def run_checks(con: duckdb.DuckDBPyConnection, season_id: int) -> list[Problem]:
         if len(known) < len(stints):
             problems.append(Problem("multi_club_unknown_stint", "warning", name,
                                     f"dans {len(stints)} clubs, statut inconnu : {stints}"))
-        elif len(stints) == 2 and frozenset(stints) in _COMPATIBLE_STINTS:
-            continue
-        else:
+        elif "full" in stints or set(stints) == {"loan_out"}:
+            # Contradictions seulement : une saison entière dans un club + un autre, ou deux clubs qui
+            # disent chacun l'avoir prêté sans qu'aucun ne l'ait reçu. Des prêts/transferts enchaînés
+            # dans la même saison (loan_in puis loan_in…) sont légitimes.
             problems.append(Problem("incompatible_stint", "blocking", name,
                                     f"dans {len(stints)} clubs avec statuts {stints}"))
     return problems

@@ -112,3 +112,31 @@ def test_content_hash_is_stable(con):
     club_season(con, s, 1, 1)
     write_squad(con, 1, full_squad(), lang="en", source_title="t", revid=1)
     assert content_hash(con, s) == content_hash(con, s)
+
+
+def test_in_on_loan_section_is_loan_in_not_loan_out():
+    from openfootball.store import stint_of
+    assert stint_of(entry(1, section="In on loan")) == "loan_in"
+    assert stint_of(entry(1, section="Out on loan")) == "loan_out"
+    assert stint_of(entry(1, section="Joueurs prêtés")) == "loan_out"
+    assert stint_of(entry(1, section="First-team squad")) == "unknown"
+
+
+def test_sequential_loans_are_legitimate_but_two_loan_outs_are_not(con):
+    s = ensure_season(con, 2023)
+    club_season(con, s, 1, 1)
+    club_season(con, s, 2, 2)
+    write_squad(con, 1, full_squad() + [entry(50, section="In on loan")], lang="en", source_title="a", revid=1)
+    write_squad(con, 2, full_squad(20) + [entry(50, section="In on loan")], lang="en", source_title="b", revid=1)
+    assert not [p for p in run_checks(con, s) if p.check == "incompatible_stint"]      # prêts enchaînés
+    con.execute("UPDATE player_club_season SET stint = 'loan_out' WHERE shirt_number = 50")
+    assert [p.check for p in run_checks(con, s) if p.severity == "blocking"] == ["incompatible_stint"]
+
+
+def test_oversized_squad_is_a_warning(con):
+    s = ensure_season(con, 2023)
+    club_season(con, s, 1, 1)
+    write_squad(con, 1, full_squad(n=65), lang="en", source_title="a", revid=1)
+    probs = run_checks(con, s)
+    assert ("oversized_squad", "warning") in {(p.check, p.severity) for p in probs}
+    assert not [p for p in probs if p.severity == "blocking"]

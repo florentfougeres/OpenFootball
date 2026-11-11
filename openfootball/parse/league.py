@@ -9,7 +9,9 @@ from __future__ import annotations
 
 import re
 
-_NAME_PARAM = re.compile(r"\|\s*name_([A-Za-z0-9_]+)\s*=\s*\[\[([^\]|#]+)", re.I)
+# `name_XXX=[[Club]]`, éventuellement enveloppé : `name_XXX={{nobr|[[Club]]}}`
+_NAME_PARAM = re.compile(
+    r"\|\s*name_([A-Za-z0-9_]+)\s*=\s*(?:\{\{[^{}|]*\|\s*)?\[\[([^\]|#]+)", re.I)
 
 
 _TABLE_HEAD = re.compile(r"^(={2,3})\s*(League table|Standings|Final table|Classification|Table)\s*\1",
@@ -21,7 +23,8 @@ def _targets(text: str) -> list[str]:
     seen: dict[str, str] = {}
     for code, target in _NAME_PARAM.findall(text):
         seen.setdefault(code.upper(), target.strip())
-    return list(seen.values())
+    # La même équipe peut porter des codes différents d'un tableau à l'autre : on dédoublonne par titre.
+    return list(dict.fromkeys(seen.values()))
 
 
 def league_teams(wikitext: str, expected: int | None = None) -> list[str]:

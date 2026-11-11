@@ -9,6 +9,7 @@ import duckdb
 from openfootball.checks import Problem, run_checks
 from openfootball.parse.squad import SquadEntry
 
+_LOAN_IN = re.compile(r"\bin\b.{0,12}loan|loan(?:ed)?[- ]in\b|prestito in|prêtés? (?:au club|à nous)", re.I)
 _LOAN_OUT = re.compile(r"loan|prêt|prest", re.I)
 
 
@@ -53,7 +54,10 @@ def ensure_season(con, start_year: int, status: str = "backfill") -> int:
 
 def stint_of(entry: SquadEntry) -> str:
     """Seul ce qui est écrit sur la page compte (D6) ; sinon `unknown`, jamais `full` par défaut."""
-    if _LOAN_OUT.search(entry.section or ""):
+    section = entry.section or ""
+    if _LOAN_IN.search(section):          # « In on loan » : joueur reçu en prêt (à tester avant « loan »)
+        return "loan_in"
+    if _LOAN_OUT.search(section):
         return "loan_out"
     if entry.note and re.search(r"on loan from|prêté|in prestito", entry.note, re.I):
         return "loan_in"

@@ -173,3 +173,12 @@ def test_table_rows_that_are_not_players_are_ignored():
     from openfootball.parse.squad import is_excluded_section
     kept = [e.name for e in parse_squad(wt) if not is_excluded_section(e.section)]
     assert kept == ["Real Player"]
+
+
+def test_appearances_and_goals_is_a_squad_source_but_goals_table_is_not():
+    from openfootball.parse.squad import is_excluded_section
+    assert not is_excluded_section("Appearances and goals")
+    assert not is_excluded_section("Players and club staff")
+    assert not is_excluded_section("Squad statistics")
+    for s in ("Goals", "Goalscorers", "Top scorers", "Disciplinary record", "Coaching staff", "Contract renewals"):
+        assert is_excluded_section(s), s

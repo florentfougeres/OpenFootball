@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.15** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.17** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -239,6 +239,16 @@ Commande : `openfootball backfill --season 2023` (puis `status`, `known-gap`, `f
 **Export (D9)** : `openfootball export --out dist/data [--previous manifest.json]` produit 6 fichiers Parquet + `manifest.json` ; **88 Ko** pour une saison (2 703 lignes d'effectif, 62 Ko) → ≈ 1 Mo estimé pour 15 saisons ; la limite de taille de GitHub Pages n'est pas un sujet. `verify-release --new … --previous …` implémente la garde de continuité (une saison figée ne change pas).
 
 **Limites connues** : (1) identité des joueurs = lien Wikipedia par langue ; un même joueur lu en anglais puis en italien/français est deux lignes `player` tant que le rapprochement Wikidata n'est pas fait ; (2) `arrived_mid` / `left_mid` jamais renseignés (tableaux Transfers non parsés) ; (3) « plausible » ≠ « exact » : pas de vérité externe pour valider les effectifs.
+
+## 9quinquies. Backfill des 16 saisons 2010/11 → 2025/26 (2026-11-11)
+
+Commande : `openfootball backfill --season Y` pour chaque saison (aucune n'est figée).
+
+- **1 250 / 1 274 effectifs attestés = 98,1 %** (après recherche es/de/en, ci-dessous) ; 154 clubs. Sources : anglais 1 125, italien 91, français 34.
+- **24 trous** : Liga 12, Premier League 7, Ligue 1 5 (0 en Serie A) — Birmingham 10/11 ; Burnley 16/17, 17/18 ; Norwich 13/14, 15/16 ; Wolves 10/11, 11/12 ; Osasuna 10/11, 11/12 ; Getafe 10/11, 12/13 ; Granada 12/13, 13/14 ; Levante 10/11 ; Málaga 10/11 ; Espanyol 11/12 ; Rayo 12/13 ; Eibar 15/16, 16/17 ; Nancy 10/11 ; Amiens 17/18 ; Bordeaux 12/13 ; Lorient 10/11 ; Caen 10/11. **Seul blocage restant au gel** : `empty_squad` ×24, à valider via `known-gap` (D2). Rien n'est validé automatiquement.
+- **Recherche directe par titre (en/es/de), 2026-11-11** : l'espagnol ne donne **aucune page de club-saison** (1 faux positif : une division régionale), l'allemand **0**. L'anglais ne révèle aucune page nouvelle : les pages existaient déjà. Les 8 trous récupérés venaient de **deux défauts du parseur/backfill**, pas d'une autre langue : (a) titre de page construit ≠ vrai titre (« Celta de Vigo » / « RC Celta de Vigo ») → on retombe maintenant sur le titre anglais donné par Wikidata ; (b) filtre de sections trop large qui excluait « Appearances and goals » / « Players and club staff », parfois la seule liste de joueurs. Cas vérifié : Bordeaux 2012/13 a 25 modèles d'effectif **vides** (`name=|pos=`) → vrai trou.
+- Avertissements : 695 joueurs dans deux clubs avec statut inconnu (transferts non parsés, C1), 7 effectifs > 60 joueurs (Parme 2014/15 : 122, dont 71 « Out on loan » — cogestion de jeunes, fidèle à la page), 1 poste inconnu.
+- **Défauts trouvés par ce run, corrigés** : (1) identité des clubs par titre Wikipedia → doublons de QID (10 saisons plantaient) → identité par QID d'abord ; (2) énumération Liga : codes d'équipe différents d'un tableau à l'autre (doublons) et noms enveloppés `{{nobr|[[…]]}}` → 64/64 championnats-saisons énumérés correctement ; (3) section « In on loan » classée `loan_out` (inversé) ; (4) invariant « statuts incompatibles » trop strict : des prêts enchaînés dans la même saison sont légitimes, seules les contradictions bloquent.
 
 ## 10. Jalons proposés
 
