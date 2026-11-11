@@ -140,3 +140,81 @@ def reconcile_by_name(con: duckdb.DuckDBPyConnection) -> ReconcileReport:
         _merge(con, proven[0], pid)
         report.merged += 1
     return report
+
+
+def _name_matches(player_name: str, title: str) -> bool:
+    """Le titre de la page (sans « (footballer, born …) ») et le nom du joueur partagent leurs mots, dans un sens ou l'autre."""
+    a = set(_norm(player_name).split())
+    b = set(_norm(re.sub(r"\s*\(.*\)\s*$", "", title)).split())
+    return bool(a and b) and (a <= b or b <= a)
+
+
+def reconcile_by_infobox(con: duckdb.DuckDBPyConnection, pages, search, qids, *, batch: int = 50,
+                         log=print) -> ReconcileReport:
+    """Retrouve la page anglaise des joueurs sans lien (pages fr/it/es sans liens) en lisant leur infobox.
+
+    `pages(titles) -> [Page]` lit l'introduction (cache) ; `search(name) -> [titres]` interroge la recherche
+    Wikipedia ; `qids(titres) -> {titre: QID}` résout les titres retenus. Un candidat n'est retenu que si (1) son titre ressemble au nom, (2) il a une infobox de carrière
+    qui contient CHACUN des club-saisons où le joueur figure chez nous, (3) il est le seul dans ce cas.
+    Sinon le joueur reste sans lien : une identité faible vaut mieux qu'une identité inventée."""
+    from openfootball.parse.infobox import parse_career          # import local : évite un cycle au chargement
+
+    report = ReconcileReport()
+    loose = con.execute("SELECT p.id, p.name FROM player p LEFT JOIN player_wikidata w ON w.player_id = p.id "
+                        "WHERE w.player_id IS NULL AND (p.link_title IS NULL) ORDER BY p.id").fetchall()
+    stays: dict[int, list[tuple]] = defaultdict(list)
+    for pid, club, year in con.execute("""SELECT pcs.player_id, cl.wikipedia_title, s.start_year FROM player_club_season pcs
+            JOIN club_season cs ON cs.id = pcs.club_season_id JOIN club cl ON cl.id = cs.club_id
+            JOIN season s ON s.id = cs.season_id""").fetchall():
+        stays[pid].append((club, year))
+
+    def proven(pid: int, name: str, titles: list[str]) -> list[str]:
+        titles = [t for t in dict.fromkeys(titles) if _name_matches(name, t)]
+        out = []
+        for page in (pages(titles) if titles else []):
+            if not page.exists:
+                continue
+            spells = [(s.club_link, s.club_name, s.start_year, s.end_year) for s in parse_career(page.wikitext or "")]
+            if spells and stays[pid] and all(_supported(spells, c, y) for c, y in stays[pid]):
+                out.append(page.resolved_title or page.title)
+        return list(dict.fromkeys(out))
+
+    matched: list[tuple[int, str]] = []
+    remaining = []
+    for i in range(0, len(loose), batch):                      # 1) le nom comme titre (redirections comprises)
+        for pid, name in loose[i:i + batch]:
+            found = proven(pid, name, [name])
+            if len(found) == 1:
+                matched.append((pid, found[0]))
+            else:
+                remaining.append((pid, name))
+        log(f"  {min(i + batch, len(loose))}/{len(loose)} joueurs (titre direct)")
+    for n, (pid, name) in enumerate(remaining, 1):             # 2) recherche, pour ceux dont le titre est qualifié
+        found = proven(pid, name, search(name))
+        if len(found) == 1:
+            matched.append((pid, found[0]))
+        else:
+            report.unresolved += 1
+        if n % 200 == 0:
+            log(f"  {n}/{len(remaining)} joueurs (recherche)")
+    titles = sorted({t for _, t in matched})
+    found_qids: dict[str, str | None] = {}
+    for i in range(0, len(titles), batch):
+        found_qids.update(qids(titles[i:i + batch]))
+    for pid, title in matched:
+        qid = found_qids.get(title)
+        if not qid:
+            report.unresolved += 1
+            continue
+        owner = con.execute("SELECT player_id FROM player_wikidata WHERE qid = ?", [qid]).fetchone()
+        if owner is None:
+            con.execute("INSERT INTO player_wikidata VALUES (?, ?)", [pid, qid])
+            report.resolved += 1
+        elif owner[0] != pid:
+            if _frozen_rows(con, pid) or _frozen_rows(con, owner[0]):
+                report.blocked.append(f"{qid}: fusion {pid}->{owner[0]} touche une saison figée")
+                continue
+            _merge(con, owner[0], pid)
+            report.merged += 1
+    return report
+

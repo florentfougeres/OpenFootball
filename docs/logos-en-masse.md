@@ -53,5 +53,5 @@ PY
   `openfootball enrich --what logos` (puis `--all-clubs` si besoin).
 
 ## Publier
-`openfootball export --out site/data` : la colonne `logo_url` est exportée dans la table `club`. Les logos eux-mêmes
+`openfootball export --out web/public/data` : la colonne `logo_url` est exportée dans la table `club`. Les logos eux-mêmes
 restent hébergés par Wikimedia (le site fait un lien direct, avec repli silencieux si l'image est indisponible).

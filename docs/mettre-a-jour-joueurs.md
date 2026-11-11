@@ -69,4 +69,4 @@ déplacé le cache — l'ordre est celui des identifiants de joueur.
   dans `tests/fixtures/*.wiki` (voir `tests/test_careers.py`).
 - Champ de sélections mal lu : `parse_national` accepte `national_team1` et `nationalteam1` ; ajoutez la variante
   manquante et un test.
-- Export : `openfootball export --out site/data` écrit `career` et `national` (fichiers Parquet hachés).
+- Export : `openfootball export --out web/public/data` écrit `career` et `national` (fichiers Parquet hachés).

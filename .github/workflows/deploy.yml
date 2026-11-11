@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["site/**"]
+    paths: ["web/**"]
 
 permissions:
   contents: read
@@ -34,13 +34,25 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release download --repo "$GITHUB_REPOSITORY" --pattern "openfootball-data.tar.gz" --dir "$RUNNER_TEMP"
-          mkdir -p site/data
-          tar -xzf "$RUNNER_TEMP/openfootball-data.tar.gz" -C site/data
-          test -s site/data/manifest.json
+          mkdir -p web/public/data
+          tar -xzf "$RUNNER_TEMP/openfootball-data.tar.gz" -C web/public/data
+          test -s web/public/data/manifest.json
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Build the site
+        working-directory: web
+        run: |
+          npm ci
+          npm run check
+          npm run build
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: web/dist
       - id: deployment
         uses: actions/deploy-pages@v4

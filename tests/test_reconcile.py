@@ -151,3 +151,45 @@ def test_merge_moves_career_rows_to_the_kept_player(con):
     reconcile_players(con, clients())
     assert con.execute("SELECT count(*) FROM player_career").fetchone()[0] == 1
     assert con.execute("SELECT w.qid FROM player_career c JOIN player_wikidata w ON w.player_id = c.player_id").fetchone()[0] == "Q100"
+
+
+def _page(title, years_clubs):
+    from openfootball.sources.wikipedia import Page
+    rows = "\n".join(f"| years{i} = {y}\n| clubs{i} = [[{c}]]\n| caps{i} = 1\n| goals{i} = 0"
+                     for i, (y, c) in enumerate(years_clubs, 1))
+    return Page(title=title, exists=True, resolved_title=title,
+                wikitext="{{Infobox football biography\n| name = X\n" + rows + "\n}}")
+
+
+def test_linkless_player_is_identified_by_his_infobox(con):
+    from openfootball.reconcile import reconcile_by_infobox
+    # joueur issu d'une page française : aucun lien, une saison à Toulouse (2024)
+    con.execute("INSERT INTO player (id, name) VALUES (10, 'Nouhoum Kamissoko')")
+    con.execute("INSERT INTO player (id, name) VALUES (11, 'Nouhoum Kamissoko')")        # homonyme sans preuve
+    con.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) "
+                "VALUES (10, 10, 2, 'attested', 'wikipedia_season')")
+    con.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) "
+                "VALUES (11, 11, 3, 'attested', 'wikipedia_season')")                  # Fulham 2024 : pas dans sa carrière
+    pages = {"Nouhoum Kamissoko (footballer)": _page("Nouhoum Kamissoko (footballer)", [("2022–", "Toulouse")]),
+             "Joshua King": _page("Joshua King", [("2020", "Everton")])}
+    got = reconcile_by_infobox(
+        con, pages=lambda ts: [pages.get(t) or _page(t, []) for t in ts],
+        search=lambda name: ["Nouhoum Kamissoko (footballer)", "Joshua King"],      # le 2e titre ne ressemble pas au nom
+        qids=lambda ts: {t: "Q999" for t in ts}, log=lambda *_: None)
+    assert con.execute("SELECT qid FROM player_wikidata WHERE player_id = 10").fetchone() == ("Q999",)
+    assert con.execute("SELECT count(*) FROM player_wikidata WHERE player_id = 11").fetchone()[0] == 0   # carrière sans Fulham : refusé
+    assert got.resolved == 1
+
+
+def test_infobox_match_merges_into_the_player_who_already_has_that_qid(con):
+    from openfootball.reconcile import reconcile_by_infobox
+    reconcile_players(con, clients())
+    con.execute("INSERT INTO player (id, name) VALUES (12, 'Joshua King')")
+    con.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) "
+                "VALUES (12, 12, 1, 'attested', 'wikipedia_season')")                  # Everton 2020 (déjà au joueur Q100)
+    # le club-saison existe déjà pour le joueur Q100 : la ligne doublon est écartée à la fusion
+    pages = {"Joshua King (footballer, born 1992)": _page("Joshua King (footballer, born 1992)", [("2019–2021", "Everton")])}
+    reconcile_by_infobox(con, pages=lambda ts: [pages.get(t) or _page(t, []) for t in ts],
+                         search=lambda name: ["Joshua King (footballer, born 1992)"],
+                         qids=lambda ts: {t: "Q100" for t in ts}, log=lambda *_: None)
+    assert con.execute("SELECT count(*) FROM player WHERE name = 'Joshua King'").fetchone()[0] == 2   # Q100 et Q200 seuls

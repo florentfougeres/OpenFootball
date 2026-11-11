@@ -12,4 +12,7 @@ __pycache__/
 data/work/
 cache/
 dist/
+web/node_modules/
+web/dist/
+web/public/data*/
 site/data/

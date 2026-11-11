@@ -76,3 +76,20 @@ def test_spanish_loan_section_is_a_loan():
     e = SquadEntry(name="X", link=None, shirt_number=None, position_raw=None, position=None,
                    nationality=None, section="Jugadores cedidos", note=None, fmt="jugador_con_esquema")
     assert stint_of(e) == "loan_out"
+
+
+def test_french_table_title_marks_loaned_out_players():
+    from openfootball.store import stint_of
+    wt = """== Effectif professionnel actuel ==
+{| class="toccolours"
+! scope="colgroup" colspan="8" style="background-color:#0B61AC;"|Gardiens
+|-
+{{Feff joueur|num=1|prénom=Gardien|nom=Titulaire|pos=G|nat=France}}
+|}
+{| class="toccolours"
+! scope="colgroup" colspan="8" style="background-color:#0B61AC;"|Joueurs prêtés
+|-
+{{Feff joueur|num=-|prénom=Leonardo|nom=Balerdi|pos=D|nat=Argentine|ancien club={{ITA-d}} [[AS Roma]]}}
+|}"""
+    e = {x.name: stint_of(x) for x in parse_squad_fr(wt)}
+    assert e == {"Gardien Titulaire": "unknown", "Leonardo Balerdi": "loan_out"}

@@ -67,7 +67,7 @@ correction de nom survive, corrigez-la aussi sur Wikidata, ou mettez-la dans `en
 
 ## 4. Vérifier puis republier
 ```bash
-openfootball export --out site/data         # puis ouvrir le site en local (README : « Site en local »)
+openfootball export --out web/public/data         # puis ouvrir le site en local (README : « Site en local »)
 ```
 Contrôlez la fiche du club (`#/…/club/<QID>`) : logo, noms, stade. Les modifications font partie de la base de
 travail locale ; elles n'arrivent en ligne qu'avec la prochaine release (`export --archive`).

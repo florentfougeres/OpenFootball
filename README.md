@@ -30,9 +30,12 @@ et redéploie GitHub Pages.
 
 ## Site en local
 
+Le site est une application Svelte + Vite + Tailwind (dossier `web/`) ; DuckDB-WASM lit les Parquet dans le navigateur.
+
 ```bash
-openfootball export --out site/data
-python3 -m http.server 8765 --directory site          # puis http://localhost:8765
+openfootball export --out web/public/data              # données du site (hors git)
+cd web && npm install && npm run dev                    # http://localhost:5173
+npm run check && npm run build                          # type-check + build de production (web/dist)
 ```
 
 ## Documentation

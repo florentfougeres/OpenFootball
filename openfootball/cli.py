@@ -14,7 +14,7 @@ from openfootball.enrich import enrich_birth_dates, enrich_logos, enrich_wiki_li
 from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_careers, import_careers_by_qid
-from openfootball.reconcile import reconcile_by_name, reconcile_players
+from openfootball.reconcile import reconcile_by_infobox, reconcile_by_name, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
 from openfootball.store import FreezeRefused, SeasonFrozen, freeze
@@ -353,6 +353,19 @@ def reconcile_cmd(args: argparse.Namespace) -> int:
         print(f"sans lien -> identifiés par nom + carrière : {n.merged} fusionnés, {n.unresolved} laissés séparés (non prouvés ou ambigus)")
         for b in n.blocked:
             print("  refusé :", b)
+    if args.infobox:
+        lead = WikipediaClient("cache/wikipedia_en_lead", lang="en", lead_only=True, batch_size=50)
+
+        def search(name: str) -> list[str]:
+            data = lead._call({"action": "query", "list": "search", "srsearch": f'"{name}" football',
+                               "srnamespace": 0, "srlimit": 5})
+            return [h["title"] for h in data.get("query", {}).get("search", [])]
+
+        i = reconcile_by_infobox(con, lead.get_pages, search, lambda ts: club_qids(lead, ts))
+        print(f"sans lien -> page anglaise trouvée par l'infobox : {i.resolved} identifiés, {i.merged} fusionnés, "
+              f"{i.unresolved} laissés sans lien (aucune page dont la carrière contienne tous leurs clubs)")
+        for b in i.blocked:
+            print("  refusé :", b)
     return 0
 
 
@@ -464,6 +477,8 @@ def main(argv: list[str] | None = None) -> int:
     rc = sub.add_parser("reconcile", help="un joueur = un QID Wikidata (fusionne les doublons inter-langues)")
     rc.add_argument("--db", default=DB_DEFAULT)
     rc.add_argument("--names", action="store_true", help="rattache aussi les joueurs sans lien (nom + preuve de carrière)")
+    rc.add_argument("--infobox", action="store_true",
+                    help="cherche la page anglaise des joueurs sans lien et la valide par son infobox (carrière = nos clubs)")
     rc.set_defaults(func=reconcile_cmd)
     ca = sub.add_parser("careers", help="importe la carrière (infobox Wikipedia) des joueurs")
     ca.add_argument("--db", default=DB_DEFAULT)

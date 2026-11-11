@@ -33,13 +33,13 @@ JOIN club cl ON cl.id = cs.club_id
 JOIN player p ON p.id = pcs.player_id
 LEFT JOIN player_wikidata w ON w.player_id = p.id
 LEFT JOIN nat_map nm ON nm.raw = pcs.nationality_raw
-WHERE s.id = {sid}
+WHERE s.id = {sid} AND pcs.stint <> 'loan_out'       -- un joueur prêté ailleurs n'est pas dans l'effectif de son club d'origine
 ORDER BY cl.wikipedia_title, pcs.shirt_number NULLS LAST, p.name"""
 
 _CLUB_SEASON = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
        cs.source_lang, cs.source_title, cs.source_revid,
-       (SELECT count(*) FROM player_club_season x WHERE x.club_season_id = cs.id) AS players,
+       (SELECT count(*) FROM player_club_season x WHERE x.club_season_id = cs.id AND x.stint <> 'loan_out') AS players,
        kg.reason AS known_gap_reason
 FROM club_season cs
 JOIN season s ON s.id = cs.season_id
@@ -77,6 +77,7 @@ _GLOBAL = {
     "competition": "SELECT code, name_en, name_fr, country_code, level, wikidata_qid "
                    "FROM competition ORDER BY code",
     "season": "SELECT label, start_year, status, content_hash FROM season ORDER BY start_year",
+    "country": "SELECT code, name_en, name_fr, flag FROM country_export ORDER BY code",
 }
 
 
@@ -102,6 +103,10 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         flag = flag_code(raw)
         if flag:
             con.execute("INSERT INTO nat_map VALUES (?, ?)", [raw, flag])
+    # Pays couverts : nom fr/en + code de drapeau (le site n'embarque aucune liste de pays).
+    con.execute("CREATE OR REPLACE TEMP TABLE country_export (code VARCHAR PRIMARY KEY, name_en VARCHAR, name_fr VARCHAR, flag VARCHAR)")
+    for code, en, fr in con.execute("SELECT code, name_en, name_fr FROM country").fetchall():
+        con.execute("INSERT INTO country_export VALUES (?, ?, ?, ?)", [code, en, fr, flag_code(code) or flag_code(en)])
     manifest: dict = {
         "format": 1,
         "schema_version": con.execute("SELECT max(version) FROM schema_migrations").fetchone()[0],

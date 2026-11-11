@@ -26,8 +26,14 @@ def _section_of(text: str, pos: int, heads: list[tuple[int, str]]) -> str:
     return next((h[1] for h in reversed(heads) if h[0] < pos), "")
 
 
+# Titre d'un tableau : `! scope="colgroup" colspan="8" style="…"|Joueurs prêtés` (le fr range les prêts ainsi,
+# sous le même titre de section que l'effectif).
+_TABLE_TITLE = re.compile(r"^[ \t]*!(?=[^|\n]*colspan)[^|\n]*\|[ \t]*([^|\n]+?)[ \t]*$", re.M)
+
+
 def _scan(text: str, template: str, build) -> list[SquadEntry]:
-    heads = [(m.start(), m.group(2)) for m in _HEADING.finditer(text)]
+    heads = sorted([(m.start(), m.group(2)) for m in _HEADING.finditer(text)]
+                   + [(m.start(), m.group(1)) for m in _TABLE_TITLE.finditer(text)])
     out: list[SquadEntry] = []
     pat = re.compile(r"\{\{\s*" + re.escape(template) + r"\s*\|", re.I)
     for m in pat.finditer(text):
