@@ -124,7 +124,7 @@ async function startDb(manifest, base) {
   const list = (a) => "[" + a.map((x) => `'${x}'`).join(",") + "]";
   await conn.query(`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`);
   await conn.query(`CREATE VIEW club_season AS SELECT * FROM read_parquet(${list(clubSeason)}, union_by_name=true)`);
-  for (const n of ["club", "competition", "season", "known_gap", "career", "birth", "entity_wiki", "world_club"]) {
+  for (const n of ["club", "competition", "season", "known_gap", "career", "birth", "entity_wiki"]) {
     if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     state.has[n] = Boolean(files[n]);
   }
@@ -143,7 +143,7 @@ async function q(sql, params = []) {
 }
 
 async function loadRefs() {
-  for (const c of await q(`SELECT * FROM club`)) { state.clubs.set(c.wikipedia_title, c); if (c.wikidata_qid) state.clubByQid.set(c.wikidata_qid, c); }
+  for (const c of await q(`SELECT * FROM club WHERE has_squads`)) { state.clubs.set(c.wikipedia_title, c); if (c.wikidata_qid) state.clubByQid.set(c.wikidata_qid, c); }
   for (const c of await q(`SELECT * FROM competition`)) state.comps.set(c.code, c);
 }
 
@@ -248,9 +248,9 @@ async function runSearch(term) {
   const found = [...new Map([...byClub, ...byName].map((c) => [c.wikipedia_title, c])).values()]
     .sort((a, b) => clubName(a).localeCompare(clubName(b))).slice(0, 30);
   const ourQids = new Set(found.map((c) => c.wikidata_qid));
-  const world = state.has.world_club ? (await q(`SELECT qid, name_local, name_en, country_iso, city FROM world_club
-      WHERE strip_accents(name_local) ILIKE strip_accents(?) OR strip_accents(coalesce(name_en, '')) ILIKE strip_accents(?)
-      ORDER BY coalesce(wikipedia_count, 0) DESC LIMIT 40`, [like, like])).filter((c) => !ourQids.has(c.qid)).slice(0, 25) : [];
+  const world = (await q(`SELECT wikidata_qid AS qid, name_local, name_en, country_iso, city FROM club
+      WHERE NOT has_squads AND (strip_accents(name_local) ILIKE strip_accents(?) OR strip_accents(coalesce(name_en, '')) ILIKE strip_accents(?))
+      ORDER BY coalesce(wikipedia_count, 0) DESC LIMIT 25`, [like, like]));
   if (!found.length && !players.length && !world.length) return `<p class="muted">${esc(tt("noResult"))}</p>`;
   return `${found.length ? `<h2>${esc(tt("clubs"))}</h2><ul class="chips">${found.map((c) =>
       `<li><a class="chip" href="${href("club", enc(c.wikipedia_title))}">${logoImg(c, 28)}<span>${esc(clubName(c))}</span></a></li>`).join("")}</ul>` : ""}
@@ -287,14 +287,14 @@ async function clubWikiLink(qid, w) {                 // langue de l'app, sinon 
 async function pageClub(key) {
   const qid = /^Q\d+$/.test(key) ? key : (state.clubs.get(key) || {}).wikidata_qid || null;
   const ours = state.clubByQid.get(qid) || state.clubs.get(key) || null;
-  const w = qid && state.has.world_club ? (await q(`SELECT * FROM world_club WHERE qid = ?`, [qid]))[0] : null;
+  const w = qid ? (await q(`SELECT * FROM club WHERE wikidata_qid = ?`, [qid]))[0] : null;
   if (!ours && !w) return `<p class="err">${esc(tt("clubNotFound"))}</p>`;
   const iso = w && w.country_iso ? w.country_iso.toLowerCase() : null;
   const flagCode = ours ? COUNTRY_FLAG[ours.country_code] : iso;
   const countryLabel = ours ? COUNTRY_NAME[state.lang][ours.country_code] : iso ? countryName(w.country_iso) : "";
   const name = ours ? clubName(ours) : state.lang === "fr" ? w.name_local : w.name_en || w.name_local;
   const sub = w && w.name_en && w.name_en !== name ? w.name_en : (w && w.name_local !== name ? w.name_local : "");
-  const logo = ours && ours.logo_url ? { logo_url: ours.logo_url } : { logo_url: commonsLogo(w && w.logo_url) };
+  const logo = { logo_url: (ours && ours.logo_url) || (w && w.logo_url) || commonsLogo(w && w.logo_commons_url) };
 
   let seasonsHtml = "", seeSquad = "";
   if (ours) {
@@ -377,8 +377,8 @@ async function pageSquad(title, slug) {
 async function careerTable(key) {
   if (!state.has.career) return "";
   const rows = await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title,
-                          ${state.has.world_club ? "w.qid AS club_qid" : "NULL AS club_qid"}
-                        FROM career c ${state.has.world_club ? "LEFT JOIN world_club w ON w.en_title = c.club_link" : ""}
+                          w.wikidata_qid AS club_qid
+                        FROM career c LEFT JOIN club w ON w.wikipedia_title = c.club_link
                         WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]);
   if (!rows.length) return `<p class="muted">${esc(tt("noCareer"))}</p>`;
   const body = rows.map((r) => `<tr><td>${esc(r.years_raw || "")}${r.years_raw && /[–-]\s*$/.test(r.years_raw) ? " " + esc(tt("ongoing")) : ""}</td>

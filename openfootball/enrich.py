@@ -84,17 +84,18 @@ def enrich_birth_dates(con: duckdb.DuckDBPyConnection, wd, *, log: Callable[[str
     return written
 
 
-def enrich_logos(con: duckdb.DuckDBPyConnection, wp, *, refresh: bool = False,
-                 log: Callable[[str], None] = print) -> int:
+def enrich_logos(con: duckdb.DuckDBPyConnection, wp, *, refresh: bool = False, all_clubs: bool = False,
+                 limit: int | None = None, log: Callable[[str], None] = print) -> int:
     """Logo de chaque club = le champ `image` de l'infobox de sa page Wikipedia anglaise, avec sa licence.
 
     On n'utilise PAS « l'image principale de la page » : c'est souvent un montage (« X through the ages »),
     une photo de stade ou une personne, pas le logo. Sans champ `image` dans l'infobox, le club n'a pas de logo.
     Beaucoup de logos sont « non libres » (usage loyal) : la licence est stockée pour pouvoir les masquer."""
+    scope = _logo_scope(all_clubs)
     if refresh:
-        con.execute("UPDATE club SET logo_url = NULL, logo_license = NULL")
-    todo = con.execute("SELECT count(*) FROM club WHERE logo_url IS NULL").fetchone()[0]
-    found = _infobox_logos(con, wp)
+        con.execute(f"UPDATE club SET logo_url = NULL, logo_license = NULL WHERE {scope}")
+    todo = con.execute(f"SELECT count(*) FROM club WHERE logo_url IS NULL AND {scope}").fetchone()[0]
+    found = _infobox_logos(con, wp, scope, limit)
     log(f"  logos : {todo} clubs interrogés, {found} logos trouvés (infobox)")
     return found
 
@@ -102,10 +103,18 @@ def enrich_logos(con: duckdb.DuckDBPyConnection, wp, *, refresh: bool = False,
 _IMAGE_FIELD = re.compile(r"\|\s*(?:image|logo)\s*=\s*([^\n|]+)", re.I)
 
 
-def _infobox_logos(con: duckdb.DuckDBPyConnection, wp) -> int:
+def _logo_scope(all_clubs: bool) -> str:
+    """Par défaut : nos clubs à effectifs. `all_clubs` : tout club ayant une page anglaise (des milliers de requêtes)."""
+    base = "wikipedia_title IS NOT NULL"
+    return base if all_clubs else base + " AND EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = club.id)"
+
+
+def _infobox_logos(con: duckdb.DuckDBPyConnection, wp, scope: str, limit: int | None = None) -> int:
     """Les logos non libres sont ignorés par l'API « image de page » : on lit le champ `image` de l'infobox
     du club (introduction de la page), puis la miniature et la licence du fichier."""
-    clubs = con.execute("SELECT id, wikipedia_title FROM club WHERE logo_url IS NULL ORDER BY id").fetchall()
+    # Les plus notoires d'abord (nombre de versions Wikipedia) : un passage partiel couvre déjà les clubs consultés.
+    clubs = con.execute(f"SELECT id, wikipedia_title FROM club WHERE logo_url IS NULL AND {scope} "
+                        f"ORDER BY coalesce(wikipedia_count, 0) DESC, id" + (f" LIMIT {int(limit)}" if limit else "")).fetchall()
     found = 0
     for chunk in _chunks(clubs, BATCH):
         data = wp._call({"action": "query", "titles": "|".join(t for _, t in chunk), "redirects": 1,

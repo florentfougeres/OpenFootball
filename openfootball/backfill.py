@@ -72,6 +72,7 @@ def _ensure_club(con, title: str, country: str, qid: str | None) -> int:
         if row and qid and row[1] is None:
             con.execute("UPDATE club SET wikidata_qid = ? WHERE id = ?", [qid, row[0]])
     if row:
+        con.execute("UPDATE club SET country_code = ? WHERE id = ? AND country_code IS NULL", [country, row[0]])
         return row[0]
     club_id = _next_id(con, "club")
     con.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title, wikidata_qid) "

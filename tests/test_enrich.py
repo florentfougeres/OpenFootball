@@ -95,12 +95,12 @@ class FakeWpNonFree:
 
 def test_refresh_replaces_a_wrong_existing_logo(con):
     con.execute("UPDATE club SET logo_url = 'https://x/Udinese_through_the_ages.jpg', logo_license = 'unknown'")
-    assert enrich_logos(con, FakeWpNonFree(), refresh=True, log=lambda s: None) == 1
+    assert enrich_logos(con, FakeWpNonFree(), refresh=True, all_clubs=True, log=lambda s: None) == 1
     assert 'through_the_ages' not in con.execute('SELECT logo_url FROM club').fetchone()[0]
 
 
 def test_non_free_logo_is_read_from_the_infobox(con):
-    assert enrich_logos(con, FakeWpNonFree(), log=lambda s: None) == 1
+    assert enrich_logos(con, FakeWpNonFree(), all_clubs=True, log=lambda s: None) == 1
     assert con.execute("SELECT logo_url, logo_license FROM club WHERE id = 1").fetchone() == (
         "https://thumb.wikimedia.org/x/250px-OM.svg.png", "Fair use")        # paramètres de suivi retirés
 
@@ -131,4 +131,4 @@ def test_display_options_after_the_file_name_are_dropped(con):
                     "content": "| image = Olympique de Marseille logo.svg{{!}}class=skin-invert\n"}}}]}]}}
             return super()._call(params)
 
-    assert enrich_logos(con, Wp(), log=lambda s: None) == 1          # le fichier est trouvé malgré « {{!}}class=… »
+    assert enrich_logos(con, Wp(), all_clubs=True, log=lambda s: None) == 1          # le fichier est trouvé malgré « {{!}}class=… »

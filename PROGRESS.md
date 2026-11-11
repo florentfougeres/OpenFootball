@@ -60,19 +60,19 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | Lignes d'effectif sans nationalité | 529 | 52099 |
 | Lignes d'effectif sans poste | 84 | 52099 |
 | Lignes d'effectif à statut inconnu (prêt/transfert) | 45650 | 52099 |
-| Clubs sans logo | 0 | 189 |
-| Clubs sans page Wikipedia française | 1 | 189 |
+| Clubs à effectifs sans logo | 0 | 189 |
+| Clubs à effectifs sans page Wikipedia française | 1 | 189 |
 
 ## Clubs du monde (fiches club)
 
 | Donnée | Clubs | Sur |
 |---|---|---|
-| Fiches club importées (Wikidata) | 42888 | 42888 |
-| … avec logo Commons | 2024 | 42888 |
-| … avec stade | 9890 | 42888 |
-| … avec date de fondation | 23589 | 42888 |
-| … avec page Wikipedia anglaise | 25611 | 42888 |
-| Nos clubs (effectifs) rattachés à une fiche | 188 | 189 |
+| Clubs au total (table `club`) | 42889 | 42889 |
+| … dont avec effectifs détaillés | 189 | 42889 |
+| … avec un logo (infobox ou Commons) | 5371 | 42889 |
+| … avec stade | 9890 | 42889 |
+| … avec date de fondation | 23589 | 42889 |
+| … avec page Wikipedia anglaise | 25612 | 42889 |
 
 ## À faire
 

@@ -77,20 +77,20 @@ def build_progress(con: duckdb.DuckDBPyConnection, today: date | None = None) ->
         ["Lignes d'effectif sans nationalité", q("SELECT count(*) FROM player_club_season WHERE nationality_raw IS NULL"), q("SELECT count(*) FROM player_club_season")],
         ["Lignes d'effectif sans poste", q("SELECT count(*) FROM player_club_season WHERE position_code IS NULL"), q("SELECT count(*) FROM player_club_season")],
         ["Lignes d'effectif à statut inconnu (prêt/transfert)", q("SELECT count(*) FROM player_club_season WHERE stint = 'unknown'"), q("SELECT count(*) FROM player_club_season")],
-        ["Clubs sans logo", q("SELECT count(*) FROM club WHERE logo_url IS NULL"), q("SELECT count(*) FROM club")],
-        ["Clubs sans page Wikipedia française", q("SELECT count(*) FROM club c WHERE NOT EXISTS (SELECT 1 FROM entity_wiki w WHERE w.qid = c.wikidata_qid AND w.lang = 'fr')"), q("SELECT count(*) FROM club")],
+        ["Clubs à effectifs sans logo", q("SELECT count(*) FROM club c WHERE logo_url IS NULL AND EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id)"), q("SELECT count(DISTINCT club_id) FROM club_season")],
+        ["Clubs à effectifs sans page Wikipedia française", q("SELECT count(*) FROM club c WHERE EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id) AND NOT EXISTS (SELECT 1 FROM entity_wiki w WHERE w.qid = c.wikidata_qid AND w.lang = 'fr')"), q("SELECT count(DISTINCT club_id) FROM club_season")],
     ]))
 
     out.append("\n## Clubs du monde (fiches club)\n")
     wc = lambda sql: con.execute(sql).fetchone()[0]
-    n_world = wc("SELECT count(*) FROM world_club")
+    n_world = wc("SELECT count(*) FROM club WHERE country_iso IS NOT NULL OR name_local IS NOT NULL")
     out.append(_table(["Donnée", "Clubs", "Sur"], [
-        ["Fiches club importées (Wikidata)", n_world, n_world],
-        ["… avec logo Commons", wc("SELECT count(*) FROM world_club WHERE logo_url IS NOT NULL"), n_world],
-        ["… avec stade", wc("SELECT count(*) FROM world_club WHERE stadium IS NOT NULL"), n_world],
-        ["… avec date de fondation", wc("SELECT count(*) FROM world_club WHERE founded IS NOT NULL"), n_world],
-        ["… avec page Wikipedia anglaise", wc("SELECT count(*) FROM world_club WHERE wikipedia_en_url IS NOT NULL"), n_world],
-        ["Nos clubs (effectifs) rattachés à une fiche", wc("SELECT count(*) FROM club c WHERE EXISTS (SELECT 1 FROM world_club w WHERE w.qid = c.wikidata_qid)"), wc("SELECT count(*) FROM club")],
+        ["Clubs au total (table `club`)", wc("SELECT count(*) FROM club"), wc("SELECT count(*) FROM club")],
+        ["… dont avec effectifs détaillés", wc("SELECT count(DISTINCT club_id) FROM club_season"), wc("SELECT count(*) FROM club")],
+        ["… avec un logo (infobox ou Commons)", wc("SELECT count(*) FROM club WHERE logo_url IS NOT NULL OR logo_commons_url IS NOT NULL"), wc("SELECT count(*) FROM club")],
+        ["… avec stade", wc("SELECT count(*) FROM club WHERE stadium IS NOT NULL"), wc("SELECT count(*) FROM club")],
+        ["… avec date de fondation", wc("SELECT count(*) FROM club WHERE founded IS NOT NULL"), wc("SELECT count(*) FROM club")],
+        ["… avec page Wikipedia anglaise", wc("SELECT count(*) FROM club WHERE wikipedia_en_url IS NOT NULL OR wikipedia_title IS NOT NULL"), wc("SELECT count(*) FROM club")],
     ]) if n_world else "Aucune fiche importée : lancer `openfootball import-world-clubs`.")
 
     out.append("\n## À faire\n")

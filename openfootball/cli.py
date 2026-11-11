@@ -377,14 +377,15 @@ def enrich_cmd(args: argparse.Namespace) -> int:
     wd, wp = WikidataClient(args.wd_cache), WikipediaClient(args.cache)
     what = set(args.what or ["clubs", "players", "logos"])
     if "clubs" in what:
-        qids = [r[0] for r in con.execute("SELECT wikidata_qid FROM club WHERE wikidata_qid IS NOT NULL").fetchall()]
+        qids = [r[0] for r in con.execute("SELECT wikidata_qid FROM club WHERE wikidata_qid IS NOT NULL AND EXISTS "
+                                          "(SELECT 1 FROM club_season cs WHERE cs.club_id = club.id)").fetchall()]
         enrich_wiki_links(con, wd, qids, ("en", "fr", "it", "de", "es"), labels=("en", "fr"))
     if "players" in what:
         qids = [r[0] for r in con.execute("SELECT qid FROM player_wikidata").fetchall()]
         enrich_wiki_links(con, wd, qids, ("en", "fr"))
         enrich_birth_dates(con, wd)
     if "logos" in what:
-        enrich_logos(con, wp, refresh=args.refresh_logos)
+        enrich_logos(con, wp, refresh=args.refresh_logos, all_clubs=args.all_clubs, limit=args.logo_limit)
     return 0
 
 
@@ -400,11 +401,10 @@ def import_world_clubs_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     n = import_world_clubs(con, args.csv)
-    ours = con.execute("SELECT count(*) FROM club c WHERE EXISTS (SELECT 1 FROM world_club w WHERE w.qid = c.wikidata_qid)").fetchone()[0]
     total = con.execute("SELECT count(*) FROM club").fetchone()[0]
-    print(f"{n} clubs du monde importés ; {ours} de nos {total} clubs y sont rattachés (par QID)")
+    squads = con.execute("SELECT count(DISTINCT club_id) FROM club_season").fetchone()[0]
+    print(f"{n} clubs du CSV fusionnés dans `club` : {total} clubs au total, dont {squads} avec effectifs")
     return 0
-
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="openfootball")
@@ -472,6 +472,8 @@ def main(argv: list[str] | None = None) -> int:
     en.add_argument("--db", default=DB_DEFAULT)
     en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos"])
     en.add_argument("--refresh-logos", action="store_true", help="efface puis refait tous les logos")
+    en.add_argument("--logo-limit", type=int, help="ne traite que N clubs (les plus notoires d'abord)")
+    en.add_argument("--all-clubs", action="store_true", help="logos de TOUS les clubs ayant une page anglaise (sinon : clubs à effectifs)")
     en.add_argument("--cache", default="cache/wikipedia")
     en.add_argument("--wd-cache", default="cache/wikidata")
     en.set_defaults(func=enrich_cmd)

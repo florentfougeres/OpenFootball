@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.24** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.25** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -313,12 +313,21 @@ Demande : afficher le parcours d'un joueur « comme sur Wikipedia » (la liste d
 
 ## 9duodecies. Clubs du monde et fiches club (2026-11-11)
 
-- **Source** : un CSV déjà produit par le script de l'utilisateur (`tools/world_clubs/extract_world_clubs.py`, **non relancé**), copié dans `data/source/clubs_football.csv` (**42 888 clubs**, 31 colonnes, QID uniques) ; importé par `openfootball import-world-clubs` (migration `0006`, table `world_club`, idempotent, cellule vide = NULL). **188 de nos 189 clubs** s'y rattachent par QID.
+- **Source** : un CSV déjà produit par le script de l'utilisateur (`tools/world_clubs/extract_world_clubs.py`, **non relancé**), copié dans `data/source/clubs_football.csv` (**42 888 clubs**, 31 colonnes, QID uniques) ; importé par `openfootball import-world-clubs`. **188 de nos 189 clubs** s'y rattachent par QID.
 - **Qualité du CSV** (remplissage) : pays 91 %, date de création 55 %, page anglaise 60 %, coordonnées 57 %, stade 23 %, ligue 38 %, site officiel 29 %, **logo 5 %**, surnom 1 %, couleurs 4 % ; 3 725 clubs sans pays ; le pays est « Royaume-Uni » pour 3 150 clubs (Angleterre/Écosse non distinguées dans ce CSV).
 - **Fiche club** (`#/fr/club/Q631` ou, pour nos clubs, par titre) : logo, nom, drapeau et pays (noms localisés par le navigateur), surnom, ville, fondation, stade et capacité, championnat et niveau, couleurs, site, coordonnées (OpenStreetMap), liens Transfermarkt / FBref / WorldFootball, page Wikipedia (langue de l'app, sinon anglais, sinon langue du club). Pour nos clubs : saisons et accès à l'effectif ; pour les autres : « pas d'effectif détaillé » (seuls les cinq grands championnats sont couverts).
 - **Navigation** : la recherche inclut les clubs du monde (triés par nombre de versions Wikipedia) ; **chaque club d'une carrière de joueur ouvre sa fiche** (jointure sur le titre de la page anglaise) ; vérifié : les 13 clubs de la carrière de Joshua King ouvrent une fiche.
-- Export : table `world_club` (3 Mo) ; jeu publié **6,2 Mo**. Drapeaux : 241 SVG (2,3 Mo) ; 5 codes d'anciens États (AN, CQ, DD, SU, YU) sans drapeau.
+- Export : table `club` (tous les clubs, 3 Mo) ; jeu publié ≈ 6 Mo. Drapeaux : 241 SVG (2,3 Mo) ; 5 codes d'anciens États (AN, CQ, DD, SU, YU) sans drapeau.
 - **Limites** : 95 % des fiches sans logo (cercle gris) ; le logo Commons des clubs du CSV est libre mais n'est pas vérifié un par un ; pas de maillage hors CSV (clubs absents du CSV : 1 des nôtres).
+
+### Une seule table `club` (migration 0007, 2026-11-11)
+
+Demande du mainteneur : **le CSV doit vivre dans la base DuckDB, comme une seule table de clubs**. La table `world_club` (0006) est supprimée ; `club` porte désormais **toutes les colonnes du CSV** (nom local/anglais/français, surnom, ville, pays, stade, capacité, division, ligue, fondation, couleurs, site, coordonnées, identifiants externes, `logo_url` d'infobox **et** `logo_commons_url`), avec `wikidata_qid` (UNIQUE) comme identité. Nos 189 clubs à effectifs gardent leur `id` ; les ≈ 42 700 autres sont des clubs **sans saison ni effectif**. `wikipedia_title` et `country_code` sont désormais NULLables.
+- **Migration** : DuckDB interdit de modifier une table référencée par des clés étrangères → 0007 sauvegarde `club_season`, `player_club_season`, `known_gap`, `amendment_log`, les recrée avec la nouvelle `club`, puis recharge. **Vérifié sur la base réelle avec sauvegarde préalable** : mêmes nombres de lignes et mêmes empreintes pour les 52 099 lignes d'effectif et pour nos 189 clubs.
+- **Import** (`import-world-clubs`) : fusion par QID, idempotente ; un club déjà connu est enrichi **sans changer** son id, son titre de page, son nom français ni son logo d'infobox ; un nouveau club ne reprend un titre de page que s'il est libre (UNIQUE : à égalité, le plus notoire le garde).
+- **Logos de tous les clubs** : le CSV n'en donne que pour 5 % (cas déclencheur : le CFR Cluj, `image = CFR Cluj badge.svg` dans son infobox, mais pas dans le CSV). `enrich --what logos --all-clubs` lit le champ `image` de l'infobox des ≈ 25 600 clubs ayant une page anglaise (par défaut seuls nos clubs à effectifs sont traités).
+- **État des logos** : 5 371 / 42 889 clubs ont un logo (infobox ou Commons). Le traitement complet des ≈ 25 600 clubs à page anglaise prend plusieurs heures (pauses imposées par Wikipedia) ; il est donc **fait par ordre de notoriété** (`--logo-limit N`, plus notoires d'abord) : les 1 000 premiers sont faits, dont le CFR Cluj ; le reste se complète en relançant la commande (idempotent). Une première tentative complète, arrêtée à 26 %, a été reprise ainsi.
+- Le site charge au démarrage uniquement les clubs à effectifs (`has_squads`) ; la fiche, la recherche et les liens depuis les carrières lisent `club`.
 
 ## 10. Jalons proposés
 

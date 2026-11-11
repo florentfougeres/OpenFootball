@@ -56,18 +56,18 @@ FROM player_career c JOIN player p ON p.id = c.player_id LEFT JOIN player_wikida
 ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
 
 _GLOBAL = {
-    "club": "SELECT c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, coalesce(lf.label, c.name_fr) AS name_fr, "
-            "c.country_code, c.wikidata_qid, c.logo_url, c.logo_license FROM club c "
+    "club": "SELECT c.wikidata_qid, c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, "
+            "coalesce(lf.label, c.name_fr) AS name_fr, c.name_local, c.nickname, c.category, c.country_code, "
+            "c.country_iso, c.country, c.city, c.stadium, c.stadium_capacity, c.division, c.league, c.founded, "
+            "c.colors, c.colors_hex, c.website, c.logo_url, c.logo_license, c.logo_commons_url, "
+            "c.wikipedia_en_url, c.wikipedia_local_url, c.wikipedia_count, c.lon, c.lat, c.transfermarkt_id, "
+            "c.fbref_id, c.worldfootball_id, "
+            "EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id) AS has_squads FROM club c "
             "LEFT JOIN entity_label le ON le.qid = c.wikidata_qid AND le.lang = 'en' "
-            "LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr' ORDER BY c.wikipedia_title",
+            "LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr' "
+            "ORDER BY c.wikidata_qid NULLS LAST, c.id",
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
-    # Clubs du monde : fiches club. `en_title` = titre de la page anglaise (relie les carrières aux fiches).
-    "world_club": "SELECT qid, name_local, name_en, nickname, category, city, country, country_iso, stadium, "
-                  "stadium_capacity, division, league, founded, colors, colors_hex, logo_url, website, "
-                  "wikipedia_en_url, wikipedia_local_url, wikipedia_count, lon, lat, transfermarkt_id, fbref_id, "
-                  "worldfootball_id, replace(url_decode(regexp_extract(wikipedia_en_url, '/wiki/(.*)$', 1)), '_', ' ') AS en_title "
-                  "FROM world_club ORDER BY qid",
     "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
     "competition": "SELECT code, name_en, name_fr, country_code, level, wikidata_qid "
                    "FROM competition ORDER BY code",
