@@ -67,12 +67,12 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 
 | Donnée | Clubs | Sur |
 |---|---|---|
-| Clubs au total (table `club`) | 42889 | 42889 |
-| … dont avec effectifs détaillés | 189 | 42889 |
-| … avec un logo (infobox ou Commons) | 5371 | 42889 |
-| … avec stade | 9890 | 42889 |
-| … avec date de fondation | 23589 | 42889 |
-| … avec page Wikipedia anglaise | 25612 | 42889 |
+| Clubs au total (table `club`) | 42857 | 42857 |
+| … dont avec effectifs détaillés | 189 | 42857 |
+| … avec un logo (infobox ou Commons) | 5371 | 42857 |
+| … avec stade | 9886 | 42857 |
+| … avec date de fondation | 23588 | 42857 |
+| … avec page Wikipedia anglaise | 25607 | 42857 |
 
 ## À faire
 

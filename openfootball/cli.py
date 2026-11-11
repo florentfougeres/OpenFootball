@@ -12,7 +12,7 @@ from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
 from openfootball.enrich import enrich_birth_dates, enrich_logos, enrich_wiki_links
 from openfootball.progress import build_progress
-from openfootball.world_clubs import import_world_clubs
+from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_careers, import_careers_by_qid
 from openfootball.reconcile import reconcile_by_name, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -400,8 +400,11 @@ def progress_cmd(args: argparse.Namespace) -> int:
 def import_world_clubs_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
+    purged = purge_non_clubs(con)                       # saisons/effectifs pris pour des clubs
     n = import_world_clubs(con, args.csv)
     total = con.execute("SELECT count(*) FROM club").fetchone()[0]
+    if purged:
+        print(f"{purged} éléments qui ne sont pas des clubs (saisons…) retirés de la table")
     squads = con.execute("SELECT count(DISTINCT club_id) FROM club_season").fetchone()[0]
     print(f"{n} clubs du CSV fusionnés dans `club` : {total} clubs au total, dont {squads} avec effectifs")
     return 0

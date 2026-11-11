@@ -84,3 +84,36 @@ def test_real_csv_if_present(con):
     n = import_world_clubs(con, real)
     assert n > 40000 and con.execute("SELECT count(*) FROM club").fetchone()[0] == n
     assert con.execute("SELECT count(*) FROM club WHERE wikidata_qid = 'Q631'").fetchone()[0] == 1
+
+
+@pytest.mark.parametrize("name,expected", [
+    ("CFR 1907 Cluj-Napoca în sezonul 2011-2012", True),
+    ("2024–25 FC Volendam season", True),
+    ("Feijenoord in het seizoen 1959/60", True),
+    ("Unione Sportiva Grosseto 1912 2020-2021", True),
+    ("ФК Сливнишки герой (Сливница) - състав 2011-2012", True),
+    ("Persiraja Banda Aceh musim 2025–2026", True),
+    ("Lechia Kielce (1920-1948)", False),          # club historique : période longue
+    ("FV 1900/02 Frankenthal", False),             # 1900/02 : deux ans d'écart
+    ("FC Mtskheta (2001–2004)", False),
+    ("Olympique de Marseille", False), ("1. FC Köln", False), ("Sparta Praha", False), (None, False),
+])
+def test_season_articles_are_not_clubs(name, expected):
+    from openfootball.world_clubs import is_season_page
+    assert is_season_page(name) is expected
+
+
+def test_import_skips_season_articles_and_purge_removes_existing_ones(con, tmp_path):
+    from openfootball.world_clubs import purge_non_clubs
+    season = 'CFR Cluj în sezonul 2011-2012,,,Q12723190,,,,Roumanie,,RO,,,,,,,,,,,,,https://ro.wikipedia.org/wiki/X,1,,,,,,,'
+    assert import_world_clubs(con, write(tmp_path, INTER, season)) == 1                  # la saison n'est pas importée
+    assert con.execute("SELECT count(*) FROM club WHERE wikidata_qid = 'Q12723190'").fetchone()[0] == 0
+    # une saison déjà présente (import d'avant le correctif) est retirée, mais jamais un club à effectifs
+    con.execute("INSERT INTO club (id, wikidata_qid, name_local) VALUES (900, 'Q1', 'FC Exemple season 2019-2020')")
+    con.execute("INSERT INTO country VALUES ('FRA', 'France', 'France')")
+    con.execute("INSERT INTO club (id, wikidata_qid, name_local, country_code) VALUES (901, 'Q2', 'Vrai club 2019-2020', 'FRA')")
+    con.execute("INSERT INTO season (id, start_year, label) VALUES (1, 2019, '2019/20')")
+    con.execute("INSERT INTO competition (id, code, name_en, name_fr, country_code, level) VALUES (1, 'X', 'X', 'X', 'FRA', 1)")
+    con.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (1, 901, 1, 1)")
+    assert purge_non_clubs(con) == 1
+    assert [r[0] for r in con.execute("SELECT id FROM club WHERE id >= 900").fetchall()] == [901]
