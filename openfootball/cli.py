@@ -340,7 +340,7 @@ def reconcile_cmd(args: argparse.Namespace) -> int:
     """Résout les liens Wikipedia des joueurs en QID Wikidata et fusionne les doublons inter-langues."""
     con = connect(args.db)
     migrate(con)
-    clients = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in ("en", "fr", "it")}
+    clients = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in ("en", *PARSERS)}
     before = con.execute("SELECT count(*) FROM player").fetchone()[0]
     r = reconcile_players(con, clients)
     after = con.execute("SELECT count(*) FROM player").fetchone()[0]

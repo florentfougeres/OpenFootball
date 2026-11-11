@@ -54,12 +54,12 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 
 | Donnée | Manquants | Sur |
 |---|---|---|
-| Joueurs sans identité Wikidata (QID) | 1545 | 14684 |
-| Joueurs sans carrière (infobox) | 1572 | 14684 |
-| Joueurs sans date de naissance au jour près | 1602 | 14684 |
-| Lignes d'effectif sans nationalité | 529 | 52099 |
-| Lignes d'effectif sans poste | 84 | 52099 |
-| Lignes d'effectif à statut inconnu (prêt/transfert) | 45650 | 52099 |
+| Joueurs sans identité Wikidata (QID) | 3268 | 16633 |
+| Joueurs sans carrière (infobox) | 3300 | 16633 |
+| Joueurs sans date de naissance au jour près | 3327 | 16633 |
+| Lignes d'effectif sans nationalité | 685 | 53902 |
+| Lignes d'effectif sans poste | 99 | 53902 |
+| Lignes d'effectif à statut inconnu (prêt/transfert) | 50647 | 53902 |
 | Clubs à effectifs sans logo | 0 | 189 |
 | Clubs à effectifs sans page Wikipedia française | 1 | 189 |
 
