@@ -383,7 +383,7 @@ def enrich_cmd(args: argparse.Namespace) -> int:
         enrich_wiki_links(con, wd, qids, ("en", "fr"))
         enrich_birth_dates(con, wd)
     if "logos" in what:
-        enrich_logos(con, wp)
+        enrich_logos(con, wp, refresh=args.refresh_logos)
     return 0
 
 
@@ -460,6 +460,7 @@ def main(argv: list[str] | None = None) -> int:
     en = sub.add_parser("enrich", help="liens wiki par langue, noms fr, dates de naissance, logos")
     en.add_argument("--db", default=DB_DEFAULT)
     en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos"])
+    en.add_argument("--refresh-logos", action="store_true", help="efface puis refait tous les logos")
     en.add_argument("--cache", default="cache/wikipedia")
     en.add_argument("--wd-cache", default="cache/wikidata")
     en.set_defaults(func=enrich_cmd)

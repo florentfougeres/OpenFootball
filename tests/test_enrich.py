@@ -60,20 +60,22 @@ def test_birth_dates_are_written_once(con):
     assert len(wd.queries) == 1                                  # joueur déjà renseigné : plus de requête
 
 
-class FakeWp:
+class FakeWpCollage:
+    """La page a une image principale (un montage), mais l'infobox n'a pas de champ `image` : pas de logo."""
+
     def _call(self, params):
-        if params.get("prop") == "pageimages":
-            return {"query": {"normalized": [], "redirects": [], "pages": [
-                {"title": "Olympique de Marseille", "pageimage": "OM_logo.svg",
-                 "thumbnail": {"source": "https://upload.wikimedia.org/x/200px-OM_logo.svg.png"}}]}}
-        return {"query": {"pages": [{"title": "File:OM_logo.svg", "imageinfo": [
-            {"extmetadata": {"LicenseShortName": {"value": "Fair use"}}}]}]}}
+        prop = params.get("prop")
+        if prop == "pageimages":
+            raise AssertionError("l'image principale de la page ne doit plus être utilisée")
+        if prop == "revisions":
+            return {"query": {"pages": [{"title": "Olympique de Marseille", "revisions": [{"slots": {"main": {
+                "content": "{{Infobox football club\n| clubname = OM\n}}"}}}]}]}}
+        raise AssertionError("aucune miniature à demander sans champ image")
 
 
-def test_logo_and_license_are_stored(con):
-    assert enrich_logos(con, FakeWp(), log=lambda s: None) == 1
-    assert con.execute("SELECT logo_url, logo_license FROM club WHERE id = 1").fetchone() == (
-        "https://upload.wikimedia.org/x/200px-OM_logo.svg.png", "Fair use")
+def test_page_lead_image_is_never_used_as_a_logo(con):
+    assert enrich_logos(con, FakeWpCollage(), log=lambda s: None) == 0
+    assert con.execute("SELECT logo_url FROM club WHERE id = 1").fetchone()[0] is None
 
 
 class FakeWpNonFree:
@@ -89,6 +91,12 @@ class FakeWpNonFree:
         return {"query": {"pages": [{"title": "File:Olympique de Marseille logo.svg", "imageinfo": [{
             "thumburl": "https://thumb.wikimedia.org/x/250px-OM.svg.png?utm_source=en.wikipedia.org",
             "extmetadata": {"LicenseShortName": {"value": "Fair use"}, "NonFree": {"value": "true"}}}]}]}}
+
+
+def test_refresh_replaces_a_wrong_existing_logo(con):
+    con.execute("UPDATE club SET logo_url = 'https://x/Udinese_through_the_ages.jpg', logo_license = 'unknown'")
+    assert enrich_logos(con, FakeWpNonFree(), refresh=True, log=lambda s: None) == 1
+    assert 'through_the_ages' not in con.execute('SELECT logo_url FROM club').fetchone()[0]
 
 
 def test_non_free_logo_is_read_from_the_infobox(con):
@@ -113,3 +121,14 @@ def test_wikidata_client_retries_on_a_dropped_connection(tmp_path):
     wd = WikidataClient(tmp_path, transport=flaky, sleep=lambda s: None)
     assert wd.query("SELECT 1 # retry-test-unique") == [{"x": "ok"}] and len(calls) == 2
     assert issubclass(requests.ConnectionError, requests.RequestException)
+
+
+def test_display_options_after_the_file_name_are_dropped(con):
+    class Wp(FakeWpNonFree):
+        def _call(self, params):
+            if params.get("prop") == "revisions":
+                return {"query": {"pages": [{"title": "Olympique de Marseille", "revisions": [{"slots": {"main": {
+                    "content": "| image = Olympique de Marseille logo.svg{{!}}class=skin-invert\n"}}}]}]}}
+            return super()._call(params)
+
+    assert enrich_logos(con, Wp(), log=lambda s: None) == 1          # le fichier est trouvé malgré « {{!}}class=… »
