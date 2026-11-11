@@ -21,12 +21,7 @@ from openfootball.parse.squad_i18n import PARSERS
 from openfootball.sources.wikidata import WikidataClient, club_qids, season_articles
 from openfootball.sources.wikipedia import WikipediaClient
 
-LEAGUES = {
-    "ENG": "Premier League",
-    "FRA": "Ligue 1",
-    "ITA": "Serie A",
-    "ESP": "La Liga",
-}
+LEAGUES = {sc.code: sc.competition_en for sc in load_scopes()}      # un fichier scopes/*.toml par pays
 
 
 def expected_teams(code: str, year: int) -> int:

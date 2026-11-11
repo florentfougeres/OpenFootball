@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.21** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.22** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -291,6 +291,13 @@ Demande : afficher le parcours d'un joueur « comme sur Wikipedia » (la liste d
 - Joueurs : 11 867 (de 14 800 à l'origine).
 - **Homonymes** : Joshua King = deux entités (Q436237 né en 1992 ; Q131518757 né en 2007), conservées séparées par la réconciliation.
 - **Bundesliga ajoutée (D1 étendu)** : `scopes/deu.toml`, 18 clubs, 2010/11 → 2025/26. Le wikitexte de ses pages de championnat ne nomme pas chaque club (modèle à codes) : l'énumération lit le classement du HTML rendu (16/16 saisons = 18 clubs).
+
+### Bundesliga importée et état global (2026-11-11)
+
+- **Bundesliga 2010/11 → 2025/26** : 288 club-saisons, **286 effectifs attestés** (255 anglais, 31 italien) ; 2 trous (Holstein Kiel et VfL Bochum 2024/25 : leurs pages anglaises n'ont aucune section d'effectif, seulement transferts et matchs).
+- **État global** : 5 championnats, **1 550 / 1 562 effectifs = 99,2 %**, 12 trous (Liga 10, Bundesliga 2), 186 clubs, **14 065 joueurs** (12 696 identifiés par QID, 1 015 sans lien laissés séparés), carrières pour 12 673 joueurs (103 422 lignes). Seul blocage au gel : `empty_squad` ×12, à valider via `known-gap`. Jeu de données publié : **2,9 Mo**.
+- Vérifié dans le navigateur : la Bundesliga apparaît sur l'accueil ; « Jean Butez » = un seul joueur (carrière : Lille II, Lille, Mouscron prêt, Mouscron 2018-2020, Antwerp 2020-2025, Como) ; Joshua King = deux entités.
+- **Limites connues** : 1 015 joueurs sans lien Wikipedia (pages françaises) restent identifiés par leur nom seul quand aucune carrière ne prouve le rattachement ; 1 392 joueurs sans carrière (dont ces 1 015) ; un avertissement `multi_club_unknown_stint` ×1 255 persiste (transferts non parsés, C1).
 
 ## 10. Jalons proposés
 
