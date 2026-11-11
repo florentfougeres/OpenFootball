@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.12** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.13** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -220,6 +220,18 @@ Réserves à lever avant de s'appuyer sur ces chiffres : (1) « plausible » = �
 - **C2 — Cible D2 (100 %)** : après corrections du parseur, on peut viser ≈ 90–92 % `attested` ; les ≈ 8 % restants (pages absentes, vides) iraient dans `known_gaps` avec le secours Wikidata P54 (D4) pour en réduire une partie. La Ligue 1 est le championnat le plus troué (61 pages absentes sur ~330).
 - **C3 — Ligue 1 : 18 clubs depuis 2023–24** (le « 20 équipes » du pipeline devient une table `(championnat, saison) → nombre de clubs`).
 - **C4 — Énumération des clubs** : 4 championnats-saisons (La Liga 2015–16, 2016–17, 2024–25, 2025–26) échouent encore à donner le bon nombre d'équipes → à corriger ou à saisir à la main (fichier `scopes/`).
+
+## 9quater. Premier backfill réel : 2023/24 (2026-11-11)
+
+Commande : `openfootball backfill --season 2023` (puis `status`, `known-gap`, `freeze`).
+
+- **78 / 78 effectifs attestés** (PL 20, Ligue 1 18, Serie A 20, Liga 20) : 77 depuis la page anglaise, 1 depuis l'italien. **Aucun trou** sur cette saison.
+- Taille des effectifs : min 21, médiane 33,5, max 55 (Chelsea). Elle inclut les joueurs prêtés (`loan_out` 372, `loan_in` 159, D6) ; 2 195 lignes restent `unknown`.
+- Invariants : **0 bloquant, 62 avertissements** (joueur dans deux clubs avec statut inconnu : prêts non reconnus des deux côtés, transferts d'hiver non parsés — C1).
+- Défauts trouvés et corrigés pendant le run : tableaux de buteurs, de renouvellements de contrat et lignes de total pris pour des joueurs (sections exclues + nom sans lettre ou date rejeté).
+- **La saison n'est pas figée** : le gel reste une décision manuelle (D3).
+
+**Limites connues** : (1) identité des joueurs = lien Wikipedia par langue ; un même joueur lu en anglais puis en italien/français est deux lignes `player` tant que le rapprochement Wikidata n'est pas fait ; (2) `arrived_mid` / `left_mid` jamais renseignés (tableaux Transfers non parsés) ; (3) « plausible » ≠ « exact » : pas de vérité externe pour valider les effectifs.
 
 ## 10. Jalons proposés
 

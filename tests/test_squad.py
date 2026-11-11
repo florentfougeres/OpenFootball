@@ -137,3 +137,39 @@ def test_duplicates_across_sections_counted_once():
 {{Efs player|no=1|name=[[Pepe Reina]]|pos=GK|nat=ESP|10+0|0}}
 """
     assert len(parse_squad(wt)) == 1
+
+
+def test_table_rows_that_are_not_players_are_ignored():
+    wt = """== Players ==
+=== First team ===
+{| class="wikitable"
+|-
+! No.
+! Name
+! Pos
+|-
+| 1
+| [[Real Player]]
+| GK
+|-
+| 3
+| 22 September 2023
+| DF
+|-
+| 0
+| 6
+| FW
+|}
+=== Goals ===
+{| class="wikitable"
+|-
+! No.
+! Name
+|-
+| 9
+| [[Top Scorer]]
+|}
+"""
+    from openfootball.parse.squad import is_excluded_section
+    kept = [e.name for e in parse_squad(wt) if not is_excluded_section(e.section)]
+    assert kept == ["Real Player"]

@@ -39,9 +39,13 @@ _REGION_END = re.compile(
     r"^(transfers?|competitions?|pre-?season|friendlies|statistics|club|kits?|"
     r"season review|friendly matches|match(es)?|results|notes|references|"
     r"coaching staff|management)\b", re.I)
-_EXCLUDED_SECTION = re.compile(r"reserve|academy|youth|under-?\d|u-?\d{2}|b team|staff|manage", re.I)
+_EXCLUDED_SECTION = re.compile(
+    r"reserve|academy|youth|under-?\d|u-?\d{2}|b team|staff|manage|"
+    r"goals?\b|assists?|disciplin|contract|award|clean sheet|top scor|hat-?trick|player of the", re.I)
 
 
+_NO_LETTERS = re.compile(r"^[^A-Za-zÀ-ÿ]*$")
+_DATE = re.compile(r"^\d{1,2}\s+[A-Za-zÀ-ÿ]+\s+\d{4}$")
 _NOT_A_PLAYER = re.compile(r"^\W*(totals?|own goals?|opponents?|o\.?g\.?|n/?a|vacant)\W*$", re.I)
 _TEMPLATES = ("Fs player", "Efs player", "Football squad player",
               "Extended football squad player", "Fb si player")
@@ -213,7 +217,7 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
             if "name" not in cols or len(cells) <= cols["name"]:
                 continue
             name, link = _name_and_link(cells[cols["name"]][1])
-            if not name or _NOT_A_PLAYER.match(name):
+            if not name or _NOT_A_PLAYER.match(name) or _NO_LETTERS.match(name) or _DATE.match(name):
                 continue
             nat = None
             if "nat" in cols and len(cells) > cols["nat"]:

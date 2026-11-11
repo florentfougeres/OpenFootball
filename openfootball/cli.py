@@ -7,6 +7,11 @@ import logging
 from collections import Counter
 from pathlib import Path
 
+from openfootball.backfill import run_backfill
+from openfootball.checks import run_checks
+from openfootball.db import connect, migrate
+from openfootball.scopes import load_scopes
+from openfootball.store import FreezeRefused, SeasonFrozen, freeze
 from openfootball.parse.league import league_teams, season_label
 from openfootball.parse.squad import is_excluded_section, parse_squad
 from openfootball.parse.squad_i18n import PARSERS
@@ -210,6 +215,93 @@ def probe_langs(args: argparse.Namespace) -> int:
     return 0
 
 
+DB_DEFAULT = "data/work/openfootball.duckdb"
+
+
+def _season_id(con, year: int) -> int:
+    row = con.execute("SELECT id FROM season WHERE start_year = ?", [year]).fetchone()
+    if row is None:
+        raise SystemExit(f"saison {year} absente : lancer d'abord `backfill --season {year}`")
+    return row[0]
+
+
+def backfill_cmd(args: argparse.Namespace) -> int:
+    con = connect(args.db)
+    migrate(con)
+    wp = WikipediaClient(args.cache)
+    langs = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in PARSERS}
+    try:
+        res = run_backfill(con, load_scopes(args.league), args.season, wp=wp, lang_clients=langs,
+                           wd=WikidataClient(args.wd_cache), qid_lookup=lambda ts: club_qids(wp, ts))
+    except SeasonFrozen as exc:
+        raise SystemExit(f"refusé : {exc}")
+    gaps = [r for r in res if r.lang is None]
+    print(f"\n=== backfill {args.season}/{str(args.season + 1)[2:]} : {len(res) - len(gaps)}/{len(res)} effectifs attestés ===")
+    print("  par langue:", dict(Counter(r.lang for r in res if r.lang)))
+    for r in gaps:
+        print(f"  TROU {r.league} {r.club}")
+    if gaps:
+        print("  -> à valider un par un avec `known-gap` (D2) avant `freeze`.")
+    return 0
+
+
+def status_cmd(args: argparse.Namespace) -> int:
+    con = connect(args.db)
+    migrate(con)
+    sid = _season_id(con, args.season)
+    st = con.execute("SELECT label, status, content_hash FROM season WHERE id = ?", [sid]).fetchone()
+    print(f"saison {st[0]} : {st[1]}" + (f" (empreinte {st[2][:12]}…)" if st[2] else ""))
+    for code, n, players in con.execute("""
+            SELECT co.code, count(DISTINCT cs.id), count(pcs.id) FROM club_season cs
+            JOIN competition co ON co.id = cs.competition_id
+            LEFT JOIN player_club_season pcs ON pcs.club_season_id = cs.id
+            WHERE cs.season_id = ? GROUP BY co.code ORDER BY co.code""", [sid]).fetchall():
+        print(f"  {code}: {n} clubs, {players} joueurs")
+    probs = run_checks(con, sid)
+    for p in probs:
+        print(f"  [{p.severity}] {p.check} — {p.scope}: {p.detail}")
+    print(f"{sum(1 for p in probs if p.severity == 'blocking')} bloquant(s), "
+          f"{sum(1 for p in probs if p.severity == 'warning')} avertissement(s)")
+    return 0
+
+
+def known_gap_cmd(args: argparse.Namespace) -> int:
+    """Valide explicitement des trous (D2). Ne touche qu'aux club-saisons SANS effectif attesté."""
+    con = connect(args.db)
+    migrate(con)
+    sid = _season_id(con, args.season)
+    empty = con.execute("""
+        SELECT cs.id, c.wikipedia_title FROM club_season cs JOIN club c ON c.id = cs.club_id
+        WHERE cs.season_id = ? AND NOT EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id)
+          AND NOT EXISTS (SELECT 1 FROM known_gap k WHERE k.club_season_id = cs.id)""", [sid]).fetchall()
+    wanted = [(i, t) for i, t in empty if args.all_unresolved or t in (args.club or [])]
+    unknown = set(args.club or []) - {t for _, t in empty}
+    if unknown:
+        raise SystemExit(f"pas un trou ouvert pour cette saison : {sorted(unknown)}")
+    for i, t in wanted:
+        con.execute("INSERT INTO known_gap VALUES (?, ?, now())", [i, args.reason])
+        print(f"  trou validé : {t}")
+    print(f"{len(wanted)} trou(s) validé(s) — motif : {args.reason}")
+    return 0
+
+
+def freeze_cmd(args: argparse.Namespace) -> int:
+    con = connect(args.db)
+    migrate(con)
+    sid = _season_id(con, args.season)
+    try:
+        digest = freeze(con, sid)
+    except FreezeRefused as exc:
+        print("GEL REFUSÉ :")
+        for p in exc.problems:
+            print(f"  [{p.severity}] {p.check} — {p.scope}: {p.detail}")
+        return 1
+    except SeasonFrozen as exc:
+        raise SystemExit(f"refusé : {exc}")
+    print(f"saison {args.season} figée. Empreinte {digest}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="openfootball")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -232,6 +324,25 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--wd-cache", default="cache/wikidata")
     g.add_argument("--out", default="data/work/probe/langs.json")
     g.set_defaults(func=probe_langs)
+    common = lambda p: (p.add_argument("--db", default=DB_DEFAULT), p.add_argument("--season", type=int, required=True))
+    b = sub.add_parser("backfill", help="construit une saison (une seule fois), sans la figer")
+    common(b)
+    b.add_argument("--league", nargs="*", choices=sorted(LEAGUES))
+    b.add_argument("--cache", default="cache/wikipedia")
+    b.add_argument("--wd-cache", default="cache/wikidata")
+    b.set_defaults(func=backfill_cmd)
+    t = sub.add_parser("status", help="état d'une saison et invariants")
+    common(t)
+    t.set_defaults(func=status_cmd)
+    k = sub.add_parser("known-gap", help="valide explicitement des club-saisons sans effectif (D2)")
+    common(k)
+    k.add_argument("--reason", required=True)
+    k.add_argument("--club", nargs="*")
+    k.add_argument("--all-unresolved", action="store_true")
+    k.set_defaults(func=known_gap_cmd)
+    f = sub.add_parser("freeze", help="fige une saison si les invariants passent (D3)")
+    common(f)
+    f.set_defaults(func=freeze_cmd)
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     return args.func(args)

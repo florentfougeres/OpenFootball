@@ -1,0 +1,13 @@
+code = "ENG"
+name_en = "England"
+name_fr = "Angleterre"
+
+[competition]
+code = "ENG-PL"
+name_en = "Premier League"
+name_fr = "Premier League"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 20

@@ -1,0 +1,18 @@
+code = "FRA"
+name_en = "France"
+name_fr = "France"
+
+[competition]
+code = "FRA-L1"
+name_en = "Ligue 1"
+name_fr = "Ligue 1"
+level = 1
+
+# La Ligue 1 est passée de 20 à 18 clubs en 2023–24.
+[[team_count]]
+from = 2010
+n = 20
+
+[[team_count]]
+from = 2023
+n = 18

@@ -1,0 +1,13 @@
+code = "ITA"
+name_en = "Italy"
+name_fr = "Italie"
+
+[competition]
+code = "ITA-SA"
+name_en = "Serie A"
+name_fr = "Serie A"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 20

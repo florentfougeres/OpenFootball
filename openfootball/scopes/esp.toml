@@ -1,0 +1,13 @@
+code = "ESP"
+name_en = "Spain"
+name_fr = "Espagne"
+
+[competition]
+code = "ESP-LL"
+name_en = "La Liga"
+name_fr = "Liga"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 20

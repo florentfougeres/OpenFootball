@@ -21,5 +21,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 include = ["openfootball*"]
 
+[tool.setuptools.package-data]
+"openfootball.migrations" = ["*.sql"]
+"openfootball.scopes" = ["*.toml"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
