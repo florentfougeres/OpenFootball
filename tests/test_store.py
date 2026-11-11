@@ -140,3 +140,13 @@ def test_oversized_squad_is_a_warning(con):
     probs = run_checks(con, s)
     assert ("oversized_squad", "warning") in {(p.check, p.severity) for p in probs}
     assert not [p for p in probs if p.severity == "blocking"]
+
+
+def test_out_of_range_shirt_number_is_left_empty_not_a_crash(con):
+    s = ensure_season(con, 2023)
+    club_season(con, s, 1, 1)
+    bad = SquadEntry(name="Olivier Kapo", link=None, shirt_number=103, position_raw="MF", position="MF",
+                     nationality="FRA", section="Effectif", note=None, fmt="feff_joueur")
+    write_squad(con, 1, full_squad() + [bad], lang="fr", source_title="t", revid=1)
+    assert con.execute("SELECT shirt_number FROM player_club_season p JOIN player pl ON pl.id = p.player_id "
+                       "WHERE pl.name = 'Olivier Kapo'").fetchone()[0] is None

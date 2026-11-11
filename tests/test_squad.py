@@ -232,3 +232,34 @@ def test_abbr_wrapped_headers_are_recognised():
 """
     assert [(e.shirt_number, e.name, e.nationality, e.position) for e in parse_squad(wt)] == [
         (1, "David Raya", "ESP", "GK"), (4, "Ben White", "ENG", "DF")]
+
+
+def test_bold_shirt_numbers_are_read():
+    """AC Milan 2026/27 : le numéro est écrit en gras dans la cellule (« '''16''' »)."""
+    wt = """== Players ==
+=== Squad information ===
+{|class="wikitable sortable"
+|-
+!{{abbr|No.|Squad number}}
+!Player
+!{{abbr|Nat.|Nationality}}
+!Position(s)
+|-
+|style="text-align:right"|'''1'''
+|[[Pietro Terracciano]]
+|style="text-align:center"|{{flagicon|ITA}}
+|[[Goalkeeper (association football)|GK]]
+|-
+|style="text-align:right"|'''16'''
+|[[Mike Maignan]] ''([[Captain (association football)|captain]])''
+|style="text-align:center"|{{flagicon|FRA}}
+|[[Goalkeeper (association football)|GK]]
+|}
+"""
+    assert [(e.shirt_number, e.name, e.nationality) for e in parse_squad(wt)] == [
+        (1, "Pietro Terracciano", "ITA"), (16, "Mike Maignan", "FRA")]
+
+
+def test_int_handles_markup():
+    from openfootball.parse.squad import _int
+    assert [_int(x) for x in ("7", "'''16'''", "''9''", "<b>10</b>", "{{sort|3|3}}", "—", "", None)] == [7, 16, 9, 10, None, None, None, None]

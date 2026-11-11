@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.26** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.27** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -329,6 +329,11 @@ Demande du mainteneur : **le CSV doit vivre dans la base DuckDB, comme une seule
 - **État des logos** : 5 371 / 42 889 clubs ont un logo (infobox ou Commons). Le traitement complet des ≈ 25 600 clubs à page anglaise prend plusieurs heures (pauses imposées par Wikipedia) ; il est donc **fait par ordre de notoriété** (`--logo-limit N`, plus notoires d'abord) : les 1 000 premiers sont faits, dont le CFR Cluj ; le reste se complète en relançant la commande (idempotent). Une première tentative complète, arrêtée à 26 %, a été reprise ainsi.
 - **Éléments qui ne sont pas des clubs** (signalé par le mainteneur : « CFR 1907 Cluj-Napoca în sezonul 2011-2012 » dans la liste des clubs) : l'extraction Wikidata inclut des articles de **saison, d'effectif ou de transferts** (une seule version Wikipedia chacun). L'import les écarte et `purge_non_clubs` retire ceux déjà présents (jamais un club à effectifs). Règle : période de **deux années consécutives** (2011-2012, 2011/12) ou mot de saison + période ; une période plus longue reste un club (« Lechia Kielce (1920-1948) »). **32 retirés** (42 889 → 42 857 clubs). Limite : la règle ne voit que ce motif ; d'autres éléments non-clubs sans année dans leur nom pourraient subsister.
 - Le site charge au démarrage uniquement les clubs à effectifs (`has_squads`) ; la fiche, la recherche et les liens depuis les carrières lisent `club`.
+
+### Numéros de maillot manquants (2026-11-11)
+
+Signalé par le mainteneur : pas de numéros pour l'AC Milan 2026/27 (ni Bologne). **Cause** : dans ces pages le numéro est en gras dans la cellule (écrit avec des triples apostrophes) et l'extraction n'acceptait que des chiffres nus. Corrigé à la racine (`_int` ignore gras, italique, balises), avec un test sur ce cas. Effet : lignes d'effectif sans numéro **11 % → 8,6 %** (4 482 / 52 099) ; AC Milan 2026/27 : 27/27. Le reste vient de pages sources sans numéros (surtout 2021-2023 : 14-18 %).
+- **Effet de bord traité** : un numéro hors 0-99 (« 103 » pour Olivier Kapo, page française d'Auxerre 2011-12, coquille de source) faisait échouer tout le backfill sur la contrainte de la base ; il reste maintenant vide (`_valid_shirt`), avec un test.
 
 ## 10. Jalons proposés
 

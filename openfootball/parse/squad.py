@@ -137,7 +137,9 @@ def _flag_from(text: str | None) -> str | None:
 
 
 def _int(raw: str | None) -> int | None:
-    m = re.match(r"\s*(\d{1,3})\b", raw or "")
+    """Premier entier d'une cellule, y compris en gras/italique (« \'\'\'16\'\'\' »), sinon None."""
+    text = re.sub(r"\'{2,}|<[^>]+>|\{\{.*?\}\}", "", raw or "")
+    m = re.match(r"\s*(\d{1,3})\b", text)
     return int(m.group(1)) if m else None
 
 

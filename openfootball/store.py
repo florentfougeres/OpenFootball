@@ -52,6 +52,11 @@ def ensure_season(con, start_year: int, status: str = "backfill") -> int:
     return sid
 
 
+def _valid_shirt(n: int | None) -> int | None:
+    """Un numéro de maillot est entre 0 et 99 (contrainte de la base) ; une coquille de source (« 103 ») reste vide."""
+    return n if n is not None and 0 <= n <= 99 else None
+
+
 def stint_of(entry: SquadEntry) -> str:
     """Seul ce qui est écrit sur la page compte (D6) ; sinon `unknown`, jamais `full` par défaut."""
     section = entry.section or ""
@@ -96,7 +101,7 @@ def write_squad(con, club_season_id: int, entries: list[SquadEntry], *, lang: st
                 "INSERT INTO player_club_season (id, player_id, club_season_id, shirt_number, position_code,"
                 " position_raw, nationality_raw, stint, confidence, source, source_section)"
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'attested', 'wikipedia_season', ?)",
-                [_next_id(con, "player_club_season"), pid, club_season_id, e.shirt_number, e.position,
+                [_next_id(con, "player_club_season"), pid, club_season_id, _valid_shirt(e.shirt_number), e.position,
                  e.position_raw, e.nationality, stint_of(e), e.section])
         con.execute("UPDATE club_season SET source_lang = ?, source_title = ?, source_revid = ?, "
                     "retrieved_at = now() WHERE id = ?", [lang, source_title, revid, club_season_id])
