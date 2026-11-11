@@ -16,10 +16,13 @@ from pathlib import Path
 
 import duckdb
 
+from openfootball.countries import flag_code
+
 _SQUAD = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
        p.name AS player, w.qid AS player_qid, p.link_lang, p.link_title,
        pcs.shirt_number, pcs.position_code AS position, pcs.nationality_raw AS nationality,
+       nm.flag AS nat_flag,
        pcs.stint, pcs.confidence, pcs.source, pcs.source_section,
        cs.source_lang, cs.source_title, cs.source_revid
 FROM player_club_season pcs
@@ -29,6 +32,7 @@ JOIN competition co ON co.id = cs.competition_id
 JOIN club cl ON cl.id = cs.club_id
 JOIN player p ON p.id = pcs.player_id
 LEFT JOIN player_wikidata w ON w.player_id = p.id
+LEFT JOIN nat_map nm ON nm.raw = pcs.nationality_raw
 WHERE s.id = {sid}
 ORDER BY cl.wikipedia_title, pcs.shirt_number NULLS LAST, p.name"""
 
@@ -52,8 +56,13 @@ FROM player_career c JOIN player p ON p.id = c.player_id LEFT JOIN player_wikida
 ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
 
 _GLOBAL = {
-    "club": "SELECT wikipedia_title, name_en, name_fr, country_code, wikidata_qid, logo_url, logo_license "
-            "FROM club ORDER BY wikipedia_title",
+    "club": "SELECT c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, coalesce(lf.label, c.name_fr) AS name_fr, "
+            "c.country_code, c.wikidata_qid, c.logo_url, c.logo_license FROM club c "
+            "LEFT JOIN entity_label le ON le.qid = c.wikidata_qid AND le.lang = 'en' "
+            "LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr' ORDER BY c.wikipedia_title",
+    "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
+             "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
+    "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
     "competition": "SELECT code, name_en, name_fr, country_code, level, wikidata_qid "
                    "FROM competition ORDER BY code",
     "season": "SELECT label, start_year, status, content_hash FROM season ORDER BY start_year",
@@ -75,6 +84,13 @@ def _write(con, sql: str, out: Path, table: str, stem: str) -> dict:
 def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
+    # Nationalité brute -> code de drapeau : table temporaire jointe dans la requête d'effectif.
+    con.execute("CREATE OR REPLACE TEMP TABLE nat_map (raw VARCHAR PRIMARY KEY, flag VARCHAR)")
+    for (raw,) in con.execute("SELECT DISTINCT nationality_raw FROM player_club_season "
+                              "WHERE nationality_raw IS NOT NULL").fetchall():
+        flag = flag_code(raw)
+        if flag:
+            con.execute("INSERT INTO nat_map VALUES (?, ?)", [raw, flag])
     manifest: dict = {
         "format": 1,
         "schema_version": con.execute("SELECT max(version) FROM schema_migrations").fetchone()[0],

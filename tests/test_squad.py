@@ -187,3 +187,48 @@ def test_appearances_and_goals_is_a_squad_source_but_goals_table_is_not():
 def test_french_football_abbreviations():
     from openfootball.parse.positions import normalize_position as n
     assert [n(x) for x in ("GB", "DC", "DG", "MD", "MO", "AG", "BU")] == ["GK", "DF", "DF", "MF", "MF", "FW", "FW"]
+
+
+def test_flag_templates_in_nat_column_and_in_name_cell():
+    from openfootball.parse.squad import _flag_from
+    assert _flag_from("{{flagicon|FRA}}") == "FRA"
+    assert _flag_from("{{flagg|cxxlo|ESP}} [[David Raya]]") == "ESP"          # code en 2e position
+    assert _flag_from("{{flag|England}}") == "England"
+    assert _flag_from("[[David Raya]]") is None
+    wt = """== Squad ==
+{| class="wikitable"
+|-
+! No.
+! Name
+! Pos.
+|-
+| 1 || style="text-align:left;" | {{flagg|cxxlo|ESP}} [[David Raya]] || GK
+|-
+| 2 || {{flagicon|FRA}} [[William Saliba]] || DF
+|}
+"""
+    assert [(e.name, e.nationality) for e in parse_squad(wt)] == [("David Raya", "ESP"), ("William Saliba", "FRA")]
+
+
+def test_abbr_wrapped_headers_are_recognised():
+    wt = """== Squad ==
+{| class="wikitable"
+|-
+! {{abbr|No.|Squad number}}
+! Player
+! {{abbr|Nat.|Nationality}}
+! Position(s)<br />({{abbr|Footed|Footedness}})
+|-
+| 1
+| [[David Raya]]
+| {{flagg|ulc|ESP}}
+| [[Goalkeeper (association football)|GK]]
+|-
+| 4
+| [[Ben White]]
+| {{flagg|ulc|ENG}}
+| [[Defender (association football)|DF]]
+|}
+"""
+    assert [(e.shirt_number, e.name, e.nationality, e.position) for e in parse_squad(wt)] == [
+        (1, "David Raya", "ESP", "GK"), (4, "Ben White", "ENG", "DF")]

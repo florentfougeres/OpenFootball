@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.22** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.23** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -298,6 +298,18 @@ Demande : afficher le parcours d'un joueur « comme sur Wikipedia » (la liste d
 - **État global** : 5 championnats, **1 550 / 1 562 effectifs = 99,2 %**, 12 trous (Liga 10, Bundesliga 2), 186 clubs, **14 065 joueurs** (12 696 identifiés par QID, 1 015 sans lien laissés séparés), carrières pour 12 673 joueurs (103 422 lignes). Seul blocage au gel : `empty_squad` ×12, à valider via `known-gap`. Jeu de données publié : **2,9 Mo**.
 - Vérifié dans le navigateur : la Bundesliga apparaît sur l'accueil ; « Jean Butez » = un seul joueur (carrière : Lille II, Lille, Mouscron prêt, Mouscron 2018-2020, Antwerp 2020-2025, Como) ; Joshua King = deux entités.
 - **Limites connues** : 1 015 joueurs sans lien Wikipedia (pages françaises) restent identifiés par leur nom seul quand aucune carrière ne prouve le rattachement ; 1 392 joueurs sans carrière (dont ces 1 015) ; un avertissement `multi_club_unknown_stint` ×1 255 persiste (transferts non parsés, C1).
+
+## 9undecies. Site v2, drapeaux, âges, logos, 2026/27 (2026-11-11)
+
+- **Saison 2026/27** ajoutée, marquée `open` (`backfill --season 2026 --open`) : 91/96 effectifs ; les 5 trous (Paderborn, Levante, Lorient, Auxerre, Angers) sont des promus sans page : **non validés**, ils peuvent se combler.
+- **Nationalités** : l'en-tête `{{abbr|Nat.|Nationality}}` n'était pas reconnu et les drapeaux dans la cellule du nom (`{{flagg|…|ESP}} [[Joueur]]`) non plus → lignes sans nationalité **2 766 → 529** (1 %). Référentiel de pays tiré de Wikidata (`data/countries.json`, ISO 3166 + codes FIFA/CIO + noms fr/en) ; **99,9 %** des nationalités résolues en drapeau ; codes ambigus (MAL, SOU, MOR…) volontairement laissés sans drapeau. Drapeaux : flag-icons 7.2.3 (MIT), 150 SVG (1,3 Mo) dans `site/flags/`.
+- **Âge** : au 1ᵉʳ août de la saison, depuis la date de naissance Wikidata (P569) **seulement si connue au jour près** (12 552 / 12 696 joueurs identifiés). Absent pour les joueurs non identifiés (QID).
+- **Liens Wikipedia par langue** (clubs : en/fr/it/de/es ; joueurs : en/fr), noms français de clubs depuis les libellés Wikidata ; le site utilise la langue de l'app, sinon l'anglais.
+- **Logos** : 189 / 189 clubs (page image + champ `image` de l'infobox). **120 sont non libres (« Fair use »)**, 68 de licence non renseignée (logos libres), 1 domaine public. Licence stockée par club (`logo_license`) ; affichage de tous les logos à la demande du mainteneur, à titre d'illustration — **risque juridique assumé, noté sur la page À propos**.
+- **Site v2** : accueil (bandeau, chiffres, championnats colorés, pastilles de clubs avec logo), **fiche club** (logo, pays, championnats, lien Wikipedia, saisons), effectif sans colonne « statut » ni « attesté » (prêts signalés par une pastille), drapeau + âge, **page joueur sans la présence dans les effectifs** (âge, drapeau, lien Wikipedia, carrière). Vérifié dans le navigateur : Arsenal 2025/26 = 29 joueurs, 29 drapeaux, 29 âges.
+- **`PROGRESS.md`** généré par `openfootball progress` (avancement saison × championnat, manques, À faire).
+- **Défaut connu** : un nouveau backfill recrée les joueurs sans lien Wikipedia ; `reconcile --names` les rattache ensuite (à lancer après chaque backfill).
+- Jeu de données publié : **3,4 Mo**.
 
 ## 10. Jalons proposés
 

@@ -58,7 +58,10 @@ class WikidataClient:
         if wait > 0:
             self._sleep(wait)
         self._last = time.monotonic()
-        r = self._session.get(WDQS, params={"query": query, "format": "json"}, timeout=90)
+        try:
+            r = self._session.get(WDQS, params={"query": query, "format": "json"}, timeout=90)
+        except requests.RequestException as exc:          # connexion coupée, délai dépassé : on réessaie
+            raise _Retry(None) from exc
         if r.status_code == 429 or r.status_code >= 500:
             ra = r.headers.get("Retry-After")
             raise _Retry(float(ra) if ra and ra.isdigit() else None)
@@ -85,6 +88,34 @@ class WikidataClient:
         rows = [{k: v["value"] for k, v in b.items()} for b in data["results"]["bindings"]]
         path.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
         return rows
+
+    def entities(self, qids: list[str], props: str, languages: str | None = None,
+                 sitefilter: str | None = None) -> dict[str, dict]:
+        """wbgetentities pour un lot (≤ 50) de QID ; réessaie sur 429/5xx, échoue bruyamment sinon."""
+        params = {"action": "wbgetentities", "ids": "|".join(qids), "props": props, "format": "json"}
+        if languages:
+            params["languages"] = languages
+        if sitefilter:
+            params["sitefilter"] = sitefilter
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            wait = MIN_INTERVAL_S - (time.monotonic() - self._last)
+            if wait > 0:
+                self._sleep(wait)
+            self._last = time.monotonic()
+            try:
+                r = self._session.get("https://www.wikidata.org/w/api.php", params=params,
+                                      headers={"Accept": "application/json"}, timeout=60)
+            except requests.RequestException:             # connexion coupée, délai dépassé : on réessaie
+                self._sleep(min(10 * 2 ** (attempt - 1), 120))
+                continue
+            if r.status_code == 429 or r.status_code >= 500:
+                self._sleep(float(r.headers.get("Retry-After", 0)) or min(10 * 2 ** (attempt - 1), 120))
+                continue
+            try:
+                return r.json()["entities"]
+            except (ValueError, KeyError):
+                self._sleep(10)
+        raise WikipediaError("Wikidata wbgetentities: échec persistant")
 
     def enwiki_titles(self, qids: list[str]) -> dict[str, str | None]:
         """QID -> titre de la page Wikipedia anglaise (sitelink), par lots de 50. None si pas de page anglaise."""

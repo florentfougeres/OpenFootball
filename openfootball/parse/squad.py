@@ -122,6 +122,20 @@ def _name_and_link(raw: str) -> tuple[str | None, str | None]:
     return (plain or None), None
 
 
+_FLAG_TPL = re.compile(r"\{\{\s*(?:flag\s*\w*|fb\w*|country\w*)\s*\|([^{}]*)\}\}", re.I)
+
+
+def _flag_from(text: str | None) -> str | None:
+    """Nationalité depuis un modèle drapeau : {{flagicon|FRA}}, {{flagg|cxxlo|ESP}}, {{flag|England}}…
+    Le code est le premier argument tout en majuscules de 2-3 lettres ; à défaut le premier mot capitalisé."""
+    m = _FLAG_TPL.search(text or "")
+    if not m:
+        return None
+    args = [a.strip() for a in m.group(1).split("|") if a.strip() and "=" not in a]
+    code = next((a for a in args if re.fullmatch(r"[A-Z]{2,3}", a)), None)
+    return code or next((a for a in args if a[:1].isupper() and len(a) > 3), None)
+
+
 def _int(raw: str | None) -> int | None:
     m = re.match(r"\s*(\d{1,3})\b", raw or "")
     return int(m.group(1)) if m else None
@@ -183,9 +197,9 @@ def _header_columns(cells: list[tuple[str, str]]) -> dict[str, int]:
             cols.setdefault("num", idx)
         elif "name" in l or l == "player":
             cols.setdefault("name", idx)
-        elif l.startswith("nat") or l == "country":
+        elif re.search(r"(^|\s)(nat|nation)", l) or l == "country":      # « {{abbr|Nat.|Nationality}} » -> « abbr nat nationality »
             cols.setdefault("nat", idx)
-        elif l.startswith("pos"):
+        elif re.search(r"(^|\s)pos", l):
             cols.setdefault("pos", idx)
     return cols
 
@@ -223,9 +237,9 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
                 continue
             nat = None
             if "nat" in cols and len(cells) > cols["nat"]:
-                fm = re.search(r"\{\{\s*(?:flag\s*icon|flag|fb)\s*\|\s*([A-Za-z]{2,3})",
-                               cells[cols["nat"]][1], re.I)
-                nat = fm.group(1).upper() if fm else None
+                nat = _flag_from(cells[cols["nat"]][1])
+            if nat is None:                                    # drapeau dans la cellule du nom (ex. Arsenal 2025/26)
+                nat = _flag_from(cells[cols["name"]][1])
             pos_raw = None
             if "pos" in cols and len(cells) > cols["pos"]:
                 pos_raw = _cell_text(cells[cols["pos"]][1])

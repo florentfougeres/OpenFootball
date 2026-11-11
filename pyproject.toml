@@ -24,6 +24,7 @@ include = ["openfootball*"]
 [tool.setuptools.package-data]
 "openfootball.migrations" = ["*.sql"]
 "openfootball.scopes" = ["*.toml"]
+"openfootball.data" = ["*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

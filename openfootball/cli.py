@@ -10,6 +10,8 @@ from pathlib import Path
 from openfootball.backfill import run_backfill
 from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
+from openfootball.enrich import enrich_birth_dates, enrich_logos, enrich_wiki_links
+from openfootball.progress import build_progress
 from openfootball.careers import import_careers, import_careers_by_qid
 from openfootball.reconcile import reconcile_by_name, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -233,6 +235,8 @@ def backfill_cmd(args: argparse.Namespace) -> int:
                            wd=WikidataClient(args.wd_cache), qid_lookup=lambda ts: club_qids(wp, ts))
     except SeasonFrozen as exc:
         raise SystemExit(f"refusé : {exc}")
+    if args.open:                                     # saison courante : « en cours », mise à jour au fil du mercato
+        con.execute("UPDATE season SET status = 'open' WHERE start_year = ? AND status = 'backfill'", [args.season])
     gaps = [r for r in res if r.lang is None]
     print(f"\n=== backfill {args.season}/{str(args.season + 1)[2:]} : {len(res) - len(gaps)}/{len(res)} effectifs attestés ===")
     print("  par langue:", dict(Counter(r.lang for r in res if r.lang)))
@@ -365,6 +369,32 @@ def careers_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def enrich_cmd(args: argparse.Namespace) -> int:
+    """Liens Wikipedia par langue, noms français des clubs, dates de naissance, logos."""
+    con = connect(args.db)
+    migrate(con)
+    wd, wp = WikidataClient(args.wd_cache), WikipediaClient(args.cache)
+    what = set(args.what or ["clubs", "players", "logos"])
+    if "clubs" in what:
+        qids = [r[0] for r in con.execute("SELECT wikidata_qid FROM club WHERE wikidata_qid IS NOT NULL").fetchall()]
+        enrich_wiki_links(con, wd, qids, ("en", "fr", "it", "de", "es"), labels=("en", "fr"))
+    if "players" in what:
+        qids = [r[0] for r in con.execute("SELECT qid FROM player_wikidata").fetchall()]
+        enrich_wiki_links(con, wd, qids, ("en", "fr"))
+        enrich_birth_dates(con, wd)
+    if "logos" in what:
+        enrich_logos(con, wp)
+    return 0
+
+
+def progress_cmd(args: argparse.Namespace) -> int:
+    con = connect(args.db)
+    migrate(con)
+    Path(args.out).write_text(build_progress(con), encoding="utf-8")
+    print(f"suivi écrit dans {args.out}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="openfootball")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -391,6 +421,7 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("backfill", help="construit une saison (une seule fois), sans la figer")
     common(b)
     b.add_argument("--league", nargs="*", choices=sorted(LEAGUES))
+    b.add_argument("--open", action="store_true", help="marque la saison comme « en cours » (saison courante)")
     b.add_argument("--cache", default="cache/wikipedia")
     b.add_argument("--wd-cache", default="cache/wikidata")
     b.set_defaults(func=backfill_cmd)
@@ -426,6 +457,16 @@ def main(argv: list[str] | None = None) -> int:
     ca.add_argument("--limit", type=int, help="n'importe que N joueurs (essai)")
     ca.add_argument("--wd-cache", default="cache/wikidata")
     ca.set_defaults(func=careers_cmd)
+    en = sub.add_parser("enrich", help="liens wiki par langue, noms fr, dates de naissance, logos")
+    en.add_argument("--db", default=DB_DEFAULT)
+    en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos"])
+    en.add_argument("--cache", default="cache/wikipedia")
+    en.add_argument("--wd-cache", default="cache/wikidata")
+    en.set_defaults(func=enrich_cmd)
+    pr = sub.add_parser("progress", help="génère PROGRESS.md (avancement par saison/championnat et manques)")
+    pr.add_argument("--db", default=DB_DEFAULT)
+    pr.add_argument("--out", default="PROGRESS.md")
+    pr.set_defaults(func=progress_cmd)
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     return args.func(args)

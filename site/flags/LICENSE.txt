@@ -1,0 +1,2 @@
+Drapeaux : projet flag-icons (https://github.com/lipis/flag-icons), version 7.2.3, licence MIT.
+Copyright (c) 2013 Panayiotis Lipiridis. Fichiers SVG 4x3 repris tels quels.

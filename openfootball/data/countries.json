@@ -1,0 +1,2589 @@
+[
+{
+"fifa": "AND",
+"ioc": "AND",
+"iso3": "AND",
+"flag": "ad",
+"names": [
+"Andorra",
+"Andorre"
+]
+},
+{
+"fifa": "UAE",
+"ioc": "UAE",
+"iso3": "ARE",
+"flag": "ae",
+"names": [
+"United Arab Emirates",
+"Émirats arabes unis"
+]
+},
+{
+"fifa": "AFG",
+"ioc": "AFG",
+"iso3": "AFG",
+"flag": "af",
+"names": [
+"Afghanistan"
+]
+},
+{
+"fifa": "ATG",
+"ioc": "ANT",
+"iso3": "ATG",
+"flag": "ag",
+"names": [
+"Antigua and Barbuda",
+"Antigua-et-Barbuda"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "AIA",
+"flag": "ai",
+"names": [
+"Anguilla"
+]
+},
+{
+"fifa": "ALB",
+"ioc": "ALB",
+"iso3": "ALB",
+"flag": "al",
+"names": [
+"Albania",
+"Albanie"
+]
+},
+{
+"fifa": "ARM",
+"ioc": "ARM",
+"iso3": "ARM",
+"flag": "am",
+"names": [
+"Armenia",
+"Arménie"
+]
+},
+{
+"fifa": "ANT",
+"ioc": "AHO",
+"iso3": "ANT",
+"flag": "an",
+"names": [
+"Antilles néerlandaises",
+"Netherlands Antilles"
+]
+},
+{
+"fifa": "ANG",
+"ioc": "ANG",
+"iso3": "AGO",
+"flag": "ao",
+"names": [
+"Angola"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "ATA",
+"flag": "aq",
+"names": [
+"Antarctica",
+"Antarctique"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "ATA",
+"flag": "aq",
+"names": [
+"Antarctic Treaty area",
+"région du Traité sur l'Antarctique"
+]
+},
+{
+"fifa": "ARG",
+"ioc": "ARG",
+"iso3": "ARG",
+"flag": "ar",
+"names": [
+"Argentina",
+"Argentine"
+]
+},
+{
+"fifa": "ASA",
+"ioc": "ASA",
+"iso3": "ASM",
+"flag": "as",
+"names": [
+"American Samoa",
+"Samoa américaines"
+]
+},
+{
+"fifa": "AUT",
+"ioc": "AUT",
+"iso3": "AUT",
+"flag": "at",
+"names": [
+"Austria",
+"Autriche"
+]
+},
+{
+"fifa": "AUS",
+"ioc": "AUS",
+"iso3": "AUS",
+"flag": "au",
+"names": [
+"Australia",
+"Australie"
+]
+},
+{
+"fifa": "ARU",
+"ioc": "ARU",
+"iso3": "ABW",
+"flag": "aw",
+"names": [
+"Aruba"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "ALA",
+"flag": "ax",
+"names": [
+"Åland"
+]
+},
+{
+"fifa": "AZE",
+"ioc": "AZE",
+"iso3": "AZE",
+"flag": "az",
+"names": [
+"Azerbaijan",
+"Azerbaïdjan"
+]
+},
+{
+"fifa": "BIH",
+"ioc": "BIH",
+"iso3": "BIH",
+"flag": "ba",
+"names": [
+"Bosnia and Herzegovina",
+"Bosnie-Herzégovine"
+]
+},
+{
+"fifa": null,
+"ioc": "BAR",
+"iso3": "BRB",
+"flag": "bb",
+"names": [
+"Barbade",
+"Barbados"
+]
+},
+{
+"fifa": "BAN",
+"ioc": "BAN",
+"iso3": "BGD",
+"flag": "bd",
+"names": [
+"Bangladesh"
+]
+},
+{
+"fifa": "BEL",
+"ioc": "BEL",
+"iso3": "BEL",
+"flag": "be",
+"names": [
+"Belgique",
+"Belgium"
+]
+},
+{
+"fifa": "BFA",
+"ioc": "BUR",
+"iso3": "BFA",
+"flag": "bf",
+"names": [
+"Burkina Faso"
+]
+},
+{
+"fifa": "BUL",
+"ioc": "BUL",
+"iso3": "BGR",
+"flag": "bg",
+"names": [
+"Bulgaria",
+"Bulgarie"
+]
+},
+{
+"fifa": "BHR",
+"ioc": "BRN",
+"iso3": "BHR",
+"flag": "bh",
+"names": [
+"Bahrain",
+"Bahreïn"
+]
+},
+{
+"fifa": null,
+"ioc": "BDI",
+"iso3": "BDI",
+"flag": "bi",
+"names": [
+"Burundi"
+]
+},
+{
+"fifa": null,
+"ioc": "BEN",
+"iso3": "BEN",
+"flag": "bj",
+"names": [
+"Benin",
+"Bénin"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "BLM",
+"flag": "bl",
+"names": [
+"Saint Barthélemy",
+"Saint-Barthélemy"
+]
+},
+{
+"fifa": "BER",
+"ioc": "BER",
+"iso3": "BMU",
+"flag": "bm",
+"names": [
+"Bermuda",
+"Bermudes"
+]
+},
+{
+"fifa": "BRU",
+"ioc": "BRU",
+"iso3": "BRN",
+"flag": "bn",
+"names": [
+"Brunei"
+]
+},
+{
+"fifa": "BOL",
+"ioc": "BOL",
+"iso3": "BOL",
+"flag": "bo",
+"names": [
+"Bolivia",
+"Bolivie"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "BES",
+"flag": "bq",
+"names": [
+"Caribbean Netherlands",
+"Pays-Bas caribéens"
+]
+},
+{
+"fifa": "BRA",
+"ioc": "BRA",
+"iso3": "BRA",
+"flag": "br",
+"names": [
+"Brazil",
+"Brésil"
+]
+},
+{
+"fifa": null,
+"ioc": "BAH",
+"iso3": "BHS",
+"flag": "bs",
+"names": [
+"Bahamas",
+"The Bahamas"
+]
+},
+{
+"fifa": "BHU",
+"ioc": "BHU",
+"iso3": "BTN",
+"flag": "bt",
+"names": [
+"Bhoutan",
+"Bhutan"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "BVT",
+"flag": "bv",
+"names": [
+"Bouvet Island",
+"île Bouvet"
+]
+},
+{
+"fifa": "BOT",
+"ioc": "BOT",
+"iso3": "BWA",
+"flag": "bw",
+"names": [
+"Botswana"
+]
+},
+{
+"fifa": "BLR",
+"ioc": "BLR",
+"iso3": "BLR",
+"flag": "by",
+"names": [
+"Belarus",
+"Biélorussie"
+]
+},
+{
+"fifa": null,
+"ioc": "BIZ",
+"iso3": "BLZ",
+"flag": "bz",
+"names": [
+"Belize"
+]
+},
+{
+"fifa": "CAN",
+"ioc": "CAN",
+"iso3": "CAN",
+"flag": "ca",
+"names": [
+"Canada"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "CCK",
+"flag": "cc",
+"names": [
+"Cocos (Keeling) Islands",
+"îles Cocos"
+]
+},
+{
+"fifa": "COD",
+"ioc": "COD",
+"iso3": "COD",
+"flag": "cd",
+"names": [
+"Congo DR",
+"DR Congo",
+"Democratic Republic of the Congo",
+"RD Congo",
+"RDC",
+"République démocratique du Congo"
+]
+},
+{
+"fifa": "CTA",
+"ioc": "CAF",
+"iso3": "CAF",
+"flag": "cf",
+"names": [
+"Central African Republic",
+"République centrafricaine"
+]
+},
+{
+"fifa": null,
+"ioc": "CGO",
+"iso3": "COG",
+"flag": "cg",
+"names": [
+"Republic of the Congo",
+"République du Congo"
+]
+},
+{
+"fifa": "SUI",
+"ioc": "SUI",
+"iso3": "CHE",
+"flag": "ch",
+"names": [
+"Suisse",
+"Switzerland"
+]
+},
+{
+"fifa": "CIV",
+"ioc": "CIV",
+"iso3": "CIV",
+"flag": "ci",
+"names": [
+"Cote d'Ivoire",
+"Côte d'Ivoire",
+"Ivory Coast"
+]
+},
+{
+"fifa": "COK",
+"ioc": "COK",
+"iso3": "COK",
+"flag": "ck",
+"names": [
+"Cook Islands",
+"Îles Cook"
+]
+},
+{
+"fifa": "CHI",
+"ioc": "CHI",
+"iso3": "CHL",
+"flag": "cl",
+"names": [
+"Chile",
+"Chili"
+]
+},
+{
+"fifa": "CMR",
+"ioc": "CMR",
+"iso3": "CMR",
+"flag": "cm",
+"names": [
+"Cameroon",
+"Cameroun"
+]
+},
+{
+"fifa": "CHN",
+"ioc": "CHN",
+"iso3": "CHN",
+"flag": "cn",
+"names": [
+"People's Republic of China",
+"République populaire de Chine"
+]
+},
+{
+"fifa": "COL",
+"ioc": "COL",
+"iso3": "COL",
+"flag": "co",
+"names": [
+"Colombia",
+"Colombie"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": null,
+"flag": "cp",
+"names": [
+"Clipperton Island",
+"La Passion–Clipperton"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "CRQ",
+"flag": "cq",
+"names": [
+"Sark",
+"Sercq"
+]
+},
+{
+"fifa": "CRC",
+"ioc": "CRC",
+"iso3": "CRI",
+"flag": "cr",
+"names": [
+"Costa Rica"
+]
+},
+{
+"fifa": "CUB",
+"ioc": "CUB",
+"iso3": "CUB",
+"flag": "cu",
+"names": [
+"Cuba"
+]
+},
+{
+"fifa": "CPV",
+"ioc": "CPV",
+"iso3": "CPV",
+"flag": "cv",
+"names": [
+"Cabo Verde",
+"Cap-Vert",
+"Cape Verde"
+]
+},
+{
+"fifa": "CUW",
+"ioc": null,
+"iso3": "CUW",
+"flag": "cw",
+"names": [
+"Curacao",
+"Curaçao"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "CXR",
+"flag": "cx",
+"names": [
+"Christmas Island",
+"île Christmas"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": null,
+"flag": "cy",
+"names": [
+"Chypre",
+"Cyprus"
+]
+},
+{
+"fifa": "CYP",
+"ioc": "CYP",
+"iso3": "CYP",
+"flag": "cy",
+"names": [
+"Chypre",
+"Cyprus"
+]
+},
+{
+"fifa": "CZE",
+"ioc": "CZE",
+"iso3": "CZE",
+"flag": "cz",
+"names": [
+"Czech Republic",
+"Czechia",
+"Tchéquie"
+]
+},
+{
+"fifa": "RDA",
+"ioc": "GDR",
+"iso3": "DDR",
+"flag": "dd",
+"names": [
+"East Germany",
+"République démocratique allemande"
+]
+},
+{
+"fifa": "GER",
+"ioc": "GER",
+"iso3": "DEU",
+"flag": "de",
+"names": [
+"Allemagne",
+"Germany"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": null,
+"flag": "dg",
+"names": [
+"Diego Garcia"
+]
+},
+{
+"fifa": "DJI",
+"ioc": "DJI",
+"iso3": "DJI",
+"flag": "dj",
+"names": [
+"Djibouti"
+]
+},
+{
+"fifa": "FRO",
+"ioc": "DEN",
+"iso3": "DNK",
+"flag": "dk",
+"names": [
+"Danemark",
+"Denmark"
+]
+},
+{
+"fifa": "DMA",
+"ioc": "DMA",
+"iso3": "DMA",
+"flag": "dm",
+"names": [
+"Dominica",
+"Dominique"
+]
+},
+{
+"fifa": "DOM",
+"ioc": "DOM",
+"iso3": "DOM",
+"flag": "do",
+"names": [
+"Dominican Republic",
+"République dominicaine"
+]
+},
+{
+"fifa": "ALG",
+"ioc": "ALG",
+"iso3": "DZA",
+"flag": "dz",
+"names": [
+"Algeria",
+"Algérie"
+]
+},
+{
+"fifa": "ECU",
+"ioc": "ECU",
+"iso3": "ECU",
+"flag": "ec",
+"names": [
+"Ecuador",
+"Équateur"
+]
+},
+{
+"fifa": "EST",
+"ioc": "EST",
+"iso3": "EST",
+"flag": "ee",
+"names": [
+"Estonia",
+"Estonie"
+]
+},
+{
+"fifa": "EGY",
+"ioc": "EGY",
+"iso3": "EGY",
+"flag": "eg",
+"names": [
+"Egypt",
+"Égypte"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "ESH",
+"flag": "eh",
+"names": [
+"Sahara occidental",
+"Western Sahara"
+]
+},
+{
+"fifa": "ERI",
+"ioc": "ERI",
+"iso3": "ERI",
+"flag": "er",
+"names": [
+"Eritrea",
+"Érythrée"
+]
+},
+{
+"fifa": "ESP",
+"ioc": "ESP",
+"iso3": "ESP",
+"flag": "es",
+"names": [
+"Espagne",
+"Spain"
+]
+},
+{
+"fifa": "ETH",
+"ioc": "ETH",
+"iso3": "ETH",
+"flag": "et",
+"names": [
+"Ethiopia",
+"Éthiopie"
+]
+},
+{
+"fifa": "FIN",
+"ioc": "FIN",
+"iso3": "FIN",
+"flag": "fi",
+"names": [
+"Finland",
+"Finlande"
+]
+},
+{
+"fifa": "FIJ",
+"ioc": "FIJ",
+"iso3": "FJI",
+"flag": "fj",
+"names": [
+"Fidji",
+"Fiji"
+]
+},
+{
+"fifa": null,
+"ioc": "FLK",
+"iso3": "FLK",
+"flag": "fk",
+"names": [
+"Falkland Islands",
+"îles Malouines"
+]
+},
+{
+"fifa": "FSM",
+"ioc": "FSM",
+"iso3": "FSM",
+"flag": "fm",
+"names": [
+"Federated States of Micronesia",
+"États fédérés de Micronésie"
+]
+},
+{
+"fifa": "FRO",
+"ioc": "FRO",
+"iso3": "FRO",
+"flag": "fo",
+"names": [
+"Faroe Islands",
+"îles Féroé"
+]
+},
+{
+"fifa": "FRA",
+"ioc": "FRA",
+"iso3": "FRA",
+"flag": "fr",
+"names": [
+"France"
+]
+},
+{
+"fifa": "GAB",
+"ioc": "GAB",
+"iso3": "GAB",
+"flag": "ga",
+"names": [
+"Gabon"
+]
+},
+{
+"fifa": null,
+"ioc": "GBR",
+"iso3": "GBR",
+"flag": "gb",
+"names": [
+"Royaume-Uni",
+"United Kingdom"
+]
+},
+{
+"fifa": "ENG",
+"ioc": null,
+"iso3": null,
+"flag": "gb-eng",
+"names": [
+"Angleterre",
+"England"
+]
+},
+{
+"fifa": "NIR",
+"ioc": null,
+"iso3": null,
+"flag": "gb-nir",
+"names": [
+"Irlande du Nord",
+"Northern Ireland"
+]
+},
+{
+"fifa": "SCO",
+"ioc": null,
+"iso3": null,
+"flag": "gb-sct",
+"names": [
+"Scotland",
+"Écosse"
+]
+},
+{
+"fifa": "WAL",
+"ioc": null,
+"iso3": null,
+"flag": "gb-wls",
+"names": [
+"Pays de Galles",
+"Wales"
+]
+},
+{
+"fifa": null,
+"ioc": "GRN",
+"iso3": "GRD",
+"flag": "gd",
+"names": [
+"Grenada",
+"Grenade"
+]
+},
+{
+"fifa": "GEO",
+"ioc": "GEO",
+"iso3": "GEO",
+"flag": "ge",
+"names": [
+"Georgia",
+"Géorgie"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "GUF",
+"flag": "gf",
+"names": [
+"French Guiana",
+"Guyane"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "GGY",
+"flag": "gg",
+"names": [
+"Guernesey",
+"Guernsey"
+]
+},
+{
+"fifa": "GHA",
+"ioc": "GHA",
+"iso3": "GHA",
+"flag": "gh",
+"names": [
+"Ghana"
+]
+},
+{
+"fifa": "GIB",
+"ioc": null,
+"iso3": "GIB",
+"flag": "gi",
+"names": [
+"Gibraltar"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "GRL",
+"flag": "gl",
+"names": [
+"Greenland",
+"Groenland"
+]
+},
+{
+"fifa": "GAM",
+"ioc": "GAM",
+"iso3": "GMB",
+"flag": "gm",
+"names": [
+"Gambia",
+"Gambie",
+"The Gambia"
+]
+},
+{
+"fifa": "GUI",
+"ioc": "GUI",
+"iso3": "GIN",
+"flag": "gn",
+"names": [
+"Guinea",
+"Guinée"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "GLP",
+"flag": "gp",
+"names": [
+"Guadeloupe"
+]
+},
+{
+"fifa": null,
+"ioc": "GEQ",
+"iso3": "GNQ",
+"flag": "gq",
+"names": [
+"Equatorial Guinea",
+"Guinée équatoriale"
+]
+},
+{
+"fifa": "GRE",
+"ioc": "GRE",
+"iso3": "GRC",
+"flag": "gr",
+"names": [
+"Greece",
+"Grèce"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "SGS",
+"flag": "gs",
+"names": [
+"Géorgie du Sud-et-les Îles Sandwich du Sud",
+"South Georgia and the South Sandwich Islands"
+]
+},
+{
+"fifa": "GUA",
+"ioc": "GUA",
+"iso3": "GTM",
+"flag": "gt",
+"names": [
+"Guatemala"
+]
+},
+{
+"fifa": null,
+"ioc": "GUM",
+"iso3": "GUM",
+"flag": "gu",
+"names": [
+"Guam"
+]
+},
+{
+"fifa": "GNB",
+"ioc": "GBS",
+"iso3": "GNB",
+"flag": "gw",
+"names": [
+"Guinea-Bissau",
+"Guinée-Bissau"
+]
+},
+{
+"fifa": null,
+"ioc": "GUY",
+"iso3": "GUY",
+"flag": "gy",
+"names": [
+"Guyana"
+]
+},
+{
+"fifa": "HKG",
+"ioc": "HKG",
+"iso3": "HKG",
+"flag": "hk",
+"names": [
+"Hong Kong"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "HMD",
+"flag": "hm",
+"names": [
+"Heard Island and McDonald Islands",
+"îles Heard-et-MacDonald"
+]
+},
+{
+"fifa": "HON",
+"ioc": "HON",
+"iso3": "HND",
+"flag": "hn",
+"names": [
+"Honduras"
+]
+},
+{
+"fifa": "CRO",
+"ioc": "CRO",
+"iso3": "HRV",
+"flag": "hr",
+"names": [
+"Croatia",
+"Croatie"
+]
+},
+{
+"fifa": "HAI",
+"ioc": "HAI",
+"iso3": "HTI",
+"flag": "ht",
+"names": [
+"Haiti",
+"Haïti"
+]
+},
+{
+"fifa": "HUN",
+"ioc": "HUN",
+"iso3": "HUN",
+"flag": "hu",
+"names": [
+"Hongrie",
+"Hungary"
+]
+},
+{
+"fifa": "IDN",
+"ioc": "INA",
+"iso3": "IDN",
+"flag": "id",
+"names": [
+"Indonesia",
+"Indonésie"
+]
+},
+{
+"fifa": "IRL",
+"ioc": "IRL",
+"iso3": "IRL",
+"flag": "ie",
+"names": [
+"Ireland",
+"Irlande",
+"Republic of Ireland"
+]
+},
+{
+"fifa": "ISR",
+"ioc": "ISR",
+"iso3": "ISR",
+"flag": "il",
+"names": [
+"Israel",
+"Israël"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "IMN",
+"flag": "im",
+"names": [
+"Isle of Man",
+"Île de Man"
+]
+},
+{
+"fifa": "IND",
+"ioc": "IND",
+"iso3": "IND",
+"flag": "in",
+"names": [
+"Inde",
+"India"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "IOT",
+"flag": "io",
+"names": [
+"British Indian Ocean Territory",
+"Territoire britannique de l’océan Indien"
+]
+},
+{
+"fifa": "IRQ",
+"ioc": "IRQ",
+"iso3": "IRQ",
+"flag": "iq",
+"names": [
+"Irak",
+"Iraq"
+]
+},
+{
+"fifa": "IRN",
+"ioc": "IRI",
+"iso3": "IRN",
+"flag": "ir",
+"names": [
+"Iran"
+]
+},
+{
+"fifa": "ISL",
+"ioc": "ISL",
+"iso3": "ISL",
+"flag": "is",
+"names": [
+"Iceland",
+"Islande"
+]
+},
+{
+"fifa": "ITA",
+"ioc": "ITA",
+"iso3": "ITA",
+"flag": "it",
+"names": [
+"Italie",
+"Italy"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "JEY",
+"flag": "je",
+"names": [
+"Jersey"
+]
+},
+{
+"fifa": "JAM",
+"ioc": "JAM",
+"iso3": "JAM",
+"flag": "jm",
+"names": [
+"Jamaica",
+"Jamaïque"
+]
+},
+{
+"fifa": "JOR",
+"ioc": "JOR",
+"iso3": "JOR",
+"flag": "jo",
+"names": [
+"Jordan",
+"Jordanie"
+]
+},
+{
+"fifa": "JPN",
+"ioc": "JPN",
+"iso3": "JPN",
+"flag": "jp",
+"names": [
+"Japan",
+"Japon"
+]
+},
+{
+"fifa": "KEN",
+"ioc": "KEN",
+"iso3": "KEN",
+"flag": "ke",
+"names": [
+"Kenya"
+]
+},
+{
+"fifa": "KGZ",
+"ioc": "KGZ",
+"iso3": "KGZ",
+"flag": "kg",
+"names": [
+"Kirghizistan",
+"Kyrgyzstan"
+]
+},
+{
+"fifa": "CAM",
+"ioc": "CAM",
+"iso3": "KHM",
+"flag": "kh",
+"names": [
+"Cambodge",
+"Cambodia"
+]
+},
+{
+"fifa": null,
+"ioc": "KIR",
+"iso3": "KIR",
+"flag": "ki",
+"names": [
+"Kiribati"
+]
+},
+{
+"fifa": null,
+"ioc": "COM",
+"iso3": "COM",
+"flag": "km",
+"names": [
+"Comores",
+"Comoros"
+]
+},
+{
+"fifa": "SKN",
+"ioc": "SKN",
+"iso3": "KNA",
+"flag": "kn",
+"names": [
+"Saint Kitts and Nevis",
+"Saint-Christophe-et-Niévès"
+]
+},
+{
+"fifa": "PRK",
+"ioc": "PRK",
+"iso3": "PRK",
+"flag": "kp",
+"names": [
+"Corée du Nord",
+"North Korea"
+]
+},
+{
+"fifa": "KOR",
+"ioc": "KOR",
+"iso3": "KOR",
+"flag": "kr",
+"names": [
+"Corée du Sud",
+"Korea Republic",
+"South Korea"
+]
+},
+{
+"fifa": "KUW",
+"ioc": "KUW",
+"iso3": "KWT",
+"flag": "kw",
+"names": [
+"Koweït",
+"Kuwait"
+]
+},
+{
+"fifa": null,
+"ioc": "CAY",
+"iso3": "CYM",
+"flag": "ky",
+"names": [
+"Cayman Islands",
+"îles Caïmans"
+]
+},
+{
+"fifa": "KAZ",
+"ioc": "KAZ",
+"iso3": "KAZ",
+"flag": "kz",
+"names": [
+"Kazakhstan"
+]
+},
+{
+"fifa": "LAO",
+"ioc": "LAO",
+"iso3": "LAO",
+"flag": "la",
+"names": [
+"Laos"
+]
+},
+{
+"fifa": "LIB",
+"ioc": "LBN",
+"iso3": "LBN",
+"flag": "lb",
+"names": [
+"Lebanon",
+"Liban"
+]
+},
+{
+"fifa": "LCA",
+"ioc": "LCA",
+"iso3": "LCA",
+"flag": "lc",
+"names": [
+"Saint Lucia",
+"Sainte-Lucie"
+]
+},
+{
+"fifa": "LIE",
+"ioc": "LIE",
+"iso3": "LIE",
+"flag": "li",
+"names": [
+"Liechtenstein"
+]
+},
+{
+"fifa": "SRI",
+"ioc": "SRI",
+"iso3": "LKA",
+"flag": "lk",
+"names": [
+"Sri Lanka"
+]
+},
+{
+"fifa": "LBR",
+"ioc": "LBR",
+"iso3": "LBR",
+"flag": "lr",
+"names": [
+"Liberia"
+]
+},
+{
+"fifa": "LES",
+"ioc": "LES",
+"iso3": "LSO",
+"flag": "ls",
+"names": [
+"Lesotho"
+]
+},
+{
+"fifa": "LTU",
+"ioc": "LTU",
+"iso3": "LTU",
+"flag": "lt",
+"names": [
+"Lithuania",
+"Lituanie"
+]
+},
+{
+"fifa": "LUX",
+"ioc": "LUX",
+"iso3": "LUX",
+"flag": "lu",
+"names": [
+"Luxembourg"
+]
+},
+{
+"fifa": "LVA",
+"ioc": "LAT",
+"iso3": "LVA",
+"flag": "lv",
+"names": [
+"Latvia",
+"Lettonie"
+]
+},
+{
+"fifa": "LBY",
+"ioc": "LBA",
+"iso3": "LBY",
+"flag": "ly",
+"names": [
+"Libya",
+"Libye"
+]
+},
+{
+"fifa": "MAR",
+"ioc": "MAR",
+"iso3": "MAR",
+"flag": "ma",
+"names": [
+"Maroc",
+"Morocco"
+]
+},
+{
+"fifa": null,
+"ioc": "MON",
+"iso3": "MCO",
+"flag": "mc",
+"names": [
+"Monaco"
+]
+},
+{
+"fifa": "MDA",
+"ioc": "MDA",
+"iso3": "MDA",
+"flag": "md",
+"names": [
+"Moldavie",
+"Moldova"
+]
+},
+{
+"fifa": "MNE",
+"ioc": "MNE",
+"iso3": "MNE",
+"flag": "me",
+"names": [
+"Montenegro",
+"Monténégro"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "MAF",
+"flag": "mf",
+"names": [
+"Saint-Martin"
+]
+},
+{
+"fifa": "MAD",
+"ioc": "MAD",
+"iso3": "MDG",
+"flag": "mg",
+"names": [
+"Madagascar"
+]
+},
+{
+"fifa": null,
+"ioc": "MHL",
+"iso3": "MHL",
+"flag": "mh",
+"names": [
+"Marshall Islands",
+"Îles Marshall"
+]
+},
+{
+"fifa": "MKD",
+"ioc": "MKD",
+"iso3": "MKD",
+"flag": "mk",
+"names": [
+"Macédoine du Nord",
+"North Macedonia"
+]
+},
+{
+"fifa": "MLI",
+"ioc": "MLI",
+"iso3": "MLI",
+"flag": "ml",
+"names": [
+"Mali"
+]
+},
+{
+"fifa": "MYA",
+"ioc": "MYA",
+"iso3": "MMR",
+"flag": "mm",
+"names": [
+"Birmanie",
+"Myanmar"
+]
+},
+{
+"fifa": null,
+"ioc": "MGL",
+"iso3": "MNG",
+"flag": "mn",
+"names": [
+"Mongolia",
+"Mongolie"
+]
+},
+{
+"fifa": null,
+"ioc": "MAC",
+"iso3": "MAC",
+"flag": "mo",
+"names": [
+"Macao",
+"Macau"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "MNP",
+"flag": "mp",
+"names": [
+"Northern Mariana Islands",
+"îles Mariannes du Nord"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "MTQ",
+"flag": "mq",
+"names": [
+"Martinique"
+]
+},
+{
+"fifa": "MTN",
+"ioc": "MTN",
+"iso3": "MRT",
+"flag": "mr",
+"names": [
+"Mauritania",
+"Mauritanie"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "MSR",
+"flag": "ms",
+"names": [
+"Montserrat"
+]
+},
+{
+"fifa": "MLT",
+"ioc": "MLT",
+"iso3": "MLT",
+"flag": "mt",
+"names": [
+"Malta",
+"Malte"
+]
+},
+{
+"fifa": "MRI",
+"ioc": "MRI",
+"iso3": "MUS",
+"flag": "mu",
+"names": [
+"Maurice",
+"Mauritius"
+]
+},
+{
+"fifa": "MDV",
+"ioc": "MDV",
+"iso3": "MDV",
+"flag": "mv",
+"names": [
+"Maldives"
+]
+},
+{
+"fifa": "MWI",
+"ioc": "MAW",
+"iso3": "MWI",
+"flag": "mw",
+"names": [
+"Malawi"
+]
+},
+{
+"fifa": "MEX",
+"ioc": "MEX",
+"iso3": "MEX",
+"flag": "mx",
+"names": [
+"Mexico",
+"Mexique"
+]
+},
+{
+"fifa": "MAS",
+"ioc": "MAS",
+"iso3": "MYS",
+"flag": "my",
+"names": [
+"Malaisie",
+"Malaysia"
+]
+},
+{
+"fifa": "MOZ",
+"ioc": "MOZ",
+"iso3": "MOZ",
+"flag": "mz",
+"names": [
+"Mozambique"
+]
+},
+{
+"fifa": "NAM",
+"ioc": "NAM",
+"iso3": "NAM",
+"flag": "na",
+"names": [
+"Namibia",
+"Namibie"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "NCL",
+"flag": "nc",
+"names": [
+"New Caledonia",
+"Nouvelle-Calédonie"
+]
+},
+{
+"fifa": "NIG",
+"ioc": "NIG",
+"iso3": "NER",
+"flag": "ne",
+"names": [
+"Niger"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "NFK",
+"flag": "nf",
+"names": [
+"Norfolk Island",
+"île Norfolk"
+]
+},
+{
+"fifa": "NGA",
+"ioc": "NGR",
+"iso3": "NGA",
+"flag": "ng",
+"names": [
+"Nigeria"
+]
+},
+{
+"fifa": "NCA",
+"ioc": "NCA",
+"iso3": "NIC",
+"flag": "ni",
+"names": [
+"Nicaragua"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "NLD",
+"flag": "nl",
+"names": [
+"Kingdom of the Netherlands",
+"Royaume des Pays-Bas"
+]
+},
+{
+"fifa": "NOR",
+"ioc": "NOR",
+"iso3": "NOR",
+"flag": "no",
+"names": [
+"Norvège",
+"Norway"
+]
+},
+{
+"fifa": "NEP",
+"ioc": "NEP",
+"iso3": "NPL",
+"flag": "np",
+"names": [
+"Nepal",
+"Népal"
+]
+},
+{
+"fifa": null,
+"ioc": "NRU",
+"iso3": "NRU",
+"flag": "nr",
+"names": [
+"Nauru"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "NIU",
+"flag": "nu",
+"names": [
+"Niue"
+]
+},
+{
+"fifa": "NZL",
+"ioc": "NZL",
+"iso3": "NZL",
+"flag": "nz",
+"names": [
+"New Zealand",
+"Nouvelle-Zélande"
+]
+},
+{
+"fifa": "OMA",
+"ioc": "OMA",
+"iso3": "OMN",
+"flag": "om",
+"names": [
+"Oman"
+]
+},
+{
+"fifa": "PAN",
+"ioc": "PAN",
+"iso3": "PAN",
+"flag": "pa",
+"names": [
+"Panama"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "PCI",
+"flag": "pc",
+"names": [
+"Trust Territory of the Pacific Islands",
+"territoire sous tutelle des îles du Pacifique"
+]
+},
+{
+"fifa": "PER",
+"ioc": "PER",
+"iso3": "PER",
+"flag": "pe",
+"names": [
+"Peru",
+"Pérou"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "PYF",
+"flag": "pf",
+"names": [
+"French Polynesia",
+"Polynésie française"
+]
+},
+{
+"fifa": "PNG",
+"ioc": "PNG",
+"iso3": "PNG",
+"flag": "pg",
+"names": [
+"Papouasie-Nouvelle-Guinée",
+"Papua New Guinea"
+]
+},
+{
+"fifa": "PHI",
+"ioc": "PHI",
+"iso3": "PHL",
+"flag": "ph",
+"names": [
+"Philippines"
+]
+},
+{
+"fifa": "PAK",
+"ioc": "PAK",
+"iso3": "PAK",
+"flag": "pk",
+"names": [
+"Pakistan"
+]
+},
+{
+"fifa": "POL",
+"ioc": "POL",
+"iso3": "POL",
+"flag": "pl",
+"names": [
+"Poland",
+"Pologne"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "SPM",
+"flag": "pm",
+"names": [
+"Saint Pierre and Miquelon",
+"Saint-Pierre-et-Miquelon"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "PCN",
+"flag": "pn",
+"names": [
+"Pitcairn Islands",
+"îles Pitcairn"
+]
+},
+{
+"fifa": "PUR",
+"ioc": "PUR",
+"iso3": "PRI",
+"flag": "pr",
+"names": [
+"Porto Rico",
+"Puerto Rico"
+]
+},
+{
+"fifa": "PLE",
+"ioc": "PLE",
+"iso3": "PSE",
+"flag": "ps",
+"names": [
+"Palestine",
+"État de Palestine"
+]
+},
+{
+"fifa": "POR",
+"ioc": "POR",
+"iso3": "PRT",
+"flag": "pt",
+"names": [
+"Portugal"
+]
+},
+{
+"fifa": null,
+"ioc": "PLW",
+"iso3": "PLW",
+"flag": "pw",
+"names": [
+"Palaos",
+"Palau"
+]
+},
+{
+"fifa": "PAR",
+"ioc": "PAR",
+"iso3": "PRY",
+"flag": "py",
+"names": [
+"Paraguay"
+]
+},
+{
+"fifa": "QAT",
+"ioc": "QAT",
+"iso3": "QAT",
+"flag": "qa",
+"names": [
+"Qatar"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "REU",
+"flag": "re",
+"names": [
+"La Réunion",
+"Réunion"
+]
+},
+{
+"fifa": "ROU",
+"ioc": "ROU",
+"iso3": "ROU",
+"flag": "ro",
+"names": [
+"Romania",
+"Roumanie"
+]
+},
+{
+"fifa": "SRB",
+"ioc": "SRB",
+"iso3": "SRB",
+"flag": "rs",
+"names": [
+"Serbia",
+"Serbie"
+]
+},
+{
+"fifa": "RUS",
+"ioc": "RUS",
+"iso3": "RUS",
+"flag": "ru",
+"names": [
+"Russia",
+"Russie"
+]
+},
+{
+"fifa": "RWA",
+"ioc": "RWA",
+"iso3": "RWA",
+"flag": "rw",
+"names": [
+"Rwanda"
+]
+},
+{
+"fifa": "KSA",
+"ioc": "KSA",
+"iso3": "SAU",
+"flag": "sa",
+"names": [
+"Arabie saoudite",
+"Saudi Arabia"
+]
+},
+{
+"fifa": "SOL",
+"ioc": "SOL",
+"iso3": "SLB",
+"flag": "sb",
+"names": [
+"Solomon Islands",
+"Îles Salomon"
+]
+},
+{
+"fifa": "SEY",
+"ioc": "SEY",
+"iso3": "SYC",
+"flag": "sc",
+"names": [
+"Seychelles"
+]
+},
+{
+"fifa": "SDN",
+"ioc": "SUD",
+"iso3": "SDN",
+"flag": "sd",
+"names": [
+"Soudan",
+"Sudan"
+]
+},
+{
+"fifa": "SWE",
+"ioc": "SWE",
+"iso3": "SWE",
+"flag": "se",
+"names": [
+"Suède",
+"Sweden"
+]
+},
+{
+"fifa": "SIN",
+"ioc": "SGP",
+"iso3": "SGP",
+"flag": "sg",
+"names": [
+"Singapore",
+"Singapour"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "SHN",
+"flag": "sh",
+"names": [
+"Saint Helena, Ascension and Tristan da Cunha",
+"Sainte-Hélène, Ascension et Tristan da Cunha"
+]
+},
+{
+"fifa": "SVN",
+"ioc": "SLO",
+"iso3": "SVN",
+"flag": "si",
+"names": [
+"Slovenia",
+"Slovénie"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "SJM",
+"flag": "sj",
+"names": [
+"Svalbard and Jan Mayen",
+"Svalbard et Jan Mayen"
+]
+},
+{
+"fifa": "SVK",
+"ioc": "SVK",
+"iso3": "SVK",
+"flag": "sk",
+"names": [
+"Slovakia",
+"Slovaquie"
+]
+},
+{
+"fifa": "SLE",
+"ioc": "SLE",
+"iso3": "SLE",
+"flag": "sl",
+"names": [
+"Sierra Leone"
+]
+},
+{
+"fifa": "SMR",
+"ioc": "SMR",
+"iso3": "SMR",
+"flag": "sm",
+"names": [
+"Saint-Marin",
+"San Marino"
+]
+},
+{
+"fifa": "SEN",
+"ioc": "SEN",
+"iso3": "SEN",
+"flag": "sn",
+"names": [
+"Senegal",
+"Sénégal"
+]
+},
+{
+"fifa": "SOM",
+"ioc": "SOM",
+"iso3": "SOM",
+"flag": "so",
+"names": [
+"Somalia",
+"Somalie"
+]
+},
+{
+"fifa": null,
+"ioc": "SUR",
+"iso3": "SUR",
+"flag": "sr",
+"names": [
+"Suriname"
+]
+},
+{
+"fifa": null,
+"ioc": "SSD",
+"iso3": "SSD",
+"flag": "ss",
+"names": [
+"Soudan du Sud",
+"South Sudan"
+]
+},
+{
+"fifa": "STP",
+"ioc": "STP",
+"iso3": "STP",
+"flag": "st",
+"names": [
+"Sao Tomé-et-Principe",
+"São Tomé and Príncipe"
+]
+},
+{
+"fifa": "URS",
+"ioc": "URS",
+"iso3": "SUN",
+"flag": "su",
+"names": [
+"Soviet Union",
+"Union soviétique"
+]
+},
+{
+"fifa": "SLV",
+"ioc": "ESA",
+"iso3": "SLV",
+"flag": "sv",
+"names": [
+"El Salvador",
+"Salvador"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "SXM",
+"flag": "sx",
+"names": [
+"Saint-Martin",
+"Sint Maarten"
+]
+},
+{
+"fifa": "SYR",
+"ioc": "SYR",
+"iso3": "SYR",
+"flag": "sy",
+"names": [
+"Syria",
+"Syrie"
+]
+},
+{
+"fifa": "SWZ",
+"ioc": "SWZ",
+"iso3": "SWZ",
+"flag": "sz",
+"names": [
+"Eswatini",
+"Swaziland"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": null,
+"flag": "ta",
+"names": [
+"Tristan da Cunha",
+"Île Tristan da Cunha"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "TCA",
+"flag": "tc",
+"names": [
+"Turks and Caicos Islands",
+"Îles Turques et Caïques"
+]
+},
+{
+"fifa": "CHA",
+"ioc": "CHA",
+"iso3": "TCD",
+"flag": "td",
+"names": [
+"Chad",
+"Tchad"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "ATF",
+"flag": "tf",
+"names": [
+"French Southern and Antarctic Lands",
+"Terres australes et antarctiques françaises"
+]
+},
+{
+"fifa": "TOG",
+"ioc": "TOG",
+"iso3": "TGO",
+"flag": "tg",
+"names": [
+"Togo"
+]
+},
+{
+"fifa": "THA",
+"ioc": "THA",
+"iso3": "THA",
+"flag": "th",
+"names": [
+"Thailand",
+"Thaïlande"
+]
+},
+{
+"fifa": "TJK",
+"ioc": "TJK",
+"iso3": "TJK",
+"flag": "tj",
+"names": [
+"Tadjikistan",
+"Tajikistan"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "TKL",
+"flag": "tk",
+"names": [
+"Tokelau"
+]
+},
+{
+"fifa": "TLS",
+"ioc": "TLS",
+"iso3": "TLS",
+"flag": "tl",
+"names": [
+"Timor oriental",
+"Timor-Leste"
+]
+},
+{
+"fifa": "TKM",
+"ioc": "TKM",
+"iso3": "TKM",
+"flag": "tm",
+"names": [
+"Turkmenistan",
+"Turkménistan"
+]
+},
+{
+"fifa": "TUN",
+"ioc": "TUN",
+"iso3": "TUN",
+"flag": "tn",
+"names": [
+"Tunisia",
+"Tunisie"
+]
+},
+{
+"fifa": "TGA",
+"ioc": "TGA",
+"iso3": "TON",
+"flag": "to",
+"names": [
+"Tonga"
+]
+},
+{
+"fifa": "TUR",
+"ioc": "TUR",
+"iso3": "TUR",
+"flag": "tr",
+"names": [
+"Turkey",
+"Turquie",
+"Türkiye"
+]
+},
+{
+"fifa": "TRI",
+"ioc": "TTO",
+"iso3": "TTO",
+"flag": "tt",
+"names": [
+"Trinidad and Tobago",
+"Trinité-et-Tobago"
+]
+},
+{
+"fifa": null,
+"ioc": "TUV",
+"iso3": "TUV",
+"flag": "tv",
+"names": [
+"Tuvalu"
+]
+},
+{
+"fifa": "TPE",
+"ioc": "TPE",
+"iso3": "TWN",
+"flag": "tw",
+"names": [
+"Taiwan",
+"Taïwan"
+]
+},
+{
+"fifa": "TAN",
+"ioc": "TAN",
+"iso3": "TZA",
+"flag": "tz",
+"names": [
+"Tanzania",
+"Tanzanie"
+]
+},
+{
+"fifa": "UKR",
+"ioc": "UKR",
+"iso3": "UKR",
+"flag": "ua",
+"names": [
+"Ukraine"
+]
+},
+{
+"fifa": "UGA",
+"ioc": "UGA",
+"iso3": "UGA",
+"flag": "ug",
+"names": [
+"Ouganda",
+"Uganda"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "UMI",
+"flag": "um",
+"names": [
+"United States Minor Outlying Islands",
+"îles mineures éloignées des États-Unis"
+]
+},
+{
+"fifa": "USA",
+"ioc": "USA",
+"iso3": "USA",
+"flag": "us",
+"names": [
+"Etats-Unis",
+"United States",
+"États-Unis"
+]
+},
+{
+"fifa": "URU",
+"ioc": "URU",
+"iso3": "URY",
+"flag": "uy",
+"names": [
+"Uruguay"
+]
+},
+{
+"fifa": "UZB",
+"ioc": "UZB",
+"iso3": "UZB",
+"flag": "uz",
+"names": [
+"Ouzbékistan",
+"Uzbekistan"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "VAT",
+"flag": "va",
+"names": [
+"Vatican",
+"Vatican City"
+]
+},
+{
+"fifa": "VIN",
+"ioc": "VIN",
+"iso3": "VCT",
+"flag": "vc",
+"names": [
+"Saint Vincent and the Grenadines",
+"Saint-Vincent-et-les-Grenadines"
+]
+},
+{
+"fifa": "VEN",
+"ioc": "VEN",
+"iso3": "VEN",
+"flag": "ve",
+"names": [
+"Venezuela"
+]
+},
+{
+"fifa": "VGB",
+"ioc": "IVB",
+"iso3": "VGB",
+"flag": "vg",
+"names": [
+"British Virgin Islands",
+"îles Vierges britanniques"
+]
+},
+{
+"fifa": "VIR",
+"ioc": "ISV",
+"iso3": "VIR",
+"flag": "vi",
+"names": [
+"United States Virgin Islands",
+"îles Vierges des États-Unis"
+]
+},
+{
+"fifa": "VIE",
+"ioc": "VIE",
+"iso3": "VNM",
+"flag": "vn",
+"names": [
+"Vietnam"
+]
+},
+{
+"fifa": "VAN",
+"ioc": "VAN",
+"iso3": "VUT",
+"flag": "vu",
+"names": [
+"Vanuatu"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "WLF",
+"flag": "wf",
+"names": [
+"Wallis and Futuna",
+"Wallis-et-Futuna"
+]
+},
+{
+"fifa": "SAM",
+"ioc": "SAM",
+"iso3": "WSM",
+"flag": "ws",
+"names": [
+"Samoa"
+]
+},
+{
+"fifa": "KVX",
+"ioc": "KOS",
+"iso3": "XKS",
+"flag": "xk",
+"names": [
+"Kosovo"
+]
+},
+{
+"fifa": "YEM",
+"ioc": "YEM",
+"iso3": "YEM",
+"flag": "ye",
+"names": [
+"Yemen",
+"Yémen"
+]
+},
+{
+"fifa": null,
+"ioc": null,
+"iso3": "MYT",
+"flag": "yt",
+"names": [
+"Mayotte"
+]
+},
+{
+"fifa": "YUG",
+"ioc": "YUG",
+"iso3": null,
+"flag": "yu",
+"names": [
+"Yougoslavie",
+"Yugoslavia"
+]
+},
+{
+"fifa": "RSA",
+"ioc": "RSA",
+"iso3": "ZAF",
+"flag": "za",
+"names": [
+"Afrique du Sud",
+"South Africa"
+]
+},
+{
+"fifa": "ZAM",
+"ioc": "ZAM",
+"iso3": "ZMB",
+"flag": "zm",
+"names": [
+"Zambia",
+"Zambie"
+]
+},
+{
+"fifa": "ZIM",
+"ioc": "ZIM",
+"iso3": "ZWE",
+"flag": "zw",
+"names": [
+"Zimbabwe"
+]
+}
+]
