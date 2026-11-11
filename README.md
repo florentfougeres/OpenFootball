@@ -35,6 +35,11 @@ openfootball export --out site/data
 python3 -m http.server 8765 --directory site          # puis http://localhost:8765
 ```
 
+## Documentation
+
+Guides d'exploitation (ajouter des clubs ou des saisons, mettre à jour les joueurs, les logos et les infos
+d'un club) : [docs/](docs/README.md).
+
 ## Tests
 
 ```bash

@@ -2,6 +2,10 @@ code = "ITA"
 name_en = "Italy"
 name_fr = "Italie"
 
+# Langues des pages « saison du club », dans l'ordre : la langue du pays d'abord, l'anglais en secours.
+# Une langue sans analyseur (es, de) est ignorée : elle est listée pour le jour où elle sera ajoutée.
+langs = ["it", "en", "fr"]
+
 [competition]
 code = "ITA-SA"
 name_en = "Serie A"

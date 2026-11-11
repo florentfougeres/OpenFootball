@@ -55,6 +55,11 @@ SELECT w.qid AS player_qid, p.name AS player, c.seq, c.start_year, c.end_year, c
 FROM player_career c JOIN player p ON p.id = c.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
 ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
 
+_NATIONAL = """
+SELECT w.qid AS player_qid, p.name AS player, n.seq, n.years_raw, n.team_name, n.team_link, n.caps, n.goals
+FROM player_national n JOIN player p ON p.id = n.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+ORDER BY coalesce(w.qid, 'name:' || p.name), n.seq"""
+
 _GLOBAL = {
     "club": "SELECT c.wikidata_qid, c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, "
             "coalesce(lf.label, c.name_fr) AS name_fr, c.name_local, c.nickname, c.category, c.country_code, "
@@ -121,6 +126,7 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
     for name, sql in _GLOBAL.items():
         manifest["tables"][name] = _write(con, sql, out, name, name)
     manifest["tables"]["career"] = _write(con, _CAREER, out, "career", "career")
+    manifest["tables"]["national"] = _write(con, _NATIONAL, out, "national", "national")
     manifest["tables"]["known_gap"] = _write(con, """
         SELECT s.label AS season, cl.wikipedia_title AS club, k.reason
         FROM known_gap k JOIN club_season cs ON cs.id = k.club_season_id

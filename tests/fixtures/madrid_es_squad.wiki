@@ -1,0 +1,51 @@
+tenecer al Real Madrid.
+<div style="height:100%; overflow:auto;">
+{{Equipo de fútbol inicio con esquema|procedencia=sí|pasaporte=sí|edad=sí|contrato=sí|nota=sí|internacional=sí|esquema=sí|texto=white|fondo=#15377C}}
+
+| colspan="10" bgcolor="#e6e6e6" style="color:black;" align=center| '''Porteros'''
+{{Jugador de fútbol con esquema|nac=Bélgica|num='''1'''|nombre=[[Thibaut Courtois]]|pos=POR|pasaporte=|nota=|edad={{edad|11|5|1992|1|9|2025}}|procedencia={{bandera|tamaño=15px|Inglaterra}} [[Chelsea Football Club|Chelsea F. C.]]|internacional=Absoluto|contrato=2027}}
+{{Jugador de fútbol con esquema|num='''13'''|nac=Ucrania|pos=POR|nombre=[[Andriy Lunin]]|nota={{Fútbol base}}|procedencia={{bandera|tamaño=15px|Ucrania}} [[FC Zorya Luhansk|F. K. Zarya]]|contrato=2030|internacional=Absoluto|edad={{edad|11|2|1999|1|9|2025}}|pasaporte=}}
+{{Jugador de fútbol con esquema|num='''27'''|nac=España|pos=POR|nombre=[[Fran González]]|nota={{Fútbol base}}|procedencia=[[Real Madrid Castilla Club de Fútbol|Real Madrid Castilla C. F.]]|contrato=2030|internacional=Absoluto|edad={{edad|20|6|2005|1|9|2025}}|pasaporte=}}
+{{Jugador de fútbol con esquema|num='''43'''|nac=España|pos=POR|nombre=[[Sergio Mestre]]|nota={{Fútbol base}}|procedencia=[[Real Madrid Castilla Club de Fútbol|Real Madrid Castilla C. F.]]|contrato=2030|internacional=Absoluto|edad={{edad|20|13|2005|1|9|2025}}|pasaporte=}}
+
+|-
+| colspan="10" bgcolor="#e6e6e6" style="color:black;" align=center| '''Defensas'''
+{{Jugador de fútbol con esquema|nac=España|num='''2'''|nombre=[[Dani Carvajal]] {{cap}} |pos=DEF|pasaporte=|nota={{Canterano}}|edad={{edad|11|1|1992|1|9|2025}}|procedencia={{bandera|tamaño=15px|Alemania}} [[Bayer 04 Leverkusen|Bayer Leverkusen]]|internacional=Absoluto|contrato=2026}}
+{{Jugador de fútbol con esquema|nac=Brasil|num='''3'''|nombre=[[Éder Militão]]|pos=DEF|pasaporte={{Pasaporte|Europeo}}|nota={{lesionado}}|edad={{edad|18|1|1998|1|9|2025}}|procedencia={{bandera|tamaño=15px|Portugal}} [[Fútbol Club Oporto|F. C. Porto]]|internacional=Absoluto|contrato=2028}}
+{{Jugador de fútbol con esquema|nac=Austria|num='''4'''|nombre=[[David Alaba]]|pos=DEF|pasaporte=||nota={{lesionado}}|edad={{edad|24|6|1992|1|9|2025}}|procedencia={{bandera|tamaño=15px|Alemania}} [[Bayern de Múnich|F. C. Bayern]]|internacional=Absoluto|contrato=2026}}
+{{Jugador de fútbol con esquema|nac=Inglaterra|num='''12'''|nombre=[[Trent Alexander-Arnold]]|pos=DEF|pasaporte={{Pasaporte|Extracomunitario}}|nota={{lesionado}}|edad={{edad|7|10|1998|1|9|2025}}|procedencia={{bandera|tamaño=15px|Inglaterra}} [[Liverpool Football Club|Liverpool F. C.]]|internacional=Absoluto|contrato=2031}}
+{{Jugador de fútbol con esquema|nac=España|num='''17'''|nombre=[[Raúl Asencio del Rosario|Raúl Asencio]]|pos=DEF|pasaporte=|nota={{Canterano}}|edad={{edad|13|2|2003|15|2|2025}}|procedencia=[[Real Madrid Castilla Club de Fútbol|Real Madrid Castilla C. F.]]|internacional=Sub-19|contrato=2031}}
+{{Jugador de fútbol con esquema|nac=España|num='''18'''|nombre=[[Álvaro Carreras]]|pos=DEF|pasaporte=|nota={{Canterano}}|edad={{edad|23|03|2003|1|9|2025}}|procedencia={{bandera|tamaño=15px|Portugal}} [[Sport Lisboa e Benfica|S. L. Benfica]]|internacional=Sub-21|contrato=2031}}
+{{Jugador de fútbol con esquema|nac=España|num='''20'''|nombre=[[Francisco José García Torres|Fran García]]|pos=DEF|pasaporte=|nota={{Canterano}}|edad={{edad|18|8|1999|1|9|2025}}|procedencia=[[Rayo Vallecano de Madrid|Rayo Vallecano]]|internacional=Absoluto|contrato=2027}}
+{{Jugador de fútbol con esquema|nac=Alemania|num='''22'''|nombre=[[Antonio Rüdiger]]|pos=DEF|pasaporte=|nota=|edad={{edad|3|3|1993|1|9|2025}}|procedencia={{bandera|tamaño=15px|Inglaterra}} [[Chelsea Football Club|Chelsea F. C.]]|contrato=2026|internacional=Absoluto}}
+{{Jugador de fútbol con esquema|nac=Francia|num='''23'''|nombre=[[Ferland Mendy]]|pos=DEF|pasaporte=|nota=|edad={{edad|8|6|1995|1|9|2025}}|procedencia={{bandera|tamaño=15px|Francia}} [[Olympique de Lyon|Olympique Lyonnais]]|internacional=Absoluto|contrato=2027}}
+{{Jugador de fútbol con esquema|nac=España|num='''24'''|nombre=[[Dean Huijsen]]|pos=DEF|pasaporte=|nota=|edad={{edad|15|04|2005|1|9|2025}}|procedencia={{bandera|tamaño=15px|Inglaterra}} [[AFC Bournemouth]]|internacional=Absoluto|contrato=2030}}
+|-
+| colspan="10" bgcolor="#e6e6e6" style="color:black;" align=center| '''Centrocampistas'''
+{{Jugador de fútbol con esquema|nac=Inglaterra|num='''5'''|nombre=[[Jude Bellingham]]|pos=MED|pasaporte={{Pasaporte|Europeo}}|nota=|edad={{edad|29|6|2003|1|9|2025}}|procedencia={{bandera|tamaño=15px|Alemania}} [[Borussia Dortmund]]|internacional=Absoluto|contrato=2029}}
+{{Jugador de fútbol con esquema|nac=Francia|num='''6'''|nombre=[[Eduardo Camavinga]]|pos=MED|pasaporte=|nota=|edad={{edad|10|11|2002|1|9|2025}}|procedencia={{bandera|tamaño=15px|Francia}} [[Stade Rennes Football Club|Stade Rennais F. C.]]|internacional=Absoluto|contrato=2029}}
+{{Jugador de fútbol con esquema|nac=Uruguay|num='''8'''|nombre=[[Federico Valverde]] 2.º {{cap}} |pos=MED|pasaporte={{Pasaporte|Europeo}}|nota={{Canterano}}|edad={{edad|22|7|1998|1|9|2025}}|procedencia={{bandera|tamaño=15px|Uruguay}} [[Club Atlético Peñarol|C. A. Peñarol]]|internacional=Absoluto|contrato=2029}}
+{{Jugador de fútbol con esquema|nac=Francia|num='''14'''|name=[[Aurélien Tchouaméni]]|pos=MED|pasaporte=|nota=|edad={{edad|27|1|2000|1|9|2025}}|procedencia={{bandera|tamaño=15px|Francia}} [[Association Sportive de Monaco Football Club|A. S. Monaco F. C.]]|internacional=Absoluto|contrato=2028}}
+{{Jugador de fútbol con esquema|nac=Turquía|num='''15'''|nombre=[[Arda Güler]]|pos=MED|pasaporte=|nota=|edad={{edad|25|2|2005|1|9|2025}}|procedencia={{bandera|tamaño=15px|Turquía}} [[Fenerbahçe Spor Kulübü (fútbol)|Fenerbahçe S. K.]]|internacional=Absoluto|contrato=2029}}
+{{Jugador de fútbol con esquema|nac=España|num='''19'''|nombre=[[Dani Ceballos]]|pos=MED|pasaporte=|nota=|edad={{edad|7|8|1996|1|9|2025}}|procedencia= [[Real Betis Balompié|Real Betis]]|internacional=Absoluto|contrato=2027}}
+{{Jugador de fútbol con esquema|nac=Argentina|num='''30'''|nombre=[[Franco Mastantuono]]|pos=MED|pasaporte={{Pasaporte|Europeo}}|nota=|edad={{edad|14|8|2007|1|9|2025}}|procedencia={{bandera|tamaño=15px|Argentina}} [[Club Atlético River Plate|C. A. River Plate]]|internacional=Absoluto|contrato=2031}}
+{{Jugador de fútbol con esquema|num='''45'''|nac=España|pos=MED|nombre=[[Thiago Pitarch]]|nota={{Fútbol base}}|procedencia=[[Real Madrid Castilla Club de Fútbol|Real Madrid Castilla C. F.]]|contrato=2030|internacional=Absoluto|edad={{edad|18|3|2007|1|9|2025}}|pasaporte=}}
+
+|-
+| colspan="10" bgcolor="#e6e6e6" style="color:black;" align=center| '''Delanteros'''
+{{Jugador de fútbol con esquema|nac=Brasil|num='''7'''|nombre=[[Vinícius Júnior]]  3.º {{cap}} |pos=DEL|pasaporte={{Pasaporte|Europeo}}|nota={{Canterano}}|edad={{edad|12|7|2000|1|9|2025}}|procedencia={{bandera|tamaño=15px|Brasil}} [[Clube de Regatas do Flamengo|C. R. Flamengo]]|internacional=Absoluto|contrato=2027}}
+{{Jugador de fútbol con esquema|nac=Francia|num='''10'''|nombre=[[Kylian Mbappé]]|pos=DEL|pasaporte=|nota=|edad={{edad|20|12|1998|1|9|2025}}|procedencia={{bandera|tamaño=15px|Francia}} [[Paris Saint-Germain Football Club|Paris Saint-Germain F. C.]]|internacional=Absoluto|contrato=2029}}
+{{Jugador de fútbol con esquema|nac=Brasil|num='''11'''|nombre=[[Rodrygo Goes]]|pos=DEL|pasaporte={{Pasaporte|Europeo}}|nota={{Canterano}}|edad={{edad|9|1|2001|1|9|2025}}|procedencia={{bandera|tamaño=15px|Brasil}} [[Santos Fútbol Club|Santos F. C.]]|internacional=Absoluto|contrato=2028}}
+{{Jugador de fútbol con esquema|nac=España|num='''16'''|nombre=[[Gonzalo García Torres|Gonzalo García]]|pos=DEL|pasaporte=|nota={{Canterano}}|edad={{edad|24|3|2004|9|7|2025}}|procedencia=[[Real Madrid Castilla Club de Fútbol|Real Madrid Castilla C. F.]]|internacional=Sub-19|contrato=2030}}
+{{Jugador de fútbol con esquema|nac=Marruecos|num='''21'''|nombre=[[Brahim Díaz]]|pos=DEL|pasaporte={{Pasaporte|Europeo}}|nota=|edad={{edad|3|8|1999|1|9|2024}}|procedencia={{bandera|tamaño=15px|Inglaterra}} [[Manchester City Football Club|Manchester City F. C.]]|internacional=Absoluto|contrato=2027}}
+|-
+| colspan="10" bgcolor="#e6e6e6" style="color:black;" align=center| '''Cesiones'''
+<!--
+{{Jugador de fútbol con esquema|nac=España|num=—|nombre=[[Mario de Luis Jiménez|Mario de Luis]]|pos=POR|pasaporte=|edad={{edad|6|5|2002|1|9|2022}}|procedencia=[[Real Madrid Club de Fútbol Juvenil|Real Madrid C. F. Juvenil]] → [[Real Avilés Club de Fútbol|Real Avilés C. F.]]|nota={{cedido|OUT}}|internacional=|contrato=2022}}
+{{Jugador de fútbol con esquema|nac=España|num=—|nombre=[[Lucas Alcázar Moreno|Lucas Alcázar]]|pos=DEF|pasaporte=|edad={{edad|11|7|2002|1|9|2022}}|procedencia=[[Real Madrid Club de Fútbol Juvenil|Real Madrid C. F. Juvenil]] → [[Sociedad Cultural y Recreativa Peña Deportiva|S. C. R. Peña Deportiva]]|nota={{cedido|OUT}}{{Canterano}}|internacional=|contrato=2022}}
+{{Jugador de fútbol con esquema|nac=España|num=—|nombre=[[Lorenzo Aguado Herrera|Loren Aguado]]|pos=DEF|pasaporte=|edad={{edad|19|9|2002|1|9|2022}}|procedencia=[[Real Madrid Club de Fútbol Juvenil|Real Madrid C. F. Juvenil]] → [[Club Deportivo Artístico Navalcarnero|C. D. A. Navalcarnero]]|nota={{cedido|OUT}}{{Canterano}}|internacional=|contrato=2023}}
+{{Jugador de fútbol con esquema|nac=España|num=—|nombre=[[Rafael Nicolás Llorente Sanz|Rafa Llorente]]|pos=DEL|pasaporte=|edad={{edad|6|12|2002|1|9|2022}}|procedencia=[[Las Rozas Club de Fútbol|Las Rozas C. F.]] → [[Gimnástica Segoviana Club de Fútbol|Gimnástica Segoviana]]|nota={{cedido|OUT}}|internacional=|contrato=2024}}-->
+{{Jugador de fútbol con esquema|nac=Brasil|num='''9'''|nombre=[[Endrick]]|pos=DEL|pasaporte={{Pasaporte|Extracomunitario}}|nota={{Cedido|OUT}}|edad={{edad|21|7|2006|1|9|2025}}|procedencia=<!--{{bandera|tamaño=15px|Brasil}} [[Sociedade Esportiva Palmeiras|S. E. Palmeiras]]-->[[Olympique de Lyon]]|internacional=Absoluto|contrato=2029}}
+{{Equipo de fútbol fin con esquema
+|entrenador={{bandera|tamaño=15px|España}} [[Álvaro Arbeloa]]
+|adjunto={{bandera|tamaño=15px|España}} [[Diego López Rodríguez|Die

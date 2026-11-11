@@ -2,6 +2,10 @@ code = "ESP"
 name_en = "Spain"
 name_fr = "Espagne"
 
+# Langues des pages « saison du club », dans l'ordre : la langue du pays d'abord, l'anglais en secours.
+# Une langue sans analyseur (es, de) est ignorée : elle est listée pour le jour où elle sera ajoutée.
+langs = ["es", "en", "it", "fr"]
+
 [competition]
 code = "ESP-LL"
 name_en = "La Liga"

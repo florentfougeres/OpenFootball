@@ -33,6 +33,7 @@ const T = {
     history: "Saisons du club", leaguesPlayed: "Championnats",
     wikiClub: "Page Wikipédia du club", wikiPlayer: "Page Wikipédia", wikiIn: "en", wikiFallback: "pas de version française : page en anglais",
     seeSquad: "Voir l'effectif",
+    nationalTitle: "Équipe nationale", colCaps: "Sél.", colTeam: "Équipe",
     careerFull: "Carrière senior", careerFullNote: "Tel que publié dans l’infobox de la page Wikipedia anglaise du joueur : matchs et buts sont ceux de Wikipedia, non vérifiés. Les prêts sont marqués par une flèche.",
     colYears: "Années", colApps: "M.", colGoals: "B.", loanTag: "prêt", ongoing: "en cours", careerSrc: "Page source",
     noCareer: "Pas de carrière détaillée disponible pour ce joueur.",
@@ -74,6 +75,7 @@ const T = {
     history: "Club seasons", leaguesPlayed: "Leagues",
     wikiClub: "Club's Wikipedia page", wikiPlayer: "Wikipedia page", wikiIn: "in", wikiFallback: "no version in your language: English page",
     seeSquad: "See the squad",
+    nationalTitle: "International career", colCaps: "Caps", colTeam: "Team",
     careerFull: "Senior career", careerFullNote: "As published in the infobox of the player’s English Wikipedia page: appearances and goals are Wikipedia’s, unverified. Loans are marked with an arrow.",
     colYears: "Years", colApps: "Apps", colGoals: "Goals", loanTag: "loan", ongoing: "ongoing", careerSrc: "Source page",
     noCareer: "No detailed career available for this player.",
@@ -124,7 +126,7 @@ async function startDb(manifest, base) {
   const list = (a) => "[" + a.map((x) => `'${x}'`).join(",") + "]";
   await conn.query(`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`);
   await conn.query(`CREATE VIEW club_season AS SELECT * FROM read_parquet(${list(clubSeason)}, union_by_name=true)`);
-  for (const n of ["club", "competition", "season", "known_gap", "career", "birth", "entity_wiki"]) {
+  for (const n of ["club", "competition", "season", "known_gap", "career", "national", "birth", "entity_wiki"]) {
     if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     state.has[n] = Boolean(files[n]);
   }
@@ -390,6 +392,19 @@ async function careerTable(key) {
     <p class="muted">${esc(tt("careerFullNote"))} <a href="${wikiUrl("en", rows[0].source_title)}" hreflang="en" target="_blank" rel="noopener">${esc(tt("careerSrc"))}</a></p>`;
 }
 
+async function nationalTable(key) {
+  if (!state.has.national) return "";
+  const rows = await q(`SELECT years_raw, team_name, team_link, caps, goals FROM national
+                        WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]);
+  if (!rows.length) return "";
+  const body = rows.map((r) => `<tr><td>${esc(r.years_raw || "")}${r.years_raw && /[–-]\s*$/.test(r.years_raw) ? " " + esc(tt("ongoing")) : ""}</td>
+      <td>${r.team_link ? `<a href="${wikiUrl("en", r.team_link)}" hreflang="en" target="_blank" rel="noopener">${esc(r.team_name)}</a>` : esc(r.team_name)}</td>
+      <td class="num">${r.caps ?? ""}</td><td class="num">${r.goals ?? ""}</td></tr>`).join("");
+  return `<div class="tablewrap" style="margin-bottom:8px"><table><caption>${esc(tt("nationalTitle"))}</caption>
+      <thead><tr><th>${esc(tt("colYears"))}</th><th>${esc(tt("colTeam"))}</th><th class="num">${esc(tt("colCaps"))}</th><th class="num">${esc(tt("colGoals"))}</th></tr></thead>
+      <tbody>${body}</tbody></table></div>`;
+}
+
 async function pagePlayer(key) {
   const rows = await q(`SELECT any_value(player) AS name, any_value(player_qid) AS qid, any_value(link_title) AS link_title,
                           arg_max(nat_flag, season) AS flag, arg_max(nationality, season) AS nat FROM squad
@@ -412,7 +427,8 @@ async function pagePlayer(key) {
     <header class="playerhead"><h1>${esc(p.name)}</h1>
       <p class="meta">${p.flag || p.nat ? `<span class="pl">${flagImg(p.flag, p.nat)}${p.flag ? "" : ""}<span>${esc(p.nat || "")}</span></span>` : ""}${born}</p>
       <p class="actions">${await wikiLink(p.qid, p.link_title, "wikiPlayer")}</p></header>
-    ${await careerTable(key)}`;
+    ${await careerTable(key)}
+    ${await nationalTable(key)}`;
 }
 
 async function pageCoverage() {

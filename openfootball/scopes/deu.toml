@@ -2,6 +2,10 @@ code = "DEU"
 name_en = "Germany"
 name_fr = "Allemagne"
 
+# Langues des pages « saison du club », dans l'ordre : la langue du pays d'abord, l'anglais en secours.
+# Une langue sans analyseur (es, de) est ignorée : elle est listée pour le jour où elle sera ajoutée.
+langs = ["de", "en", "it", "fr"]
+
 [competition]
 code = "DEU-BL"
 name_en = "Bundesliga"

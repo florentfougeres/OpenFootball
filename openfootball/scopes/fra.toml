@@ -2,6 +2,10 @@ code = "FRA"
 name_en = "France"
 name_fr = "France"
 
+# Langues des pages « saison du club », dans l'ordre : la langue du pays d'abord, l'anglais en secours.
+# Une langue sans analyseur (es, de) est ignorée : elle est listée pour le jour où elle sera ajoutée.
+langs = ["fr", "en", "it"]
+
 [competition]
 code = "FRA-L1"
 name_en = "Ligue 1"

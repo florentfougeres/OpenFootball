@@ -57,3 +57,22 @@ def test_french_single_letter_position_codes():
 {{Feff joueur |num=9 |prénom=E|nom=Attaquant|pos=A |nat=France}}
 """
     assert [x.position for x in parse_squad_fr(wt)] == ["GK", "DF", "MF", "FW"]
+
+
+def test_spanish_jugador_con_esquema():
+    from pathlib import Path
+    from openfootball.parse.squad_i18n import parse_squad_es
+    wt = (Path(__file__).parent / "fixtures" / "madrid_es_squad.wiki").read_text(encoding="utf-8")
+    e = parse_squad_es(wt)
+    assert len(e) == 27
+    c = next(x for x in e if x.name == "Thibaut Courtois")
+    assert (c.shirt_number, c.position, c.nationality, c.link) == (1, "GK", "Bélgica", "Thibaut Courtois")   # num en gras
+    assert {x.position for x in e} == {"GK", "DF", "MF", "FW"}
+
+
+def test_spanish_loan_section_is_a_loan():
+    from openfootball.store import stint_of
+    from openfootball.parse.squad import SquadEntry
+    e = SquadEntry(name="X", link=None, shirt_number=None, position_raw=None, position=None,
+                   nationality=None, section="Jugadores cedidos", note=None, fmt="jugador_con_esquema")
+    assert stint_of(e) == "loan_out"

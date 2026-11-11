@@ -199,3 +199,31 @@ def test_league_teams_from_rendered_standings_table():
     teams = league_teams_html(html, 18)
     assert len(teams) == 18 and teams[0] == "Club 1 FC"
     assert league_teams_html(html, 20) == []                       # mauvais compte : on ne devine pas
+
+
+def test_country_language_comes_first_then_english():
+    langs = {s.code: s.langs for s in load_scopes()}
+    assert langs["FRA"][:2] == ("fr", "en") and langs["ITA"][:2] == ("it", "en")
+    assert langs["ENG"][0] == "en" and langs["ESP"][0] == "es" and langs["DEU"][0] == "de"
+
+
+def _fr_squad(n=15):
+    rows = "\n".join(f"{{{{Feff joueur |num={i} |prénom=Joueur|nom=Fr{i}|pos={'G' if i == 1 else 'M'} |nat=France}}}}" for i in range(1, n + 1))
+    return "== Effectif ==\n" + rows
+
+
+def test_french_club_uses_the_french_page_before_english(con):
+    fr_title = "Saison 2023-2024 de Club 2"
+    wd = FakeWikidata({"Q2": [{"article": "https://fr.wikipedia.org/wiki/Saison_2023-2024_de_Club_2"}]})
+    res = run_backfill(
+        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages()),            # la page anglaise de « Club 2 » existe aussi
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, _fr_squad())})}, wd=wd,
+        qid_lookup=lambda ts: {t: ("Q2" if t == "Club 2" else None) for t in ts}, log=lambda s: None)
+    r = {x.club: x for x in res}
+    assert (r["Club 2"].lang, r["Club 2"].players) == ("fr", 15)               # la page française l'emporte
+    assert r["Club 3"].lang == "en"                                              # pas de page fr -> anglais en secours
+
+
+def test_english_only_country_ignores_local_pages(con):
+    # ENG : l'anglais d'abord, même si une page française existe
+    assert load_scopes(["ENG"])[0].langs[0] == "en"

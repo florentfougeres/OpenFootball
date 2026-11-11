@@ -11,9 +11,20 @@ from typing import Callable
 
 import duckdb
 
-from openfootball.parse.infobox import parse_career
+from openfootball.parse.infobox import parse_career, parse_national
 
 CHUNK = 200
+
+
+def _write_national(con, pid: int, wikitext: str, next_id: int, report: CareerReport) -> int:
+    con.execute("DELETE FROM player_national WHERE player_id = ?", [pid])
+    for n in parse_national(wikitext):
+        con.execute("INSERT INTO player_national (id, player_id, seq, years_raw, team_name, team_link, caps, goals)"
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    [next_id, pid, n.seq, n.years_raw, n.team_name, n.team_link, n.caps, n.goals])
+        next_id += 1
+        report.national_rows += 1
+    return next_id
 
 
 @dataclass
@@ -23,6 +34,7 @@ class CareerReport:
     no_infobox: int = 0        # page lue, aucune ligne exploitable
     missing_page: int = 0      # page absente
     rows: int = 0              # lignes écrites
+    national_rows: int = 0     # lignes « équipe nationale » écrites
 
 
 def import_careers_by_qid(con: duckdb.DuckDBPyConnection, client, wd, *,
@@ -36,6 +48,7 @@ def import_careers_by_qid(con: duckdb.DuckDBPyConnection, client, wd, *,
     todo = [(pid, titles[q]) for pid, q in rows if titles.get(q)]
     report.missing_page = len(rows) - len(todo)          # pas de page anglaise sur Wikidata
     next_id = con.execute("SELECT coalesce(max(id), 0) + 1 FROM player_career").fetchone()[0]
+    nat_id = con.execute("SELECT coalesce(max(id), 0) + 1 FROM player_national").fetchone()[0]
     for i in range(0, len(todo), CHUNK):
         chunk = todo[i:i + CHUNK]
         pages = client.get_pages([t for _, t in chunk])
@@ -57,6 +70,7 @@ def import_careers_by_qid(con: duckdb.DuckDBPyConnection, client, wd, *,
                          s.loan, s.apps, s.goals, page.resolved_title or page.title, page.revid])
                     next_id += 1
                     report.rows += 1
+                nat_id = _write_national(con, pid, page.wikitext or "", nat_id, report)
             con.execute("COMMIT")
         except Exception:
             con.execute("ROLLBACK")
@@ -73,6 +87,7 @@ def import_careers(con: duckdb.DuckDBPyConnection, client, *, refresh: bool = Fa
                        f"AND p.link_title IS NOT NULL {where} ORDER BY p.id" + (f" LIMIT {int(limit)}" if limit else "")).fetchall()
     report = CareerReport()
     next_id = con.execute("SELECT coalesce(max(id), 0) + 1 FROM player_career").fetchone()[0]
+    nat_id = con.execute("SELECT coalesce(max(id), 0) + 1 FROM player_national").fetchone()[0]
     for i in range(0, len(todo), CHUNK):
         chunk = todo[i:i + CHUNK]
         pages = client.get_pages([t for _, t in chunk])
@@ -98,6 +113,7 @@ def import_careers(con: duckdb.DuckDBPyConnection, client, *, refresh: bool = Fa
                          s.loan, s.apps, s.goals, page.resolved_title or page.title, page.revid])
                     next_id += 1
                     report.rows += 1
+                nat_id = _write_national(con, pid, page.wikitext or "", nat_id, report)
             con.execute("COMMIT")
         except Exception:
             con.execute("ROLLBACK")

@@ -10,7 +10,7 @@ from openfootball.checks import Problem, run_checks
 from openfootball.parse.squad import SquadEntry
 
 _LOAN_IN = re.compile(r"\bin\b.{0,12}loan|loan(?:ed)?[- ]in\b|prestito in|prêtés? (?:au club|à nous)", re.I)
-_LOAN_OUT = re.compile(r"loan|prêt|prest", re.I)
+_LOAN_OUT = re.compile(r"loan|prêt|prest|cedid|cesi[oó]n|préstamo", re.I)
 
 
 class SeasonFrozen(RuntimeError):

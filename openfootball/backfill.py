@@ -174,7 +174,9 @@ def run_backfill(
                     arts = season_articles(wd.season_items(qids[team])) if qids.get(team) else {}
                 return arts
 
-            for lang in LANG_ORDER:
+            for lang in sc.langs:
+                if lang != "en" and (lang not in PARSERS or lang not in lang_clients):
+                    continue                                  # langue listée mais pas encore prise en charge
                 constructed = f"{label} {team} season"
                 if lang == "en":
                     # Le titre construit peut différer du vrai (« Celta de Vigo » / « RC Celta de Vigo »).

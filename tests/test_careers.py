@@ -99,3 +99,20 @@ def test_import_is_idempotent_and_refresh_rewrites(con):
     assert r.players == 2 and con.execute("SELECT count(*) FROM player_career").fetchone()[0] == 18   # pas de doublon
     r = import_careers(con, FakeClient(pages()), refresh=True, log=lambda s: None)
     assert con.execute("SELECT count(*) FROM player_career").fetchone()[0] == 18
+
+
+def test_national_team_caps_and_goals_from_infobox():
+    from openfootball.parse.infobox import parse_national
+    k = parse_national(lead("king_lead"))
+    assert (k[0].team_name, k[0].caps, k[0].goals) == ("Norway U15", 4, 2)
+    assert (k[-1].team_name, k[-1].years_raw, k[-1].caps, k[-1].goals) == ("Norway", "2012–2022", 62, 20)
+    assert k[-1].team_link == "Norway national football team"
+    m = parse_national(lead("mbappe_lead"))
+    assert (m[-1].team_name, m[-1].caps, m[-1].goals) == ("France", 107, 67)      # buts écrits comme un lien
+    assert parse_national(lead("noinfobox_lead")) == []
+
+
+def test_import_writes_national_rows(con):
+    import_careers(con, FakeClient(pages()), log=lambda s: None)
+    assert con.execute("SELECT caps, goals FROM player_national WHERE player_id = 1 AND team_name = 'Norway'").fetchone() == (62, 20)
+    assert con.execute("SELECT count(*) FROM player_national WHERE player_id = 1").fetchone()[0] == 6
