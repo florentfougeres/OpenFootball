@@ -81,6 +81,18 @@ def build_progress(con: duckdb.DuckDBPyConnection, today: date | None = None) ->
         ["Clubs sans page Wikipedia française", q("SELECT count(*) FROM club c WHERE NOT EXISTS (SELECT 1 FROM entity_wiki w WHERE w.qid = c.wikidata_qid AND w.lang = 'fr')"), q("SELECT count(*) FROM club")],
     ]))
 
+    out.append("\n## Clubs du monde (fiches club)\n")
+    wc = lambda sql: con.execute(sql).fetchone()[0]
+    n_world = wc("SELECT count(*) FROM world_club")
+    out.append(_table(["Donnée", "Clubs", "Sur"], [
+        ["Fiches club importées (Wikidata)", n_world, n_world],
+        ["… avec logo Commons", wc("SELECT count(*) FROM world_club WHERE logo_url IS NOT NULL"), n_world],
+        ["… avec stade", wc("SELECT count(*) FROM world_club WHERE stadium IS NOT NULL"), n_world],
+        ["… avec date de fondation", wc("SELECT count(*) FROM world_club WHERE founded IS NOT NULL"), n_world],
+        ["… avec page Wikipedia anglaise", wc("SELECT count(*) FROM world_club WHERE wikipedia_en_url IS NOT NULL"), n_world],
+        ["Nos clubs (effectifs) rattachés à une fiche", wc("SELECT count(*) FROM club c WHERE EXISTS (SELECT 1 FROM world_club w WHERE w.qid = c.wikidata_qid)"), wc("SELECT count(*) FROM club")],
+    ]) if n_world else "Aucune fiche importée : lancer `openfootball import-world-clubs`.")
+
     out.append("\n## À faire\n")
     out += [f"- [ ] {t}" for t in TODO]
     return "\n".join(out) + "\n"

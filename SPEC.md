@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.23** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.24** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -310,6 +310,15 @@ Demande : afficher le parcours d'un joueur « comme sur Wikipedia » (la liste d
 - **`PROGRESS.md`** généré par `openfootball progress` (avancement saison × championnat, manques, À faire).
 - **Défaut connu** : un nouveau backfill recrée les joueurs sans lien Wikipedia ; `reconcile --names` les rattache ensuite (à lancer après chaque backfill).
 - Jeu de données publié : **3,4 Mo**.
+
+## 9duodecies. Clubs du monde et fiches club (2026-11-11)
+
+- **Source** : un CSV déjà produit par le script de l'utilisateur (`tools/world_clubs/extract_world_clubs.py`, **non relancé**), copié dans `data/source/clubs_football.csv` (**42 888 clubs**, 31 colonnes, QID uniques) ; importé par `openfootball import-world-clubs` (migration `0006`, table `world_club`, idempotent, cellule vide = NULL). **188 de nos 189 clubs** s'y rattachent par QID.
+- **Qualité du CSV** (remplissage) : pays 91 %, date de création 55 %, page anglaise 60 %, coordonnées 57 %, stade 23 %, ligue 38 %, site officiel 29 %, **logo 5 %**, surnom 1 %, couleurs 4 % ; 3 725 clubs sans pays ; le pays est « Royaume-Uni » pour 3 150 clubs (Angleterre/Écosse non distinguées dans ce CSV).
+- **Fiche club** (`#/fr/club/Q631` ou, pour nos clubs, par titre) : logo, nom, drapeau et pays (noms localisés par le navigateur), surnom, ville, fondation, stade et capacité, championnat et niveau, couleurs, site, coordonnées (OpenStreetMap), liens Transfermarkt / FBref / WorldFootball, page Wikipedia (langue de l'app, sinon anglais, sinon langue du club). Pour nos clubs : saisons et accès à l'effectif ; pour les autres : « pas d'effectif détaillé » (seuls les cinq grands championnats sont couverts).
+- **Navigation** : la recherche inclut les clubs du monde (triés par nombre de versions Wikipedia) ; **chaque club d'une carrière de joueur ouvre sa fiche** (jointure sur le titre de la page anglaise) ; vérifié : les 13 clubs de la carrière de Joshua King ouvrent une fiche.
+- Export : table `world_club` (3 Mo) ; jeu publié **6,2 Mo**. Drapeaux : 241 SVG (2,3 Mo) ; 5 codes d'anciens États (AN, CQ, DD, SU, YU) sans drapeau.
+- **Limites** : 95 % des fiches sans logo (cercle gris) ; le logo Commons des clubs du CSV est libre mais n'est pas vérifié un par un ; pas de maillage hors CSV (clubs absents du CSV : 1 des nôtres).
 
 ## 10. Jalons proposés
 

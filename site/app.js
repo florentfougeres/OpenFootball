@@ -17,6 +17,10 @@ const T = {
     heroLead: "Premier League, La Liga, Serie A, Bundesliga et Ligue 1 : qui jouait où, à quel âge, avec quel numéro. Données ouvertes, issues de Wikipedia et Wikidata.",
     searchPh: "Chercher un club ou un joueur", search: "Chercher", clubs: "Clubs", players: "Joueurs",
     statClubs: "clubs", statPlayers: "joueurs", statSeasons: "saisons", statLeagues: "championnats",
+    clubInfo: "Informations", nickname: "Surnom", city: "Ville", founded: "Fondé", stadium: "Stade", capacity: "places",
+    league: "Championnat", division: "niveau", colors: "Couleurs", website: "Site officiel", map: "Voir sur la carte",
+    externalIds: "Voir aussi", worldClubs: "Autres clubs", noSquadsHere: "Pas d'effectifs détaillés pour ce club : seuls les cinq grands championnats sont couverts.",
+    clubNotFound: "Club introuvable.", categoryLabel: "Catégorie", wikiLocalOnly: "page dans la langue du club",
     noResult: "Aucun résultat.", season: "Saison", seasons: "saisons", browseTitle: "Les championnats", seasonOf: "Saison",
     number: "N°", player: "Joueur", nationality: "Nationalité", age: "Âge", ageTip: "Âge au 1er août de la saison",
     competition: "Compétition", size: "Joueurs", source: "Source", sourceLabel: "Source de l'effectif", position: "Poste",
@@ -54,6 +58,10 @@ const T = {
     heroLead: "Premier League, La Liga, Serie A, Bundesliga and Ligue 1: who played where, at what age, with which number. Open data from Wikipedia and Wikidata.",
     searchPh: "Search a club or a player", search: "Search", clubs: "Clubs", players: "Players",
     statClubs: "clubs", statPlayers: "players", statSeasons: "seasons", statLeagues: "leagues",
+    clubInfo: "Information", nickname: "Nickname", city: "City", founded: "Founded", stadium: "Stadium", capacity: "seats",
+    league: "League", division: "level", colors: "Colours", website: "Official website", map: "View on map",
+    externalIds: "See also", worldClubs: "Other clubs", noSquadsHere: "No detailed squads for this club: only the five major leagues are covered.",
+    clubNotFound: "Club not found.", categoryLabel: "Category", wikiLocalOnly: "page in the club's own language",
     noResult: "No results.", season: "Season", seasons: "seasons", browseTitle: "The leagues", seasonOf: "Season",
     number: "No.", player: "Player", nationality: "Nationality", age: "Age", ageTip: "Age on 1 August of the season",
     competition: "Competition", size: "Players", source: "Source", sourceLabel: "Squad source", position: "Position",
@@ -86,7 +94,7 @@ const T = {
   },
 };
 
-const state = { conn: null, manifest: null, lang: "fr", bootError: null, has: {}, clubs: new Map(), comps: new Map() };
+const state = { conn: null, manifest: null, lang: "fr", bootError: null, has: {}, clubs: new Map(), clubByQid: new Map(), comps: new Map() };
 const tt = (k) => T[state.lang][k] ?? k;
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const enc = encodeURIComponent;
@@ -116,7 +124,7 @@ async function startDb(manifest, base) {
   const list = (a) => "[" + a.map((x) => `'${x}'`).join(",") + "]";
   await conn.query(`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`);
   await conn.query(`CREATE VIEW club_season AS SELECT * FROM read_parquet(${list(clubSeason)}, union_by_name=true)`);
-  for (const n of ["club", "competition", "season", "known_gap", "career", "birth", "entity_wiki"]) {
+  for (const n of ["club", "competition", "season", "known_gap", "career", "birth", "entity_wiki", "world_club"]) {
     if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     state.has[n] = Boolean(files[n]);
   }
@@ -135,7 +143,7 @@ async function q(sql, params = []) {
 }
 
 async function loadRefs() {
-  for (const c of await q(`SELECT * FROM club`)) state.clubs.set(c.wikipedia_title, c);
+  for (const c of await q(`SELECT * FROM club`)) { state.clubs.set(c.wikipedia_title, c); if (c.wikidata_qid) state.clubByQid.set(c.wikidata_qid, c); }
   for (const c of await q(`SELECT * FROM competition`)) state.comps.set(c.code, c);
 }
 
@@ -235,38 +243,103 @@ async function runSearch(term) {
        WHERE strip_accents(player) ILIKE strip_accents(?) GROUP BY COALESCE(player_qid, 'name:' || player) ORDER BY n DESC, player LIMIT 30`, [like]),
   ]);
   const byClub = clubs.map((c) => clubOf(c.club));
-  const byName = [...state.clubs.values()].filter((c) => [c.name_en, c.name_fr].some((n) => n && n.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").includes(term.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""))));
+  const norm = (x) => String(x || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const byName = [...state.clubs.values()].filter((c) => [c.name_en, c.name_fr].some((n) => norm(n).includes(norm(term))));
   const found = [...new Map([...byClub, ...byName].map((c) => [c.wikipedia_title, c])).values()]
     .sort((a, b) => clubName(a).localeCompare(clubName(b))).slice(0, 30);
-  if (!found.length && !players.length) return `<p class="muted">${esc(tt("noResult"))}</p>`;
+  const ourQids = new Set(found.map((c) => c.wikidata_qid));
+  const world = state.has.world_club ? (await q(`SELECT qid, name_local, name_en, country_iso, city FROM world_club
+      WHERE strip_accents(name_local) ILIKE strip_accents(?) OR strip_accents(coalesce(name_en, '')) ILIKE strip_accents(?)
+      ORDER BY coalesce(wikipedia_count, 0) DESC LIMIT 40`, [like, like])).filter((c) => !ourQids.has(c.qid)).slice(0, 25) : [];
+  if (!found.length && !players.length && !world.length) return `<p class="muted">${esc(tt("noResult"))}</p>`;
   return `${found.length ? `<h2>${esc(tt("clubs"))}</h2><ul class="chips">${found.map((c) =>
       `<li><a class="chip" href="${href("club", enc(c.wikipedia_title))}">${logoImg(c, 28)}<span>${esc(clubName(c))}</span></a></li>`).join("")}</ul>` : ""}
+    ${world.length ? `<h2>${esc(tt("worldClubs"))}</h2><ul class="list">${world.map((c) =>
+      `<li>${flagImg(c.country_iso ? c.country_iso.toLowerCase() : null, c.country_iso ? countryName(c.country_iso) : "")} <a href="${href("club", c.qid)}">${esc(state.lang === "fr" ? c.name_local : c.name_en || c.name_local)}</a>${c.city ? ` <span class="muted">· ${esc(c.city)}</span>` : ""}</li>`).join("")}</ul>` : ""}
     ${players.length ? `<h2>${esc(tt("players"))}</h2><ul class="list">${players.map((p) =>
       `<li>${flagImg(p.flag, p.nat)} <a href="${href("player", enc(p.key))}">${esc(p.player)}</a> <span class="muted">· ${esc(p.first)} – ${esc(p.last)}${p.link_title && p.link_title !== p.player ? " · " + esc(p.link_title) : ""}</span></li>`).join("")}</ul>` : ""}`;
 }
 
-async function pageClub(title) {
-  const c = clubOf(title);
-  const rows = await q(`SELECT season, competition, players, source_lang, source_title, known_gap_reason
-                        FROM club_season WHERE club = ? ORDER BY season DESC`, [title]);
-  if (!rows.length) return `<p class="err">${esc(tt("noResult"))}</p>`;
-  const leagues = [...new Set(rows.map((r) => r.competition))];
-  const body = rows.map((r) => `<tr>
-      <td><a href="${href("club", enc(title), seasonSlug(r.season))}">${esc(r.season)}</a></td>
-      <td>${esc(compName(r.competition))}</td>
-      <td class="num">${r.players ? r.players : badge("warn", r.known_gap_reason ? tt("gap") : tt("unresolved"))}</td>
-      <td>${stateBadge(state.manifest.seasons[r.season].status)}</td></tr>`).join("");
-  const last = rows.find((r) => r.players) || rows[0];
+const commonsLogo = (url) => (url ? url + (url.includes("?") ? "&" : "?") + "width=200" : null);
+const countryName = (iso) => { try { return new Intl.DisplayNames([state.lang], { type: "region" }).of(iso); } catch { return iso; } };
+const fmtFounded = (v) => {
+  if (!v) return "";
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(v);
+  if (m) return new Date(`${m[1]}-${m[2]}-${m[3]}T00:00:00`).toLocaleDateString(state.lang, { day: "numeric", month: "long", year: "numeric" });
+  return v.slice(0, 4);
+};
+const hostLang = (url) => { const m = /^https?:\/\/([a-z-]+)\.wikipedia\.org\//.exec(url || ""); return m ? m[1] : null; };
+
+async function clubWikiLink(qid, w) {                 // langue de l'app, sinon anglais, sinon la langue du club
+  const urls = {};
+  if (qid && state.has.entity_wiki) for (const r of await q(`SELECT lang, title FROM entity_wiki WHERE qid = ?`, [qid])) urls[r.lang] = wikiUrl(r.lang, r.title);
+  if (w) {
+    if (w.wikipedia_en_url && !urls.en) urls.en = w.wikipedia_en_url;
+    const hl = hostLang(w.wikipedia_local_url);
+    if (hl && !urls[hl]) urls[hl] = w.wikipedia_local_url;
+  }
+  const lang = urls[state.lang] ? state.lang : urls.en ? "en" : Object.keys(urls)[0];
+  if (!lang) return "";
+  const note = lang !== state.lang ? ` <span class="muted">(${esc(tt(lang === "en" ? "wikiFallback" : "wikiLocalOnly"))})</span>` : "";
+  return `<a class="btn ghost" href="${esc(urls[lang])}" hreflang="${esc(lang)}" target="_blank" rel="noopener">${esc(tt("wikiClub"))} <span class="muted">· ${esc(lang.toUpperCase())}</span></a>${note}`;
+}
+
+async function pageClub(key) {
+  const qid = /^Q\d+$/.test(key) ? key : (state.clubs.get(key) || {}).wikidata_qid || null;
+  const ours = state.clubByQid.get(qid) || state.clubs.get(key) || null;
+  const w = qid && state.has.world_club ? (await q(`SELECT * FROM world_club WHERE qid = ?`, [qid]))[0] : null;
+  if (!ours && !w) return `<p class="err">${esc(tt("clubNotFound"))}</p>`;
+  const iso = w && w.country_iso ? w.country_iso.toLowerCase() : null;
+  const flagCode = ours ? COUNTRY_FLAG[ours.country_code] : iso;
+  const countryLabel = ours ? COUNTRY_NAME[state.lang][ours.country_code] : iso ? countryName(w.country_iso) : "";
+  const name = ours ? clubName(ours) : state.lang === "fr" ? w.name_local : w.name_en || w.name_local;
+  const sub = w && w.name_en && w.name_en !== name ? w.name_en : (w && w.name_local !== name ? w.name_local : "");
+  const logo = ours && ours.logo_url ? { logo_url: ours.logo_url } : { logo_url: commonsLogo(w && w.logo_url) };
+
+  let seasonsHtml = "", seeSquad = "";
+  if (ours) {
+    const rows = await q(`SELECT season, competition, players, known_gap_reason FROM club_season WHERE club = ? ORDER BY season DESC`, [ours.wikipedia_title]);
+    if (rows.length) {
+      const last = rows.find((r) => r.players) || rows[0];
+      seeSquad = `<a class="btn" href="${href("club", enc(ours.wikipedia_title), seasonSlug(last.season))}">${esc(tt("seeSquad"))} ${esc(last.season)}</a>`;
+      seasonsHtml = `<div class="tablewrap"><table><caption>${esc(tt("history"))}</caption>
+        <thead><tr><th>${esc(tt("season"))}</th><th>${esc(tt("competition"))}</th><th class="num">${esc(tt("size"))}</th><th>${esc(tt("covStatus"))}</th></tr></thead><tbody>
+        ${rows.map((r) => `<tr><td><a href="${href("club", enc(ours.wikipedia_title), seasonSlug(r.season))}">${esc(r.season)}</a></td>
+          <td>${esc(compName(r.competition))}</td>
+          <td class="num">${r.players ? r.players : badge("warn", r.known_gap_reason ? tt("gap") : tt("unresolved"))}</td>
+          <td>${stateBadge(state.manifest.seasons[r.season].status)}</td></tr>`).join("")}</tbody></table></div>`;
+    }
+  } else {
+    seasonsHtml = `<p class="notice">${esc(tt("noSquadsHere"))}</p>`;
+  }
+
+  const items = [];
+  const add = (label, html) => { if (html) items.push(`<div><dt>${esc(label)}</dt><dd>${html}</dd></div>`); };
+  if (w) {
+    add(tt("nickname"), esc(w.nickname || ""));
+    add(tt("city"), esc(w.city || ""));
+    add(tt("founded"), esc(fmtFounded(w.founded)));
+    add(tt("stadium"), w.stadium ? `${esc(w.stadium)}${w.stadium_capacity ? ` <span class="muted">· ${w.stadium_capacity.toLocaleString(state.lang)} ${esc(tt("capacity"))}</span>` : ""}` : "");
+    add(tt("league"), w.league ? `${esc(w.league)}${w.division ? ` <span class="muted">· ${esc(tt("division"))} ${w.division}</span>` : ""}` : "");
+    if (w.colors_hex) {
+      const names = (w.colors || "").split(" | "), hexes = w.colors_hex.split(" | ");
+      add(tt("colors"), hexes.map((h, i) => `<span class="swatch" style="background:${esc(h)}" title="${esc(names[i] || h)}"></span>`).join("") + (w.colors ? ` <span class="muted">${esc(w.colors)}</span>` : ""));
+    }
+    add(tt("website"), w.website ? `<a href="${esc(w.website)}" target="_blank" rel="noopener">${esc(w.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""))}</a>` : "");
+    if (w.lat != null && w.lon != null) add("GPS", `<a href="https://www.openstreetmap.org/?mlat=${w.lat}&mlon=${w.lon}#map=14/${w.lat}/${w.lon}" target="_blank" rel="noopener">${esc(tt("map"))}</a> <span class="muted">${w.lat.toFixed(3)}, ${w.lon.toFixed(3)}</span>`);
+    const ext = [];
+    if (w.transfermarkt_id) ext.push(`<a href="https://www.transfermarkt.com/-/startseite/verein/${enc(w.transfermarkt_id)}" target="_blank" rel="noopener">Transfermarkt</a>`);
+    if (w.fbref_id) ext.push(`<a href="https://fbref.com/en/squads/${enc(w.fbref_id)}/" target="_blank" rel="noopener">FBref</a>`);
+    if (w.worldfootball_id) ext.push(`<a href="https://www.worldfootball.net/teams/${enc(w.worldfootball_id)}/" target="_blank" rel="noopener">WorldFootball</a>`);
+    add(tt("externalIds"), ext.join(" · "));
+  }
   return `<p class="crumbs"><a href="${href("")}">${esc(tt("home"))}</a></p>
-    <header class="clubhead">${logoImg(c, 88)}
-      <div><h1>${esc(clubName(c))}</h1>
-        <p class="meta">${flagImg(COUNTRY_FLAG[c.country_code], COUNTRY_NAME[state.lang][c.country_code])}
-          <span>${esc(COUNTRY_NAME[state.lang][c.country_code] || "")}</span>
-          <span>· ${esc(leagues.map(compName).join(", "))}</span></p>
-        <p class="actions"><a class="btn" href="${href("club", enc(title), seasonSlug(last.season))}">${esc(tt("seeSquad"))} ${esc(last.season)}</a>
-          ${await wikiLink(c.wikidata_qid, title, "wikiClub")}</p></div></header>
-    <div class="tablewrap"><table><caption>${esc(tt("history"))}</caption>
-      <thead><tr><th>${esc(tt("season"))}</th><th>${esc(tt("competition"))}</th><th class="num">${esc(tt("size"))}</th><th>${esc(tt("covStatus"))}</th></tr></thead><tbody>${body}</tbody></table></div>`;
+    <header class="clubhead">${logoImg(logo, 88)}
+      <div><h1>${esc(name)}</h1>${sub ? `<p class="muted" style="margin:0">${esc(sub)}</p>` : ""}
+        <p class="meta">${flagImg(flagCode, countryLabel)}<span>${esc(countryLabel)}</span></p>
+        <p class="actions">${seeSquad} ${await clubWikiLink(qid, w)}</p></div></header>
+    ${items.length ? `<dl class="infogrid" aria-label="${esc(tt("clubInfo"))}">${items.join("")}</dl>` : ""}
+    ${seasonsHtml}`;
 }
 
 async function pageSquad(title, slug) {
@@ -303,11 +376,13 @@ async function pageSquad(title, slug) {
 
 async function careerTable(key) {
   if (!state.has.career) return "";
-  const rows = await q(`SELECT seq, years_raw, club_name, club_link, loan, apps, goals, source_title FROM career
-                        WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]);
+  const rows = await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title,
+                          ${state.has.world_club ? "w.qid AS club_qid" : "NULL AS club_qid"}
+                        FROM career c ${state.has.world_club ? "LEFT JOIN world_club w ON w.en_title = c.club_link" : ""}
+                        WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]);
   if (!rows.length) return `<p class="muted">${esc(tt("noCareer"))}</p>`;
   const body = rows.map((r) => `<tr><td>${esc(r.years_raw || "")}${r.years_raw && /[–-]\s*$/.test(r.years_raw) ? " " + esc(tt("ongoing")) : ""}</td>
-      <td>${r.loan ? "→ " : ""}${r.club_link ? `<a href="${wikiUrl("en", r.club_link)}" hreflang="en" target="_blank" rel="noopener">${esc(r.club_name)}</a>` : esc(r.club_name)}${r.loan ? " " + badge("info", tt("loanTag")) : ""}</td>
+      <td>${r.loan ? "→ " : ""}${r.club_qid ? `<a href="${href("club", r.club_qid)}">${esc(r.club_name)}</a>` : r.club_link ? `<a href="${wikiUrl("en", r.club_link)}" hreflang="en" target="_blank" rel="noopener">${esc(r.club_name)}</a>` : esc(r.club_name)}${r.loan ? " " + badge("info", tt("loanTag")) : ""}</td>
       <td class="num">${r.apps ?? ""}</td><td class="num">${r.goals ?? ""}</td></tr>`).join("");
   return `<div class="tablewrap" style="margin-bottom:8px"><table><caption>${esc(tt("careerFull"))}</caption>
       <thead><tr><th>${esc(tt("colYears"))}</th><th>${esc(tt("club"))}</th><th class="num">${esc(tt("colApps"))}</th><th class="num">${esc(tt("colGoals"))}</th></tr></thead>

@@ -62,6 +62,12 @@ _GLOBAL = {
             "LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr' ORDER BY c.wikipedia_title",
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
+    # Clubs du monde : fiches club. `en_title` = titre de la page anglaise (relie les carrières aux fiches).
+    "world_club": "SELECT qid, name_local, name_en, nickname, category, city, country, country_iso, stadium, "
+                  "stadium_capacity, division, league, founded, colors, colors_hex, logo_url, website, "
+                  "wikipedia_en_url, wikipedia_local_url, wikipedia_count, lon, lat, transfermarkt_id, fbref_id, "
+                  "worldfootball_id, replace(url_decode(regexp_extract(wikipedia_en_url, '/wiki/(.*)$', 1)), '_', ' ') AS en_title "
+                  "FROM world_club ORDER BY qid",
     "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
     "competition": "SELECT code, name_en, name_fr, country_code, level, wikidata_qid "
                    "FROM competition ORDER BY code",

@@ -123,3 +123,9 @@ a.btn:hover { filter: brightness(1.08); }
   .clubhead { flex-direction: column; align-items: flex-start; }
   .chips { grid-template-columns: 1fr; }
 }
+
+.infogrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 10px 20px; margin: 16px 0 24px;
+  padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.infogrid dt { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.infogrid dd { margin: 2px 0 0; font-weight: 500; overflow-wrap: anywhere; }
+.swatch { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 4px; vertical-align: -3px; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }

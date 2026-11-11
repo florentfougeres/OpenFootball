@@ -63,6 +63,17 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | Clubs sans logo | 0 | 189 |
 | Clubs sans page Wikipedia française | 1 | 189 |
 
+## Clubs du monde (fiches club)
+
+| Donnée | Clubs | Sur |
+|---|---|---|
+| Fiches club importées (Wikidata) | 42888 | 42888 |
+| … avec logo Commons | 2024 | 42888 |
+| … avec stade | 9890 | 42888 |
+| … avec date de fondation | 23589 | 42888 |
+| … avec page Wikipedia anglaise | 25611 | 42888 |
+| Nos clubs (effectifs) rattachés à une fiche | 188 | 189 |
+
 ## À faire
 
 - [ ] Geler les saisons terminées (`freeze`) : décision manuelle, aucune saison n'est figée à ce jour.

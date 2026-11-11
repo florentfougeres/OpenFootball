@@ -12,6 +12,7 @@ from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
 from openfootball.enrich import enrich_birth_dates, enrich_logos, enrich_wiki_links
 from openfootball.progress import build_progress
+from openfootball.world_clubs import import_world_clubs
 from openfootball.careers import import_careers, import_careers_by_qid
 from openfootball.reconcile import reconcile_by_name, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -395,6 +396,16 @@ def progress_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def import_world_clubs_cmd(args: argparse.Namespace) -> int:
+    con = connect(args.db)
+    migrate(con)
+    n = import_world_clubs(con, args.csv)
+    ours = con.execute("SELECT count(*) FROM club c WHERE EXISTS (SELECT 1 FROM world_club w WHERE w.qid = c.wikidata_qid)").fetchone()[0]
+    total = con.execute("SELECT count(*) FROM club").fetchone()[0]
+    print(f"{n} clubs du monde importés ; {ours} de nos {total} clubs y sont rattachés (par QID)")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="openfootball")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -468,6 +479,10 @@ def main(argv: list[str] | None = None) -> int:
     pr.add_argument("--db", default=DB_DEFAULT)
     pr.add_argument("--out", default="PROGRESS.md")
     pr.set_defaults(func=progress_cmd)
+    wc = sub.add_parser("import-world-clubs", help="importe le CSV des clubs du monde (fiches club)")
+    wc.add_argument("--db", default=DB_DEFAULT)
+    wc.add_argument("--csv", default="data/source/clubs_football.csv")
+    wc.set_defaults(func=import_world_clubs_cmd)
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     return args.func(args)
