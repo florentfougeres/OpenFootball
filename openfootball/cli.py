@@ -10,7 +10,9 @@ from pathlib import Path
 from openfootball.backfill import run_backfill
 from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
-from openfootball.export import export_all, verify_continuity
+from openfootball.careers import import_careers, import_careers_by_qid
+from openfootball.reconcile import reconcile_by_name, reconcile_players
+from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
 from openfootball.store import FreezeRefused, SeasonFrozen, freeze
 from openfootball.parse.league import league_teams, season_label
@@ -320,6 +322,8 @@ def export_cmd(args: argparse.Namespace) -> int:
                 print("  ", e)
             return 1
         print("continuité OK avec la release précédente")
+    if args.archive:
+        print(f"archive de release : {pack(args.out, args.archive)}")
     return 0
 
 
@@ -330,6 +334,40 @@ def verify_release_cmd(args: argparse.Namespace) -> int:
         print("ERREUR", e)
     print("continuité OK" if not errors else f"{len(errors)} violation(s)")
     return 1 if errors else 0
+
+
+def reconcile_cmd(args: argparse.Namespace) -> int:
+    """Résout les liens Wikipedia des joueurs en QID Wikidata et fusionne les doublons inter-langues."""
+    con = connect(args.db)
+    migrate(con)
+    clients = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in ("en", "fr", "it")}
+    before = con.execute("SELECT count(*) FROM player").fetchone()[0]
+    r = reconcile_players(con, clients)
+    after = con.execute("SELECT count(*) FROM player").fetchone()[0]
+    print(f"joueurs {before} -> {after} : {r.resolved} QID appris, {r.merged} doublons fusionnés, "
+          f"{r.unresolved} liens sans QID")
+    for b in r.blocked:
+        print("  refusé :", b)
+    if args.names:
+        n = reconcile_by_name(con)
+        print(f"sans lien -> identifiés par nom + carrière : {n.merged} fusionnés, {n.unresolved} laissés séparés (non prouvés ou ambigus)")
+        for b in n.blocked:
+            print("  refusé :", b)
+    return 0
+
+
+def careers_cmd(args: argparse.Namespace) -> int:
+    """Importe la carrière (infobox « Senior career ») des joueurs liés à une page anglaise."""
+    con = connect(args.db)
+    migrate(con)
+    client = WikipediaClient("cache/wikipedia_en_lead", lang="en", lead_only=True, batch_size=50)
+    r = import_careers(con, client, refresh=args.refresh, limit=args.limit)
+    print(f"{r.players} joueurs lus : {r.with_career} avec carrière ({r.rows} lignes), "
+          f"{r.no_infobox} sans infobox exploitable, {r.missing_page} pages absentes")
+    r2 = import_careers_by_qid(con, client, WikidataClient(args.wd_cache))
+    print(f"par QID/sitelink : {r2.players} joueurs lus : {r2.with_career} avec carrière ({r2.rows} lignes), "
+          f"{r2.no_infobox} sans infobox exploitable, {r2.missing_page} sans page anglaise")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -377,11 +415,22 @@ def main(argv: list[str] | None = None) -> int:
     e.add_argument("--db", default=DB_DEFAULT)
     e.add_argument("--out", default="dist/data")
     e.add_argument("--previous", help="manifest.json de la release précédente (garde de continuité)")
+    e.add_argument("--archive", help="écrit aussi une archive .tar.gz pour la release GitHub")
     e.set_defaults(func=export_cmd)
     v = sub.add_parser("verify-release", help="compare deux manifests : une saison figée ne doit pas changer")
     v.add_argument("--new", required=True)
     v.add_argument("--previous", required=True)
     v.set_defaults(func=verify_release_cmd)
+    rc = sub.add_parser("reconcile", help="un joueur = un QID Wikidata (fusionne les doublons inter-langues)")
+    rc.add_argument("--db", default=DB_DEFAULT)
+    rc.add_argument("--names", action="store_true", help="rattache aussi les joueurs sans lien (nom + preuve de carrière)")
+    rc.set_defaults(func=reconcile_cmd)
+    ca = sub.add_parser("careers", help="importe la carrière (infobox Wikipedia) des joueurs")
+    ca.add_argument("--db", default=DB_DEFAULT)
+    ca.add_argument("--refresh", action="store_true", help="relit aussi les joueurs déjà importés")
+    ca.add_argument("--limit", type=int, help="n'importe que N joueurs (essai)")
+    ca.add_argument("--wd-cache", default="cache/wikidata")
+    ca.set_defaults(func=careers_cmd)
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     return args.func(args)

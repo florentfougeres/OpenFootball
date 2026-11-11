@@ -51,11 +51,15 @@ class WikipediaClient:
         cache_dir: str | Path = "cache/wikipedia",
         *,
         lang: str = "en",
+        lead_only: bool = False,
+        batch_size: int | None = None,
         transport: Callable[[dict], dict] | None = None,
         sleep: Callable[[float], None] = time.sleep,
         min_interval_s: float = MIN_INTERVAL_S,
     ) -> None:
         self.api = API.replace("//en.", f"//{lang}.")
+        self.lead_only = lead_only            # ne demande que la section 0 (introduction + infobox, ~5 Ko)
+        self.batch_size = batch_size or BATCH_SIZE
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._transport = transport or self._http_transport
@@ -125,17 +129,40 @@ class WikipediaClient:
                 found[t] = cached
             else:
                 todo.append(t)
-        for i in range(0, len(todo), BATCH_SIZE):
-            for page in self._fetch_batch(todo[i:i + BATCH_SIZE]):
+        for i in range(0, len(todo), self.batch_size):
+            for page in self._fetch_batch(todo[i:i + self.batch_size]):
                 self._cache_put(page)
                 found[page.title] = page
         return [found[t] for t in titles]
 
+    def render(self, title: str) -> Page:
+        """HTML rendu d'une page (modèles et tableaux inclus), `wikitext` contient le HTML. En cache.
+        Une page par requête : à réserver aux rares cas où le wikitexte ne suffit pas."""
+        key = f"render:{title}"
+        cached = self._cache_get(key)
+        if cached is not None:
+            return cached
+        data = self._call({"action": "parse", "page": title, "prop": "text|revid", "redirects": 1,
+                           "disablelimitreport": 1, "disableeditsection": 1})
+        err = data.get("error", {}).get("code")
+        if err == "missingtitle":
+            page = Page(title=key, exists=False)
+        elif err or "parse" not in data:
+            raise WikipediaError(f"parse {title!r}: {err or str(data)[:120]}")
+        else:
+            d = data["parse"]
+            page = Page(title=key, exists=True, resolved_title=d["title"], revid=d.get("revid"), wikitext=d["text"])
+        self._cache_put(page)
+        return page
+
     def _fetch_batch(self, titles: list[str]) -> list[Page]:
-        data = self._call({
+        params = {
             "action": "query", "titles": "|".join(titles), "redirects": 1,
             "prop": "revisions", "rvprop": "ids|content", "rvslots": "main",
-        })
+        }
+        if self.lead_only:
+            params["rvsection"] = 0
+        data = self._call(params)
         q = data.get("query")
         if q is None:
             raise WikipediaError(f"réponse inattendue : {str(data)[:200]}")

@@ -182,3 +182,8 @@ def test_appearances_and_goals_is_a_squad_source_but_goals_table_is_not():
     assert not is_excluded_section("Squad statistics")
     for s in ("Goals", "Goalscorers", "Top scorers", "Disciplinary record", "Coaching staff", "Contract renewals"):
         assert is_excluded_section(s), s
+
+
+def test_french_football_abbreviations():
+    from openfootball.parse.positions import normalize_position as n
+    assert [n(x) for x in ("GB", "DC", "DG", "MD", "MO", "AG", "BU")] == ["GK", "DF", "DF", "MF", "MF", "FW", "FW"]

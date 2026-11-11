@@ -6,9 +6,11 @@ figée garde le même nom d'une release à l'autre et un navigateur ne la re-té
 """
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 import os
+import tarfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -16,7 +18,7 @@ import duckdb
 
 _SQUAD = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
-       p.name AS player, p.link_lang, p.link_title,
+       p.name AS player, w.qid AS player_qid, p.link_lang, p.link_title,
        pcs.shirt_number, pcs.position_code AS position, pcs.nationality_raw AS nationality,
        pcs.stint, pcs.confidence, pcs.source, pcs.source_section,
        cs.source_lang, cs.source_title, cs.source_revid
@@ -26,6 +28,7 @@ JOIN season s ON s.id = cs.season_id
 JOIN competition co ON co.id = cs.competition_id
 JOIN club cl ON cl.id = cs.club_id
 JOIN player p ON p.id = pcs.player_id
+LEFT JOIN player_wikidata w ON w.player_id = p.id
 WHERE s.id = {sid}
 ORDER BY cl.wikipedia_title, pcs.shirt_number NULLS LAST, p.name"""
 
@@ -41,6 +44,12 @@ JOIN club cl ON cl.id = cs.club_id
 LEFT JOIN known_gap kg ON kg.club_season_id = cs.id
 WHERE s.id = {sid}
 ORDER BY cl.wikipedia_title"""
+
+_CAREER = """
+SELECT w.qid AS player_qid, p.name AS player, c.seq, c.start_year, c.end_year, c.years_raw, c.club_name,
+       c.club_link, c.loan, c.apps, c.goals, c.source_lang, c.source_title, c.source_revid
+FROM player_career c JOIN player p ON p.id = c.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
 
 _GLOBAL = {
     "club": "SELECT wikipedia_title, name_en, name_fr, country_code, wikidata_qid, logo_url, logo_license "
@@ -89,6 +98,7 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         }
     for name, sql in _GLOBAL.items():
         manifest["tables"][name] = _write(con, sql, out, name, name)
+    manifest["tables"]["career"] = _write(con, _CAREER, out, "career", "career")
     manifest["tables"]["known_gap"] = _write(con, """
         SELECT s.label AS season, cl.wikipedia_title AS club, k.reason
         FROM known_gap k JOIN club_season cs ON cs.id = k.club_season_id
@@ -96,6 +106,26 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         ORDER BY s.start_year, cl.wikipedia_title""", out, "known_gap", "known_gap")
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     return manifest
+
+
+def pack(out_dir: str | Path, archive: str | Path) -> Path:
+    """Archive unique pour la release GitHub (les assets sont plats, l'arbre Parquet ne l'est pas).
+    Le workflow Pages la dézippe dans `site/data/`. Ordre et métadonnées normalisés."""
+    out, archive = Path(out_dir), Path(archive)
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    files = sorted(p for p in out.rglob("*") if p.is_file() and not p.name.startswith("."))
+
+    def norm(info: tarfile.TarInfo) -> tarfile.TarInfo:
+        info.uid = info.gid = 0
+        info.uname = info.gname = ""
+        info.mtime = 0
+        return info
+
+    with archive.open("wb") as raw, gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as gz, \
+            tarfile.open(fileobj=gz, mode="w") as tar:        # mtime=0 : l'en-tête gzip ne doit pas dater l'archive
+        for f in files:
+            tar.add(f, arcname=f.relative_to(out).as_posix(), filter=norm)
+    return archive
 
 
 def verify_continuity(new: dict, previous: dict | None) -> list[str]:

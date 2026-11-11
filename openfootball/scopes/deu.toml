@@ -1,0 +1,13 @@
+code = "DEU"
+name_en = "Germany"
+name_fr = "Allemagne"
+
+[competition]
+code = "DEU-BL"
+name_en = "Bundesliga"
+name_fr = "Bundesliga"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 18

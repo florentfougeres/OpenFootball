@@ -70,7 +70,7 @@ def run(con, wp, it=None, fr=None, qids=None):
 
 
 def test_scope_files_load():
-    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP"}
+    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU"}
     fra = load_scopes(["FRA"])[0]
     assert (fra.expected_teams(2022), fra.expected_teams(2023)) == (20, 18)
 
@@ -157,3 +157,45 @@ def test_english_title_from_wikidata_when_constructed_title_is_wrong(con):
         qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None)
     r = next(x for x in res if x.club == "Club 1")
     assert (r.lang, r.title, r.players) == ("en", real, 14)
+
+
+def test_manual_override_page_is_used_as_last_resort(con):
+    fr_title = "Saison 2023-2024 du Club 2"
+    fr_text = "== Effectif ==\n" + "\n".join(
+        f"{{{{Feff joueur |num={i} |prénom=Prénom{i}|nom=Nom|pos={'G' if i == 1 else 'M'} |nat=France}}}}" for i in range(1, 13))
+    res = run_backfill(
+        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 2"})),
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, fr_text)})},
+        wd=FakeWikidata({}), qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None,
+        overrides={(2023, "Club 2"): [("fr", fr_title)]})
+    r = next(x for x in res if x.club == "Club 2")
+    assert (r.lang, r.players, r.title) == ("fr", 12, fr_title)
+
+
+def test_rendered_html_fallback_reads_a_table_the_wikitext_parser_cannot(con):
+    html = ("<h3>Appearances and goals</h3><table><tr><th>No.</th><th>Pos.</th><th>Nat.</th><th>Name</th></tr>"
+            + "".join(f"<tr><td>{i}</td><td>{'GK' if i == 1 else 'MF'}</td><td><img alt='FRA'></td>"
+                      f"<th><a title='Joueur {i}'>Joueur {i}</a></th></tr>" for i in range(1, 15)) + "</table>")
+
+    class WithRender(FakeWiki):
+        def render(self, title):
+            return Page(title=f"render:{title}", exists=True, resolved_title=title, revid=9, wikitext=html)
+
+    pages = setup_pages()
+    pages["2023–24 Club 5 season"] = page("2023–24 Club 5 season", "== Appearances and goals ==\n{| class=wikitable\n|-\n! No.\n! Name\n|}")
+    res = run_backfill(
+        con, load_scopes(["FRA"]), 2023, wp=WithRender(pages),
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})}, wd=FakeWikidata({}),
+        qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None, overrides={})
+    r = next(x for x in res if x.club == "Club 5")
+    assert (r.lang, r.players) == ("en", 14)
+
+
+def test_league_teams_from_rendered_standings_table():
+    from openfootball.parse.league import league_teams_html
+    rows = "".join(f"<tr><td>{i}</td><th><a title='Club {i} FC'>Club {i}</a></th><td>30</td><td>60</td></tr>" for i in range(1, 19))
+    html = ("<h2>League table</h2><table><tr><th>Pos</th><th>Team</th><th>Pld</th><th>Pts</th></tr>" + rows + "</table>"
+            "<table><tr><th>Team</th><th>Pts</th></tr><tr><th><a title='Ailleurs'>Ailleurs</a></th><td>1</td></tr></table>")
+    teams = league_teams_html(html, 18)
+    assert len(teams) == 18 and teams[0] == "Club 1 FC"
+    assert league_teams_html(html, 20) == []                       # mauvais compte : on ne devine pas

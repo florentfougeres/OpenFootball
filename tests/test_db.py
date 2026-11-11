@@ -23,9 +23,9 @@ def seed(con):
 
 def test_migrate_is_idempotent():
     c = duckdb.connect(":memory:")
-    assert migrate(c) == [1]
+    assert migrate(c) == [1, 2, 3, 4]
     assert migrate(c) == []
-    assert c.execute("SELECT count(*) FROM schema_migrations").fetchone()[0] == 1
+    assert c.execute("SELECT count(*) FROM schema_migrations").fetchone()[0] == 4
 
 
 def test_positions_are_seeded(con):

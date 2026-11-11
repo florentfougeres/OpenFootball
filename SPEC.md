@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.17** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **DRAFT v0.21** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -157,7 +157,7 @@ Aucune question ouverte à ce stade.
 
 ## 9bis. Décisions prises
 
-- **D1 — Périmètre v1** : 4 championnats de 1ʳᵉ division — **Premier League (ENG), Ligue 1 (FRA), Serie A (ITA), La Liga (ESP)** — saisons **2010/11 → saison courante** (≈ 80 clubs × 15 saisons ≈ 1 200 pages « saison du club »). Un fichier `scopes/<pays>.toml` par pays. La profondeur « depuis 2010 » est provisoire (« pour l'instant »).
+- **D1 — Périmètre v1** : 4 championnats de 1ʳᵉ division — **Premier League (ENG), Ligue 1 (FRA), Serie A (ITA), La Liga (ESP) et Bundesliga (DEU, ajoutée le 2026-11-11)** — saisons **2010/11 → saison courante** (≈ 98 clubs × 16 saisons). Un fichier `scopes/<pays>.toml` par pays. La profondeur « depuis 2010 » est provisoire (« pour l'instant »).
 - **D2 — Seuil de complétude** : **100 % attesté, trous listés.** Une saison ne peut être figée que si chaque club-saison du périmètre a un effectif `attested` plausible (invariant 6, §4), **ou** figure dans `known_gaps` (club, saison, motif, ex. « page Wikipedia absente ») validé explicitement avant le gel. Tout club-saison ni attesté ni listé bloque le gel. `known_gaps` est publié sur la page Couverture.
 - **D3 — Gel** : **manuel après revue.** `freeze <saison>` est lancé par le mainteneur une fois le mercato clos ; il est refusé automatiquement si un invariant échoue ou si un trou n'est pas listé (D2). Aucun gel automatique.
 
@@ -249,6 +249,48 @@ Commande : `openfootball backfill --season Y` pour chaque saison (aucune n'est f
 - **Recherche directe par titre (en/es/de), 2026-11-11** : l'espagnol ne donne **aucune page de club-saison** (1 faux positif : une division régionale), l'allemand **0**. L'anglais ne révèle aucune page nouvelle : les pages existaient déjà. Les 8 trous récupérés venaient de **deux défauts du parseur/backfill**, pas d'une autre langue : (a) titre de page construit ≠ vrai titre (« Celta de Vigo » / « RC Celta de Vigo ») → on retombe maintenant sur le titre anglais donné par Wikidata ; (b) filtre de sections trop large qui excluait « Appearances and goals » / « Players and club staff », parfois la seule liste de joueurs. Cas vérifié : Bordeaux 2012/13 a 25 modèles d'effectif **vides** (`name=|pos=`) → vrai trou.
 - Avertissements : 695 joueurs dans deux clubs avec statut inconnu (transferts non parsés, C1), 7 effectifs > 60 joueurs (Parme 2014/15 : 122, dont 71 « Out on loan » — cogestion de jeunes, fidèle à la page), 1 poste inconnu.
 - **Défauts trouvés par ce run, corrigés** : (1) identité des clubs par titre Wikipedia → doublons de QID (10 saisons plantaient) → identité par QID d'abord ; (2) énumération Liga : codes d'équipe différents d'un tableau à l'autre (doublons) et noms enveloppés `{{nobr|[[…]]}}` → 64/64 championnats-saisons énumérés correctement ; (3) section « In on loan » classée `loan_out` (inversé) ; (4) invariant « statuts incompatibles » trop strict : des prêts enchaînés dans la même saison sont légitimes, seules les contradictions bloquent.
+
+## 9sexies. Site et déploiement (2026-11-11)
+
+**Site** (`site/` : `index.html`, `style.css`, `app.js`, aucun build) : DuckDB-WASM 1.28.0 (CDN jsDelivr, version figée) lit `data/manifest.json` puis les Parquet par range requests ; tout le SQL s'exécute dans le navigateur. Pages : accueil (recherche club/joueur insensible aux accents + parcours par saison et championnat), club (historique des saisons), effectif d'un club-saison (par poste, badge de confiance, statut de prêt, lien vers la page Wikipedia source), joueur (parcours), couverture (taux par saison, trous), à propos (sources, licences, limites). Bilingue fr/en, mode sombre, mobile-first, lien d'évitement, `aria-live`.
+- **Écart avec §7** : le routage est par **hash** (`#/fr/club/…`) et non par chemin (`/fr/…`), pour fonctionner sur GitHub Pages sans règle de réécriture.
+- **Logos : non faits** (D7) — la base ne stocke pas encore d'URL de logo.
+- **Vérifié dans un navigateur** (volet intégré) avec les 16 saisons : chargement DuckDB-WASM sans erreur console ; recherche « mbappe » → Kylian Mbappé (parcours 2015/16 → 2025/26, Monaco/PSG/Real Madrid, « Prêté » en 2017/18) ; navigation club → effectif (Marseille 2023/24 : 26 joueurs) ; page Couverture en anglais ; mobile 375 px sans débordement horizontal ; mode sombre lisible. **Non vérifié** : lecture de Parquet servis par GitHub Pages (range requests), accessibilité au lecteur d'écran, navigateurs autres que celui du volet.
+- Jeu de données complet : **1,0 Mo** (16 saisons), archive de release **927 Ko**.
+
+**Déploiement (D9)** : `openfootball export --out … --archive … [--previous …]` produit une archive `.tar.gz` reproductible (horodatages normalisés) ; `.github/workflows/deploy.yml` (sur publication d'une release) télécharge côté serveur l'asset `openfootball-data.tar.gz` de la dernière release, l'extrait dans `site/data/` et déploie Pages ; `.github/workflows/ci.yml` lance `pytest`. **Non testés** : les workflows n'ont jamais tourné sur GitHub (syntaxe YAML validée seulement) ; aucun dépôt distant, aucune release, GitHub Pages non activé. Étape manuelle requise : activer Pages avec « GitHub Actions » comme source.
+
+## 9septies. Identité des joueurs par QID (2026-11-11)
+
+Cas déclencheur : la page « Joshua King » du site mélangeait deux homonymes (le joueur né en 1992 et un jeune né en 2007 à Fulham) et séparait sa saison Toulouse (lue sur la page italienne) du reste.
+
+- **Cause** : un joueur n'était identifié que par (langue, titre de page) ; le site regroupait par nom. Le même joueur lu en anglais et en italien/français faisait deux lignes ; deux homonymes n'en faisaient qu'une côté site.
+- **Correction** : `openfootball reconcile` résout chaque lien Wikipedia en **QID Wikidata** (migration `0002`, table `player_wikidata`) et fusionne les doublons ; une fusion qui toucherait une saison figée est refusée. Le site identifie un joueur par son QID (à défaut, par son nom). L'export contient `player_qid`.
+- **Résultat sur la base réelle** : **14 282 → 12 303 joueurs** (1 979 doublons fusionnés, soit 14 %), 10 591 QID appris, 259 liens sans QID, 1 453 joueurs sans lien Wikipedia (pages fr) laissés tels quels (identité par nom, faible). Joshua King : deux entités distinctes (Q436237 : 11 saisons dont Toulouse ; Q131518757 : 2 saisons Fulham).
+- **Limite DuckDB découverte** : on ne peut pas modifier une colonne `UNIQUE` d'une table référencée par des clés étrangères → le QID est dans une table à part ; `player.wikidata_qid` (migration 0001) reste vide et inutilisée.
+- **Portée du « parcours » du site** : uniquement les saisons passées dans un des 4 championnats (effectifs). Ce n'est **pas** la carrière Wikipedia (autres divisions, autres pays, avant 2010, prêts hors périmètre, matchs et buts). Le site le dit désormais sur la page joueur. La carrière complète (infobox « Senior career » ou Wikidata P54) n'est pas faite : table `player_club_spell` reportée.
+- Erreur de source reproduite fidèlement : Wikipedia italien classe King « D » (défenseur) à Toulouse 2024/25.
+
+## 9octies. Carrière complète depuis l'infobox (2026-11-11)
+
+Demande : afficher le parcours d'un joueur « comme sur Wikipedia » (la liste de référence fournie venait de Wikipedia **français**).
+
+- **Source** : infobox « Senior career » (`years`/`clubs`/`caps`/`goals`) de la page **anglaise** du joueur, lue via la section 0 seule de l'API (≈ 5 Ko/page au lieu de ≈ 100 Ko). Commande `openfootball careers` ; migration `0003` (`player_career`) ; parseur `parse/infobox.py` (flèche « → » et « (loan) » = prêt, `2025–` = en cours, lignes youth/national/total ignorées).
+- **Résultat** : 10 389 joueurs liés à une page anglaise → **≈ 10 190 carrières (≈ 91 000 lignes)**, 12 pages sans infobox exploitable, 191 pages absentes. Non couverts : 461 joueurs liés seulement à l'italien et 1 453 sans lien (pages françaises) → pas de carrière affichée pour eux.
+- **Les matchs et buts sont ceux de Wikipedia, publiés tels quels et non vérifiés.** Cela revient sur « stats plus tard » (§1) : l'infobox les contient et la demande portait sur le parcours tel que Wikipedia le montre ; le site le signale explicitement. Les chiffres **diffèrent d'une langue à l'autre** (ex. Joshua King, Preston : 8 matchs en anglais, 10 en français) ; l'import n'est qu'en anglais.
+- **Site** : la page joueur montre d'abord cette carrière (prêts marqués, « en cours »), puis, en dessous, la présence dans nos effectifs, sous un titre qui dit sa portée (4 championnats). Vérifié dans le navigateur : Joshua King = 13 lignes (Man United → Al-Khaleej), dont Gladbach II absent de la liste française.
+- Export : table `career` (1,3 Mo) ; jeu de données complet **2,4 Mo**.
+- **Limite** : la table de carrière est un instantané mutable, hors garde « saison figée » et hors contrôle de continuité de release ; les clubs de la carrière renvoient vers Wikipedia, pas vers nos pages club.
+
+## 9nonies. Trous, identité et secours HTML (2026-11-11)
+
+- **Trous d'effectif : 24 → 10** (1 264 / 1 274 = **99,2 %**), tous en La Liga. Deux nouveaux secours, appliqués seulement à un club-saison sans effectif plausible : (1) **sources manuelles** (`scopes/_overrides.toml`, 7 pages françaises fournies par le mainteneur : Amiens, Burnley, Bordeaux, Nancy, Birmingham, Lorient, Caen) ; (2) **HTML rendu** de la page (tableaux construits par modèle, sections inconnues, en-têtes en fr/it/es/de, postes en une lettre selon la langue, abréviations françaises GB/DC/MD…). Les 10 trous restants : Osasuna 10/11 et 11/12, Getafe 10/11 et 12/13, Granada 12/13 et 13/14, Levante 10/11, Málaga 10/11, Espanyol 11/12, Rayo 12/13. Les pages anglaises citées pour Granada, Getafe 12/13 et Espanyol **ne contiennent aucun effectif** (vérifié sur le HTML rendu : aucun gardien) ; la recherche directe en es/de n'a rien trouvé. **Transfermarkt n'est pas utilisé** (hors périmètre D4 « Wikipedia + Wikidata » : données non libres, incompatibles avec un site public CC).
+- **Défaut de conception corrigé** : relancer un backfill **recréait les doublons** que la réconciliation par QID avait fusionnés (les liens des lignes supprimées n'existaient plus). Migration `0004` `player_link` : un lien fusionné reste rattaché au joueur conservé. La fusion déplace aussi les lignes de carrière.
+- **Joueurs sans lien (pages fr)** : rattachés à un joueur identifié (QID) de même nom **seulement si sa carrière (infobox) contient ce club cette saison-là** et qu'un seul candidat répond (`reconcile --names`) : 584 rattachés, 897 laissés séparés (identité faible, non prouvée). Effet visible : « Jean Butez » n'est plus qu'un joueur (6 saisons + carrière).
+- **Carrières** : 405 joueurs avec QID mais sans lien anglais retrouvent leur page anglaise par sitelink Wikidata (390 carrières récupérées). Joueurs sans carrière : 2 117 → 1 214.
+- Joueurs : 11 867 (de 14 800 à l'origine).
+- **Homonymes** : Joshua King = deux entités (Q436237 né en 1992 ; Q131518757 né en 2007), conservées séparées par la réconciliation.
+- **Bundesliga ajoutée (D1 étendu)** : `scopes/deu.toml`, 18 clubs, 2010/11 → 2025/26. Le wikitexte de ses pages de championnat ne nomme pas chaque club (modèle à codes) : l'énumération lit le classement du HTML rendu (16/16 saisons = 18 clubs).
 
 ## 10. Jalons proposés
 

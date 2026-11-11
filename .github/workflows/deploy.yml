@@ -1,0 +1,46 @@
+name: Deploy site
+
+# D9 : le site est publié avec les données de la DERNIÈRE release GitHub.
+# Un navigateur ne peut pas lire un asset de release directement (pas de CORS) : on le télécharge
+# ici, côté serveur, et on le sert depuis le même domaine que la page.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download data from the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download --repo "$GITHUB_REPOSITORY" --pattern "openfootball-data.tar.gz" --dir "$RUNNER_TEMP"
+          mkdir -p site/data
+          tar -xzf "$RUNNER_TEMP/openfootball-data.tar.gz" -C site/data
+          test -s site/data/manifest.json
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

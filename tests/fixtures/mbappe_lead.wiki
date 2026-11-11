@@ -1,0 +1,78 @@
+<!-- revid=1384850236 title=Kylian Mbappé -->
+{{short description|French footballer (born 1998)}}
+{{Redirect|Mbappé|other uses|Mbappé (disambiguation)}}
+{{good article}}
+{{pp-blp|small=yes}}
+{{pp-move}}
+{{Use dmy dates|date=July 2026}}
+{{Use British English|date=July 2026}}
+{{Infobox football biography
+| name = Kylian Mbappé
+| image = Kylian Mbappe France v Senegal 16 June 2026-391 (cropped).jpg
+| caption = Mbappé with [[France national football team|France]] in 2026
+| full_name = Kylian Mbappé Lottin
+| birth_date = {{birth date and age|1998|12|20|df=y}}
+| birth_place = [[Paris]], France
+| height = 1.78 m<ref>{{cite web |url=https://www.realmadrid.com/en-US/football/first-team/players/kylian-mbappe |title=Mbappé |publisher=Real Madrid CF |language=EN |access-date=10 September 2025 |archive-date=19 August 2024 |archive-url=https://web.archive.org/web/20240819144021/https://www.realmadrid.com/en-US/football/first-team/players/kylian-mbappe |url-status=live }}</ref>
+| position = [[Forward (association football)|Forward]]
+| current_club = [[Real Madrid CF|Real Madrid]]
+| club_number = 10
+| youth_years1 = 2004–2013
+| youth_clubs1 = [[AS Bondy|Bondy]]
+| youth_years2 = 2013–2015
+| youth_clubs2 = [[AS Monaco Reserves and Academy|Monaco]]
+| years1 = 2015–2016
+| clubs1 = [[AS Monaco FC II|Monaco II]]
+| caps1 = 12
+| goals1 = 4
+| years2 = 2015–2018
+| clubs2 = [[AS Monaco FC|Monaco]]
+| caps2 = 41
+| goals2 = 16
+| years3 = 2017–2018
+| clubs3 = → [[Paris Saint-Germain FC|Paris Saint-Germain]] (loan)
+| caps3 = 27
+| goals3 = 13
+| years4 = 2018–2024
+| clubs4 = [[Paris Saint-Germain FC|Paris Saint-Germain]]
+| caps4 = 178
+| goals4 = 162
+| years5 = 2024–
+| clubs5 = [[Real Madrid CF|Real Madrid]]
+| caps5 = 77<!--La Liga matches only-->
+| goals5 = 69<!--La Liga matches only-->
+| national_years1 = 2014
+| national_team1 = [[France national under-17 football team|France U17]]
+| national_caps1 = 2
+| national_goals1 = 0
+| national_years2 = 2016
+| national_team2 = [[France national under-19 football team|France U19]]
+| national_caps2 = 11
+| national_goals2 = 7
+| national_years3 = 2017–
+| national_team3 = [[France national football team|France]]
+| national_caps3 = 107
+| national_goals3 = [[List of international goals scored by Kylian Mbappé|67]]
+| medal_templates = {{Medal|Sport|Men's [[Association football|football]]}}
+{{Medal|Country|{{fb|FRA}}}}
+{{Medal|Comp|[[FIFA World Cup]]}}
+{{Medal|W|[[2018 FIFA World Cup|2018 Russia]]|}}
+{{Medal|RU|[[2022 FIFA World Cup|2022 Qatar]]|}}
+{{Medal|Competition|[[UEFA Nations League]]}}
+{{Medal|Winner|[[2021 UEFA Nations League Finals|2021 Italy]]|}}
+{{Medal|Third|[[2025 UEFA Nations League Finals|2025 Germany]]|}}
+{{Medal|Comp|[[UEFA European Under-19 Championship]]}}
+{{Medal|W|[[2016 UEFA European Under-19 Championship|2016 Germany]]|}}
+| club_update = 21:58, 7 November 2026 (UTC)
+| national_team_update = 22:50, 25 September 2026 (UTC)
+| module = {{Infobox person|embed=yes
+| signature = Kylian Mbappé sig.svg
+ }}
+}}
+'''Kylian Mbappé Lottin'''{{efn-ua|French pronunciation: [[Help:IPA/French|[kiljan mbape lɔtɛ̃]]]}} (born 20 December 1998) is a French professional [[Association football|footballer]] who plays as a [[Forward (association football)|forward]] for {{Spanish football updater|Real Madrid}} club [[Real Madrid CF|Real Madrid]] and [[Captain (association football)|captains]] the [[France national football team|France national team]]. Widely regarded as one of the best players in the world, he is known for his pace, dribbling, and [[Glossary of association football terms#Finish|finishing]].{{efn|Attributed to multiple references:<ref name=":5">{{cite web |date=6 February 2023 |title=13 fun facts about Kylian Mbappe |url=https://www.goal.com/en-us/lists/13-fun-facts-about-kylian-mbappe/blt3723d57468a6b53c |access-date=2 October 2026 |website=Goal.com |quote=...he is considered one of the most talented and exciting young players in the world ... Mbappe has established himself as one of the best attacking players in the world ... Mbappe is known for his incredible pace, dribbling skills, and finishing ability, and is widely regarded as one of the best players of his generation.}}</ref><ref name=":7">{{cite magazine |date=7 August 2025 |title=Kylian Mbappe Matches Messi, Ronaldo With Impressive Ballon d'Or Landmark |url=https://www.si.com/soccer/kylian-mbappe-matches-messi-ronaldo-impressive-ballon-dor-landmark |access-date=2 October 2026 |magazine=Sports Illustrated |quote=Although the France international is widely regarded as one of the best players in the world...}}</ref><ref name=":10">{{cite web |title=Kylian Mbappe has told PSG he will leave at the end of the season, AP sources say |url=https://www.foxsports.com/articles/soccer/kylian-mbappe-has-told-psg-he-will-leave-at-the-end-of-the-season-ap-sources-say |access-date=2 October 2026 |work=FOX Sports |quote=Mbappe — widely considered to be one of the best players in the world... |archive-url=https://web.archive.org/web/20261003081622/https://www.foxsports.com/articles/soccer/kylian-mbappe-has-told-psg-he-will-leave-at-the-end-of-the-season-ap-sources-say |archive-date=3 October 2026 |url-status=live}}</ref>}} He has scored over 450 goals in his senior career, being the all-time top goalscorer for [[Paris Saint-Germain FC|Paris Saint-Germain]] ([[List of Paris Saint-Germain FC records and statistics#All-time top scorers|256]]), and the France national team ([[France national football team#Top goalscorers|67]]). He is also the [[List of FIFA World Cup top goalscorers#Overall top goalscorers|highest-scoring]] player in the [[FIFA World Cup]] ([[List of FIFA World Cup top goalscorers|22]]).{{efn-ua|Attributed to multiple references:<ref>{{Cite web|first=Omar|last=Garrick|title=Kylian Mbappe becomes Paris Saint-Germain's all-time leading goalscorer|url=https://www.nytimes.com/athletic/4276091/2023/03/04/kylian-mbappe-psg-goalscorer/|date=5 March 2023|access-date=20 July 2026|website=The New York Times|archive-date=17 November 2025|archive-url=https://web.archive.org/web/20251117201921/https://www.nytimes.com/athletic/4276091/2023/03/04/kylian-mbappe-psg-goalscorer/|url-status=live}}</ref><ref>{{cite web|title=More history for Mbappe: France's new record scorer|url=https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/kylian-mbappe-france-record-scorer|date=16 June 2026|access-date=20 July 2026|publisher=FIFA|archive-date=20 July 2026|archive-url=https://web.archive.org/web/20260720115108/https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/kylian-mbappe-france-record-scorer|url-status=live}}</ref><ref>{{cite web|title=Kylian Mbappé surpasses Lionel Messi's all-time World Cup goal-scoring record|url=https://www.espn.com/football/story/_/id/49257085/kylian-mbappe-lionel-messi-all-world-cup-goals-record|date=18 July 2026|access-date=18 July 2026|publisher=ESPN|archive-date=20 July 2026|archive-url=https://web.archive.org/web/20260720031422/https://www.espn.com/football/story/_/id/49257085/kylian-mbappe-lionel-messi-all-world-cup-goals-record|url-status=live}}</ref>}}
+
+Born in Paris and raised in [[Bondy]], Mbappé began his senior career in 2015 with [[AS Monaco FC|Monaco]], where he won the [[2016–17 AS Monaco FC season|2016–17 Ligue 1]] title, the club's first league title in 17 years. In 2017, at age 18, he signed for Paris Saint-Germain (PSG) on an eventual permanent [[Transfer (association football)|transfer]] worth €180&nbsp;million, making him the second-[[List of most expensive association football transfers|most-expensive player]] in the world.<ref>{{cite news |url=http://www.espn.com/soccer/soccer-transfers/story/3388743/psg-trigger-kylian-mbappes-permanent-transfer-from-monaco |title=PSG trigger Kylian Mbappe's permanent transfer from Monaco |publisher=ESPN |date=19 February 2018 |access-date=19 February 2018 |archive-date=1 April 2019 |archive-url=https://web.archive.org/web/20190401165055/http://www.espn.com/soccer/soccer-transfers/story/3388743/psg-trigger-kylian-mbappes-permanent-transfer-from-monaco |url-status=live}}</ref> He won 15 trophies with PSG, including six [[Ligue 1]] titles and four [[Coupe de France|Coupes de France]], and helped them reach the [[2020 UEFA Champions League final|Champions League final]] in 2020. He also finished as the league's [[List of Ligue 1 top scorers|top goalscorer]] a record six times, and won [[Ligue 1 Player of the Year]] a record five times. In 2024, Mbappé joined Real Madrid on a free transfer. In his debut season, he scored in the [[2024 UEFA Super Cup|UEFA Super Cup]] and [[2024 FIFA Intercontinental Cup|FIFA Intercontinental Cup]] as Madrid won both titles. He won the [[European Golden Shoe]] in 2025. He was the top scorer in [[2025–26 La Liga|La Liga]] in 2025 and 2026, and in the [[2025–26 UEFA Champions League|Champions League]] in 2026.
+
+Mbappé made his senior debut for France in 2017. At the [[2018 FIFA World Cup]], he became the second teenager, after [[Pelé]], to score in a [[List of FIFA World Cup finals|World Cup final]] and win the World Cup (aged 19 years and 207 days), being honoured as the [[FIFA World Cup Best Young Player Award|World Cup Best Young Player]] and [[French Player of the Year]]. He helped France win the [[2020–21 UEFA Nations League|UEFA Nations League]] in 2021, ranking as [[2021 UEFA Nations League Finals#Awards|top scorer]] in [[2021 UEFA Nations League Finals|the finals]]. At the [[2022 FIFA World Cup]], Mbappé led France to a second consecutive [[2022 FIFA World Cup final|final]], in which he scored a [[Hattrick (football)|hat-trick]] as his country reached runners-up. He set the record for [[List of FIFA World Cup final goalscorers|most goals scored in World Cup finals]] (4), and won the tournament's [[FIFA World Cup awards#Golden Boot|Golden Boot]] and [[FIFA World Cup awards#Golden Ball|Silver Ball]]. At the [[2026 FIFA World Cup]], Mbappé won the [[2026 FIFA World Cup#Individual and team awards|Golden Boot]] as his 10 goals made him the third-highest scorer in a single World Cup, tied with [[Gerd Müller]]. Mbappé also became the first player to win multiple [[FIFA World Cup awards|World Cup Golden Boots]].<ref name="SagarESPN">{{Cite web|url=https://www.espn.co.uk/football/story/_/id/49394546/fifa-world-cup-2026-stats-kylian-mbappe-tops-lionel-messi-22-michael-olise-breaks-pele-record-7-jude-bellingham-7-most-ever-england|access-date=19 July 2026|website=ESPN|title=FIFA World Cup 2026 stats: Mbappé tops Messi with 22; Olise breaks Pelé's record with 7; Bellingham's 7 most-ever for England|date=19 July 2026 |archive-date=19 July 2026|archive-url=https://web.archive.org/web/20260719145919/https://www.espn.co.uk/football/story/_/id/49394546/fifa-world-cup-2026-stats-kylian-mbappe-tops-lionel-messi-22-michael-olise-breaks-pele-record-7-jude-bellingham-7-most-ever-england|url-status=live}}</ref>
+
+Mbappé has finished as runner-up for the [[The Best FIFA Football Awards 2022|2022 Best FIFA Men's Player]] and the [[2026 Ballon d'Or]].<ref>{{cite web |date=26 October 2026 |title=Ballon d'Or 2026 live updates: Kane and Putellas win top prizes, full list of results |url=https://www.nytimes.com/athletic/live-blogs/ballon-dor-2026-live-updates-results-time/sND0BDpI7kfj/ |access-date=26 October 2026 |website=The Athletic}}</ref> He has been the [[List of UEFA Champions League top scorers#Top scorers by season|UEFA Champions League top scorer]] twice and was awarded [[IFFHS World's Best Top Goal Scorer]] twice. He has been named in the [[FIFPRO World 11]] seven times and the [[IFFHS World Team#Men's winners|IFFHS Men's World Team]] five times. He was awarded the [[Golden Boy (award)|Golden Boy]] in 2017 and the [[Kopa Trophy]] in 2018. During the [[2021–22 Ligue 1|2021–22 season]], he became the first player to finish as both the Ligue 1 top scorer and the top assist provider. Mbappé was named one of [[Time (magazine)|''Time'']]{{'}}s [[Time 100|100 most influential people]] in the world in 2023 and was listed by ''[[Forbes]]'' as one of the [[Forbes list of the world's highest-paid athletes|world's ten highest-paid athletes]] in 2023 and 2024.

@@ -1,0 +1,48 @@
+# Sources manuelles pour les club-saisons où la découverte automatique échoue (SPEC D2/D4).
+# Chaque entrée est un indice vérifiable : `club` = titre Wikipedia du club dans la base,
+# `season` = année de début, `lang`/`title` = page « saison du club » à essayer EN DERNIER RECOURS.
+# Un effectif n'est retenu que s'il passe les mêmes invariants (≥ 11 joueurs dont un gardien).
+# Les pages anglaises citées pour d'autres trous ont déjà le titre que le programme construit :
+# elles sont reprises automatiquement par le secours HTML, sans entrée ici.
+
+[[page]]
+season = 2017
+club = "Amiens SC"
+lang = "fr"
+title = "Saison 2017-2018 de l'Amiens SC"
+
+[[page]]
+season = 2017
+club = "Burnley F.C."
+lang = "fr"
+title = "Saison 2017-2018 du Burnley FC"
+
+[[page]]
+season = 2012
+club = "FC Girondins de Bordeaux"
+lang = "fr"
+title = "Saison 2012-2013 des Girondins de Bordeaux"
+
+[[page]]
+season = 2010
+club = "AS Nancy"
+lang = "fr"
+title = "Saison 2010-2011 de l'AS Nancy-Lorraine"
+
+[[page]]
+season = 2010
+club = "Birmingham City F.C."
+lang = "fr"
+title = "Saison 2010-2011 de Birmingham City"
+
+[[page]]
+season = 2010
+club = "FC Lorient"
+lang = "fr"
+title = "Saison 2010-2011 du FC Lorient"
+
+[[page]]
+season = 2010
+club = "Stade Malherbe Caen"
+lang = "fr"
+title = "Saison 2010-2011 du Stade Malherbe Caen"

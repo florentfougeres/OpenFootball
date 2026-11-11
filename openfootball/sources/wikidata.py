@@ -86,6 +86,34 @@ class WikidataClient:
         path.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
         return rows
 
+    def enwiki_titles(self, qids: list[str]) -> dict[str, str | None]:
+        """QID -> titre de la page Wikipedia anglaise (sitelink), par lots de 50. None si pas de page anglaise."""
+        out: dict[str, str | None] = {}
+        for i in range(0, len(qids), 50):
+            batch = qids[i:i + 50]
+            for attempt in range(1, MAX_ATTEMPTS + 1):
+                wait = MIN_INTERVAL_S - (time.monotonic() - self._last)
+                if wait > 0:
+                    self._sleep(wait)
+                self._last = time.monotonic()
+                r = self._session.get("https://www.wikidata.org/w/api.php", params={
+                    "action": "wbgetentities", "ids": "|".join(batch), "props": "sitelinks",
+                    "sitefilter": "enwiki", "format": "json"}, headers={"Accept": "application/json"}, timeout=60)
+                if r.status_code == 429 or r.status_code >= 500:
+                    self._sleep(float(r.headers.get("Retry-After", 0)) or min(10 * 2 ** (attempt - 1), 120))
+                    continue
+                try:
+                    ents = r.json()["entities"]
+                except (ValueError, KeyError):
+                    self._sleep(10)
+                    continue
+                for q in batch:
+                    out[q] = (ents.get(q, {}).get("sitelinks", {}).get("enwiki") or {}).get("title")
+                break
+            else:
+                raise WikipediaError("Wikidata wbgetentities: échec persistant")
+        return out
+
     def career_rows(self, qid: str) -> list[dict]:
         return self.query(P54_QUERY % {"qid": qid})
 

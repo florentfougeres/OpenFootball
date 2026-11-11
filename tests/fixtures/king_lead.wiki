@@ -1,0 +1,107 @@
+<!-- revid=1382755042 title=Joshua King (footballer, born 1992) -->
+{{short description|Norwegian football player (born 1992)}}
+{{Use dmy dates|date=January 2024}}
+{{Infobox football biography
+| name = Joshua King
+| image = Chelsea 0 Bournemouth 1 (cropped).jpg
+| caption = King playing for [[AFC Bournemouth|Bournemouth]] in 2015
+| full_name = Joshua Christian Kojo King<ref>{{cite web |url=https://www.premierleague.com/news/612828 |title=Updated squads for 2017/18 Premier League confirmed |publisher=Premier League |date=2 February 2018 |access-date=10 February 2018}}</ref>
+| birth_date = {{birth date and age|1992|1|15|df=y}}<ref>{{cite web |url=https://www.espn.co.uk/football/player/_/id/141188/joshua-king |title=Joshua King: Overview |publisher=ESPN |access-date=7 February 2021}}</ref>
+| birth_place = [[Oslo]], Norway
+| height = 1.80 m<ref>{{cite web |url=https://www.watfordfc.com/teams/men/players/joshua-king|title=7. Joshua King |publisher=watfordfc.com|access-date=16 January 2022}}</ref>
+| position = [[Forward (association football)#Centre-forward|Forward]], [[left winger]]
+| current_club = [[Al-Khaleej FC|Al-Khaleej]]
+| club_number = 7
+| youth_years1 = 1998–2006
+| youth_clubs1 = [[Romsås IL|Romsås]]
+| youth_years2 = 2006–2008
+| youth_clubs2 = [[Vålerenga Fotball|Vålerenga]]
+| youth_years3 = 2008–2010
+| youth_clubs3 = [[Manchester United F.C. Reserves and Academy|Manchester United]]
+| years1 = 2009–2013
+| clubs1 = [[Manchester United F.C.|Manchester United]]
+| caps1 = 0
+| goals1 = 0
+| years2 = 2010
+| clubs2 = → [[Preston North End F.C.|Preston North End]] (loan)
+| caps2 = 8
+| goals2 = 0
+| years3 = 2011
+| clubs3 = → [[Borussia Mönchengladbach]] (loan)
+| caps3 = 2
+| goals3 = 0
+| years4 = 2011
+| clubs4 = → [[Borussia Mönchengladbach II]] (loan)
+| caps4 = 4
+| goals4 = 2
+| years5 = 2012
+| clubs5 = → [[Hull City A.F.C.|Hull City]] (loan)
+| caps5 = 18
+| goals5 = 1
+| years6 = 2012
+| clubs6 = → [[Blackburn Rovers F.C.|Blackburn Rovers]] (loan)
+| caps6 = 8
+| goals6 = 2
+| years7 = 2013–2015
+| clubs7 = [[Blackburn Rovers F.C.|Blackburn Rovers]]
+| caps7 = 56
+| goals7 = 3
+| years8 = 2015–2021
+| clubs8 = [[AFC Bournemouth|Bournemouth]]
+| caps8 = 173
+| goals8 = 48<!--LEAGUE ONLY-->
+| years9 = 2021
+| clubs9 = [[Everton F.C.|Everton]]
+| caps9 = 11
+| goals9 = 0
+| years10 = 2021–2022
+| clubs10 = [[Watford F.C.|Watford]]
+| caps10 = 32
+| goals10 = 5
+| years11 = 2022–2024
+| clubs11 = [[Fenerbahçe S.K. (football)|Fenerbahçe]]
+| caps11 = 32
+| goals11 = 6
+| years12 = 2024–2025
+| clubs12 = [[Toulouse FC|Toulouse]]
+| caps12 = 28
+| goals12 = 6
+| years13 = 2025–
+| clubs13 = [[Al-Khaleej FC|Al-Khaleej]]
+| caps13 = 37
+| goals13 = 25
+| national_years1 = 2007
+| national_team1 = Norway U15
+| national_caps1 = 4
+| national_goals1 = 2
+| national_years2 = 2008
+| national_team2 = Norway U16
+| national_caps2 = 3
+| national_goals2 = 1
+| national_years3 = 2009
+| national_team3 = Norway U18
+| national_caps3 = 2
+| national_goals3 = 2
+| national_years4 = 2010
+| national_team4 = [[Norway national under-19 football team|Norway U19]]
+| national_caps4 = 2
+| national_goals4 = 1
+| national_years5 = 2011–2013
+| national_team5 = [[Norway national under-21 football team|Norway U21]]
+| national_caps5 = 8
+| national_goals5 = 1
+| national_years6 = 2012–2022
+| national_team6 = [[Norway national football team|Norway]]
+| national_caps6 = 62
+| national_goals6 = 20
+| medal_templates = {{MedalCountry|{{fb|NOR}}}}
+{{MedalCompetition|[[UEFA European Under-21 Championship|European Under-21 Championship]]}}
+{{Medal|B|[[2013 UEFA European Under-21 Championship|2013 Israel]]|[[Norway national under-21 football team|U-21]]}}
+| club_update = 18:39, 29 October 2026 (UTC)
+| national_team_update = 23:08, 9 June 2022 (UTC)
+}}
+'''Joshua Christian Kojo King''' (born 15 January 1992) is a Norwegian professional [[association football|footballer]] who plays as a [[Forward (association football)#Centre-forward|forward]] or [[left winger]] for Saudi club [[Al-Khaleej FC|Al-Khaleej]].
+
+King was signed by [[Manchester United]] from [[Vålerenga Fotball|Vålerenga]] in 2008. After loan spells with [[Preston North End F.C.|Preston North End]], [[Borussia Mönchengladbach]], [[Hull City A.F.C.|Hull City]] and [[Blackburn Rovers F.C.|Blackburn Rovers]], he signed permanently with Blackburn in January 2013, before switching to [[AFC Bournemouth]] in May 2015. In February 2021, in a deadline day deal, he returned to the top flight with a move to [[Everton F.C.|Everton]].
+
+After representing [[Norway national football team|Norway]] at under-15, under-16, under-18, [[Norway national under-19 football team|under-19]] and [[Norway national under-21 football team|under-21]] levels, King made his senior international debut against [[Iceland national football team|Iceland]] in 2012, and scored his first international goal against [[Cyprus national football team|Cyprus]] later that year.

@@ -1,0 +1,36 @@
+<!-- revid=1384920962 title=Football -->
+{{Short description|Group of related team sports}}
+{{About|the family of sports|specific sports and other uses|Football (disambiguation)}}
+{{pp-semi-indef}}
+{{pp-move}}
+{{Use International English|date=September 2016}}
+{{Use dmy dates|date=January 2026}}
+{{Multiple image
+| header            = Several codes of football
+| header_align      = center
+| perrow            = 3
+| total_width       = 400
+| align             = right
+| direction         = horizontal
+| image1            = Olga Matīsa LVA.jpg
+| caption1          = [[Association football|Association football (soccer)]]
+| image2            = Stoppage in an AFL game.jpg
+| caption2          = [[Australian rules]]
+| image3            = Aidan O'Mahony %26 Eoin Bradley.jpg
+| caption3          = [[Gaelic football|Gaelic (GAA)]]
+| image4            = Brent Grimes-Hamburg Sea Devils.jpg
+| caption4          = [[Gridiron football|Gridiron]] ([[American football|American]] / [[Canadian football|Canadian]])
+| image5            = Scotland v Italy 2013 RLWC (3).jpg
+| caption5          = [[Rugby league]]
+| image6            = 2025 Rugby World Cup (Women) - Canada vs England (247).jpg
+| caption6          = [[Rugby union]]
+| caption_align     = center
+| footer            = 
+}}
+
+'''Football''' is a family of [[team sport]]s in which the object is to get the [[Football (ball)|ball]] over a goal line, into a goal, or between goalposts using merely the body (by carrying, throwing, or [[Kick (football)|kicking]]).<ref>{{Cite news |title=Football {{!}} Equipment, Strategy & History {{!}} Britannica |url=https://www.britannica.com/sports/football-the-games |archive-url=https://web.archive.org/web/20251116063430/https://www.britannica.com/sports/football-the-games |archive-date=16 November 2025 |access-date=2026-01-14 |work=Encyclopedia Britannica |language=en |url-status=live }}</ref><ref>{{Cite web |date=2026-01-13 |title=Definition of FOOTBALL |url=https://www.merriam-webster.com/dictionary/football |access-date=2026-01-14 |website=www.merriam-webster.com |language=en}}</ref><ref>{{Citation |title=football, n. |date=2024-10-10 |work=Oxford English Dictionary |url=https://oed.com/dictionary/football_n |access-date=2026-01-14 |edition=3 |publisher=Oxford University Press |language=en |doi=10.1093/OED/5981613106|url-access=subscription }}</ref>
+
+Unqualified, [[football (word)|the word ''football'']] generally means the form of football that is the most popular where the word is used. Sports commonly called ''football'' include [[association football]] (known as ''soccer'' in Australia, Canada, South Africa, the United States, and sometimes in Ireland and New Zealand); [[Australian rules football]]; [[Gaelic football]]; [[gridiron football]] (specifically [[American football]], [[arena football]], or [[Canadian football]]); [[International rules football]]; [[rugby league football]]; and [[rugby union football]].<ref>{{cite journal |last1=Reilly |first1=Thomas |last2=Gilbourne |first2=D. |title=Science and football: a review of applied research in the football code |journal=Journal of Sports Sciences |year=2003 |volume=21 |issue=9 |pages=693–705 |doi=10.1080/0264041031000102105 |pmid=14579867 |s2cid=37880342|issn = 0264-0414 }}</ref> These various forms of football share, to varying degrees, common origins and are known as "'''football codes'''".
+
+There are a number of references to traditional, ancient, or prehistoric ball games played in many different parts of the world.<ref>{{cite web |url=https://www.fifa.com/classicfootball/history/the-game/Britain-home-of-football.html |title=History of Football – Britain, the home of Football |publisher=FIFA |access-date=15 June 2018 |archive-url=https://web.archive.org/web/20130922082153/http://www.fifa.com/classicfootball/history/the-game/Britain-home-of-football.html |archive-date=22 September 2013}}</ref><ref>{{cite news |url=http://www.bangkokpost.com/print/413747/ |title=Bangkok Post article |author=Post Publishing PCL. |work=Bangkok Post}}</ref><ref name="fifa-or" /> Contemporary codes of football can be traced back to the codification of [[English public school football games|these games at English public schools]] during the 19th century, itself an outgrowth of [[medieval football]].<ref>{{cite web |title=History of Rugby in Australia |url=http://www.rugbyfootballhistory.com/wallabies.html#3 |publisher=Rugby Football History |access-date=11 January 2012 |archive-url=https://web.archive.org/web/20111223091002/http://www.rugbyfootballhistory.com/wallabies.html#3 |archive-date=23 December 2011 |url-status=live}}</ref><ref>{{cite journal |last=Bailey |first=Steven |title=Living Sports History: Football at Winchester, Eton and Harrow |journal=The Sports Historian |year=1995 |volume=15 |issue=1 |pages=34–53 |doi=10.1080/17460269508551675}}</ref> The expansion and cultural power of the [[British Empire]] allowed these rules of football to spread to areas of [[British Empire|British]] influence outside the directly controlled empire.<ref>{{cite journal |last=Perkin |first=Harold |author-link=Harold Perkin |title=Teaching the nations how to play: sport and society in the British empire and commonwealth |journal=The International Journal of the History of Sport |year=1989 |volume=6 |issue=2 |pages=145–155 |doi=10.1080/09523368908713685}}</ref> By the end of the 19th century, distinct regional codes were already developing: [[Gaelic football]], for example, deliberately incorporated the rules of local traditional football games to maintain their heritage.<ref>{{cite journal |last1=Reilly |first1=Thomas |last2=Doran |first2=D. |title=Science and Gaelic football: A review |journal=Journal of Sports Sciences |year=2001 |volume=19 |issue=3 |pages=181–193 |doi=10.1080/026404101750095330 |pmid=11256823 |s2cid=43471221}}</ref> The FA allowed professionalism in English association football in 1885. Three years later twelve English clubs got together and set up the Football League, which introduced a regular league competition that gave professional clubs scheduled fixtures. During the 20th century, several of the various kinds of football grew to become some of the most popular [[team sport]]s in the world.<ref name="Bale">{{cite book |last=Bale |first=J. |title=Sports Geography |year=2002 |publisher=Taylor & Francis |isbn=978-0-419-25230-6 |page=43 |url=https://books.google.com/books?id=hc9f-aKPPxAC |access-date=23 July 2018 |archive-date=27 February 2023 |archive-url=https://web.archive.org/web/20230227180438/https://books.google.com/books?id=hc9f-aKPPxAC |url-status=live}}</ref>
+{{TOC limit|3}}

@@ -45,3 +45,30 @@ def league_teams(wikitext: str, expected: int | None = None) -> list[str]:
 def season_label(start_year: int) -> str:
     """2010 -> '2010–11' (tiret demi-cadratin, comme les titres Wikipedia)."""
     return f"{start_year}–{str(start_year + 1)[2:]}"
+
+
+def league_teams_html(html: str, expected: int) -> list[str]:
+    """Clubs depuis le HTML rendu du classement (colonnes « Team »/« Club » et « Pts »).
+    Secours quand le wikitexte ne nomme pas chaque club (le modèle de tableau connaît les clubs courants
+    par code : cas de la Bundesliga). Rend [] si aucun tableau n'a exactement `expected` équipes."""
+    from openfootball.parse.squad_html import _Collector, _txt
+
+    col = _Collector()
+    col.feed(html)
+    for _, rows in col.tables:
+        header, teams = None, []
+        for row in rows:
+            labels = [_txt(c).lower() for c in row]
+            if row and all(c.header for c in row):
+                idx = next((i for i, l in enumerate(labels) if l.startswith(("team", "club"))), None)
+                if idx is not None and any(l.startswith("pts") or l == "points" for l in labels):
+                    header, teams = idx, []
+                continue
+            if header is None or len(row) <= header:
+                continue
+            title = next((t for t, shown in row[header].links if shown), None)
+            if title:
+                teams.append(title)
+        if len(teams) == expected:
+            return list(dict.fromkeys(teams))
+    return []

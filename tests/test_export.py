@@ -71,3 +71,22 @@ def test_unfrozen_seasons_may_change_between_releases(con, tmp_path):
     new = json.loads(json.dumps(previous))
     new["seasons"]["2023/24"]["content_hash"] = "changed"
     assert verify_continuity(new, previous) == []
+
+
+def test_pack_archive_contains_manifest_and_every_listed_file(con, tmp_path):
+    import tarfile
+    from openfootball.export import pack
+    m = export_all(con, tmp_path / "out")
+    archive = pack(tmp_path / "out", tmp_path / "release" / "openfootball-data.tar.gz")
+    with tarfile.open(archive) as tar:
+        names = set(tar.getnames())
+    listed = {f["path"] for s in m["seasons"].values() for f in s["files"].values()} | {t["path"] for t in m["tables"].values()}
+    assert "manifest.json" in names and listed <= names
+
+
+def test_pack_is_reproducible(con, tmp_path):
+    from openfootball.export import pack
+    export_all(con, tmp_path / "out")
+    a = pack(tmp_path / "out", tmp_path / "a.tar.gz").read_bytes()
+    b = pack(tmp_path / "out", tmp_path / "b.tar.gz").read_bytes()
+    assert a == b

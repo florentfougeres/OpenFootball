@@ -66,7 +66,9 @@ def stint_of(entry: SquadEntry) -> str:
 
 def _upsert_player(con, e: SquadEntry, lang: str) -> int:
     if e.link:
-        row = con.execute("SELECT id FROM player WHERE link_lang = ? AND link_title = ?", [lang, e.link]).fetchone()
+        row = con.execute("SELECT player_id FROM player_link WHERE link_lang = ? AND link_title = ?", [lang, e.link]).fetchone()
+        if row is None:
+            row = con.execute("SELECT id FROM player WHERE link_lang = ? AND link_title = ?", [lang, e.link]).fetchone()
     else:   # identité faible : même nom, sans lien (SPEC §3)
         row = con.execute("SELECT id FROM player WHERE name = ? AND link_title IS NULL", [e.name]).fetchone()
     if row:

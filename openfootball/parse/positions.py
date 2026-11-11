@@ -15,6 +15,10 @@ _CODES = {
     "CAM": "MF", "CDM": "MF",
     "FW": "FW", "ST": "FW", "CF": "FW", "SS": "FW", "LW": "FW", "RW": "FW",
     "WG": "FW",
+    # abréviations françaises
+    "GB": "GK", "DC": "DF", "DD": "DF", "DG": "DF", "LD": "DF", "LG": "DF",
+    "MD": "MF", "MC": "MF", "MO": "MF", "MG": "MF", "MDR": "MF",
+    "AG": "FW", "AD": "FW", "AC": "FW", "BU": "FW", "ATT": "FW", "SA": "FW",
 }
 
 _WORDS = [
@@ -22,6 +26,10 @@ _WORDS = [
     ("defender", "DF"), ("centre-back", "DF"), ("center-back", "DF"),
     ("full-back", "DF"), ("fullback", "DF"), ("wing-back", "DF"),
     ("midfielder", "MF"),
+    ("portiere", "GK"), ("portero", "GK"), ("torwart", "GK"), ("torhüter", "GK"),
+    ("difensore", "DF"), ("defensa", "DF"), ("abwehr", "DF"), ("latéral", "DF"), ("lateral", "DF"), ("libero", "DF"),
+    ("centrocampista", "MF"), ("mediocampista", "MF"), ("mittelfeld", "MF"),
+    ("attaccante", "FW"), ("delantero", "FW"), ("stürmer", "FW"), ("ailier", "FW"), ("avant", "FW"),
     ("gardien", "GK"), ("défenseur", "DF"), ("defenseur", "DF"), ("milieu", "MF"),
     ("attaquant", "FW"), ("forward", "FW"), ("striker", "FW"), ("winger", "FW"), ("attacker", "FW"),
 ]
