@@ -412,3 +412,9 @@ Une page « saison du club » est un instantané ; les sections *Transfers in/ou
 5. **M4 — Publication** : licences, à propos, hébergement, procédure de retrait.
 
 **État au 2026-11-12** : M0 à M3 faits (5 pays, site, extension validée par un fichier TOML) ; **M4 reste à faire** : dépôt distant, release `data-v1`, activation de Pages, procédure de retrait.
+
+### Pistes ultérieures (feuille de route, 2026-11-12)
+Non décidées, à reprendre quand les cinq pays seront jugés complets.
+- **Site sans DuckDB-WASM.** Le moteur (≈ 8 Mo compressés, téléchargé depuis jsDelivr) pèse plus que les données qu'il interroge (≈ 54 000 lignes d'effectifs, ≈ 122 000 de carrière, ≈ 16 000 joueurs). Remplacer par des JSON statiques pré-calculés à l'export : un fichier par saison pour les effectifs, un par club, un index de recherche (≈ 300 Ko, chargé à la demande), des carrières découpées en tranches de joueurs. Les Parquet restent publiés en téléchargement. Gains : accueil et pages instantanés à froid, plus de dépendance à un CDN tiers, fonctionnement hors connexion. Coûts : ≈ 20 requêtes à réécrire (Joueur 5, Effectif 4, Club 3, Recherche 3…), recherche en JavaScript, découpage à prévoir quand les pays se multiplieront. Étape 1 : accueil, clubs, effectifs (déjà amorcé par `home.json`) ; étape 2 : recherche et fiches joueur ; garder DuckDB en secours jusqu'à la fin de la migration.
+- **Transferts des pages non anglaises** (italien, espagnol) : formats hétérogènes, gain attendu faible (voir D13).
+- **Gel des saisons** et contrôle de qualité face aux sources avant gel.
