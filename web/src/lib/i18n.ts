@@ -4,7 +4,7 @@ export const LANGS: Lang[] = ["fr", "en"];
 export const T: Record<Lang, Record<string, string>> = {
   fr: {
     countries: "Pays", competitions: "Championnats", allComps: "Compétitions", allCompsLead: "Les championnats couverts, pays par pays.", featuredComps: "Championnats à la une", featuredClubs: "Clubs à la une", clubsN: "clubs", playersN: "joueurs", compsN: "championnats", compsN1: "championnat", compN1: "championnat", clubN1: "club", latestSeason: "Dernière saison", allSeasons: "Saisons", topClubs: "Clubs les plus connus", clubsOfSeason: "Clubs de la saison", countryNotFound: "Pays introuvable.", compNotFound: "Championnat introuvable.", divisionN: "Division", searchHint: "Un club, un joueur, un pays…", exploreBy: "Explorer par pays", searchWaiting: "Le moteur de recherche se charge, les résultats arrivent dans un instant…", byCountry: "Par pays et championnat", byCountryLead: "Choisissez un pays, puis un championnat et une saison.", allClubs: "Tous les clubs", allClubsLead: "La liste des clubs dont on connaît les effectifs, à filtrer par nom ou par pays.", browseClubs: "Voir les clubs", filterClubs: "Filtrer par nom", allCountries: "Tous les pays", clubsFound: "clubs", seasonsOf: "saisons", noClub: "Aucun club ne correspond.", about_club: "À propos", seasonsTitle: "Saisons",
-    theme: "Thème", themeLight: "Clair", themeDark: "Sombre", themeAuto: "Auto", menu: "Menu", back: "Retour", showMore: "Voir plus", filterPh: "Filtrer", all: "Tous", title: "OpenFootBase", home: "Accueil", coverage: "Couverture", about: "À propos", other: "English",
+    theme: "Thème", themeLight: "Clair", themeDark: "Sombre", themeAuto: "Auto", menu: "Menu", back: "Retour", showMore: "Voir plus", filterPh: "Filtrer", all: "Tous", title: "OpenFootballBase", home: "Accueil", coverage: "Couverture", about: "À propos", other: "English",
     skip: "Aller au contenu", loading: "Chargement des données… (la première visite télécharge le moteur de requêtes, quelques secondes ; ensuite c'est instantané)", errTitle: "Impossible de charger les données",
     heroKicker: "Football européen · depuis 2010", heroTitle: "La base de données ouverte du football",
     heroLead: "Effectifs de clubs saison par saison, carrières de joueurs, transferts. Construite à partir de Wikipedia et Wikidata, libre et téléchargeable : chaque donnée renvoie à sa source.",
@@ -35,7 +35,7 @@ export const T: Record<Lang, Record<string, string>> = {
     covTitle: "Couverture des données", covLead: "Pour chaque saison : combien de clubs ont un effectif établi, et lesquels n'en ont pas.",
     covSquads: "Effectifs", covGaps: "Trous validés", covOpen: "Sans effectif",
     aboutTitle: "À propos", beta: "Bêta", betaNote: "Site en bêta : les données sont en cours de vérification et peuvent contenir des erreurs.",
-    about1: "OpenFootBase recense l'effectif de chaque club de première division (Angleterre, Espagne, Italie, Allemagne, France) saison par saison, depuis 2010/11.",
+    about1: "OpenFootballBase recense l'effectif de chaque club de première division (Angleterre, Espagne, Italie, Allemagne, France) saison par saison, depuis 2010/11.",
     about2h: "Sources et licences",
     about2: "Les données proviennent des pages « saison du club » de Wikipedia (anglais, puis italien et français quand l'anglais manque) et de Wikidata. Le texte de Wikipedia est publié sous licence CC BY-SA 4.0 ; Wikidata est publié sous CC0. Chaque effectif renvoie à la page d'origine.",
     about3h: "Comment lire les données",
@@ -48,7 +48,7 @@ export const T: Record<Lang, Record<string, string>> = {
   },
   en: {
     countries: "Countries", competitions: "Competitions", allComps: "Competitions", allCompsLead: "The leagues we cover, country by country.", featuredComps: "Featured competitions", featuredClubs: "Featured clubs", clubsN: "clubs", playersN: "players", compsN: "competitions", compsN1: "competition", compN1: "competition", clubN1: "club", latestSeason: "Latest season", allSeasons: "Seasons", topClubs: "Best-known clubs", clubsOfSeason: "Clubs of the season", countryNotFound: "Country not found.", compNotFound: "Competition not found.", divisionN: "Division", searchHint: "A club, a player, a country…", exploreBy: "Browse by country", searchWaiting: "The search engine is loading, results will appear in a moment…", byCountry: "By country and league", byCountryLead: "Pick a country, then a league and a season.", allClubs: "All clubs", allClubsLead: "Every club whose squads we know, filterable by name or country.", browseClubs: "Browse clubs", filterClubs: "Filter by name", allCountries: "All countries", clubsFound: "clubs", seasonsOf: "seasons", noClub: "No club matches.", about_club: "About", seasonsTitle: "Seasons",
-    theme: "Theme", themeLight: "Light", themeDark: "Dark", themeAuto: "Auto", menu: "Menu", back: "Back", showMore: "Show more", filterPh: "Filter", all: "All", title: "OpenFootBase", home: "Home", coverage: "Coverage", about: "About", other: "Français",
+    theme: "Theme", themeLight: "Light", themeDark: "Dark", themeAuto: "Auto", menu: "Menu", back: "Back", showMore: "Show more", filterPh: "Filter", all: "All", title: "OpenFootballBase", home: "Home", coverage: "Coverage", about: "About", other: "Français",
     skip: "Skip to content", loading: "Loading data… (the first visit downloads the query engine, a few seconds; after that it is instant)", errTitle: "Could not load the data",
     heroKicker: "European football · since 2010", heroTitle: "The open football database",
     heroLead: "Club squads season by season, player careers, transfers. Built from Wikipedia and Wikidata, free and downloadable: every fact links back to its source.",
@@ -79,7 +79,7 @@ export const T: Record<Lang, Record<string, string>> = {
     covTitle: "Data coverage", covLead: "For each season: how many clubs have an established squad, and which ones do not.",
     covSquads: "Squads", covGaps: "Reviewed gaps", covOpen: "No squad",
     aboutTitle: "About", beta: "Beta", betaNote: "Beta site: the data is still being checked and may contain errors.",
-    about1: "OpenFootBase lists the squad of every top-flight club (England, Spain, Italy, Germany, France) season by season, since 2010/11.",
+    about1: "OpenFootballBase lists the squad of every top-flight club (England, Spain, Italy, Germany, France) season by season, since 2010/11.",
     about2h: "Sources and licences",
     about2: "Data comes from Wikipedia's club season pages (English, then Italian and French where English is missing) and from Wikidata. Wikipedia text is published under CC BY-SA 4.0; Wikidata is published under CC0. Each squad links to its source page.",
     about3h: "How to read the data",

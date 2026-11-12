@@ -1,13 +1,13 @@
 <p><img src="docs/images/logo.svg" alt="" width="72" align="right"></p>
 
-# OpenFootBase
+# OpenFootballBase
 
 Effectifs des clubs de football **saison par saison**, construits uniquement à partir de **Wikipedia** (CC BY-SA 4.0)
 et **Wikidata** (CC0) : qui jouait dans quel club, avec quel numéro, à quel âge, avec la carrière et les sélections
 de chaque joueur. Une base ouverte (fichiers Parquet), un pipeline Python et un site statique bilingue fr/en.
 
-- **Site** : https://florentfougeres.github.io/OpenFootBase/
-- **Données** : [releases GitHub](https://github.com/florentfougeres/OpenFootBase/releases) (archive `openfootbase-data.tar.gz` : fichiers Parquet, `manifest.json`, `SCHEMA.md`)
+- **Site** : https://florentfougeres.github.io/OpenFootballBase/
+- **Données** : [releases GitHub](https://github.com/florentfougeres/OpenFootballBase/releases) (archive `openfootballbase-data.tar.gz` : fichiers Parquet, `manifest.json`, `SCHEMA.md`)
 - **Dictionnaire de données** (tables et colonnes des Parquet) : [docs/modele-de-donnees.md](docs/modele-de-donnees.md)
 - **Décisions et résultats mesurés** : [SPEC.md](SPEC.md) · **Avancement** : [PROGRESS.md](PROGRESS.md)
 
@@ -36,7 +36,7 @@ les prêts, les limites et les licences sont expliqués dans le dictionnaire de 
 Prérequis : **Python ≥ 3.11**, **Node.js ≥ 22** (pour le site), **git**, et la CLI **`gh`** pour publier.
 
 ```bash
-git clone git@github.com:florentfougeres/OpenFootBase.git && cd OpenFootBase
+git clone git@github.com:florentfougeres/OpenFootballBase.git && cd OpenFootballBase
 python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
 source .venv/bin/activate                              # puis la commande `openfootball` est disponible
 export OPENFOOTBALL_CONTACT="votre-contact"            # ajouté au User-Agent envoyé à Wikipedia/Wikidata (obligatoire)
@@ -56,8 +56,8 @@ tools/refresh.sh --open-season 2026 2026
 cd web && npm install && npm run dev                   # http://localhost:5173 (lit web/public/data, créé par l'export)
 
 # 3. Publier (données + site) — voir docs/publier-une-release.md
-openfootball export --out dist/data --archive dist/openfootbase-data.tar.gz --previous manifest-precedent.json
-gh release create data-v2 dist/openfootbase-data.tar.gz --target main --title "Data v2" --notes "…"
+openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous manifest-precedent.json
+gh release create data-v2 dist/openfootballbase-data.tar.gz --target main --title "Data v2" --notes "…"
 gh workflow run deploy.yml --ref main
 ```
 

@@ -1,4 +1,4 @@
-# OpenFootBase — dictionnaire de données
+# OpenFootballBase — dictionnaire de données
 
 Effectifs de clubs de football par saison, construits **uniquement** à partir de Wikipedia (CC BY-SA 4.0) et Wikidata (CC0).
 Ce fichier décrit les fichiers Parquet de cette release ; il est généré à l'export, à partir des fichiers eux-mêmes.

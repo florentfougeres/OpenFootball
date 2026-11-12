@@ -1,1 +1,1 @@
-"""OpenFootBase : effectifs de clubs par saison depuis Wikipedia/Wikidata."""
+"""OpenFootballBase : effectifs de clubs par saison depuis Wikipedia/Wikidata."""

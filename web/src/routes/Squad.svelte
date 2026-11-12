@@ -46,7 +46,7 @@
   const newer = $derived(idx > 0 ? list[idx - 1] : undefined);
   const to = (s: string) => href("club", enc(title), seasonSlug(s));
   // Mode d'affichage : liste (par défaut) ou cartes, mémorisé dans le navigateur du visiteur.
-  const MODE_KEY = "openfootbase.squadView";
+  const MODE_KEY = "openfootballbase.squadView";
   let mode: "list" | "cards" = $state((() => { try { return localStorage.getItem(MODE_KEY) === "cards" ? "cards" : "list"; } catch { return "list"; } })());
   const setMode = (m: "list" | "cards") => { mode = m; try { localStorage.setItem(MODE_KEY, m); } catch { /* stockage indisponible */ } };
   let bar: HTMLElement | undefined = $state();

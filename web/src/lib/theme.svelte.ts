@@ -1,6 +1,6 @@
 // Thème clair/sombre : « auto » suit le système ; le choix est mémorisé si le stockage est disponible.
 export type Theme = "auto" | "light" | "dark";
-const KEY = "openfootbase-theme";
+const KEY = "openfootballbase-theme";
 
 function read(): Theme {
   try { const v = localStorage.getItem(KEY); if (v === "light" || v === "dark") return v; } catch { /* stockage indisponible */ }

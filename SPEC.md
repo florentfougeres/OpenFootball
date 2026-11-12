@@ -1,4 +1,4 @@
-# OpenFootBase — Spécification
+# OpenFootballBase — Spécification
 
 > Statut : **v0.29** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D12 et les résultats mesurés (§9ter et suivants) font foi.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
@@ -266,7 +266,7 @@ Commande : `openfootball backfill --season Y` pour chaque saison (aucune n'est f
 - **Vérifié dans un navigateur** (volet intégré) avec les 16 saisons : chargement DuckDB-WASM sans erreur console ; recherche « mbappe » → Kylian Mbappé (parcours 2015/16 → 2025/26, Monaco/PSG/Real Madrid, « Prêté » en 2017/18) ; navigation club → effectif (Marseille 2023/24 : 26 joueurs) ; page Couverture en anglais ; mobile 375 px sans débordement horizontal ; mode sombre lisible. **Non vérifié** : lecture de Parquet servis par GitHub Pages (range requests), accessibilité au lecteur d'écran, navigateurs autres que celui du volet.
 - Jeu de données complet : **1,0 Mo** (16 saisons), archive de release **927 Ko**.
 
-**Déploiement (D9)** : `openfootball export --out … --archive … [--previous …]` produit une archive `.tar.gz` reproductible (horodatages normalisés) ; `.github/workflows/deploy.yml` (sur publication d'une release) télécharge côté serveur l'asset `openfootbase-data.tar.gz` de la dernière release, l'extrait dans `site/data/` et déploie Pages ; `.github/workflows/ci.yml` lance `pytest`. **Non testés** : les workflows n'ont jamais tourné sur GitHub (syntaxe YAML validée seulement) ; aucun dépôt distant, aucune release, GitHub Pages non activé. Étape manuelle requise : activer Pages avec « GitHub Actions » comme source.
+**Déploiement (D9)** : `openfootball export --out … --archive … [--previous …]` produit une archive `.tar.gz` reproductible (horodatages normalisés) ; `.github/workflows/deploy.yml` (sur publication d'une release) télécharge côté serveur l'asset `openfootballbase-data.tar.gz` de la dernière release, l'extrait dans `site/data/` et déploie Pages ; `.github/workflows/ci.yml` lance `pytest`. **Non testés** : les workflows n'ont jamais tourné sur GitHub (syntaxe YAML validée seulement) ; aucun dépôt distant, aucune release, GitHub Pages non activé. Étape manuelle requise : activer Pages avec « GitHub Actions » comme source.
 
 ## 9septies. Identité des joueurs par QID (2026-11-11)
 

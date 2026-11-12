@@ -43,13 +43,13 @@ Pipeline Python local (DuckDB) qui lit Wikipedia et Wikidata, exporte des fichie
 
 ## Brand Commitments
 
-Nom : **OpenFootBase**. Projet ouvert (code MIT, données sous leurs licences d'origine), bilingue.
+Nom : **OpenFootballBase**. Projet ouvert (code MIT, données sous leurs licences d'origine), bilingue.
 
 Engagement visuel confirmé (2026-11-12) : **app moderne standard**, dans la famille Sofascore / OneFootball / FotMob, exécutée proprement (dense, cartes, thème sombre par défaut avec thème clair complet, un seul accent). Le **vert** de la marque est conservé comme accent. Pas de ligne de terrain décorative. Pas de photos de joueurs.
 
 ## Evidence on Hand
 
-Données réelles, mesurées au 2026-11-12 : 189 clubs à effectifs, 1 658 club-saisons dont 1 641 avec effectif et 12 trous validés, environ 54 000 lignes d'effectif, 111 000 lignes de carrière, 42 857 clubs au total avec fiche (logo pour 17 000 d'entre eux). Site en ligne : https://florentfougeres.github.io/OpenFootBase/. Dictionnaire de données : `docs/modele-de-donnees.md`. Décisions et résultats mesurés : `SPEC.md`. Avancement : `PROGRESS.md`.
+Données réelles, mesurées au 2026-11-12 : 189 clubs à effectifs, 1 658 club-saisons dont 1 641 avec effectif et 12 trous validés, environ 54 000 lignes d'effectif, 111 000 lignes de carrière, 42 857 clubs au total avec fiche (logo pour 17 000 d'entre eux). Site en ligne : https://florentfougeres.github.io/OpenFootballBase/. Dictionnaire de données : `docs/modele-de-donnees.md`. Décisions et résultats mesurés : `SPEC.md`. Avancement : `PROGRESS.md`.
 
 Absences à ne pas inventer : aucune étude utilisateur, aucun outil de mesure d'audience, aucun témoignage, aucune donnée de trafic.
 

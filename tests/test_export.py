@@ -77,7 +77,7 @@ def test_pack_archive_contains_manifest_and_every_listed_file(con, tmp_path):
     import tarfile
     from openfootball.export import pack
     m = export_all(con, tmp_path / "out")
-    archive = pack(tmp_path / "out", tmp_path / "release" / "openfootbase-data.tar.gz")
+    archive = pack(tmp_path / "out", tmp_path / "release" / "openfootballbase-data.tar.gz")
     with tarfile.open(archive) as tar:
         names = set(tar.getnames())
     listed = {f["path"] for s in m["seasons"].values() for f in s["files"].values()} | {t["path"] for t in m["tables"].values()}
