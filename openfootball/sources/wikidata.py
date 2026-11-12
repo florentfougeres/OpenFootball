@@ -59,7 +59,11 @@ class WikidataClient:
             self._sleep(wait)
         self._last = time.monotonic()
         try:
-            r = self._session.get(WDQS, params={"query": query, "format": "json"}, timeout=90)
+            if len(query) > 4000:                          # une longue requête (VALUES de centaines de noms) dépasse la limite d'une URL
+                r = self._session.post(WDQS, data={"query": query, "format": "json"},
+                                       headers={"Accept": "application/sparql-results+json"}, timeout=180)
+            else:
+                r = self._session.get(WDQS, params={"query": query, "format": "json"}, timeout=90)
         except requests.RequestException as exc:          # connexion coupée, délai dépassé : on réessaie
             raise _Retry(None) from exc
         if r.status_code == 429 or r.status_code >= 500:

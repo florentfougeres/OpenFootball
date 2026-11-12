@@ -193,3 +193,67 @@ def test_infobox_match_merges_into_the_player_who_already_has_that_qid(con):
                          search=lambda name: ["Joshua King (footballer, born 1992)"],
                          qids=lambda ts: {t: "Q100" for t in ts}, log=lambda *_: None)
     assert con.execute("SELECT count(*) FROM player WHERE name = 'Joshua King'").fetchone()[0] == 2   # Q100 et Q200 seuls
+
+
+class FakeWdq:
+    """Imite WikidataClient.query : renvoie des lignes {p, l, club, start, end}."""
+
+    def __init__(self, rows):
+        self.rows, self.queries = rows, []
+
+    def query(self, sparql):
+        self.queries.append(sparql)
+        return self.rows
+
+
+def _club_with_qid(con):
+    """Un club avec QID (non modifiable après coup : clés étrangères) et son club-saison 2024."""
+    con.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title, wikidata_qid) VALUES (50, 'Qclub', 'ENG', 'Qclub', 'QTOU')")
+    con.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (50, 50, 2, 1)")
+    return 50
+
+
+def _loose(con, pid, name, club_season):
+    con.execute("INSERT INTO player (id, name) VALUES (?, ?)", [pid, name])
+    con.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) "
+                "VALUES (?, ?, ?, 'attested', 'wikipedia_season')", [900 + pid, pid, club_season])
+
+
+def test_player_is_identified_through_wikidata_clubs_and_dates(con):
+    from openfootball.reconcile import reconcile_by_wikidata
+    cs = _club_with_qid(con)
+    _loose(con, 20, "Moussa Sylla", cs)                      # QTOU, saison 2024
+    wd = FakeWdq([
+        {"p": "http://www.wikidata.org/entity/Q1", "l": "Moussa Sylla", "club": "http://www.wikidata.org/entity/QTOU", "start": "2023-07-01T00:00:00Z"},
+        {"p": "http://www.wikidata.org/entity/Q2", "l": "Moussa Sylla", "club": "http://www.wikidata.org/entity/QOTHER", "start": "2010-01-01T00:00:00Z"},   # homonyme ailleurs
+    ])
+    r = reconcile_by_wikidata(con, wd, log=lambda *_: None)
+    assert con.execute("SELECT qid FROM player_wikidata WHERE player_id = 20").fetchone() == ("Q1",) and r.resolved == 1
+    assert "@fr" in wd.queries[0] and "Moussa Sylla" in wd.queries[0]
+
+
+def test_wikidata_identification_refuses_ambiguous_or_unproven_candidates(con):
+    from openfootball.reconcile import reconcile_by_wikidata
+    cs = _club_with_qid(con)
+    _loose(con, 21, "Paul Dupont", cs)
+    ent = "http://www.wikidata.org/entity/"
+    both = FakeWdq([{"p": ent + "Q10", "l": "Paul Dupont", "club": ent + "QTOU"}, {"p": ent + "Q11", "l": "Paul Dupont", "club": ent + "QTOU"}])
+    reconcile_by_wikidata(con, both, log=lambda *_: None)
+    assert con.execute("SELECT count(*) FROM player_wikidata WHERE player_id = 21").fetchone()[0] == 0        # deux candidats : on ne devine pas
+    late = FakeWdq([{"p": ent + "Q12", "l": "Paul Dupont", "club": ent + "QTOU", "start": "2030-07-01T00:00:00Z"}])
+    reconcile_by_wikidata(con, late, log=lambda *_: None)
+    assert con.execute("SELECT count(*) FROM player_wikidata WHERE player_id = 21").fetchone()[0] == 0        # il y est arrivé après la saison
+    nodate = FakeWdq([{"p": ent + "Q13", "l": "Paul Dupont", "club": ent + "QTOU"}])
+    reconcile_by_wikidata(con, nodate, log=lambda *_: None)
+    assert con.execute("SELECT qid FROM player_wikidata WHERE player_id = 21").fetchone() == ("Q13",)         # sans dates : la présence au club suffit
+
+
+def test_wikidata_identification_merges_into_the_player_who_already_has_the_qid(con):
+    from openfootball.reconcile import reconcile_by_wikidata
+    cs = _club_with_qid(con)
+    con.execute("INSERT INTO player (id, name) VALUES (30, 'Ali Same')")
+    con.execute("INSERT INTO player_wikidata VALUES (30, 'Q50')")
+    _loose(con, 31, "Ali Same", cs)
+    ent = "http://www.wikidata.org/entity/"
+    r = reconcile_by_wikidata(con, FakeWdq([{"p": ent + "Q50", "l": "Ali Same", "club": ent + "QTOU"}]), log=lambda *_: None)
+    assert r.merged == 1 and con.execute("SELECT count(*) FROM player WHERE name = 'Ali Same'").fetchone()[0] == 1

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, href, enc, seasonSlug, t } from "../lib/app.svelte";
+  import { app, href, enc, seasonSlug, t, type Row } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { clubName, clubOf, compName, seasonAge, wikiUrl } from "../lib/format";
@@ -22,6 +22,7 @@
     if (!lbl) return null;
     const [cs] = await q(`SELECT competition, players, source_lang, source_title, known_gap_reason FROM club_season WHERE club = ? AND season = ?`, [title, lbl]);
     const rows = await q(`SELECT s.player, COALESCE(s.player_qid, 'name:' || s.player) AS key, s.shirt_number, s.position, s.nationality, s.nat_flag, s.stint,
+        ${app.squadHasMoves ? "s.stint_date, s.stint_window, s.stint_other_club" : "NULL AS stint_date, NULL AS stint_window, NULL AS stint_other_club"},
         ${app.has.birth ? "b.birth_date, b.precision" : "NULL AS birth_date, NULL AS precision"}
       FROM squad s ${app.has.birth ? "LEFT JOIN birth b ON b.player_qid = s.player_qid" : ""}
       WHERE s.club = ? AND s.season = ? ORDER BY s.shirt_number NULLS LAST, s.player`, [title, lbl]);
@@ -31,6 +32,10 @@
     return { cs, rows, sources };
   });
   const d = $derived(res.data);
+  /** « · janv. 2023 » si la date est connue, « · hiver » si seule la fenêtre l'est, sinon rien. */
+  const moveWhen = (r: Row) =>
+    r.stint_date ? " · " + new Date(r.stint_date + "T00:00:00").toLocaleDateString(app.lang, { month: "short", year: "numeric" })
+    : r.stint_window === "winter" ? " · " + t("winter") : "";
 
   // Saisons du club (pour passer d'une saison à l'autre sans repasser par la fiche club).
   const seasons = resource(() => q(`SELECT season, players FROM club_season WHERE club = ? ORDER BY season DESC`, [title]));
@@ -107,7 +112,10 @@
                     <td class="num font-semibold text-muted">{r.shirt_number ?? ""}</td>
                     <td><span class="flex items-center gap-2"><Flag code={r.nat_flag} label={r.nationality} />
                       <a class="font-medium hover:text-accent hover:underline" href={href("player", enc(r.key))}>{r.player}</a>
-                      {#if r.stint === "loan_in"}<Badge kind="info">{t("loan_in")}</Badge>{/if}</span></td>
+                      {#if r.stint === "loan_in"}<Badge kind="info">{t("loan_in")}</Badge>
+                      {:else if r.stint === "arrived_mid" || r.stint === "left_mid"}
+                        <span title={r.stint_other_club ? `${t(r.stint === "arrived_mid" ? "fromClub" : "toClub")} ${r.stint_other_club}` : undefined}>
+                          <Badge kind={r.stint === "arrived_mid" ? "ok" : "warn"}>{t(r.stint)}{moveWhen(r)}</Badge></span>{/if}</span></td>
                     <td class="num">{age ?? ""}</td>
                   </tr>
                 {/each}

@@ -31,6 +31,8 @@ export async function startDb(manifest: any, base: URL) {
     if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     app.has[n] = Boolean(files[n]);
   }
+  const squadCols = (await conn.query(`DESCRIBE squad`)).toArray().map((r: any) => r.toJSON().column_name);
+  app.squadHasMoves = squadCols.includes("stint_date");
   if (app.has.career) {
     const cols = await conn.query(`DESCRIBE career`);
     app.careerHasClubQid = cols.toArray().some((r: any) => r.toJSON().column_name === "club_qid");

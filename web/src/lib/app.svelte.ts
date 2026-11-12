@@ -9,6 +9,7 @@ export const app = $state({
   ready: false,
   error: null as string | null,
   has: {} as Record<string, boolean>,
+  squadHasMoves: false,      // anciens exports : pas de stint_date / stint_window / stint_other_club
   careerHasClubQid: false,   // anciens exports : pas de club_qid sur les lignes de carrière
   clubs: new Map<string, Row>(),
   clubByQid: new Map<string, Row>(),

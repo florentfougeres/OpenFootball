@@ -142,6 +142,81 @@ def reconcile_by_name(con: duckdb.DuckDBPyConnection) -> ReconcileReport:
     return report
 
 
+def _attach_qid(con, pid: int, qid: str, report: ReconcileReport) -> None:
+    """Donne ce QID à ce joueur, ou le fusionne dans le joueur qui l'a déjà (refusé si une saison figée est touchée)."""
+    owner = con.execute("SELECT player_id FROM player_wikidata WHERE qid = ?", [qid]).fetchone()
+    if owner is None:
+        con.execute("INSERT INTO player_wikidata VALUES (?, ?)", [pid, qid])
+        report.resolved += 1
+    elif owner[0] != pid:
+        if _frozen_rows(con, pid) or _frozen_rows(con, owner[0]):
+            report.blocked.append(f"{qid}: fusion {pid}->{owner[0]} touche une saison figée")
+            return
+        _merge(con, owner[0], pid)
+        report.merged += 1
+
+
+_LANGS = ("en", "fr", "it", "es", "de")
+_Q_FOOTBALLER = "Q937857"
+
+
+def _sparql_candidates(names: list[str]) -> str:
+    esc = lambda n: n.replace("\\", "\\\\").replace('"', '\\"')
+    values = " ".join(f'"{esc(n)}"@{l}' for n in names for l in _LANGS)
+    return ("SELECT ?p ?l ?club ?start ?end WHERE { VALUES ?l { " + values + " } "
+            f"?p rdfs:label ?l ; wdt:P106 wd:{_Q_FOOTBALLER} . "
+            "OPTIONAL { ?p p:P54 ?st . ?st ps:P54 ?club . OPTIONAL { ?st pq:P580 ?start } OPTIONAL { ?st pq:P582 ?end } } }")
+
+
+def _qid(url: str) -> str:
+    return url.rsplit("/", 1)[-1]
+
+
+def _year(iso: str | None) -> int | None:
+    return int(iso[:4]) if iso and iso[:4].lstrip("-").isdigit() else None
+
+
+def reconcile_by_wikidata(con: duckdb.DuckDBPyConnection, wd, *, batch: int = 80, log=print) -> ReconcileReport:
+    """Identifie les joueurs sans QID par Wikidata : un footballeur de MÊME NOM (libellé dans une des 5 langues) dont les
+    clubs (P54) contiennent CHACUN des club-saisons où il figure chez nous (dates P54 respectées quand elles existent),
+    et qui est le seul dans ce cas. Sinon le joueur reste non identifié : une identité faible vaut mieux qu'inventée."""
+    report = ReconcileReport()
+    loose = [(pid, name) for pid, name in con.execute(
+        "SELECT p.id, p.name FROM player p LEFT JOIN player_wikidata w ON w.player_id = p.id "
+        "WHERE w.player_id IS NULL AND EXISTS (SELECT 1 FROM player_club_season x WHERE x.player_id = p.id) ORDER BY p.id").fetchall()
+        if not re.search(r"[{}\[\]|<>#]", name) and _norm(name)]
+    stays: dict[int, list[tuple[str, int]]] = defaultdict(list)
+    for pid, club_qid, year in con.execute("""SELECT pcs.player_id, cl.wikidata_qid, s.start_year FROM player_club_season pcs
+            JOIN club_season cs ON cs.id = pcs.club_season_id JOIN club cl ON cl.id = cs.club_id
+            JOIN season s ON s.id = cs.season_id WHERE cl.wikidata_qid IS NOT NULL""").fetchall():
+        stays[pid].append((club_qid, year))
+
+    for i in range(0, len(loose), batch):
+        chunk = loose[i:i + batch]
+        rows = wd.query(_sparql_candidates(sorted({n for _, n in chunk})))
+        by_label: dict[str, dict[str, list[tuple[str, int | None, int | None]]]] = defaultdict(lambda: defaultdict(list))
+        for r in rows:                                          # nom normalisé -> candidat -> [(club, début, fin)]
+            cand = by_label[_norm(r["l"])][_qid(r["p"])]
+            if r.get("club"):
+                cand.append((_qid(r["club"]), _year(r.get("start")), _year(r.get("end"))))
+        for pid, name in chunk:
+            need = stays.get(pid)
+            if not need:
+                continue
+            proven = []
+            for cand_qid, spells in by_label.get(_norm(name), {}).items():
+                ok = all(any(c == club and (s is None or s <= y + 1) and (e is None or e >= y) for c, s, e in spells)
+                         for club, y in need)
+                if ok:
+                    proven.append(cand_qid)
+            if len(proven) == 1:
+                _attach_qid(con, pid, proven[0], report)
+            else:
+                report.unresolved += 1
+        log(f"  {min(i + batch, len(loose))}/{len(loose)} joueurs (Wikidata) : {report.resolved + report.merged} identifiés")
+    return report
+
+
 def _name_matches(player_name: str, title: str) -> bool:
     """Le titre de la page (sans « (footballer, born …) ») et le nom du joueur partagent leurs mots, dans un sens ou l'autre."""
     a = set(_norm(player_name).split())

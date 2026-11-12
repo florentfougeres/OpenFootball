@@ -29,6 +29,12 @@ SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
        (SELECT string_agg(r.source_lang, ',' ORDER BY ss.rank) FROM squad_row_source r
           JOIN squad_source ss ON ss.club_season_id = r.club_season_id AND ss.source_lang = r.source_lang
          WHERE r.club_season_id = pcs.club_season_id AND r.player_id = pcs.player_id) AS listed_in,
+       (SELECT strftime(m.moved_on, '%Y-%m-%d') FROM squad_movement m WHERE m.club_season_id = pcs.club_season_id
+          AND m.player_id = pcs.player_id AND (m.mid_season OR m.kind = 'loan') ORDER BY m.mid_season DESC, m.moved_on NULLS LAST LIMIT 1) AS stint_date,
+       (SELECT m.transfer_window FROM squad_movement m WHERE m.club_season_id = pcs.club_season_id
+          AND m.player_id = pcs.player_id AND (m.mid_season OR m.kind = 'loan') ORDER BY m.mid_season DESC, m.moved_on NULLS LAST LIMIT 1) AS stint_window,
+       (SELECT m.other_club FROM squad_movement m WHERE m.club_season_id = pcs.club_season_id
+          AND m.player_id = pcs.player_id AND (m.mid_season OR m.kind = 'loan') ORDER BY m.mid_season DESC, m.moved_on NULLS LAST LIMIT 1) AS stint_other_club,
        cs.source_lang, cs.source_title, cs.source_revid
 FROM player_club_season pcs
 JOIN club_season cs ON cs.id = pcs.club_season_id

@@ -87,5 +87,5 @@ docs/           guides d'exploitation       tests/  tests et fixtures wikitext
 
 ## Licences
 
-Code : licence non encore choisie (à définir). Données : texte Wikipedia sous CC BY-SA 4.0 (chaque effectif cite sa page et sa révision), Wikidata
+**Code : licence MIT** (fichier [LICENSE](LICENSE)). **Données** : texte Wikipedia sous CC BY-SA 4.0 (chaque effectif cite sa page et sa révision), Wikidata
 sous CC0. Les logos de clubs sont des images Wikimedia, souvent non libres, affichées à titre d'illustration.

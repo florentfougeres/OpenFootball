@@ -1,0 +1,75 @@
+===Transfers in===
+The following players joined Arsenal permanently and signed professional contracts with the club.
+
+{| class="wikitable sortable" style="text-align:center; font-size:95%; width:100%;"
+|-
+! Date
+! {{abbr|No.|Squad number}}
+! {{abbr|Pos.|Position}}
+! Player
+! Transferred from
+! Fee
+! class="unsortable" | {{abbr|Ref.|Reference(s)}}
+|-
+! colspan="7" | [[Arsenal F.C.|First team]]
+|-
+| style="text-align:right;" | 10 June 2022 || 27 || FW || style="text-align:left;" data-sort-value="Marq" | {{flagg|cxxlo|BRA}} [[Marquinhos (footballer, born 2003)|Marquinhos]] || style="text-align:left;" | {{flagg|cxxlo|BRA}} [[São Paulo FC|São Paulo]] || £3.5m || <ref name="Marquinhos ESPN">{{cite web |url=https://www.espn.com/soccer/story/_/id/37629294/arsenal-sign-marquinhos-sao-paulo-long-term-deal |title=Arsenal sign Marquinhos from Sao Paulo on long-term deal |date=13 Jun 2022 |website=ESPN |access-date=13 Jun 2022}}</ref>
+|-
+| style="text-align:right;" | 21 June 2022 || 21 || MF || style="text-align:left;" data-sort-value="Viei" | {{flagg|cxxlo|POR}} [[Fábio Vieira (footballer, born 2000)|Fábio Vieira]] || style="text-align:left;" | {{flagg|cxxlo|POR}} [[FC Porto|Porto]] || £29.9m || <ref name="Fabio Vieira BBC">{{cite web |url=https://www.bbc.co.uk/sport/football/61840804 |title=Porto agree to sell Fabio Vieira to Arsenal in £40 m deal |date=17 Jun 2022 |website=BBC Sport |access-date=17 Jun 2022}}</ref>
+|-
+| style="text-align:right;" | 27 June 2022 || 30 || GK || style="text-align:left;" data-sort-value="Turn" | {{flagg|cxxlo|USA}} [[Matt Turner (soccer)|Matt Turner]] || style="text-align:left;" | {{flagg|cxxlo|USA}} [[New England Revolution]] || Undisclosed || <ref name="Matt Turner BBC">{{cite web |url=https://www.bbc.co.uk/sport/football/61950300 |title=Matt Turner: United States goalkeeper joins Arsenal from New England Revolution |date=27 Jun 2022 |website=BBC Sport |access-date=27 Jun 2022}}</ref>
+|-
+| style="text-align:right;" | 4 July 2022 || 9 || FW || style="text-align:left;" data-sort-value="Jesu" | {{flagg|cxxlo|BRA}} [[Gabriel Jesus]] || rowspan="2" style="text-align:left;" | {{flagg|cxxlo|ENG}} [[Manchester City F.C.|Manchester City]] || £45m || <ref name="Gabriel Jesus BBC">{{cite web |url=https://www.bbc.com/sport/football/61983873 |title=Gabriel Jesus: Arsenal sign Brazil forward from Manchester City for £45m on long-term deal |date=4 Jul 2022 |website=BBC Sport |access-date=4 Jul 2022}}</ref>
+|-
+| style="text-align:right;" | 22 July 2022 || 35 || DF || style="text-align:left;" data-sort-value="Zinc" | {{flagg|cxxlo|UKR}} [[Oleksandr Zinchenko (footballer)|Oleksandr Zinchenko]] || £30m || <ref name="Zinchenko BBC">{{cite web |url=https://www.bbc.co.uk/sport/football/62188094 |title=Arsenal sign Oleksandr Zinchenko from Manchester City |date=22 Jul 2022 |website=BBC Sport |access-date=22 Jul 2022}}</ref>
+|-
+| style="text-align:right;" | 31 January 2023 || 20 || MF || style="text-align:left;" data-sort-value="Jorg" | {{flagg|cxxlo|ITA}} [[Jorginho (footballer, born December 1991)|Jorginho]] || style="text-align:left;" | {{flagg|cxxlo|ENG}} [[Chelsea F.C.|Chelsea]] || £12m || <ref name="Jorginho BBC">{{cite web |url=https://www.bbc.co.uk/sport/football/64477147 |title=Arsenal transfer news: Jorginho moves from Chelsea to the Gunners in a deal worth £12m |last1=Stone |first1=Simon |last2=Howell |first2=Alex |date=31 Jan 2023 |website=BBC Sport |access-date=1 Feb 2023}}</ref>
+|}
+Total expenditure: {{Decrease}} [[Pound sterling|£]]159.0&nbsp;million <small>''(excluding add-ons and undisclosed figures)''</small>
+
+
+|}
+
+===Transfers out===
+{| class="wikitable sortable" style="text-align:center; font-size:95%; width:100%;"
+|-
+! Date
+! {{abbr|No.|Squad number}}
+! {{abbr|Pos.|Position}}
+! Player
+! Transferred to
+! Fee
+! class="unsortable" | {{abbr|Ref.|Reference(s)}}
+|-
+! colspan="7" | [[Arsenal F.C.|First team]]
+|-
+| rowspan="2" style="text-align:right;" | 30 June 2022 || 27 || DF || style="text-align:left;" data-sort-value="Mavr" | {{flagg|cxxlo|GRE}} [[Konstantinos Mavropanos]] || style="text-align:left;" | {{flagg|cxxlo|GER}} [[VfB Stuttgart]] || Undisclosed || <ref name="Mavropanos departed">{{cite web |url=https://www.arsenal.com/konstantinos-mavropanos-vfb-stuttgart-permanent-deal-transfer |title=Mavropanos joins Vfb Stuttgart in permanent deal |date=19 May 2022 |website=Arsenal FC |access-date=27 Jul 2022}}</ref>
+|-
+| 29 || MF || style="text-align:left;" data-sort-value="Guen" | {{flagg|cxxlo|FRA}} [[Matteo Guendouzi]] || style="text-align:left;" | {{flagg|cxxlo|FRA}} [[Olympique de Marseille|Marseille]] || £9m || <ref name="Guendouzi joined Marseille">{{cite web |url=https://www.bbc.com/sport/football/62013643 |title=Arsenal midfielder Matteo Guendouzi joins Marseille in permanent deal |date=1 Jul 2022 |website=BBC Sport |access-date=27 Jul 2022}}</ref>
+|-
+| style="text-align:right;" | 2 August 2022 || 1 || GK || style="text-align:left;" data-sort-value="Leno" | {{flagg|cxxlo|GER}} [[Bernd Leno]] || style="text-align:left;" | {{flagg|cxxlo|ENG}} [[Fulham F.C.|Fulham]] || £8m || <ref name="Leno departed 2">{{cite web |url=https://www.bbc.co.uk/sport/football/62402085 |title=Bernd Leno: Fulham sign German goalkeeper from Arsenal |date=2 Aug 2022 |website=BBC Sport |access-date=2 Aug 2022}}</ref>
+|-
+| style="text-align:right;" | 8 August 2022 || — || MF || style="text-align:left;" data-sort-value="Torr" | {{flagg|cxxlo|URU}} [[Lucas Torreira]] || style="text-align:left;" | {{flagg|cxxlo|TUR}} [[Galatasaray S.K.|Galatasaray]] || Undisclosed || <ref name="Torreira departed">{{cite web |url=https://www.arsenal.com/news/lucas-torreira-joins-galatasaray |title=Lucas Torreira joins Galatasaray |date=8 Aug 2022 |website=Arsenal FC |access-date=8 Aug 2022}}</ref>
+|}
+
+===Loans out===
+{{smalldiv|
+* Date<sup>‡</sup> – Loan was originally scheduled to last to until end of the season but was curtailed.
+}}
+
+{| class="wikitable sortable" style="text-align:center; font-size:95%; width:100%;"
+|-
+! Date
+! {{abbr|No.|Squad number}}
+! {{abbr|Pos.|Position}}
+! Player
+! Loaned to
+! On loan until
+! class="unsortable" | {{abbr|Ref.|Reference(s)}}
+|-
+! colspan="7" | [[Arsenal F.C.|First team]]
+|-
+| style="text-align:right;" | 15 July 2022 || — || DF || style="text-align:left;" data-sort-value="Trus" | {{flagg|cxxlo|USA}} [[Auston Trusty]] || style="text-align:left;" | {{flagg|cxxlo|ENG}} [[Birmingham City F.C.|Birmingham City]] || End of Season || <ref name="Trusty on loan">{{cite web |url=https://www.arsenal.com/news/auston-trusty-joins-birmingham-city-loan |title=Auston Trusty joins Birmingham City on loan |date=15 Jul 2022 |website=Arsenal FC |access-date=15 Jul 2022}}</ref>
+|-
+| style="text-align:right;" | 29 July 2022 || 33 || GK || style="text-align:left;" data-sort-value="OkoA" | {{flagg|cxxlo|ENG}} [[Arthur Okonkwo]] || style="text-align:left;" | {{flagg|cxxlo|ENG}} [[Crewe Alexandra F.C.|Crewe Alexandra]] || 14 January 2023<sup>‡</sup> || <ref name="Arthur Okonkwo on loan">{{cite web |url=https://www.arsenal.com/news/arthur-okonkwo-joins-crewe-alexandra-loan |title=Arthur Okonkwo joins Crewe Alexandra on loan |date=29 Jul 2022 |website=Arsenal FC |access-date=29 Jul 2022}}</ref><ref name="Arthur Okonkwo on loan 2"/>
+|}

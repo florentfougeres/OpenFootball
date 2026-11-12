@@ -287,3 +287,21 @@ def test_sortname_named_parameters_are_not_positional_arguments():
     assert _name_and_link("{{sortname|Pepe||Pepe (footballer, born 1983)}}") == ("Pepe", "Pepe (footballer, born 1983)")   # 3ᵉ argument = titre
     assert _name_and_link("{{sortname|Ali|Same|nolink=1}}") == ("Ali Same", None)
     assert _name_and_link("{{sortname|Ali|Same}}") == ("Ali Same", "Ali Same")
+
+
+def test_hidden_sort_key_glued_to_the_displayed_name_is_removed():
+    from openfootball.parse.squad import strip_sort_key
+    assert strip_sort_key("Cissokho, MamoudouMamoudou Cissokho") == "Mamoudou Cissokho"
+    assert strip_sort_key("Petit Dol, AlvinAlvin Petit Dol") == "Alvin Petit Dol"
+    assert strip_sort_key("Mamoudou Cissokho") == "Mamoudou Cissokho"          # un nom normal ne change pas
+    assert strip_sort_key("Smith, John") == "Smith, John"                      # « Nom, Prénom » sans doublon : inchangé
+
+
+def test_wiki_emphasis_and_category_annotations_are_removed_from_names():
+    from openfootball.parse.squad import clean_name
+    assert clean_name("''Andrea Romanò''") == "Andrea Romanò"
+    assert clean_name("Michael Ledger '''U23'''") == "Michael Ledger"
+    assert clean_name("Kai Crampton ''(U21)''") == "Kai Crampton"
+    assert clean_name("\"Luismi\" '''Quezada'''") == "\"Luismi\" Quezada"
+    assert clean_name("Giorgi Ts'it'aishvili") == "Giorgi Ts'it'aishvili"          # une apostrophe simple reste
+    assert clean_name("Cissokho, MamoudouMamoudou Cissokho") == "Mamoudou Cissokho"

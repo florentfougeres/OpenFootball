@@ -105,6 +105,22 @@ def _params(body: str) -> dict[str, str]:
     return out
 
 
+_SORT_KEY = re.compile(r"^(?P<last>[^,]+),\s*(?P<first>.+?)(?P=first)\s+(?P=last)$")
+
+
+def strip_sort_key(name: str) -> str:
+    """« Cissokho, MamoudouMamoudou Cissokho » (clé de tri cachée collée au nom affiché) -> « Mamoudou Cissokho »."""
+    m = _SORT_KEY.match(name.strip())
+    return f"{m.group('first')} {m.group('last')}" if m else name
+
+
+def clean_name(name: str) -> str:
+    """Nom affichable : sans italique/gras wiki (`''Nom''`), sans annotation de catégorie (`(U21)`), sans clé de tri collée."""
+    n = re.sub(r"'{2,}", "", name).strip()
+    n = re.sub(r"\s*\(?\bU\s?\d{2}\)?\s*$", "", n)
+    return strip_sort_key(n.strip())
+
+
 def _name_and_link(raw: str) -> tuple[str | None, str | None]:
     raw = raw.strip()
     m = re.search(r"\{\{\s*sortname\s*\|(.*?)\}\}", raw, re.I | re.S)
@@ -120,7 +136,7 @@ def _name_and_link(raw: str) -> tuple[str | None, str | None]:
                 positional.append(x)
         first, last = (positional + ["", ""])[:2]
         target = positional[2].strip() if len(positional) > 2 else ""
-        name = f"{first.strip()} {last.strip()}".strip()
+        name = clean_name(f"{first.strip()} {last.strip()}")
         if named.get("nolink"):
             return name or None, None
         if target:                                       # 3ᵉ argument : titre complet de la page
@@ -131,8 +147,8 @@ def _name_and_link(raw: str) -> tuple[str | None, str | None]:
     m = _LINK.search(raw)
     if m:
         target, shown = m.group(1).strip(), (m.group(2) or m.group(1)).strip()
-        return shown, target
-    plain = re.sub(r"\{\{.*?\}\}|<[^>]+>", "", raw).strip()
+        return clean_name(shown), target
+    plain = clean_name(re.sub(r"\{\{.*?\}\}|<[^>]+>", "", raw).strip())
     return (plain or None), None
 
 

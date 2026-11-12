@@ -15,7 +15,8 @@ from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_careers, import_careers_by_qid
 from openfootball.schema_doc import build_schema_doc
-from openfootball.reconcile import reconcile_by_infobox, reconcile_by_name, reconcile_players
+from openfootball.transfers import apply_transfers
+from openfootball.reconcile import reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
 from openfootball.store import FreezeRefused, SeasonFrozen, freeze
@@ -354,6 +355,12 @@ def reconcile_cmd(args: argparse.Namespace) -> int:
         print(f"sans lien -> identifiés par nom + carrière : {n.merged} fusionnés, {n.unresolved} laissés séparés (non prouvés ou ambigus)")
         for b in n.blocked:
             print("  refusé :", b)
+    if args.wikidata:
+        w = reconcile_by_wikidata(con, WikidataClient(args.wd_cache))
+        print(f"sans QID -> identifiés par Wikidata (même nom + mêmes clubs) : {w.resolved} nouveaux QID, {w.merged} fusionnés, "
+              f"{w.unresolved} laissés sans QID (aucun ou plusieurs footballeurs correspondants)")
+        for b in w.blocked:
+            print("  refusé :", b)
     if args.infobox:
         lead = WikipediaClient("cache/wikipedia_en_lead", lang="en", lead_only=True, batch_size=50)
 
@@ -412,6 +419,16 @@ def progress_cmd(args: argparse.Namespace) -> int:
     migrate(con)
     Path(args.out).write_text(build_progress(con), encoding="utf-8")
     print(f"suivi écrit dans {args.out}")
+    return 0
+
+
+def transfers_cmd(args: argparse.Namespace) -> int:
+    """Statuts datés (arrivé/parti en cours de saison, prêts) d'après les tableaux de transferts des pages anglaises."""
+    con = connect(args.db)
+    migrate(con)
+    r = apply_transfers(con, WikipediaClient(args.cache), start_year=args.season)
+    print(f"{r.club_seasons} club-saisons lues, {r.with_transfers} avec des transferts reconnus : "
+          f"{r.marked} statuts posés, {r.added} joueurs ajoutés (partis/arrivés autour de l'instantané), {r.movements} mouvements")
     return 0
 
 
@@ -491,6 +508,9 @@ def main(argv: list[str] | None = None) -> int:
     rc = sub.add_parser("reconcile", help="un joueur = un QID Wikidata (fusionne les doublons inter-langues)")
     rc.add_argument("--db", default=DB_DEFAULT)
     rc.add_argument("--names", action="store_true", help="rattache aussi les joueurs sans lien (nom + preuve de carrière)")
+    rc.add_argument("--wikidata", action="store_true",
+                    help="identifie les joueurs sans QID par Wikidata : footballeur de même nom dont les clubs (P54) contiennent les nôtres")
+    rc.add_argument("--wd-cache", default="cache/wikidata")
     rc.add_argument("--infobox", action="store_true",
                     help="cherche la page anglaise des joueurs sans lien et la valide par son infobox (carrière = nos clubs)")
     rc.set_defaults(func=reconcile_cmd)
@@ -513,6 +533,11 @@ def main(argv: list[str] | None = None) -> int:
     pr.add_argument("--db", default=DB_DEFAULT)
     pr.add_argument("--out", default="PROGRESS.md")
     pr.set_defaults(func=progress_cmd)
+    tr = sub.add_parser("transfers", help="statuts datés (arrivé/parti en cours de saison, prêts) depuis les tableaux de transferts")
+    tr.add_argument("--db", default=DB_DEFAULT)
+    tr.add_argument("--season", type=int, help="une seule saison (année de début) ; par défaut toutes les saisons non figées")
+    tr.add_argument("--cache", default="cache/wikipedia")
+    tr.set_defaults(func=transfers_cmd)
     sc_ = sub.add_parser("schema", help="écrit le dictionnaire de données des Parquet (Markdown) depuis un export")
     sc_.add_argument("--data", default="dist/data", help="dossier d'export (avec manifest.json)")
     sc_.add_argument("--out", default="docs/modele-de-donnees.md")

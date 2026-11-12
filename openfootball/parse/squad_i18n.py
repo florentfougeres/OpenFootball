@@ -12,7 +12,7 @@ import re
 
 from openfootball.parse.positions import normalize_position
 from openfootball.parse.squad import (
-    SquadEntry, _HEADING, _dedupe, _int, _name_and_link, _params, clean, iter_templates,
+    SquadEntry, _HEADING, _dedupe, _int, _name_and_link, _params, clean, iter_templates, clean_name,
 )
 
 _IT_ROLES = {"P": "GK", "D": "DF", "C": "MF", "A": "FW"}
@@ -49,6 +49,7 @@ def parse_squad_fr(wikitext: str) -> list[SquadEntry]:
     def build(p: dict, section: str) -> SquadEntry | None:
         name = " ".join(x for x in (p.get("prénom", ""), p.get("nom", "")) if x).strip()
         name = re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", name).replace("'''", "").strip()
+        name = clean_name(name)
         if not name:
             return None
         pos_raw = p.get("pos")
