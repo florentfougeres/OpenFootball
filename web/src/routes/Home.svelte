@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { app, countryOf, t, type Row } from "../lib/app.svelte";
+  import { app, countryOf, href, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import ClubChip from "../components/ClubChip.svelte";
-  import CompetitionCard from "../components/CompetitionCard.svelte";
   import CountryTile from "../components/CountryTile.svelte";
   import SearchResults from "../components/SearchResults.svelte";
   import ErrorBox from "../components/ErrorBox.svelte";
@@ -20,10 +19,6 @@
 
   const data = resource(async () => {
     const [stats] = await q(`SELECT (SELECT count(*) FROM club) AS clubs, (SELECT count(DISTINCT coalesce(player_qid, 'n:' || player)) FROM squad) AS players`);
-    const latest = await q(`SELECT cs.competition, cs.season, count(*) AS clubs FROM club_season cs
-        JOIN (SELECT competition, max(season) AS season FROM club_season GROUP BY competition) m
-          ON m.competition = cs.competition AND m.season = cs.season GROUP BY cs.competition, cs.season`);
-    const lastBy = Object.fromEntries(latest.map((r) => [r.competition, r]));
     const comps = [...app.comps.values()];
     const squadClubs = [...app.clubs.values()];
     const countries = [...app.countries.values()].map((c) => ({
@@ -31,10 +26,10 @@
       comps: comps.filter((x) => x.country_code === c.code).length,
       clubs: squadClubs.filter((x) => x.country_code === c.code).length,
     })).filter((c) => c.comps).sort((a, b) => a.name.localeCompare(b.name, app.lang));
-    const featured = comps.filter((x) => x.level === 1).map((x): Row => ({ ...x, latest: lastBy[x.code] }))
-      .sort((a, b) => (b.latest?.clubs ?? 0) - (a.latest?.clubs ?? 0)).slice(0, 8);
-    const clubs = squadClubs.sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0)).slice(0, 12);
-    return { stats, countries, featured, clubs };
+    const last = Object.fromEntries((await q(`SELECT club, max(season) AS season FROM club_season WHERE players > 0 GROUP BY club`)).map((r) => [r.club, r.season as string]));
+    const clubs = squadClubs.filter((c) => last[c.wikipedia_title]).sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0)).slice(0, 12)
+      .map((c) => ({ club: c, season: last[c.wikipedia_title] }));
+    return { stats, countries, clubs };
   });
 </script>
 
@@ -68,29 +63,28 @@
   {:else if data.loading && !data.data}
     <Spinner />
   {:else if data.data}
-    <section class="mt-10">
-      <h2 class="mb-3 text-2xl font-bold tracking-tight">{t("featuredComps")}</h2>
-      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {#each data.data.featured as x (x.code)}
-          <li><CompetitionCard code={x.code} countryCode={x.country_code} clubs={x.latest?.clubs} season={x.latest?.season} /></li>
-        {/each}
-      </ul>
-    </section>
-
-    <section class="mt-12">
-      <h2 class="mb-3 text-2xl font-bold tracking-tight">{t("featuredClubs")}</h2>
+    <section class="mt-8" aria-labelledby="feat-clubs">
+      <h2 id="feat-clubs" class="mb-3 text-2xl font-bold">{t("featuredClubs")}</h2>
       <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {#each data.data.clubs as club (club.wikipedia_title)}<li><ClubChip {club} /></li>{/each}
-      </ul>
-    </section>
-    <section class="mt-12">
-      <h2 class="mb-3 text-2xl font-bold tracking-tight">{t("exploreBy")}</h2>
-      <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {#each data.data.countries as c (c.code)}
-          <li><CountryTile code={c.code} name={c.name} flag={c.flag} comps={c.comps} clubs={c.clubs} /></li>
-        {/each}
+        {#each data.data.clubs as x (x.club.wikipedia_title)}<li><ClubChip club={x.club} season={x.season} /></li>{/each}
       </ul>
     </section>
 
+    <div class="mt-8 grid gap-4 lg:grid-cols-[2fr_1fr]">
+      <section class="card p-5" aria-labelledby="by-country">
+        <h2 id="by-country" class="text-2xl font-bold">{t("byCountry")}</h2>
+        <p class="mt-1 text-sm text-muted">{t("byCountryLead")}</p>
+        <ul class="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+          {#each data.data.countries as c (c.code)}
+            <li><CountryTile code={c.code} name={c.name} flag={c.flag} comps={c.comps} clubs={c.clubs} /></li>
+          {/each}
+        </ul>
+      </section>
+      <section class="card flex flex-col p-5" aria-labelledby="all-clubs">
+        <h2 id="all-clubs" class="text-2xl font-bold">{t("allClubs")}</h2>
+        <p class="mt-1 text-sm text-muted">{t("allClubsLead")}</p>
+        <p class="mt-auto pt-6"><a class="btn" href={href("clubs")}>{t("browseClubs")}</a></p>
+      </section>
+    </div>
   {/if}
 </div>

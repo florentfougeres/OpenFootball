@@ -106,9 +106,7 @@
   {:else if d}
     {#snippet stint(r: Row)}
       {#if r.stint === "loan_in"}<Badge kind="info">{t("loan_in")}</Badge>
-      {:else if r.stint === "left_mid"}
-        <span title={r.stint_other_club ? `${t("toClub")} ${r.stint_other_club}` : undefined}>
-          <Badge kind="warn">{t(r.stint)}{moveWhen(r)}</Badge></span>{/if}
+      {/if}
     {/snippet}
 
     <div class="mt-6 flex items-center justify-between gap-3">

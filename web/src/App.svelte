@@ -8,6 +8,7 @@
   import Spinner from "./components/Spinner.svelte";
   import About from "./routes/About.svelte";
   import Club from "./routes/Club.svelte";
+  import Clubs from "./routes/Clubs.svelte";
   import Competition from "./routes/Competition.svelte";
   import Country from "./routes/Country.svelte";
   import Coverage from "./routes/Coverage.svelte";
@@ -42,6 +43,8 @@
         <Squad title={route.parts[1]} slug={route.parts[2]} />
       {:else if head === "club"}
         <Club key={route.parts[1]} />
+      {:else if head === "clubs"}
+        <Clubs />
       {:else if head === "country"}
         <Country code={route.parts[1]} />
       {:else if head === "competition"}
