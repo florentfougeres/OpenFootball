@@ -11,7 +11,7 @@ __pycache__/
 *.duckdb.wal
 data/work/
 cache/
-dist/
+dist*/
 web/node_modules/
 web/dist/
 web/public/data*/
