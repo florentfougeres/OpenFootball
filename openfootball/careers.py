@@ -32,8 +32,10 @@ def prune_after_career_end(con: duckdb.DuckDBPyConnection, log=print) -> int:
 
     Cas type : Petr Čech, retraité en 2019, encore listé à Chelsea 2019/20 par une page italienne. Preuve exigée :
     au moins 3 lignes de carrière, TOUTES avec une année de fin (aucune ligne « présent »), et la dernière finit
-    au plus tard à l'année de début de la saison. Saisons figées et saison en cours exclues ; chaque retrait est
-    tracé dans `amendment_log`."""
+    avant la saison. Si elle finit l'année même du début de saison, le joueur a pu partir en cours de saison
+    (Agüero, Barcelone 2021/22) : on ne retire que s'il n'a AUCUNE ligne de ce club finissant cette année-là ou
+    après, et que ces lignes ont toutes un lien de club (sinon on garde). Saisons figées et saison en cours exclues ;
+    chaque retrait est tracé dans `amendment_log`."""
     rows = con.execute("""
         WITH ended AS (
           SELECT player_id, max(end_year) AS last_year FROM player_career GROUP BY player_id
@@ -45,7 +47,15 @@ def prune_after_career_end(con: duckdb.DuckDBPyConnection, log=print) -> int:
         JOIN season s ON s.id = cs.season_id
         JOIN club cl ON cl.id = cs.club_id
         JOIN player p ON p.id = pcs.player_id
-        WHERE s.status NOT IN ('frozen', 'open') AND e.last_year <= s.start_year""").fetchall()
+        WHERE s.status NOT IN ('frozen', 'open')
+          AND (e.last_year < s.start_year
+               OR (e.last_year = s.start_year
+                   AND NOT EXISTS (SELECT 1 FROM player_career c WHERE c.player_id = pcs.player_id
+                                   AND c.end_year >= s.start_year
+                                   AND (c.club_link IS NULL
+                                        OR c.club_link = cl.wikipedia_title
+                                        OR c.club_link IN (SELECT w.title FROM entity_wiki w
+                                                           WHERE w.qid = cl.wikidata_qid AND w.lang = 'en')))))""").fetchall()
     for pid, csid, sid, name, club, label, last in rows:
         for table in ("player_club_season", "squad_row_source", "squad_movement"):
             con.execute(f"DELETE FROM {table} WHERE player_id = ? AND club_season_id = ?", [pid, csid])

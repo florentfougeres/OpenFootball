@@ -57,7 +57,7 @@
       {:else if head === "player"}
         <Player key={route.parts[1]} />
       {:else if head === "coverage"}
-        <Coverage />
+        <Coverage slug={route.parts[1]} />
       {:else if head === "about"}
         <About />
       {:else}

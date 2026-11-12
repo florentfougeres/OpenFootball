@@ -15,6 +15,11 @@
   const label = $derived(Object.keys(app.manifest.seasons).find((s) => seasonSlug(s) === slug));
   const club = $derived(clubOf(title));
   const country = $derived(club?.country_code ? countryOf(club.country_code) : null);
+  // Autres compétitions de la saison (Ligue des champions) en plus du championnat du club-saison.
+  const extra = resource(async () => {
+    if (!label || !app.has.competition_club) return [] as string[];
+    return (await q(`SELECT competition FROM competition_club WHERE club = ? AND season = ?`, [title, label])).map((r) => r.competition as string);
+  });
   const POS = ["GK", "DF", "MF", "FW", null] as const;
   const HEX = /^#[0-9a-fA-F]{6}$/;
   const kit = $derived(String(club?.colors_hex ?? "").split("|").map((c: string) => c.trim()).filter((c: string) => HEX.test(c)));
@@ -70,6 +75,7 @@
       <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
         {#if country}<span class="flex items-center gap-1.5 font-medium text-fg"><Flag code={country.flag} label={country.name} /> {country.name}</span>{/if}
         {#if d?.cs}<span>{compName(d.cs.competition)}</span>{/if}
+        {#each (extra.data ?? []).filter((c) => c !== d?.cs?.competition) as c}<a class="link" href={href("competition", c, slug)}>{compName(c)}</a>{/each}
         {#if d?.sources.length}
           <span>{t(d.sources.length > 1 ? "sourcesLabel" : "sourceLabel")} :
             {#each d.sources as src, i}{#if i}{", "}{/if}<a class="link" href={wikiUrl(src.source_lang, src.source_title)} hreflang={src.source_lang} target="_blank" rel="noopener">{src.source_lang.toUpperCase()}</a>

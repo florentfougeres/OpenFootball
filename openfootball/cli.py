@@ -250,6 +250,25 @@ def backfill_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def uefa_cmd(args: argparse.Namespace) -> int:
+    """Participants de la Ligue des champions (phase de groupes / de ligue) et effectif des clubs pas encore couverts."""
+    from openfootball.uefa import run_ucl
+    con = connect(args.db)
+    migrate(con)
+    wp = WikipediaClient(args.cache)
+    langs = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in PARSERS}
+    wd = WikidataClient(args.wd_cache)
+    for year in args.season:
+        print(f"=== Ligue des champions {year}/{str(year + 1)[2:]} ===")
+        try:
+            res = run_ucl(con, year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts))
+        except SeasonFrozen as exc:
+            raise SystemExit(f"refusé : {exc}")
+        gaps = [r for r in res if r.lang is None]
+        print(f"  {len(res) - len(gaps)}/{len(res)} nouveaux clubs avec effectif ; {len(gaps)} sans effectif")
+    return 0
+
+
 def status_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
@@ -486,6 +505,12 @@ def main(argv: list[str] | None = None) -> int:
     b.add_argument("--cache", default="cache/wikipedia")
     b.add_argument("--wd-cache", default="cache/wikidata")
     b.set_defaults(func=backfill_cmd)
+    u = sub.add_parser("uefa", help="Ligue des champions : participants (phase de groupes/ligue) et effectifs des clubs manquants")
+    u.add_argument("--db", default=DB_DEFAULT)
+    u.add_argument("--season", type=int, nargs="+", required=True)
+    u.add_argument("--cache", default="cache/wikipedia")
+    u.add_argument("--wd-cache", default="cache/wikidata")
+    u.set_defaults(func=uefa_cmd)
     t = sub.add_parser("status", help="état d'une saison et invariants")
     common(t)
     t.set_defaults(func=status_cmd)

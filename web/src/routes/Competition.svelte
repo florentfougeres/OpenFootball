@@ -14,7 +14,7 @@
   const country = $derived(countryOf(comp?.country_code));
 
   const seasons = resource(async () => {
-    const rows = await q(`SELECT DISTINCT season FROM club_season WHERE competition = ? ORDER BY season DESC`, [code]);
+    const rows = await q(`SELECT DISTINCT season FROM ${app.has.competition_club ? "competition_club" : "club_season"} WHERE competition = ? ORDER BY season DESC`, [code]);
     return rows.map((r) => r.season as string);
   });
   const label = $derived(seasons.data ? seasons.data.find((s) => seasonSlug(s) === slug) ?? seasons.data[0] : undefined);
@@ -22,7 +22,11 @@
   const clubs = resource(async () => {
     const lbl = label;
     if (!lbl) return [];
-    const rows = await q(`SELECT club, players, known_gap_reason FROM club_season WHERE competition = ? AND season = ?`, [code, lbl]);
+    // Participants : championnat ET coupe (un club de Ligue 1 est aussi en Ligue des champions) ; effectif = celui de son club-saison.
+    const rows = app.has.competition_club
+      ? await q(`SELECT cc.club, cs.players, cs.known_gap_reason FROM competition_club cc
+          LEFT JOIN club_season cs ON cs.club = cc.club AND cs.season = cc.season WHERE cc.competition = ? AND cc.season = ?`, [code, lbl])
+      : await q(`SELECT club, players, known_gap_reason FROM club_season WHERE competition = ? AND season = ?`, [code, lbl]);
     return rows.map((r): Row => ({ ...r, c: clubOf(r.club) })).sort((a, b) => clubName(a.c).localeCompare(clubName(b.c)));
   });
 </script>
@@ -31,6 +35,9 @@
 {#if !comp}
   <p class="text-warn">{t("compNotFound")}</p>
 {:else}
+  {#if comp.partial}
+    <p class="mb-4 rounded-lg border border-line bg-warn-soft px-4 py-2.5 text-sm text-warn">{t("partialComp")}</p>
+  {/if}
   <header class="card flex items-center gap-5 p-6">
     {#if comp.logo_url}
       <span class="block size-20 shrink-0 overflow-hidden rounded-xl bg-white p-2"><img class="size-full object-contain" src={comp.logo_url} alt="" /></span>
@@ -39,7 +46,7 @@
     {/if}
     <div class="min-w-0">
       <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">{compName(code)}</h1>
-      <p class="mt-1.5 text-sm text-muted">{country.name} · {t("divisionN")} {comp.level}</p>
+      <p class="mt-1.5 text-sm text-muted">{country.name}{#if comp.country_code !== "EUR"} · {t("divisionN")} {comp.level}{/if}</p>
     </div>
   </header>
 

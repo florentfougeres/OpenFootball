@@ -19,6 +19,7 @@ import duckdb
 from openfootball.countries import flag_code
 from openfootball.enrich import NON_LATIN
 from openfootball.schema_doc import build_schema_doc
+from openfootball.scopes import load_scopes
 
 _SQUAD = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
@@ -110,7 +111,9 @@ _GLOBAL = {
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
     "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
-    "competition": "SELECT c.code, c.name_en, c.name_fr, c.country_code, c.level, c.wikidata_qid, i.wikipedia_title, i.logo_url, i.logo_license "
+    # `partial` : championnat HORS périmètre, créé pour rattacher les clubs vus en coupe d'Europe (il ne contient qu'eux).
+    "competition": "SELECT c.code, c.name_en, c.name_fr, c.country_code, c.level, c.wikidata_qid, i.wikipedia_title, i.logo_url, i.logo_license, "
+                   f"(c.code <> 'UEFA-CL' AND c.code NOT IN ({', '.join(repr(sc.competition_code) for sc in load_scopes())})) AS partial "
                    "FROM competition c LEFT JOIN competition_info i ON i.code = c.code ORDER BY c.code",
     "season": "SELECT label, start_year, status, content_hash FROM season ORDER BY start_year",
     "country": "SELECT code, name_en, name_fr, flag FROM country_export ORDER BY code",
@@ -175,6 +178,15 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         FROM known_gap k JOIN club_season cs ON cs.id = k.club_season_id
         JOIN season s ON s.id = cs.season_id JOIN club cl ON cl.id = cs.club_id
         ORDER BY s.start_year, cl.wikipedia_title""", out, "known_gap", "known_gap")
+    manifest["tables"]["competition_club"] = _write(con, """
+        SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club
+        FROM club_season cs JOIN season s ON s.id = cs.season_id JOIN competition co ON co.id = cs.competition_id
+        JOIN club cl ON cl.id = cs.club_id
+        UNION
+        SELECT s.label, co.code, cl.wikipedia_title
+        FROM competition_entry e JOIN season s ON s.id = e.season_id JOIN competition co ON co.id = e.competition_id
+        JOIN club cl ON cl.id = e.club_id
+        ORDER BY 1, 2, 3""", out, "competition_club", "competition_club")
     manifest["home"] = _write_home(con, out, manifest)
     (out / "SCHEMA.md").write_text(build_schema_doc(out, manifest), encoding="utf-8")      # dictionnaire de données, joint à la release
     manifest["docs"] = {"schema": "SCHEMA.md"}

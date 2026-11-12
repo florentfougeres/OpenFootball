@@ -75,7 +75,8 @@ def build_reference(countries: list[dict], fifa_rows: list[dict]) -> list[dict]:
     out: dict[str, dict] = {}
     for r in countries:
         flag = r["iso2"].lower()
-        e = out.setdefault(r["c"], {"fifa": fifa_of.get(r["c"]), "ioc": None, "iso3": None, "flag": flag, "names": set()})
+        e = out.setdefault(r["c"], {"fifa": fifa_of.get(r["c"]), "ioc": None, "iso3": None, "flag": flag, "names": set(),
+                                    "name_en": r.get("en"), "name_fr": r.get("fr")})
         e["ioc"] = e["ioc"] or (r.get("ioc") or "").upper() or None
         e["iso3"] = e["iso3"] or (r.get("iso3") or "").upper() or None
         e["names"] |= {r[k] for k in ("en", "fr", "es", "it", "de", "nl", "pt", "tr") if r.get(k)}
@@ -83,7 +84,8 @@ def build_reference(countries: list[dict], fifa_rows: list[dict]) -> list[dict]:
     for e in entries:                          # alias manuels, rattachés par code FIFA/CIO/ISO3
         codes = {c for c in (e["fifa"], e["ioc"], e["iso3"]) if c}
         e["names"] |= {n for n, code in _ALIASES.items() if code in codes}
-    entries += [{"fifa": x["fifa"], "ioc": None, "iso3": None, "flag": x["flag"], "names": set(x["names"])} for x in _EXTRA]
+    entries += [{"fifa": x["fifa"], "ioc": None, "iso3": None, "flag": x["flag"], "names": set(x["names"]),
+                 "name_en": x["names"][0], "name_fr": x["names"][1]} for x in _EXTRA]
     return sorted(({**e, "names": sorted(e["names"])} for e in entries), key=lambda e: (e["flag"], e["fifa"] or ""))
 
 
@@ -134,3 +136,12 @@ def flag_code(raw: str | None) -> str | None:
     if re.fullmatch(r"[A-Za-z]{2,3}", text) and text.upper() in codes:
         return codes[text.upper()]
     return names.get(_key(text))
+
+
+def country_of_fifa(code: str) -> tuple[str | None, str | None, str | None]:
+    """Code FIFA d'un drapeau (`SUI`, `GER`, `ENG`) -> (code pays interne, nom anglais, nom français).
+    Le code interne est l'ISO 3166 alpha-3 (`CHE`, `DEU`), ou le code FIFA pour les nations du Royaume-Uni (`ENG`)."""
+    for e in json.loads((resources.files("openfootball.data") / "countries.json").read_text(encoding="utf-8")):
+        if (e.get("fifa") or "").upper() == code.upper() or (e.get("ioc") or "").upper() == code.upper():
+            return (e.get("iso3") or e.get("fifa"), e.get("name_en"), e.get("name_fr"))
+    return None, None, None

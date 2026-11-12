@@ -6,6 +6,7 @@ trou à valider explicitement (D2) avant le gel. Idempotent ; refuse une saison 
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Callable
 
@@ -22,6 +23,8 @@ from openfootball.merge import merge_squads
 from openfootball.store import SeasonFrozen, _next_id, ensure_season, write_squad, write_squad_merged
 
 LANG_ORDER = ("en", "it", "fr")
+# Titre d'une section d'effectif courant (page du club) : « Current squad », « Effectif actuel », « Kadro »…
+_CURRENT_SECTION = re.compile(r"current|actuel|actual|attual|huidig|güncel|kadro|first[- ]team", re.I)
 
 
 class EnumerationError(RuntimeError):
@@ -52,8 +55,10 @@ def _first_plausible(attempts, parse) -> bool:
 def _ensure_scope_rows(con, sc: Scope) -> int:
     con.execute("INSERT INTO country VALUES (?, ?, ?) ON CONFLICT DO NOTHING",
                 [sc.code, sc.name_en, sc.name_fr])
-    row = con.execute("SELECT id FROM competition WHERE code = ?", [sc.competition_code]).fetchone()
+    row = con.execute("SELECT id, name_en, name_fr FROM competition WHERE code = ?", [sc.competition_code]).fetchone()
     if row:
+        if (row[1], row[2]) != (sc.competition_en, sc.competition_fr):          # nom corrigé dans le fichier du pays
+            con.execute("UPDATE competition SET name_en = ?, name_fr = ? WHERE id = ?", [sc.competition_en, sc.competition_fr, row[0]])
         return row[0]
     cid = _next_id(con, "competition")
     con.execute("INSERT INTO competition (id, code, name_en, name_fr, country_code, level) "
@@ -106,7 +111,7 @@ def _fallbacks(con, cs_id: int, team: str, start_year: int, label: str, wp, lang
     for key in dict.fromkeys([team, canon[0]]):
         for lang, title in overrides.get((start_year, key), []):
             attempts += [(lang, title, "wikitext"), (lang, title, "html")]
-    en_titles = [f"{label} {team} season"]
+    en_titles = [f"{label} {team} season", f"{start_year} {team} season"]
     wd_title = articles().get((start_year, "en"))
     if wd_title and wd_title not in en_titles:
         en_titles.append(wd_title)
@@ -142,35 +147,149 @@ def _fallbacks(con, cs_id: int, team: str, start_year: int, label: str, wp, lang
     return None
 
 
+def _club_page_titles(con, wd, qid: str, wikipedia_title: str, langs: tuple[str, ...]) -> dict[str, str]:
+    """Titre de la page du club dans chaque langue : `entity_wiki` d'abord, puis Wikidata (sitelinks) pour les langues
+    manquantes — un club tout juste ajouté n'a pas encore été enrichi. L'anglais retombe sur le titre connu du club."""
+    from openfootball.enrich import SITES
+    titles = dict(con.execute("SELECT lang, title FROM entity_wiki WHERE qid = ?", [qid]).fetchall())
+    missing = [l for l in langs if l not in titles and l in SITES]
+    if missing and getattr(wd, "entities", None):
+        ents = wd.entities([qid], props="sitelinks", languages=None, sitefilter="|".join(SITES[l] for l in missing))
+        for lang in missing:
+            t = (ents.get(qid, {}).get("sitelinks", {}).get(SITES[lang]) or {}).get("title")
+            if t:
+                titles[lang] = t
+                con.execute("INSERT INTO entity_wiki VALUES (?, ?, ?) ON CONFLICT DO NOTHING", [qid, lang, t])
+    titles.setdefault("en", wikipedia_title)
+    return titles
+
+
 def _club_page_fallback(con, cs_id: int, team: str, qid: str | None, label: str, start_year: int, wp,
-                        lang_clients: dict, langs: tuple[str, ...]) -> ClubResult | None:
+                        lang_clients: dict, langs: tuple[str, ...], wd=None) -> ClubResult | None:
     """Saison EN COURS seulement : la page « saison du club » n'existe pas encore, mais la page du CLUB porte
     l'effectif courant (« Effectif professionnel »). On la lit dans chaque langue du pays (wikitexte puis HTML rendu)
     et on ne la retient que si elle cite bien la saison (sinon c'est l'effectif de la saison précédente)."""
     if not qid:
         return None
-    titles = dict(con.execute("SELECT lang, title FROM entity_wiki WHERE qid = ?", [qid]).fetchall())
+    wikipedia_title = con.execute("SELECT wikipedia_title FROM club_season cs JOIN club c ON c.id = cs.club_id "
+                                  "WHERE cs.id = ?", [cs_id]).fetchone()[0]
+    titles = _club_page_titles(con, wd, qid, wikipedia_title, langs)
     short = str(start_year + 1)[2:]
     season_marks = {f"{start_year}-{start_year + 1}", f"{start_year}–{start_year + 1}", f"{start_year}/{start_year + 1}",
                     f"{start_year}-{short}", f"{start_year}–{short}", f"{start_year}/{short}", label}
+    def accept(entries, text):
+        """Effectif principal plausible ET actuel : la page cite la saison, ou l'effectif est sous un titre « actuel »."""
+        main = plausible(entries)
+        if main and (any(m in text for m in season_marks) or any(_CURRENT_SECTION.search(e.section or "") for e in main)):
+            return main
+        return None
+
     for lang in langs:
         title = titles.get(lang)
         client = wp if lang == "en" else lang_clients.get(lang)
-        parse = parse_squad if lang == "en" else PARSERS.get(lang)
-        if not (title and client and parse):
+        if not (title and client):
             continue
         [page] = client.get_pages([title])
-        if not page.exists or not any(m in page.wikitext for m in season_marks):
+        if not page.exists:
             continue
-        main = plausible(parse(page.wikitext))
+        main = None
+        # La langue du pays d'abord, puis le modèle anglais « Fs player » (aussi utilisé sur des pages fr, it…).
+        for parse in dict.fromkeys(p for p in (PARSERS.get(lang), parse_squad) if p):
+            main = accept(parse(page.wikitext), page.wikitext)
+            if main:
+                break
         if not main and getattr(client, "render", None):
             rendered = client.render(title)
             if rendered.exists:
-                page, main = rendered, plausible(parse_squad_html(rendered.wikitext, lang))
+                page, main = rendered, accept(parse_squad_html(rendered.wikitext, lang), rendered.wikitext)
         if main:
             n = write_squad(con, cs_id, main, lang=lang, revid=page.revid, source_title=page.resolved_title or title)
             return ClubResult("", team, lang, n, page.resolved_title or title)
     return None
+
+
+def fill_club_season(con, cs_id: int, team: str, qid: str | None, en_page, *, country_code: str, start_year: int,
+                     label: str, langs: tuple[str, ...], wp, lang_clients: dict, wd, overrides: dict,
+                     current: bool = False) -> ClubResult:
+    """Lit l'effectif d'UN club-saison dans toutes les langues de `langs` (union, D12), avec les secours (pages
+    manuelles, HTML rendu, et pour la saison en cours la page du club). Écrit l'effectif ; un trou n'est pas écrit."""
+    chosen = None
+    arts = None                      # articles par langue, via Wikidata P5138 (chargés au besoin)
+
+    def articles() -> dict:
+        nonlocal arts
+        if arts is None:
+            arts = season_articles(wd.season_items(qid)) if qid else {}
+        return arts
+
+    def read_lang(lang: str):
+        """Effectif principal lu sur la page « saison du club » de cette langue : (liste, titre, révision) ou None.
+        Wikitexte d'abord ; si illisible, HTML rendu de la MÊME page avant de passer à la langue suivante (D10)."""
+        constructed = f"{label} {team} season"
+        calendar_year = f"{start_year} {team} season"
+        if lang == "en":
+            # Le titre construit peut différer du vrai (« Celta de Vigo » / « RC Celta de Vigo »).
+            attempts = [(en_page, constructed)]
+            # Titre donné par Wikidata, puis titre en année civile (Norvège, Suède, Kazakhstan… : « 2025 FK Bodø/Glimt season »).
+            attempts_lazy = lambda: ([(p, t) for t in dict.fromkeys(x for x in (articles().get((start_year, "en")), calendar_year)
+                                                                  if x and x != constructed)
+                                      for p in wp.get_pages([t])])
+            parse = parse_squad
+        else:
+            title = articles().get((start_year, lang))
+            if not title:
+                return None
+            attempts = [(p, title) for p in lang_clients[lang].get_pages([title])]
+            attempts_lazy = lambda: []
+            parse = PARSERS[lang]
+        for page, title in attempts + (attempts_lazy() if not _first_plausible(attempts, parse) else []):
+            if not page.exists:
+                continue
+            main = plausible(parse(page.wikitext))
+            if main:
+                return main, page.resolved_title or title, page.revid
+        # La page existe mais son effectif n'est lisible que dans le HTML rendu (modèle, section inconnue).
+        client = wp if lang == "en" else lang_clients[lang]
+        render = getattr(client, "render", None)
+        html_titles = [t for _, t in attempts]
+        if lang == "en":
+            wd_title = articles().get((start_year, "en"))
+            for extra in (wd_title, calendar_year):
+                if extra and extra not in html_titles:
+                    html_titles.append(extra)
+        for title in html_titles if render else []:
+            page = render(title)
+            if not page.exists:
+                continue
+            main = plausible(parse_squad_html(page.wikitext, lang))
+            if main:
+                return main, page.resolved_title or title, page.revid
+        return None
+
+    # D12 : on lit TOUTES les langues du pays et on fait l'union (le plus exhaustif possible) ; la première
+    # source qui répond est la principale (langue du pays d'abord, D10).
+    found = []                       # [(langue, effectif principal, titre, révision)]
+    for lang in langs:
+        if lang != "en" and (lang not in PARSERS or lang not in lang_clients):
+            continue                                  # langue listée mais pas encore prise en charge
+        hit = read_lang(lang)
+        if hit:
+            found.append((lang, *hit))
+    if found:
+        merged = merge_squads([(l, main) for l, main, _, _ in found])
+        sources = [{"lang": l, "title": t, "revid": r,
+                    "read": sum(1 for m in merged if l in m.entries),
+                    "added": sum(1 for m in merged if m.langs[0] == l)} for l, _, t, r in found]
+        n = write_squad_merged(con, cs_id, merged, sources)
+        chosen = ClubResult(country_code, team, found[0][0], n, found[0][2])
+    if not chosen:
+        got = _fallbacks(con, cs_id, team, start_year, label, wp, lang_clients, overrides, articles, langs)
+        chosen = ClubResult(country_code, team, got.lang, got.players, got.title) if got else None
+    if not chosen and current:
+        got = _club_page_fallback(con, cs_id, team, qid, label, start_year, wp, lang_clients,
+                                tuple(dict.fromkeys((*langs, "en", *PARSERS))), wd)
+        chosen = ClubResult(country_code, team, got.lang, got.players, got.title) if got else None
+    return chosen or ClubResult(country_code, team, None, 0, None)
 
 
 def run_backfill(
@@ -207,79 +326,9 @@ def run_backfill(
         for team, en_page in zip(teams, en_pages):
             club_id = _ensure_club(con, team, sc.code, qids.get(team))
             cs_id = _ensure_club_season(con, club_id, season_id, competition_id)
-            chosen = None
-            arts = None                      # articles par langue, via Wikidata P5138 (chargés au besoin)
-
-            def articles() -> dict:
-                nonlocal arts
-                if arts is None:
-                    arts = season_articles(wd.season_items(qids[team])) if qids.get(team) else {}
-                return arts
-
-            def read_lang(lang: str):
-                """Effectif principal lu sur la page « saison du club » de cette langue : (liste, titre, révision) ou None.
-                Wikitexte d'abord ; si illisible, HTML rendu de la MÊME page avant de passer à la langue suivante (D10)."""
-                constructed = f"{label} {team} season"
-                if lang == "en":
-                    # Le titre construit peut différer du vrai (« Celta de Vigo » / « RC Celta de Vigo »).
-                    attempts = [(en_page, constructed)]
-                    attempts_lazy = lambda: ([(p, t) for t in [articles().get((start_year, "en"))]
-                                              if t and t != constructed
-                                              for p in wp.get_pages([t])])
-                    parse = parse_squad
-                else:
-                    title = articles().get((start_year, lang))
-                    if not title:
-                        return None
-                    attempts = [(p, title) for p in lang_clients[lang].get_pages([title])]
-                    attempts_lazy = lambda: []
-                    parse = PARSERS[lang]
-                for page, title in attempts + (attempts_lazy() if not _first_plausible(attempts, parse) else []):
-                    if not page.exists:
-                        continue
-                    main = plausible(parse(page.wikitext))
-                    if main:
-                        return main, page.resolved_title or title, page.revid
-                # La page existe mais son effectif n'est lisible que dans le HTML rendu (modèle, section inconnue).
-                client = wp if lang == "en" else lang_clients[lang]
-                render = getattr(client, "render", None)
-                html_titles = [t for _, t in attempts]
-                if lang == "en":
-                    wd_title = articles().get((start_year, "en"))
-                    if wd_title and wd_title not in html_titles:
-                        html_titles.append(wd_title)
-                for title in html_titles if render else []:
-                    page = render(title)
-                    if not page.exists:
-                        continue
-                    main = plausible(parse_squad_html(page.wikitext, lang))
-                    if main:
-                        return main, page.resolved_title or title, page.revid
-                return None
-
-            # D12 : on lit TOUTES les langues du pays et on fait l'union (le plus exhaustif possible) ; la première
-            # source qui répond est la principale (langue du pays d'abord, D10).
-            found = []                       # [(langue, effectif principal, titre, révision)]
-            for lang in sc.langs:
-                if lang != "en" and (lang not in PARSERS or lang not in lang_clients):
-                    continue                                  # langue listée mais pas encore prise en charge
-                hit = read_lang(lang)
-                if hit:
-                    found.append((lang, *hit))
-            if found:
-                merged = merge_squads([(l, main) for l, main, _, _ in found])
-                sources = [{"lang": l, "title": t, "revid": r,
-                            "read": sum(1 for m in merged if l in m.entries),
-                            "added": sum(1 for m in merged if m.langs[0] == l)} for l, _, t, r in found]
-                n = write_squad_merged(con, cs_id, merged, sources)
-                chosen = ClubResult(sc.code, team, found[0][0], n, found[0][2])
-            if not chosen:
-                got = _fallbacks(con, cs_id, team, start_year, label, wp, lang_clients, overrides, articles, sc.langs)
-                chosen = ClubResult(sc.code, team, got.lang, got.players, got.title) if got else None
-            if not chosen and current:
-                got = _club_page_fallback(con, cs_id, team, qids.get(team), label, start_year, wp, lang_clients, sc.langs)
-                chosen = ClubResult(sc.code, team, got.lang, got.players, got.title) if got else None
-            res = chosen or ClubResult(sc.code, team, None, 0, None)
+            res = fill_club_season(con, cs_id, team, qids.get(team), en_page, country_code=sc.code, start_year=start_year,
+                                   label=label, langs=sc.langs, wp=wp, lang_clients=lang_clients, wd=wd,
+                                   overrides=overrides, current=current)
             results.append(res)
             log(f"  {sc.code} {team[:34]:34} -> {res.lang or 'TROU':4} {res.players:3} joueurs")
     return results

@@ -109,7 +109,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
         },
     ),
     "competition": (
-        "Les championnats couverts.", "code",
+        "Les compétitions couvertes : championnats du périmètre, championnats partiels de pays hors périmètre, et coupes d'Europe (`UEFA-CL`).", "code",
         {
             "code": "Code du championnat : `<PAYS>-<ABRÉVIATION>`, ex. `FRA-L1`.",
             "name_en": "Nom anglais.", "name_fr": "Nom français.",
@@ -119,6 +119,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "logo_url": "Miniature du logo du championnat lue dans l'infobox de sa page Wikipedia (hébergée par Wikimedia). Souvent **non libre** : voir `logo_license`.",
             "logo_license": "Licence du fichier logo (`Public domain`, `Fair use`…).",
             "wikidata_qid": "QID Wikidata du championnat, s'il est renseigné.",
+            "partial": "`true` pour un championnat hors périmètre, créé pour rattacher les clubs vus en coupe d'Europe : il ne contient QUE ces clubs.",
         },
     ),
     "country": (
@@ -136,6 +137,15 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "start_year": "Année de début (2025 pour 2025/26).",
             "status": "`open` = saison en cours (peut changer à chaque release), `backfill` = terminée mais pas figée, `frozen` = figée (immuable).",
             "content_hash": "Empreinte du contenu, renseignée seulement pour une saison figée : `verify-release` refuse toute release qui la modifie.",
+        },
+    ),
+    "competition_club": (
+        "Clubs participant à une compétition, par saison : les clubs du championnat (d'après `club_season`) **et** ceux "
+        "qui y participent en plus de leur championnat (Ligue des champions, table `competition_entry`).", "(season, competition, club)",
+        {
+            "season": "Saison, `2025/26`.",
+            "competition": "Code de la compétition (`UEFA-CL`, `ENG-PL`…), clé de `competition.code`.",
+            "club": "Titre de la page Wikipedia du club, clé de `club.wikipedia_title`.",
         },
     ),
     "known_gap": (
@@ -200,7 +210,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
     ),
 }
 
-ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "known_gap", "career", "national", "birth", "entity_wiki"]
+ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "birth", "entity_wiki"]
 
 INTRO = """# OpenFootballBase — dictionnaire de données
 

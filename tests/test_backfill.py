@@ -331,3 +331,45 @@ def test_league_teams_reads_accented_team_codes():
     from openfootball.parse.league import league_teams
     wt = "== League table ==\n|name_BEŞ=[[Beşiktaş J.K.|Beşiktaş]]\n|name_ÜMR=[[Ümraniyespor]]\n|name_SİV=[[Sivasspor]]\n== Results =="
     assert league_teams(wt) == ["Beşiktaş J.K.", "Ümraniyespor", "Sivasspor"]
+
+
+def test_club_page_title_comes_from_wikidata_when_club_was_never_enriched(con):
+    """Club tout neuf : `entity_wiki` est vide, le titre fr de sa page vient des sitelinks Wikidata."""
+    class WdWithSitelinks(FakeWikidata):
+        def entities(self, qids, props, languages=None, sitefilter=None):
+            return {"Q1": {"sitelinks": {"frwiki": {"title": "Club 1 (fr)"}}}}
+    fr = {"Club 1 (fr)": page("Club 1 (fr)", _club_page())}
+    res = run_backfill(
+        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki(fr)}, wd=WdWithSitelinks({}),
+        qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None, current=True)
+    assert next(x for x in res if x.club == "Club 1").lang == "fr"
+    assert con.execute("SELECT title FROM entity_wiki WHERE qid = 'Q1' AND lang = 'fr'").fetchone()[0] == "Club 1 (fr)"
+
+
+def test_club_page_with_current_squad_heading_is_accepted_without_season_text(con):
+    """Konyaspor : « Effectif actuel » en modèle anglais Fs player, aucune mention « 2026-27 » dans la page."""
+    rows = "\n".join(f"{{{{Fs player|no={i}|pos={'GK' if i == 1 else 'MF'}|nat=TUR|name=[[Joueur {i}]]}}}}" for i in range(1, 16))
+    txt = f"== Joueurs ==\\n=== Effectif actuel ===\\n{{{{Fs start}}}}\\n{rows}\\n{{{{Fs end}}}}\\n".replace("\\n", "\n")
+    con.execute("INSERT INTO entity_wiki VALUES ('Q1', 'fr', 'Club 1 (fr)')")
+    res = run_backfill(
+        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki({"Club 1 (fr)": page("Club 1 (fr)", txt)})}, wd=FakeWikidata({}),
+        qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None, current=True)
+    assert next(x for x in res if x.club == "Club 1").lang == "fr"
+
+
+def test_calendar_year_season_page_is_found_for_spring_autumn_leagues(con):
+    """Norvège, Suède, Kazakhstan… : la page s'appelle « 2023 Club 1 season », pas « 2023–24 Club 1 season »."""
+    pages = setup_pages(missing_en={"Club 1"})
+    pages["2023 Club 1 season"] = page("2023 Club 1 season", squad_wikitext("Joueur"))
+    res = run(con, pages)
+    r = next(x for x in res if x.club == "Club 1")
+    assert (r.lang, r.players, r.title) == ("en", 14, "2023 Club 1 season")
+
+
+def test_renamed_competition_in_scope_file_updates_the_database(con):
+    run(con, setup_pages())
+    con.execute("UPDATE competition SET name_fr = 'Ancien nom' WHERE code = 'FRA-L1'")
+    run(con, setup_pages())                                  # les club-saisons référencent la compétition
+    assert con.execute("SELECT name_fr FROM competition WHERE code = 'FRA-L1'").fetchone()[0] == "Ligue 1"

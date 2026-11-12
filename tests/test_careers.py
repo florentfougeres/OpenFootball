@@ -118,8 +118,8 @@ def test_import_writes_national_rows(con):
     assert con.execute("SELECT count(*) FROM player_national WHERE player_id = 1").fetchone()[0] == 6
 
 
-def _squad_db(last_years, status="backfill"):
-    """Un joueur à Chelsea 2019/20 ; `last_years` = années de fin de sa carrière (None = « présent »)."""
+def _squad_db(career, status="backfill"):
+    """Un joueur à Chelsea 2019/20 ; `career` = [(année de fin ou None, lien du club ou None)]."""
     con = duckdb.connect(":memory:")
     migrate(con)
     con.execute("INSERT INTO country VALUES ('ENG', 'England', 'Angleterre')")
@@ -129,26 +129,34 @@ def _squad_db(last_years, status="backfill"):
     con.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (1, 1, 1, 1)")
     con.execute("INSERT INTO player (id, name) VALUES (1, 'Petr Čech')")
     con.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) VALUES (1, 1, 1, 'attested', 'wikipedia_season')")
-    for i, end in enumerate(last_years, 1):
-        con.execute("INSERT INTO player_career (id, player_id, seq, end_year, club_name, source_lang, source_title) "
-                    "VALUES (?, 1, ?, ?, 'X', 'en', 'P')", [i, i, end])
+    for i, (end, link) in enumerate(career, 1):
+        con.execute("INSERT INTO player_career (id, player_id, seq, end_year, club_name, club_link, source_lang, source_title) "
+                    "VALUES (?, 1, ?, ?, 'X', ?, 'en', 'P')", [i, i, end, link])
     return con
+
+
+OLD = [(2001, "A"), (2004, "B"), (2015, "Chelsea F.C.")]
 
 
 def test_player_whose_career_ended_before_the_season_is_removed_and_logged():
     from openfootball.careers import prune_after_career_end
-    con = _squad_db([2001, 2004, 2015, 2019])
-    assert prune_after_career_end(con, log=lambda s: None) == 1
-    assert con.execute("SELECT count(*) FROM player_club_season").fetchone()[0] == 0
-    assert "Petr Čech retiré de Chelsea F.C. 2019/20" in con.execute("SELECT description FROM amendment_log").fetchone()[0]
+    for last in ((2018, "Arsenal F.C."),                       # fini strictement avant
+                 (2019, "Arsenal F.C.")):                      # fini en 2019, mais dans un AUTRE club que Chelsea
+        con = _squad_db(OLD + [last])
+        assert prune_after_career_end(con, log=lambda s: None) == 1
+        assert con.execute("SELECT count(*) FROM player_club_season").fetchone()[0] == 0
+        assert "Petr Čech retiré de Chelsea F.C. 2019/20" in con.execute("SELECT description FROM amendment_log").fetchone()[0]
 
 
-@pytest.mark.parametrize("ends,status", [([2001, 2004, 2015, None], "backfill"),     # carrière « en cours »
-                                         ([2001, 2004, 2019, 2021], "backfill"),     # finit après le début de saison
-                                         ([2004, 2019], "backfill"),                 # trop peu de lignes pour être sûr
-                                         ([2001, 2004, 2015, 2019], "open")])        # saison en cours : jamais touchée
-def test_career_pruning_needs_strong_evidence(ends, status):
+@pytest.mark.parametrize("career,status", [
+    (OLD + [(None, "Arsenal F.C.")], "backfill"),             # carrière « en cours »
+    (OLD + [(2021, "Arsenal F.C.")], "backfill"),             # finit après le début de saison
+    ([(2004, "B"), (2019, "Arsenal F.C.")], "backfill"),      # trop peu de lignes pour être sûr
+    (OLD + [(2019, "Chelsea F.C.")], "backfill"),             # parti de CE club en 2019 : a pu jouer la saison (Agüero)
+    (OLD + [(2019, None)], "backfill"),                       # lien de club inconnu : on garde
+    (OLD + [(2018, "Arsenal F.C.")], "open")])                # saison en cours : jamais touchée
+def test_career_pruning_needs_strong_evidence(career, status):
     from openfootball.careers import prune_after_career_end
-    con = _squad_db(ends, status)
+    con = _squad_db(career, status)
     assert prune_after_career_end(con, log=lambda s: None) == 0
     assert con.execute("SELECT count(*) FROM player_club_season").fetchone()[0] == 1

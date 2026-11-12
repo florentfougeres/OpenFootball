@@ -11,7 +11,8 @@ from typing import Callable
 
 import duckdb
 
-SITES = {"en": "enwiki", "fr": "frwiki", "it": "itwiki", "de": "dewiki", "es": "eswiki"}
+SITES = {"en": "enwiki", "fr": "frwiki", "it": "itwiki", "de": "dewiki", "es": "eswiki", "nl": "nlwiki", "tr": "trwiki",
+         "pt": "ptwiki"}
 BATCH = 50
 BIRTH_BATCH = 300
 

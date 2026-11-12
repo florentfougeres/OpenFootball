@@ -7,7 +7,9 @@
   "names": [
    "Andorra",
    "Andorre"
-  ]
+  ],
+  "name_en": "Andorra",
+  "name_fr": "Andorre"
  },
  {
   "fifa": "UAE",
@@ -23,7 +25,9 @@
    "Vereinigte Arabische Emirate",
    "Verenigde Arabische Emiraten",
    "Émirats arabes unis"
-  ]
+  ],
+  "name_en": "United Arab Emirates",
+  "name_fr": "Émirats arabes unis"
  },
  {
   "fifa": "AFG",
@@ -35,7 +39,9 @@
    "Afganistan",
    "Afganistán",
    "Afghanistan"
-  ]
+  ],
+  "name_en": "Afghanistan",
+  "name_fr": "Afghanistan"
  },
  {
   "fifa": "ATG",
@@ -51,7 +57,9 @@
    "Antigua y Barbuda",
    "Antigua-et-Barbuda",
    "Antígua e Barbuda"
-  ]
+  ],
+  "name_en": "Antigua and Barbuda",
+  "name_fr": "Antigua-et-Barbuda"
  },
  {
   "fifa": null,
@@ -61,7 +69,9 @@
   "names": [
    "Anguila",
    "Anguilla"
-  ]
+  ],
+  "name_en": "Anguilla",
+  "name_fr": "Anguilla"
  },
  {
   "fifa": "ALB",
@@ -75,7 +85,9 @@
    "Albanië",
    "Albânia",
    "Arnavutluk"
-  ]
+  ],
+  "name_en": "Albania",
+  "name_fr": "Albanie"
  },
  {
   "fifa": "ARM",
@@ -89,7 +101,9 @@
    "Arménia",
    "Arménie",
    "Ermenistan"
-  ]
+  ],
+  "name_en": "Armenia",
+  "name_fr": "Arménie"
  },
  {
   "fifa": "ANT",
@@ -105,7 +119,9 @@
    "Nederlandse Antillen",
    "Netherlands Antilles",
    "Niederländische Antillen"
-  ]
+  ],
+  "name_en": "Netherlands Antilles",
+  "name_fr": "Antilles néerlandaises"
  },
  {
   "fifa": "ANG",
@@ -114,7 +130,9 @@
   "flag": "ao",
   "names": [
    "Angola"
-  ]
+  ],
+  "name_en": "Angola",
+  "name_fr": "Angola"
  },
  {
   "fifa": null,
@@ -127,7 +145,9 @@
    "Antarktika",
    "Antartide",
    "Antártida"
-  ]
+  ],
+  "name_en": "Antarctica",
+  "name_fr": "Antarctique"
  },
  {
   "fifa": null,
@@ -143,7 +163,9 @@
    "Sistema do Tratado da Antártica",
    "regione del Trattato Antartico",
    "région du Traité sur l'Antarctique"
-  ]
+  ],
+  "name_en": "Antarctic Treaty area",
+  "name_fr": "région du Traité sur l'Antarctique"
  },
  {
   "fifa": "ARG",
@@ -156,7 +178,9 @@
    "Argentinien",
    "Argentinië",
    "Arjantin"
-  ]
+  ],
+  "name_en": "Argentina",
+  "name_fr": "Argentine"
  },
  {
   "fifa": "ASA",
@@ -171,7 +195,9 @@
    "Samoa Americana",
    "Samoa Americane",
    "Samoa américaines"
-  ]
+  ],
+  "name_en": "American Samoa",
+  "name_fr": "Samoa américaines"
  },
  {
   "fifa": "AUT",
@@ -185,7 +211,9 @@
    "Oostenrijk",
    "Áustria",
    "Österreich"
-  ]
+  ],
+  "name_en": "Austria",
+  "name_fr": "Autriche"
  },
  {
   "fifa": "AUS",
@@ -199,7 +227,9 @@
    "Australië",
    "Austrália",
    "Avustralya"
-  ]
+  ],
+  "name_en": "Australia",
+  "name_fr": "Australie"
  },
  {
   "fifa": "ARU",
@@ -208,7 +238,9 @@
   "flag": "aw",
   "names": [
    "Aruba"
-  ]
+  ],
+  "name_en": "Aruba",
+  "name_fr": "Aruba"
  },
  {
   "fifa": null,
@@ -218,7 +250,9 @@
   "names": [
    "Isole Åland",
    "Åland"
-  ]
+  ],
+  "name_en": "Åland",
+  "name_fr": "Åland"
  },
  {
   "fifa": "AZE",
@@ -234,7 +268,9 @@
    "Azerbaycan",
    "Azerbaïdjan",
    "Azerbeidzjan"
-  ]
+  ],
+  "name_en": "Azerbaijan",
+  "name_fr": "Azerbaïdjan"
  },
  {
   "fifa": "BIH",
@@ -250,7 +286,9 @@
    "Bosnien und Herzegowina",
    "Bosnië en Herzegovina",
    "Bósnia e Herzegovina"
-  ]
+  ],
+  "name_en": "Bosnia and Herzegovina",
+  "name_fr": "Bosnie-Herzégovine"
  },
  {
   "fifa": null,
@@ -260,7 +298,9 @@
   "names": [
    "Barbade",
    "Barbados"
-  ]
+  ],
+  "name_en": "Barbados",
+  "name_fr": "Barbade"
  },
  {
   "fifa": "BAN",
@@ -272,7 +312,9 @@
    "Bangladesh",
    "Bangladeş",
    "Bangladés"
-  ]
+  ],
+  "name_en": "Bangladesh",
+  "name_fr": "Bangladesh"
  },
  {
   "fifa": "BEL",
@@ -287,7 +329,9 @@
    "België",
    "Belçika",
    "Bélgica"
-  ]
+  ],
+  "name_en": "Belgium",
+  "name_fr": "Belgique"
  },
  {
   "fifa": "BFA",
@@ -297,7 +341,9 @@
   "names": [
    "Burkina Faso",
    "Burquina Fasso"
-  ]
+  ],
+  "name_en": "Burkina Faso",
+  "name_fr": "Burkina Faso"
  },
  {
   "fifa": "BUL",
@@ -311,7 +357,9 @@
    "Bulgarije",
    "Bulgaristan",
    "Bulgária"
-  ]
+  ],
+  "name_en": "Bulgaria",
+  "name_fr": "Bulgarie"
  },
  {
   "fifa": "BHR",
@@ -324,7 +372,9 @@
    "Bahreyn",
    "Bahreïn",
    "Baréin"
-  ]
+  ],
+  "name_en": "Bahrain",
+  "name_fr": "Bahreïn"
  },
  {
   "fifa": null,
@@ -333,7 +383,9 @@
   "flag": "bi",
   "names": [
    "Burundi"
-  ]
+  ],
+  "name_en": "Burundi",
+  "name_fr": "Burundi"
  },
  {
   "fifa": null,
@@ -345,7 +397,9 @@
    "Benin",
    "Benín",
    "Bénin"
-  ]
+  ],
+  "name_en": "Benin",
+  "name_fr": "Bénin"
  },
  {
   "fifa": null,
@@ -357,7 +411,9 @@
    "Saint-Barthélemy",
    "San Bartolomé",
    "São Bartolomeu"
-  ]
+  ],
+  "name_en": "Saint Barthélemy",
+  "name_fr": "Saint-Barthélemy"
  },
  {
   "fifa": "BER",
@@ -368,7 +424,9 @@
    "Bermuda",
    "Bermudas",
    "Bermudes"
-  ]
+  ],
+  "name_en": "Bermuda",
+  "name_fr": "Bermudes"
  },
  {
   "fifa": "BRU",
@@ -378,7 +436,9 @@
   "names": [
    "Brunei",
    "Brunéi"
-  ]
+  ],
+  "name_en": "Brunei",
+  "name_fr": "Brunei"
  },
  {
   "fifa": "BOL",
@@ -391,7 +451,9 @@
    "Bolivien",
    "Bolivya",
    "Bolívia"
-  ]
+  ],
+  "name_en": "Bolivia",
+  "name_fr": "Bolivie"
  },
  {
   "fifa": null,
@@ -407,7 +469,9 @@
    "Paesi Bassi caraibici",
    "Pays-Bas caribéens",
    "Países Baixos Caribenhos"
-  ]
+  ],
+  "name_en": "Caribbean Netherlands",
+  "name_fr": "Pays-Bas caribéens"
  },
  {
   "fifa": "BRA",
@@ -422,7 +486,9 @@
    "Brazilië",
    "Brezilya",
    "Brésil"
-  ]
+  ],
+  "name_en": "Brazil",
+  "name_fr": "Brésil"
  },
  {
   "fifa": null,
@@ -434,7 +500,9 @@
    "Bahamalar",
    "Bahamas",
    "The Bahamas"
-  ]
+  ],
+  "name_en": "The Bahamas",
+  "name_fr": "Bahamas"
  },
  {
   "fifa": "BHU",
@@ -447,7 +515,9 @@
    "Butan",
    "Bután",
    "Butão"
-  ]
+  ],
+  "name_en": "Bhutan",
+  "name_fr": "Bhoutan"
  },
  {
   "fifa": null,
@@ -463,7 +533,9 @@
    "Isla Bouvet",
    "isola Bouvet",
    "île Bouvet"
-  ]
+  ],
+  "name_en": "Bouvet Island",
+  "name_fr": "île Bouvet"
  },
  {
   "fifa": "BOT",
@@ -474,7 +546,9 @@
    "Botsuana",
    "Botsvana",
    "Botswana"
-  ]
+  ],
+  "name_en": "Botswana",
+  "name_fr": "Botswana"
  },
  {
   "fifa": "BLR",
@@ -488,7 +562,9 @@
    "Bielorussia",
    "Biélorussie",
    "Wit-Rusland"
-  ]
+  ],
+  "name_en": "Belarus",
+  "name_fr": "Biélorussie"
  },
  {
   "fifa": null,
@@ -498,7 +574,9 @@
   "names": [
    "Belice",
    "Belize"
-  ]
+  ],
+  "name_en": "Belize",
+  "name_fr": "Belize"
  },
  {
   "fifa": "CAN",
@@ -509,7 +587,9 @@
    "Canada",
    "Canadá",
    "Kanada"
-  ]
+  ],
+  "name_en": "Canada",
+  "name_fr": "Canada"
  },
  {
   "fifa": null,
@@ -525,7 +605,9 @@
    "Kokosinseln",
    "islas Cocos",
    "îles Cocos"
-  ]
+  ],
+  "name_en": "Cocos (Keeling) Islands",
+  "name_fr": "îles Cocos"
  },
  {
   "fifa": "COD",
@@ -545,7 +627,9 @@
    "República Democrática del Congo",
    "República Democrática do Congo",
    "République démocratique du Congo"
-  ]
+  ],
+  "name_en": "Democratic Republic of the Congo",
+  "name_fr": "République démocratique du Congo"
  },
  {
   "fifa": "CTA",
@@ -561,7 +645,9 @@
    "República Centroafricana",
    "République centrafricaine",
    "Zentralafrikanische Republik"
-  ]
+  ],
+  "name_en": "Central African Republic",
+  "name_fr": "République centrafricaine"
  },
  {
   "fifa": null,
@@ -577,7 +663,9 @@
    "Republik Kongo",
    "República do Congo",
    "République du Congo"
-  ]
+  ],
+  "name_en": "Republic of the Congo",
+  "name_fr": "République du Congo"
  },
  {
   "fifa": "SUI",
@@ -593,7 +681,9 @@
    "Switzerland",
    "Zwitserland",
    "İsviçre"
-  ]
+  ],
+  "name_en": "Switzerland",
+  "name_fr": "Suisse"
  },
  {
   "fifa": "CIV",
@@ -610,7 +700,9 @@
    "Fildişi Sahili",
    "Ivoorkust",
    "Ivory Coast"
-  ]
+  ],
+  "name_en": "Ivory Coast",
+  "name_fr": "Côte d'Ivoire"
  },
  {
   "fifa": "COK",
@@ -626,7 +718,9 @@
    "Islas Cook",
    "Isole Cook",
    "Îles Cook"
-  ]
+  ],
+  "name_en": "Cook Islands",
+  "name_fr": "Îles Cook"
  },
  {
   "fifa": "CHI",
@@ -638,7 +732,9 @@
    "Chili",
    "Cile",
    "Şili"
-  ]
+  ],
+  "name_en": "Chile",
+  "name_fr": "Chili"
  },
  {
   "fifa": "CMR",
@@ -653,7 +749,9 @@
    "Camerún",
    "Kameroen",
    "Kamerun"
-  ]
+  ],
+  "name_en": "Cameroon",
+  "name_fr": "Cameroun"
  },
  {
   "fifa": "CHN",
@@ -669,7 +767,9 @@
    "Volksrepubliek China",
    "Volksrepublik China",
    "Çin Halk Cumhuriyeti"
-  ]
+  ],
+  "name_en": "People's Republic of China",
+  "name_fr": "République populaire de Chine"
  },
  {
   "fifa": "COL",
@@ -682,7 +782,9 @@
    "Colômbia",
    "Kolombiya",
    "Kolumbien"
-  ]
+  ],
+  "name_en": "Colombia",
+  "name_fr": "Colombie"
  },
  {
   "fifa": null,
@@ -698,7 +800,9 @@
    "Isla Clipperton",
    "Isola Clipperton",
    "La Passion–Clipperton"
-  ]
+  ],
+  "name_en": "Clipperton Island",
+  "name_fr": "La Passion–Clipperton"
  },
  {
   "fifa": null,
@@ -708,7 +812,9 @@
   "names": [
    "Sark",
    "Sercq"
-  ]
+  ],
+  "name_en": "Sark",
+  "name_fr": "Sercq"
  },
  {
   "fifa": "CRC",
@@ -718,7 +824,9 @@
   "names": [
    "Costa Rica",
    "Kosta Rika"
-  ]
+  ],
+  "name_en": "Costa Rica",
+  "name_fr": "Costa Rica"
  },
  {
   "fifa": "CUB",
@@ -729,7 +837,9 @@
    "Cuba",
    "Kuba",
    "Küba"
-  ]
+  ],
+  "name_en": "Cuba",
+  "name_fr": "Cuba"
  },
  {
   "fifa": "CPV",
@@ -743,7 +853,9 @@
    "Capo Verde",
    "Kaapverdië",
    "Kap Verde"
-  ]
+  ],
+  "name_en": "Cape Verde",
+  "name_fr": "Cap-Vert"
  },
  {
   "fifa": "CUW",
@@ -755,7 +867,9 @@
    "Curazao",
    "Curaçao",
    "Curaçau"
-  ]
+  ],
+  "name_en": "Curaçao",
+  "name_fr": "Curaçao"
  },
  {
   "fifa": null,
@@ -771,7 +885,9 @@
    "Kersteiland",
    "Weihnachtsinsel",
    "île Christmas"
-  ]
+  ],
+  "name_en": "Christmas Island",
+  "name_fr": "île Christmas"
  },
  {
   "fifa": null,
@@ -786,7 +902,9 @@
    "Isla de Chipre",
    "Kıbrıs",
    "Zypern"
-  ]
+  ],
+  "name_en": "Cyprus",
+  "name_fr": "Chypre"
  },
  {
   "fifa": "CYP",
@@ -800,7 +918,9 @@
    "Cyprus",
    "Kıbrıs",
    "Zypern"
-  ]
+  ],
+  "name_en": "Cyprus",
+  "name_fr": "Chypre"
  },
  {
   "fifa": "CZE",
@@ -817,7 +937,9 @@
    "Tschechien",
    "Tsjechië",
    "Çekya"
-  ]
+  ],
+  "name_en": "Czech Republic",
+  "name_fr": "Tchéquie"
  },
  {
   "fifa": "RDA",
@@ -833,7 +955,9 @@
    "East Germany",
    "Repubblica Democratica Tedesca",
    "République démocratique allemande"
-  ]
+  ],
+  "name_en": "East Germany",
+  "name_fr": "République démocratique allemande"
  },
  {
   "fifa": "GER",
@@ -849,7 +973,9 @@
    "Duitsland",
    "Germania",
    "Germany"
-  ]
+  ],
+  "name_en": "Germany",
+  "name_fr": "Allemagne"
  },
  {
   "fifa": null,
@@ -859,7 +985,9 @@
   "names": [
    "Diego Garcia",
    "Diego García"
-  ]
+  ],
+  "name_en": "Diego Garcia",
+  "name_fr": "Diego Garcia"
  },
  {
   "fifa": "DJI",
@@ -872,7 +1000,9 @@
    "Dschibuti",
    "Gibuti",
    "Yibuti"
-  ]
+  ],
+  "name_en": "Djibouti",
+  "name_fr": "Djibouti"
  },
  {
   "fifa": "FRO",
@@ -887,7 +1017,9 @@
    "Denmark",
    "Dinamarca",
    "Dänemark"
-  ]
+  ],
+  "name_en": "Denmark",
+  "name_fr": "Danemark"
  },
  {
   "fifa": "DMA",
@@ -898,7 +1030,9 @@
    "Dominica",
    "Dominika",
    "Dominique"
-  ]
+  ],
+  "name_en": "Dominica",
+  "name_fr": "Dominique"
  },
  {
   "fifa": "DOM",
@@ -913,7 +1047,9 @@
    "Repubblica Dominicana",
    "República Dominicana",
    "République dominicaine"
-  ]
+  ],
+  "name_en": "Dominican Republic",
+  "name_fr": "République dominicaine"
  },
  {
   "fifa": "ALG",
@@ -928,7 +1064,9 @@
    "Argelia",
    "Argélia",
    "Cezayir"
-  ]
+  ],
+  "name_en": "Algeria",
+  "name_fr": "Algérie"
  },
  {
   "fifa": "ECU",
@@ -940,7 +1078,9 @@
    "Ekvador",
    "Equador",
    "Équateur"
-  ]
+  ],
+  "name_en": "Ecuador",
+  "name_fr": "Équateur"
  },
  {
   "fifa": "EST",
@@ -953,7 +1093,9 @@
    "Estonie",
    "Estonya",
    "Estónia"
-  ]
+  ],
+  "name_en": "Estonia",
+  "name_fr": "Estonie"
  },
  {
   "fifa": "EGY",
@@ -969,7 +1111,9 @@
    "Mısır",
    "Ägypten",
    "Égypte"
-  ]
+  ],
+  "name_en": "Egypt",
+  "name_fr": "Égypte"
  },
  {
   "fifa": null,
@@ -985,7 +1129,9 @@
    "Westelijke Sahara",
    "Western Sahara",
    "Westsahara"
-  ]
+  ],
+  "name_en": "Western Sahara",
+  "name_fr": "Sahara occidental"
  },
  {
   "fifa": "ERI",
@@ -997,7 +1143,9 @@
    "Eritrea",
    "Eritreia",
    "Érythrée"
-  ]
+  ],
+  "name_en": "Eritrea",
+  "name_fr": "Érythrée"
  },
  {
   "fifa": "ESP",
@@ -1013,7 +1161,9 @@
    "Spanien",
    "Spanje",
    "İspanya"
-  ]
+  ],
+  "name_en": "Spain",
+  "name_fr": "Espagne"
  },
  {
   "fifa": "ETH",
@@ -1029,7 +1179,9 @@
    "Etiópia",
    "Äthiopien",
    "Éthiopie"
-  ]
+  ],
+  "name_en": "Ethiopia",
+  "name_fr": "Éthiopie"
  },
  {
   "fifa": "FIN",
@@ -1043,7 +1195,9 @@
    "Finlandiya",
    "Finlândia",
    "Finnland"
-  ]
+  ],
+  "name_en": "Finland",
+  "name_fr": "Finlande"
  },
  {
   "fifa": "FIJ",
@@ -1056,7 +1210,9 @@
    "Figi",
    "Fiji",
    "Fiyi"
-  ]
+  ],
+  "name_en": "Fiji",
+  "name_fr": "Fidji"
  },
  {
   "fifa": null,
@@ -1072,7 +1228,9 @@
    "Islas Malvinas",
    "Isole Falkland",
    "îles Malouines"
-  ]
+  ],
+  "name_en": "Falkland Islands",
+  "name_fr": "îles Malouines"
  },
  {
   "fifa": "FSM",
@@ -1088,7 +1246,9 @@
    "Mikronezya",
    "Stati Federati di Micronesia",
    "États fédérés de Micronésie"
-  ]
+  ],
+  "name_en": "Federated States of Micronesia",
+  "name_fr": "États fédérés de Micronésie"
  },
  {
   "fifa": "FRO",
@@ -1104,7 +1264,9 @@
    "Ilhas Feroe",
    "Islas Feroe",
    "îles Féroé"
-  ]
+  ],
+  "name_en": "Faroe Islands",
+  "name_fr": "îles Féroé"
  },
  {
   "fifa": "FRA",
@@ -1118,7 +1280,9 @@
    "Frankrijk",
    "Fransa",
    "França"
-  ]
+  ],
+  "name_en": "France",
+  "name_fr": "France"
  },
  {
   "fifa": "GAB",
@@ -1130,7 +1294,9 @@
    "Gabun",
    "Gabão",
    "Gabón"
-  ]
+  ],
+  "name_en": "Gabon",
+  "name_fr": "Gabon"
  },
  {
   "fifa": null,
@@ -1145,7 +1311,9 @@
    "United Kingdom",
    "Vereinigtes Königreich",
    "Verenigd Koninkrijk"
-  ]
+  ],
+  "name_en": "United Kingdom",
+  "name_fr": "Royaume-Uni"
  },
  {
   "fifa": "ENG",
@@ -1158,7 +1326,9 @@
    "England",
    "Inghilterra",
    "Inglaterra"
-  ]
+  ],
+  "name_en": "England",
+  "name_fr": "Angleterre"
  },
  {
   "fifa": "NIR",
@@ -1171,7 +1341,9 @@
    "Irlande du Nord",
    "Nordirland",
    "Northern Ireland"
-  ]
+  ],
+  "name_en": "Northern Ireland",
+  "name_fr": "Irlande du Nord"
  },
  {
   "fifa": "SCO",
@@ -1184,7 +1356,9 @@
    "Scotland",
    "Scozia",
    "Écosse"
-  ]
+  ],
+  "name_en": "Scotland",
+  "name_fr": "Écosse"
  },
  {
   "fifa": "WAL",
@@ -1197,7 +1371,9 @@
    "Pays de Galles",
    "País de Gales",
    "Wales"
-  ]
+  ],
+  "name_en": "Wales",
+  "name_fr": "Pays de Galles"
  },
  {
   "fifa": null,
@@ -1208,7 +1384,9 @@
    "Granada",
    "Grenada",
    "Grenade"
-  ]
+  ],
+  "name_en": "Grenada",
+  "name_fr": "Grenade"
  },
  {
   "fifa": "GEO",
@@ -1222,7 +1400,9 @@
    "Geórgia",
    "Géorgie",
    "Gürcistan"
-  ]
+  ],
+  "name_en": "Georgia",
+  "name_fr": "Géorgie"
  },
  {
   "fifa": null,
@@ -1238,7 +1418,9 @@
    "Guiana Francesa",
    "Guyana francese",
    "Guyane"
-  ]
+  ],
+  "name_en": "French Guiana",
+  "name_fr": "Guyane"
  },
  {
   "fifa": null,
@@ -1249,7 +1431,9 @@
    "Guernesey",
    "Guernsey",
    "Guernsey Kraliyet Muhafızlığı"
-  ]
+  ],
+  "name_en": "Guernsey",
+  "name_fr": "Guernesey"
  },
  {
   "fifa": "GHA",
@@ -1259,7 +1443,9 @@
   "names": [
    "Gana",
    "Ghana"
-  ]
+  ],
+  "name_en": "Ghana",
+  "name_fr": "Ghana"
  },
  {
   "fifa": "GIB",
@@ -1270,7 +1456,9 @@
    "Cebelitarık",
    "Gibilterra",
    "Gibraltar"
-  ]
+  ],
+  "name_en": "Gibraltar",
+  "name_fr": "Gibraltar"
  },
  {
   "fifa": null,
@@ -1283,7 +1471,9 @@
    "Groenlandia",
    "Gronelândia",
    "Grönland"
-  ]
+  ],
+  "name_en": "Greenland",
+  "name_fr": "Groenland"
  },
  {
   "fifa": "GAM",
@@ -1296,7 +1486,9 @@
    "Gambiya",
    "Gâmbia",
    "The Gambia"
-  ]
+  ],
+  "name_en": "The Gambia",
+  "name_fr": "Gambie"
  },
  {
   "fifa": "GUI",
@@ -1309,7 +1501,9 @@
    "Guinee",
    "Guiné",
    "Guinée"
-  ]
+  ],
+  "name_en": "Guinea",
+  "name_fr": "Guinée"
  },
  {
   "fifa": null,
@@ -1320,7 +1514,9 @@
    "Guadalupa",
    "Guadalupe",
    "Guadeloupe"
-  ]
+  ],
+  "name_en": "Guadeloupe",
+  "name_fr": "Guadeloupe"
  },
  {
   "fifa": null,
@@ -1336,7 +1532,9 @@
    "Guiné Equatorial",
    "Guinée équatoriale",
    "Äquatorialguinea"
-  ]
+  ],
+  "name_en": "Equatorial Guinea",
+  "name_fr": "Guinée équatoriale"
  },
  {
   "fifa": "GRE",
@@ -1351,7 +1549,9 @@
    "Grèce",
    "Grécia",
    "Yunanistan"
-  ]
+  ],
+  "name_en": "Greece",
+  "name_fr": "Grèce"
  },
  {
   "fifa": null,
@@ -1367,7 +1567,9 @@
    "South Georgia and the South Sandwich Islands",
    "Südgeorgien und die Südlichen Sandwichinseln",
    "Zuid-Georgia en de Zuidelijke Sandwicheilanden"
-  ]
+  ],
+  "name_en": "South Georgia and the South Sandwich Islands",
+  "name_fr": "Géorgie du Sud-et-les Îles Sandwich du Sud"
  },
  {
   "fifa": "GUA",
@@ -1376,7 +1578,9 @@
   "flag": "gt",
   "names": [
    "Guatemala"
-  ]
+  ],
+  "name_en": "Guatemala",
+  "name_fr": "Guatemala"
  },
  {
   "fifa": null,
@@ -1385,7 +1589,9 @@
   "flag": "gu",
   "names": [
    "Guam"
-  ]
+  ],
+  "name_en": "Guam",
+  "name_fr": "Guam"
  },
  {
   "fifa": "GNB",
@@ -1399,7 +1605,9 @@
    "Guinee-Bissau",
    "Guiné-Bissau",
    "Guinée-Bissau"
-  ]
+  ],
+  "name_en": "Guinea-Bissau",
+  "name_fr": "Guinée-Bissau"
  },
  {
   "fifa": null,
@@ -1409,7 +1617,9 @@
   "names": [
    "Guiana",
    "Guyana"
-  ]
+  ],
+  "name_en": "Guyana",
+  "name_fr": "Guyana"
  },
  {
   "fifa": "HKG",
@@ -1419,7 +1629,9 @@
   "names": [
    "Hong Kong",
    "Hongkong"
-  ]
+  ],
+  "name_en": "Hong Kong",
+  "name_fr": "Hong Kong"
  },
  {
   "fifa": null,
@@ -1435,7 +1647,9 @@
    "Islas Heard y McDonald",
    "Isole Heard e McDonald",
    "îles Heard-et-MacDonald"
-  ]
+  ],
+  "name_en": "Heard Island and McDonald Islands",
+  "name_fr": "îles Heard-et-MacDonald"
  },
  {
   "fifa": "HON",
@@ -1444,7 +1658,9 @@
   "flag": "hn",
   "names": [
    "Honduras"
-  ]
+  ],
+  "name_en": "Honduras",
+  "name_fr": "Honduras"
  },
  {
   "fifa": "CRO",
@@ -1460,7 +1676,9 @@
    "Hırvatistan",
    "Kroatien",
    "Kroatië"
-  ]
+  ],
+  "name_en": "Croatia",
+  "name_fr": "Croatie"
  },
  {
   "fifa": "HAI",
@@ -1471,7 +1689,9 @@
    "Haiti",
    "Haití",
    "Haïti"
-  ]
+  ],
+  "name_en": "Haiti",
+  "name_fr": "Haïti"
  },
  {
   "fifa": "HUN",
@@ -1487,7 +1707,9 @@
    "Macaristan",
    "Ungarn",
    "Ungheria"
-  ]
+  ],
+  "name_en": "Hungary",
+  "name_fr": "Hongrie"
  },
  {
   "fifa": "IDN",
@@ -1501,7 +1723,9 @@
    "Indonesië",
    "Indonésia",
    "Indonésie"
-  ]
+  ],
+  "name_en": "Indonesia",
+  "name_fr": "Indonésie"
  },
  {
   "fifa": "IRL",
@@ -1521,7 +1745,9 @@
    "République irlandaise",
    "Éire",
    "İrlanda"
-  ]
+  ],
+  "name_en": "Ireland",
+  "name_fr": "Irlande"
  },
  {
   "fifa": "ISR",
@@ -1533,7 +1759,9 @@
    "Israele",
    "Israël",
    "İsrail"
-  ]
+  ],
+  "name_en": "Israel",
+  "name_fr": "Israël"
  },
  {
   "fifa": null,
@@ -1548,7 +1776,9 @@
    "Man Adası",
    "isola di Man",
    "Île de Man"
-  ]
+  ],
+  "name_en": "Isle of Man",
+  "name_fr": "Île de Man"
  },
  {
   "fifa": "IND",
@@ -1561,7 +1791,9 @@
    "India",
    "Indien",
    "Índia"
-  ]
+  ],
+  "name_en": "India",
+  "name_fr": "Inde"
  },
  {
   "fifa": null,
@@ -1577,7 +1809,9 @@
    "Territorio Britannico dell'Oceano Indiano",
    "Territorio Británico del Océano Índico",
    "Território Britânico do Oceano Índico"
-  ]
+  ],
+  "name_en": "British Indian Ocean Territory",
+  "name_fr": "Territoire britannique de l’océan Indien"
  },
  {
   "fifa": "IRQ",
@@ -1588,7 +1822,9 @@
    "Irak",
    "Iraq",
    "Iraque"
-  ]
+  ],
+  "name_en": "Iraq",
+  "name_fr": "Irak"
  },
  {
   "fifa": "IRN",
@@ -1600,7 +1836,9 @@
    "Irán",
    "Irão",
    "İran"
-  ]
+  ],
+  "name_en": "Iran",
+  "name_fr": "Iran"
  },
  {
   "fifa": "ISL",
@@ -1616,7 +1854,9 @@
    "Islandia",
    "Islândia",
    "İzlanda"
-  ]
+  ],
+  "name_en": "Iceland",
+  "name_fr": "Islande"
  },
  {
   "fifa": "ITA",
@@ -1631,7 +1871,9 @@
    "Italy",
    "Itália",
    "İtalya"
-  ]
+  ],
+  "name_en": "Italy",
+  "name_fr": "Italie"
  },
  {
   "fifa": null,
@@ -1640,7 +1882,9 @@
   "flag": "je",
   "names": [
    "Jersey"
-  ]
+  ],
+  "name_en": "Jersey",
+  "name_fr": "Jersey"
  },
  {
   "fifa": "JAM",
@@ -1652,7 +1896,9 @@
    "Jamaica",
    "Jamaika",
    "Jamaïque"
-  ]
+  ],
+  "name_en": "Jamaica",
+  "name_fr": "Jamaïque"
  },
  {
   "fifa": "JOR",
@@ -1668,7 +1914,9 @@
    "Jordanië",
    "Jordânia",
    "Ürdün"
-  ]
+  ],
+  "name_en": "Jordan",
+  "name_fr": "Jordanie"
  },
  {
   "fifa": "JPN",
@@ -1682,7 +1930,9 @@
    "Japonya",
    "Japão",
    "Japón"
-  ]
+  ],
+  "name_en": "Japan",
+  "name_fr": "Japon"
  },
  {
   "fifa": "KEN",
@@ -1693,7 +1943,9 @@
    "Kenia",
    "Kenya",
    "Quénia"
-  ]
+  ],
+  "name_en": "Kenya",
+  "name_fr": "Kenya"
  },
  {
   "fifa": "KGZ",
@@ -1708,7 +1960,9 @@
    "Kyrgyzstan",
    "Kırgızistan",
    "Quirguistão"
-  ]
+  ],
+  "name_en": "Kyrgyzstan",
+  "name_fr": "Kirghizistan"
  },
  {
   "fifa": "CAM",
@@ -1724,7 +1978,9 @@
    "Camboya",
    "Kambodscha",
    "Kamboçya"
-  ]
+  ],
+  "name_en": "Cambodia",
+  "name_fr": "Cambodge"
  },
  {
   "fifa": null,
@@ -1734,7 +1990,9 @@
   "names": [
    "Kiribati",
    "Quiribáti"
-  ]
+  ],
+  "name_en": "Kiribati",
+  "name_fr": "Kiribati"
  },
  {
   "fifa": null,
@@ -1749,7 +2007,9 @@
    "Comoros",
    "Komoren",
    "Komorlar"
-  ]
+  ],
+  "name_en": "Comoros",
+  "name_fr": "Comores"
  },
  {
   "fifa": "SKN",
@@ -1765,7 +2025,9 @@
    "San Cristóbal y Nieves",
    "St. Kitts und Nevis",
    "São Cristóvão e Neves"
-  ]
+  ],
+  "name_en": "Saint Kitts and Nevis",
+  "name_fr": "Saint-Christophe-et-Niévès"
  },
  {
   "fifa": "PRK",
@@ -1781,7 +2043,9 @@
    "Noord-Korea",
    "Nordkorea",
    "North Korea"
-  ]
+  ],
+  "name_en": "North Korea",
+  "name_fr": "Corée du Nord"
  },
  {
   "fifa": "KOR",
@@ -1798,7 +2062,9 @@
    "South Korea",
    "Südkorea",
    "Zuid-Korea"
-  ]
+  ],
+  "name_en": "South Korea",
+  "name_fr": "Corée du Sud"
  },
  {
   "fifa": "KUW",
@@ -1810,7 +2076,9 @@
    "Koweït",
    "Kuveyt",
    "Kuwait"
-  ]
+  ],
+  "name_en": "Kuwait",
+  "name_fr": "Koweït"
  },
  {
   "fifa": null,
@@ -1825,7 +2093,9 @@
    "Isole Cayman",
    "Kaaimaneilanden",
    "îles Caïmans"
-  ]
+  ],
+  "name_en": "Cayman Islands",
+  "name_fr": "îles Caïmans"
  },
  {
   "fifa": "KAZ",
@@ -1839,7 +2109,9 @@
    "Kazajistán",
    "Kazakhstan",
    "Kazakistan"
-  ]
+  ],
+  "name_en": "Kazakhstan",
+  "name_fr": "Kazakhstan"
  },
  {
   "fifa": "LAO",
@@ -1848,7 +2120,9 @@
   "flag": "la",
   "names": [
    "Laos"
-  ]
+  ],
+  "name_en": "Laos",
+  "name_fr": "Laos"
  },
  {
   "fifa": "LIB",
@@ -1862,7 +2136,9 @@
    "Libanon",
    "Líbano",
    "Lübnan"
-  ]
+  ],
+  "name_en": "Lebanon",
+  "name_fr": "Liban"
  },
  {
   "fifa": "LCA",
@@ -1875,7 +2151,9 @@
    "Santa Lucía",
    "Santa Lúcia",
    "St. Lucia"
-  ]
+  ],
+  "name_en": "Saint Lucia",
+  "name_fr": "Sainte-Lucie"
  },
  {
   "fifa": "LIE",
@@ -1885,7 +2163,9 @@
   "names": [
    "Liechtenstein",
    "Lihtenştayn"
-  ]
+  ],
+  "name_en": "Liechtenstein",
+  "name_fr": "Liechtenstein"
  },
  {
   "fifa": "SRI",
@@ -1894,7 +2174,9 @@
   "flag": "lk",
   "names": [
    "Sri Lanka"
-  ]
+  ],
+  "name_en": "Sri Lanka",
+  "name_fr": "Sri Lanka"
  },
  {
   "fifa": "LBR",
@@ -1905,7 +2187,9 @@
    "Liberia",
    "Liberya",
    "Libéria"
-  ]
+  ],
+  "name_en": "Liberia",
+  "name_fr": "Liberia"
  },
  {
   "fifa": "LES",
@@ -1915,7 +2199,9 @@
   "names": [
    "Lesotho",
    "Lesoto"
-  ]
+  ],
+  "name_en": "Lesotho",
+  "name_fr": "Lesotho"
  },
  {
   "fifa": "LTU",
@@ -1930,7 +2216,9 @@
    "Lituanie",
    "Lituânia",
    "Litvanya"
-  ]
+  ],
+  "name_en": "Lithuania",
+  "name_fr": "Lituanie"
  },
  {
   "fifa": "LUX",
@@ -1943,7 +2231,9 @@
    "Luxemburg",
    "Luxemburgo",
    "Lüksemburg"
-  ]
+  ],
+  "name_en": "Luxembourg",
+  "name_fr": "Luxembourg"
  },
  {
   "fifa": "LVA",
@@ -1959,7 +2249,9 @@
    "Lettonia",
    "Lettonie",
    "Letónia"
-  ]
+  ],
+  "name_en": "Latvia",
+  "name_fr": "Lettonie"
  },
  {
   "fifa": "LBY",
@@ -1973,7 +2265,9 @@
    "Libye",
    "Libyen",
    "Líbia"
-  ]
+  ],
+  "name_en": "Libya",
+  "name_fr": "Libye"
  },
  {
   "fifa": "MAR",
@@ -1988,7 +2282,9 @@
    "Marrocos",
    "Marruecos",
    "Morocco"
-  ]
+  ],
+  "name_en": "Morocco",
+  "name_fr": "Maroc"
  },
  {
   "fifa": null,
@@ -2000,7 +2296,9 @@
    "Monako",
    "Mónaco",
    "Principato di Monaco"
-  ]
+  ],
+  "name_en": "Monaco",
+  "name_fr": "Monaco"
  },
  {
   "fifa": "MDA",
@@ -2014,7 +2312,9 @@
    "Moldavië",
    "Moldova",
    "Moldávia"
-  ]
+  ],
+  "name_en": "Moldova",
+  "name_fr": "Moldavie"
  },
  {
   "fifa": "MNE",
@@ -2025,7 +2325,9 @@
    "Karadağ",
    "Montenegro",
    "Monténégro"
-  ]
+  ],
+  "name_en": "Montenegro",
+  "name_fr": "Monténégro"
  },
  {
   "fifa": null,
@@ -2038,7 +2340,9 @@
    "San Martín",
    "Sint-Maarten",
    "São Martinho"
-  ]
+  ],
+  "name_en": "Saint-Martin",
+  "name_fr": "Saint-Martin"
  },
  {
   "fifa": "MAD",
@@ -2049,7 +2353,9 @@
    "Madagascar",
    "Madagaskar",
    "Madagáscar"
-  ]
+  ],
+  "name_en": "Madagascar",
+  "name_fr": "Madagascar"
  },
  {
   "fifa": null,
@@ -2065,7 +2371,9 @@
    "Marshalleilanden",
    "Marshallinseln",
    "Îles Marshall"
-  ]
+  ],
+  "name_en": "Marshall Islands",
+  "name_fr": "Îles Marshall"
  },
  {
   "fifa": "MKD",
@@ -2081,7 +2389,9 @@
    "Noord-Macedonië",
    "Nordmazedonien",
    "North Macedonia"
-  ]
+  ],
+  "name_en": "North Macedonia",
+  "name_fr": "Macédoine du Nord"
  },
  {
   "fifa": "MLI",
@@ -2090,7 +2400,9 @@
   "flag": "ml",
   "names": [
    "Mali"
-  ]
+  ],
+  "name_en": "Mali",
+  "name_fr": "Mali"
  },
  {
   "fifa": "MYA",
@@ -2101,7 +2413,9 @@
    "Birmania",
    "Birmanie",
    "Myanmar"
-  ]
+  ],
+  "name_en": "Myanmar",
+  "name_fr": "Birmanie"
  },
  {
   "fifa": null,
@@ -2115,7 +2429,9 @@
    "Mongolië",
    "Mongólia",
    "Moğolistan"
-  ]
+  ],
+  "name_en": "Mongolia",
+  "name_fr": "Mongolie"
  },
  {
   "fifa": null,
@@ -2126,7 +2442,9 @@
    "Macao",
    "Macau",
    "Makao"
-  ]
+  ],
+  "name_en": "Macau",
+  "name_fr": "Macao"
  },
  {
   "fifa": null,
@@ -2142,7 +2460,9 @@
    "Northern Mariana Islands",
    "Nördliche Marianen",
    "îles Mariannes du Nord"
-  ]
+  ],
+  "name_en": "Northern Mariana Islands",
+  "name_fr": "îles Mariannes du Nord"
  },
  {
   "fifa": null,
@@ -2152,7 +2472,9 @@
   "names": [
    "Martinica",
    "Martinique"
-  ]
+  ],
+  "name_en": "Martinique",
+  "name_fr": "Martinique"
  },
  {
   "fifa": "MTN",
@@ -2166,7 +2488,9 @@
    "Mauritanië",
    "Mauritânia",
    "Moritanya"
-  ]
+  ],
+  "name_en": "Mauritania",
+  "name_fr": "Mauritanie"
  },
  {
   "fifa": null,
@@ -2176,7 +2500,9 @@
   "names": [
    "Monserrate",
    "Montserrat"
-  ]
+  ],
+  "name_en": "Montserrat",
+  "name_fr": "Montserrat"
  },
  {
   "fifa": "MLT",
@@ -2186,7 +2512,9 @@
   "names": [
    "Malta",
    "Malte"
-  ]
+  ],
+  "name_en": "Malta",
+  "name_fr": "Malte"
  },
  {
   "fifa": "MRI",
@@ -2198,7 +2526,9 @@
    "Mauricio",
    "Mauritius",
    "Maurícia"
-  ]
+  ],
+  "name_en": "Mauritius",
+  "name_fr": "Maurice"
  },
  {
   "fifa": "MDV",
@@ -2211,7 +2541,9 @@
    "Maldives",
    "Maldivler",
    "Malediven"
-  ]
+  ],
+  "name_en": "Maldives",
+  "name_fr": "Maldives"
  },
  {
   "fifa": "MWI",
@@ -2222,7 +2554,9 @@
    "Malaui",
    "Malavi",
    "Malawi"
-  ]
+  ],
+  "name_en": "Malawi",
+  "name_fr": "Malawi"
  },
  {
   "fifa": "MEX",
@@ -2236,7 +2570,9 @@
    "Mexiko",
    "Mexique",
    "México"
-  ]
+  ],
+  "name_en": "Mexico",
+  "name_fr": "Mexique"
  },
  {
   "fifa": "MAS",
@@ -2250,7 +2586,9 @@
    "Maleisië",
    "Malezya",
    "Malásia"
-  ]
+  ],
+  "name_en": "Malaysia",
+  "name_fr": "Malaisie"
  },
  {
   "fifa": "MOZ",
@@ -2263,7 +2601,9 @@
    "Mozambik",
    "Mozambique",
    "Moçambique"
-  ]
+  ],
+  "name_en": "Mozambique",
+  "name_fr": "Mozambique"
  },
  {
   "fifa": "NAM",
@@ -2276,7 +2616,9 @@
    "Namibië",
    "Namibya",
    "Namíbia"
-  ]
+  ],
+  "name_en": "Namibia",
+  "name_fr": "Namibie"
  },
  {
   "fifa": null,
@@ -2292,7 +2634,9 @@
    "Nueva Caledonia",
    "Nuova Caledonia",
    "Yeni Kaledonya"
-  ]
+  ],
+  "name_en": "New Caledonia",
+  "name_fr": "Nouvelle-Calédonie"
  },
  {
   "fifa": "NIG",
@@ -2303,7 +2647,9 @@
    "Niger",
    "Nijer",
    "Níger"
-  ]
+  ],
+  "name_en": "Niger",
+  "name_fr": "Niger"
  },
  {
   "fifa": null,
@@ -2319,7 +2665,9 @@
    "Norfolk Island",
    "Norfolkinsel",
    "île Norfolk"
-  ]
+  ],
+  "name_en": "Norfolk Island",
+  "name_fr": "île Norfolk"
  },
  {
   "fifa": "NGA",
@@ -2330,7 +2678,9 @@
    "Nigeria",
    "Nigéria",
    "Nijerya"
-  ]
+  ],
+  "name_en": "Nigeria",
+  "name_fr": "Nigeria"
  },
  {
   "fifa": "NCA",
@@ -2341,7 +2691,9 @@
    "Nicaragua",
    "Nicarágua",
    "Nikaragua"
-  ]
+  ],
+  "name_en": "Nicaragua",
+  "name_fr": "Nicaragua"
  },
  {
   "fifa": null,
@@ -2357,7 +2709,9 @@
    "Reino de los Países Bajos",
    "Reino dos Países Baixos",
    "Royaume des Pays-Bas"
-  ]
+  ],
+  "name_en": "Kingdom of the Netherlands",
+  "name_fr": "Royaume des Pays-Bas"
  },
  {
   "fifa": "NOR",
@@ -2372,7 +2726,9 @@
    "Norvège",
    "Norway",
    "Norwegen"
-  ]
+  ],
+  "name_en": "Norway",
+  "name_fr": "Norvège"
  },
  {
   "fifa": "NEP",
@@ -2382,7 +2738,9 @@
   "names": [
    "Nepal",
    "Népal"
-  ]
+  ],
+  "name_en": "Nepal",
+  "name_fr": "Népal"
  },
  {
   "fifa": null,
@@ -2393,7 +2751,9 @@
    "Naoero",
    "Naoëro",
    "Nauru"
-  ]
+  ],
+  "name_en": "Nauru",
+  "name_fr": "Nauru"
  },
  {
   "fifa": null,
@@ -2402,7 +2762,9 @@
   "flag": "nu",
   "names": [
    "Niue"
-  ]
+  ],
+  "name_en": "Niue",
+  "name_fr": "Niue"
  },
  {
   "fifa": "NZL",
@@ -2418,7 +2780,9 @@
    "Nueva Zelanda",
    "Nuova Zelanda",
    "Yeni Zelanda"
-  ]
+  ],
+  "name_en": "New Zealand",
+  "name_fr": "Nouvelle-Zélande"
  },
  {
   "fifa": "OMA",
@@ -2430,7 +2794,9 @@
    "Omán",
    "Omã",
    "Umman"
-  ]
+  ],
+  "name_en": "Oman",
+  "name_fr": "Oman"
  },
  {
   "fifa": "PAN",
@@ -2440,7 +2806,9 @@
   "names": [
    "Panama",
    "Panamá"
-  ]
+  ],
+  "name_en": "Panama",
+  "name_fr": "Panama"
  },
  {
   "fifa": null,
@@ -2456,7 +2824,9 @@
    "Trust Territory of the Pacific Islands",
    "Trustgebied van de Pacifische Eilanden",
    "territoire sous tutelle des îles du Pacifique"
-  ]
+  ],
+  "name_en": "Trust Territory of the Pacific Islands",
+  "name_fr": "territoire sous tutelle des îles du Pacifique"
  },
  {
   "fifa": "PER",
@@ -2468,7 +2838,9 @@
    "Perù",
    "Perú",
    "Pérou"
-  ]
+  ],
+  "name_en": "Peru",
+  "name_fr": "Pérou"
  },
  {
   "fifa": null,
@@ -2484,7 +2856,9 @@
    "Polinesia francese",
    "Polinésia Francesa",
    "Polynésie française"
-  ]
+  ],
+  "name_en": "French Polynesia",
+  "name_fr": "Polynésie française"
  },
  {
   "fifa": "PNG",
@@ -2500,7 +2874,9 @@
    "Papua-Neuguinea",
    "Papua-Nova Guiné",
    "Papúa Nueva Guinea"
-  ]
+  ],
+  "name_en": "Papua New Guinea",
+  "name_fr": "Papouasie-Nouvelle-Guinée"
  },
  {
   "fifa": "PHI",
@@ -2514,7 +2890,9 @@
    "Filippine",
    "Philippinen",
    "Philippines"
-  ]
+  ],
+  "name_en": "Philippines",
+  "name_fr": "Philippines"
  },
  {
   "fifa": "PAK",
@@ -2525,7 +2903,9 @@
    "Pakistan",
    "Pakistán",
    "Paquistão"
-  ]
+  ],
+  "name_en": "Pakistan",
+  "name_fr": "Pakistan"
  },
  {
   "fifa": "POL",
@@ -2539,7 +2919,9 @@
    "Polonia",
    "Polonya",
    "Polónia"
-  ]
+  ],
+  "name_en": "Poland",
+  "name_fr": "Pologne"
  },
  {
   "fifa": null,
@@ -2553,7 +2935,9 @@
    "Saint-Pierre und Miquelon",
    "Saint-Pierre-et-Miquelon",
    "San Pedro y Miquelón"
-  ]
+  ],
+  "name_en": "Saint Pierre and Miquelon",
+  "name_fr": "Saint-Pierre-et-Miquelon"
  },
  {
   "fifa": null,
@@ -2569,7 +2953,9 @@
    "Pitcairneilanden",
    "Pitcairninseln",
    "îles Pitcairn"
-  ]
+  ],
+  "name_en": "Pitcairn Islands",
+  "name_fr": "îles Pitcairn"
  },
  {
   "fifa": "PUR",
@@ -2580,7 +2966,9 @@
    "Porto Rico",
    "Porto Riko",
    "Puerto Rico"
-  ]
+  ],
+  "name_en": "Puerto Rico",
+  "name_fr": "Porto Rico"
  },
  {
   "fifa": "PLE",
@@ -2595,7 +2983,9 @@
    "Palästina",
    "Stato di Palestina",
    "État de Palestine"
-  ]
+  ],
+  "name_en": "Palestine",
+  "name_fr": "État de Palestine"
  },
  {
   "fifa": "POR",
@@ -2606,7 +2996,9 @@
    "Portekiz",
    "Portogallo",
    "Portugal"
-  ]
+  ],
+  "name_en": "Portugal",
+  "name_fr": "Portugal"
  },
  {
   "fifa": null,
@@ -2616,7 +3008,9 @@
   "names": [
    "Palaos",
    "Palau"
-  ]
+  ],
+  "name_en": "Palau",
+  "name_fr": "Palaos"
  },
  {
   "fifa": "PAR",
@@ -2626,7 +3020,9 @@
   "names": [
    "Paraguai",
    "Paraguay"
-  ]
+  ],
+  "name_en": "Paraguay",
+  "name_fr": "Paraguay"
  },
  {
   "fifa": "QAT",
@@ -2637,7 +3033,9 @@
    "Catar",
    "Katar",
    "Qatar"
-  ]
+  ],
+  "name_en": "Qatar",
+  "name_fr": "Qatar"
  },
  {
   "fifa": null,
@@ -2650,7 +3048,9 @@
    "Reunión",
    "Riunione",
    "Réunion"
-  ]
+  ],
+  "name_en": "Réunion",
+  "name_fr": "La Réunion"
  },
  {
   "fifa": "ROU",
@@ -2665,7 +3065,9 @@
    "Roumanie",
    "Rumania",
    "Rumänien"
-  ]
+  ],
+  "name_en": "Romania",
+  "name_fr": "Roumanie"
  },
  {
   "fifa": "SRB",
@@ -2679,7 +3081,9 @@
    "Servië",
    "Sérvia",
    "Sırbistan"
-  ]
+  ],
+  "name_en": "Serbia",
+  "name_fr": "Serbie"
  },
  {
   "fifa": "RUS",
@@ -2694,7 +3098,9 @@
    "Russland",
    "Rusya",
    "Rússia"
-  ]
+  ],
+  "name_en": "Russia",
+  "name_fr": "Russie"
  },
  {
   "fifa": "RWA",
@@ -2704,7 +3110,9 @@
   "names": [
    "Ruanda",
    "Rwanda"
-  ]
+  ],
+  "name_en": "Rwanda",
+  "name_fr": "Rwanda"
  },
  {
   "fifa": "KSA",
@@ -2720,7 +3128,9 @@
    "Saudi Arabia",
    "Saudi-Arabien",
    "Suudi Arabistan"
-  ]
+  ],
+  "name_en": "Saudi Arabia",
+  "name_fr": "Arabie saoudite"
  },
  {
   "fifa": "SOL",
@@ -2736,7 +3146,9 @@
    "Solomon Adaları",
    "Solomon Islands",
    "Îles Salomon"
-  ]
+  ],
+  "name_en": "Solomon Islands",
+  "name_fr": "Îles Salomon"
  },
  {
   "fifa": "SEY",
@@ -2747,7 +3159,9 @@
    "Seychellen",
    "Seychelles",
    "Seyşeller"
-  ]
+  ],
+  "name_en": "Seychelles",
+  "name_fr": "Seychelles"
  },
  {
   "fifa": "SDN",
@@ -2760,7 +3174,9 @@
    "Sudan",
    "Sudán",
    "Sudão"
-  ]
+  ],
+  "name_en": "Sudan",
+  "name_fr": "Soudan"
  },
  {
   "fifa": "SWE",
@@ -2776,7 +3192,9 @@
    "Sweden",
    "Zweden",
    "İsveç"
-  ]
+  ],
+  "name_en": "Sweden",
+  "name_fr": "Suède"
  },
  {
   "fifa": "SIN",
@@ -2788,7 +3206,9 @@
    "Singapour",
    "Singapur",
    "Singapura"
-  ]
+  ],
+  "name_en": "Singapore",
+  "name_fr": "Singapour"
  },
  {
   "fifa": null,
@@ -2804,7 +3224,9 @@
    "Santa Helena, Ascensão e Tristão da Cunha",
    "Sint-Helena, Ascension en Tristan da Cunha",
    "St. Helena, Ascension und Tristan da Cunha"
-  ]
+  ],
+  "name_en": "Saint Helena, Ascension and Tristan da Cunha",
+  "name_fr": "Sainte-Hélène, Ascension et Tristan da Cunha"
  },
  {
   "fifa": "SVN",
@@ -2819,7 +3241,9 @@
    "Slovenya",
    "Slovénie",
    "Slowenien"
-  ]
+  ],
+  "name_en": "Slovenia",
+  "name_fr": "Slovénie"
  },
  {
   "fifa": null,
@@ -2834,7 +3258,9 @@
    "Svalbard und Jan Mayen",
    "Svalbard ve Jan Mayen",
    "Svalbard y Jan Mayen"
-  ]
+  ],
+  "name_en": "Svalbard and Jan Mayen",
+  "name_fr": "Svalbard et Jan Mayen"
  },
  {
   "fifa": "SVK",
@@ -2850,7 +3276,9 @@
    "Slovaquie",
    "Slowakei",
    "Slowakije"
-  ]
+  ],
+  "name_en": "Slovakia",
+  "name_fr": "Slovaquie"
  },
  {
   "fifa": "SLE",
@@ -2861,7 +3289,9 @@
    "Serra Leoa",
    "Sierra Leona",
    "Sierra Leone"
-  ]
+  ],
+  "name_en": "Sierra Leone",
+  "name_fr": "Sierra Leone"
  },
  {
   "fifa": "SMR",
@@ -2871,7 +3301,9 @@
   "names": [
    "Saint-Marin",
    "San Marino"
-  ]
+  ],
+  "name_en": "San Marino",
+  "name_fr": "Saint-Marin"
  },
  {
   "fifa": "SEN",
@@ -2881,7 +3313,9 @@
   "names": [
    "Senegal",
    "Sénégal"
-  ]
+  ],
+  "name_en": "Senegal",
+  "name_fr": "Sénégal"
  },
  {
   "fifa": "SOM",
@@ -2894,7 +3328,9 @@
    "Somalie",
    "Somalië",
    "Somália"
-  ]
+  ],
+  "name_en": "Somalia",
+  "name_fr": "Somalie"
  },
  {
   "fifa": null,
@@ -2904,7 +3340,9 @@
   "names": [
    "Surinam",
    "Suriname"
-  ]
+  ],
+  "name_en": "Suriname",
+  "name_fr": "Suriname"
  },
  {
   "fifa": null,
@@ -2920,7 +3358,9 @@
    "Sudão do Sul",
    "Südsudan",
    "Zuid-Soedan"
-  ]
+  ],
+  "name_en": "South Sudan",
+  "name_fr": "Soudan du Sud"
  },
  {
   "fifa": "STP",
@@ -2935,7 +3375,9 @@
    "São Tomé e Príncipe",
    "São Tomé und Príncipe",
    "São Tomé ve Príncipe"
-  ]
+  ],
+  "name_en": "São Tomé and Príncipe",
+  "name_fr": "Sao Tomé-et-Principe"
  },
  {
   "fifa": "URS",
@@ -2951,7 +3393,9 @@
    "Unione Sovietica",
    "União Soviética",
    "Unión Soviética"
-  ]
+  ],
+  "name_en": "Soviet Union",
+  "name_fr": "Union soviétique"
  },
  {
   "fifa": "SLV",
@@ -2961,7 +3405,9 @@
   "names": [
    "El Salvador",
    "Salvador"
-  ]
+  ],
+  "name_en": "El Salvador",
+  "name_fr": "Salvador"
  },
  {
   "fifa": null,
@@ -2973,7 +3419,9 @@
    "San Martín",
    "Sint Maarten",
    "São Martinho"
-  ]
+  ],
+  "name_en": "Sint Maarten",
+  "name_fr": "Saint-Martin"
  },
  {
   "fifa": "SYR",
@@ -2988,7 +3436,9 @@
    "Syrien",
    "Syrië",
    "Síria"
-  ]
+  ],
+  "name_en": "Syria",
+  "name_fr": "Syrie"
  },
  {
   "fifa": "SWZ",
@@ -3001,7 +3451,9 @@
    "Eswatini",
    "Suazilandia",
    "Swaziland"
-  ]
+  ],
+  "name_en": "Eswatini",
+  "name_fr": "Eswatini"
  },
  {
   "fifa": null,
@@ -3011,7 +3463,9 @@
   "names": [
    "Tristan da Cunha",
    "Île Tristan da Cunha"
-  ]
+  ],
+  "name_en": "Tristan da Cunha",
+  "name_fr": "Île Tristan da Cunha"
  },
  {
   "fifa": null,
@@ -3027,7 +3481,9 @@
    "Turks- en Caicoseilanden",
    "Turks- und Caicosinseln",
    "Îles Turques et Caïques"
-  ]
+  ],
+  "name_en": "Turks and Caicos Islands",
+  "name_fr": "Îles Turques et Caïques"
  },
  {
   "fifa": "CHA",
@@ -3042,7 +3498,9 @@
    "Tschad",
    "Tsjaad",
    "Çad"
-  ]
+  ],
+  "name_en": "Chad",
+  "name_fr": "Tchad"
  },
  {
   "fifa": null,
@@ -3058,7 +3516,9 @@
    "Terre Australi e Antartiche Francesi",
    "Terres australes et antarctiques françaises",
    "Tierras Australes y Antárticas Francesas"
-  ]
+  ],
+  "name_en": "French Southern and Antarctic Lands",
+  "name_fr": "Terres australes et antarctiques françaises"
  },
  {
   "fifa": "TOG",
@@ -3067,7 +3527,9 @@
   "flag": "tg",
   "names": [
    "Togo"
-  ]
+  ],
+  "name_en": "Togo",
+  "name_fr": "Togo"
  },
  {
   "fifa": "THA",
@@ -3080,7 +3542,9 @@
    "Tayland",
    "Thailand",
    "Thaïlande"
-  ]
+  ],
+  "name_en": "Thailand",
+  "name_fr": "Thaïlande"
  },
  {
   "fifa": "TJK",
@@ -3096,7 +3560,9 @@
    "Tajikistan",
    "Tajiquistão",
    "Tayikistán"
-  ]
+  ],
+  "name_en": "Tajikistan",
+  "name_fr": "Tadjikistan"
  },
  {
   "fifa": null,
@@ -3105,7 +3571,9 @@
   "flag": "tk",
   "names": [
    "Tokelau"
-  ]
+  ],
+  "name_en": "Tokelau",
+  "name_fr": "Tokelau"
  },
  {
   "fifa": "TLS",
@@ -3120,7 +3588,9 @@
    "Timor Oriental",
    "Timor oriental",
    "Timor-Leste"
-  ]
+  ],
+  "name_en": "Timor-Leste",
+  "name_fr": "Timor oriental"
  },
  {
   "fifa": "TKM",
@@ -3133,7 +3603,9 @@
    "Turkménistan",
    "Turquemenistão",
    "Türkmenistan"
-  ]
+  ],
+  "name_en": "Turkmenistan",
+  "name_fr": "Turkménistan"
  },
  {
   "fifa": "TUN",
@@ -3148,7 +3620,9 @@
    "Tunus",
    "Tunísia",
    "Túnez"
-  ]
+  ],
+  "name_en": "Tunisia",
+  "name_fr": "Tunisie"
  },
  {
   "fifa": "TGA",
@@ -3157,7 +3631,9 @@
   "flag": "to",
   "names": [
    "Tonga"
-  ]
+  ],
+  "name_en": "Tonga",
+  "name_fr": "Tonga"
  },
  {
   "fifa": "TUR",
@@ -3173,7 +3649,9 @@
    "Turquía",
    "Türkei",
    "Türkiye"
-  ]
+  ],
+  "name_en": "Turkey",
+  "name_fr": "Turquie"
  },
  {
   "fifa": "TRI",
@@ -3189,7 +3667,9 @@
    "Trinidad ve Tobago",
    "Trinidad y Tobago",
    "Trinité-et-Tobago"
-  ]
+  ],
+  "name_en": "Trinidad and Tobago",
+  "name_fr": "Trinité-et-Tobago"
  },
  {
   "fifa": null,
@@ -3198,7 +3678,9 @@
   "flag": "tv",
   "names": [
    "Tuvalu"
-  ]
+  ],
+  "name_en": "Tuvalu",
+  "name_fr": "Tuvalu"
  },
  {
   "fifa": "TPE",
@@ -3210,7 +3692,9 @@
    "Taiwan",
    "Tayvan",
    "Taïwan"
-  ]
+  ],
+  "name_en": "Taiwan",
+  "name_fr": "Taïwan"
  },
  {
   "fifa": "TAN",
@@ -3223,7 +3707,9 @@
    "Tanzanie",
    "Tanzanya",
    "Tanzânia"
-  ]
+  ],
+  "name_en": "Tanzania",
+  "name_fr": "Tanzanie"
  },
  {
   "fifa": "UKR",
@@ -3237,7 +3723,9 @@
    "Ucrânia",
    "Ukraine",
    "Ukrayna"
-  ]
+  ],
+  "name_en": "Ukraine",
+  "name_fr": "Ukraine"
  },
  {
   "fifa": "UGA",
@@ -3248,7 +3736,9 @@
    "Oeganda",
    "Ouganda",
    "Uganda"
-  ]
+  ],
+  "name_en": "Uganda",
+  "name_fr": "Ouganda"
  },
  {
   "fifa": null,
@@ -3263,7 +3753,9 @@
    "Kleinere Amerikanische Überseeinseln",
    "United States Minor Outlying Islands",
    "îles mineures éloignées des États-Unis"
-  ]
+  ],
+  "name_en": "United States Minor Outlying Islands",
+  "name_fr": "îles mineures éloignées des États-Unis"
  },
  {
   "fifa": "USA",
@@ -3279,7 +3771,9 @@
    "Vereinigte Staaten",
    "Verenigde Staten",
    "États-Unis"
-  ]
+  ],
+  "name_en": "United States",
+  "name_fr": "États-Unis"
  },
  {
   "fifa": "URU",
@@ -3289,7 +3783,9 @@
   "names": [
    "Uruguai",
    "Uruguay"
-  ]
+  ],
+  "name_en": "Uruguay",
+  "name_fr": "Uruguay"
  },
  {
   "fifa": "UZB",
@@ -3304,7 +3800,9 @@
    "Uzbekistan",
    "Uzbekistán",
    "Özbekistan"
-  ]
+  ],
+  "name_en": "Uzbekistan",
+  "name_fr": "Ouzbékistan"
  },
  {
   "fifa": null,
@@ -3320,7 +3818,9 @@
    "Vaticano",
    "Vatikan",
    "Vatikanstadt"
-  ]
+  ],
+  "name_en": "Vatican City",
+  "name_fr": "Vatican"
  },
  {
   "fifa": "VIN",
@@ -3336,7 +3836,9 @@
    "San Vicente y las Granadinas",
    "St. Vincent und die Grenadinen",
    "São Vicente e Granadinas"
-  ]
+  ],
+  "name_en": "Saint Vincent and the Grenadines",
+  "name_fr": "Saint-Vincent-et-les-Grenadines"
  },
  {
   "fifa": "VEN",
@@ -3345,7 +3847,9 @@
   "flag": "ve",
   "names": [
    "Venezuela"
-  ]
+  ],
+  "name_en": "Venezuela",
+  "name_fr": "Venezuela"
  },
  {
   "fifa": "VGB",
@@ -3361,7 +3865,9 @@
    "Islas Vírgenes Británicas",
    "Isole Vergini Britanniche",
    "îles Vierges britanniques"
-  ]
+  ],
+  "name_en": "British Virgin Islands",
+  "name_fr": "îles Vierges britanniques"
  },
  {
   "fifa": "VIR",
@@ -3377,7 +3883,9 @@
    "Isole Vergini degli Stati Uniti",
    "United States Virgin Islands",
    "îles Vierges des États-Unis"
-  ]
+  ],
+  "name_en": "United States Virgin Islands",
+  "name_fr": "îles Vierges des États-Unis"
  },
  {
   "fifa": "VIE",
@@ -3387,7 +3895,9 @@
   "names": [
    "Vietnam",
    "Vietname"
-  ]
+  ],
+  "name_en": "Vietnam",
+  "name_fr": "Vietnam"
  },
  {
   "fifa": "VAN",
@@ -3396,7 +3906,9 @@
   "flag": "vu",
   "names": [
    "Vanuatu"
-  ]
+  ],
+  "name_en": "Vanuatu",
+  "name_fr": "Vanuatu"
  },
  {
   "fifa": null,
@@ -3411,7 +3923,9 @@
    "Wallis ve Futuna Adaları",
    "Wallis y Futuna",
    "Wallis-et-Futuna"
-  ]
+  ],
+  "name_en": "Wallis and Futuna",
+  "name_fr": "Wallis-et-Futuna"
  },
  {
   "fifa": "SAM",
@@ -3420,7 +3934,9 @@
   "flag": "ws",
   "names": [
    "Samoa"
-  ]
+  ],
+  "name_en": "Samoa",
+  "name_fr": "Samoa"
  },
  {
   "fifa": "KVX",
@@ -3430,7 +3946,9 @@
   "names": [
    "Kosova",
    "Kosovo"
-  ]
+  ],
+  "name_en": "Kosovo",
+  "name_fr": "Kosovo"
  },
  {
   "fifa": "YEM",
@@ -3442,7 +3960,9 @@
    "Jemen",
    "Yemen",
    "Yémen"
-  ]
+  ],
+  "name_en": "Yemen",
+  "name_fr": "Yémen"
  },
  {
   "fifa": null,
@@ -3451,7 +3971,9 @@
   "flag": "yt",
   "names": [
    "Mayotte"
-  ]
+  ],
+  "name_en": "Mayotte",
+  "name_fr": "Mayotte"
  },
  {
   "fifa": "YUG",
@@ -3466,7 +3988,9 @@
    "Yougoslavie",
    "Yugoslavia",
    "Yugoslavya"
-  ]
+  ],
+  "name_en": "Yugoslavia",
+  "name_fr": "Yougoslavie"
  },
  {
   "fifa": "RSA",
@@ -3482,7 +4006,9 @@
    "Südafrika",
    "Zuid-Afrika",
    "África do Sul"
-  ]
+  ],
+  "name_en": "South Africa",
+  "name_fr": "Afrique du Sud"
  },
  {
   "fifa": "ZAM",
@@ -3495,7 +4021,9 @@
    "Zambie",
    "Zambiya",
    "Zâmbia"
-  ]
+  ],
+  "name_en": "Zambia",
+  "name_fr": "Zambie"
  },
  {
   "fifa": "ZIM",
@@ -3508,6 +4036,8 @@
    "Zimbabve",
    "Zimbabwe",
    "Zimbábue"
-  ]
+  ],
+  "name_en": "Zimbabwe",
+  "name_fr": "Zimbabwe"
  }
 ]
