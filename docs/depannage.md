@@ -3,7 +3,7 @@
 | Symptôme | Cause probable | Que faire |
 |---|---|---|
 | `IO Error: Could not set lock on file …duckdb` | Une autre commande `openfootball` écrit déjà dans la base (DuckDB n'accepte qu'un écrivain). | Attendre la fin de l'autre commande (`ps aux | grep openfootball`), ne jamais en lancer deux. |
-| `Wikipedia HTTP 429 … pause` | Wikipedia limite le débit. | Normal : le programme patiente et reprend. Ne pas interrompre ; un 429 n'est jamais traité comme « page absente ». |
+| `Wikipedia HTTP 429 … pause` | Wikipedia limite le débit. | Normal : le programme patiente et reprend. Ne pas interrompre ; un 429 n'est jamais traité comme « page absente ». Le rythme ralentit tout seul après un 429 puis réaccélère. Pour en avoir moins : mettre dans `OPENFOOTBALL_CONTACT` un vrai contact public (l'adresse du dépôt convient), car Wikimedia limite plus durement les clients mal identifiés (`dev-local`, `unset`). |
 | Une commande longue s'est arrêtée | Coupure réseau, machine en veille. | Relancer **la même commande** : le cache disque (`cache/`) et les écritures par lots font qu'elle reprend. |
 | `refusé : saison … figée` | La saison est figée (immuable). | C'est voulu. Pour corriger une saison figée : procédure d'amendement (SPEC §5bis), jamais à la main. |
 | `EnumerationError … clubs trouvés, … attendus` | La page du championnat n'a pas le bon nombre d'équipes (ou `team_count` du fichier `scopes/*.toml` est faux). | Vérifier le `[[team_count]]` du pays pour cette saison ; vérifier la page `<saison> <championnat>` sur Wikipedia. |

@@ -24,7 +24,27 @@ log = logging.getLogger(__name__)
 API = "https://en.wikipedia.org/w/api.php"
 BATCH_SIZE = 20          # titres par requête (contenu complet : on reste prudent)
 MIN_INTERVAL_S = 1.2     # ~0,8 req/s : en dessous du seuil de 429 observé
+MAX_INTERVAL_S = 4.0     # plafond du ralentissement après des 429
 MAX_ATTEMPTS = 6
+
+
+class _Pace:
+    """Rythme PARTAGÉ par tous les clients Wikipedia du processus (en, fr, it, nl, tr…) : le seuil de Wikimedia
+    est par IP, pas par langue. Un 429 ralentit (+0,6 s), 40 réponses sans incident réaccélèrent (-0,2 s)."""
+    extra = 0.0
+    ok_streak = 0
+    last_call = 0.0
+
+    @classmethod
+    def slower(cls) -> None:
+        cls.extra = min(cls.extra + 0.6, MAX_INTERVAL_S - MIN_INTERVAL_S)
+        cls.ok_streak = 0
+
+    @classmethod
+    def ok(cls) -> None:
+        cls.ok_streak += 1
+        if cls.ok_streak >= 40 and cls.extra > 0:
+            cls.extra, cls.ok_streak = max(0.0, cls.extra - 0.2), 0
 
 
 class WikipediaError(RuntimeError):
@@ -88,18 +108,21 @@ class WikipediaClient:
 
     # ---------------------------------------------------------------- réseau
     def _http_transport(self, params: dict) -> dict:
-        wait = self._min_interval - (time.monotonic() - self._last_call)
+        wait = self._min_interval + _Pace.extra - (time.monotonic() - _Pace.last_call)
         if wait > 0:
             self._sleep(wait)
-        self._last_call = time.monotonic()
+        _Pace.last_call = time.monotonic()
         r = self._session.get(self.api, params=params, timeout=60)
         if r.status_code == 429 or r.status_code >= 500:
+            _Pace.slower()
             ra = r.headers.get("Retry-After")
             raise _Retry(f"HTTP {r.status_code}", float(ra) if ra and ra.isdigit() else None)
         try:
-            return r.json()
+            data = r.json()
         except ValueError as exc:
             raise _Retry("réponse non-JSON", None) from exc
+        _Pace.ok()
+        return data
 
     def _call(self, params: dict) -> dict:
         params = {**params, "format": "json", "formatversion": 2, "maxlag": 5}

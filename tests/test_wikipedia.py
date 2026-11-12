@@ -68,3 +68,16 @@ def test_batches_are_split(tmp_path):
     c, calls, _ = make_client(tmp_path, responses)
     assert len(c.get_pages(titles)) == 45
     assert len(calls) == 3
+
+
+def test_pace_slows_after_429_and_recovers():
+    from openfootball.sources.wikipedia import MAX_INTERVAL_S, MIN_INTERVAL_S, _Pace
+    _Pace.extra, _Pace.ok_streak = 0.0, 0
+    _Pace.slower(); _Pace.slower()
+    assert _Pace.extra == pytest.approx(1.2)
+    for _ in range(200):
+        _Pace.slower()
+    assert MIN_INTERVAL_S + _Pace.extra == MAX_INTERVAL_S            # plafonné
+    for _ in range(40 * 20):
+        _Pace.ok()
+    assert _Pace.extra == 0.0                                        # revenu au rythme normal
