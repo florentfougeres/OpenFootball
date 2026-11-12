@@ -1,3 +1,5 @@
+<p><img src="docs/images/logo.svg" alt="" width="72" align="right"></p>
+
 # OpenFootball
 
 Effectifs des clubs de football **saison par saison**, construits uniquement à partir de **Wikipedia** (CC BY-SA 4.0)

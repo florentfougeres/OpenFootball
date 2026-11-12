@@ -19,9 +19,7 @@
 <header class="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
     <a class="display flex items-center gap-2 text-2xl font-extrabold tracking-tight no-underline" href={href("")}>
-      <span class="grid size-8 place-items-center rounded-lg bg-accent text-accent-fg">
-        <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M12 8l3.5 2.5-1.3 4h-4.4l-1.3-4z" fill="currentColor" stroke="none" /></svg>
-      </span>
+      <img class="size-9" src={import.meta.env.BASE_URL + "logo.svg"} alt="" width="36" height="36" />
       OpenFootball
       <span class="rounded-md border border-line px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted" title={t("betaNote")}>{t("beta")}</span>
     </a>
