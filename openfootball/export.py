@@ -18,6 +18,7 @@ import duckdb
 
 from openfootball.countries import flag_code
 from openfootball.enrich import NON_LATIN
+from openfootball.schema_doc import build_schema_doc
 
 _SQUAD = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
@@ -155,6 +156,8 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         FROM known_gap k JOIN club_season cs ON cs.id = k.club_season_id
         JOIN season s ON s.id = cs.season_id JOIN club cl ON cl.id = cs.club_id
         ORDER BY s.start_year, cl.wikipedia_title""", out, "known_gap", "known_gap")
+    (out / "SCHEMA.md").write_text(build_schema_doc(out, manifest), encoding="utf-8")      # dictionnaire de données, joint à la release
+    manifest["docs"] = {"schema": "SCHEMA.md"}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     return manifest
 

@@ -14,6 +14,7 @@ from openfootball.enrich import enrich_birth_dates, enrich_career_clubs, enrich_
 from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_careers, import_careers_by_qid
+from openfootball.schema_doc import build_schema_doc
 from openfootball.reconcile import reconcile_by_infobox, reconcile_by_name, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
@@ -414,6 +415,15 @@ def progress_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def schema_cmd(args: argparse.Namespace) -> int:
+    """Écrit le dictionnaire de données (Markdown) d'un export existant."""
+    data = Path(args.data)
+    manifest = json.loads((data / "manifest.json").read_text(encoding="utf-8"))
+    Path(args.out).write_text(build_schema_doc(data, manifest), encoding="utf-8")
+    print(f"dictionnaire de données écrit dans {args.out}")
+    return 0
+
+
 def import_world_clubs_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
@@ -503,6 +513,10 @@ def main(argv: list[str] | None = None) -> int:
     pr.add_argument("--db", default=DB_DEFAULT)
     pr.add_argument("--out", default="PROGRESS.md")
     pr.set_defaults(func=progress_cmd)
+    sc_ = sub.add_parser("schema", help="écrit le dictionnaire de données des Parquet (Markdown) depuis un export")
+    sc_.add_argument("--data", default="dist/data", help="dossier d'export (avec manifest.json)")
+    sc_.add_argument("--out", default="docs/modele-de-donnees.md")
+    sc_.set_defaults(func=schema_cmd)
     wc = sub.add_parser("import-world-clubs", help="importe le CSV des clubs du monde (fiches club)")
     wc.add_argument("--db", default=DB_DEFAULT)
     wc.add_argument("--csv", default="data/source/clubs_football.csv")

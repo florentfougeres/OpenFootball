@@ -256,3 +256,28 @@ def test_fallbacks_follow_the_country_language_order(con):
         return next(x for x in res if x.club == "Club 5")
 
     assert run(("en", "fr", "it")).lang == "en"          # pays anglophone : l'anglais d'abord
+
+
+def test_english_html_is_read_before_falling_back_to_another_language(con):
+    """Un club anglais dont la page anglaise n'est lisible que rendue ne doit pas prendre la page italienne."""
+    import dataclasses
+    html = ("<h3>Appearances and goals</h3><table><tr><th>No.</th><th>Pos.</th><th>Nat.</th><th>Name</th></tr>"
+            + "".join(f"<tr><td>{i}</td><td>{'GK' if i == 1 else 'MF'}</td><td><img alt='ENG'></td>"
+                      f"<th><a title='Player {i}'>Player {i}</a></th></tr>" for i in range(1, 15)) + "</table>")
+
+    class WithRender(FakeWiki):
+        def render(self, title):
+            return Page(title=f"render:{title}", exists=True, resolved_title=title, revid=9, wikitext=html)
+
+    it_title = "Club 5 2023-2024"
+    it_text = "== Rosa ==\n" + "\n".join(
+        f"{{{{Calciatore in rosa|n={i}|nazione=ITA|nome=[[Giocatore {i}]]|ruolo={'P' if i == 1 else 'C'}}}}}" for i in range(1, 13))
+    pages = setup_pages()
+    pages["2023–24 Club 5 season"] = page("2023–24 Club 5 season", "== Appearances and goals ==\n{| class=wikitable\n|-\n! No.\n! Name\n|}")
+    wd = FakeWikidata({"Q5": [{"article": "https://it.wikipedia.org/wiki/Club_5_2023-2024"}]})
+    sc = dataclasses.replace(load_scopes(["FRA"])[0], langs=("en", "it", "fr"))
+    res = run_backfill(con, [sc], 2023, wp=WithRender(pages),
+                       lang_clients={"it": FakeWiki({it_title: page(it_title, it_text)}), "fr": FakeWiki({})}, wd=wd,
+                       qid_lookup=lambda ts: {t: ("Q5" if t == "Club 5" else None) for t in ts}, log=lambda s: None, overrides={})
+    r = next(x for x in res if x.club == "Club 5")
+    assert (r.lang, r.players) == ("en", 14)                      # l'anglais rendu l'emporte sur l'italien

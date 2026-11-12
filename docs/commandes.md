@@ -1,0 +1,51 @@
+# Référence des commandes
+
+Toutes les commandes s'écrivent `openfootball <commande> [options]` (après `source .venv/bin/activate`, ou
+`.venv/bin/openfootball …`). Sauf mention, elles travaillent sur la base locale `data/work/openfootball.duckdb`
+(`--db` pour en choisir une autre). **Une seule commande en écriture à la fois** sur une base.
+Rappel : `export OPENFOOTBALL_CONTACT="votre-contact"` avant toute commande qui interroge Wikipedia/Wikidata.
+
+## Construire et valider les effectifs
+
+| Commande | À quoi elle sert | Options utiles |
+|---|---|---|
+| `backfill --season Y` | Construit (ou relit) les effectifs de la saison Y/Y+1 pour tous les championnats déclarés dans `openfootball/scopes/`. Refusé si la saison est figée. | `--league FRA ITA` (limiter), `--open` (marque la saison « en cours ») |
+| `status --season Y` | État d'une saison : effectifs attestés, trous, invariants, avertissements. | |
+| `known-gap --season Y --reason "…"` | Valide **explicitement** des club-saisons sans effectif (la source n'existe pas). | `--club "Nom"` (un club), `--all-unresolved` (tous les trous non validés) |
+| `freeze --season Y` | Fige une saison : elle devient immuable (empreinte enregistrée). Refusé si un invariant échoue ou si un trou n'est pas validé. **Irréversible** sans procédure d'amendement. | |
+
+## Identité, carrières, enrichissements
+
+| Commande | À quoi elle sert | Options utiles |
+|---|---|---|
+| `reconcile` | Un joueur = un QID Wikidata ; fusionne les doublons entre langues. | |
+| `reconcile --names` | Rattache les joueurs **sans lien** à un joueur identifié de même nom, seulement si sa carrière contient les mêmes club-saisons. **À lancer après chaque `backfill`.** | |
+| `reconcile --infobox` | Cherche la page anglaise des joueurs sans lien et la valide par son infobox. **Long** (plusieurs centaines de requêtes, de l'ordre de l'heure) et peu rentable en relance : à lancer ponctuellement. | |
+| `careers` | Importe carrière **et sélections** (infobox anglaise) des joueurs qui n'en ont pas encore. | `--refresh` (relit tout, depuis le cache : voir [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md)), `--limit N` (essai) |
+| `enrich --what players` | Liens Wikipedia par langue et dates de naissance (donc les âges). | |
+| `enrich --what clubs` | Liens Wikipedia et noms français des clubs à effectifs. | |
+| `enrich --what careerclubs` | Relie les clubs cités dans les carrières à leur fiche (QID). | |
+| `enrich --what labels` | Libellés anglais des stades, championnats et villes en alphabet non latin. | |
+| `enrich --what logos` | Logos des clubs (infobox Wikipedia) : clubs à effectifs par défaut. | `--all-clubs`, `--logo-limit N`, `--refresh-logos` (écrase aussi les logos posés à la main) — voir [logos-en-masse.md](logos-en-masse.md) |
+| `enrich` (sans `--what`) | Tout : clubs, players, logos, labels, careerclubs. | |
+| `import-world-clubs` | Fusionne le CSV des ≈ 43 000 clubs du monde dans la table `club` (idempotent). | `--csv chemin` |
+
+## Suivi, export, publication
+
+| Commande | À quoi elle sert | Options utiles |
+|---|---|---|
+| `progress` | Écrit `PROGRESS.md` : avancement par saison et championnat, manques, À faire. | `--out` |
+| `export --out DIR` | Écrit les fichiers Parquet, `manifest.json` et `SCHEMA.md` (dictionnaire de données). | `--archive FICHIER.tar.gz` (archive de release), `--previous manifest.json` (garde de continuité : refuse l'export si une saison figée a changé) |
+| `verify-release --new A --previous B` | Compare deux manifestes : une saison figée ne doit pas changer. | |
+| `schema --data DIR --out FICHIER` | Régénère [modele-de-donnees.md](modele-de-donnees.md) depuis un export. | |
+
+## Outils de mesure (rarement utiles)
+
+`probe`, `probe-wikidata`, `probe-langs` : sondages de couverture utilisés pour concevoir le projet
+(pages « saison du club » existantes, secours Wikidata, autres langues). Ils n'écrivent pas dans la base.
+
+## Ordres types
+
+- **Mise à jour complète** : `tools/refresh.sh --open-season 2026 2026` (voir [ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md)).
+- **Ajouter un pays** : un fichier `openfootball/scopes/<pays>.toml`, puis `backfill` saison par saison.
+- **Publier** : [publier-une-release.md](publier-une-release.md).

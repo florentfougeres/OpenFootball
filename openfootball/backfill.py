@@ -205,6 +205,27 @@ def run_backfill(
                                         source_title=page.resolved_title or title)
                         chosen = ClubResult(sc.code, team, lang, n, page.resolved_title or title)
                         break
+                if not chosen:
+                    # La page de cette langue existe mais son effectif n'est lisible que dans le HTML rendu (modèle,
+                    # section inconnue) : on le lit AVANT de passer à la langue suivante, sinon un club anglais prend
+                    # la page italienne alors que sa page anglaise est exploitable (D10).
+                    client = wp if lang == "en" else lang_clients[lang]
+                    render = getattr(client, "render", None)
+                    html_titles = [t for _, t in attempts]
+                    if lang == "en":
+                        wd_title = articles().get((start_year, "en"))
+                        if wd_title and wd_title not in html_titles:
+                            html_titles.append(wd_title)
+                    for title in html_titles if render else []:
+                        page = render(title)
+                        if not page.exists:
+                            continue
+                        main = plausible(parse_squad_html(page.wikitext, lang))
+                        if main:
+                            n = write_squad(con, cs_id, main, lang=lang, revid=page.revid,
+                                            source_title=page.resolved_title or title)
+                            chosen = ClubResult(sc.code, team, lang, n, page.resolved_title or title)
+                            break
                 if chosen:
                     break
             if not chosen:

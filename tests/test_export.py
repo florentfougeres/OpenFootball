@@ -90,3 +90,15 @@ def test_pack_is_reproducible(con, tmp_path):
     a = pack(tmp_path / "out", tmp_path / "a.tar.gz").read_bytes()
     b = pack(tmp_path / "out", tmp_path / "b.tar.gz").read_bytes()
     assert a == b
+
+
+def test_release_ships_a_data_dictionary_covering_every_exported_column(con, tmp_path):
+    import tarfile
+    from openfootball.export import pack
+    m = export_all(con, tmp_path)
+    doc = (tmp_path / "SCHEMA.md").read_text(encoding="utf-8")
+    assert m["docs"] == {"schema": "SCHEMA.md"}
+    assert "non documentée" not in doc, [l for l in doc.splitlines() if "non documentée" in l]     # une colonne sans description
+    assert "### `squad`" in doc and "| `player_qid` | VARCHAR |" in doc and "club_season" in doc
+    with tarfile.open(pack(tmp_path, tmp_path / "x.tar.gz")) as tar:
+        assert "SCHEMA.md" in tar.getnames()

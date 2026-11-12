@@ -8,6 +8,10 @@ Guides pas à pas pour faire vivre la base. Les décisions de fond sont dans [..
 | Mettre à jour les parcours, matchs, buts et sélections des joueurs (infobox) | [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md) |
 | Changer à la main le logo ou les infos d'un club | [club-logo-et-infos-manuel.md](club-logo-et-infos-manuel.md) |
 | Récupérer en masse les logos manquants | [logos-en-masse.md](logos-en-masse.md) |
+| Connaître toutes les commandes et leurs options | [commandes.md](commandes.md) |
+| Publier une release (données + site) | [publier-une-release.md](publier-une-release.md) |
+| Comprendre les fichiers Parquet publiés (tables, colonnes, clés) | [modele-de-donnees.md](modele-de-donnees.md) |
+| Résoudre un problème (verrou, 429, déploiement refusé…) | [depannage.md](depannage.md) |
 
 ## Règles communes (à lire une fois)
 
@@ -23,6 +27,6 @@ Guides pas à pas pour faire vivre la base. Les décisions de fond sont dans [..
 - **Saisons figées = immuables.** Aucune commande ne modifie une saison `frozen` (le refus est explicite).
 - **Après chaque `backfill`** lancez `openfootball reconcile --names` : un backfill recrée des joueurs sans lien
   (pages fr/it/es n'ont pas de liens joueurs) que ce rapprochement rattache à leur QID Wikidata.
-- **Ordre type d'une mise à jour complète** :
-  `backfill` → `reconcile --names` → `careers` → `enrich` → `status` → `progress` → `export`.
+- **Mise à jour complète en une commande** : `tools/refresh.sh --open-season 2026 2026` (sauvegarde, `backfill`,
+  `reconcile --names`, `careers`, `enrich`, `progress`, `export`).
 - On ne commit/publie qu'après vérification (`status`, tests `pytest -q`, `progress`).
