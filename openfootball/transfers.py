@@ -167,6 +167,11 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, fr_wp=None, start_yea
                     log: Callable[[str], None] = print) -> TransferReport:
     """Lit les transferts de chaque club-saison (non figé) dont la page anglaise est connue. Idempotent."""
     report = TransferReport()
+    # Repart de la page : ni joueur ajouté, ni statut daté posé par une lecture précédente (D13 révisé).
+    con.execute("""DELETE FROM player_club_season WHERE source_section LIKE 'Transfers (%' AND club_season_id IN
+                   (SELECT cs.id FROM club_season cs JOIN season s ON s.id = cs.season_id WHERE s.status <> 'frozen')""")
+    con.execute("""UPDATE player_club_season SET stint = 'unknown' WHERE stint IN ('left_mid', 'arrived_mid') AND club_season_id IN
+                   (SELECT cs.id FROM club_season cs JOIN season s ON s.id = cs.season_id WHERE s.status <> 'frozen')""")
     where = "" if start_year is None else f"AND s.start_year = {int(start_year)}"
     todo = con.execute(f"""SELECT cs.id, s.start_year, cl.wikipedia_title,
             (SELECT ss.source_title FROM squad_source ss WHERE ss.club_season_id = cs.id AND ss.source_lang = 'en') AS en_title
@@ -189,7 +194,6 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, fr_wp=None, start_yea
                     seen = {(_tokens(t.name), t.direction) for t in transfers}
                     transfers += [t for t in parse_transfers_fr(fr_page.wikitext or "") if (_tokens(t.name), t.direction) not in seen]
             con.execute("DELETE FROM squad_movement WHERE club_season_id = ?", [csid])
-            con.execute("DELETE FROM player_club_season WHERE club_season_id = ? AND source_section = 'Transfers (in)'", [csid])
             if not transfers:
                 continue
             report.with_transfers += 1
@@ -202,27 +206,8 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, fr_wp=None, start_yea
                 new_stint = ("loan_in" if t.direction == "in" else "loan_out") if t.kind == "loan" \
                     else ("arrived_mid" if t.direction == "in" else "left_mid") if mid else None
                 if pid is None:
-                    # Absent de l'effectif publié : on l'ajoute seulement s'il en est PARTI en cours de saison (il y a joué).
-                    # Une arrivée absente de la page n'est pas ajoutée : signature à venir, jeune, ou prêté aussitôt ailleurs
-                    # (Farkas, N'Guessan à Liverpool) ; elle reste un mouvement enregistré. Un prêté parti n'est pas exporté.
-                    if new_stint != "left_mid":
-                        continue
-                    entry = SquadEntry(name=t.name, link=t.link, shirt_number=t.shirt_number, position_raw=None,
-                                       position=t.position, nationality=t.nationality, section=f"Transfers ({t.direction})",
-                                       note=None, fmt="transfer")
-                    pid = _upsert_player(con, entry, "en")
-                    if not con.execute("SELECT 1 FROM player_club_season WHERE player_id = ? AND club_season_id = ?",
-                                       [pid, csid]).fetchone():
-                        con.execute(
-                            "INSERT INTO player_club_season (id, player_id, club_season_id, shirt_number, position_code,"
-                            " position_raw, nationality_raw, stint, confidence, source, source_section)"
-                            " VALUES (?, ?, ?, ?, ?, NULL, ?, ?, 'attested', 'wikipedia_season', ?)",
-                            [_next_id(con, "player_club_season"), pid, csid, _valid_shirt(t.shirt_number), t.position,
-                             t.nationality, new_stint, entry.section])
-                        report.added += 1
-                    stint[pid] = new_stint
-                    by_tokens.setdefault(_tokens(t.name), pid)
-                elif new_stint and stint.get(pid) == "unknown":
+                    continue          # jamais ajouté : l'effectif est celui de la page ; le tableau ne sert qu'à trancher
+                if new_stint in ("loan_in", "loan_out") and stint.get(pid) == "unknown":
                     con.execute("UPDATE player_club_season SET stint = ? WHERE player_id = ? AND club_season_id = ?",
                                 [new_stint, pid, csid])
                     stint[pid] = new_stint

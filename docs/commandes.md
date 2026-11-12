@@ -10,7 +10,7 @@ Rappel : `export OPENFOOTBALL_CONTACT="votre-contact"` avant toute commande qui 
 | Commande | À quoi elle sert | Options utiles |
 |---|---|---|
 | `backfill --season Y` | Construit (ou relit) les effectifs de la saison Y/Y+1 pour tous les championnats déclarés dans `openfootball/scopes/`. Refusé si la saison est figée. | `--league FRA ITA` (limiter), `--open` (marque la saison « en cours ») |
-| `transfers` | Lit les tableaux de transferts des pages « saison du club » : pose `left_mid` / `loan_in` / `loan_out`, enregistre les mouvements datés (`squad_movement`), ajoute les joueurs **partis** en cours de saison absents de l'instantané, et recoupe les prêts entre clubs. **À lancer après chaque `backfill`** (il relit le cache, rapide). | `--season Y` (une saison) |
+| `transfers` | Lit les tableaux de transferts des pages « saison du club » : enregistre les mouvements datés (`squad_movement`), pose `loan_in` / `loan_out`, recoupe les prêts entre clubs et tranche les joueurs présents dans deux clubs la même saison. N'ajoute jamais de joueur. **À lancer après chaque `backfill`** (il relit le cache, rapide). | `--season Y` (une saison) |
 | `status --season Y` | État d'une saison : effectifs attestés, trous, invariants, avertissements. | |
 | `known-gap --season Y --reason "…"` | Valide **explicitement** des club-saisons sans effectif (la source n'existe pas). | `--club "Nom"` (un club), `--all-unresolved` (tous les trous non validés) |
 | `freeze --season Y` | Fige une saison : elle devient immuable (empreinte enregistrée). Refusé si un invariant échoue ou si un trou n'est pas validé. **Irréversible** sans procédure d'amendement. | |

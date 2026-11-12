@@ -84,16 +84,16 @@ def test_mid_season_window_and_winter_without_date():
     assert is_mid_season(mk(None, "winter"), 2022) and not is_mid_season(mk(None, "summer"), 2022) and not is_mid_season(mk(None), 2022)
 
 
-def test_jorginho_is_marked_arrived_mid_and_a_summer_departure_is_left_alone(arsenal):
+def test_a_single_club_player_gets_a_dated_movement_but_no_status(arsenal):
     wp = _Wp({"2022–23 Arsenal F.C. season": _page()})
     r = apply_transfers(arsenal, wp, log=lambda *_: None)
-    assert arsenal.execute("SELECT stint FROM player_club_season WHERE player_id = 1").fetchone() == ("arrived_mid",)
-    assert arsenal.execute("SELECT stint FROM player_club_season WHERE player_id = 2").fetchone() == ("unknown",)   # Leno : parti le 2 août, avant la saison
+    assert arsenal.execute("SELECT stint FROM player_club_season WHERE player_id = 1").fetchone() == ("unknown",)   # présent dans un seul club : l'effectif de la page fait foi
+    assert arsenal.execute("SELECT stint FROM player_club_season WHERE player_id = 2").fetchone() == ("unknown",)
     assert arsenal.execute("SELECT moved_on, mid_season, other_club FROM squad_movement WHERE player_id = 1").fetchone() == (date(2023, 1, 31), True, "Chelsea")
-    assert r.marked >= 1 and r.with_transfers == 1
+    assert r.with_transfers == 1
 
 
-def test_a_player_who_left_mid_season_and_is_missing_from_the_squad_is_added(arsenal):
+def test_a_player_missing_from_the_squad_page_is_never_added(arsenal):
     extra = """
 ===Transfers out===
 {| class="wikitable"
@@ -104,9 +104,8 @@ def test_a_player_who_left_mid_season_and_is_missing_from_the_squad_is_added(ars
 """
     wp = _Wp({"2022–23 Arsenal F.C. season": _page(extra)})
     r = apply_transfers(arsenal, wp, log=lambda *_: None)
-    row = arsenal.execute("SELECT p.name, pcs.stint, pcs.source_section, pcs.shirt_number FROM player_club_season pcs JOIN player p ON p.id = pcs.player_id "
-                          "WHERE p.name = 'Joe Missing'").fetchone()
-    assert row == ("Joe Missing", "left_mid", "Transfers (out)", 23) and r.added == 1
+    assert arsenal.execute("SELECT count(*) FROM player WHERE name = 'Joe Missing'").fetchone() == (0,)
+    assert r.added == 0
 
 
 def test_applying_twice_changes_nothing(arsenal):
