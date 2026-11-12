@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **DRAFT v0.27** (2026-11-11) — aucune implémentation tant que les « Questions ouvertes » (§9) ne sont pas tranchées.
+> Statut : **v0.28** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D11 et les résultats mesurés (§9ter et suivants) font foi.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -8,6 +8,8 @@
 > v0.6 : source de l'effectif, hébergement, images et transferts tranchés (D4–D7).
 > v0.7 : stockage et exécution tranchés (D8).
 > v0.8 : résultats du sondage de couverture M0(a) sur les 4 championnats × 2010–2025 (§9ter).
+> v0.9 → v0.27 : backfills, identité par QID, carrières, Bundesliga, clubs du monde, logos (§9quater à §9duodecies).
+> v0.28 : langue locale d'abord (D10), prêts hors de l'effectif d'origine (D11), sélections, identité par infobox, textes non latins, site Svelte à navigation par pays (§9terdecies).
 
 ## 1. Vision
 
@@ -85,17 +87,20 @@ Invariants vérifiés à chaque run (échec du run si violé) :
 
 ## 5. Pipeline
 
-Structure cible (remplace le monolithe, L7) :
+Structure réelle (v0.28 ; remplace le monolithe, L7) :
 
 ```
 openfootball/
-  sources/      wikidata.py, wikipedia.py   # fetch + cache, rien d'autre
-  parse/        infobox.py, positions.py    # fonctions pures, testables
-  load/         schema.py, upsert.py        # écriture DuckDB
-  checks/       invariants.py               # §4, produit data_quality_report
-  export/       parquet.py                  # §6
-  cli.py        # openfootball run --scope fr-ligue1 --seasons 2020-2025
-tests/          # fixtures wikitext/SPARQL figées
+  sources/    wikipedia.py, wikidata.py          # fetch + cache disque + backoff, rien d'autre
+  parse/      squad.py, squad_i18n.py (fr/it/es), squad_html.py, infobox.py (carrière, sélections),
+              league.py, positions.py            # fonctions pures, testées sur fixtures
+  scopes/     <pays>.toml, _overrides.toml       # périmètre déclaratif (D1, D10)
+  migrations/ 0001 … 0009 .sql                   # schéma versionné (L6)
+  backfill.py store.py reconcile.py careers.py enrich.py world_clubs.py
+  checks.py export.py progress.py countries.py db.py cli.py
+web/          # site Svelte + Vite + Tailwind (§9terdecies)
+docs/         # guides d'exploitation
+tests/        # 170 tests, fixtures wikitext figées
 ```
 
 Phases (inchangées dans l'esprit) : résolution clubs → métadonnées → spells P54 → détails joueurs → infobox Wikipedia → dérivation effectifs → **checks** → **export**.
@@ -137,12 +142,12 @@ Règles :
 
 ## 7. Site
 
-- Statique, hébergé gratuitement (cf. Q4), **aucun backend**.
+- Statique, hébergé gratuitement (cf. Q4), **aucun backend**. Application Svelte + Vite + Tailwind (`web/`), construite au déploiement (§9terdecies).
 - DuckDB-WASM charge les Parquet distants ; tout le SQL s'exécute côté client.
-- Pages : accueil/recherche (club, joueur), club (historique des saisons + division), club×saison (effectif), joueur (carrière), couverture des données, à propos/licences.
-- i18n fr/en : labels depuis `name_fr`/`name_en`, interface via dictionnaires, langue dans l'URL (`/fr/…`, `/en/…`).
-- Accessibilité WCAG 2.2 AA ; mobile-first ; dark mode.
-- Chaque donnée affiche sa confiance (§3) et un lien vers sa source Wikidata/Wikipedia.
+- Navigation par niveaux : accueil/recherche → pays → championnat (saisons) → club → effectif (club × saison) → joueur (carrière et sélections) ; couverture des données ; à propos/licences.
+- i18n fr/en : labels depuis `name_fr`/`name_en`, interface par dictionnaire, langue dans l'URL (`#/fr/…`, `#/en/…` : routage par hash, §9sexies).
+- Accessibilité WCAG 2.2 AA visée ; mobile-first ; thème clair/sombre.
+- Chaque effectif affiche sa source (page Wikipedia d'origine) ; les chiffres de carrière et de sélections sont signalés comme non vérifiés.
 
 ## 8. Licences et conformité (site public)
 
@@ -161,9 +166,9 @@ Aucune question ouverte à ce stade.
 - **D2 — Seuil de complétude** : **100 % attesté, trous listés.** Une saison ne peut être figée que si chaque club-saison du périmètre a un effectif `attested` plausible (invariant 6, §4), **ou** figure dans `known_gaps` (club, saison, motif, ex. « page Wikipedia absente ») validé explicitement avant le gel. Tout club-saison ni attesté ni listé bloque le gel. `known_gaps` est publié sur la page Couverture.
 - **D3 — Gel** : **manuel après revue.** `freeze <saison>` est lancé par le mainteneur une fois le mercato clos ; il est refusé automatiquement si un invariant échoue ou si un trou n'est pas listé (D2). Aucun gel automatique.
 
-- **D4 — Source de l'effectif** : les pages Wikipedia « saison du club » (tableau d'effectif) sont la **source principale** `attested`. **Secours** : à défaut de page, un passage Wikidata P54 *daté* (début et fin connus) couvrant exactement la saison vaut aussi `attested`, avec `source = wikidata_p54` (distinct de `wikipedia_season`). Sans l'un ni l'autre → `known_gaps` (D2). Prototype 2026-11-11 : 17 pages sur 18 présentes (OM, Lens, Auxerre, 2020-2025) ; le tableau mêle effectif, prêtés et partis (D6 y répond) ; l'API Wikipedia répond 429 au-delà de ~1 req/s → throttling + cache obligatoires, un 429 n'est **jamais** « page absente ».
+- **D4 — Source de l'effectif** : les pages Wikipedia « saison du club » (tableau d'effectif) sont la **source principale** `attested`. **Secours** : à défaut de page, un passage Wikidata P54 *daté* (début et fin connus) couvrant exactement la saison vaut aussi `attested`, avec `source = wikidata_p54` (distinct de `wikipedia_season`). Sans l'un ni l'autre → `known_gaps` (D2). *(amendé par D10 : langue du pays d'abord, anglais en secours.)* Prototype 2026-11-11 : 17 pages sur 18 présentes (OM, Lens, Auxerre, 2020-2025) ; le tableau mêle effectif, prêtés et partis (D6 y répond) ; l'API Wikipedia répond 429 au-delà de ~1 req/s → throttling + cache obligatoires, un 429 n'est **jamais** « page absente ».
 - **D5 — Hébergement** : **GitHub Pages**. Contraintes : site ≤ ~1 Go, en-têtes de cache non configurables → les partitions `frozen` sont publiées sous un **nom contenant leur hash** (`player_club_season/2023-24.<hash>.parquet`), référencées par le `manifest.json` (seul fichier à ré-télécharger). Les range requests sont supportées par GitHub Pages ; à vérifier en M2 avec DuckDB-WASM.
-- **D6 — Transferts / prêts** : un joueur apparaît **dans chaque club où il a figuré dans la saison**, avec `stint ∈ {full, arrived_mid, left_mid, loan_in, loan_out}` sur `player_club_season`. Un joueur « parti » ou « prêté » (sections correspondantes de la page Wikipedia) est conservé avec son statut, jamais supprimé.
+- **D6 — Transferts / prêts** : un joueur apparaît **dans chaque club où il a figuré dans la saison**, avec `stint ∈ {full, arrived_mid, left_mid, loan_in, loan_out}` sur `player_club_season`. Un joueur « parti » ou « prêté » (sections correspondantes de la page Wikipedia) est conservé avec son statut, jamais supprimé. *(amendé par D11 : un joueur `loan_out` reste en base mais n'est pas exporté dans l'effectif de son club d'origine.)*
 - **D7 — Images** : **logos de clubs uniquement**, issus de l'infobox de la page Wikipedia du club ; **aucune photo de joueur**. Hotlink vers Wikimedia (pas de rehébergement), avec lien vers la page du fichier. **Risque connu** : beaucoup de logos de clubs sont des fichiers *non libres* (usage loyal) hébergés par en.wikipedia, autorisés sur Wikipedia mais pas sur un site tiers ; l'affichage reste à la charge du mainteneur. Le pipeline stocke, pour chaque logo, sa licence (champ `imageinfo` de l'API) pour pouvoir masquer les non libres sans nouveau backfill.
 
 - **D8 — Stockage et exécution** :
@@ -252,6 +257,8 @@ Commande : `openfootball backfill --season Y` pour chaque saison (aucune n'est f
 
 ## 9sexies. Site et déploiement (2026-11-11)
 
+> **Remplacé pour la technique par §9terdecies** : le site `site/` décrit ici (JavaScript natif) a été remplacé par l'application `web/` (Svelte + Vite + Tailwind) ; le routage par hash et DuckDB-WASM restent.
+
 **Site** (`site/` : `index.html`, `style.css`, `app.js`, aucun build) : DuckDB-WASM 1.28.0 (CDN jsDelivr, version figée) lit `data/manifest.json` puis les Parquet par range requests ; tout le SQL s'exécute dans le navigateur. Pages : accueil (recherche club/joueur insensible aux accents + parcours par saison et championnat), club (historique des saisons), effectif d'un club-saison (par poste, badge de confiance, statut de prêt, lien vers la page Wikipedia source), joueur (parcours), couverture (taux par saison, trous), à propos (sources, licences, limites). Bilingue fr/en, mode sombre, mobile-first, lien d'évitement, `aria-live`.
 - **Écart avec §7** : le routage est par **hash** (`#/fr/club/…`) et non par chemin (`/fr/…`), pour fonctionner sur GitHub Pages sans règle de réécriture.
 - **Logos : non faits** (D7) — la base ne stocke pas encore d'URL de logo.
@@ -335,6 +342,50 @@ Demande du mainteneur : **le CSV doit vivre dans la base DuckDB, comme une seule
 Signalé par le mainteneur : pas de numéros pour l'AC Milan 2026/27 (ni Bologne). **Cause** : dans ces pages le numéro est en gras dans la cellule (écrit avec des triples apostrophes) et l'extraction n'acceptait que des chiffres nus. Corrigé à la racine (`_int` ignore gras, italique, balises), avec un test sur ce cas. Effet : lignes d'effectif sans numéro **11 % → 8,6 %** (4 482 / 52 099) ; AC Milan 2026/27 : 27/27. Le reste vient de pages sources sans numéros (surtout 2021-2023 : 14-18 %).
 - **Effet de bord traité** : un numéro hors 0-99 (« 103 » pour Olivier Kapo, page française d'Auxerre 2011-12, coquille de source) faisait échouer tout le backfill sur la contrainte de la base ; il reste maintenant vide (`_valid_shirt`), avec un test.
 
+## 9terdecies. Langue locale d'abord, prêts, sélections, identité par infobox, site v3 (2026-11-12)
+
+**État mesuré** (base locale) : 5 championnats, **1 658 club-saisons, 1 641 effectifs, 12 trous validés (`known_gap`), 5 non validés** (saison 2026/27 ouverte : promus sans page) ; sources des effectifs : anglais 918, italien 406, français 295, espagnol 22 ; **16 492 joueurs** (15 452 en effectif), 53 899 lignes d'effectif ; **111 373 lignes de carrière** ; **30 264 lignes de sélections pour 10 291 joueurs** ; logos : **17 229 clubs sur 42 857** (infobox) + 586 logos Commons ; 189 clubs à effectifs sur 189 ; 170 tests.
+
+### D10 — Ordre des langues par pays (amende D4)
+La source `attested` d'un club est **la page « saison du club » de la langue du pays d'abord**, l'anglais en secours : `langs` dans `scopes/<pays>.toml` (FRA : fr, en, it ; ITA : it, en, fr ; ESP : es, en, it, fr ; DEU : de, en, it, fr ; ENG : en, it, fr). Une langue sans analyseur est ignorée, listée « pour plus tard » (aujourd'hui : **de** n'a pas d'analyseur — Wikidata ne relie que 2 pages saison allemandes du Bayern, sans modèle de joueur, effectif en tableau).
+- **Cas déclencheur** : Nouhoum Kamissoko absent de l'OM 2026/27 alors que la page française le liste ; la page anglaise était incomplète (22 joueurs contre 25 en français). Une page en langue locale est la plus à jour.
+- **Résultat** : France et Italie refaites sur 17 saisons depuis leur langue, **sans aucun trou nouveau** (toutes les saisons terminées complètes) ; Espagne refaite avec le nouvel analyseur `es` (modèle `Jugador de fútbol con esquema`, postes POR/DEF/MED/DEL) : couverture identique (les trous 2010–2013 existaient déjà).
+- **Coût mesuré** : les pages fr/it/es n'ont pas de liens vers les joueurs, d'où **plus de joueurs sans QID** (1 535 → 2 132 après rattachements), donc sans âge ni carrière tant qu'ils ne sont pas identifiés (§ ci-dessous).
+
+### D11 — Prêts : l'effectif d'un club ne contient pas ses joueurs prêtés ailleurs (amende D6)
+Un joueur `loan_out` est **conservé en base** mais **n'apparaît pas dans l'effectif exporté de son club d'origine** (il apparaît dans celui du club qui l'accueille, `loan_in`, avec une pastille « prêt »). L'export exclut `stint = 'loan_out'` de `squad` et du compteur de joueurs de `club_season`.
+- **Cas déclencheurs** : Lo-Tutala (Hull), Balerdi et Traoré (OM 2026/27). Sur la page française, les prêtés sont dans un tableau « Joueurs prêtés » **sous le même titre de section** que l'effectif : l'analyseur lit désormais aussi les **titres de tableau** (`! colspan=… | Joueurs prêtés`) comme section.
+- Mots de prêt ajoutés (`cedid`, `cesión`, `préstamo`) et sections de réserve espagnoles (`filial`, `cantera`, `juvenil`).
+
+### Sélections et buts en équipe nationale
+Lus dans l'infobox anglaise (`national_team1`, `national_years1`, `national_caps1`, `national_goals1`, équipes de jeunes comprises) → table `player_national` (migration **0008**), export `national`, bloc « Équipe nationale » sur la fiche joueur. Mêmes réserves que la carrière : **chiffres Wikipedia publiés tels quels, non vérifiés**. Un nombre écrit comme lien (`[[Liste des buts|67]]`) est lu (Mbappé : France 107 sélections, 67 buts).
+
+### Identité des joueurs sans lien : preuve par l'infobox
+`reconcile --infobox` retrouve la page anglaise d'un joueur sans lien (titre = son nom, puis recherche Wikipedia) et **ne la retient que si** (1) son titre ressemble au nom, (2) son infobox de carrière contient **chacun** des club-saisons où il figure chez nous, (3) un seul candidat répond ; le QID est lu par la page (redirections comprises), avec fusion dans le joueur qui a déjà ce QID. Identité faible plutôt qu'inventée sinon.
+- **Mesuré** : ≈ 500 joueurs identifiés (dont Kamissoko : QID, naissance, 4 lignes de carrière) ; **2 132 joueurs restent sans lien** (surtout sans page anglaise). La phase de recherche a été **arrêtée volontairement** : 300 joueurs en 35 min pour 15 identifiés (≈ 5 %).
+- Enseignements : enregistrer par lot (une coupure ne perd pas le travail) ; **lire les pages par lots de 50** (un appel par joueur était 50 fois plus lent) ; ignorer les noms contenant du code wiki.
+- **Défaut d'analyseur corrigé** : les cellules de tableau étaient coupées sur `||` **à l'intérieur** des modèles (`{{sortname|Brahim|Díaz||Diaz, Brahim}}`), créant des « joueurs » `{{sortname` ; la découpe respecte maintenant `{{…}}` et `[[…]]`. 7 saisons refaites.
+
+### Textes en alphabet non latin
+Les champs texte du CSV Wikidata sont dans la langue du club (russe, arabe, chinois…). **Règle** : tout texte en alphabet non latin est remplacé par son **libellé anglais Wikidata** (`enrich --what labels` : 1 366 libellés de stades, championnats et villes, ≈ 30 requêtes), ou **masqué** s'il n'existe pas ; les surnoms non latins sont masqués ; le nom local non latin est remplacé par le nom anglais s'il existe. Mesuré à l'export : stades non latins 1 695 → 2, championnats 3 170 → 7. **Limite** : ≈ 1 700 clubs (surtout arabes) n'ont pas de nom anglais et gardent leur nom local.
+
+### Clubs des carrières : lien et logo
+L'infobox cite souvent une redirection (« Paris Saint-Germain FC » pour la page « Paris Saint-Germain F.C. ») : 37 % des lignes ne retrouvaient aucun club. `enrich --what careerclubs` résout ces titres en QID par Wikipedia (3 108 titres, migration **0009** `club_link_qid`) ; l'export ajoute `club_qid` aux lignes de carrière (**98,8 %** reliées). Le site relie fiche et logo par QID, et reste compatible avec un ancien export sans cette colonne.
+
+### Logos
+`enrich --what logos --all-clubs` a traité **21 777 clubs** en ≈ 1 h 10 : **13 399 logos trouvés** (total 17 229). Environ 25 000 clubs n'en ont pas (pas de page anglaise ou pas de champ `image`). **Écusson de remplacement** : aux couleurs du club (`colors_hex` : fond, liseré) avec ses initiales (mots génériques ignorés), texte noir ou blanc selon le contraste ; gris neutre si les couleurs sont inconnues.
+
+### Site v3 (remplace §9sexies / §9undecies pour la technique)
+- **Technique** : application **Svelte 5 + Vite + TypeScript + Tailwind 4** (`web/`), qui remplace `site/` (supprimé). DuckDB-WASM et les Parquet sont inchangés ; routage par hash inchangé ; thème clair/sombre/auto ; responsive ; `npm run check` (svelte-check) et `npm run build` en CI.
+- **Navigation générique par niveaux** (conçue pour des dizaines de pays) : **accueil** (recherche, tuiles de pays, championnats et clubs à la une) → **pays** (`#/fr/country/FRA` : championnats, clubs les plus connus) → **championnat** (`#/fr/competition/FRA-L1/2025-26` : onglets de saisons, clubs de la saison) → **club** → **effectif** → **joueur**. Plus aucune liste de pays codée en dur : l'export fournit la table `country` (code, noms fr/en, drapeau).
+- Déploiement : `deploy.yml` télécharge l'archive de la dernière release dans `web/public/data`, construit (`npm ci`, `check`, `build`) et publie `web/dist` ; `ci.yml` lance pytest et le build du site. **Toujours jamais exécutés sur GitHub.**
+
+### Documentation d'exploitation
+`docs/` : ajouter des saisons, pays et langues ; mettre à jour joueurs et sélections (**le cache Wikipedia ne périme jamais** : déplacer `cache/wikipedia_en_lead` avant `careers --refresh`) ; modifier à la main un club et son logo (`--refresh-logos` écrase les corrections manuelles) ; récupérer les logos en masse.
+
+### Limites connues restantes
+2 132 joueurs sans lien ; transferts en cours de saison non lus (`arrived_mid`/`left_mid`, C1) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; rien publié (dépôt distant, release, Pages).
+
 ## 10. Jalons proposés
 
 1. **M0 — Fondations** : *(a)* **sondage de couverture** des pages « saison du club » sur les 4 championnats × 2010→aujourd'hui (existence de la page, présence du tableau, taille plausible) pour chiffrer `known_gaps` et valider D2 ; *(b)* `schema.sql` + migrations, parseurs testés sur fixtures, `confidence`, garde d'immutabilité, rapport qualité. *Done = `backfill` d'une saison (1 club puis 1 championnat) passe tous les invariants §4 et se fige.*
@@ -342,3 +393,5 @@ Signalé par le mainteneur : pas de numéros pour l'AC Milan 2026/27 (ni Bologne
 3. **M2 — Site v0** : DuckDB-WASM, pages club/effectif/joueur, fr/en, page Couverture.
 4. **M3 — Extension pays** : 2ᵉ pays via `scopes/*.toml` sans changement de code (valide l'extensibilité).
 5. **M4 — Publication** : licences, à propos, hébergement, procédure de retrait.
+
+**État au 2026-11-12** : M0 à M3 faits (5 pays, site, extension validée par un fichier TOML) ; **M4 reste à faire** : dépôt distant, release `data-v1`, activation de Pages, procédure de retrait.
