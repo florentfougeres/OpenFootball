@@ -31,6 +31,8 @@ _WORDS = [
     ("centrocampista", "MF"), ("mediocampista", "MF"), ("mittelfeld", "MF"),
     ("attaccante", "FW"), ("delantero", "FW"), ("stürmer", "FW"), ("ailier", "FW"), ("avant", "FW"),
     ("gardien", "GK"), ("défenseur", "DF"), ("defenseur", "DF"), ("milieu", "MF"),
+    ("keeper", "GK"), ("verdediger", "DF"), ("middenvelder", "MF"), ("aanvaller", "FW"),      # néerlandais
+    ("kaleci", "GK"), ("defans", "DF"), ("orta saha", "MF"), ("forvet", "FW"),            # turc
     ("attaquant", "FW"), ("forward", "FW"), ("striker", "FW"), ("winger", "FW"), ("attacker", "FW"),
 ]
 

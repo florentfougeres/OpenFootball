@@ -42,7 +42,7 @@ class Page:
 
 def _default_user_agent() -> str:
     contact = os.environ.get("OPENFOOTBALL_CONTACT", "unset")
-    return f"OpenFootballBot/0.1 (open football squads project; contact: {contact})"
+    return f"OpenFootBaseBot/0.1 (open football squads project; contact: {contact})"
 
 
 class WikipediaClient:

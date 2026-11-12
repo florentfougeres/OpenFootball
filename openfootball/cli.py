@@ -235,7 +235,7 @@ def backfill_cmd(args: argparse.Namespace) -> int:
     langs = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in PARSERS}
     try:
         res = run_backfill(con, load_scopes(args.league), args.season, wp=wp, lang_clients=langs,
-                           wd=WikidataClient(args.wd_cache), qid_lookup=lambda ts: club_qids(wp, ts))
+                           wd=WikidataClient(args.wd_cache), qid_lookup=lambda ts: club_qids(wp, ts), current=args.open)
     except SeasonFrozen as exc:
         raise SystemExit(f"refusé : {exc}")
     if args.open:                                     # saison courante : « en cours », mise à jour au fil du mercato

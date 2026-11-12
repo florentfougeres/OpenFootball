@@ -20,7 +20,7 @@
   <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
     <a class="display flex items-center gap-2 text-2xl font-extrabold tracking-tight no-underline" href={href("")}>
       <img class="size-9" src={import.meta.env.BASE_URL + "logo.svg"} alt="" width="36" height="36" />
-      OpenFootball
+      OpenFootBase
       <span class="rounded-md border border-line px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted" title={t("betaNote")}>{t("beta")}</span>
     </a>
     <nav class="ml-4 hidden items-center gap-1 md:flex" aria-label="Navigation">

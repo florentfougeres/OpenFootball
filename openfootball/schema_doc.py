@@ -202,7 +202,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
 
 ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "known_gap", "career", "national", "birth", "entity_wiki"]
 
-INTRO = """# OpenFootball — dictionnaire de données
+INTRO = """# OpenFootBase — dictionnaire de données
 
 Effectifs de clubs de football par saison, construits **uniquement** à partir de Wikipedia (CC BY-SA 4.0) et Wikidata (CC0).
 Ce fichier décrit les fichiers Parquet de cette release ; il est généré à l'export, à partir des fichiers eux-mêmes.

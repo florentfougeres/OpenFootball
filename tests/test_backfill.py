@@ -70,7 +70,7 @@ def run(con, wp, it=None, fr=None, qids=None):
 
 
 def test_scope_files_load():
-    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU"}
+    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR"}
     fra = load_scopes(["FRA"])[0]
     assert (fra.expected_teams(2022), fra.expected_teams(2023)) == (20, 18)
 
@@ -289,3 +289,38 @@ def test_english_html_is_read_before_falling_back_to_another_language(con):
     assert r.players == 14 + 12                                   # D12 : union avec l'italien (joueurs différents)
     assert con.execute("SELECT s.source_lang FROM squad_source s JOIN club_season cs ON cs.id = s.club_season_id JOIN club c ON c.id = cs.club_id "
                        "WHERE c.wikipedia_title = 'Club 5' ORDER BY s.rank").fetchall() == [("en",), ("it",)]
+
+
+def _club_page(season_mention=True):
+    rows = "\n".join(
+        f"{{{{Feff joueur |num={i}|prénom=Joueur|nom=N{i}|pos={'Gardien' if i == 1 else 'Milieu'}|nat=France}}}}"
+        for i in range(1, 15))
+    intro = "pour la saison 2023-2024" if season_mention else "pour la saison 2022-2023"
+    return (f"== Effectif professionnel ==\nEffectif {intro}.\n{{{{Feff début|titre=x}}}}\n{rows}\n{{{{Feff fin}}}}\n")
+
+
+def _run_club_page(con, current, **kw):
+    """Club 1 n'a aucune page « saison du club » ; sa page de club (fr, via entity_wiki) porte l'effectif courant."""
+    con.execute("INSERT INTO entity_wiki VALUES ('Q1', 'fr', 'Club 1 (fr)')")
+    fr = {"Club 1 (fr)": page("Club 1 (fr)", _club_page(**kw))}
+    sc = load_scopes(["FRA"])
+    return run_backfill(
+        con, sc, 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
+        lang_clients={"it": FakeWiki({}), "fr": FakeWiki(fr)}, wd=FakeWikidata({}),
+        qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None, current=current)
+
+
+def test_club_page_fills_a_gap_in_the_current_season(con):
+    res = _run_club_page(con, current=True)
+    r = next(x for x in res if x.club == "Club 1")
+    assert (r.lang, r.players, r.title) == ("fr", 14, "Club 1 (fr)")
+
+
+def test_club_page_ignored_for_a_past_season(con):
+    res = _run_club_page(con, current=False)
+    assert next(x for x in res if x.club == "Club 1").lang is None
+
+
+def test_club_page_ignored_when_it_shows_another_season(con):
+    res = _run_club_page(con, current=True, season_mention=False)
+    assert next(x for x in res if x.club == "Club 1").lang is None

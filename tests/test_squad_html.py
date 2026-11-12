@@ -61,3 +61,25 @@ def test_letter_position_column_and_td_header_row():
             "<tr><td>A</td><td>9</td><td><a title='D'>Delta</a></td></tr></table>")
     assert [x.position for x in parse_squad_html(html, "fr")] == ["GK", "DF", "MF", "FW"]
     assert [x.position for x in parse_squad_html(html)] == [None, None, None, None]     # sans langue : on ne devine pas
+
+
+def test_dutch_table_position_comes_from_group_rows():
+    html = ("<h2>Spelerskern</h2><table><tr><th>No.</th><th>Naam</th><th>Nationaliteit</th><th>Positie</th></tr>"
+            "<tr><td colspan='4'><b>Keepers</b></td></tr>"
+            "<tr><td>16</td><td><a title='Mads Kikkenborg'>Mads Kikkenborg</a></td><td><img alt='Vlag van Denemarken'></td><td>DM</td></tr>"
+            "<tr><td colspan='4'><b>Verdedigers</b></td></tr>"
+            "<tr><td>4</td><td><a title='Jan Simić'>Jan Simić</a></td><td><img alt='Vlag van Servië'></td><td>CV</td></tr></table>")
+    got = parse_squad_html(html, "nl")
+    assert [(e.name, e.shirt_number, e.position) for e in got] == [("Mads Kikkenborg", 16, "GK"), ("Jan Simić", 4, "DF")]
+    from openfootball.countries import flag_code
+    assert flag_code(got[0].nationality) == "dk"
+
+
+def test_turkish_stats_table_and_scorer_tables():
+    html = ("<h2>Futbolcu istatistikleri</h2><table><tr><th>No.</th><th>Poz.</th><th>Ülke</th><th>Oyuncu</th></tr>"
+            "<tr><td>1</td><td>KL</td><td><img alt='Uruguay'></td><td><a title='Fernando Muslera'>Fernando Muslera</a></td></tr>"
+            "<tr><td>6</td><td>OS</td><td><img alt='Kolombiya'></td><td><a title='Davinson Sánchez'>Davinson Sánchez</a></td></tr></table>"
+            "<h2>Süper Lig gol krallığı</h2><table><tr><th>#</th><th>Futbolcu</th><th>G</th></tr>"
+            "<tr><td>1</td><td>Ciro Immobile</td><td>15</td></tr></table>")
+    got = parse_squad_html(html, "tr")
+    assert [(e.name, e.position) for e in got] == [("Fernando Muslera", "GK"), ("Davinson Sánchez", "MF")]

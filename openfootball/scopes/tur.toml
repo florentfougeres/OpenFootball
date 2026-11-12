@@ -1,0 +1,31 @@
+code = "TUR"
+name_en = "Turkey"
+name_fr = "Turquie"
+
+langs = ["tr", "en", "fr"]
+
+[competition]
+code = "TUR-SL"
+name_en = "Süper Lig"
+name_fr = "Süper Lig"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 18
+
+[[team_count]]
+from = 2020
+n = 21
+
+[[team_count]]
+from = 2021
+n = 20
+
+[[team_count]]
+from = 2024
+n = 19
+
+[[team_count]]
+from = 2025
+n = 18

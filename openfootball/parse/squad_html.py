@@ -15,14 +15,14 @@ from html.parser import HTMLParser
 from openfootball.parse.positions import normalize_position
 from openfootball.parse.squad import SquadEntry, _DATE, _NO_LETTERS, _NOT_A_PLAYER, _dedupe
 
-_SKIP_HEADING = re.compile(r"transfer|signings|departures|arrivals|kit|sponsor", re.I)
+_SKIP_HEADING = re.compile(r"transfer|signings|departures|arrivals|kit|sponsor|krallığı|asist|hat-?trick|topscorer|doelpunt", re.I)
 
 
 class _Cell:
-    __slots__ = ("header", "text", "links", "alts")
+    __slots__ = ("header", "text", "links", "alts", "titles")
 
     def __init__(self, header: bool) -> None:
-        self.header, self.text, self.links, self.alts = header, [], [], []
+        self.header, self.text, self.links, self.alts, self.titles = header, [], [], [], []
 
 
 class _Collector(HTMLParser):
@@ -51,6 +51,8 @@ class _Collector(HTMLParser):
             self._stack[-1][-1].append(self._cell)
         elif tag == "sup" or (tag == "span" and "mw-editsection" in (a.get("class") or "")):
             self._skip_depth += 1
+        elif tag == "span" and self._cell is not None and a.get("title"):
+            self._cell.titles.append(a["title"])               # info-bulle : « Prêté à », « Joueur en prêt entrant »
         elif tag == "a" and self._cell is not None:
             self._link, self._link_text = a.get("title"), []
         elif tag == "img" and self._cell is not None and a.get("alt"):
@@ -86,12 +88,14 @@ def _txt(cell: _Cell) -> str:
 
 # En-têtes de colonnes, toutes langues du périmètre (en, fr, it, es, de).
 _NUM = re.compile(r"(^|\s)(no|n|nr|nº|num|numero|number|numéro|numero|nummer|#)(\s|$)")
-_NAME = ("name", "nom", "joueur", "player", "nome", "nombre", "spieler", "giocatore", "jugador")
-_NAT = ("nat", "pays", "country", "nation", "paese")
-_POS = ("pos", "ruolo", "role", "rôle", "puesto", "position")
+_NAME = ("name", "nom", "joueur", "player", "nome", "nombre", "spieler", "giocatore", "jugador", "naam", "speler",
+         "oyuncu", "futbolcu", "isim")
+_NAT = ("nat", "pays", "country", "nation", "paese", "ülke", "uyruk")
+_POS = ("pos", "ruolo", "role", "rôle", "puesto", "position", "poz", "mevki")
 # Postes en une lettre : propres à la langue de la page (« D » = défenseur en fr/it, « C » = milieu en it…).
 _LETTERS = {"fr": {"G": "GK", "D": "DF", "M": "MF", "A": "FW"}, "it": {"P": "GK", "D": "DF", "C": "MF", "A": "FW"},
-            "es": {"P": "GK", "D": "DF", "C": "MF", "M": "MF", "A": "FW", "D.": "DF"}}
+            "es": {"P": "GK", "D": "DF", "C": "MF", "M": "MF", "A": "FW", "D.": "DF"},
+            "tr": {"KL": "GK", "DF": "DF", "OS": "MF", "FV": "FW"}}
 
 
 def _columns(row: list[_Cell]) -> dict[str, int]:
@@ -122,10 +126,14 @@ def parse_squad_html(html: str, lang: str | None = None) -> list[SquadEntry]:
         if _SKIP_HEADING.search(heading):
             continue
         cols: dict[str, int] = {}
+        group = ""                                              # ligne de groupe (« Keepers », « Verdedigers »…)
         for row in rows:
             hdr = _columns(row) if row else {}
             if hdr and (all(c.header for c in row) or not cols):   # en-tête en <th>, ou en <td> gras (ex. Nancy)
-                cols = hdr
+                cols, group = hdr, ""
+                continue
+            if cols and len(row) == 1 and _txt(row[0]):          # un seul bloc de texte : titre de groupe (poste en nl)
+                group = _txt(row[0])
                 continue
             if row and all(c.header for c in row):
                 continue
@@ -142,13 +150,20 @@ def parse_squad_html(html: str, lang: str | None = None) -> list[SquadEntry]:
             if "nat" in cols and len(row) > cols["nat"]:
                 c = row[cols["nat"]]
                 nat = (c.alts[0] if c.alts else _txt(c)) or None
-            pos_raw = _txt(row[cols["pos"]]) if "pos" in cols and len(row) > cols["pos"] else None
+            pos_raw = _txt(row[cols["pos"]]) if "pos" in cols and len(row) > cols["pos"] else (group or None)
             num_raw = _txt(row[cols["num"]]) if "num" in cols and len(row) > cols["num"] else ""
             m = re.match(r"\d{1,3}", num_raw)
+            tips = " ".join(t for c in row for t in c.titles)
+            section, note = heading, None
+            if re.search(r"prêté à|loaned to|ceduto", tips, re.I):          # le joueur est prêté ailleurs
+                section = f"{heading} – loaned out" if heading else "loaned out"
+            elif re.search(r"prêt entrant|loaned in|in prestito", tips, re.I):   # le joueur est reçu en prêt
+                note = "prêté (prêt entrant)"
             entries.append(SquadEntry(
                 name=name, link=link, shirt_number=int(m.group(0)) if m else None,
                 position_raw=pos_raw or None,
-                position=normalize_position(pos_raw) or _LETTERS.get(lang or "", {}).get((pos_raw or "").strip().upper()),
+                position=normalize_position(group) or normalize_position(pos_raw)
+                or _LETTERS.get(lang or "", {}).get((pos_raw or "").strip().upper()),
                 nationality=nat,
-                section=heading, note=None, fmt="html_table"))
+                section=section, note=note, fmt="html_table"))
     return _dedupe(entries)

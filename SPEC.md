@@ -1,4 +1,4 @@
-# OpenFootball — Spécification
+# OpenFootBase — Spécification
 
 > Statut : **v0.29** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D12 et les résultats mesurés (§9ter et suivants) font foi.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
@@ -266,7 +266,7 @@ Commande : `openfootball backfill --season Y` pour chaque saison (aucune n'est f
 - **Vérifié dans un navigateur** (volet intégré) avec les 16 saisons : chargement DuckDB-WASM sans erreur console ; recherche « mbappe » → Kylian Mbappé (parcours 2015/16 → 2025/26, Monaco/PSG/Real Madrid, « Prêté » en 2017/18) ; navigation club → effectif (Marseille 2023/24 : 26 joueurs) ; page Couverture en anglais ; mobile 375 px sans débordement horizontal ; mode sombre lisible. **Non vérifié** : lecture de Parquet servis par GitHub Pages (range requests), accessibilité au lecteur d'écran, navigateurs autres que celui du volet.
 - Jeu de données complet : **1,0 Mo** (16 saisons), archive de release **927 Ko**.
 
-**Déploiement (D9)** : `openfootball export --out … --archive … [--previous …]` produit une archive `.tar.gz` reproductible (horodatages normalisés) ; `.github/workflows/deploy.yml` (sur publication d'une release) télécharge côté serveur l'asset `openfootball-data.tar.gz` de la dernière release, l'extrait dans `site/data/` et déploie Pages ; `.github/workflows/ci.yml` lance `pytest`. **Non testés** : les workflows n'ont jamais tourné sur GitHub (syntaxe YAML validée seulement) ; aucun dépôt distant, aucune release, GitHub Pages non activé. Étape manuelle requise : activer Pages avec « GitHub Actions » comme source.
+**Déploiement (D9)** : `openfootball export --out … --archive … [--previous …]` produit une archive `.tar.gz` reproductible (horodatages normalisés) ; `.github/workflows/deploy.yml` (sur publication d'une release) télécharge côté serveur l'asset `openfootbase-data.tar.gz` de la dernière release, l'extrait dans `site/data/` et déploie Pages ; `.github/workflows/ci.yml` lance `pytest`. **Non testés** : les workflows n'ont jamais tourné sur GitHub (syntaxe YAML validée seulement) ; aucun dépôt distant, aucune release, GitHub Pages non activé. Étape manuelle requise : activer Pages avec « GitHub Actions » comme source.
 
 ## 9septies. Identité des joueurs par QID (2026-11-11)
 
@@ -364,6 +364,9 @@ Pour être **le plus exhaustif possible**, l'effectif d'un club-saison n'est plu
 - **Provenance** (migration **0010**) : `squad_source` (une ligne par page utilisée : rang, titre, révision, joueurs lus, joueurs ajoutés) et `squad_row_source` (pages qui listent chaque joueur) ; l'export publie la table `squad_source` et la colonne `squad.listed_in`. Le site affiche toutes les sources d'un effectif.
 - **Cas déclencheur** : Leeds United 2026/27 — la page anglaise listait 22 joueurs, l'italienne 26 : l'union est plus complète que l'une ou l'autre.
 - **Conséquence assumée** : une page peut être plus ancienne ou plus récente que la principale ; un joueur parti entre deux instantanés peut apparaître, un arrivé peut manquer à l'une des deux. L'union maximise la couverture, pas la datation (C1 inchangé). Plus de requêtes : chaque club lit toutes les langues du pays (≈ 6 minutes par saison au lieu de 1).
+
+### Saison en cours : la page du club en dernier recours
+Au début d'une saison, une page « saison du club » n'existe pas toujours (Lorient, Auxerre, Angers, Levante, Paderborn en 2026/27) alors que la **page du club** porte déjà l'effectif courant (« Effectif professionnel »). Pour la **seule saison en cours** (`season.status = 'open'` ou `backfill --open`), et seulement après tous les autres secours, `backfill` lit la page du club (titre par langue dans `entity_wiki`, langues du pays dans l'ordre, wikitexte puis HTML rendu). La page n'est retenue que si elle **cite la saison** (« 2026-2027 », « 2026–27 »…) et passe les invariants d'effectif ; sinon c'est l'effectif de la saison précédente et le trou reste un trou. Jamais pour une saison passée. Le HTML rendu lit aussi les info-bulles « Prêté à » / « Joueur en prêt entrant » (statuts de prêt) ; une section « … II » est une équipe réserve et n'entre pas dans l'effectif.
 
 ### Sélections et buts en équipe nationale
 Lus dans l'infobox anglaise (`national_team1`, `national_years1`, `national_caps1`, `national_goals1`, équipes de jeunes comprises) → table `player_national` (migration **0008**), export `national`, bloc « Équipe nationale » sur la fiche joueur. Mêmes réserves que la carrière : **chiffres Wikipedia publiés tels quels, non vérifiés**. Un nombre écrit comme lien (`[[Liste des buts|67]]`) est lu (Mbappé : France 107 sélections, 67 buts).

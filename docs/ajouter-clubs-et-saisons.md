@@ -35,6 +35,8 @@ openfootball status --season 2026                    # invariants, trous, taille
 ### Trous (club-saisons sans effectif)
 1. Cherchez une cause : titre de page différent, page absente, effectif incomplet. Si une page existe sous un
    autre titre, ajoutez une source manuelle (§4) et relancez `backfill --season …`.
+   Pour la **saison en cours** (`backfill --open`), la page du club elle-même est lue en dernier recours si elle cite
+   la saison (SPEC, « Saison en cours : la page du club »).
 2. Si Wikipedia n'a vraiment rien, **validez explicitement** le trou (jamais silencieux) :
    ```bash
    openfootball known-gap --season 2012 --club "AS Nancy" --reason "page saison inexistante sur en/fr/it"

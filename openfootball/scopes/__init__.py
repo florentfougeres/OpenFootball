@@ -17,6 +17,12 @@ class Scope:
     level: int
     team_counts: tuple[tuple[int, int], ...]   # (à partir de l'année, nombre de clubs)
     langs: tuple[str, ...] = ("en", "it", "fr")  # ordre des langues des pages « saison du club »
+    page_names: tuple[str, ...] = ()           # autres noms du championnat dans les titres de pages (renommages)
+
+    @property
+    def league_page_names(self) -> tuple[str, ...]:
+        """Noms essayés, dans l'ordre, pour « <saison> <nom> » (le nom principal d'abord)."""
+        return tuple(dict.fromkeys((self.competition_en, *self.page_names)))
 
     def expected_teams(self, start_year: int) -> int:
         n = None
@@ -39,7 +45,7 @@ def load_scopes(codes: list[str] | None = None) -> list[Scope]:
             code=d["code"], name_en=d["name_en"], name_fr=d["name_fr"],
             competition_code=c["code"], competition_en=c["name_en"], competition_fr=c["name_fr"],
             level=c["level"], team_counts=tuple((t["from"], t["n"]) for t in d["team_count"]),
-            langs=tuple(d.get("langs", ("en", "it", "fr"))))
+            langs=tuple(d.get("langs", ("en", "it", "fr"))), page_names=tuple(c.get("page_names", ())))
         if codes is None or sc.code in codes:
             out.append(sc)
     return out

@@ -1,8 +1,8 @@
 # Publier une release (données + site)
 
 Le site (GitHub Pages) est reconstruit **à partir des données de la dernière release GitHub**. Publier = exporter,
-créer la release, déclencher le déploiement. Dépôt : `florentfougeres/OpenFootball`, site :
-`https://florentfougeres.github.io/OpenFootball/`.
+créer la release, déclencher le déploiement. Dépôt : `florentfougeres/OpenFootBase`, site :
+`https://florentfougeres.github.io/OpenFootBase/`.
 
 ## Avant de publier : contrôles (5 minutes)
 
@@ -16,10 +16,10 @@ pytest -q                                   # les tests passent
 
 ```bash
 # manifeste de la release précédente (pour la garde de continuité des saisons figées)
-mkdir -p /tmp/prev && gh release download data-v1 --pattern openfootball-data.tar.gz --dir /tmp/prev --clobber
-tar -xzOf /tmp/prev/openfootball-data.tar.gz manifest.json > /tmp/prev/manifest.json
+mkdir -p /tmp/prev && gh release download data-v1 --pattern "*-data.tar.gz" --dir /tmp/prev --clobber
+tar -xzOf /tmp/prev/*-data.tar.gz manifest.json > /tmp/prev/manifest.json
 
-openfootball export --out dist/data --archive dist/openfootball-data.tar.gz --previous /tmp/prev/manifest.json
+openfootball export --out dist/data --archive dist/openfootbase-data.tar.gz --previous /tmp/prev/manifest.json
 ```
 
 - `--previous` : l'export est **refusé** si une saison figée a changé ou disparu (seule une procédure d'amendement l'autorise).
@@ -31,7 +31,7 @@ openfootball export --out dist/data --archive dist/openfootball-data.tar.gz --pr
 Les versions de données se nomment `data-vN` (ex. `data-v5`). Le tag **doit** commencer par `data-`.
 
 ```bash
-gh release create data-v2 dist/openfootball-data.tar.gz --target main \
+gh release create data-v2 dist/openfootbase-data.tar.gz --target main \
   --title "Data v2 ($(date +%F))" --notes "Ce qui change : …"
 ```
 

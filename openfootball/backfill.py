@@ -142,26 +142,63 @@ def _fallbacks(con, cs_id: int, team: str, start_year: int, label: str, wp, lang
     return None
 
 
+def _club_page_fallback(con, cs_id: int, team: str, qid: str | None, label: str, start_year: int, wp,
+                        lang_clients: dict, langs: tuple[str, ...]) -> ClubResult | None:
+    """Saison EN COURS seulement : la page « saison du club » n'existe pas encore, mais la page du CLUB porte
+    l'effectif courant (« Effectif professionnel »). On la lit dans chaque langue du pays (wikitexte puis HTML rendu)
+    et on ne la retient que si elle cite bien la saison (sinon c'est l'effectif de la saison précédente)."""
+    if not qid:
+        return None
+    titles = dict(con.execute("SELECT lang, title FROM entity_wiki WHERE qid = ?", [qid]).fetchall())
+    short = str(start_year + 1)[2:]
+    season_marks = {f"{start_year}-{start_year + 1}", f"{start_year}–{start_year + 1}", f"{start_year}/{start_year + 1}",
+                    f"{start_year}-{short}", f"{start_year}–{short}", f"{start_year}/{short}", label}
+    for lang in langs:
+        title = titles.get(lang)
+        client = wp if lang == "en" else lang_clients.get(lang)
+        parse = parse_squad if lang == "en" else PARSERS.get(lang)
+        if not (title and client and parse):
+            continue
+        [page] = client.get_pages([title])
+        if not page.exists or not any(m in page.wikitext for m in season_marks):
+            continue
+        main = plausible(parse(page.wikitext))
+        if not main and getattr(client, "render", None):
+            rendered = client.render(title)
+            if rendered.exists:
+                page, main = rendered, plausible(parse_squad_html(rendered.wikitext, lang))
+        if main:
+            n = write_squad(con, cs_id, main, lang=lang, revid=page.revid, source_title=page.resolved_title or title)
+            return ClubResult("", team, lang, n, page.resolved_title or title)
+    return None
+
+
 def run_backfill(
     con: duckdb.DuckDBPyConnection, scopes: list[Scope], start_year: int, *,
     wp, lang_clients: dict, wd, qid_lookup: Callable[[list[str]], dict[str, str | None]],
-    log: Callable[[str], None] = print, overrides: dict | None = None,
+    log: Callable[[str], None] = print, overrides: dict | None = None, current: bool = False,
 ) -> list[ClubResult]:
     season_id = ensure_season(con, start_year)
-    if con.execute("SELECT status FROM season WHERE id = ?", [season_id]).fetchone()[0] == "frozen":
+    status = con.execute("SELECT status FROM season WHERE id = ?", [season_id]).fetchone()[0]
+    if status == "frozen":
         raise SeasonFrozen(f"saison {start_year} figée : backfill refusé")
+    current = current or status == "open"             # saison en cours : la page du club peut servir de dernier recours
     label = season_label(start_year)
     results: list[ClubResult] = []
     overrides = load_overrides() if overrides is None else overrides
 
     for sc in scopes:
         competition_id = _ensure_scope_rows(con, sc)
-        [league_page] = wp.get_pages([f"{label} {sc.competition_en}"])
+        names = sc.league_page_names
+        league_pages = wp.get_pages([f"{label} {n}" for n in names])
+        # Le championnat a pu être renommé (Belgique : First Division A -> Pro League) : première page qui existe.
+        league_title, league_page = next(((f"{label} {n}", pg) for n, pg in zip(names, league_pages) if pg.exists),
+                                         (f"{label} {sc.competition_en}", league_pages[0]))
         want = sc.expected_teams(start_year)
         teams = league_teams(league_page.wikitext or "", want) if league_page.exists else []
         if len(teams) != want and league_page.exists and getattr(wp, "render", None):
             # Le wikitexte ne nomme pas tous les clubs (modèle de tableau à codes) : on lit le classement rendu.
-            teams = league_teams_html(wp.render(f"{label} {sc.competition_en}").wikitext, want) or teams
+            teams = league_teams_html(wp.render(league_title).wikitext, want) or teams
         if len(teams) != want:
             raise EnumerationError(f"{sc.code} {label}: {len(teams)} clubs trouvés, {want} attendus")
         qids = qid_lookup(teams)
@@ -238,6 +275,9 @@ def run_backfill(
                 chosen = ClubResult(sc.code, team, found[0][0], n, found[0][2])
             if not chosen:
                 got = _fallbacks(con, cs_id, team, start_year, label, wp, lang_clients, overrides, articles, sc.langs)
+                chosen = ClubResult(sc.code, team, got.lang, got.players, got.title) if got else None
+            if not chosen and current:
+                got = _club_page_fallback(con, cs_id, team, qids.get(team), label, start_year, wp, lang_clients, sc.langs)
                 chosen = ClubResult(sc.code, team, got.lang, got.players, got.title) if got else None
             res = chosen or ClubResult(sc.code, team, None, 0, None)
             results.append(res)

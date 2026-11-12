@@ -17,8 +17,8 @@ from importlib import resources
 _SPECIAL_FLAG = {"ENG": "gb-eng", "SCO": "gb-sct", "WAL": "gb-wls", "NIR": "gb-nir"}
 
 # Pays : codes ISO 3166 (donnent le drapeau), CIO, noms en/fr + es/it/de (les pages d'effectif de ces langues écrivent
-# « España », « Irlanda », « Alemania »…).
-SPARQL = """SELECT ?c ?iso2 ?iso3 ?ioc ?en ?fr ?es ?it ?de WHERE {
+# « España », « Irlanda », « Alemania »…) ; nl, pt, tr pour les pages belges, néerlandaises, portugaises et turques.
+SPARQL = """SELECT ?c ?iso2 ?iso3 ?ioc ?en ?fr ?es ?it ?de ?nl ?pt ?tr WHERE {
   ?c wdt:P297 ?iso2 .
   OPTIONAL { ?c wdt:P298 ?iso3 } OPTIONAL { ?c wdt:P984 ?ioc }
   ?c rdfs:label ?en . FILTER(LANG(?en) = "en")
@@ -26,6 +26,9 @@ SPARQL = """SELECT ?c ?iso2 ?iso3 ?ioc ?en ?fr ?es ?it ?de WHERE {
   OPTIONAL { ?c rdfs:label ?es . FILTER(LANG(?es) = "es") }
   OPTIONAL { ?c rdfs:label ?it . FILTER(LANG(?it) = "it") }
   OPTIONAL { ?c rdfs:label ?de . FILTER(LANG(?de) = "de") }
+  OPTIONAL { ?c rdfs:label ?nl . FILTER(LANG(?nl) = "nl") }
+  OPTIONAL { ?c rdfs:label ?pt . FILTER(LANG(?pt) = "pt") }
+  OPTIONAL { ?c rdfs:label ?tr . FILTER(LANG(?tr) = "tr") }
 }"""
 
 # Codes FIFA : portés par les équipes nationales masculines (Q6979593), rattachées à leur pays (P17).
@@ -75,7 +78,7 @@ def build_reference(countries: list[dict], fifa_rows: list[dict]) -> list[dict]:
         e = out.setdefault(r["c"], {"fifa": fifa_of.get(r["c"]), "ioc": None, "iso3": None, "flag": flag, "names": set()})
         e["ioc"] = e["ioc"] or (r.get("ioc") or "").upper() or None
         e["iso3"] = e["iso3"] or (r.get("iso3") or "").upper() or None
-        e["names"] |= {r[k] for k in ("en", "fr", "es", "it", "de") if r.get(k)}
+        e["names"] |= {r[k] for k in ("en", "fr", "es", "it", "de", "nl", "pt", "tr") if r.get(k)}
     entries = list(out.values())
     for e in entries:                          # alias manuels, rattachés par code FIFA/CIO/ISO3
         codes = {c for c in (e["fifa"], e["ioc"], e["iso3"]) if c}
@@ -117,7 +120,7 @@ def _index() -> tuple[dict[str, str], dict[str, str]]:
     return codes, names
 
 
-_PREFIX = re.compile(r"^(?:drapeau\s+(?:de\s+la|de\s+l|du|des|de|d)\s*|flag\s+of\s+(?:the\s+)?)", re.I)
+_PREFIX = re.compile(r"^(?:drapeau\s+(?:de\s+la|de\s+l|du|des|de|d)\s*|flag\s+of\s+(?:the\s+)?|vlag\s+van\s+(?:de\s+|het\s+)?)", re.I)
 
 
 def flag_code(raw: str | None) -> str | None:

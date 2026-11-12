@@ -92,4 +92,11 @@ def parse_squad_es(wikitext: str) -> list[SquadEntry]:
     return _scan(clean(wikitext), "Jugador de fútbol con esquema", build)
 
 
-PARSERS = {"fr": parse_squad_fr, "it": parse_squad_it, "es": parse_squad_es}
+def parse_squad_rendered_only(wikitext: str) -> list[SquadEntry]:
+    """nl, tr : les tableaux d'effectif viennent de modèles ou de tableaux sans gabarit stable ; ils sont lus dans le
+    HTML rendu (`parse_squad_html`). Le wikitexte ne donne rien : l'appelant passe alors au HTML rendu."""
+    return []
+
+
+PARSERS = {"fr": parse_squad_fr, "it": parse_squad_it, "es": parse_squad_es,
+           "nl": parse_squad_rendered_only, "tr": parse_squad_rendered_only}

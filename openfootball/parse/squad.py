@@ -40,7 +40,7 @@ _REGION_END = re.compile(
     r"season review|friendly matches|match(es)?|results|notes|references|"
     r"coaching staff|management)\b", re.I)
 _EXCLUDED_SECTION = re.compile(
-    r"reserve|academy|youth|under-?\d|u-?\d{2}|b team|filial|cantera|juvenil|"
+    r"reserve|academy|youth|under-?\d|u-?\d{2}|b team|filial|cantera|juvenil|\bII$|"
     r"coaching staff|^staff\b|managerial|^management|"
     r"^goals?$|goalscorers?|top scor|assists?|disciplin|contract|award|clean sheet|hat-?trick|player of the",
     re.I)

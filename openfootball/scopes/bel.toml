@@ -1,0 +1,31 @@
+code = "BEL"
+name_en = "Belgium"
+name_fr = "Belgique"
+
+# Belgique : néerlandais, français, anglais. Une langue sans analyseur est ignorée (elle est listée pour plus tard).
+langs = ["nl", "fr", "en"]
+
+[competition]
+code = "BEL-PL"
+name_en = "Belgian Pro League"
+name_fr = "Championnat de Belgique"
+level = 1
+# Nom du championnat dans les titres anglais : « 2018–19 Belgian First Division A » (renommé Pro League en 2020-2022).
+page_names = ["Belgian First Division A", "Belgian First Division"]
+
+[[team_count]]
+from = 2010
+n = 16
+
+[[team_count]]
+from = 2020
+n = 18
+
+[[team_count]]
+from = 2023
+n = 16
+
+# 2026-27 : retour à un championnat sans play-offs, 18 clubs.
+[[team_count]]
+from = 2026
+n = 18

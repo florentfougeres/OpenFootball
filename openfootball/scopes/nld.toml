@@ -1,0 +1,15 @@
+code = "NLD"
+name_en = "Netherlands"
+name_fr = "Pays-Bas"
+
+langs = ["nl", "en", "fr"]
+
+[competition]
+code = "NLD-ED"
+name_en = "Eredivisie"
+name_fr = "Eredivisie"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 18

@@ -15,10 +15,13 @@
   "iso3": "ARE",
   "flag": "ae",
   "names": [
+   "Birleşik Arap Emirlikleri",
+   "Emirados Árabes Unidos",
    "Emirati Arabi Uniti",
    "Emiratos Árabes Unidos",
    "United Arab Emirates",
    "Vereinigte Arabische Emirate",
+   "Verenigde Arabische Emiraten",
    "Émirats arabes unis"
   ]
  },
@@ -28,6 +31,8 @@
   "iso3": "AFG",
   "flag": "af",
   "names": [
+   "Afeganistão",
+   "Afganistan",
    "Afganistán",
    "Afghanistan"
   ]
@@ -40,9 +45,12 @@
   "names": [
    "Antigua and Barbuda",
    "Antigua e Barbuda",
+   "Antigua en Barbuda",
    "Antigua und Barbuda",
+   "Antigua ve Barbuda",
    "Antigua y Barbuda",
-   "Antigua-et-Barbuda"
+   "Antigua-et-Barbuda",
+   "Antígua e Barbuda"
   ]
  },
  {
@@ -63,7 +71,10 @@
   "names": [
    "Albania",
    "Albanie",
-   "Albanien"
+   "Albanien",
+   "Albanië",
+   "Albânia",
+   "Arnavutluk"
   ]
  },
  {
@@ -74,7 +85,10 @@
   "names": [
    "Armenia",
    "Armenien",
-   "Arménie"
+   "Armenië",
+   "Arménia",
+   "Arménie",
+   "Ermenistan"
   ]
  },
  {
@@ -83,9 +97,12 @@
   "iso3": "ANT",
   "flag": "an",
   "names": [
+   "Antilhas Neerlandesas",
    "Antillas Neerlandesas",
    "Antille Olandesi",
    "Antilles néerlandaises",
+   "Hollanda Antilleri",
+   "Nederlandse Antillen",
    "Netherlands Antilles",
    "Niederländische Antillen"
   ]
@@ -119,8 +136,11 @@
   "flag": "aq",
   "names": [
    "Antarctic Treaty area",
+   "Antarctica",
+   "Antarktika Antlaşması bölgesi",
    "Gebiet des Antarktis-Vertrags",
    "Región del Tratado Antártico",
+   "Sistema do Tratado da Antártica",
    "regione del Trattato Antartico",
    "région du Traité sur l'Antarctique"
   ]
@@ -133,7 +153,9 @@
   "names": [
    "Argentina",
    "Argentine",
-   "Argentinien"
+   "Argentinien",
+   "Argentinië",
+   "Arjantin"
   ]
  },
  {
@@ -143,6 +165,8 @@
   "flag": "as",
   "names": [
    "American Samoa",
+   "Amerikaans-Samoa",
+   "Amerikan Samoası",
    "Amerikanisch-Samoa",
    "Samoa Americana",
    "Samoa Americane",
@@ -157,6 +181,9 @@
   "names": [
    "Austria",
    "Autriche",
+   "Avusturya",
+   "Oostenrijk",
+   "Áustria",
    "Österreich"
   ]
  },
@@ -168,7 +195,10 @@
   "names": [
    "Australia",
    "Australie",
-   "Australien"
+   "Australien",
+   "Australië",
+   "Austrália",
+   "Avustralya"
   ]
  },
  {
@@ -199,8 +229,11 @@
    "Aserbaidschan",
    "Azerbaigian",
    "Azerbaijan",
+   "Azerbaijão",
    "Azerbaiyán",
-   "Azerbaïdjan"
+   "Azerbaycan",
+   "Azerbaïdjan",
+   "Azerbeidzjan"
   ]
  },
  {
@@ -209,11 +242,14 @@
   "iso3": "BIH",
   "flag": "ba",
   "names": [
+   "Bosna Hersek",
    "Bosnia and Herzegovina",
    "Bosnia ed Erzegovina",
    "Bosnia y Herzegovina",
    "Bosnie-Herzégovine",
-   "Bosnien und Herzegowina"
+   "Bosnien und Herzegowina",
+   "Bosnië en Herzegovina",
+   "Bósnia e Herzegovina"
   ]
  },
  {
@@ -234,6 +270,7 @@
   "names": [
    "Bangladesch",
    "Bangladesh",
+   "Bangladeş",
    "Bangladés"
   ]
  },
@@ -247,6 +284,8 @@
    "Belgio",
    "Belgique",
    "Belgium",
+   "België",
+   "Belçika",
    "Bélgica"
   ]
  },
@@ -256,7 +295,8 @@
   "iso3": "BFA",
   "flag": "bf",
   "names": [
-   "Burkina Faso"
+   "Burkina Faso",
+   "Burquina Fasso"
   ]
  },
  {
@@ -267,7 +307,10 @@
   "names": [
    "Bulgaria",
    "Bulgarie",
-   "Bulgarien"
+   "Bulgarien",
+   "Bulgarije",
+   "Bulgaristan",
+   "Bulgária"
   ]
  },
  {
@@ -278,6 +321,7 @@
   "names": [
    "Bahrain",
    "Bahrein",
+   "Bahreyn",
    "Bahreïn",
    "Baréin"
   ]
@@ -297,6 +341,7 @@
   "iso3": "BEN",
   "flag": "bj",
   "names": [
+   "Benim",
    "Benin",
    "Benín",
    "Bénin"
@@ -310,7 +355,8 @@
   "names": [
    "Saint Barthélemy",
    "Saint-Barthélemy",
-   "San Bartolomé"
+   "San Bartolomé",
+   "São Bartolomeu"
   ]
  },
  {
@@ -342,7 +388,9 @@
   "names": [
    "Bolivia",
    "Bolivie",
-   "Bolivien"
+   "Bolivien",
+   "Bolivya",
+   "Bolívia"
   ]
  },
  {
@@ -353,9 +401,12 @@
   "names": [
    "Caribbean Netherlands",
    "Caribe neerlandés",
+   "Caribisch Nederland",
+   "Karayip Hollandası",
    "Karibische Niederlande",
    "Paesi Bassi caraibici",
-   "Pays-Bas caribéens"
+   "Pays-Bas caribéens",
+   "Países Baixos Caribenhos"
   ]
  },
  {
@@ -368,6 +419,8 @@
    "Brasile",
    "Brasilien",
    "Brazil",
+   "Brazilië",
+   "Brezilya",
    "Brésil"
   ]
  },
@@ -377,6 +430,8 @@
   "iso3": "BHS",
   "flag": "bs",
   "names": [
+   "Bahama's",
+   "Bahamalar",
    "Bahamas",
    "The Bahamas"
   ]
@@ -389,7 +444,9 @@
   "names": [
    "Bhoutan",
    "Bhutan",
-   "Bután"
+   "Butan",
+   "Bután",
+   "Butão"
   ]
  },
  {
@@ -398,8 +455,11 @@
   "iso3": "BVT",
   "flag": "bv",
   "names": [
+   "Bouvet Adası",
    "Bouvet Island",
+   "Bouveteiland",
    "Bouvetinsel",
+   "Ilha Bouvet",
    "Isla Bouvet",
    "isola Bouvet",
    "île Bouvet"
@@ -412,6 +472,7 @@
   "flag": "bw",
   "names": [
    "Botsuana",
+   "Botsvana",
    "Botswana"
   ]
  },
@@ -423,8 +484,10 @@
   "names": [
    "Belarus",
    "Bielorrusia",
+   "Bielorrússia",
    "Bielorussia",
-   "Biélorussie"
+   "Biélorussie",
+   "Wit-Rusland"
   ]
  },
  {
@@ -455,6 +518,9 @@
   "flag": "cc",
   "names": [
    "Cocos (Keeling) Islands",
+   "Cocos Adaları",
+   "Cocoseilanden",
+   "Ilhas Cocos",
    "Isole Cocos",
    "Kokosinseln",
    "islas Cocos",
@@ -468,13 +534,16 @@
   "flag": "cd",
   "names": [
    "Congo DR",
+   "Congo-Kinshasa",
    "DR Congo",
    "Democratic Republic of the Congo",
    "Demokratische Republik Kongo",
+   "Kongo Demokratik Cumhuriyeti",
    "RD Congo",
    "RDC",
    "Repubblica Democratica del Congo",
    "República Democrática del Congo",
+   "República Democrática do Congo",
    "République démocratique du Congo"
   ]
  },
@@ -484,8 +553,11 @@
   "iso3": "CAF",
   "flag": "cf",
   "names": [
+   "Centraal-Afrikaanse Republiek",
    "Central African Republic",
+   "Orta Afrika Cumhuriyeti",
    "Repubblica Centrafricana",
+   "República Centro-Africana",
    "República Centroafricana",
    "République centrafricaine",
    "Zentralafrikanische Republik"
@@ -498,9 +570,12 @@
   "flag": "cg",
   "names": [
    "Congo",
+   "Congo-Brazzaville",
+   "Kongo",
    "Repubblica del Congo",
    "Republic of the Congo",
    "Republik Kongo",
+   "República do Congo",
    "République du Congo"
   ]
  },
@@ -513,8 +588,11 @@
    "Schweiz",
    "Suisse",
    "Suiza",
+   "Suíça",
    "Svizzera",
-   "Switzerland"
+   "Switzerland",
+   "Zwitserland",
+   "İsviçre"
   ]
  },
  {
@@ -525,9 +603,12 @@
   "names": [
    "Costa d'Avorio",
    "Costa de Marfil",
+   "Costa do Marfim",
    "Cote d'Ivoire",
    "Côte d'Ivoire",
    "Elfenbeinküste",
+   "Fildişi Sahili",
+   "Ivoorkust",
    "Ivory Coast"
   ]
  },
@@ -537,8 +618,11 @@
   "iso3": "COK",
   "flag": "ck",
   "names": [
+   "Cook Adaları",
    "Cook Islands",
+   "Cookeilanden",
    "Cookinseln",
+   "Ilhas Cook",
    "Islas Cook",
    "Isole Cook",
    "Îles Cook"
@@ -552,7 +636,8 @@
   "names": [
    "Chile",
    "Chili",
-   "Cile"
+   "Cile",
+   "Şili"
   ]
  },
  {
@@ -561,10 +646,12 @@
   "iso3": "CMR",
   "flag": "cm",
   "names": [
+   "Camarões",
    "Cameroon",
    "Cameroun",
    "Camerun",
    "Camerún",
+   "Kameroen",
    "Kamerun"
   ]
  },
@@ -574,11 +661,14 @@
   "iso3": "CHN",
   "flag": "cn",
   "names": [
+   "China",
    "Cina",
    "People's Republic of China",
    "República Popular China",
    "République populaire de Chine",
-   "Volksrepublik China"
+   "Volksrepubliek China",
+   "Volksrepublik China",
+   "Çin Halk Cumhuriyeti"
   ]
  },
  {
@@ -589,6 +679,8 @@
   "names": [
    "Colombia",
    "Colombie",
+   "Colômbia",
+   "Kolombiya",
    "Kolumbien"
   ]
  },
@@ -598,8 +690,11 @@
   "iso3": null,
   "flag": "cp",
   "names": [
+   "Clipperton",
+   "Clipperton Adası",
    "Clipperton Island",
    "Clipperton-Insel",
+   "Ilha de Clipperton",
    "Isla Clipperton",
    "Isola Clipperton",
    "La Passion–Clipperton"
@@ -621,7 +716,8 @@
   "iso3": "CRI",
   "flag": "cr",
   "names": [
-   "Costa Rica"
+   "Costa Rica",
+   "Kosta Rika"
   ]
  },
  {
@@ -631,7 +727,8 @@
   "flag": "cu",
   "names": [
    "Cuba",
-   "Kuba"
+   "Kuba",
+   "Küba"
   ]
  },
  {
@@ -644,6 +741,7 @@
    "Cap-Vert",
    "Cape Verde",
    "Capo Verde",
+   "Kaapverdië",
    "Kap Verde"
   ]
  },
@@ -655,7 +753,8 @@
   "names": [
    "Curacao",
    "Curazao",
-   "Curaçao"
+   "Curaçao",
+   "Curaçau"
   ]
  },
  {
@@ -664,9 +763,12 @@
   "iso3": "CXR",
   "flag": "cx",
   "names": [
+   "Christmas Adası (I)",
    "Christmas Island",
+   "Ilha Christmas",
    "Isla de Navidad",
    "Isola di Natale",
+   "Kersteiland",
    "Weihnachtsinsel",
    "île Christmas"
   ]
@@ -677,10 +779,12 @@
   "iso3": null,
   "flag": "cy",
   "names": [
+   "Chipre",
    "Chypre",
    "Cipro",
    "Cyprus",
    "Isla de Chipre",
+   "Kıbrıs",
    "Zypern"
   ]
  },
@@ -694,6 +798,7 @@
    "Chypre",
    "Cipro",
    "Cyprus",
+   "Kıbrıs",
    "Zypern"
   ]
  },
@@ -703,12 +808,15 @@
   "iso3": "CZE",
   "flag": "cz",
   "names": [
+   "Chéquia",
    "Czech Republic",
    "Czechia",
    "Repubblica Ceca",
    "República Checa",
    "Tchéquie",
-   "Tschechien"
+   "Tschechien",
+   "Tsjechië",
+   "Çekya"
   ]
  },
  {
@@ -717,8 +825,11 @@
   "iso3": "DDR",
   "flag": "dd",
   "names": [
+   "Alemanha Oriental",
    "Alemania Oriental",
    "Deutsche Demokratische Republik",
+   "Doğu Almanya",
+   "Duitse Democratische Republiek",
    "East Germany",
    "Repubblica Democratica Tedesca",
    "République démocratique allemande"
@@ -730,9 +841,12 @@
   "iso3": "DEU",
   "flag": "de",
   "names": [
+   "Alemanha",
    "Alemania",
    "Allemagne",
+   "Almanya",
    "Deutschland",
+   "Duitsland",
    "Germania",
    "Germany"
   ]
@@ -753,6 +867,7 @@
   "iso3": "DJI",
   "flag": "dj",
   "names": [
+   "Cibuti",
    "Djibouti",
    "Dschibuti",
    "Gibuti",
@@ -767,6 +882,8 @@
   "names": [
    "Danemark",
    "Danimarca",
+   "Danimarka",
+   "Denemarken",
    "Denmark",
    "Dinamarca",
    "Dänemark"
@@ -779,6 +896,7 @@
   "flag": "dm",
   "names": [
    "Dominica",
+   "Dominika",
    "Dominique"
   ]
  },
@@ -788,7 +906,9 @@
   "iso3": "DOM",
   "flag": "do",
   "names": [
+   "Dominicaanse Republiek",
    "Dominican Republic",
+   "Dominik Cumhuriyeti",
    "Dominikanische Republik",
    "Repubblica Dominicana",
    "República Dominicana",
@@ -803,8 +923,11 @@
   "names": [
    "Algeria",
    "Algerien",
+   "Algerije",
    "Algérie",
-   "Argelia"
+   "Argelia",
+   "Argélia",
+   "Cezayir"
   ]
  },
  {
@@ -814,6 +937,8 @@
   "flag": "ec",
   "names": [
    "Ecuador",
+   "Ekvador",
+   "Equador",
    "Équateur"
   ]
  },
@@ -825,7 +950,9 @@
   "names": [
    "Estland",
    "Estonia",
-   "Estonie"
+   "Estonie",
+   "Estonya",
+   "Estónia"
   ]
  },
  {
@@ -835,8 +962,11 @@
   "flag": "eg",
   "names": [
    "Egipto",
+   "Egito",
    "Egitto",
    "Egypt",
+   "Egypte",
+   "Mısır",
    "Ägypten",
    "Égypte"
   ]
@@ -847,9 +977,12 @@
   "iso3": "ESH",
   "flag": "eh",
   "names": [
+   "Batı Sahra",
    "Sahara Occidental",
    "Sahara Occidentale",
    "Sahara occidental",
+   "Sara Ocidental",
+   "Westelijke Sahara",
    "Western Sahara",
    "Westsahara"
   ]
@@ -860,21 +993,26 @@
   "iso3": "ERI",
   "flag": "er",
   "names": [
+   "Eritre",
    "Eritrea",
+   "Eritreia",
    "Érythrée"
   ]
  },
  {
   "fifa": "ESP",
-  "ioc": "SPA",
+  "ioc": "ESP",
   "iso3": "ESP",
   "flag": "es",
   "names": [
    "Espagne",
+   "Espanha",
    "España",
    "Spagna",
    "Spain",
-   "Spanien"
+   "Spanien",
+   "Spanje",
+   "İspanya"
   ]
  },
  {
@@ -884,8 +1022,11 @@
   "flag": "et",
   "names": [
    "Ethiopia",
+   "Ethiopië",
    "Etiopia",
    "Etiopía",
+   "Etiyopya",
+   "Etiópia",
    "Äthiopien",
    "Éthiopie"
   ]
@@ -899,6 +1040,8 @@
    "Finland",
    "Finlande",
    "Finlandia",
+   "Finlandiya",
+   "Finlândia",
    "Finnland"
   ]
  },
@@ -921,8 +1064,11 @@
   "iso3": "FLK",
   "flag": "fk",
   "names": [
+   "Falkland Adaları",
    "Falkland Islands",
+   "Falklandeilanden",
    "Falklandinseln",
+   "Ilhas Malvinas",
    "Islas Malvinas",
    "Isole Falkland",
    "îles Malouines"
@@ -937,6 +1083,9 @@
    "Estados Federados de Micronesia",
    "Federated States of Micronesia",
    "Föderierte Staaten von Mikronesien",
+   "Micronesië",
+   "Micronésia",
+   "Mikronezya",
    "Stati Federati di Micronesia",
    "États fédérés de Micronésie"
   ]
@@ -947,9 +1096,12 @@
   "iso3": "FRO",
   "flag": "fo",
   "names": [
+   "Faeröer",
+   "Faroe Adaları",
    "Faroe Islands",
    "Färöer",
    "Fær Øer",
+   "Ilhas Feroe",
    "Islas Feroe",
    "îles Féroé"
   ]
@@ -962,7 +1114,10 @@
   "names": [
    "France",
    "Francia",
-   "Frankreich"
+   "Frankreich",
+   "Frankrijk",
+   "Fransa",
+   "França"
   ]
  },
  {
@@ -973,6 +1128,7 @@
   "names": [
    "Gabon",
    "Gabun",
+   "Gabão",
    "Gabón"
   ]
  },
@@ -982,11 +1138,13 @@
   "iso3": "GBR",
   "flag": "gb",
   "names": [
+   "Birleşik Krallık",
    "Regno Unito",
    "Reino Unido",
    "Royaume-Uni",
    "United Kingdom",
-   "Vereinigtes Königreich"
+   "Vereinigtes Königreich",
+   "Verenigd Koninkrijk"
   ]
  },
  {
@@ -1060,7 +1218,10 @@
   "names": [
    "Georgia",
    "Georgien",
-   "Géorgie"
+   "Georgië",
+   "Geórgia",
+   "Géorgie",
+   "Gürcistan"
   ]
  },
  {
@@ -1069,9 +1230,12 @@
   "iso3": "GUF",
   "flag": "gf",
   "names": [
+   "Frans-Guyana",
+   "Fransız Guyanası",
    "Französisch-Guayana",
    "French Guiana",
    "Guayana Francesa",
+   "Guiana Francesa",
    "Guyana francese",
    "Guyane"
   ]
@@ -1083,7 +1247,8 @@
   "flag": "gg",
   "names": [
    "Guernesey",
-   "Guernsey"
+   "Guernsey",
+   "Guernsey Kraliyet Muhafızlığı"
   ]
  },
  {
@@ -1092,6 +1257,7 @@
   "iso3": "GHA",
   "flag": "gh",
   "names": [
+   "Gana",
    "Ghana"
   ]
  },
@@ -1101,6 +1267,7 @@
   "iso3": "GIB",
   "flag": "gi",
   "names": [
+   "Cebelitarık",
    "Gibilterra",
    "Gibraltar"
   ]
@@ -1114,6 +1281,7 @@
    "Greenland",
    "Groenland",
    "Groenlandia",
+   "Gronelândia",
    "Grönland"
   ]
  },
@@ -1125,6 +1293,8 @@
   "names": [
    "Gambia",
    "Gambie",
+   "Gambiya",
+   "Gâmbia",
    "The Gambia"
   ]
  },
@@ -1134,7 +1304,10 @@
   "iso3": "GIN",
   "flag": "gn",
   "names": [
+   "Gine",
    "Guinea",
+   "Guinee",
+   "Guiné",
    "Guinée"
   ]
  },
@@ -1155,9 +1328,12 @@
   "iso3": "GNQ",
   "flag": "gq",
   "names": [
+   "Ekvator Ginesi",
+   "Equatoriaal-Guinea",
    "Equatorial Guinea",
    "Guinea Ecuatorial",
    "Guinea Equatoriale",
+   "Guiné Equatorial",
    "Guinée équatoriale",
    "Äquatorialguinea"
   ]
@@ -1171,7 +1347,10 @@
    "Grecia",
    "Greece",
    "Griechenland",
-   "Grèce"
+   "Griekenland",
+   "Grèce",
+   "Grécia",
+   "Yunanistan"
   ]
  },
  {
@@ -1182,9 +1361,12 @@
   "names": [
    "Georgia del Sud e isole Sandwich meridionali",
    "Géorgie du Sud-et-les Îles Sandwich du Sud",
+   "Güney Georgia ve Güney Sandwich Adaları",
+   "Ilhas Geórgia do Sul e Sandwich do Sul",
    "Islas Georgias del Sur y Sandwich del Sur",
    "South Georgia and the South Sandwich Islands",
-   "Südgeorgien und die Südlichen Sandwichinseln"
+   "Südgeorgien und die Südlichen Sandwichinseln",
+   "Zuid-Georgia en de Zuidelijke Sandwicheilanden"
   ]
  },
  {
@@ -1211,8 +1393,11 @@
   "iso3": "GNB",
   "flag": "gw",
   "names": [
+   "Gine-Bissau",
    "Guinea-Bissau",
    "Guinea-Bisáu",
+   "Guinee-Bissau",
+   "Guiné-Bissau",
    "Guinée-Bissau"
   ]
  },
@@ -1222,6 +1407,7 @@
   "iso3": "GUY",
   "flag": "gy",
   "names": [
+   "Guiana",
    "Guyana"
   ]
  },
@@ -1241,8 +1427,11 @@
   "iso3": "HMD",
   "flag": "hm",
   "names": [
+   "Heard Adası ve McDonald Adaları",
    "Heard Island and McDonald Islands",
+   "Heard en McDonaldeilanden",
    "Heard und McDonaldinseln",
+   "Ilha Heard e Ilhas McDonald",
    "Islas Heard y McDonald",
    "Isole Heard e McDonald",
    "îles Heard-et-MacDonald"
@@ -1267,7 +1456,10 @@
    "Croatia",
    "Croatie",
    "Croazia",
-   "Kroatien"
+   "Croácia",
+   "Hırvatistan",
+   "Kroatien",
+   "Kroatië"
   ]
  },
  {
@@ -1287,9 +1479,12 @@
   "iso3": "HUN",
   "flag": "hu",
   "names": [
+   "Hongarije",
    "Hongrie",
    "Hungary",
+   "Hungria",
    "Hungría",
+   "Macaristan",
    "Ungarn",
    "Ungheria"
   ]
@@ -1300,8 +1495,11 @@
   "iso3": "IDN",
   "flag": "id",
   "names": [
+   "Endonezya",
    "Indonesia",
    "Indonesien",
+   "Indonesië",
+   "Indonésia",
    "Indonésie"
   ]
  },
@@ -1312,6 +1510,7 @@
   "flag": "ie",
   "names": [
    "Eire",
+   "Ierland",
    "Ireland",
    "Irish Republic",
    "Irland",
@@ -1320,7 +1519,8 @@
    "Republic of Ireland",
    "République d'Irlande",
    "République irlandaise",
-   "Éire"
+   "Éire",
+   "İrlanda"
   ]
  },
  {
@@ -1331,7 +1531,8 @@
   "names": [
    "Israel",
    "Israele",
-   "Israël"
+   "Israël",
+   "İsrail"
   ]
  },
  {
@@ -1340,8 +1541,11 @@
   "iso3": "IMN",
   "flag": "im",
   "names": [
+   "Ilha de Man",
    "Isla de Man",
    "Isle of Man",
+   "Man",
+   "Man Adası",
    "isola di Man",
    "Île de Man"
   ]
@@ -1352,9 +1556,11 @@
   "iso3": "IND",
   "flag": "in",
   "names": [
+   "Hindistan",
    "Inde",
    "India",
-   "Indien"
+   "Indien",
+   "Índia"
   ]
  },
  {
@@ -1363,11 +1569,14 @@
   "iso3": "IOT",
   "flag": "io",
   "names": [
+   "Britanya Hint Okyanusu Toprakları",
    "Britisches Territorium im Indischen Ozean",
    "British Indian Ocean Territory",
+   "Brits Indische Oceaanterritorium",
    "Territoire britannique de l’océan Indien",
    "Territorio Britannico dell'Oceano Indiano",
-   "Territorio Británico del Océano Índico"
+   "Territorio Británico del Océano Índico",
+   "Território Britânico do Oceano Índico"
   ]
  },
  {
@@ -1377,7 +1586,8 @@
   "flag": "iq",
   "names": [
    "Irak",
-   "Iraq"
+   "Iraq",
+   "Iraque"
   ]
  },
  {
@@ -1387,7 +1597,9 @@
   "flag": "ir",
   "names": [
    "Iran",
-   "Irán"
+   "Irán",
+   "Irão",
+   "İran"
   ]
  },
  {
@@ -1396,11 +1608,14 @@
   "iso3": "ISL",
   "flag": "is",
   "names": [
+   "IJsland",
    "Iceland",
    "Island",
    "Islanda",
    "Islande",
-   "Islandia"
+   "Islandia",
+   "Islândia",
+   "İzlanda"
   ]
  },
  {
@@ -1412,7 +1627,10 @@
    "Italia",
    "Italie",
    "Italien",
-   "Italy"
+   "Italië",
+   "Italy",
+   "Itália",
+   "İtalya"
   ]
  },
  {
@@ -1446,7 +1664,10 @@
    "Jordan",
    "Jordania",
    "Jordanie",
-   "Jordanien"
+   "Jordanien",
+   "Jordanië",
+   "Jordânia",
+   "Ürdün"
   ]
  },
  {
@@ -1458,6 +1679,8 @@
    "Giappone",
    "Japan",
    "Japon",
+   "Japonya",
+   "Japão",
    "Japón"
   ]
  },
@@ -1468,7 +1691,8 @@
   "flag": "ke",
   "names": [
    "Kenia",
-   "Kenya"
+   "Kenya",
+   "Quénia"
   ]
  },
  {
@@ -1479,8 +1703,11 @@
   "names": [
    "Kirghizistan",
    "Kirgisistan",
+   "Kirgizië",
    "Kirguistán",
-   "Kyrgyzstan"
+   "Kyrgyzstan",
+   "Kırgızistan",
+   "Quirguistão"
   ]
  },
  {
@@ -1491,9 +1718,12 @@
   "names": [
    "Cambodge",
    "Cambodia",
+   "Cambodja",
    "Cambogia",
+   "Camboja",
    "Camboya",
-   "Kambodscha"
+   "Kambodscha",
+   "Kamboçya"
   ]
  },
  {
@@ -1502,7 +1732,8 @@
   "iso3": "KIR",
   "flag": "ki",
   "names": [
-   "Kiribati"
+   "Kiribati",
+   "Quiribáti"
   ]
  },
  {
@@ -1513,9 +1744,11 @@
   "names": [
    "Comoras",
    "Comore",
+   "Comoren",
    "Comores",
    "Comoros",
-   "Komoren"
+   "Komoren",
+   "Komorlar"
   ]
  },
  {
@@ -1526,9 +1759,12 @@
   "names": [
    "Saint Kitts and Nevis",
    "Saint Kitts e Nevis",
+   "Saint Kitts en Nevis",
+   "Saint Kitts ve Nevis",
    "Saint-Christophe-et-Niévès",
    "San Cristóbal y Nieves",
-   "St. Kitts und Nevis"
+   "St. Kitts und Nevis",
+   "São Cristóvão e Neves"
   ]
  },
  {
@@ -1539,7 +1775,10 @@
   "names": [
    "Corea del Nord",
    "Corea del Norte",
+   "Coreia do Norte",
    "Corée du Nord",
+   "Kuzey Kore",
+   "Noord-Korea",
    "Nordkorea",
    "North Korea"
   ]
@@ -1552,10 +1791,13 @@
   "names": [
    "Corea del Sud",
    "Corea del Sur",
+   "Coreia do Sul",
    "Corée du Sud",
+   "Güney Kore",
    "Korea Republic",
    "South Korea",
-   "Südkorea"
+   "Südkorea",
+   "Zuid-Korea"
   ]
  },
  {
@@ -1564,7 +1806,9 @@
   "iso3": "KWT",
   "flag": "kw",
   "names": [
+   "Koeweit",
    "Koweït",
+   "Kuveyt",
    "Kuwait"
   ]
  },
@@ -1574,9 +1818,12 @@
   "iso3": "CYM",
   "flag": "ky",
   "names": [
+   "Cayman Adaları",
    "Cayman Islands",
+   "Ilhas Cayman",
    "Islas Caimán",
    "Isole Cayman",
+   "Kaaimaneilanden",
    "îles Caïmans"
   ]
  },
@@ -1586,7 +1833,9 @@
   "iso3": "KAZ",
   "flag": "kz",
   "names": [
+   "Cazaquistão",
    "Kasachstan",
+   "Kazachstan",
    "Kazajistán",
    "Kazakhstan",
    "Kazakistan"
@@ -1611,7 +1860,8 @@
    "Liban",
    "Libano",
    "Libanon",
-   "Líbano"
+   "Líbano",
+   "Lübnan"
   ]
  },
  {
@@ -1623,6 +1873,7 @@
    "Saint Lucia",
    "Sainte-Lucie",
    "Santa Lucía",
+   "Santa Lúcia",
    "St. Lucia"
   ]
  },
@@ -1632,7 +1883,8 @@
   "iso3": "LIE",
   "flag": "li",
   "names": [
-   "Liechtenstein"
+   "Liechtenstein",
+   "Lihtenştayn"
   ]
  },
  {
@@ -1650,7 +1902,9 @@
   "iso3": "LBR",
   "flag": "lr",
   "names": [
-   "Liberia"
+   "Liberia",
+   "Liberya",
+   "Libéria"
   ]
  },
  {
@@ -1671,8 +1925,11 @@
   "names": [
    "Litauen",
    "Lithuania",
+   "Litouwen",
    "Lituania",
-   "Lituanie"
+   "Lituanie",
+   "Lituânia",
+   "Litvanya"
   ]
  },
  {
@@ -1684,7 +1941,8 @@
    "Lussemburgo",
    "Luxembourg",
    "Luxemburg",
-   "Luxemburgo"
+   "Luxemburgo",
+   "Lüksemburg"
   ]
  },
  {
@@ -1694,10 +1952,13 @@
   "flag": "lv",
   "names": [
    "Latvia",
+   "Letland",
    "Letonia",
+   "Letonya",
    "Lettland",
    "Lettonia",
-   "Lettonie"
+   "Lettonie",
+   "Letónia"
   ]
  },
  {
@@ -1707,9 +1968,11 @@
   "flag": "ly",
   "names": [
    "Libia",
+   "Libië",
    "Libya",
    "Libye",
-   "Libyen"
+   "Libyen",
+   "Líbia"
   ]
  },
  {
@@ -1718,9 +1981,11 @@
   "iso3": "MAR",
   "flag": "ma",
   "names": [
+   "Fas",
    "Maroc",
    "Marocco",
    "Marokko",
+   "Marrocos",
    "Marruecos",
    "Morocco"
   ]
@@ -1732,6 +1997,7 @@
   "flag": "mc",
   "names": [
    "Monaco",
+   "Monako",
    "Mónaco",
    "Principato di Monaco"
   ]
@@ -1745,7 +2011,9 @@
    "Moldau",
    "Moldavia",
    "Moldavie",
-   "Moldova"
+   "Moldavië",
+   "Moldova",
+   "Moldávia"
   ]
  },
  {
@@ -1754,6 +2022,7 @@
   "iso3": "MNE",
   "flag": "me",
   "names": [
+   "Karadağ",
    "Montenegro",
    "Monténégro"
   ]
@@ -1764,8 +2033,11 @@
   "iso3": "MAF",
   "flag": "mf",
   "names": [
+   "Saint Martin",
    "Saint-Martin",
-   "San Martín"
+   "San Martín",
+   "Sint-Maarten",
+   "São Martinho"
   ]
  },
  {
@@ -1775,7 +2047,8 @@
   "flag": "mg",
   "names": [
    "Madagascar",
-   "Madagaskar"
+   "Madagaskar",
+   "Madagáscar"
   ]
  },
  {
@@ -1784,9 +2057,12 @@
   "iso3": "MHL",
   "flag": "mh",
   "names": [
+   "Ilhas Marshall",
    "Islas Marshall",
    "Isole Marshall",
+   "Marshall Adaları",
    "Marshall Islands",
+   "Marshalleilanden",
    "Marshallinseln",
    "Îles Marshall"
   ]
@@ -1797,9 +2073,12 @@
   "iso3": "MKD",
   "flag": "mk",
   "names": [
+   "Kuzey Makedonya",
    "Macedonia del Nord",
    "Macedonia del Norte",
+   "Macedónia do Norte",
    "Macédoine du Nord",
+   "Noord-Macedonië",
    "Nordmazedonien",
    "North Macedonia"
   ]
@@ -1832,7 +2111,10 @@
   "names": [
    "Mongolei",
    "Mongolia",
-   "Mongolie"
+   "Mongolie",
+   "Mongolië",
+   "Mongólia",
+   "Moğolistan"
   ]
  },
  {
@@ -1842,7 +2124,8 @@
   "flag": "mo",
   "names": [
    "Macao",
-   "Macau"
+   "Macau",
+   "Makao"
   ]
  },
  {
@@ -1853,6 +2136,9 @@
   "names": [
    "Islas Marianas del Norte",
    "Isole Marianne Settentrionali",
+   "Kuzey Mariana Adaları",
+   "Marianas Setentrionais",
+   "Noordelijke Marianen",
    "Northern Mariana Islands",
    "Nördliche Marianen",
    "îles Mariannes du Nord"
@@ -1876,7 +2162,10 @@
   "names": [
    "Mauretanien",
    "Mauritania",
-   "Mauritanie"
+   "Mauritanie",
+   "Mauritanië",
+   "Mauritânia",
+   "Moritanya"
   ]
  },
  {
@@ -1885,6 +2174,7 @@
   "iso3": "MSR",
   "flag": "ms",
   "names": [
+   "Monserrate",
    "Montserrat"
   ]
  },
@@ -1906,7 +2196,8 @@
   "names": [
    "Maurice",
    "Mauricio",
-   "Mauritius"
+   "Mauritius",
+   "Maurícia"
   ]
  },
  {
@@ -1918,6 +2209,7 @@
    "Maldivas",
    "Maldive",
    "Maldives",
+   "Maldivler",
    "Malediven"
   ]
  },
@@ -1928,6 +2220,7 @@
   "flag": "mw",
   "names": [
    "Malaui",
+   "Malavi",
    "Malawi"
   ]
  },
@@ -1937,6 +2230,7 @@
   "iso3": "MEX",
   "flag": "mx",
   "names": [
+   "Meksika",
    "Messico",
    "Mexico",
    "Mexiko",
@@ -1952,7 +2246,10 @@
   "names": [
    "Malaisie",
    "Malasia",
-   "Malaysia"
+   "Malaysia",
+   "Maleisië",
+   "Malezya",
+   "Malásia"
   ]
  },
  {
@@ -1963,7 +2260,9 @@
   "names": [
    "Mosambik",
    "Mozambico",
-   "Mozambique"
+   "Mozambik",
+   "Mozambique",
+   "Moçambique"
   ]
  },
  {
@@ -1973,7 +2272,10 @@
   "flag": "na",
   "names": [
    "Namibia",
-   "Namibie"
+   "Namibie",
+   "Namibië",
+   "Namibya",
+   "Namíbia"
   ]
  },
  {
@@ -1984,9 +2286,12 @@
   "names": [
    "Neukaledonien",
    "New Caledonia",
+   "Nieuw-Caledonië",
    "Nouvelle-Calédonie",
+   "Nova Caledónia",
    "Nueva Caledonia",
-   "Nuova Caledonia"
+   "Nuova Caledonia",
+   "Yeni Kaledonya"
   ]
  },
  {
@@ -1996,6 +2301,7 @@
   "flag": "ne",
   "names": [
    "Niger",
+   "Nijer",
    "Níger"
   ]
  },
@@ -2005,8 +2311,11 @@
   "iso3": "NFK",
   "flag": "nf",
   "names": [
+   "Ilha Norfolk",
    "Isla Norfolk",
    "Isola Norfolk",
+   "Norfolk",
+   "Norfolk Adası",
    "Norfolk Island",
    "Norfolkinsel",
    "île Norfolk"
@@ -2018,7 +2327,9 @@
   "iso3": "NGA",
   "flag": "ng",
   "names": [
-   "Nigeria"
+   "Nigeria",
+   "Nigéria",
+   "Nijerya"
   ]
  },
  {
@@ -2027,7 +2338,9 @@
   "iso3": "NIC",
   "flag": "ni",
   "names": [
-   "Nicaragua"
+   "Nicaragua",
+   "Nicarágua",
+   "Nikaragua"
   ]
  },
  {
@@ -2036,10 +2349,13 @@
   "iso3": "NLD",
   "flag": "nl",
   "names": [
+   "Hollanda Krallığı",
    "Kingdom of the Netherlands",
+   "Koninkrijk der Nederlanden",
    "Königreich der Niederlande",
    "Regno dei Paesi Bassi",
    "Reino de los Países Bajos",
+   "Reino dos Países Baixos",
    "Royaume des Pays-Bas"
   ]
  },
@@ -2049,8 +2365,10 @@
   "iso3": "NOR",
   "flag": "no",
   "names": [
+   "Noorwegen",
    "Noruega",
    "Norvegia",
+   "Norveç",
    "Norvège",
    "Norway",
    "Norwegen"
@@ -2073,6 +2391,7 @@
   "flag": "nr",
   "names": [
    "Naoero",
+   "Naoëro",
    "Nauru"
   ]
  },
@@ -2093,9 +2412,12 @@
   "names": [
    "Neuseeland",
    "New Zealand",
+   "Nieuw-Zeeland",
    "Nouvelle-Zélande",
+   "Nova Zelândia",
    "Nueva Zelanda",
-   "Nuova Zelanda"
+   "Nuova Zelanda",
+   "Yeni Zelanda"
   ]
  },
  {
@@ -2105,7 +2427,9 @@
   "flag": "om",
   "names": [
    "Oman",
-   "Omán"
+   "Omán",
+   "Omã",
+   "Umman"
   ]
  },
  {
@@ -2124,10 +2448,13 @@
   "iso3": "PCI",
   "flag": "pc",
   "names": [
+   "Pasifik Adaları Güven Bölgesi",
+   "Protectorado das Ilhas do Pacífico das Nações Unidas",
    "Territorio en Fideicomiso de las Islas del Pacífico",
    "Territorio fiduciario delle Isole del Pacifico",
    "Treuhandgebiet Pazifische Inseln",
    "Trust Territory of the Pacific Islands",
+   "Trustgebied van de Pacifische Eilanden",
    "territoire sous tutelle des îles du Pacifique"
   ]
  },
@@ -2149,10 +2476,13 @@
   "iso3": "PYF",
   "flag": "pf",
   "names": [
+   "Frans-Polynesië",
+   "Fransız Polinezyası",
    "Französisch-Polynesien",
    "French Polynesia",
    "Polinesia Francesa",
    "Polinesia francese",
+   "Polinésia Francesa",
    "Polynésie française"
   ]
  },
@@ -2162,10 +2492,13 @@
   "iso3": "PNG",
   "flag": "pg",
   "names": [
+   "Papoea-Nieuw-Guinea",
    "Papouasie-Nouvelle-Guinée",
    "Papua New Guinea",
    "Papua Nuova Guinea",
+   "Papua Yeni Gine",
    "Papua-Neuguinea",
+   "Papua-Nova Guiné",
    "Papúa Nueva Guinea"
   ]
  },
@@ -2175,7 +2508,9 @@
   "iso3": "PHL",
   "flag": "ph",
   "names": [
+   "Filipijnen",
    "Filipinas",
+   "Filipinler",
    "Filippine",
    "Philippinen",
    "Philippines"
@@ -2188,7 +2523,8 @@
   "flag": "pk",
   "names": [
    "Pakistan",
-   "Pakistán"
+   "Pakistán",
+   "Paquistão"
   ]
  },
  {
@@ -2200,7 +2536,9 @@
    "Poland",
    "Polen",
    "Pologne",
-   "Polonia"
+   "Polonia",
+   "Polonya",
+   "Polónia"
   ]
  },
  {
@@ -2211,6 +2549,7 @@
   "names": [
    "Saint Pierre and Miquelon",
    "Saint-Pierre e Miquelon",
+   "Saint-Pierre en Miquelon",
    "Saint-Pierre und Miquelon",
    "Saint-Pierre-et-Miquelon",
    "San Pedro y Miquelón"
@@ -2222,9 +2561,12 @@
   "iso3": "PCN",
   "flag": "pn",
   "names": [
+   "Ilhas Pitcairn",
    "Islas Pitcairn",
    "Isole Pitcairn",
+   "Pitcairn Adaları",
    "Pitcairn Islands",
+   "Pitcairneilanden",
    "Pitcairninseln",
    "îles Pitcairn"
   ]
@@ -2236,6 +2578,7 @@
   "flag": "pr",
   "names": [
    "Porto Rico",
+   "Porto Riko",
    "Puerto Rico"
   ]
  },
@@ -2245,6 +2588,8 @@
   "iso3": "PSE",
   "flag": "ps",
   "names": [
+   "Estado da Palestina",
+   "Filistin",
    "Palestina",
    "Palestine",
    "Palästina",
@@ -2258,6 +2603,7 @@
   "iso3": "PRT",
   "flag": "pt",
   "names": [
+   "Portekiz",
    "Portogallo",
    "Portugal"
   ]
@@ -2278,6 +2624,7 @@
   "iso3": "PRY",
   "flag": "py",
   "names": [
+   "Paraguai",
    "Paraguay"
   ]
  },
@@ -2299,6 +2646,7 @@
   "flag": "re",
   "names": [
    "La Réunion",
+   "Reunião",
    "Reunión",
    "Riunione",
    "Réunion"
@@ -2310,7 +2658,10 @@
   "iso3": "ROU",
   "flag": "ro",
   "names": [
+   "Roemenië",
    "Romania",
+   "Romanya",
+   "Roménia",
    "Roumanie",
    "Rumania",
    "Rumänien"
@@ -2324,7 +2675,10 @@
   "names": [
    "Serbia",
    "Serbie",
-   "Serbien"
+   "Serbien",
+   "Servië",
+   "Sérvia",
+   "Sırbistan"
   ]
  },
  {
@@ -2334,9 +2688,12 @@
   "flag": "ru",
   "names": [
    "Rusia",
+   "Rusland",
    "Russia",
    "Russie",
-   "Russland"
+   "Russland",
+   "Rusya",
+   "Rússia"
   ]
  },
  {
@@ -2358,8 +2715,11 @@
    "Arabia Saudita",
    "Arabia Saudí",
    "Arabie saoudite",
+   "Arábia Saudita",
+   "Saoedi-Arabië",
    "Saudi Arabia",
-   "Saudi-Arabien"
+   "Saudi-Arabien",
+   "Suudi Arabistan"
   ]
  },
  {
@@ -2368,9 +2728,12 @@
   "iso3": "SLB",
   "flag": "sb",
   "names": [
+   "Ilhas Salomão",
    "Islas Salomón",
    "Isole Salomone",
    "Salomonen",
+   "Salomonseilanden",
+   "Solomon Adaları",
    "Solomon Islands",
    "Îles Salomon"
   ]
@@ -2382,7 +2745,8 @@
   "flag": "sc",
   "names": [
    "Seychellen",
-   "Seychelles"
+   "Seychelles",
+   "Seyşeller"
   ]
  },
  {
@@ -2391,9 +2755,11 @@
   "iso3": "SDN",
   "flag": "sd",
   "names": [
+   "Soedan",
    "Soudan",
    "Sudan",
-   "Sudán"
+   "Sudán",
+   "Sudão"
   ]
  },
  {
@@ -2405,8 +2771,11 @@
    "Schweden",
    "Suecia",
    "Suède",
+   "Suécia",
    "Svezia",
-   "Sweden"
+   "Sweden",
+   "Zweden",
+   "İsveç"
   ]
  },
  {
@@ -2417,7 +2786,8 @@
   "names": [
    "Singapore",
    "Singapour",
-   "Singapur"
+   "Singapur",
+   "Singapura"
   ]
  },
  {
@@ -2427,9 +2797,12 @@
   "flag": "sh",
   "names": [
    "Saint Helena, Ascension and Tristan da Cunha",
+   "Saint Helena, Ascension ve Tristan da Cunha",
    "Sainte-Hélène, Ascension et Tristan da Cunha",
    "Sant'Elena, Ascensione e Tristan da Cunha",
    "Santa Elena, Ascensión y Tristán de Acuña",
+   "Santa Helena, Ascensão e Tristão da Cunha",
+   "Sint-Helena, Ascension en Tristan da Cunha",
    "St. Helena, Ascension und Tristan da Cunha"
   ]
  },
@@ -2440,7 +2813,10 @@
   "flag": "si",
   "names": [
    "Eslovenia",
+   "Eslovénia",
    "Slovenia",
+   "Slovenië",
+   "Slovenya",
    "Slovénie",
    "Slowenien"
   ]
@@ -2451,10 +2827,12 @@
   "iso3": "SJM",
   "flag": "sj",
   "names": [
+   "Spitsbergen en Jan Mayen",
    "Svalbard and Jan Mayen",
    "Svalbard e Jan Mayen",
    "Svalbard et Jan Mayen",
    "Svalbard und Jan Mayen",
+   "Svalbard ve Jan Mayen",
    "Svalbard y Jan Mayen"
   ]
  },
@@ -2465,10 +2843,13 @@
   "flag": "sk",
   "names": [
    "Eslovaquia",
+   "Eslováquia",
    "Slovacchia",
    "Slovakia",
+   "Slovakya",
    "Slovaquie",
-   "Slowakei"
+   "Slowakei",
+   "Slowakije"
   ]
  },
  {
@@ -2477,6 +2858,7 @@
   "iso3": "SLE",
   "flag": "sl",
   "names": [
+   "Serra Leoa",
    "Sierra Leona",
    "Sierra Leone"
   ]
@@ -2507,8 +2889,11 @@
   "iso3": "SOM",
   "flag": "so",
   "names": [
+   "Somali",
    "Somalia",
-   "Somalie"
+   "Somalie",
+   "Somalië",
+   "Somália"
   ]
  },
  {
@@ -2527,11 +2912,14 @@
   "iso3": "SSD",
   "flag": "ss",
   "names": [
+   "Güney Sudan",
    "Soudan du Sud",
    "South Sudan",
    "Sudan del Sud",
    "Sudán del Sur",
-   "Südsudan"
+   "Sudão do Sul",
+   "Südsudan",
+   "Zuid-Soedan"
   ]
  },
  {
@@ -2541,10 +2929,12 @@
   "flag": "st",
   "names": [
    "Santo Tomé y Príncipe",
+   "Sao Tomé en Principe",
    "Sao Tomé-et-Principe",
    "São Tomé and Príncipe",
    "São Tomé e Príncipe",
-   "São Tomé und Príncipe"
+   "São Tomé und Príncipe",
+   "São Tomé ve Príncipe"
   ]
  },
  {
@@ -2554,9 +2944,12 @@
   "flag": "su",
   "names": [
    "Soviet Union",
+   "Sovjet-Unie",
+   "Sovyet Sosyalist Cumhuriyetler Birliği",
    "Sowjetunion",
    "Union soviétique",
    "Unione Sovietica",
+   "União Soviética",
    "Unión Soviética"
   ]
  },
@@ -2578,7 +2971,8 @@
   "names": [
    "Saint-Martin",
    "San Martín",
-   "Sint Maarten"
+   "Sint Maarten",
+   "São Martinho"
   ]
  },
  {
@@ -2588,9 +2982,12 @@
   "flag": "sy",
   "names": [
    "Siria",
+   "Suriye",
    "Syria",
    "Syrie",
-   "Syrien"
+   "Syrien",
+   "Syrië",
+   "Síria"
   ]
  },
  {
@@ -2599,6 +2996,8 @@
   "iso3": "SWZ",
   "flag": "sz",
   "names": [
+   "Essuatíni",
+   "Esvatini",
    "Eswatini",
    "Suazilandia",
    "Swaziland"
@@ -2620,9 +3019,12 @@
   "iso3": "TCA",
   "flag": "tc",
   "names": [
+   "Ilhas Turcas e Caicos",
    "Islas Turcas y Caicos",
    "Turks and Caicos Islands",
    "Turks e Caicos",
+   "Turks ve Caicos Adaları",
+   "Turks- en Caicoseilanden",
    "Turks- und Caicosinseln",
    "Îles Turques et Caïques"
   ]
@@ -2634,9 +3036,12 @@
   "flag": "td",
   "names": [
    "Chad",
+   "Chade",
    "Ciad",
    "Tchad",
-   "Tschad"
+   "Tschad",
+   "Tsjaad",
+   "Çad"
   ]
  },
  {
@@ -2645,8 +3050,11 @@
   "iso3": "ATF",
   "flag": "tf",
   "names": [
+   "Franse Zuidelijke Gebieden",
+   "Fransız Güney ve Antarktika Toprakları",
    "Französische Süd- und Antarktisgebiete",
    "French Southern and Antarctic Lands",
+   "Terras Austrais e Antárticas Francesas",
    "Terre Australi e Antartiche Francesi",
    "Terres australes et antarctiques françaises",
    "Tierras Australes y Antárticas Francesas"
@@ -2668,6 +3076,8 @@
   "flag": "th",
   "names": [
    "Tailandia",
+   "Tailândia",
+   "Tayland",
    "Thailand",
    "Thaïlande"
   ]
@@ -2678,10 +3088,13 @@
   "iso3": "TJK",
   "flag": "tj",
   "names": [
+   "Tacikistan",
    "Tadjikistan",
    "Tadschikistan",
+   "Tadzjikistan",
    "Tagikistan",
    "Tajikistan",
+   "Tajiquistão",
    "Tayikistán"
   ]
  },
@@ -2700,6 +3113,8 @@
   "iso3": "TLS",
   "flag": "tl",
   "names": [
+   "Doğu Timor",
+   "Oost-Timor",
    "Osttimor",
    "Timor Est",
    "Timor Oriental",
@@ -2715,7 +3130,9 @@
   "names": [
    "Turkmenistan",
    "Turkmenistán",
-   "Turkménistan"
+   "Turkménistan",
+   "Turquemenistão",
+   "Türkmenistan"
   ]
  },
  {
@@ -2725,8 +3142,11 @@
   "flag": "tn",
   "names": [
    "Tunesien",
+   "Tunesië",
    "Tunisia",
    "Tunisie",
+   "Tunus",
+   "Tunísia",
    "Túnez"
   ]
  },
@@ -2747,6 +3167,8 @@
   "names": [
    "Turchia",
    "Turkey",
+   "Turkije",
+   "Turquia",
    "Turquie",
    "Turquía",
    "Türkei",
@@ -2759,9 +3181,12 @@
   "iso3": "TTO",
   "flag": "tt",
   "names": [
+   "Trindade e Tobago",
    "Trinidad and Tobago",
    "Trinidad e Tobago",
+   "Trinidad en Tobago",
    "Trinidad und Tobago",
+   "Trinidad ve Tobago",
    "Trinidad y Tobago",
    "Trinité-et-Tobago"
   ]
@@ -2783,6 +3208,7 @@
   "names": [
    "República de China",
    "Taiwan",
+   "Tayvan",
    "Taïwan"
   ]
  },
@@ -2794,7 +3220,9 @@
   "names": [
    "Tansania",
    "Tanzania",
-   "Tanzanie"
+   "Tanzanie",
+   "Tanzanya",
+   "Tanzânia"
   ]
  },
  {
@@ -2803,9 +3231,12 @@
   "iso3": "UKR",
   "flag": "ua",
   "names": [
+   "Oekraïne",
    "Ucraina",
    "Ucrania",
-   "Ukraine"
+   "Ucrânia",
+   "Ukraine",
+   "Ukrayna"
   ]
  },
  {
@@ -2814,6 +3245,7 @@
   "iso3": "UGA",
   "flag": "ug",
   "names": [
+   "Oeganda",
    "Ouganda",
    "Uganda"
   ]
@@ -2824,6 +3256,8 @@
   "iso3": "UMI",
   "flag": "um",
   "names": [
+   "Amerikaanse Kleinere Afgelegen Eilanden",
+   "Ilhas Menores Distantes dos Estados Unidos",
    "Islas ultramarinas de Estados Unidos",
    "Isole minori esterne degli Stati Uniti d'America",
    "Kleinere Amerikanische Überseeinseln",
@@ -2837,11 +3271,13 @@
   "iso3": "USA",
   "flag": "us",
   "names": [
+   "Amerika Birleşik Devletleri",
    "Estados Unidos",
    "Etats-Unis",
    "Stati Uniti",
    "United States",
    "Vereinigte Staaten",
+   "Verenigde Staten",
    "États-Unis"
   ]
  },
@@ -2851,6 +3287,7 @@
   "iso3": "URY",
   "flag": "uy",
   "names": [
+   "Uruguai",
    "Uruguay"
   ]
  },
@@ -2860,10 +3297,13 @@
   "iso3": "UZB",
   "flag": "uz",
   "names": [
+   "Oezbekistan",
    "Ouzbékistan",
    "Usbekistan",
+   "Usbequistão",
    "Uzbekistan",
-   "Uzbekistán"
+   "Uzbekistán",
+   "Özbekistan"
   ]
  },
  {
@@ -2874,8 +3314,11 @@
   "names": [
    "Città del Vaticano",
    "Ciudad del Vaticano",
+   "Vaticaanstad",
    "Vatican",
    "Vatican City",
+   "Vaticano",
+   "Vatikan",
    "Vatikanstadt"
   ]
  },
@@ -2887,9 +3330,12 @@
   "names": [
    "Saint Vincent and the Grenadines",
    "Saint Vincent e Grenadine",
+   "Saint Vincent en de Grenadines",
+   "Saint Vincent ve Grenadinler",
    "Saint-Vincent-et-les-Grenadines",
    "San Vicente y las Granadinas",
-   "St. Vincent und die Grenadinen"
+   "St. Vincent und die Grenadinen",
+   "São Vicente e Granadinas"
   ]
  },
  {
@@ -2907,8 +3353,11 @@
   "iso3": "VGB",
   "flag": "vg",
   "names": [
+   "Britanya Virjin Adaları",
    "Britische Jungferninseln",
    "British Virgin Islands",
+   "Britse Maagdeneilanden",
+   "Ilhas Virgens Britânicas",
    "Islas Vírgenes Británicas",
    "Isole Vergini Britanniche",
    "îles Vierges britanniques"
@@ -2920,7 +3369,10 @@
   "iso3": "VIR",
   "flag": "vi",
   "names": [
+   "ABD Virjin Adaları",
+   "Amerikaanse Maagdeneilanden",
    "Amerikanische Jungferninseln",
+   "Ilhas Virgens Americanas",
    "Islas Vírgenes de los Estados Unidos",
    "Isole Vergini degli Stati Uniti",
    "United States Virgin Islands",
@@ -2933,7 +3385,8 @@
   "iso3": "VNM",
   "flag": "vn",
   "names": [
-   "Vietnam"
+   "Vietnam",
+   "Vietname"
   ]
  },
  {
@@ -2953,7 +3406,9 @@
   "names": [
    "Wallis and Futuna",
    "Wallis e Futuna",
+   "Wallis en Futuna",
    "Wallis und Futuna",
+   "Wallis ve Futuna Adaları",
    "Wallis y Futuna",
    "Wallis-et-Futuna"
   ]
@@ -2973,6 +3428,7 @@
   "iso3": "XKS",
   "flag": "xk",
   "names": [
+   "Kosova",
    "Kosovo"
   ]
  },
@@ -2982,6 +3438,7 @@
   "iso3": "YEM",
   "flag": "ye",
   "names": [
+   "Iémen",
    "Jemen",
    "Yemen",
    "Yémen"
@@ -3002,10 +3459,13 @@
   "iso3": null,
   "flag": "yu",
   "names": [
+   "Joegoslavië",
    "Jugoslavia",
    "Jugoslawien",
+   "Jugoslávia",
    "Yougoslavie",
-   "Yugoslavia"
+   "Yugoslavia",
+   "Yugoslavya"
   ]
  },
  {
@@ -3015,10 +3475,13 @@
   "flag": "za",
   "names": [
    "Afrique du Sud",
+   "Güney Afrika",
    "South Africa",
    "Sudafrica",
    "Sudáfrica",
-   "Südafrika"
+   "Südafrika",
+   "Zuid-Afrika",
+   "África do Sul"
   ]
  },
  {
@@ -3029,7 +3492,9 @@
   "names": [
    "Sambia",
    "Zambia",
-   "Zambie"
+   "Zambie",
+   "Zambiya",
+   "Zâmbia"
   ]
  },
  {
@@ -3040,7 +3505,9 @@
   "names": [
    "Simbabwe",
    "Zimbabue",
-   "Zimbabwe"
+   "Zimbabve",
+   "Zimbabwe",
+   "Zimbábue"
   ]
  }
 ]

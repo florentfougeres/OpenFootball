@@ -1,0 +1,19 @@
+code = "PRT"
+name_en = "Portugal"
+name_fr = "Portugal"
+
+langs = ["pt", "en", "fr"]
+
+[competition]
+code = "PRT-PL"
+name_en = "Primeira Liga"
+name_fr = "Liga Portugal"
+level = 1
+
+[[team_count]]
+from = 2010
+n = 16
+
+[[team_count]]
+from = 2014
+n = 18

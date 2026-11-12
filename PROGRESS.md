@@ -8,7 +8,7 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 
 | Saison | État | DEU-BL | ENG-PL | ESP-LL | FRA-L1 | ITA-SA |
 |---|---|---|---|---|---|---|
-| 2026/27 | open | 17/18 ⚠ | 20/20 ✓ | 19/20 ⚠ | 15/18 ⚠ | 20/20 ✓ |
+| 2026/27 | open | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ |
 | 2025/26 | backfill | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ |
 | 2024/25 | backfill | 16/18 ⚠ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ |
 | 2023/24 | backfill | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ |
@@ -26,17 +26,12 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | backfill | 18/18 ✓ | 20/20 ✓ | 18/20 ⚠ | 20/20 ✓ | 20/20 ✓ |
 | 2010/11 | backfill | 18/18 ✓ | 20/20 ✓ | 16/20 ⚠ | 20/20 ✓ | 20/20 ✓ |
 
-**Total : 1641 / 1658 effectifs (99.0 %).**
+**Total : 1646 / 1658 effectifs (99.3 %).**
 
 ## Manques : club-saisons sans effectif
 
 | Saison | Championnat | Club | Statut du trou |
 |---|---|---|---|
-| 2026/27 | DEU-BL | SC Paderborn 07 | **non validé** |
-| 2026/27 | ESP-LL | Levante UD | **non validé** |
-| 2026/27 | FRA-L1 | AJ Auxerre | **non validé** |
-| 2026/27 | FRA-L1 | Angers SCO | **non validé** |
-| 2026/27 | FRA-L1 | FC Lorient | **non validé** |
 | 2024/25 | DEU-BL | Holstein Kiel | validé : page anglaise de la saison sans section d'effectif (transferts et matchs seulement) ; aucune autre source libre trouvée |
 | 2024/25 | DEU-BL | VfL Bochum | validé : page anglaise de la saison sans section d'effectif (transferts et matchs seulement) ; aucune autre source libre trouvée |
 | 2013/14 | ESP-LL | Granada CF | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
@@ -54,12 +49,12 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 
 | Donnée | Manquants | Sur |
 |---|---|---|
-| Joueurs sans identité Wikidata (QID) | 3685 | 19054 |
-| Joueurs sans carrière (infobox) | 3814 | 19054 |
-| Joueurs sans date de naissance au jour près | 3798 | 19054 |
-| Lignes d'effectif sans nationalité | 1053 | 61277 |
-| Lignes d'effectif sans poste | 212 | 61277 |
-| Lignes d'effectif à statut inconnu (prêt/transfert) | 47900 | 61277 |
+| Joueurs sans identité Wikidata (QID) | 3707 | 19107 |
+| Joueurs sans carrière (infobox) | 3838 | 19107 |
+| Joueurs sans date de naissance au jour près | 3820 | 19107 |
+| Lignes d'effectif sans nationalité | 1054 | 61441 |
+| Lignes d'effectif sans poste | 212 | 61441 |
+| Lignes d'effectif à statut inconnu (prêt/transfert) | 48728 | 61441 |
 | Clubs à effectifs sans logo | 0 | 189 |
 | Clubs à effectifs sans page Wikipedia française | 1 | 189 |
 

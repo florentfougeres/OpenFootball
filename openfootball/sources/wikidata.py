@@ -50,7 +50,7 @@ class WikidataClient:
         self._session = requests.Session()
         contact = os.environ.get("OPENFOOTBALL_CONTACT", "unset")
         self._session.headers["User-Agent"] = (
-            f"OpenFootballBot/0.1 (open football squads project; contact: {contact})")
+            f"OpenFootBaseBot/0.1 (open football squads project; contact: {contact})")
         self._session.headers["Accept"] = "application/sparql-results+json"
 
     def _http(self, query: str) -> dict:
