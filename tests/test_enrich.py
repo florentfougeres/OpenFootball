@@ -146,7 +146,7 @@ def test_non_latin_stadium_and_league_get_an_english_label_and_are_exported(con,
     export_all(con, tmp_path)
     import glob
     f = glob.glob(str(tmp_path / "club" / "*.parquet"))[0]
-    row = duckdb.sql(f"SELECT stadium, league, city, name_local, nickname FROM read_parquet('{f}') WHERE wikidata_qid = 'Q2'").fetchone()
+    row = duckdb.sql(f"SELECT stadium, league, city, name_local, nickname FROM read_parquet('{f}') WHERE wikidata_qid = 'Q2'").fetchall()[0]
     assert row == ("Otkritie Arena", "Russian Premier League", "Moscow", "Spartak", None)   # latin gardé ; surnom non latin masqué
 
 
