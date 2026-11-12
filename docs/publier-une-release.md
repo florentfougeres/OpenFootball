@@ -28,7 +28,7 @@ openfootball export --out dist/data --archive dist/openfootball-data.tar.gz --pr
 
 ## 2. Créer la release
 
-Les versions de données se nomment `data-vN` (ex. `data-v2`). Le tag **doit** commencer par `data-`.
+Les versions de données se nomment `data-vN` (ex. `data-v5`). Le tag **doit** commencer par `data-`.
 
 ```bash
 gh release create data-v2 dist/openfootball-data.tar.gz --target main \
@@ -42,11 +42,14 @@ Facultatif : joindre la base complète en asset (`gh release upload data-v2 data
 
 Le workflow *Deploy site* télécharge l'archive de la **dernière** release, construit le site (`web/`) et publie.
 
-- **Déclenchement par la release** : il échoue si l'environnement GitHub `github-pages` n'autorise pas les tags
-  (message « Tag "data-vN" is not allowed to deploy to github-pages »). Pour l'autoriser une fois pour toutes :
-  *Settings → Environments → github-pages → Deployment branches and tags → Add deployment branch or tag rule →
+- **Déclenchement par la release** : l'environnement GitHub `github-pages` doit autoriser les tags `data-*` (sinon le
+  déploiement échoue : « Tag "data-vN" is not allowed to deploy to github-pages »). **La règle est en place sur ce dépôt**
+  (ajoutée le 2026-11-12) : publier une release `data-vN` déploie donc le site toute seule. Pour la recréer sur un autre
+  dépôt : *Settings → Environments → github-pages → Deployment branches and tags → Add deployment branch or tag rule →
   type « Tag », motif `data-*`*.
-- **Sans cette règle**, lancez le déploiement à la main depuis `main` (autorisé) :
+- **Un seul déploiement à la fois** : le workflow annule le déploiement en cours quand un autre démarre. Un *push* de code
+  fait juste avant la release peut donc en annuler un ; si le site n'est pas à jour au bout de quelques minutes
+  (`gh run list --workflow deploy.yml`), relancez à la main depuis `main` :
 
 ```bash
 gh workflow run deploy.yml --ref main
