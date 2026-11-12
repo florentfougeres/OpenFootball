@@ -21,10 +21,12 @@ openfootball status --season 2026                    # invariants, trous, taille
 
 - `--season` = année de **début** (2026 = saison 2026/27).
 - `--league FRA ITA` limite à certains pays ; sans option, tous les pays déclarés dans `scopes/`.
-- Le backfill construit chaque club-saison en essayant les langues dans l'ordre du pays (`langs` du TOML :
-  `fr` d'abord pour la France, `it` pour l'Italie, `en` pour l'Angleterre…), puis l'anglais en secours,
-  puis le rendu HTML, puis les sources manuelles (voir §4). Un effectif n'est **attesté** que s'il passe les
-  invariants (≥ 11 joueurs dont un gardien).
+- Le backfill lit, pour chaque club-saison, **toutes les langues du pays** (`langs` du TOML : `fr` d'abord pour la France,
+  `it` pour l'Italie, `en` pour l'Angleterre…, puis les autres) et fait l'**union** des effectifs trouvés, pour être le
+  plus complet possible (D12). La première langue qui répond est la source principale ; les pages suivantes n'ajoutent que
+  les joueurs absents. Si une page n'est lisible que rendue (HTML), elle l'est avant de passer à la langue suivante ;
+  si aucune langue ne marche : sources manuelles (§4). Un effectif n'est **attesté** que s'il passe les invariants
+  (≥ 11 joueurs dont un gardien). Les sources utilisées sont visibles sur la page effectif du site (table `squad_source`).
 - Sortie : `=== backfill 2026/27 : 35/38 effectifs attestés ===` puis la liste des `TROU`.
 - Un backfill peut être relancé tant que la saison n'est pas figée (il réécrit la saison ; faites alors
   `reconcile --names`).

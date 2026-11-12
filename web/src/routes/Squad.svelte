@@ -25,7 +25,10 @@
         ${app.has.birth ? "b.birth_date, b.precision" : "NULL AS birth_date, NULL AS precision"}
       FROM squad s ${app.has.birth ? "LEFT JOIN birth b ON b.player_qid = s.player_qid" : ""}
       WHERE s.club = ? AND s.season = ? ORDER BY s.shirt_number NULLS LAST, s.player`, [title, lbl]);
-    return { cs, rows };
+    const sources = app.has.squad_source
+      ? await q(`SELECT rank, source_lang, source_title, players_read, players_added FROM squad_source WHERE club = ? AND season = ? ORDER BY rank`, [title, lbl])
+      : [];
+    return { cs, rows, sources };
   });
   const d = $derived(res.data);
 </script>
@@ -41,7 +44,11 @@
       <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
         {#if d?.cs}<span>{compName(d.cs.competition)}</span>{/if}
         <StateBadge status={app.manifest.seasons[label].status} />
-        {#if d?.cs?.source_lang}
+        {#if d?.sources.length}
+          <span>{t(d.sources.length > 1 ? "sourcesLabel" : "sourceLabel")} :
+            {#each d.sources as src, i}{#if i}, {/if}<a class="link" href={wikiUrl(src.source_lang, src.source_title)} hreflang={src.source_lang} target="_blank" rel="noopener">{src.source_lang.toUpperCase()}</a>
+              <span class="text-xs">({src.players_read} {t("srcPlayers")}{#if i && src.players_added}, +{src.players_added} {t("srcAdded")}{/if})</span>{/each}</span>
+        {:else if d?.cs?.source_lang}
           <span>{t("sourceLabel")} : <a class="link" href={wikiUrl(d.cs.source_lang, d.cs.source_title)} hreflang={d.cs.source_lang} target="_blank" rel="noopener">{d.cs.source_title}</a> ({d.cs.source_lang.toUpperCase()})</span>
         {/if}
       </p>

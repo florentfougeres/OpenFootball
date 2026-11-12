@@ -109,11 +109,25 @@ def _name_and_link(raw: str) -> tuple[str | None, str | None]:
     raw = raw.strip()
     m = re.search(r"\{\{\s*sortname\s*\|(.*?)\}\}", raw, re.I | re.S)
     if m:
-        a = split_top_level(m.group(1))
-        first, last = (a + ["", ""])[:2]
-        dab = a[2].strip() if len(a) > 2 else ""
+        parts = split_top_level(m.group(1))
+        named = {}                                       # `dab=footballer, born 1999`, `nolink=1`… ne sont PAS des positions
+        positional = []
+        for x in parts:
+            k = re.match(r"^\s*([A-Za-z]+)\s*=(.*)$", x, re.S)
+            if k:
+                named[k.group(1).lower()] = k.group(2).strip()
+            else:
+                positional.append(x)
+        first, last = (positional + ["", ""])[:2]
+        target = positional[2].strip() if len(positional) > 2 else ""
         name = f"{first.strip()} {last.strip()}".strip()
-        return name or None, (dab or name or None)
+        if named.get("nolink"):
+            return name or None, None
+        if target:                                       # 3ᵉ argument : titre complet de la page
+            return name or None, target
+        if named.get("dab") and name:                    # `dab=` : « Prénom Nom (désambiguïsant) »
+            return name, f"{name} ({named['dab']})"
+        return name or None, (name or None)
     m = _LINK.search(raw)
     if m:
         target, shown = m.group(1).strip(), (m.group(2) or m.group(1)).strip()

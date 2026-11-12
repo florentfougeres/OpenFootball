@@ -26,6 +26,9 @@ SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
        pcs.shirt_number, pcs.position_code AS position, pcs.nationality_raw AS nationality,
        nm.flag AS nat_flag,
        pcs.stint, pcs.confidence, pcs.source, pcs.source_section,
+       (SELECT string_agg(r.source_lang, ',' ORDER BY ss.rank) FROM squad_row_source r
+          JOIN squad_source ss ON ss.club_season_id = r.club_season_id AND ss.source_lang = r.source_lang
+         WHERE r.club_season_id = pcs.club_season_id AND r.player_id = pcs.player_id) AS listed_in,
        cs.source_lang, cs.source_title, cs.source_revid
 FROM player_club_season pcs
 JOIN club_season cs ON cs.id = pcs.club_season_id
@@ -70,6 +73,13 @@ def _latin_or_english(col: str, label: str) -> str:
     pas du russe, de l'arabe ou du chinois à un lecteur qui ne le lit pas)."""
     return f"CASE WHEN regexp_matches(c.{col}, '{NON_LATIN}') THEN {label}.label ELSE c.{col} END"
 
+
+_SQUAD_SOURCE = """
+SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club, ss.rank, ss.source_lang, ss.source_title,
+       ss.source_revid, ss.players_read, ss.players_added
+FROM squad_source ss JOIN club_season cs ON cs.id = ss.club_season_id JOIN season s ON s.id = cs.season_id
+JOIN competition co ON co.id = cs.competition_id JOIN club cl ON cl.id = cs.club_id
+ORDER BY s.start_year, cl.wikipedia_title, ss.rank"""
 
 _GLOBAL = {
     "club": "SELECT c.wikidata_qid, c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, "
@@ -151,6 +161,7 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         manifest["tables"][name] = _write(con, sql, out, name, name)
     manifest["tables"]["career"] = _write(con, _CAREER, out, "career", "career")
     manifest["tables"]["national"] = _write(con, _NATIONAL, out, "national", "national")
+    manifest["tables"]["squad_source"] = _write(con, _SQUAD_SOURCE, out, "squad_source", "squad_source")
     manifest["tables"]["known_gap"] = _write(con, """
         SELECT s.label AS season, cl.wikipedia_title AS club, k.reason
         FROM known_gap k JOIN club_season cs ON cs.id = k.club_season_id

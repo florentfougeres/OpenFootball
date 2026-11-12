@@ -220,7 +220,12 @@ def test_french_club_uses_the_french_page_before_english(con):
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, _fr_squad())})}, wd=wd,
         qid_lookup=lambda ts: {t: ("Q2" if t == "Club 2" else None) for t in ts}, log=lambda s: None)
     r = {x.club: x for x in res}
-    assert (r["Club 2"].lang, r["Club 2"].players) == ("fr", 15)               # la page française l'emporte
+    assert r["Club 2"].lang == "fr"                                              # la page française est la source principale
+    assert r["Club 2"].players == 15 + 14                                        # D12 : union avec la page anglaise (noms différents)
+    assert con.execute("SELECT source_lang FROM club_season cs JOIN club c ON c.id = cs.club_id "
+                       "WHERE c.wikipedia_title = 'Club 2'").fetchone() == ("fr",)
+    assert con.execute("SELECT s.source_lang, s.players_read, s.players_added FROM squad_source s JOIN club_season cs ON cs.id = s.club_season_id "
+                       "JOIN club c ON c.id = cs.club_id WHERE c.wikipedia_title = 'Club 2' ORDER BY s.rank").fetchall() == [("fr", 15, 15), ("en", 14, 14)]
     assert r["Club 3"].lang == "en"                                              # pas de page fr -> anglais en secours
 
 
@@ -280,4 +285,7 @@ def test_english_html_is_read_before_falling_back_to_another_language(con):
                        lang_clients={"it": FakeWiki({it_title: page(it_title, it_text)}), "fr": FakeWiki({})}, wd=wd,
                        qid_lookup=lambda ts: {t: ("Q5" if t == "Club 5" else None) for t in ts}, log=lambda s: None, overrides={})
     r = next(x for x in res if x.club == "Club 5")
-    assert (r.lang, r.players) == ("en", 14)                      # l'anglais rendu l'emporte sur l'italien
+    assert r.lang == "en"                                         # l'anglais rendu est la source principale (pas l'italien)
+    assert r.players == 14 + 12                                   # D12 : union avec l'italien (joueurs différents)
+    assert con.execute("SELECT s.source_lang FROM squad_source s JOIN club_season cs ON cs.id = s.club_season_id JOIN club c ON c.id = cs.club_id "
+                       "WHERE c.wikipedia_title = 'Club 5' ORDER BY s.rank").fetchall() == [("en",), ("it",)]

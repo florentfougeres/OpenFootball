@@ -86,25 +86,50 @@ def _upsert_player(con, e: SquadEntry, lang: str) -> int:
 
 def write_squad(con, club_season_id: int, entries: list[SquadEntry], *, lang: str,
                 source_title: str, revid: int | None) -> int:
-    """Remplace l'effectif d'un club-saison (idempotent). Refuse une saison figée."""
+    """Remplace l'effectif d'un club-saison par UNE source (idempotent). Refuse une saison figée."""
+    from openfootball.merge import merge_squads          # import local : merge importe stint_of d'ici
+    merged = merge_squads([(lang, entries)])
+    return write_squad_merged(con, club_season_id, merged, [
+        {"lang": lang, "title": source_title, "revid": revid, "read": len(merged), "added": len(merged)}])
+
+
+def write_squad_merged(con, club_season_id: int, merged: list, sources: list[dict]) -> int:
+    """Remplace l'effectif d'un club-saison par l'UNION de plusieurs sources (D12).
+
+    `merged` : sortie de `merge.merge_squads` ; `sources` : [{lang, title, revid, read, added}] dans l'ordre de
+    priorité (la première devient `club_season.source_*`). Provenance conservée : `squad_source` (pages) et
+    `squad_row_source` (pages qui listent chaque joueur). Idempotent ; refuse une saison figée."""
     assert_writable(con, club_season_id)
     con.execute("BEGIN")
     try:
-        con.execute("DELETE FROM player_club_season WHERE club_season_id = ?", [club_season_id])
+        for table in ("player_club_season", "squad_source", "squad_row_source"):
+            con.execute(f"DELETE FROM {table} WHERE club_season_id = ?", [club_season_id])
         seen: set[int] = set()
-        for e in entries:
-            pid = _upsert_player(con, e, lang)
+        for m in merged:
+            ident_lang = next((l for l, e in m.entries.items() if e.link), None)      # identité : une page qui lie le joueur
+            ident = m.entries[ident_lang] if ident_lang else m.base
+            pid = _upsert_player(con, ident, ident_lang or m.langs[0])
+            for l, e in m.entries.items():                    # les autres liens du même joueur sont mémorisés (futurs backfills)
+                if e.link and (l, e.link) != (ident_lang, ident.link):
+                    con.execute("INSERT INTO player_link VALUES (?, ?, ?) ON CONFLICT DO NOTHING", [l, e.link, pid])
             if pid in seen:
                 continue
             seen.add(pid)
+            b = m.base
             con.execute(
                 "INSERT INTO player_club_season (id, player_id, club_season_id, shirt_number, position_code,"
                 " position_raw, nationality_raw, stint, confidence, source, source_section)"
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'attested', 'wikipedia_season', ?)",
-                [_next_id(con, "player_club_season"), pid, club_season_id, _valid_shirt(e.shirt_number), e.position,
-                 e.position_raw, e.nationality, stint_of(e), e.section])
+                [_next_id(con, "player_club_season"), pid, club_season_id, _valid_shirt(b.shirt_number), b.position,
+                 b.position_raw, b.nationality, m.stint, b.section])
+            for l in m.entries:
+                con.execute("INSERT INTO squad_row_source VALUES (?, ?, ?) ON CONFLICT DO NOTHING", [club_season_id, pid, l])
+        for rank, src in enumerate(sources, 1):
+            con.execute("INSERT INTO squad_source VALUES (?, ?, ?, ?, ?, ?, ?)",
+                        [club_season_id, rank, src["lang"], src["title"], src["revid"], src["read"], src["added"]])
+        main = sources[0]
         con.execute("UPDATE club_season SET source_lang = ?, source_title = ?, source_revid = ?, "
-                    "retrieved_at = now() WHERE id = ?", [lang, source_title, revid, club_season_id])
+                    "retrieved_at = now() WHERE id = ?", [main["lang"], main["title"], main["revid"], club_season_id])
         con.execute("COMMIT")
     except Exception:
         con.execute("ROLLBACK")

@@ -26,7 +26,7 @@ Chiffres au 2026-11-12 (état à jour : [PROGRESS.md](PROGRESS.md)).
 l'absence a été vérifiée (page Wikipedia inexistante ou sans effectif) ; les *non encore examinés* sont des promus de 2026/27
 sans page pour l'instant. Autour : les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
 
-Un effectif est **l'instantané publié sur la page Wikipedia** « saison du club » (langue du pays d'abord, anglais en secours) ;
+Un effectif est **l'union des instantanés publiés sur les pages Wikipedia** « saison du club » de toutes les langues du pays (langue du pays d'abord, puis anglais, italien…), pour être le plus complet possible ;
 les prêts, les limites et les licences sont expliqués dans le dictionnaire de données et sur la page *À propos* du site.
 
 ## Installation

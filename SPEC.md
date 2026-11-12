@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **v0.28** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D11 et les résultats mesurés (§9ter et suivants) font foi.
+> Statut : **v0.28** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D12 et les résultats mesurés (§9ter et suivants) font foi.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -9,7 +9,7 @@
 > v0.7 : stockage et exécution tranchés (D8).
 > v0.8 : résultats du sondage de couverture M0(a) sur les 4 championnats × 2010–2025 (§9ter).
 > v0.9 → v0.27 : backfills, identité par QID, carrières, Bundesliga, clubs du monde, logos (§9quater à §9duodecies).
-> v0.28 : langue locale d'abord (D10), prêts hors de l'effectif d'origine (D11), sélections, identité par infobox, textes non latins, site Svelte à navigation par pays (§9terdecies).
+> v0.28 : langue locale d'abord (D10), union des sources (D12), prêts hors de l'effectif d'origine (D11), sélections, identité par infobox, textes non latins, site Svelte à navigation par pays (§9terdecies).
 
 ## 1. Vision
 
@@ -356,6 +356,13 @@ La source `attested` d'un club est **la page « saison du club » de la langue d
 Un joueur `loan_out` est **conservé en base** mais **n'apparaît pas dans l'effectif exporté de son club d'origine** (il apparaît dans celui du club qui l'accueille, `loan_in`, avec une pastille « prêt »). L'export exclut `stint = 'loan_out'` de `squad` et du compteur de joueurs de `club_season`.
 - **Cas déclencheurs** : Lo-Tutala (Hull), Balerdi et Traoré (OM 2026/27). Sur la page française, les prêtés sont dans un tableau « Joueurs prêtés » **sous le même titre de section** que l'effectif : l'analyseur lit désormais aussi les **titres de tableau** (`! colspan=… | Joueurs prêtés`) comme section.
 - Mots de prêt ajoutés (`cedid`, `cesión`, `préstamo`) et sections de réserve espagnoles (`filial`, `cantera`, `juvenil`).
+
+### D12 — Union de toutes les sources d'un effectif (amende D4 et D10)
+Pour être **le plus exhaustif possible**, l'effectif d'un club-saison n'est plus celui de la première page qui répond mais l'**union des effectifs lus sur toutes les langues du pays** (ordre de `langs` : langue du pays d'abord, puis anglais, italien, français). La première source est la **principale** (`club_season.source_*`) ; les suivantes apportent leurs joueurs absents.
+- **Appariement** (`openfootball/merge.py`) : un joueur est reconnu d'une langue à l'autre par son **nom normalisé** (accents, casse, ordre des mots ignorés) ou, à défaut, par son **numéro de maillot** quand un nom est contenu dans l'autre (« Gabriel » / « Gabriel Magalhães »). En cas de doute : deux lignes plutôt qu'une fusion hasardeuse ; `reconcile` (QID) fusionne ensuite les doublons prouvés. Les champs vides de la source principale (numéro, poste, nationalité) sont complétés par l'autre page, jamais écrasés ; un statut de prêt explicite écrit sur une page l'emporte sur « inconnu ».
+- **Provenance** (migration **0010**) : `squad_source` (une ligne par page utilisée : rang, titre, révision, joueurs lus, joueurs ajoutés) et `squad_row_source` (pages qui listent chaque joueur) ; l'export publie la table `squad_source` et la colonne `squad.listed_in`. Le site affiche toutes les sources d'un effectif.
+- **Cas déclencheur** : Leeds United 2026/27 — la page anglaise listait 22 joueurs, l'italienne 26 : l'union est plus complète que l'une ou l'autre.
+- **Conséquence assumée** : une page peut être plus ancienne ou plus récente que la principale ; un joueur parti entre deux instantanés peut apparaître, un arrivé peut manquer à l'une des deux. L'union maximise la couverture, pas la datation (C1 inchangé). Plus de requêtes : chaque club lit toutes les langues du pays (≈ 6 minutes par saison au lieu de 1).
 
 ### Sélections et buts en équipe nationale
 Lus dans l'infobox anglaise (`national_team1`, `national_years1`, `national_caps1`, `national_goals1`, équipes de jeunes comprises) → table `player_national` (migration **0008**), export `national`, bloc « Équipe nationale » sur la fiche joueur. Mêmes réserves que la carrière : **chiffres Wikipedia publiés tels quels, non vérifiés**. Un nombre écrit comme lien (`[[Liste des buts|67]]`) est lu (Mbappé : France 107 sélections, 67 buts).

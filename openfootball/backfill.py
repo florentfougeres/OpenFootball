@@ -18,7 +18,8 @@ from openfootball.parse.squad_i18n import PARSERS
 from openfootball.parse.squad_html import parse_squad_html
 from openfootball.scopes import Scope, load_overrides
 from openfootball.sources.wikidata import season_articles
-from openfootball.store import SeasonFrozen, _next_id, ensure_season, write_squad
+from openfootball.merge import merge_squads
+from openfootball.store import SeasonFrozen, _next_id, ensure_season, write_squad, write_squad_merged
 
 LANG_ORDER = ("en", "it", "fr")
 
@@ -178,9 +179,9 @@ def run_backfill(
                     arts = season_articles(wd.season_items(qids[team])) if qids.get(team) else {}
                 return arts
 
-            for lang in sc.langs:
-                if lang != "en" and (lang not in PARSERS or lang not in lang_clients):
-                    continue                                  # langue listée mais pas encore prise en charge
+            def read_lang(lang: str):
+                """Effectif principal lu sur la page « saison du club » de cette langue : (liste, titre, révision) ou None.
+                Wikitexte d'abord ; si illisible, HTML rendu de la MÊME page avant de passer à la langue suivante (D10)."""
                 constructed = f"{label} {team} season"
                 if lang == "en":
                     # Le titre construit peut différer du vrai (« Celta de Vigo » / « RC Celta de Vigo »).
@@ -192,7 +193,7 @@ def run_backfill(
                 else:
                     title = articles().get((start_year, lang))
                     if not title:
-                        continue
+                        return None
                     attempts = [(p, title) for p in lang_clients[lang].get_pages([title])]
                     attempts_lazy = lambda: []
                     parse = PARSERS[lang]
@@ -201,33 +202,40 @@ def run_backfill(
                         continue
                     main = plausible(parse(page.wikitext))
                     if main:
-                        n = write_squad(con, cs_id, main, lang=lang, revid=page.revid,
-                                        source_title=page.resolved_title or title)
-                        chosen = ClubResult(sc.code, team, lang, n, page.resolved_title or title)
-                        break
-                if not chosen:
-                    # La page de cette langue existe mais son effectif n'est lisible que dans le HTML rendu (modèle,
-                    # section inconnue) : on le lit AVANT de passer à la langue suivante, sinon un club anglais prend
-                    # la page italienne alors que sa page anglaise est exploitable (D10).
-                    client = wp if lang == "en" else lang_clients[lang]
-                    render = getattr(client, "render", None)
-                    html_titles = [t for _, t in attempts]
-                    if lang == "en":
-                        wd_title = articles().get((start_year, "en"))
-                        if wd_title and wd_title not in html_titles:
-                            html_titles.append(wd_title)
-                    for title in html_titles if render else []:
-                        page = render(title)
-                        if not page.exists:
-                            continue
-                        main = plausible(parse_squad_html(page.wikitext, lang))
-                        if main:
-                            n = write_squad(con, cs_id, main, lang=lang, revid=page.revid,
-                                            source_title=page.resolved_title or title)
-                            chosen = ClubResult(sc.code, team, lang, n, page.resolved_title or title)
-                            break
-                if chosen:
-                    break
+                        return main, page.resolved_title or title, page.revid
+                # La page existe mais son effectif n'est lisible que dans le HTML rendu (modèle, section inconnue).
+                client = wp if lang == "en" else lang_clients[lang]
+                render = getattr(client, "render", None)
+                html_titles = [t for _, t in attempts]
+                if lang == "en":
+                    wd_title = articles().get((start_year, "en"))
+                    if wd_title and wd_title not in html_titles:
+                        html_titles.append(wd_title)
+                for title in html_titles if render else []:
+                    page = render(title)
+                    if not page.exists:
+                        continue
+                    main = plausible(parse_squad_html(page.wikitext, lang))
+                    if main:
+                        return main, page.resolved_title or title, page.revid
+                return None
+
+            # D12 : on lit TOUTES les langues du pays et on fait l'union (le plus exhaustif possible) ; la première
+            # source qui répond est la principale (langue du pays d'abord, D10).
+            found = []                       # [(langue, effectif principal, titre, révision)]
+            for lang in sc.langs:
+                if lang != "en" and (lang not in PARSERS or lang not in lang_clients):
+                    continue                                  # langue listée mais pas encore prise en charge
+                hit = read_lang(lang)
+                if hit:
+                    found.append((lang, *hit))
+            if found:
+                merged = merge_squads([(l, main) for l, main, _, _ in found])
+                sources = [{"lang": l, "title": t, "revid": r,
+                            "read": sum(1 for m in merged if l in m.entries),
+                            "added": sum(1 for m in merged if m.langs[0] == l)} for l, _, t, r in found]
+                n = write_squad_merged(con, cs_id, merged, sources)
+                chosen = ClubResult(sc.code, team, found[0][0], n, found[0][2])
             if not chosen:
                 got = _fallbacks(con, cs_id, team, start_year, label, wp, lang_clients, overrides, articles, sc.langs)
                 chosen = ClubResult(sc.code, team, got.lang, got.players, got.title) if got else None

@@ -277,3 +277,13 @@ def test_sortname_template_containing_a_double_pipe_stays_in_one_cell():
 |}"""
     got = parse_squad(wt)
     assert [e.name for e in got] == ["Brahim Díaz"]
+
+
+def test_sortname_named_parameters_are_not_positional_arguments():
+    from openfootball.parse.squad import _name_and_link
+    # Cas Diogo Leite : `dab=…` était pris pour le titre de la page → des joueurs différents partageaient un lien et étaient fusionnés
+    assert _name_and_link("{{sortname|Diogo|Leite|dab=footballer, born 1999}}") == ("Diogo Leite", "Diogo Leite (footballer, born 1999)")
+    assert _name_and_link("{{sortname|James|McCarthy|dab=Scottish footballer}}") == ("James McCarthy", "James McCarthy (Scottish footballer)")
+    assert _name_and_link("{{sortname|Pepe||Pepe (footballer, born 1983)}}") == ("Pepe", "Pepe (footballer, born 1983)")   # 3ᵉ argument = titre
+    assert _name_and_link("{{sortname|Ali|Same|nolink=1}}") == ("Ali Same", None)
+    assert _name_and_link("{{sortname|Ali|Same}}") == ("Ali Same", "Ali Same")

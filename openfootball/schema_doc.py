@@ -31,9 +31,10 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "confidence": "Niveau de preuve : `attested` = cité dans l'effectif publié sur la page source.",
             "source": "Origine de la ligne : `wikipedia_season` (page « saison du club »).",
             "source_section": "Titre de la section ou du tableau de la page où le joueur a été lu.",
-            "source_lang": "Langue de la page source (`en`, `fr`, `it`, `es`).",
-            "source_title": "Titre de la page source.",
+            "source_lang": "Langue de la page source **principale** de l'effectif (`en`, `fr`, `it`, `es`) : celle du pays d'abord.",
+            "source_title": "Titre de cette page principale.",
             "source_revid": "Numéro de révision Wikipedia lu (permet de retrouver la version exacte).",
+            "listed_in": "Langues des pages qui listent ce joueur, par priorité (`fr,it` : cité par la page française et par l'italienne). Un joueur cité par plusieurs pages est mieux attesté.",
         },
     ),
     "club_season": (
@@ -44,11 +45,27 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "season": "Saison, `2025/26`.",
             "competition": "Code du championnat (`competition.code`).",
             "club": "Titre de la page Wikipedia anglaise du club (`club.wikipedia_title`).",
-            "source_lang": "Langue de la page dont l'effectif a été lu ; vide si aucun effectif n'a pu être établi.",
-            "source_title": "Titre de cette page.",
+            "source_lang": "Langue de la page **principale** dont l'effectif a été lu ; vide si aucun effectif n'a pu être établi. Les autres pages utilisées sont dans `squad_source`.",
+            "source_title": "Titre de cette page principale.",
             "source_revid": "Révision Wikipedia lue.",
             "players": "Nombre de joueurs dans `squad` pour ce club et cette saison (0 = pas d'effectif).",
             "known_gap_reason": "Si l'effectif manque et que ce trou a été validé à la main : le motif. Sinon vide.",
+        },
+    ),
+    "squad_source": (
+        "Les pages « saison du club » dont l'effectif est l'**union** : un effectif est lu sur toutes les langues du pays "
+        "(langue du pays d'abord, puis anglais, italien…) pour être le plus complet possible. **Une ligne = une page utilisée.**",
+        "(season, club, source_lang)",
+        {
+            "season": "Saison, `2025/26`.",
+            "competition": "Code du championnat.",
+            "club": "Titre de la page Wikipedia du club.",
+            "rank": "Priorité de la source : 1 = source principale (celle de `club_season.source_*`).",
+            "source_lang": "Langue de la page.",
+            "source_title": "Titre de la page.",
+            "source_revid": "Révision Wikipedia lue.",
+            "players_read": "Joueurs de l'effectif principal lus sur cette page (et retrouvés dans l'effectif fusionné).",
+            "players_added": "Joueurs que cette page apporte et qu'aucune source de rang inférieur n'avait.",
         },
     ),
     "club": (
@@ -177,7 +194,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
     ),
 }
 
-ORDER = ["squad", "club_season", "club", "competition", "country", "season", "known_gap", "career", "national", "birth", "entity_wiki"]
+ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "known_gap", "career", "national", "birth", "entity_wiki"]
 
 INTRO = """# OpenFootball — dictionnaire de données
 
@@ -224,6 +241,7 @@ squad.player_qid ──< career.player_qid, national.player_qid, birth.player_qi
 
 ## Ce qu'il faut savoir avant d'utiliser les données
 
+- **Un effectif est l'union de plusieurs pages** : toutes les langues du pays sont lues et fusionnées (`squad_source`, `squad.listed_in`) pour être le plus complet possible ; un joueur peut venir d'une page plus ancienne ou plus récente que la principale.
 - **Un effectif est un instantané** : la liste publiée sur la page Wikipedia à sa date de mise à jour, pas la liste de tous les joueurs de la saison. Un joueur arrivé ou parti en cours de saison peut manquer.
 - **Les prêts** : un joueur prêté ailleurs (`loan_out`) n'est pas dans l'effectif de son club d'origine ; il est dans celui du club d'accueil (`stint = 'loan_in'`).
 - **Carrière et sélections** (matchs, buts) : publiés tels quels depuis les infobox Wikipedia, **non vérifiés**, et ils peuvent différer d'une langue à l'autre.
