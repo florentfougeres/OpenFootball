@@ -1,6 +1,6 @@
 # OpenFootball — Spécification
 
-> Statut : **v0.28** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D12 et les résultats mesurés (§9ter et suivants) font foi.
+> Statut : **v0.29** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D12 et les résultats mesurés (§9ter et suivants) font foi.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -9,6 +9,7 @@
 > v0.7 : stockage et exécution tranchés (D8).
 > v0.8 : résultats du sondage de couverture M0(a) sur les 4 championnats × 2010–2025 (§9ter).
 > v0.9 → v0.27 : backfills, identité par QID, carrières, Bundesliga, clubs du monde, logos (§9quater à §9duodecies).
+> v0.29 : transferts en cours de saison et cohérence des prêts (D13), identification Wikidata, licence MIT.
 > v0.28 : langue locale d'abord (D10), union des sources (D12), prêts hors de l'effectif d'origine (D11), sélections, identité par infobox, textes non latins, site Svelte à navigation par pays (§9terdecies).
 
 ## 1. Vision
@@ -390,8 +391,17 @@ L'infobox cite souvent une redirection (« Paris Saint-Germain FC » pour la pag
 ### Documentation d'exploitation
 `docs/` : ajouter des saisons, pays et langues ; mettre à jour joueurs et sélections (**le cache Wikipedia ne périme jamais** : déplacer `cache/wikipedia_en_lead` avant `careers --refresh`) ; modifier à la main un club et son logo (`--refresh-logos` écrase les corrections manuelles) ; récupérer les logos en masse.
 
+### D13 — Transferts en cours de saison et cohérence des prêts (2026-11-12)
+Une page « saison du club » est un instantané ; les sections *Transfers in/out/Loans* de la page **anglaise** datent les mouvements.
+- **Lecture** (`parse/transfers.py`) : tableaux (avec `rowspan`), modèles `fb in2/out2/out4 player` (`w=S|W` = fenêtre), listes été/hiver. Sur 1 600 pages en cache : 38 842 mouvements, 35 178 datés ou en fenêtre ; 372 pages sans aucun tableau (≈ 23 %). **Mi-saison** = entre le 2 septembre et le 15 juin, ou fenêtre d'hiver sans date.
+- **Pages françaises** (`parse/transfers_fr.py`) : tableaux « Transferts estivaux/hivernaux » (Nom, Poste, Type, Provenance/Destination, lignes Arrivées/Départs), fenêtre sans date ; complètent l'anglais. Gain mesuré faible (+2 club-saisons, 18 statuts) : la plupart des pages françaises n'ont pas ce tableau. Italien et espagnol : formats trop hétérogènes (prose, tableaux par session), non lus.
+- **Application** (`transfers.py`, migration **0011** `squad_movement`) : appariement au joueur de l'effectif (lien, nom normalisé, numéro) puis `left_mid`, `loan_in`, `loan_out`. **Seuls les joueurs PARTIS en cours de saison et absents de l'instantané sont ajoutés** : une arrivée absente de la page n'est pas ajoutée (signature à venir, jeune, prêté aussitôt : Farkas et N'Guessan à Liverpool) mais reste un mouvement enregistré. Le site n'affiche que « Parti » et « Prêt entrant ».
+- **Cohérence entre clubs** : (1) un prêt classé « transfert » par le prêteur et « prêt » par le receveur (même joueur, même saison, dates à 3 jours) est un prêt des deux côtés (Disasi, Chelsea → Crystal Palace) ; (2) un club qui « sort » et « reçoit en prêt » le même joueur le même jour est le prêteur (Fati) ; (3) un joueur prêté à A « depuis B » n'est pas dans l'effectif de B (D11). Un joueur dans deux clubs la même saison avec un mouvement dans chacun est marqué, même un 31 août (Ronaldo 2021).
+- **Mesuré** : joueurs dans deux clubs sans statut dans aucun : ≈ 1 255 → ≈ 400 ; ≈ 1 000 conflits de statut restent, faute de mouvement lu (pages non anglaises, noms de clubs écrits autrement).
+- **Identification Wikidata** (`reconcile --wikidata`) : même nom, footballeur, clubs P54 contenant tous nos club-saisons, candidat unique : +33 QID, 163 fusions ; 3 117 joueurs restent sans QID (surtout des jeunes sans fiche).
+
 ### Limites connues restantes
-2 132 joueurs sans lien ; transferts en cours de saison non lus (`arrived_mid`/`left_mid`, C1) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; rien publié (dépôt distant, release, Pages).
+≈ 3 100 joueurs sans QID (jeunes sans fiche) ; transferts lus sur les pages anglaises et, en complément, françaises (≈ 23 % des pages anglaises sans tableau, ≈ 1 000 conflits de statut entre clubs) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; données publiées : `data-v2` (sans transferts).
 
 ## 10. Jalons proposés
 

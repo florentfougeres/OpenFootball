@@ -17,6 +17,7 @@ from openfootball.merge import _tokens
 from openfootball.parse.league import season_label
 from openfootball.parse.squad import SquadEntry
 from openfootball.parse.transfers import Transfer, parse_transfers
+from openfootball.parse.transfers_fr import parse_transfers_fr
 from openfootball.store import _next_id, _upsert_player, _valid_shirt, assert_writable
 
 
@@ -25,7 +26,7 @@ class TransferReport:
     club_seasons: int = 0        # club-saisons dont la page a été lue
     with_transfers: int = 0      # dont au moins un mouvement reconnu
     marked: int = 0              # joueurs de l'effectif dont le statut a été posé
-    added: int = 0               # joueurs absents de l'effectif ajoutés (partis/arrivés autour de l'instantané)
+    added: int = 0               # joueurs partis en cours de saison, absents de l'instantané, ajoutés
     movements: int = 0           # mouvements enregistrés
 
 
@@ -92,7 +93,77 @@ def mark_moves_between_clubs(con: duckdb.DuckDBPyConnection) -> int:
     return n
 
 
-def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, start_year: int | None = None,
+_LOANS = """
+CREATE TEMP TABLE _loan_pairs AS
+SELECT a.club_season_id AS out_cs, b.club_season_id AS in_cs, a.player_id
+FROM squad_movement a
+JOIN club_season acs ON acs.id = a.club_season_id
+JOIN squad_movement b ON b.player_id = a.player_id AND b.direction = 'in' AND b.club_season_id <> a.club_season_id
+JOIN club_season bcs ON bcs.id = b.club_season_id AND bcs.season_id = acs.season_id
+JOIN season s ON s.id = acs.season_id
+WHERE a.direction = 'out' AND s.status <> 'frozen'
+  AND ((a.moved_on IS NOT NULL AND b.moved_on IS NOT NULL AND abs(date_diff('day', a.moved_on, b.moved_on)) <= 3)
+       OR (a.moved_on IS NULL AND b.moved_on IS NULL AND a.transfer_window IS NOT NULL AND a.transfer_window = b.transfer_window))
+  AND (a.kind = 'loan' OR b.kind = 'loan'
+       -- Fati : Barcelone « sort » vers Monaco et « reçoit en prêt » de Monaco le même jour : le prêt est contradictoire, il prête.
+       OR EXISTS (SELECT 1 FROM squad_movement c WHERE c.club_season_id = a.club_season_id AND c.player_id = a.player_id
+                  AND c.direction = 'in' AND c.kind = 'loan' AND c.other_club = a.other_club
+                  AND abs(date_diff('day', c.moved_on, a.moved_on)) <= 3))
+"""
+
+
+_CLUB_STOP = {"fc", "afc", "cf", "ac", "sc", "as", "ss", "us", "ssc", "fk", "sk", "cd", "ud", "rc", "sv", "vfb", "vfl", "tsg", "ca",
+              "ogc", "rcd", "rb", "the"}
+
+
+def _club_tokens(name: str) -> set[str]:
+    import re
+    import unicodedata
+    flat = unicodedata.normalize("NFKD", name or "").encode("ascii", "ignore").decode().lower()
+    return {w for w in re.findall(r"[a-z]{3,}", flat) if w not in _CLUB_STOP}
+
+
+def lender_is_not_a_member(con: duckdb.DuckDBPyConnection) -> int:
+    """Un joueur prêté à A « depuis B » (mouvement `loan` entrant, club d'origine B) n'appartient pas à l'effectif de B cette
+    saison-là. Les pages de B le listent encore souvent comme un joueur ordinaire (Disasi à Chelsea, Fati à Barcelone)."""
+    n = 0
+    rows = con.execute("""SELECT m.club_season_id, m.player_id, m.other_club, cs.season_id FROM squad_movement m
+        JOIN club_season cs ON cs.id = m.club_season_id JOIN season s ON s.id = cs.season_id
+        WHERE m.direction = 'in' AND m.kind = 'loan' AND m.other_club IS NOT NULL AND s.status <> 'frozen'""").fetchall()
+    for csid, pid, other, season_id in rows:
+        want = _club_tokens(other)
+        if not want:
+            continue
+        for ocs, club in con.execute("""SELECT x.club_season_id, cl.wikipedia_title FROM player_club_season x
+                JOIN club_season cs ON cs.id = x.club_season_id JOIN club cl ON cl.id = cs.club_id
+                WHERE x.player_id = ? AND cs.season_id = ? AND cs.id <> ? AND x.stint IN ('unknown', 'left_mid', 'arrived_mid')""",
+                                      [pid, season_id, csid]).fetchall():
+            if want & _club_tokens(club):
+                con.execute("UPDATE player_club_season SET stint = 'loan_out' WHERE player_id = ? AND club_season_id = ?", [pid, ocs])
+                n += 1
+    return n
+
+
+def reconcile_loans(con: duckdb.DuckDBPyConnection) -> int:
+    """Un prêt est souvent classé « transfert » par le club qui prête (Disasi : Chelsea -> Crystal Palace) mais « prêt » par
+    le club qui reçoit. Même joueur, même saison, même date : c'est un prêt des deux côtés (prêté absent de l'effectif exporté)."""
+    con.execute("DROP TABLE IF EXISTS _loan_pairs")
+    con.execute(_LOANS)
+    n = con.execute("SELECT count(*) FROM _loan_pairs").fetchone()[0]
+    con.execute("""UPDATE squad_movement SET kind = 'loan' FROM _loan_pairs l WHERE squad_movement.player_id = l.player_id
+                   AND ((squad_movement.club_season_id = l.out_cs AND squad_movement.direction = 'out')
+                     OR (squad_movement.club_season_id = l.in_cs AND squad_movement.direction = 'in'))""")
+    con.execute("""UPDATE player_club_season SET stint = 'loan_out' FROM _loan_pairs l
+                   WHERE player_club_season.player_id = l.player_id AND player_club_season.club_season_id = l.out_cs
+                     AND player_club_season.stint IN ('unknown', 'left_mid', 'loan_in')""")
+    con.execute("""UPDATE player_club_season SET stint = 'loan_in' FROM _loan_pairs l
+                   WHERE player_club_season.player_id = l.player_id AND player_club_season.club_season_id = l.in_cs
+                     AND player_club_season.stint IN ('unknown', 'arrived_mid')""")
+    con.execute("DROP TABLE _loan_pairs")
+    return n
+
+
+def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, fr_wp=None, start_year: int | None = None,
                     log: Callable[[str], None] = print) -> TransferReport:
     """Lit les transferts de chaque club-saison (non figé) dont la page anglaise est connue. Idempotent."""
     report = TransferReport()
@@ -111,7 +182,14 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, start_year: int | Non
                 continue
             report.club_seasons += 1
             transfers = parse_transfers(page.wikitext or "")
+            if fr_wp is not None:                      # page française : complète quand l'anglaise ne dit rien ou moins
+                fr_title = con.execute("SELECT source_title FROM squad_source WHERE club_season_id = ? AND source_lang = 'fr'", [csid]).fetchone()
+                fr_page = fr_wp.get_pages([fr_title[0]])[0] if fr_title else None
+                if fr_page is not None and fr_page.exists:
+                    seen = {(_tokens(t.name), t.direction) for t in transfers}
+                    transfers += [t for t in parse_transfers_fr(fr_page.wikitext or "") if (_tokens(t.name), t.direction) not in seen]
             con.execute("DELETE FROM squad_movement WHERE club_season_id = ?", [csid])
+            con.execute("DELETE FROM player_club_season WHERE club_season_id = ? AND source_section = 'Transfers (in)'", [csid])
             if not transfers:
                 continue
             report.with_transfers += 1
@@ -124,9 +202,10 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, start_year: int | Non
                 new_stint = ("loan_in" if t.direction == "in" else "loan_out") if t.kind == "loan" \
                     else ("arrived_mid" if t.direction == "in" else "left_mid") if mid else None
                 if pid is None:
-                    # Absent de l'effectif publié : on l'ajoute s'il est parti ou arrivé en cours de saison, ou prêté chez nous.
-                    # Un prêté PARTI ailleurs n'est pas ajouté (il ne serait pas dans l'effectif exporté).
-                    if new_stint is None or new_stint == "loan_out":
+                    # Absent de l'effectif publié : on l'ajoute seulement s'il en est PARTI en cours de saison (il y a joué).
+                    # Une arrivée absente de la page n'est pas ajoutée : signature à venir, jeune, ou prêté aussitôt ailleurs
+                    # (Farkas, N'Guessan à Liverpool) ; elle reste un mouvement enregistré. Un prêté parti n'est pas exporté.
+                    if new_stint != "left_mid":
                         continue
                     entry = SquadEntry(name=t.name, link=t.link, shirt_number=t.shirt_number, position_raw=None,
                                        position=t.position, nationality=t.nationality, section=f"Transfers ({t.direction})",
@@ -156,4 +235,6 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, start_year: int | Non
                 report.movements += 1
         log(f"  {min(i + 50, len(todo))}/{len(todo)} club-saisons : {report.marked} statuts posés, {report.added} joueurs ajoutés")
     report.marked += mark_moves_between_clubs(con)
+    reconcile_loans(con)
+    lender_is_not_a_member(con)
     return report

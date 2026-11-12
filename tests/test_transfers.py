@@ -127,3 +127,50 @@ def test_a_player_in_two_squads_with_a_movement_in_each_is_marked_even_on_deadli
     assert mark_moves_between_clubs(arsenal) == 2
     got = dict(arsenal.execute("SELECT club_season_id, stint FROM player_club_season WHERE player_id = 2").fetchall())
     assert got == {1: "left_mid", 2: "arrived_mid"}
+
+
+def test_a_loan_listed_as_transfer_by_the_lending_club_is_a_loan_out_there(arsenal):
+    from openfootball.transfers import reconcile_loans
+    arsenal.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title) VALUES (2, 'Chelsea', 'ENG', 'Chelsea F.C.')")
+    arsenal.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (2, 2, 1, 1)")
+    arsenal.execute("INSERT INTO player_club_season (id, player_id, club_season_id, stint, confidence, source) VALUES (99, 2, 2, 'left_mid', 'attested', 'wikipedia_season')")
+    arsenal.execute("INSERT INTO squad_movement VALUES (2, 2, 'out', 'transfer', DATE '2022-08-26', 'summer', 'X', NULL, false, 't')")
+    arsenal.execute("INSERT INTO squad_movement VALUES (1, 2, 'in', 'loan', DATE '2022-08-26', NULL, 'Chelsea', NULL, false, 't')")
+    assert reconcile_loans(arsenal) == 1
+    assert arsenal.execute("SELECT stint FROM player_club_season WHERE player_id = 2 AND club_season_id = 2").fetchone()[0] == "loan_out"
+    assert arsenal.execute("SELECT kind FROM squad_movement WHERE club_season_id = 2").fetchone()[0] == "loan"
+
+
+def test_a_club_that_both_sends_and_receives_on_loan_the_same_player_the_same_day_is_the_lender(arsenal):
+    from openfootball.transfers import reconcile_loans
+    arsenal.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title) VALUES (2, 'Monaco', 'ENG', 'AS Monaco FC')")
+    arsenal.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (2, 2, 1, 1)")
+    arsenal.execute("INSERT INTO player_club_season (id, player_id, club_season_id, stint, confidence, source) VALUES (99, 2, 2, 'arrived_mid', 'attested', 'wikipedia_season')")
+    arsenal.execute("UPDATE player_club_season SET stint = 'loan_in' WHERE player_id = 2 AND club_season_id = 1")
+    arsenal.execute("INSERT INTO squad_movement VALUES (1, 2, 'out', 'transfer', DATE '2022-07-01', NULL, 'Monaco', NULL, false, 't')")
+    arsenal.execute("INSERT INTO squad_movement VALUES (1, 2, 'in', 'loan', DATE '2022-07-01', NULL, 'Monaco', NULL, false, 't')")
+    arsenal.execute("INSERT INTO squad_movement VALUES (2, 2, 'in', 'transfer', DATE '2022-06-30', NULL, 'Arsenal', NULL, false, 't')")
+    assert reconcile_loans(arsenal) == 1
+    got = dict(arsenal.execute("SELECT club_season_id, stint FROM player_club_season WHERE player_id = 2").fetchall())
+    assert got == {1: "loan_out", 2: "loan_in"}
+
+
+def test_the_lending_club_does_not_list_a_player_it_lent_out(arsenal):
+    from openfootball.transfers import lender_is_not_a_member
+    arsenal.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title) VALUES (2, 'Chelsea', 'ENG', 'Chelsea F.C.')")
+    arsenal.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (2, 2, 1, 1)")
+    arsenal.execute("INSERT INTO player_club_season (id, player_id, club_season_id, stint, confidence, source) VALUES (99, 2, 2, 'unknown', 'attested', 'wikipedia_season')")
+    arsenal.execute("INSERT INTO squad_movement VALUES (1, 2, 'in', 'loan', DATE '2022-09-01', NULL, 'Chelsea', NULL, false, 't')")
+    assert lender_is_not_a_member(arsenal) == 1
+    assert arsenal.execute("SELECT stint FROM player_club_season WHERE club_season_id = 2 AND player_id = 2").fetchone()[0] == "loan_out"
+
+
+def test_french_transfer_table_gives_direction_kind_and_window():
+    from pathlib import Path
+    from openfootball.parse.transfers_fr import parse_transfers_fr
+    got = parse_transfers_fr(Path(__file__).parent.joinpath("fixtures/monaco_2021_transferts_fr.wiki").read_text(encoding="utf8"))
+    by = {t.name: t for t in got}
+    assert by["Myron Boadu"].direction == "in" and by["Myron Boadu"].kind == "transfer" and by["Myron Boadu"].window == "summer"
+    assert by["Alexander Nübel"].kind == "loan" and by["Alexander Nübel"].position == "GK"
+    assert "Giulian Biancone" not in by                      # « Retour de prêt » n'est pas un mouvement d'effectif
+    assert by["Stevan Jovetic"].direction == "out"

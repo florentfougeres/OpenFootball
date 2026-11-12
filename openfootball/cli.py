@@ -426,7 +426,7 @@ def transfers_cmd(args: argparse.Namespace) -> int:
     """Statuts datés (arrivé/parti en cours de saison, prêts) d'après les tableaux de transferts des pages anglaises."""
     con = connect(args.db)
     migrate(con)
-    r = apply_transfers(con, WikipediaClient(args.cache), start_year=args.season)
+    r = apply_transfers(con, WikipediaClient(args.cache), fr_wp=WikipediaClient("cache/wikipedia_fr", lang="fr"), start_year=args.season)
     print(f"{r.club_seasons} club-saisons lues, {r.with_transfers} avec des transferts reconnus : "
           f"{r.marked} statuts posés, {r.added} joueurs ajoutés (partis/arrivés autour de l'instantané), {r.movements} mouvements")
     return 0

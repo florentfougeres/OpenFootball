@@ -10,6 +10,7 @@ Rappel : `export OPENFOOTBALL_CONTACT="votre-contact"` avant toute commande qui 
 | Commande | À quoi elle sert | Options utiles |
 |---|---|---|
 | `backfill --season Y` | Construit (ou relit) les effectifs de la saison Y/Y+1 pour tous les championnats déclarés dans `openfootball/scopes/`. Refusé si la saison est figée. | `--league FRA ITA` (limiter), `--open` (marque la saison « en cours ») |
+| `transfers` | Lit les tableaux de transferts des pages « saison du club » : pose `left_mid` / `loan_in` / `loan_out`, enregistre les mouvements datés (`squad_movement`), ajoute les joueurs **partis** en cours de saison absents de l'instantané, et recoupe les prêts entre clubs. **À lancer après chaque `backfill`** (il relit le cache, rapide). | `--season Y` (une saison) |
 | `status --season Y` | État d'une saison : effectifs attestés, trous, invariants, avertissements. | |
 | `known-gap --season Y --reason "…"` | Valide **explicitement** des club-saisons sans effectif (la source n'existe pas). | `--club "Nom"` (un club), `--all-unresolved` (tous les trous non validés) |
 | `freeze --season Y` | Fige une saison : elle devient immuable (empreinte enregistrée). Refusé si un invariant échoue ou si un trou n'est pas validé. **Irréversible** sans procédure d'amendement. | |
@@ -20,6 +21,7 @@ Rappel : `export OPENFOOTBALL_CONTACT="votre-contact"` avant toute commande qui 
 |---|---|---|
 | `reconcile` | Un joueur = un QID Wikidata ; fusionne les doublons entre langues. | |
 | `reconcile --names` | Rattache les joueurs **sans lien** à un joueur identifié de même nom, seulement si sa carrière contient les mêmes club-saisons. **À lancer après chaque `backfill`.** | |
+| `reconcile --wikidata` | Pour un joueur sans lien : cherche dans Wikidata un footballeur de même nom dont les clubs (P54) contiennent tous nos club-saisons ; retenu seulement s'il est unique. Rapide (quelques minutes). | |
 | `reconcile --infobox` | Cherche la page anglaise des joueurs sans lien et la valide par son infobox. **Long** (plusieurs centaines de requêtes, de l'ordre de l'heure) et peu rentable en relance : à lancer ponctuellement. | |
 | `careers` | Importe carrière **et sélections** (infobox anglaise) des joueurs qui n'en ont pas encore. | `--refresh` (relit tout, depuis le cache : voir [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md)), `--limit N` (essai) |
 | `enrich --what players` | Liens Wikipedia par langue et dates de naissance (donc les âges). | |

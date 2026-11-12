@@ -32,7 +32,8 @@ for y in "${SEASONS[@]}"; do
   extra=""; [ "$y" = "$OPEN_YEAR" ] && extra="--open"
   "$OF" backfill --season "$y" $extra               # une saison figée est refusée (garde)
 done
-"$OF" reconcile --names $INFOBOX                    # un joueur = un QID ; obligatoire après un backfill
+"$OF" transfers                                      # arrivées/départs/prêts en cours de saison (cache Wikipedia, rapide)
+"$OF" reconcile --names --wikidata $INFOBOX          # un joueur = un QID ; obligatoire après un backfill
 "$OF" careers                                        # parcours et sélections des nouveaux joueurs
 "$OF" enrich --what players careerclubs labels       # liens, âges, clubs des carrières, libellés anglais
 "$OF" progress                                       # PROGRESS.md

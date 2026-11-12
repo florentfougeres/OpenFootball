@@ -45,6 +45,7 @@ squad.player_qid ──< career.player_qid, national.player_qid, birth.player_qi
 
 - **Un effectif est l'union de plusieurs pages** : toutes les langues du pays sont lues et fusionnées (`squad_source`, `squad.listed_in`) pour être le plus complet possible ; un joueur peut venir d'une page plus ancienne ou plus récente que la principale.
 - **Un effectif est un instantané** : la liste publiée sur la page Wikipedia à sa date de mise à jour, pas la liste de tous les joueurs de la saison. Un joueur arrivé ou parti en cours de saison peut manquer.
+- **Mouvements en cours de saison** : `stint = arrived_mid / left_mid` (avec `stint_date`) lus dans les tableaux de transferts des pages **anglaises** ; les club-saisons dont la page anglaise n'a pas de tableau exploitable restent à `unknown`. Un joueur parti en cours de saison est dans l'effectif de son club d'origine (`left_mid`) et dans celui de son nouveau club (`arrived_mid`).
 - **Les prêts** : un joueur prêté ailleurs (`loan_out`) n'est pas dans l'effectif de son club d'origine ; il est dans celui du club d'accueil (`stint = 'loan_in'`).
 - **Carrière et sélections** (matchs, buts) : publiés tels quels depuis les infobox Wikipedia, **non vérifiés**, et ils peuvent différer d'une langue à l'autre.
 - **Trous** : les effectifs introuvables sont listés dans `known_gap` ; les autres club-saisons sans effectif ne sont pas encore examinés (`club_season.players = 0` sans motif).
@@ -60,7 +61,7 @@ squad.player_qid ──< career.player_qid, national.player_qid, birth.player_qi
 
 Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'un club cette saison**. Un fichier par saison (`squad/<saison>.<sha8>.parquet`). Les joueurs prêtés ailleurs (`loan_out`) n'y figurent pas.
 
-- Fichiers : 17 fichiers (un par saison), ex. `squad/2026-27.34c81a52.parquet` — **56 712 lignes**
+- Fichiers : 17 fichiers (un par saison), ex. `squad/2026-27.97f767bc.parquet` — **54 819 lignes**
 - Clé : (season, club, player_qid ou player)
 
 | Colonne | Type | Description |
@@ -76,11 +77,14 @@ Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'u
 | `position` | VARCHAR | Poste : `GK` gardien, `DF` défenseur, `MF` milieu, `FW` attaquant. Vide si non précisé. |
 | `nationality` | VARCHAR | Nationalité telle que publiée (texte libre, dans la langue de la page : `France`, `España`, `IRL`…). |
 | `nat_flag` | VARCHAR | Code de drapeau (flag-icons : `fr`, `gb-eng`, `ie`…) déduit de la nationalité ; vide si non reconnue. |
-| `stint` | VARCHAR | Statut dans le club : `unknown` (rien d'écrit sur la page) ou `loan_in` (prêté **à** ce club). |
+| `stint` | VARCHAR | Statut dans le club : `unknown` (rien de précis), `arrived_mid` (arrivé en cours de saison), `left_mid` (parti en cours de saison : il a joué au club avant), `loan_in` (prêté **à** ce club). Les prêtés partis ailleurs (`loan_out`) ne sont pas exportés. Les mouvements viennent des tableaux « Transfers » des pages anglaises. |
 | `confidence` | VARCHAR | Niveau de preuve : `attested` = cité dans l'effectif publié sur la page source. |
 | `source` | VARCHAR | Origine de la ligne : `wikipedia_season` (page « saison du club »). |
 | `source_section` | VARCHAR | Titre de la section ou du tableau de la page où le joueur a été lu. |
 | `listed_in` | VARCHAR | Langues des pages qui listent ce joueur, par priorité (`fr,it` : cité par la page française et par l'italienne). Un joueur cité par plusieurs pages est mieux attesté. |
+| `stint_date` | VARCHAR | Date du mouvement (`YYYY-MM-DD`) pour `arrived_mid`, `left_mid` ou un prêt ; vide si la page ne donne pas la date. |
+| `stint_window` | VARCHAR | Fenêtre de transferts (`winter`, `summer`) quand la page la dit sans date exacte. |
+| `stint_other_club` | VARCHAR | Club d'où il vient (`arrived_mid`, `loan_in`) ou où il va (`left_mid`), tel qu'écrit sur la page. |
 | `source_lang` | VARCHAR | Langue de la page source **principale** de l'effectif (`en`, `fr`, `it`, `es`) : celle du pays d'abord. |
 | `source_title` | VARCHAR | Titre de cette page principale. |
 | `source_revid` | BIGINT | Numéro de révision Wikipedia lu (permet de retrouver la version exacte). |
@@ -89,7 +93,7 @@ Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'u
 
 Une ligne = **un club dans un championnat pour une saison** (avec ou sans effectif). Un fichier par saison (`club_season/<saison>.<sha8>.parquet`).
 
-- Fichiers : 17 fichiers (un par saison), ex. `club_season/2026-27.e5417d9f.parquet` — **1 658 lignes**
+- Fichiers : 17 fichiers (un par saison), ex. `club_season/2026-27.f2d9ec2c.parquet` — **1 658 lignes**
 - Clé : (season, club)
 
 | Colonne | Type | Description |
@@ -224,7 +228,7 @@ Effectifs introuvables dont l'absence a été **validée explicitement** (la sou
 
 Carrière senior d'un joueur, lue dans l'infobox de sa page Wikipedia **anglaise** : **une ligne = un passage dans un club**.
 
-- Fichiers : `career/career.95400cdb.parquet` — **114 647 lignes**
+- Fichiers : `career/career.380bf2e4.parquet` — **121 688 lignes**
 - Clé : (player_qid ou player, seq)
 
 | Colonne | Type | Description |
@@ -249,7 +253,7 @@ Carrière senior d'un joueur, lue dans l'infobox de sa page Wikipedia **anglaise
 
 Sélections en équipe nationale (jeunes comprises), lues dans l'infobox : **une ligne = une équipe**.
 
-- Fichiers : `national/national.3facce59.parquet` — **31 065 lignes**
+- Fichiers : `national/national.6a6bc7ef.parquet` — **32 521 lignes**
 - Clé : (player_qid ou player, seq)
 
 | Colonne | Type | Description |
@@ -267,7 +271,7 @@ Sélections en équipe nationale (jeunes comprises), lues dans l'infobox : **une
 
 Dates de naissance (Wikidata P569) des joueurs identifiés.
 
-- Fichiers : `birth/birth.d8017844.parquet` — **14 385 lignes**
+- Fichiers : `birth/birth.d908b394.parquet` — **15 339 lignes**
 - Clé : player_qid
 
 | Colonne | Type | Description |
@@ -280,7 +284,7 @@ Dates de naissance (Wikidata P569) des joueurs identifiés.
 
 Page Wikipedia d'un club ou d'un joueur dans chaque langue (en, fr, it, de, es pour les clubs ; en, fr pour les joueurs).
 
-- Fichiers : `entity_wiki/entity_wiki.93f45bec.parquet` — **26 177 lignes**
+- Fichiers : `entity_wiki/entity_wiki.379eea4d.parquet` — **27 290 lignes**
 - Clé : (qid, lang)
 
 | Colonne | Type | Description |

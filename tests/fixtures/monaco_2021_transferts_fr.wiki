@@ -1,0 +1,30 @@
+=== Transferts estivaux ===
+
+{| class="wikitable alternance centre"
+|+[[Fichier:Sun01.svg|20px|Mercato d'été]] Tableau détaillé des transferts du ''[[Transfert (football)|mercato]]'' d'été
+|-
+! scope=col style="background:#FFFFFF; color: #DB1C30"| Nom
+! scope=col style="background:#FFFFFF; color: #DB1C30"| Poste
+! scope=col style="background:#FFFFFF; color: #DB1C30"| Type de transfert
+! scope=col style="background:#FFFFFF; color: #DB1C30"| Montant
+! scope=col style="background:#FFFFFF; color: #DB1C30"| Provenance/Destination
+! scope=col style="background:#FFFFFF; color: #DB1C30"| Division
+|-
+| colspan="6" style="background:#CCCCCC; text-align:center;" |[[Fichier:Symbol support vote.png|15px|]] '''Arrivées ({{unité|35.5|M€}})'''
+|-
+|{{NED-d}} [[Myron Boadu]] || Attaquant || align="center" | Transfert || align="center" | {{unité|17|M€}} || align="center" | [[AZ Alkmaar]]|| align="center" |{{NED-d}} [[Championnat des Pays-Bas de football|Eredivisie]]
+|-
+|{{BRA-d}} [[Jean Lucas (football)|Jean Lucas]] || Milieu || align="center" | Transfert || align="center" | {{unité|11|M€}} || align="center" | [[Olympique lyonnais]] || align="center" | {{FRA-d}} [[Ligue 1]]
+|-
+|{{GER-d}} [[Ismail Jakobs]] || Attaquant || align="center" | Transfert || align="center" | {{unité|6.5|M€}} || align="center" | [[1. FC Cologne]] || align="center" | {{GER-d}} [[Championnat d'Allemagne de football|Bundesliga]]
+|-
+|{{GER-d}} [[Alexander Nübel]] || Gardien || align="center" | Prêt ({{nobr|2 ans}}) || align="center" | - || align="center" | [[Bayern Munich]] || align="center" | {{GER-d}} [[Championnat d'Allemagne de football|Bundesliga]]
+|-
+|{{FRA-d}} [[Giulian Biancone]] || Défenseur || align="center" | Retour de Prêt || align="center" | - || align="center" |  [[Cercle Bruges KSV]]|| align="center" |{{BEL-d}} [[Championnat de Belgique de football|Jupiler Pro League]]
+|-
+| colspan="6" style="background:#CCCCCC; text-align:center;" |[[Fichier:Symbol oppose vote.svg|15px|]] '''Départs ({{unité|38.5|M€}})'''
+|-
+|{{MAR-d}} [[Youssef Aït Bennasser]] || Milieu || align="center" | Fin de contrat || align="center" | - || align="center" | [[Adanaspor]] || align="center" |{{TUR-d}} [[Championnat de Turquie de football de deuxième division|1. Lig]]
+|-
+|{{MNE-d}} [[Stevan Jovetic]] || Attaquant || align="center" | Fin de contrat || align="center" | - || align="center" | [[Hertha BSC|Hertha Berlin]] || align="center" | {{GER-d}} [[Championnat d'Allemagne de football|Bundesliga]]
+|}

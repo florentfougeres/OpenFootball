@@ -15,7 +15,8 @@ cp data/work/openfootball.duckdb data/work/backup_$(date +%F).duckdb
 
 openfootball backfill --season 2026 --open          # saison COURANTE : --open la marque « en cours »
 openfootball backfill --season 2025                  # saison terminée : sans --open
-openfootball reconcile --names                       # rattache les joueurs sans lien (obligatoire après backfill)
+openfootball transfers                               # arrivées/départs/prêts en cours de saison (après backfill)
+openfootball reconcile --names --wikidata            # rattache les joueurs sans lien (obligatoire après backfill)
 openfootball status --season 2026                    # invariants, trous, tailles d'effectifs
 ```
 
