@@ -13,7 +13,7 @@ from openfootball.db import connect, migrate
 from openfootball.enrich import enrich_birth_dates, enrich_career_clubs, enrich_context_labels, enrich_league_logos, enrich_logos, enrich_wiki_links
 from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
-from openfootball.careers import import_careers, import_careers_by_qid
+from openfootball.careers import import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
 from openfootball.transfers import apply_transfers
 from openfootball.reconcile import reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
@@ -388,6 +388,7 @@ def careers_cmd(args: argparse.Namespace) -> int:
     r2 = import_careers_by_qid(con, client, WikidataClient(args.wd_cache))
     print(f"par QID/sitelink : {r2.players} joueurs lus : {r2.with_career} avec carrière ({r2.rows} lignes), "
           f"{r2.no_infobox} sans infobox exploitable, {r2.missing_page} sans page anglaise")
+    print(f"{prune_after_career_end(con)} ligne(s) d'effectif retirée(s) : carrière terminée avant la saison")
     return 0
 
 

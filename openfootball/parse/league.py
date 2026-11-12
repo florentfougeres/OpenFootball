@@ -11,7 +11,7 @@ import re
 
 # `name_XXX=[[Club]]`, éventuellement enveloppé : `name_XXX={{nobr|[[Club]]}}`
 _NAME_PARAM = re.compile(
-    r"\|\s*name_([A-Za-z0-9_]+)\s*=\s*(?:\{\{[^{}|]*\|\s*)?\[\[([^\]|#]+)", re.I)
+    r"\|\s*name_(\w+)\s*=\s*(?:\{\{[^{}|]*\|\s*)?\[\[([^\]|#]+)", re.I)     # \w : codes accentués (BEŞ, ÜMR, SİV)
 
 
 _TABLE_HEAD = re.compile(r"^(={2,3})\s*(League table|Standings|Final table|Classification|Table)\s*\1",

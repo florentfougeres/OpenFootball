@@ -71,3 +71,10 @@ def test_backfill_union_counts_a_player_listed_by_two_pages_once(con=None):
     # idempotent : on peut réécrire sans doublon
     write_squad_merged(c, 1, merged, [{"lang": "fr", "title": "T-fr", "revid": 1, "read": 2, "added": 2}])
     assert c.execute("SELECT count(*) FROM player_club_season").fetchone()[0] == 3
+
+
+def test_dotless_i_and_special_letters_match_across_languages():
+    """« Altıntop » (it) et « Altintop » (fr) sont le même joueur."""
+    from openfootball.names import fold
+    assert fold("Hamit Altıntop") == fold("Hamit Altintop") == "hamit altintop"
+    assert fold("Łukasz Fabiański") == "lukasz fabianski"

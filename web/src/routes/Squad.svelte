@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, href, enc, seasonSlug, t, type Row } from "../lib/app.svelte";
+  import { app, countryOf, href, enc, seasonSlug, t, type Row } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { clubName, clubOf, compName, seasonAge, wikiUrl } from "../lib/format";
@@ -14,6 +14,7 @@
 
   const label = $derived(Object.keys(app.manifest.seasons).find((s) => seasonSlug(s) === slug));
   const club = $derived(clubOf(title));
+  const country = $derived(club?.country_code ? countryOf(club.country_code) : null);
   const POS = ["GK", "DF", "MF", "FW", null] as const;
   const HEX = /^#[0-9a-fA-F]{6}$/;
   const kit = $derived(String(club?.colors_hex ?? "").split("|").map((c: string) => c.trim()).filter((c: string) => HEX.test(c)));
@@ -67,6 +68,7 @@
     <div class="min-w-0">
       <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-6xl">{clubName(club)} <span class="text-accent">{label}</span></h1>
       <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+        {#if country}<span class="flex items-center gap-1.5 font-medium text-fg"><Flag code={country.flag} label={country.name} /> {country.name}</span>{/if}
         {#if d?.cs}<span>{compName(d.cs.competition)}</span>{/if}
         {#if d?.sources.length}
           <span>{t(d.sources.length > 1 ? "sourcesLabel" : "sourceLabel")} :

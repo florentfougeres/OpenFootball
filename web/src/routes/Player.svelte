@@ -43,9 +43,15 @@
     }
     return `${t("bornIn")} ${day.getFullYear()}`;
   });
+  // Sélection A uniquement (les équipes de jeunes ont leurs propres lignes dans le tableau).
+  const senior = $derived(d?.national.find((r) => !/\bU\d{2}\b|under/i.test(r.team_name)) ?? null);
+  const sum = (rows: any[], k: "apps" | "goals") => rows.reduce((n, r) => n + (r[k] ?? 0), 0);
+  // Résumé de carrière : clubs (toutes les lignes de l'infobox, prêts compris) + sélection A. Pas de passes : Wikipedia ne les publie pas.
   const totals = $derived.by(() => {
-    const n = d?.national.find((r) => !/\bU\d{2}\b|under/i.test(r.team_name)) ?? null;
-    return n && (n.caps != null || n.goals != null) ? n : null;
+    if (!d || (!d.career.length && !senior)) return null;
+    const clubApps = sum(d.career, "apps"), clubGoals = sum(d.career, "goals");
+    const natApps = senior?.caps ?? 0, natGoals = senior?.goals ?? 0;
+    return { apps: clubApps + natApps, goals: clubGoals + natGoals, clubApps, clubGoals, natApps, natGoals, hasNat: !!senior };
   });
 </script>
 
@@ -64,10 +70,13 @@
       {#if born}<span>{born}</span>{/if}
     </p>
     {#if totals}
-      <ul class="mt-4 flex gap-3">
-        <li class="rounded-xl bg-accent-soft px-4 py-2"><strong class="block text-xl font-extrabold text-accent">{totals.caps ?? "–"}</strong><span class="text-xs uppercase tracking-wide text-muted">{t("colCaps")} · {totals.team_name}</span></li>
-        <li class="rounded-xl bg-accent-soft px-4 py-2"><strong class="block text-xl font-extrabold text-accent">{totals.goals ?? "–"}</strong><span class="text-xs uppercase tracking-wide text-muted">{t("colGoals")}</span></li>
+      <ul class="mt-4 flex flex-wrap gap-3">
+        <li class="rounded-xl bg-accent-soft px-4 py-2"><strong class="block text-xl font-extrabold text-accent">{totals.apps}</strong><span class="text-xs text-muted">{t("sumApps")}</span></li>
+        <li class="rounded-xl bg-accent-soft px-4 py-2"><strong class="block text-xl font-extrabold text-accent">{totals.goals}</strong><span class="text-xs text-muted">{t("sumGoals")}</span></li>
       </ul>
+      <p class="mt-2 text-xs text-muted">
+        {t("sumClubs")} : {totals.clubApps} {t("matchesLc")}, {totals.clubGoals} {t("goalsLc")}{#if totals.hasNat}{" · "}{t("sumNat")} : {totals.natApps} {t("capsLc")}, {totals.natGoals} {t("goalsLc")}{/if}
+      </p>
     {/if}
     <div class="mt-4 flex flex-wrap items-center gap-2"><WikiButton urls={d.urls} kind="wikiPlayer" /></div>
   </header>

@@ -9,15 +9,15 @@ hasardeuse (le rapprochement par QID, `reconcile`, fusionne ensuite les doublons
 from __future__ import annotations
 
 import re
-import unicodedata
 from dataclasses import dataclass, field
 
+from openfootball.names import fold
 from openfootball.parse.squad import SquadEntry
 from openfootball.store import stint_of
 
 
 def _tokens(name: str) -> tuple[str, ...]:
-    t = unicodedata.normalize("NFD", name.lower()).encode("ascii", "ignore").decode()
+    t = fold(name)
     return tuple(sorted(w for w in re.split(r"[^a-z0-9]+", t) if w))
 
 

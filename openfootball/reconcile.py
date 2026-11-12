@@ -7,12 +7,12 @@ doublons. Une fusion qui toucherait une saison figée est refusée (SPEC L9) et 
 from __future__ import annotations
 
 import re
-import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass, field
 
 import duckdb
 
+from openfootball.names import fold
 from openfootball.sources.wikidata import club_qids   # titre Wikipedia -> QID (valable pour tout titre)
 
 
@@ -88,8 +88,7 @@ _CLUB_STOP = {"fc", "f", "c", "afc", "cf", "ac", "the", "football", "club", "cal
 
 
 def _norm(text: str) -> str:
-    t = unicodedata.normalize("NFD", text.lower()).encode("ascii", "ignore").decode()
-    return re.sub(r"[^a-z0-9]+", " ", t).strip()
+    return re.sub(r"[^a-z0-9]+", " ", fold(text)).strip()
 
 
 def _club_key(text: str) -> frozenset[str]:

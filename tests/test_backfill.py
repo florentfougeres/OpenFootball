@@ -324,3 +324,10 @@ def test_club_page_ignored_for_a_past_season(con):
 def test_club_page_ignored_when_it_shows_another_season(con):
     res = _run_club_page(con, current=True, season_mention=False)
     assert next(x for x in res if x.club == "Club 1").lang is None
+
+
+def test_league_teams_reads_accented_team_codes():
+    """Süper Lig 2022-23 : name_BEŞ, name_ÜMR, name_SİV (lettres hors ASCII dans le code équipe)."""
+    from openfootball.parse.league import league_teams
+    wt = "== League table ==\n|name_BEŞ=[[Beşiktaş J.K.|Beşiktaş]]\n|name_ÜMR=[[Ümraniyespor]]\n|name_SİV=[[Sivasspor]]\n== Results =="
+    assert league_teams(wt) == ["Beşiktaş J.K.", "Ümraniyespor", "Sivasspor"]

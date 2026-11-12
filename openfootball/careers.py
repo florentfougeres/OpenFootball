@@ -27,6 +27,36 @@ def _write_national(con, pid: int, wikitext: str, next_id: int, report: CareerRe
     return next_id
 
 
+def prune_after_career_end(con: duckdb.DuckDBPyConnection, log=print) -> int:
+    """Retire d'un effectif un joueur dont la carrière (infobox) était finie avant la saison.
+
+    Cas type : Petr Čech, retraité en 2019, encore listé à Chelsea 2019/20 par une page italienne. Preuve exigée :
+    au moins 3 lignes de carrière, TOUTES avec une année de fin (aucune ligne « présent »), et la dernière finit
+    au plus tard à l'année de début de la saison. Saisons figées et saison en cours exclues ; chaque retrait est
+    tracé dans `amendment_log`."""
+    rows = con.execute("""
+        WITH ended AS (
+          SELECT player_id, max(end_year) AS last_year FROM player_career GROUP BY player_id
+          HAVING count(*) >= 3 AND count(*) FILTER (WHERE end_year IS NULL) = 0)
+        SELECT pcs.player_id, pcs.club_season_id, cs.season_id, p.name, cl.name_en, s.label, e.last_year
+        FROM player_club_season pcs
+        JOIN ended e ON e.player_id = pcs.player_id
+        JOIN club_season cs ON cs.id = pcs.club_season_id
+        JOIN season s ON s.id = cs.season_id
+        JOIN club cl ON cl.id = cs.club_id
+        JOIN player p ON p.id = pcs.player_id
+        WHERE s.status NOT IN ('frozen', 'open') AND e.last_year <= s.start_year""").fetchall()
+    for pid, csid, sid, name, club, label, last in rows:
+        for table in ("player_club_season", "squad_row_source", "squad_movement"):
+            con.execute(f"DELETE FROM {table} WHERE player_id = ? AND club_season_id = ?", [pid, csid])
+        con.execute("INSERT INTO amendment_log (id, season_id, club_season_id, description, reason, amended_at) "
+                    "VALUES ((SELECT coalesce(max(id), 0) + 1 FROM amendment_log), ?, ?, ?, ?, now())",
+                    [sid, csid, f"{name} retiré de {club} {label}",
+                     f"carrière terminée en {last} (infobox), avant le début de la saison"])
+        log(f"  retiré : {name} — {club} {label} (carrière finie en {last})")
+    return len(rows)
+
+
 @dataclass
 class CareerReport:
     players: int = 0           # joueurs traités
