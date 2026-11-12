@@ -74,7 +74,7 @@
   <p class="text-warn">{t("clubNotFound")}</p>
 {:else}
   <header class="card flex flex-col gap-5 p-6 sm:flex-row sm:items-center">
-    <div class="grid size-24 shrink-0 place-items-center rounded-2xl bg-surface-2 p-3"><Logo club={logo} size={80} /></div>
+    <div class="grid size-24 shrink-0 place-items-center rounded-xl bg-surface-2 p-3"><Logo club={logo} size={80} /></div>
     <div class="min-w-0">
       <h1 class="text-3xl font-extrabold tracking-tight">{name}</h1>
       {#if sub}<p class="text-muted">{sub}</p>{/if}

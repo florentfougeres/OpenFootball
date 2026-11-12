@@ -43,7 +43,9 @@ Pipeline Python local (DuckDB) qui lit Wikipedia et Wikidata, exporte des fichie
 
 ## Brand Commitments
 
-Nom : **OpenFootball**. Projet ouvert (code MIT, données sous leurs licences d'origine), bilingue. Aucune identité visuelle n'a été déclarée contraignante.
+Nom : **OpenFootball**. Projet ouvert (code MIT, données sous leurs licences d'origine), bilingue.
+
+Engagement visuel confirmé (2026-11-12) : **app moderne standard**, dans la famille Sofascore / OneFootball / FotMob, exécutée proprement (dense, cartes, thème sombre par défaut avec thème clair complet, un seul accent). Le **vert** de la marque est conservé comme accent. Pas de ligne de terrain décorative. Pas de photos de joueurs.
 
 ## Evidence on Hand
 

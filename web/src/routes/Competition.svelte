@@ -33,10 +33,10 @@
   <p class="text-warn">{t("compNotFound")}</p>
 {:else}
   <header class="card flex items-center gap-5 p-6">
-    <span class="grid size-20 shrink-0 place-items-center rounded-2xl bg-accent-soft"><Flag code={country.flag} label={country.name} size={52} /></span>
+    <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-accent-soft"><Flag code={country.flag} label={country.name} size={52} /></span>
     <div class="min-w-0">
-      <p class="eyebrow">{country.name} · {t("divisionN")} {comp.level}</p>
-      <h1 class="text-3xl font-extrabold tracking-tight">{compName(code)}</h1>
+      <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">{compName(code)}</h1>
+      <p class="mt-1.5 text-sm text-muted">{country.name} · {t("divisionN")} {comp.level}</p>
     </div>
   </header>
 

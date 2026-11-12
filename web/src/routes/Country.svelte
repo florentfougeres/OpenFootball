@@ -30,10 +30,9 @@
   <p class="text-warn">{t("countryNotFound")}</p>
 {:else}
   <header class="card flex items-center gap-5 p-6">
-    <span class="grid size-20 shrink-0 place-items-center rounded-2xl bg-surface-2"><Flag code={c.flag} label={c.name} size={52} /></span>
+    <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-surface-2"><Flag code={c.flag} label={c.name} size={52} /></span>
     <div>
-      <p class="eyebrow">{t("countries")}</p>
-      <h1 class="text-3xl font-extrabold tracking-tight">{c.name}</h1>
+      <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">{c.name}</h1>
     </div>
   </header>
 

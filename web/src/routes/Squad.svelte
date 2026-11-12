@@ -16,6 +16,8 @@
   const label = $derived(Object.keys(app.manifest.seasons).find((s) => seasonSlug(s) === slug));
   const club = $derived(clubOf(title));
   const POS = ["GK", "DF", "MF", "FW", null] as const;
+  const HEX = /^#[0-9a-fA-F]{6}$/;
+  const kit = $derived(String(club?.colors_hex ?? "").split("|").map((c: string) => c.trim()).filter((c: string) => HEX.test(c)));
 
   const res = resource(async () => {
     const lbl = label;
@@ -44,6 +46,10 @@
   const older = $derived(idx >= 0 ? list[idx + 1] : undefined);       // liste triée de la plus récente à la plus ancienne
   const newer = $derived(idx > 0 ? list[idx - 1] : undefined);
   const to = (s: string) => href("club", enc(title), seasonSlug(s));
+  // Mode d'affichage : liste (par défaut) ou cartes, mémorisé dans le navigateur du visiteur.
+  const MODE_KEY = "openfootball.squadView";
+  let mode: "list" | "cards" = $state((() => { try { return localStorage.getItem(MODE_KEY) === "cards" ? "cards" : "list"; } catch { return "list"; } })());
+  const setMode = (m: "list" | "cards") => { mode = m; try { localStorage.setItem(MODE_KEY, m); } catch { /* stockage indisponible */ } };
   let bar: HTMLElement | undefined = $state();
   $effect(() => {                                                      // garde la saison courante visible dans la barre défilante
     label; list.length;
@@ -55,10 +61,12 @@
 {#if !label}
   <p class="text-warn">{t("noResult")}</p>
 {:else}
-  <header class="card flex flex-col gap-4 p-6 sm:flex-row sm:items-center">
-    <div class="grid size-20 shrink-0 place-items-center rounded-2xl bg-surface-2 p-2"><Logo {club} size={64} /></div>
+  <header class="card overflow-hidden" style:background={kit[0] ? `color-mix(in oklab, ${kit[0]} 16%, var(--surface))` : undefined}>
+    {#if kit[0]}<div class="flex h-1.5" aria-hidden="true"><span class="flex-1" style:background={kit[0]}></span>{#if kit[1]}<span class="w-1/3" style:background={kit[1]}></span>{/if}</div>{/if}
+    <div class="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:p-6">
+    <div class="grid size-20 shrink-0 place-items-center rounded-xl bg-surface/80 p-2"><Logo {club} size={64} /></div>
     <div class="min-w-0">
-      <h1 class="text-3xl font-extrabold tracking-tight">{clubName(club)} <span class="text-muted">{label}</span></h1>
+      <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-6xl">{clubName(club)} <span class="text-accent">{label}</span></h1>
       <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
         {#if d?.cs}<span>{compName(d.cs.competition)}</span>{/if}
         <StateBadge status={app.manifest.seasons[label].status} />
@@ -71,6 +79,7 @@
         {/if}
       </p>
     </div>
+    </div>
   </header>
 
   {#if list.length > 1}
@@ -79,7 +88,7 @@
       {:else}<span class="btn-ghost !px-3 pointer-events-none opacity-40" aria-hidden="true">‹</span>{/if}
       <div class="flex min-w-0 flex-1 gap-2 overflow-x-auto px-0.5 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" bind:this={bar}>
         {#each list as s (s.season)}
-          <a class="shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-semibold no-underline transition {s.season === label ? 'border-accent bg-accent text-accent-fg' : s.players ? 'border-line bg-surface hover:bg-surface-2' : 'border-dashed border-line bg-surface text-muted hover:bg-surface-2'}"
+          <a class="shrink-0 display rounded-lg border px-3 py-1 text-lg font-semibold no-underline transition {s.season === label ? 'border-accent bg-accent text-accent-fg' : s.players ? 'border-line bg-surface hover:bg-surface-2' : 'border-dashed border-line bg-surface text-muted hover:bg-surface-2'}"
             href={to(s.season)} aria-current={s.season === label ? "true" : undefined}>{s.season}</a>
         {/each}
       </div>
@@ -95,32 +104,62 @@
   {:else if d && !d.rows.length}
     <p class="card mt-6 border-info/30 bg-info-soft p-4 text-info">{t("noSquad")}{d.cs?.known_gap_reason ? ` — ${t("gapReason")} : ${d.cs.known_gap_reason}` : ""}</p>
   {:else if d}
-    <div class="mt-6 grid gap-5 lg:grid-cols-2">
+    {#snippet stint(r: Row)}
+      {#if r.stint === "loan_in"}<Badge kind="info">{t("loan_in")}</Badge>
+      {:else if r.stint === "left_mid"}
+        <span title={r.stint_other_club ? `${t("toClub")} ${r.stint_other_club}` : undefined}>
+          <Badge kind="warn">{t(r.stint)}{moveWhen(r)}</Badge></span>{/if}
+    {/snippet}
+
+    <div class="mt-6 flex items-center justify-between gap-3">
+      <p class="text-sm text-muted">{d.rows.length} {t("srcPlayers")}</p>
+      <div class="inline-flex rounded-lg border border-line bg-surface p-0.5" role="group" aria-label={t("viewMode")}>
+        {#each [["list", "viewList"], ["cards", "viewCards"]] as [m, key]}
+          <button type="button" class="rounded-md px-3 py-1 text-sm font-medium transition {mode === m ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}"
+            aria-pressed={mode === m} onclick={() => setMode(m as "list" | "cards")}>{t(key)}</button>
+        {/each}
+      </div>
+    </div>
+
+    <div class="mt-3 {mode === 'list' ? 'card divide-y divide-line overflow-hidden' : 'space-y-6'}">
       {#each POS as pos}
         {@const list = d.rows.filter((r) => (r.position || null) === pos)}
         {#if list.length}
-          <section class="card overflow-hidden">
-            <h2 class="flex items-center justify-between border-b border-line px-5 py-3 text-base font-bold">
-              {pos ? t(pos) : t("unknownPos")} <span class="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs font-semibold text-muted">{list.length}</span>
+          <section class={mode === "list" ? "grid gap-x-6 px-4 py-3 sm:grid-cols-[8rem_1fr] sm:px-5" : ""}>
+            <h2 class="flex items-baseline gap-2 text-xl font-bold {mode === 'list' ? 'pt-1.5 sm:block' : 'mb-2'}">
+              {pos ? t(pos) : t("unknownPos")} <span class="display text-base font-semibold text-muted sm:block">{list.length}</span>
             </h2>
-            <table class="tbl">
-              <thead><tr><th class="num w-14">{t("number")}</th><th>{t("player")}</th><th class="num w-16" title={t("ageTip")}>{t("age")}</th></tr></thead>
-              <tbody>
+            {#if mode === "list"}
+              <ul class="divide-y divide-line/60">
                 {#each list as r (r.key + r.shirt_number)}
                   {@const age = seasonAge(r.birth_date, r.precision, label)}
-                  <tr>
-                    <td class="num font-semibold text-muted">{r.shirt_number ?? ""}</td>
-                    <td><span class="flex items-center gap-2"><Flag code={r.nat_flag} label={r.nationality} />
+                  <li class="grid grid-cols-[2.25rem_1fr_auto] items-center gap-3 py-1.5 hover:bg-surface-2">
+                    <span class="display text-right text-2xl font-bold text-muted">{r.shirt_number ?? ""}</span>
+                    <span class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+                      <Flag code={r.nat_flag} label={r.nationality} />
                       <a class="font-medium hover:text-accent hover:underline" href={href("player", enc(r.key))}>{r.player}</a>
-                      {#if r.stint === "loan_in"}<Badge kind="info">{t("loan_in")}</Badge>
-                      {:else if r.stint === "arrived_mid" || r.stint === "left_mid"}
-                        <span title={r.stint_other_club ? `${t(r.stint === "arrived_mid" ? "fromClub" : "toClub")} ${r.stint_other_club}` : undefined}>
-                          <Badge kind={r.stint === "arrived_mid" ? "ok" : "warn"}>{t(r.stint)}{moveWhen(r)}</Badge></span>{/if}</span></td>
-                    <td class="num">{age ?? ""}</td>
-                  </tr>
+                      {@render stint(r)}
+                    </span>
+                    <span class="text-sm text-muted tabular-nums" title={t("ageTip")}>{age != null ? `${age} ${t("ageYears")}` : ""}</span>
+                  </li>
                 {/each}
-              </tbody>
-            </table>
+              </ul>
+            {:else}
+              <ul class="grid grid-cols-[repeat(auto-fill,minmax(9.5rem,1fr))] gap-2">
+                {#each list as r (r.key + r.shirt_number)}
+                  {@const age = seasonAge(r.birth_date, r.precision, label)}
+                  <li class="card relative min-h-20 overflow-hidden p-3 hover:bg-surface-2">
+                    <span class="display pointer-events-none absolute -top-2 right-2 text-6xl font-bold leading-none text-surface-2" aria-hidden="true">{r.shirt_number ?? ""}</span>
+                    <a class="relative mt-4 block font-medium after:absolute after:inset-[-0.75rem] hover:text-accent hover:underline" href={href("player", enc(r.key))}>{r.player}</a>
+                    <span class="relative mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
+                      <Flag code={r.nat_flag} label={r.nationality} />
+                      {#if age != null}<span class="tabular-nums" title={t("ageTip")}>{age} {t("ageYears")}</span>{/if}
+                      {@render stint(r)}
+                    </span>
+                  </li>
+                {/each}
+              </ul>
+            {/if}
           </section>
         {/if}
       {/each}

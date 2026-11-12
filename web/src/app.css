@@ -1,25 +1,31 @@
 @import "tailwindcss";
+@import "@fontsource/barlow/400.css";
+@import "@fontsource/barlow/500.css";
+@import "@fontsource/barlow/600.css";
+@import "@fontsource/barlow-condensed/600.css";
+@import "@fontsource/barlow-condensed/700.css";
+@import "@fontsource/barlow-condensed/800.css";
 
-/* Jetons de design : clair par défaut, sombre selon le système ou le choix de l'utilisateur. */
+/* Jetons de design : sombre par défaut (écran consulté en déplacement ou le soir), clair si le système ou l'utilisateur le demande. */
 :root {
-  --bg: #f5f7f6; --surface: #ffffff; --surface-2: #eef2f0; --fg: #0e1a14; --muted: #5b6b63; --line: #dde5e0;
-  --accent: #0a7d4f; --accent-fg: #ffffff; --accent-soft: #dff3e8; --warn: #b45309; --warn-soft: #fdf0d9; --info: #1d4ed8; --info-soft: #e3ecfd;
-  --hero-a: #0a7d4f; --hero-b: #0b3d2c;
-  color-scheme: light;
+  --bg: #0a0f0d; --surface: #111a15; --surface-2: #19251e; --fg: #eef3f0; --muted: #9db0a5; --line: #23322a;
+  --accent: #2fd488; --accent-fg: #04140c; --accent-soft: #0f3322;
+  --warn: #f5b454; --warn-soft: #3a2a0f; --info: #8db1ff; --info-soft: #14233f;
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0b1210; --surface: #121b17; --surface-2: #19251f; --fg: #e8f0ec; --muted: #94a69c; --line: #25342c;
-    --accent: #34c98a; --accent-fg: #06150f; --accent-soft: #123826; --warn: #f5b454; --warn-soft: #3a2a0f; --info: #8db1ff; --info-soft: #14233f;
-    --hero-a: #0f6a45; --hero-b: #061a12;
-    color-scheme: dark;
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f1f5f3; --surface: #ffffff; --surface-2: #e8eeea; --fg: #0b1510; --muted: #53635a; --line: #d5ded8;
+    --accent: #0a7d4f; --accent-fg: #ffffff; --accent-soft: #d9f1e4;
+    --warn: #a14a05; --warn-soft: #fdeed2; --info: #1d4ed8; --info-soft: #e3ecfd;
+    color-scheme: light;
   }
 }
-:root[data-theme="dark"] {
-  --bg: #0b1210; --surface: #121b17; --surface-2: #19251f; --fg: #e8f0ec; --muted: #94a69c; --line: #25342c;
-  --accent: #34c98a; --accent-fg: #06150f; --accent-soft: #123826; --warn: #f5b454; --warn-soft: #3a2a0f; --info: #8db1ff; --info-soft: #14233f;
-  --hero-a: #0f6a45; --hero-b: #061a12;
-  color-scheme: dark;
+:root[data-theme="light"] {
+  --bg: #f1f5f3; --surface: #ffffff; --surface-2: #e8eeea; --fg: #0b1510; --muted: #53635a; --line: #d5ded8;
+  --accent: #0a7d4f; --accent-fg: #ffffff; --accent-soft: #d9f1e4;
+  --warn: #a14a05; --warn-soft: #fdeed2; --info: #1d4ed8; --info-soft: #e3ecfd;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -27,28 +33,35 @@
   --color-fg: var(--fg); --color-muted: var(--muted); --color-line: var(--line);
   --color-accent: var(--accent); --color-accent-fg: var(--accent-fg); --color-accent-soft: var(--accent-soft);
   --color-warn: var(--warn); --color-warn-soft: var(--warn-soft); --color-info: var(--info); --color-info-soft: var(--info-soft);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", ui-sans-serif, system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); font-size: 16px; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.005em; text-wrap: balance; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+::selection { background: var(--accent); color: var(--accent-fg); }
 a { color: inherit; }
+input[type="search"]::-webkit-search-cancel-button { filter: grayscale(1); opacity: .6; }
+* { scrollbar-color: var(--line) transparent; }
 
 @layer components {
-  .card { @apply rounded-2xl border border-line bg-surface shadow-sm; }
+  .card { @apply rounded-xl border border-line bg-surface; }
   .link { @apply font-medium text-accent underline-offset-2 hover:underline; }
-  .btn { @apply inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-fg no-underline transition hover:opacity-90; }
-  .btn-ghost { @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium text-fg no-underline transition hover:bg-surface-2; }
-  .badge { @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold; }
+  .btn { @apply inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-fg no-underline transition hover:brightness-110; }
+  .btn-ghost { @apply inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3.5 py-2 text-sm font-medium text-fg no-underline transition hover:bg-surface-2; }
+  .badge { @apply inline-flex items-center rounded-md px-1.5 py-0.5 text-xs font-semibold; }
   .badge-ok { @apply bg-accent-soft text-accent; }
   .badge-info { @apply bg-info-soft text-info; }
   .badge-warn { @apply bg-warn-soft text-warn; }
-  .eyebrow { @apply text-xs font-semibold uppercase tracking-widest text-muted; }
+  .eyebrow { @apply text-xs font-medium text-muted; }
+  .display { font-family: var(--font-display); }
   .tbl { @apply w-full border-collapse text-sm; }
-  .tbl th { @apply border-b border-line px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-muted; }
-  .tbl td { @apply border-b border-line/60 px-3 py-2.5 align-middle; }
+  .tbl th { @apply border-b border-line px-3 py-2 text-left text-xs font-semibold text-muted; }
+  .tbl td { @apply border-b border-line/60 px-3 py-2 align-middle; }
   .tbl tbody tr:last-child td { @apply border-b-0; }
   .tbl tbody tr:hover { background: var(--surface-2); }
   .num { @apply text-right tabular-nums; }
+  .tile { @apply flex items-center gap-3 rounded-xl border border-line bg-surface px-3.5 py-3 no-underline transition-colors hover:border-accent hover:bg-surface-2; }
 }

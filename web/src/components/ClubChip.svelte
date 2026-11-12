@@ -6,8 +6,8 @@
   let { club }: { club: Row } = $props();
 </script>
 
-<a class="group flex items-center gap-3 rounded-xl border border-line bg-surface px-3 py-2.5 no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+<a class="tile group"
   href={href("club", enc(club.wikipedia_title))}>
   <Logo {club} size={32} />
-  <span class="min-w-0 truncate text-sm font-semibold group-hover:text-accent">{clubName(club)}</span>
+  <span class="min-w-0 truncate text-sm font-semibold">{clubName(club)}</span>
 </a>
