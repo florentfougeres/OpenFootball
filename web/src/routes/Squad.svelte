@@ -31,6 +31,19 @@
     return { cs, rows, sources };
   });
   const d = $derived(res.data);
+
+  // Saisons du club (pour passer d'une saison à l'autre sans repasser par la fiche club).
+  const seasons = resource(() => q(`SELECT season, players FROM club_season WHERE club = ? ORDER BY season DESC`, [title]));
+  const list = $derived(seasons.data ?? []);
+  const idx = $derived(list.findIndex((s) => s.season === label));
+  const older = $derived(idx >= 0 ? list[idx + 1] : undefined);       // liste triée de la plus récente à la plus ancienne
+  const newer = $derived(idx > 0 ? list[idx - 1] : undefined);
+  const to = (s: string) => href("club", enc(title), seasonSlug(s));
+  let bar: HTMLElement | undefined = $state();
+  $effect(() => {                                                      // garde la saison courante visible dans la barre défilante
+    label; list.length;
+    bar?.querySelector("[aria-current=true]")?.scrollIntoView({ inline: "center", block: "nearest" });
+  });
 </script>
 
 <Crumbs trail={[{ label: clubName(club), to: href("club", enc(title)) }]} />
@@ -46,7 +59,7 @@
         <StateBadge status={app.manifest.seasons[label].status} />
         {#if d?.sources.length}
           <span>{t(d.sources.length > 1 ? "sourcesLabel" : "sourceLabel")} :
-            {#each d.sources as src, i}{#if i}, {/if}<a class="link" href={wikiUrl(src.source_lang, src.source_title)} hreflang={src.source_lang} target="_blank" rel="noopener">{src.source_lang.toUpperCase()}</a>
+            {#each d.sources as src, i}{#if i}{", "}{/if}<a class="link" href={wikiUrl(src.source_lang, src.source_title)} hreflang={src.source_lang} target="_blank" rel="noopener">{src.source_lang.toUpperCase()}</a>
               <span class="text-xs">({src.players_read} {t("srcPlayers")}{#if i && src.players_added}, +{src.players_added} {t("srcAdded")}{/if})</span>{/each}</span>
         {:else if d?.cs?.source_lang}
           <span>{t("sourceLabel")} : <a class="link" href={wikiUrl(d.cs.source_lang, d.cs.source_title)} hreflang={d.cs.source_lang} target="_blank" rel="noopener">{d.cs.source_title}</a> ({d.cs.source_lang.toUpperCase()})</span>
@@ -54,6 +67,21 @@
       </p>
     </div>
   </header>
+
+  {#if list.length > 1}
+    <nav class="mt-4 flex items-center gap-2" aria-label={t("changeSeason")}>
+      {#if older}<a class="btn-ghost !px-3" href={to(older.season)} title="{t('prevSeason')} {older.season}" aria-label="{t('prevSeason')} {older.season}">‹</a>
+      {:else}<span class="btn-ghost !px-3 pointer-events-none opacity-40" aria-hidden="true">‹</span>{/if}
+      <div class="flex min-w-0 flex-1 gap-2 overflow-x-auto px-0.5 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" bind:this={bar}>
+        {#each list as s (s.season)}
+          <a class="shrink-0 rounded-full border px-3.5 py-1.5 text-sm font-semibold no-underline transition {s.season === label ? 'border-accent bg-accent text-accent-fg' : s.players ? 'border-line bg-surface hover:bg-surface-2' : 'border-dashed border-line bg-surface text-muted hover:bg-surface-2'}"
+            href={to(s.season)} aria-current={s.season === label ? "true" : undefined}>{s.season}</a>
+        {/each}
+      </div>
+      {#if newer}<a class="btn-ghost !px-3" href={to(newer.season)} title="{t('nextSeason')} {newer.season}" aria-label="{t('nextSeason')} {newer.season}">›</a>
+      {:else}<span class="btn-ghost !px-3 pointer-events-none opacity-40" aria-hidden="true">›</span>{/if}
+    </nav>
+  {/if}
 
   {#if res.loading && !d}
     <Spinner />

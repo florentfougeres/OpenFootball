@@ -47,7 +47,7 @@
       <h2 class="text-lg font-bold">{t("allSeasons")}</h2>
       {#if app.manifest.seasons[label]}<StateBadge status={app.manifest.seasons[label].status} />{/if}
     </div>
-    <div class="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-2" role="tablist" aria-label={t("allSeasons")}>
+    <div class="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist" aria-label={t("allSeasons")}>
       {#each seasons.data as s}
         <a class="shrink-0 rounded-full border px-4 py-1.5 text-sm font-semibold no-underline transition {s === label ? 'border-accent bg-accent text-accent-fg' : 'border-line bg-surface hover:bg-surface-2'}"
           href={href("competition", code, seasonSlug(s))} role="tab" aria-selected={s === label}>{s}</a>
