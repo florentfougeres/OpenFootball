@@ -33,7 +33,7 @@
 {:else}
   <header class="card flex items-center gap-5 p-6">
     {#if comp.logo_url}
-      <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-white p-2"><img class="max-h-full max-w-full object-contain" src={comp.logo_url} alt="" width="64" height="64" /></span>
+      <span class="block size-20 shrink-0 overflow-hidden rounded-xl bg-white p-2"><img class="size-full object-contain" src={comp.logo_url} alt="" /></span>
     {:else}
       <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-accent-soft"><Flag code={country.flag} label={country.name} size={52} /></span>
     {/if}

@@ -9,7 +9,7 @@
 <a class="tile group"
   href={href("competition", code)}>
   {#if logo}
-    <span class="grid size-12 shrink-0 place-items-center rounded-lg bg-white p-1.5"><img class="max-h-full max-w-full object-contain" src={logo} alt="" width="40" height="40" loading="lazy" /></span>
+    <span class="block size-12 shrink-0 overflow-hidden rounded-lg bg-white p-1.5"><img class="size-full object-contain" src={logo} alt="" loading="lazy" /></span>
   {:else}
     <span class="grid size-12 shrink-0 place-items-center rounded-lg bg-surface-2"><Flag code={c.flag} label={c.name} size={28} /></span>
   {/if}
