@@ -227,3 +227,32 @@ def test_french_club_uses_the_french_page_before_english(con):
 def test_english_only_country_ignores_local_pages(con):
     # ENG : l'anglais d'abord, même si une page française existe
     assert load_scopes(["ENG"])[0].langs[0] == "en"
+
+
+def test_fallbacks_follow_the_country_language_order(con):
+    """Burnley 2017/18 : la page anglaise rendue est lisible ; une page française indiquée à la main ne doit pas passer avant
+    pour un club anglais, mais reste prioritaire pour un club français."""
+    import dataclasses
+    html = ("<h3>Appearances and goals</h3><table><tr><th>No.</th><th>Pos.</th><th>Nat.</th><th>Name</th></tr>"
+            + "".join(f"<tr><td>{i}</td><td>{'GK' if i == 1 else 'MF'}</td><td><img alt='FRA'></td>"
+                      f"<th><a title='Joueur {i}'>Joueur {i}</a></th></tr>" for i in range(1, 15)) + "</table>")
+
+    class WithRender(FakeWiki):
+        def render(self, title):
+            return Page(title=f"render:{title}", exists=True, resolved_title=title, revid=9, wikitext=html)
+
+    fr_title = "Saison 2023-2024 du Club 5"
+    fr_text = "== Effectif ==\n" + "\n".join(
+        f"{{{{Feff joueur |num={i} |prénom=Prénom{i}|nom=Nom|pos={'G' if i == 1 else 'M'} |nat=France}}}}" for i in range(1, 13))
+    pages = setup_pages()
+    pages["2023–24 Club 5 season"] = page("2023–24 Club 5 season", "== Appearances and goals ==\n{| class=wikitable\n|-\n! No.\n! Name\n|}")
+
+    def run(langs):
+        sc = dataclasses.replace(load_scopes(["FRA"])[0], langs=langs)
+        res = run_backfill(con, [sc], 2023, wp=WithRender(pages),
+                           lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, fr_text)})}, wd=FakeWikidata({}),
+                           qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None,
+                           overrides={(2023, "Club 5"): [("fr", fr_title)]})
+        return next(x for x in res if x.club == "Club 5")
+
+    assert run(("en", "fr", "it")).lang == "en"          # pays anglophone : l'anglais d'abord

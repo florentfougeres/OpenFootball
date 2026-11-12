@@ -16,12 +16,16 @@ from importlib import resources
 # Nations du Royaume-Uni : pas de code ISO 3166-1, mais des drapeaux dédiés.
 _SPECIAL_FLAG = {"ENG": "gb-eng", "SCO": "gb-sct", "WAL": "gb-wls", "NIR": "gb-nir"}
 
-# Pays : codes ISO 3166 (donnent le drapeau), CIO, noms fr/en.
-SPARQL = """SELECT ?c ?iso2 ?iso3 ?ioc ?en ?fr WHERE {
+# Pays : codes ISO 3166 (donnent le drapeau), CIO, noms en/fr + es/it/de (les pages d'effectif de ces langues écrivent
+# « España », « Irlanda », « Alemania »…).
+SPARQL = """SELECT ?c ?iso2 ?iso3 ?ioc ?en ?fr ?es ?it ?de WHERE {
   ?c wdt:P297 ?iso2 .
   OPTIONAL { ?c wdt:P298 ?iso3 } OPTIONAL { ?c wdt:P984 ?ioc }
   ?c rdfs:label ?en . FILTER(LANG(?en) = "en")
   ?c rdfs:label ?fr . FILTER(LANG(?fr) = "fr")
+  OPTIONAL { ?c rdfs:label ?es . FILTER(LANG(?es) = "es") }
+  OPTIONAL { ?c rdfs:label ?it . FILTER(LANG(?it) = "it") }
+  OPTIONAL { ?c rdfs:label ?de . FILTER(LANG(?de) = "de") }
 }"""
 
 # Codes FIFA : portés par les équipes nationales masculines (Q6979593), rattachées à leur pays (P17).
@@ -31,10 +35,10 @@ SPARQL_FIFA = """SELECT ?c ?fifa WHERE {
 
 # Nations du Royaume-Uni et cas sans ISO 3166-1 propre : codes, drapeaux et noms écrits à la main.
 _EXTRA = [
-    {"fifa": "ENG", "flag": "gb-eng", "names": ["England", "Angleterre"]},
-    {"fifa": "SCO", "flag": "gb-sct", "names": ["Scotland", "Écosse"]},
-    {"fifa": "WAL", "flag": "gb-wls", "names": ["Wales", "Pays de Galles"]},
-    {"fifa": "NIR", "flag": "gb-nir", "names": ["Northern Ireland", "Irlande du Nord"]},
+    {"fifa": "ENG", "flag": "gb-eng", "names": ["England", "Angleterre", "Inglaterra", "Inghilterra", "Engeland"]},
+    {"fifa": "SCO", "flag": "gb-sct", "names": ["Scotland", "Écosse", "Escocia", "Scozia", "Schottland"]},
+    {"fifa": "WAL", "flag": "gb-wls", "names": ["Wales", "Pays de Galles", "Gales", "Galles", "País de Gales"]},
+    {"fifa": "NIR", "flag": "gb-nir", "names": ["Northern Ireland", "Irlande du Nord", "Irlanda del Norte", "Irlanda del Nord", "Nordirland"]},
 ]
 
 # Variantes courantes que les libellés Wikidata n'ont pas (nom -> code FIFA). Complété au besoin, jamais deviné.
@@ -45,7 +49,8 @@ _ALIASES = {
     "Corée du Sud": "KOR", "North Macedonia": "MKD", "Macédoine du Nord": "MKD", "Turkey": "TUR", "Türkiye": "TUR",
     "Turquie": "TUR", "United States": "USA", "États-Unis": "USA", "Etats-Unis": "USA", "Eswatini": "SWZ",
     "Swaziland": "SWZ", "Gambia": "GAM", "Gambie": "GAM", "Guinea-Bissau": "GNB", "Guinée-Bissau": "GNB",
-    "Republic of Ireland": "IRL", "Irlande": "IRL", "Northern Ireland": "NIR", "Irlande du Nord": "NIR",
+    "Republic of Ireland": "IRL", "Irlande": "IRL", "République d'Irlande": "IRL", "République irlandaise": "IRL",
+    "Irish Republic": "IRL", "Eire": "IRL", "Éire": "IRL", "Northern Ireland": "NIR", "Irlande du Nord": "NIR",
     "Bosnia and Herzegovina": "BIH", "Bosnie-Herzégovine": "BIH", "Curaçao": "CUW", "Curacao": "CUW",
     "Kosovo": "KVX", "Georgia": "GEO", "Géorgie": "GEO", "Russia": "RUS", "Russie": "RUS",
 }
@@ -70,7 +75,7 @@ def build_reference(countries: list[dict], fifa_rows: list[dict]) -> list[dict]:
         e = out.setdefault(r["c"], {"fifa": fifa_of.get(r["c"]), "ioc": None, "iso3": None, "flag": flag, "names": set()})
         e["ioc"] = e["ioc"] or (r.get("ioc") or "").upper() or None
         e["iso3"] = e["iso3"] or (r.get("iso3") or "").upper() or None
-        e["names"] |= {r["en"], r["fr"]}
+        e["names"] |= {r[k] for k in ("en", "fr", "es", "it", "de") if r.get(k)}
     entries = list(out.values())
     for e in entries:                          # alias manuels, rattachés par code FIFA/CIO/ISO3
         codes = {c for c in (e["fifa"], e["ioc"], e["iso3"]) if c}
@@ -88,7 +93,8 @@ _CODE_ALIASES = {
     "ROK": "kr", "CAP": "cv", "NZ": "nz",
 }
 _NAME_ALIASES = {"macedonia": "mk", "republique tcheque": "cz", "tahiti": "pf", "democratic republic of congo": "cd",
-                 "centrafrique": "cf", "pays bas": "nl", "netherlands": "nl", "the netherlands": "nl"}
+                 "centrafrique": "cf", "pays bas": "nl", "netherlands": "nl", "the netherlands": "nl",
+                 "paises bajos": "nl", "holanda": "nl", "bosnia": "ba", "macedoine": "mk"}
 
 
 @lru_cache(maxsize=1)

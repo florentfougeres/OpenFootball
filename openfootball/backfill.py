@@ -92,10 +92,13 @@ def _ensure_club_season(con, club_id: int, season_id: int, competition_id: int) 
 
 
 def _fallbacks(con, cs_id: int, team: str, start_year: int, label: str, wp, lang_clients: dict,
-               overrides: dict, articles: Callable[[], dict]) -> ClubResult | None:
+               overrides: dict, articles: Callable[[], dict], langs: tuple[str, ...] = ("en",)) -> ClubResult | None:
     """Dernier recours, seulement pour un club-saison sans effectif plausible :
     1. pages indiquées à la main (`_overrides.toml`), lues comme wikitexte puis comme HTML rendu ;
-    2. HTML rendu des pages anglaises (le tableau peut venir d'un modèle ou d'une section inconnue)."""
+    2. HTML rendu des pages anglaises (le tableau peut venir d'un modèle ou d'une section inconnue).
+    Les essais sont triés selon l'ordre des langues du pays (D10) : un club anglais lit sa page anglaise rendue AVANT une
+    page française indiquée à la main ; un club français lit d'abord sa page française. Ordre stable : à langue égale,
+    les sources manuelles passent avant."""
     canon = con.execute("SELECT c.wikipedia_title, c.country_code FROM club c JOIN club_season cs ON cs.club_id = c.id "
                         "WHERE cs.id = ?", [cs_id]).fetchone()
     attempts: list[tuple[str, str, str]] = []
@@ -107,6 +110,7 @@ def _fallbacks(con, cs_id: int, team: str, start_year: int, label: str, wp, lang
     if wd_title and wd_title not in en_titles:
         en_titles.append(wd_title)
     attempts += [("en", t, "html") for t in en_titles]
+    attempts.sort(key=lambda a: langs.index(a[0]) if a[0] in langs else len(langs))
 
     seen = set()
     for lang, title, kind in attempts:
@@ -204,7 +208,7 @@ def run_backfill(
                 if chosen:
                     break
             if not chosen:
-                got = _fallbacks(con, cs_id, team, start_year, label, wp, lang_clients, overrides, articles)
+                got = _fallbacks(con, cs_id, team, start_year, label, wp, lang_clients, overrides, articles, sc.langs)
                 chosen = ClubResult(sc.code, team, got.lang, got.players, got.title) if got else None
             res = chosen or ClubResult(sc.code, team, None, 0, None)
             results.append(res)
