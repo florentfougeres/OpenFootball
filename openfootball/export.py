@@ -105,7 +105,8 @@ _GLOBAL = {
             "LEFT JOIN entity_label ci ON ci.qid = c.city_qid AND ci.lang = 'en' "
             "LEFT JOIN entity_label st ON st.qid = c.stadium_qid AND st.lang = 'en' "
             "LEFT JOIN entity_label lg ON lg.qid = c.league_qid AND lg.lang = 'en' "
-            "ORDER BY c.wikidata_qid NULLS LAST, c.id",
+            "ORDER BY has_squads DESC, c.wikidata_qid NULLS LAST, c.id",   # les clubs à effectifs d'abord : le site ne lit que ces groupes
+
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
     "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
@@ -120,7 +121,8 @@ def _write(con, sql: str, out: Path, table: str, stem: str) -> dict:
     folder = out / table
     folder.mkdir(parents=True, exist_ok=True)
     tmp = folder / f".{stem}.tmp"
-    con.execute(f"COPY ({sql}) TO '{tmp}' (FORMAT PARQUET, COMPRESSION ZSTD)")
+    rg = ", ROW_GROUP_SIZE 2048" if table == "club" else ""      # petits groupes : la lecture par plages ne télécharge que les groupes utiles
+    con.execute(f"COPY ({sql}) TO '{tmp}' (FORMAT PARQUET, COMPRESSION ZSTD{rg})")
     digest = hashlib.sha256(tmp.read_bytes()).hexdigest()
     final = folder / f"{stem}.{digest[:8]}.parquet"
     os.replace(tmp, final)

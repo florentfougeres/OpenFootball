@@ -10,19 +10,24 @@ export async function startDb(manifest: any, base: URL) {
   const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
   const workerUrl = URL.createObjectURL(new Blob([`importScripts("${bundle.mainWorker}");`], { type: "text/javascript" }));
   const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
+  performance.mark("db:bundle");
   await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  performance.mark("db:instantiated");
   URL.revokeObjectURL(workerUrl);
-  const register = async (name: string, path: string) => {
-    await db.registerFileURL(name, new URL(path, base).href, duckdb.DuckDBDataProtocol.HTTP, false);
+  const pending: Promise<void>[] = [];       // enregistrements lancés ensemble, attendus avant la première requête
+  const register = (name: string, path: string) => {
+    pending.push(db.registerFileURL(name, new URL(path, base).href, duckdb.DuckDBDataProtocol.HTTP, false));
     return name;
   };
   const squad: string[] = [], clubSeason: string[] = [], files: Record<string, string> = {};
   for (const [label, s] of Object.entries<any>(manifest.seasons)) {
     const sl = seasonSlug(label);
-    squad.push(await register(`squad_${sl}.parquet`, s.files.squad.path));
-    clubSeason.push(await register(`cs_${sl}.parquet`, s.files.club_season.path));
+    squad.push(register(`squad_${sl}.parquet`, s.files.squad.path));
+    clubSeason.push(register(`cs_${sl}.parquet`, s.files.club_season.path));
   }
-  for (const [name, tbl] of Object.entries<any>(manifest.tables)) files[name] = await register(`${name}.parquet`, tbl.path);
+  for (const [name, tbl] of Object.entries<any>(manifest.tables)) files[name] = register(`${name}.parquet`, tbl.path);
+  await Promise.all(pending);
+  performance.mark("db:registered");
   conn = await db.connect();
   const list = (a: string[]) => "[" + a.map((x) => `'${x}'`).join(",") + "]";
   await conn.query(`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`);
@@ -31,6 +36,7 @@ export async function startDb(manifest: any, base: URL) {
     if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     app.has[n] = Boolean(files[n]);
   }
+  performance.mark("db:views");
   const squadCols = (await conn.query(`DESCRIBE squad`)).toArray().map((r: any) => r.toJSON().column_name);
   app.squadHasMoves = squadCols.includes("stint_date");
   if (app.has.career) {
@@ -68,7 +74,9 @@ export async function boot() {
     if (!res.ok) throw new Error(`manifest.json: HTTP ${res.status}`);
     app.manifest = await res.json();
     await startDb(app.manifest, base);
+    performance.mark("boot:db");
     await loadRefs();
+    performance.mark("boot:refs");
     app.ready = true;
   } catch (e: any) {
     console.error(e);
