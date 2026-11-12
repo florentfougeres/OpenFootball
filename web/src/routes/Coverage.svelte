@@ -6,8 +6,7 @@
   import Badge from "../components/Badge.svelte";
   import Crumbs from "../components/Crumbs.svelte";
   import Spinner from "../components/Spinner.svelte";
-  import StateBadge from "../components/StateBadge.svelte";
-
+  
   const seasons = $derived(Object.entries<any>(app.manifest.seasons).sort((a, b) => b[0].localeCompare(a[0])));
   const gaps = resource(() => q(`SELECT season, club, competition, known_gap_reason AS reason, players FROM club_season WHERE players = 0 ORDER BY season DESC, club`));
 </script>
@@ -19,7 +18,7 @@
 <section class="card mt-6 overflow-hidden">
   <div class="overflow-x-auto">
     <table class="tbl">
-      <thead><tr><th>{t("season")}</th><th class="num">{t("covSquads")}</th><th class="min-w-32"></th><th class="num">{t("covGaps")}</th><th class="num">{t("covOpen")}</th><th>{t("covStatus")}</th></tr></thead>
+      <thead><tr><th>{t("season")}</th><th class="num">{t("covSquads")}</th><th class="min-w-32"></th><th class="num">{t("covGaps")}</th><th class="num">{t("covOpen")}</th></tr></thead>
       <tbody>
         {#each seasons as [label, s]}
           {@const c = s.coverage}
@@ -29,7 +28,6 @@
             <td><div class="h-2 w-full overflow-hidden rounded-full bg-surface-2"><div class="h-full rounded-full bg-accent" style:width="{pct(c.with_squad, c.club_seasons)}%"></div></div></td>
             <td class="num">{c.known_gaps}</td>
             <td class="num">{c.club_seasons - c.with_squad - c.known_gaps}</td>
-            <td><StateBadge status={s.status} /></td>
           </tr>
         {/each}
       </tbody>

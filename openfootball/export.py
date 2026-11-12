@@ -110,8 +110,8 @@ _GLOBAL = {
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
     "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
-    "competition": "SELECT code, name_en, name_fr, country_code, level, wikidata_qid "
-                   "FROM competition ORDER BY code",
+    "competition": "SELECT c.code, c.name_en, c.name_fr, c.country_code, c.level, c.wikidata_qid, i.wikipedia_title, i.logo_url, i.logo_license "
+                   "FROM competition c LEFT JOIN competition_info i ON i.code = c.code ORDER BY c.code",
     "season": "SELECT label, start_year, status, content_hash FROM season ORDER BY start_year",
     "country": "SELECT code, name_en, name_fr, flag FROM country_export ORDER BY code",
 }
@@ -175,10 +175,40 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         FROM known_gap k JOIN club_season cs ON cs.id = k.club_season_id
         JOIN season s ON s.id = cs.season_id JOIN club cl ON cl.id = cs.club_id
         ORDER BY s.start_year, cl.wikipedia_title""", out, "known_gap", "known_gap")
+    manifest["home"] = _write_home(con, out, manifest)
     (out / "SCHEMA.md").write_text(build_schema_doc(out, manifest), encoding="utf-8")      # dictionnaire de données, joint à la release
     manifest["docs"] = {"schema": "SCHEMA.md"}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     return manifest
+
+
+def _write_home(con, out: Path, manifest: dict) -> dict:
+    """`home.<sha8>.json` : de quoi afficher l'accueil sans attendre le moteur de requêtes (DuckDB-WASM, ≈ 8 Mo)."""
+    squads = ", ".join(f"'{(out / s['files']['squad']['path']).as_posix()}'" for s in manifest["seasons"].values())
+    players = con.execute(f"SELECT count(DISTINCT coalesce(player_qid, 'n:' || player)) FROM read_parquet([{squads}], union_by_name=true)").fetchone()[0] if squads else 0
+    countries = [{"code": c, "name_en": en, "name_fr": fr, "flag": flag, "comps": comps, "clubs": clubs}
+                 for c, en, fr, flag, comps, clubs in con.execute("""
+        SELECT ce.code, ce.name_en, ce.name_fr, ce.flag,
+               (SELECT count(*) FROM competition x WHERE x.country_code = ce.code),
+               (SELECT count(*) FROM club c WHERE c.country_code = ce.code AND EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id))
+        FROM country_export ce ORDER BY ce.code""").fetchall() if comps]
+    clubs = [{"wikipedia_title": t, "name_en": en, "name_fr": fr, "logo_url": logo, "colors_hex": colors, "season": season}
+             for t, en, fr, logo, colors, season in con.execute("""
+        SELECT c.wikipedia_title, coalesce(le.label, c.name_en), coalesce(lf.label, c.name_fr), c.logo_url, c.colors_hex,
+               (SELECT max(s.label) FROM club_season cs JOIN season s ON s.id = cs.season_id
+                WHERE cs.club_id = c.id AND EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id))
+        FROM club c
+        LEFT JOIN entity_label le ON le.qid = c.wikidata_qid AND le.lang = 'en'
+        LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr'
+        WHERE EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id AND EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id))
+        ORDER BY c.wikipedia_count DESC NULLS LAST, c.wikipedia_title LIMIT 12""").fetchall()]
+    body = json.dumps({"stats": {"clubs": con.execute("SELECT count(*) FROM club").fetchone()[0], "players": players},
+                       "countries": countries, "clubs": clubs}, ensure_ascii=False, separators=(",", ":"))
+    digest = hashlib.sha256(body.encode()).hexdigest()
+    path = out / "home" / f"home.{digest[:8]}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(body, encoding="utf-8")
+    return {"path": path.relative_to(out).as_posix(), "sha256": digest}
 
 
 def pack(out_dir: str | Path, archive: str | Path) -> Path:

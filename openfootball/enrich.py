@@ -163,33 +163,59 @@ def _infobox_logos(con: duckdb.DuckDBPyConnection, wp, scope: str, limit: int | 
                         f"ORDER BY coalesce(wikipedia_count, 0) DESC, id" + (f" LIMIT {int(limit)}" if limit else "")).fetchall()
     found = 0
     for chunk in _chunks(clubs, BATCH):
-        data = wp._call({"action": "query", "titles": "|".join(t for _, t in chunk), "redirects": 1,
-                         "prop": "revisions", "rvprop": "content", "rvslots": "main", "rvsection": 0})["query"]
-        step1 = {n["from"]: n["to"] for n in data.get("normalized", [])}
-        step2 = {r["from"]: r["to"] for r in data.get("redirects", [])}
-        lead = {p["title"]: p["revisions"][0]["slots"]["main"]["content"]
-                for p in data.get("pages", []) if p.get("revisions")}
-        files: dict[int, str] = {}
-        for cid, t in chunk:
-            m = _IMAGE_FIELD.search(lead.get(step2.get(step1.get(t, t), step1.get(t, t)), ""))
-            raw = re.split(r"\{\{!\}\}|\|", m.group(1))[0] if m else ""        # « x.svg{{!}}class=… » : options d'affichage
-            name = re.sub(r"^(?:\[\[)?(?:File|Image):", "", raw.strip(), flags=re.I).rstrip("]").strip()
-            if name:
-                files[cid] = "File:" + name
-        if not files:
-            continue
-        info = wp._call({"action": "query", "titles": "|".join(sorted(set(files.values()))), "prop": "imageinfo",
-                         "iiprop": "url|extmetadata", "iiurlwidth": 200})["query"]
-        norm = {n["from"]: n["to"] for n in info.get("normalized", [])}
-        by_file = {p["title"]: (p.get("imageinfo") or [{}])[0] for p in info.get("pages", [])}
-        for cid, f in files.items():
-            ii = by_file.get(norm.get(f, f)) or {}
-            url = (ii.get("thumburl") or "").split("?")[0]
-            if not url:
-                continue
-            meta = ii.get("extmetadata", {})
-            lic = (meta.get("LicenseShortName") or {}).get("value") or (
-                "non-free" if (meta.get("NonFree") or {}).get("value") else "unknown")
+        for cid, (url, lic) in _logos_of_pages(wp, chunk).items():
             con.execute("UPDATE club SET logo_url = ?, logo_license = ? WHERE id = ?", [url, lic, cid])
             found += 1
     return found
+
+
+def _logos_of_pages(wp, chunk: list[tuple[int, str]]) -> dict[int, tuple[str, str]]:
+    """Pour (id, titre de page) : {id: (miniature, licence)} d'après le champ `image` de l'infobox (introduction de la page)."""
+    data = wp._call({"action": "query", "titles": "|".join(t for _, t in chunk), "redirects": 1,
+                     "prop": "revisions", "rvprop": "content", "rvslots": "main", "rvsection": 0})["query"]
+    step1 = {n["from"]: n["to"] for n in data.get("normalized", [])}
+    step2 = {r["from"]: r["to"] for r in data.get("redirects", [])}
+    lead = {p["title"]: p["revisions"][0]["slots"]["main"]["content"]
+            for p in data.get("pages", []) if p.get("revisions")}
+    files: dict[int, str] = {}
+    for cid, t in chunk:
+        m = _IMAGE_FIELD.search(lead.get(step2.get(step1.get(t, t), step1.get(t, t)), ""))
+        raw = re.split(r"\{\{!\}\}|\|", m.group(1))[0] if m else ""        # « x.svg{{!}}class=… » : options d'affichage
+        name = re.sub(r"^(?:\[\[)?(?:File|Image):", "", raw.strip(), flags=re.I).rstrip("]").strip()
+        if name:
+            files[cid] = "File:" + name
+    out: dict[int, tuple[str, str]] = {}
+    if not files:
+        return out
+    info = wp._call({"action": "query", "titles": "|".join(sorted(set(files.values()))), "prop": "imageinfo",
+                     "iiprop": "url|extmetadata", "iiurlwidth": 200})["query"]
+    norm = {n["from"]: n["to"] for n in info.get("normalized", [])}
+    by_file = {p["title"]: (p.get("imageinfo") or [{}])[0] for p in info.get("pages", [])}
+    for cid, f in files.items():
+        ii = by_file.get(norm.get(f, f)) or {}
+        url = (ii.get("thumburl") or "").split("?")[0]
+        if not url:
+            continue
+        meta = ii.get("extmetadata", {})
+        lic = (meta.get("LicenseShortName") or {}).get("value") or (
+            "non-free" if (meta.get("NonFree") or {}).get("value") else "unknown")
+        out[cid] = (url, lic)
+    return out
+
+
+def enrich_league_logos(con: duckdb.DuckDBPyConnection, wp, *, log=print) -> int:
+    """Logo de chaque championnat (page anglaise, infobox), dans `competition_info`. Le titre de page est le nom anglais
+    du championnat, sauf exception dans `LEAGUE_PAGES`."""
+    rows = con.execute("SELECT id, name_en FROM competition ORDER BY id").fetchall()
+    chunk = [(cid, LEAGUE_PAGES.get(name, name)) for cid, name in rows]
+    found = _logos_of_pages(wp, chunk)
+    for cid, title in chunk:
+        code = con.execute("SELECT code FROM competition WHERE id = ?", [cid]).fetchone()[0]
+        url, lic = found.get(cid, (None, None))
+        con.execute("DELETE FROM competition_info WHERE code = ?", [code])
+        con.execute("INSERT INTO competition_info (code, wikipedia_title, logo_url, logo_license) VALUES (?, ?, ?, ?)", [code, title, url, lic])
+    log(f"  logos de championnats : {len(found)}/{len(rows)}")
+    return len(found)
+
+
+LEAGUE_PAGES: dict[str, str] = {}      # nom anglais du championnat -> titre de page, quand ils diffèrent

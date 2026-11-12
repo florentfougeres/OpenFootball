@@ -8,6 +8,7 @@
 <article class="max-w-3xl">
   <h1 class="text-3xl font-extrabold tracking-tight">{t("aboutTitle")}</h1>
   <p class="mt-3 text-lg text-muted">{t("about1")}</p>
+  <p class="mt-3 rounded-lg border border-line bg-surface px-4 py-3">{t("betaNote")}</p>
   {#each blocks as [h, p]}
     <h2 class="mt-8 text-xl font-bold">{t(h)}</h2>
     <p class="mt-2 leading-relaxed">{t(p)}</p>

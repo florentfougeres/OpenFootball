@@ -8,10 +8,11 @@
   const links = $derived([
     { key: "home", label: t("home"), to: href("") },
     { key: "clubs", label: t("clubs"), to: href("clubs") },
+    { key: "competitions", label: t("allComps"), to: href("competitions") },
     { key: "coverage", label: t("coverage"), to: href("coverage") },
     { key: "about", label: t("about"), to: href("about") },
   ]);
-  const active = (k: string) => (k === "clubs" ? ["clubs", "club", "player"].includes(current) : k === "home" ? ["home", "country", "competition"].includes(current) : current === k);
+  const active = (k: string) => (k === "competitions" ? ["competitions", "competition"].includes(current) : k === "clubs" ? ["clubs", "club", "player"].includes(current) : k === "home" ? ["home", "country"].includes(current) : current === k);
   $effect(() => { route.parts; open = false; });
 </script>
 
@@ -22,6 +23,7 @@
         <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M12 8l3.5 2.5-1.3 4h-4.4l-1.3-4z" fill="currentColor" stroke="none" /></svg>
       </span>
       OpenFootball
+      <span class="rounded-md border border-line px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted" title={t("betaNote")}>{t("beta")}</span>
     </a>
     <nav class="ml-4 hidden items-center gap-1 md:flex" aria-label="Navigation">
       {#each links as l}

@@ -7,8 +7,7 @@
   import Flag from "../components/Flag.svelte";
   import Logo from "../components/Logo.svelte";
   import Spinner from "../components/Spinner.svelte";
-  import StateBadge from "../components/StateBadge.svelte";
-  import Badge from "../components/Badge.svelte";
+    import Badge from "../components/Badge.svelte";
 
   let { code, slug }: { code: string; slug?: string } = $props();
   const comp = $derived(app.comps.get(code));
@@ -33,7 +32,11 @@
   <p class="text-warn">{t("compNotFound")}</p>
 {:else}
   <header class="card flex items-center gap-5 p-6">
-    <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-accent-soft"><Flag code={country.flag} label={country.name} size={52} /></span>
+    {#if comp.logo_url}
+      <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-white p-2"><img class="max-h-full max-w-full object-contain" src={comp.logo_url} alt="" width="64" height="64" /></span>
+    {:else}
+      <span class="grid size-20 shrink-0 place-items-center rounded-xl bg-accent-soft"><Flag code={country.flag} label={country.name} size={52} /></span>
+    {/if}
     <div class="min-w-0">
       <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">{compName(code)}</h1>
       <p class="mt-1.5 text-sm text-muted">{country.name} · {t("divisionN")} {comp.level}</p>
@@ -45,7 +48,6 @@
   {:else if seasons.data && label}
     <div class="mt-6 flex items-center gap-3">
       <h2 class="text-lg font-bold">{t("allSeasons")}</h2>
-      {#if app.manifest.seasons[label]}<StateBadge status={app.manifest.seasons[label].status} />{/if}
     </div>
     <div class="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="tablist" aria-label={t("allSeasons")}>
       {#each seasons.data as s}

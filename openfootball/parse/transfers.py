@@ -182,6 +182,8 @@ def parse_transfers(wikitext: str) -> list[Transfer]:
             other, other_link = _name_and_link(full[cols["club"]])
             fee = full[cols["fee"]] if "fee" in cols and cols["fee"] < len(full) else ""
             low_heading = heading.lower()
+            if re.search(r"return|end of (?:the )?loan|loan expir|recall", f"{low_heading} {fee}", re.I):
+                continue                                                # retour de prêt : le joueur revient chez lui, ce n'est pas un prêt entrant
             kind = "loan" if ("loan" in low_heading or re.search(r"\bloan", fee, re.I) or "loan" in club_label) else "transfer"
             out.append(Transfer(
                 direction=direction, kind=kind,

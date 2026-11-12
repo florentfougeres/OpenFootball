@@ -170,6 +170,10 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, fr_wp=None, start_yea
     # Repart de la page : ni joueur ajouté, ni statut daté posé par une lecture précédente (D13 révisé).
     con.execute("""DELETE FROM player_club_season WHERE source_section LIKE 'Transfers (%' AND club_season_id IN
                    (SELECT cs.id FROM club_season cs JOIN season s ON s.id = cs.season_id WHERE s.status <> 'frozen')""")
+    # Les prêts posés par une lecture précédente (ceux qui ont un mouvement) sont recalculés ; ceux déclarés par la page restent.
+    con.execute("""UPDATE player_club_season SET stint = 'unknown' WHERE stint IN ('loan_in', 'loan_out') AND EXISTS
+                   (SELECT 1 FROM squad_movement m WHERE m.club_season_id = player_club_season.club_season_id AND m.player_id = player_club_season.player_id)
+                   AND club_season_id IN (SELECT cs.id FROM club_season cs JOIN season s ON s.id = cs.season_id WHERE s.status <> 'frozen')""")
     con.execute("""UPDATE player_club_season SET stint = 'unknown' WHERE stint IN ('left_mid', 'arrived_mid') AND club_season_id IN
                    (SELECT cs.id FROM club_season cs JOIN season s ON s.id = cs.season_id WHERE s.status <> 'frozen')""")
     where = "" if start_year is None else f"AND s.start_year = {int(start_year)}"

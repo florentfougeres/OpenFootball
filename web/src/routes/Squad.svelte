@@ -8,8 +8,7 @@
   import Flag from "../components/Flag.svelte";
   import Logo from "../components/Logo.svelte";
   import Spinner from "../components/Spinner.svelte";
-  import StateBadge from "../components/StateBadge.svelte";
-  import ErrorBox from "../components/ErrorBox.svelte";
+    import ErrorBox from "../components/ErrorBox.svelte";
 
   let { title, slug }: { title: string; slug: string } = $props();
 
@@ -69,7 +68,6 @@
       <h1 class="text-4xl font-extrabold leading-none tracking-tight sm:text-6xl">{clubName(club)} <span class="text-accent">{label}</span></h1>
       <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
         {#if d?.cs}<span>{compName(d.cs.competition)}</span>{/if}
-        <StateBadge status={app.manifest.seasons[label].status} />
         {#if d?.sources.length}
           <span>{t(d.sources.length > 1 ? "sourcesLabel" : "sourceLabel")} :
             {#each d.sources as src, i}{#if i}{", "}{/if}<a class="link" href={wikiUrl(src.source_lang, src.source_title)} hreflang={src.source_lang} target="_blank" rel="noopener">{src.source_lang.toUpperCase()}</a>

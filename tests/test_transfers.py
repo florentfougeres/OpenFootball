@@ -173,3 +173,21 @@ def test_french_transfer_table_gives_direction_kind_and_window():
     assert by["Alexander Nübel"].kind == "loan" and by["Alexander Nübel"].position == "GK"
     assert "Giulian Biancone" not in by                      # « Retour de prêt » n'est pas un mouvement d'effectif
     assert by["Stevan Jovetic"].direction == "out"
+
+
+def test_loan_return_rows_are_not_loan_arrivals(arsenal):
+    from openfootball.parse.transfers import parse_transfers
+    wt = """===Loans returned===
+{| class="wikitable"
+! Date !! No. !! Pos. !! Player !! Returned from !! Fee
+|-
+| 1 July 2022 || 22 || DF || [[Back Home]] || [[Fulham F.C.|Fulham]] || Loan return
+|}
+===Loans in===
+{| class="wikitable"
+! Date !! No. !! Pos. !! Player !! Loaned from !! Fee
+|-
+| 1 September 2022 || 11 || FW || [[Real Loan]] || [[Chelsea F.C.|Chelsea]] || Loan
+|}"""
+    got = parse_transfers(wt)
+    assert [t.name for t in got] == ["Real Loan"] and got[0].kind == "loan"

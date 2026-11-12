@@ -6,7 +6,8 @@ let conn: duckdb.AsyncDuckDBConnection | null = null;
 
 const seasonSlug = (label: string) => label.replace("/", "-");
 
-export async function startDb(manifest: any, base: URL) {
+/** Télécharge et instancie le moteur : lancé en parallèle du manifeste, puisqu'il n'en dépend pas. */
+export async function openDb() {
   const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
   const workerUrl = URL.createObjectURL(new Blob([`importScripts("${bundle.mainWorker}");`], { type: "text/javascript" }));
   const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
@@ -14,6 +15,10 @@ export async function startDb(manifest: any, base: URL) {
   await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
   performance.mark("db:instantiated");
   URL.revokeObjectURL(workerUrl);
+  return db;
+}
+
+export async function loadData(db: duckdb.AsyncDuckDB, manifest: any, base: URL) {
   const pending: Promise<void>[] = [];       // enregistrements lancés ensemble, attendus avant la première requête
   const register = (name: string, path: string) => {
     pending.push(db.registerFileURL(name, new URL(path, base).href, duckdb.DuckDBDataProtocol.HTTP, false));
@@ -70,10 +75,12 @@ export async function loadRefs() {
 export async function boot() {
   const base = new URL(import.meta.env.BASE_URL + "data/", location.href);
   try {
+    const engine = openDb();
+    engine.catch(() => {});                       // l'erreur est remontée plus bas ; pas de rejet non géré si le manifeste échoue d'abord
     const res = await fetch(new URL("manifest.json", base));
     if (!res.ok) throw new Error(`manifest.json: HTTP ${res.status}`);
     app.manifest = await res.json();
-    await startDb(app.manifest, base);
+    await loadData(await engine, app.manifest, base);
     performance.mark("boot:db");
     await loadRefs();
     performance.mark("boot:refs");

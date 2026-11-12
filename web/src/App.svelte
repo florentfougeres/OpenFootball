@@ -10,6 +10,7 @@
   import Club from "./routes/Club.svelte";
   import Clubs from "./routes/Clubs.svelte";
   import Competition from "./routes/Competition.svelte";
+  import Competitions from "./routes/Competitions.svelte";
   import Country from "./routes/Country.svelte";
   import Coverage from "./routes/Coverage.svelte";
   import Home from "./routes/Home.svelte";
@@ -33,10 +34,12 @@
 <main id="main" tabindex="-1">
   {#if app.error}
     <div class="mx-auto max-w-6xl px-4 py-10"><ErrorBox message={app.error} /></div>
-  {:else if !app.ready}
-    <div class="mx-auto max-w-6xl px-4"><Spinner /><p class="text-sm text-muted">{t("loading")}</p></div>
+  {:else if !app.manifest}
+    <div class="mx-auto max-w-6xl px-4"><Spinner /></div>
   {:else if !head}
     <Home />
+  {:else if !app.ready}
+    <div class="mx-auto max-w-6xl px-4"><Spinner /><p class="text-sm text-muted">{t("loading")}</p></div>
   {:else}
     <div class="mx-auto max-w-6xl px-4 py-8">
       {#if head === "club" && route.parts[2]}
@@ -47,6 +50,8 @@
         <Clubs />
       {:else if head === "country"}
         <Country code={route.parts[1]} />
+      {:else if head === "competitions"}
+        <Competitions />
       {:else if head === "competition"}
         <Competition code={route.parts[1]} slug={route.parts[2]} />
       {:else if head === "player"}

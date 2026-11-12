@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, countryOf, href, t } from "../lib/app.svelte";
+  import { app, href, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import ClubChip from "../components/ClubChip.svelte";
@@ -17,20 +17,29 @@
   const nf = (n: number) => n.toLocaleString(app.lang);
   const seasonsN = $derived(Object.keys(app.manifest.seasons).length);
 
-  const data = resource(async () => {
+  type HomeData = { stats: { clubs: number; players: number }; countries: { code: string; name_en: string; name_fr: string; flag: string | null; comps: number; clubs: number }[];
+    clubs: { wikipedia_title: string; name_en: string; name_fr: string | null; logo_url: string | null; colors_hex: string | null; season: string }[] };
+
+  // L'accueil s'affiche sans attendre DuckDB-WASM : un petit JSON (`home`) est publié avec les données. Anciens exports : requêtes DuckDB.
+  const data = resource(async (): Promise<HomeData | null> => {
+    const m = app.manifest;
+    if (m.home) return await (await fetch(new URL(import.meta.env.BASE_URL + "data/" + m.home.path, location.href))).json();
+    if (!app.ready) return null;
     const [stats] = await q(`SELECT (SELECT count(*) FROM club) AS clubs, (SELECT count(DISTINCT coalesce(player_qid, 'n:' || player)) FROM squad) AS players`);
     const comps = [...app.comps.values()];
     const squadClubs = [...app.clubs.values()];
     const countries = [...app.countries.values()].map((c) => ({
-      ...countryOf(c.code),
+      code: c.code, name_en: c.name_en, name_fr: c.name_fr, flag: c.flag as string | null,
       comps: comps.filter((x) => x.country_code === c.code).length,
       clubs: squadClubs.filter((x) => x.country_code === c.code).length,
-    })).filter((c) => c.comps).sort((a, b) => a.name.localeCompare(b.name, app.lang));
+    })).filter((c) => c.comps);
     const last = Object.fromEntries((await q(`SELECT club, max(season) AS season FROM club_season WHERE players > 0 GROUP BY club`)).map((r) => [r.club, r.season as string]));
     const clubs = squadClubs.filter((c) => last[c.wikipedia_title]).sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0)).slice(0, 12)
-      .map((c) => ({ club: c, season: last[c.wikipedia_title] }));
-    return { stats, countries, clubs };
+      .map((c) => ({ wikipedia_title: c.wikipedia_title, name_en: c.name_en, name_fr: c.name_fr, logo_url: c.logo_url, colors_hex: c.colors_hex, season: last[c.wikipedia_title] }));
+    return { stats: { clubs: stats.clubs, players: stats.players }, countries, clubs };
   });
+  const countries = $derived((data.data?.countries ?? []).map((c) => ({ ...c, name: app.lang === "fr" ? c.name_fr : c.name_en }))
+    .sort((a, b) => a.name.localeCompare(b.name, app.lang)));
 </script>
 
 <section class="border-b border-line bg-surface">
@@ -47,7 +56,7 @@
     </form>
     {#if data.data}
       <p class="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
-        {#each [[nf(data.data.stats.clubs), t("statClubs")], [nf(data.data.stats.players), t("statPlayers")], [seasonsN, t("statSeasons")], [data.data.countries.length, t("countries").toLowerCase()]] as [n, label]}
+        {#each [[nf(data.data.stats.clubs), t("statClubs")], [nf(data.data.stats.players), t("statPlayers")], [seasonsN, t("statSeasons")], [countries.length, t("countries").toLowerCase()]] as [n, label]}
           <span><strong class="display text-lg font-bold tabular-nums text-fg">{n}</strong> {label}</span>
         {/each}
       </p>
@@ -56,7 +65,7 @@
 </section>
 
 <div class="mx-auto max-w-6xl px-4 pb-4 pt-2">
-  {#if term}<SearchResults {term} />{/if}
+  {#if term && app.ready}<SearchResults {term} />{:else if term}<p class="mt-6 flex items-center gap-3 text-sm text-muted"><Spinner /> {t("searchWaiting")}</p>{/if}
 
   {#if data.error}
     <div class="mt-10"><ErrorBox message={data.error} /></div>
@@ -66,7 +75,7 @@
     <section class="mt-8" aria-labelledby="feat-clubs">
       <h2 id="feat-clubs" class="mb-3 text-2xl font-bold">{t("featuredClubs")}</h2>
       <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {#each data.data.clubs as x (x.club.wikipedia_title)}<li><ClubChip club={x.club} season={x.season} /></li>{/each}
+        {#each data.data.clubs as x (x.wikipedia_title)}<li><ClubChip club={x} season={x.season} /></li>{/each}
       </ul>
     </section>
 
@@ -75,7 +84,7 @@
         <h2 id="by-country" class="text-2xl font-bold">{t("byCountry")}</h2>
         <p class="mt-1 text-sm text-muted">{t("byCountryLead")}</p>
         <ul class="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-          {#each data.data.countries as c (c.code)}
+          {#each countries as c (c.code)}
             <li><CountryTile code={c.code} name={c.name} flag={c.flag} comps={c.comps} clubs={c.clubs} /></li>
           {/each}
         </ul>
