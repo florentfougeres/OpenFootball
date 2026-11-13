@@ -200,3 +200,17 @@ def test_parse_imageinfo_reads_license_author_and_non_free():
     got = parse_imageinfo(q, ["A_b.jpg", "Fair.jpg", "Gone.jpg"])
     assert got["A_b.jpg"] == {"url": "https://x/300px-A.jpg", "page": "https://x/File:A_b.jpg", "license": "CC BY-SA 4.0", "author": "Jean Dupont", "free": True}
     assert got["Fair.jpg"]["free"] is False and "Gone.jpg" not in got
+
+
+def test_league_logos_are_requested_in_batches_of_at_most_50(monkeypatch):
+    import duckdb
+    from openfootball import enrich
+    from openfootball.db import migrate
+    con = duckdb.connect(":memory:"); migrate(con)
+    con.execute("INSERT INTO country VALUES ('ENG', 'England', 'Angleterre')")
+    for i in range(1, 121):
+        con.execute("INSERT INTO competition (id, code, name_en, name_fr, country_code, level) VALUES (?, ?, ?, ?, 'ENG', 1)", [i, f"C{i}", f"League {i}", f"Ligue {i}"])
+    sizes = []
+    monkeypatch.setattr(enrich, "_logos_of_pages", lambda wp, chunk: sizes.append(len(chunk)) or {})
+    enrich.enrich_league_logos(con, None, log=lambda m: None)
+    assert sizes == [50, 50, 20]

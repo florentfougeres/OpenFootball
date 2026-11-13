@@ -310,7 +310,9 @@ def enrich_league_logos(con: duckdb.DuckDBPyConnection, wp, *, log=print) -> int
     du championnat, sauf exception dans `LEAGUE_PAGES`."""
     rows = con.execute("SELECT id, name_en FROM competition ORDER BY id").fetchall()
     chunk = [(cid, LEAGUE_PAGES.get(name, name)) for cid, name in rows]
-    found = _logos_of_pages(wp, chunk)
+    found: dict[int, tuple[str, str]] = {}
+    for part in _chunks(chunk, BATCH):               # l'API refuse plus de 50 titres par requête
+        found.update(_logos_of_pages(wp, part))
     for cid, title in chunk:
         code = con.execute("SELECT code FROM competition WHERE id = ?", [cid]).fetchone()[0]
         url, lic = found.get(cid, (None, None))
