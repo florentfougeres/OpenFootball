@@ -70,7 +70,7 @@ def run(con, wp, it=None, fr=None, qids=None):
 
 
 def test_scope_files_load():
-    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR", "USA", "SAU"}
+    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR", "USA", "SAU", "BRA", "ARG"}
     fra = load_scopes(["FRA-L1"])[0]
     assert (fra.expected_teams(2022), fra.expected_teams(2023)) == (20, 18)
 
@@ -385,3 +385,19 @@ def test_calendar_year_page_format(con):
     run_backfill(con, [sc], 2023, wp=FakeWiki(pages), lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})},
                  wd=FakeWikidata({}), qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None)
     assert con.execute("SELECT count(*) FROM club_season").fetchone()[0] == 18
+
+
+def test_guess_season_titles_for_pt_and_es():
+    from openfootball.backfill import _CLUB_TITLE, _guess_season_titles
+
+    class WD:
+        def entities(self, qids, props, sitefilter=None, languages=None):
+            title = {"ptwiki": "Clube de Regatas do Flamengo", "eswiki": "Club Atlético River Plate"}[sitefilter]
+            return {qids[0]: {"sitelinks": {sitefilter: {"title": title}}}}
+    _CLUB_TITLE.clear()
+    assert _guess_season_titles(WD(), "Q1", "pt", 2019)[:2] == ["Temporada do Clube de Regatas do Flamengo de 2019",
+                                                                "Temporada da Clube de Regatas do Flamengo de 2019"]
+    assert _guess_season_titles(WD(), "Q1", "es", 2023) == [
+        "Anexo:Temporada 2023 del Club Atlético River Plate", "Anexo:Temporada 2023 de Club Atlético River Plate",
+        "Anexo:Temporada 2023-24 del Club Atlético River Plate", "Anexo:Temporada 2023-24 de Club Atlético River Plate"]
+    assert _guess_season_titles(WD(), "Q1", "fr", 2019) == []

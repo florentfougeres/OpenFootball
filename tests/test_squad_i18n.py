@@ -93,3 +93,47 @@ def test_french_table_title_marks_loaned_out_players():
 |}"""
     e = {x.name: stint_of(x) for x in parse_squad_fr(wt)}
     assert e == {"Gardien Titulaire": "unknown", "Leonardo Balerdi": "loan_out"}
+
+
+def test_pt_parses_both_field_templates_without_inventing_links():
+    from openfootball.parse.squad_i18n import PARSERS
+    wt = """== Elenco ==
+{{Elenco de Futebol
+|g1num= 1
+|g1= {{BRAb}} [[Jean Paulo Fernandes Filho|Jean]]
+|ld1num= 2
+|ld1= {{BRAb}} Igor Vinícius
+|a1num= 7
+|a1= {{ARGb}} [[Alexandre Pato]] {{Capitão}}²
+|t= {{BRAb}} [[Fernando Diniz]]
+|ass1= {{BRAb}} Eduardo Zuma
+}}
+{{Elenco atual de futebol
+|c1_j1_num =1
+|c1_j1_pos =G
+|c1_j1_nome ={{BRAb}} [[Diego Alves]]
+|c1_j2_num =3
+|c1_j2_pos =Z
+|c1_j2_nome ={{ESPb}} Pablo Marí
+}}"""
+    got = {e.name: e for e in PARSERS["pt"](wt)}
+    assert set(got) == {"Jean", "Igor Vinícius", "Alexandre Pato", "Diego Alves", "Pablo Marí"}      # le technicien et les adjoints ne sont pas des joueurs
+    assert (got["Jean"].position, got["Jean"].link, got["Jean"].nationality) == ("GK", "Jean Paulo Fernandes Filho", "BRA")
+    assert got["Igor Vinícius"].link is None and got["Igor Vinícius"].position == "DF"
+    assert got["Alexandre Pato"].shirt_number == 7 and got["Alexandre Pato"].position == "FW"
+    assert (got["Pablo Marí"].position, got["Pablo Marí"].nationality) == ("DF", "ESP")
+
+
+def test_es_reads_the_plain_jugador_de_futbol_template_in_both_parameter_styles():
+    from openfootball.parse.squad_i18n import PARSERS
+    wt = """== Plantel ==
+{{Jugador de fútbol|no=1|nat=Argentina|name=[[Francisco Gómez (futbolista)|Francisco Gómez]]|edad=19 años|pos=POR}}
+{{Jugador de fútbol | nombre=[[Franco Armani]] {{cap}}
+ | num=2 | pos=ARQ | nac=Argentina | edad={{edad|16|10|1986}}
+ }}
+{{Jugador de fútbol|no=9|nat=Chile|name=Sin Enlace|pos=DEL}}"""
+    got = {e.name: e for e in PARSERS["es"](wt)}
+    assert set(got) == {"Francisco Gómez", "Franco Armani", "Sin Enlace"}
+    assert (got["Francisco Gómez"].shirt_number, got["Francisco Gómez"].position, got["Francisco Gómez"].link) == (1, "GK", "Francisco Gómez (futbolista)")
+    assert (got["Franco Armani"].shirt_number, got["Franco Armani"].position, got["Franco Armani"].nationality) == (2, "GK", "Argentina")
+    assert got["Sin Enlace"].position == "FW" and got["Sin Enlace"].link is None

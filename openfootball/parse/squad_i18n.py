@@ -17,7 +17,7 @@ from openfootball.parse.squad import (
 
 _IT_ROLES = {"P": "GK", "D": "DF", "C": "MF", "A": "FW"}
 # Codes d'une lettre : propres au français (ambigus ailleurs : « D », « A »…)
-_ES_CODES = {"POR": "GK", "DEF": "DF", "MED": "MF", "DEL": "FW"}
+_ES_CODES = {"POR": "GK", "ARQ": "GK", "DEF": "DF", "MED": "MF", "DEL": "FW"}
 _FR_CODES = {"G": "GK", "D": "DF", "M": "MF", "A": "FW",
              "MOFF": "MF", "MDÉF": "MF", "MDEF": "MF", "LAT": "DF"}
 
@@ -89,7 +89,22 @@ def parse_squad_es(wikitext: str) -> list[SquadEntry]:
             position=_ES_CODES.get(pos_raw.upper()) or normalize_position(pos_raw),
             nationality=p.get("nac") or None, section=section,
             note=None, fmt="jugador_con_esquema")
-    return _scan(clean(wikitext), "Jugador de fútbol con esquema", build)
+
+    def build_simple(p: dict, section: str) -> SquadEntry | None:
+        # {{Jugador de fútbol |no=1 |nat=Argentina |name=[[Francisco Gómez]] |pos=POR}} ou {{Jugador de fútbol | nombre=[[Franco Armani]] | num=1 | pos=ARQ | nac=Argentina}}
+        name, link = _name_and_link(p.get("nombre") or p.get("name") or "")
+        if not name:
+            return None
+        pos_raw = (p.get("pos") or "").strip()
+        return SquadEntry(
+            name=name, link=link, shirt_number=_int(p.get("num") or p.get("no") or p.get("número")),
+            position_raw=pos_raw or None,
+            position=_ES_CODES.get(pos_raw.upper()) or normalize_position(pos_raw),
+            nationality=p.get("nac") or p.get("nat") or None, section=section,
+            note=None, fmt="jugador_de_futbol")
+
+    text = clean(wikitext)
+    return _dedupe(_scan(text, "Jugador de fútbol con esquema", build) + _scan(text, "Jugador de fútbol", build_simple))
 
 
 def parse_squad_rendered_only(wikitext: str) -> list[SquadEntry]:
@@ -98,5 +113,7 @@ def parse_squad_rendered_only(wikitext: str) -> list[SquadEntry]:
     return []
 
 
-PARSERS = {"fr": parse_squad_fr, "it": parse_squad_it, "es": parse_squad_es,
+from openfootball.parse.squad_pt import parse_squad_pt  # noqa: E402
+
+PARSERS = {"fr": parse_squad_fr, "it": parse_squad_it, "es": parse_squad_es, "pt": parse_squad_pt,
            "nl": parse_squad_rendered_only, "tr": parse_squad_rendered_only}

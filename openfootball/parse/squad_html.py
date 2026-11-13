@@ -87,13 +87,14 @@ def _txt(cell: _Cell) -> str:
 
 
 # En-têtes de colonnes, toutes langues du périmètre (en, fr, it, es, de).
-_NUM = re.compile(r"(^|\s)(no|n|nr|nº|num|numero|number|numéro|numero|nummer|#)(\s|$)")
+_NUM = re.compile(r"(^|\s)(no|n|nr|nº|n°|num|numero|number|numéro|numero|nummer|#)(\s|$)")
 _NAME = ("name", "nom", "joueur", "player", "nome", "nombre", "spieler", "giocatore", "jugador", "naam", "speler",
-         "oyuncu", "futbolcu", "isim")
+         "oyuncu", "futbolcu", "isim", "jogador", "atleta")
 _NAT = ("nat", "pays", "country", "nation", "paese", "ülke", "uyruk")
 _POS = ("pos", "ruolo", "role", "rôle", "puesto", "position", "poz", "mevki")
 # Postes en une lettre : propres à la langue de la page (« D » = défenseur en fr/it, « C » = milieu en it…).
 _LETTERS = {"fr": {"G": "GK", "D": "DF", "M": "MF", "A": "FW"}, "it": {"P": "GK", "D": "DF", "C": "MF", "A": "FW"},
+            "pt": {"G": "GK", "Z": "DF", "LD": "DF", "LE": "DF", "L": "DF", "V": "MF", "M": "MF", "A": "FW"},
             "es": {"P": "GK", "D": "DF", "C": "MF", "M": "MF", "A": "FW", "D.": "DF"},
             "tr": {"KL": "GK", "DF": "DF", "OS": "MF", "FV": "FW"}}
 

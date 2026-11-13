@@ -13,14 +13,14 @@ de chaque joueur. Une base ouverte (fichiers Parquet), un pipeline Python et un 
 
 ## Championnats et saisons disponibles
 
-Seize championnats (premières et deuxièmes divisions), de **2010/11 à 2026/27** (2026/27 est « en cours » : elle change à chaque release),
+Dix-huit championnats (premières et deuxièmes divisions), de **2010/11 à 2026/27** (2026/27 est « en cours » : elle change à chaque release),
 plus les participants de la Ligue des champions et de la Ligue Europa sur la même période.
 Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 
 | Championnat | Pays | Saisons | Effectifs établis / club-saisons |
 |---|---|---|---|
 | Premier League (`ENG-PL`) | Angleterre | 2010/11 → 2026/27 | 340 / 340 |
-| Championship (`ENG-CH`) | Angleterre | 2010/11 → 2026/27 | 401 / 406 |
+| Championship (`ENG-CH`) | Angleterre | 2010/11 → 2026/27 | 403 / 408 |
 | La Liga (`ESP-LL`) | Espagne | 2010/11 → 2026/27 | 330 / 340 |
 | Segunda División (`ESP-SD`) | Espagne | 2010/11 → 2026/27 | 278 / 374 |
 | Serie A (`ITA-SA`) | Italie | 2010/11 → 2026/27 | 340 / 340 |
@@ -35,8 +35,10 @@ Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 | Süper Lig (`TUR-SL`) | Turquie | 2010/11 → 2026/27 | 178 / 315 |
 | MLS (`USA-MLS`) | États-Unis (clubs canadiens inclus) | 2010 → 2026 | 368 / 399 |
 | Saudi Pro League (`SAU-PL`) | Arabie saoudite | 2022/23 → 2026/27 | 88 / 88 |
+| Série A (`BRA-SA`) | Brésil | 2010 → 2026 | 168 / 340 |
+| Primera División (`ARG-PD`) | Argentine | 2010 → 2026 | 164 / 433 |
 
-**Total : 1 224 clubs, 10 439 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
+**Total : 1 485 clubs, 12 692 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
 pays (liste complète des clubs, avec ou sans effectif) ; ceux sans page « saison du club » lisible restent « Sans effectif »
 (page *Couverture* du site). Les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
 

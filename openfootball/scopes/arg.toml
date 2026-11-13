@@ -1,0 +1,90 @@
+code = "ARG"
+name_en = "Argentina"
+name_fr = "Argentine"
+
+langs = ["en", "es"]
+
+[competition]
+code = "ARG-PD"
+name_en = "Argentine Primera División"
+name_fr = "Primera División (Argentine)"
+level = 1
+
+# Le format a changé presque chaque année : une saison = l'année de début, et on indique à la main les pages à lire
+# (leurs clubs sont fusionnés). `n` = nombre de clubs de la saison.
+[[team_count]]
+from = 2010
+n = 20
+
+# 2010-2013 : deux courts tournois (Apertura, Clausura) dans une même page « saison ».
+[[season_page]]
+year = 2010
+pages = ["2010–11 Argentine Primera División season"]
+n = 20
+[[season_page]]
+year = 2011
+pages = ["2011–12 Argentine Primera División season"]
+n = 20
+[[season_page]]
+year = 2012
+pages = ["2012–13 Argentine Primera División season"]
+n = 20
+[[season_page]]
+year = 2013
+pages = ["2013–14 Argentine Primera División season"]
+n = 20
+# 2014 (Torneo de Transición), 2015 et 2016 : demi-années. 2016 et 2016-17 se chevauchent : une seule saison, 34 clubs au total (30 + 30, dont 26 en commun).
+[[season_page]]
+year = 2014
+pages = ["2014 Argentine Primera División"]
+n = 20
+[[season_page]]
+year = 2015
+pages = ["2015 Argentine Primera División"]
+n = 30
+[[season_page]]
+year = 2016
+pages = ["2016 Argentine Primera División", "2016–17 Argentine Primera División"]
+n = 34
+# 2017-2020 : Superliga puis Copa de la Liga.
+[[season_page]]
+year = 2017
+pages = ["2017–18 Superliga Argentina"]
+n = 28
+[[season_page]]
+year = 2018
+pages = ["2018–19 Superliga Argentina"]
+n = 26
+[[season_page]]
+year = 2019
+pages = ["2019–20 Superliga Argentina"]
+n = 24
+[[season_page]]
+year = 2020
+pages = ["2020 Copa de la Liga Profesional"]
+n = 24
+# Depuis 2021 : année civile (Liga Profesional).
+[[season_page]]
+year = 2021
+pages = ["2021 AFA Liga Profesional de Fútbol"]
+n = 26
+[[season_page]]
+year = 2022
+pages = ["2022 AFA Liga Profesional de Fútbol"]
+n = 28
+[[season_page]]
+year = 2023
+pages = ["2023 AFA Liga Profesional de Fútbol"]
+n = 28
+[[season_page]]
+year = 2024
+pages = ["2024 AFA Liga Profesional de Fútbol"]
+n = 28
+[[season_page]]
+year = 2025
+pages = ["2025 AFA Liga Profesional de Fútbol"]
+n = 30
+[[season_page]]
+year = 2026
+pages = ["2026 AFA Liga Profesional de Fútbol"]
+n = 30

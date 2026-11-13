@@ -19,6 +19,7 @@ class Scope:
     langs: tuple[str, ...] = ("en", "it", "fr")  # ordre des langues des pages « saison du club »
     page_names: tuple[str, ...] = ()           # autres noms du championnat dans les titres de pages (renommages)
     page_format: str = ""                      # titre de la page d'une saison si ce n'est pas « <saison> <nom> » : « {year} {name} season »
+    season_pages: tuple[tuple[int, tuple[str, ...], int], ...] = ()   # (année de début, pages à lire et FUSIONNER, nombre de clubs) : formats irréguliers
 
     def league_page_titles(self, start_year: int, label: str) -> list[str]:
         """Titres essayés, dans l'ordre, pour la page du championnat d'une saison (noms actuels puis anciens)."""
@@ -30,7 +31,14 @@ class Scope:
         """Noms essayés, dans l'ordre, pour « <saison> <nom> » (le nom principal d'abord)."""
         return tuple(dict.fromkeys((self.competition_en, *self.page_names)))
 
+    def season_override(self, start_year: int) -> tuple[tuple[str, ...], int] | None:
+        """Pages de la saison indiquées à la main (`[[season_page]]`), ou None : titre construit comme d'habitude."""
+        return next(((pages, n) for y, pages, n in self.season_pages if y == start_year), None)
+
     def expected_teams(self, start_year: int) -> int:
+        override = self.season_override(start_year)
+        if override:
+            return override[1]
         n = None
         for from_year, count in sorted(self.team_counts):
             if start_year >= from_year:
@@ -52,7 +60,8 @@ def load_scopes(codes: list[str] | None = None) -> list[Scope]:
             competition_code=c["code"], competition_en=c["name_en"], competition_fr=c["name_fr"],
             level=c["level"], team_counts=tuple((t["from"], t["n"]) for t in d["team_count"]),
             langs=tuple(d.get("langs", ("en", "it", "fr"))), page_names=tuple(c.get("page_names", ())),
-            page_format=c.get("page_format", ""))
+            page_format=c.get("page_format", ""),
+            season_pages=tuple((int(sp["year"]), tuple(sp["pages"]), int(sp["n"])) for sp in d.get("season_page", [])))
         if codes is None or sc.code in codes or sc.competition_code in codes:   # un code pays les prend toutes ; un code compétition une seule
             out.append(sc)
     return out

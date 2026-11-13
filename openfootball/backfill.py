@@ -208,6 +208,27 @@ def _club_page_fallback(con, cs_id: int, team: str, qid: str | None, label: str,
     return None
 
 
+_CLUB_TITLE: dict[tuple[str, str], str | None] = {}
+
+
+def _guess_season_titles(wd, qid: str, lang: str, start_year: int) -> list[str]:
+    """Titres possibles de la page « saison du club » quand Wikidata ne la relie pas au club (pt : la plupart des clubs brésiliens ; es : beaucoup
+    de clubs argentins). pt : « Temporada do/da/de <titre pt du club> de 2019 » (année civile). es : « Anexo:Temporada 2023 del <titre es du club> »
+    ou « Anexo:Temporada 2019-20 del … ». Le titre du club dans cette langue vient de ses liens Wikidata."""
+    if lang not in ("pt", "es"):
+        return []
+    if (qid, lang) not in _CLUB_TITLE:
+        ent = wd.entities([qid], props="sitelinks", sitefilter=f"{lang}wiki").get(qid, {})
+        _CLUB_TITLE[(qid, lang)] = (ent.get("sitelinks", {}).get(f"{lang}wiki") or {}).get("title")
+    club = _CLUB_TITLE[(qid, lang)]
+    if not club:
+        return []
+    if lang == "pt":
+        return [f"Temporada {art} {club} de {start_year}" for art in ("do", "da", "de")]
+    periods = (str(start_year), f"{start_year}-{(start_year + 1) % 100:02d}")
+    return [f"Anexo:Temporada {period} {art} {club}" for period in periods for art in ("del", "de")]
+
+
 def fill_club_season(con, cs_id: int, team: str, qid: str | None, en_page, *, country_code: str, start_year: int,
                      label: str, langs: tuple[str, ...], wp, lang_clients: dict, wd, overrides: dict,
                      current: bool = False) -> ClubResult:
@@ -237,9 +258,13 @@ def fill_club_season(con, cs_id: int, team: str, qid: str | None, en_page, *, co
             parse = parse_squad
         else:
             title = articles().get((start_year, lang))
-            if not title:
+            titles = [title] if title else (_guess_season_titles(wd, qid, lang, start_year) if qid else [])
+            if not titles:
                 return None
-            attempts = [(p, title) for p in lang_clients[lang].get_pages([title])]
+            pages = lang_clients[lang].get_pages(titles)
+            attempts = [(p, t) for p, t in zip(pages, titles) if p.exists]
+            if not attempts:
+                return None
             attempts_lazy = lambda: []
             parse = PARSERS[lang]
         for page, title in attempts + (attempts_lazy() if not _first_plausible(attempts, parse) else []):
@@ -292,6 +317,27 @@ def fill_club_season(con, cs_id: int, team: str, qid: str | None, en_page, *, co
     return chosen or ClubResult(country_code, team, None, 0, None)
 
 
+def _league_teams(wp, sc: Scope, start_year: int, label: str, want: int) -> list[str]:
+    """Clubs de la saison. Titre construit (`league_page_titles`, premier qui existe : une ligue renommée), ou pages indiquées à la main
+    (`[[season_page]]` du fichier du pays : formats irréguliers comme l'Argentine) dont les clubs sont fusionnés."""
+    override = sc.season_override(start_year)
+    titles_try = list(override[0]) if override else sc.league_page_titles(start_year, label)
+    pages = wp.get_pages(titles_try)
+    wanted = [(t, pg) for t, pg in zip(titles_try, pages) if pg.exists]
+    if not override:
+        wanted = wanted[:1] or [(titles_try[0], pages[0])]        # renommage : la première page qui existe suffit
+    teams: list[str] = []
+    for title, page in wanted:
+        found = league_teams(page.wikitext or "", want) if page.exists else []
+        if len(found) != want and page.exists and getattr(wp, "render", None):
+            # Le wikitexte ne nomme pas tous les clubs (modèle de tableau à codes) : on lit le classement rendu.
+            found = league_teams_html(wp.render(title).wikitext, want) or found
+        for t in found:
+            if t not in teams:
+                teams.append(t)
+    return teams
+
+
 def run_backfill(
     con: duckdb.DuckDBPyConnection, scopes: list[Scope], start_year: int, *,
     wp, lang_clients: dict, wd, qid_lookup: Callable[[list[str]], dict[str, str | None]],
@@ -308,16 +354,8 @@ def run_backfill(
 
     for sc in scopes:
         competition_id = _ensure_scope_rows(con, sc)
-        titles_try = sc.league_page_titles(start_year, label)
-        league_pages = wp.get_pages(titles_try)
-        # Le championnat a pu être renommé (Belgique : First Division A -> Pro League) : première page qui existe.
-        league_title, league_page = next(((t, pg) for t, pg in zip(titles_try, league_pages) if pg.exists),
-                                         (titles_try[0], league_pages[0]))
         want = sc.expected_teams(start_year)
-        teams = league_teams(league_page.wikitext or "", want) if league_page.exists else []
-        if len(teams) != want and league_page.exists and getattr(wp, "render", None):
-            # Le wikitexte ne nomme pas tous les clubs (modèle de tableau à codes) : on lit le classement rendu.
-            teams = league_teams_html(wp.render(league_title).wikitext, want) or teams
+        teams = _league_teams(wp, sc, start_year, label, want)
         if len(teams) != want:
             raise EnumerationError(f"{sc.code} {label}: {len(teams)} clubs trouvés, {want} attendus")
         qids = qid_lookup(teams)

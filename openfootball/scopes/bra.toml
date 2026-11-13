@@ -1,0 +1,18 @@
+code = "BRA"
+name_en = "Brazil"
+name_fr = "Brésil"
+
+# Les effectifs des clubs brésiliens sont surtout sur la Wikipedia portugaise (« Temporada do … de 2019 »), peu en anglais.
+langs = ["en", "pt"]
+
+[competition]
+code = "BRA-SA"
+name_en = "Campeonato Brasileiro Série A"
+name_fr = "Championnat du Brésil (Série A)"
+level = 1
+# Saison en année civile : « 2019 Campeonato Brasileiro Série A ».
+page_format = "{year} {name}"
+
+[[team_count]]
+from = 2010
+n = 20

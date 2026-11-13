@@ -6,27 +6,27 @@ _Généré le 2026-11-13 par `openfootball progress` — ne pas éditer à la ma
 
 Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un trou ; `✓` = complet.
 
-| Saison | État | ALB-L1 | ARM-L1 | AUT-L1 | AZE-L1 | BEL-PL | BGR-L1 | BLR-L1 | CHE-L1 | CYP-L1 | CZE-L1 | DEU-B2 | DEU-BL | DNK-L1 | ENG-CH | ENG-PL | ESP-LL | ESP-SD | FIN-L1 | FRA-L1 | FRA-L2 | GRC-L1 | HRV-L1 | HUN-L1 | IRL-L1 | ISR-L1 | ITA-SA | ITA-SB | KAZ-L1 | LUX-L1 | LVA-L1 | MDA-L1 | MKD-L1 | NLD-ED | NOR-L1 | POL-L1 | PRT-L1 | PRT-PL | ROU-L1 | RUS-L1 | SAU-PL | SCO-L1 | SRB-L1 | SVK-L1 | SVN-L1 | SWE-L1 | TUR-SL | UEFA-CL | UEFA-EL | UKR-L1 | USA-MLS |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026/27 | open | 1/10 ⚠ | 1/12 ⚠ | 6/12 ⚠ | 4/12 ⚠ | 18/18 ✓ | 3/14 ⚠ | 1/16 ⚠ | 9/12 ⚠ | 5/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | — | 18/18 ✓ | 18/18 ✓ | 7/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/16 ⚠ | — | 1/10 ⚠ | 1/8 ⚠ | 1/10 ⚠ | 18/18 ✓ | 8/16 ⚠ | 4/18 ⚠ | 1/1 ✓ | 18/18 ✓ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 2/14 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 18/18 ✓ | — | — | 6/17 ⚠ | 30/30 ✓ |
-| 2025/26 | backfill | 0/10 ⚠ | 1/10 ⚠ | 5/12 ⚠ | 4/12 ⚠ | 12/16 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 4/12 ⚠ | 2/14 ⚠ | 2/16 ⚠ | 7/18 ⚠ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 5/22 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 5/14 ⚠ | 2/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 10/18 ⚠ | 6/16 ⚠ | 2/18 ⚠ | — | 5/18 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 3/18 ⚠ | — | — | 3/16 ⚠ | 29/30 ⚠ |
-| 2024/25 | backfill | 0/10 ⚠ | 1/11 ⚠ | 6/12 ⚠ | 3/10 ⚠ | 13/16 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 3/12 ⚠ | 1/14 ⚠ | 1/16 ⚠ | 5/18 ⚠ | 16/18 ⚠ | 3/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 15/22 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/13 ⚠ | 0/16 ⚠ | 1/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 9/18 ⚠ | 8/16 ⚠ | 2/18 ⚠ | — | 7/18 ⚠ | 2/16 ⚠ | 7/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 1/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 17/19 ⚠ | — | — | 4/16 ⚠ | 26/29 ⚠ |
-| 2023/24 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 16/16 ✓ | 3/16 ⚠ | 0/15 ⚠ | 7/12 ⚠ | 3/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 18/18 ✓ | 20/20 ✓ | 5/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 3/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/16 ⚠ | 3/18 ⚠ | — | 17/18 ⚠ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 3/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 1/16 ⚠ | 20/20 ✓ | — | — | 4/16 ⚠ | 29/29 ✓ |
-| 2022/23 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 18/18 ✓ | 3/16 ⚠ | 0/16 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 20/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/1 ✓ | 0/12 ⚠ | 18/18 ✓ | 7/16 ⚠ | 4/18 ⚠ | — | 18/18 ✓ | 2/16 ⚠ | 6/16 ⚠ | 16/16 ✓ | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 19/19 ✓ | — | — | 2/16 ⚠ | 27/28 ⚠ |
-| 2021/22 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 0/16 ⚠ | 8/10 ⚠ | 2/12 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/14 ⚠ | 0/16 ⚠ | 0/9 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 18/18 ✓ | 7/15 ⚠ | 3/18 ⚠ | — | 18/18 ✓ | 2/16 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 11/20 ⚠ | — | — | 2/16 ⚠ | 24/27 ⚠ |
-| 2020/21 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 1/16 ⚠ | 8/10 ⚠ | 3/14 ⚠ | 4/18 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/12 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/10 ⚠ | 0/12 ⚠ | 18/18 ✓ | 5/15 ⚠ | 4/16 ⚠ | — | 12/18 ⚠ | 2/16 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/20 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 21/21 ✓ | — | — | 5/14 ⚠ | 23/26 ⚠ |
-| 2019/20 | backfill | 0/10 ⚠ | 1/10 ⚠ | 5/12 ⚠ | 4/8 ⚠ | 10/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 8/10 ⚠ | 1/12 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 17/20 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/9 ⚠ | 1/8 ⚠ | 0/10 ⚠ | 14/18 ⚠ | 7/15 ⚠ | 2/16 ⚠ | — | 5/18 ⚠ | 2/14 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 18/18 ✓ | — | — | 6/12 ⚠ | 22/24 ⚠ |
-| 2018/19 | backfill | 0/10 ⚠ | 1/9 ⚠ | 3/12 ⚠ | 4/8 ⚠ | 10/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 7/10 ⚠ | 1/12 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 14/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 15/20 ⚠ | 5/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 19/19 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/8 ⚠ | 0/10 ⚠ | 9/18 ⚠ | 6/15 ⚠ | 3/16 ⚠ | — | 6/18 ⚠ | 1/14 ⚠ | 9/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 7/12 ⚠ | 22/23 ⚠ |
-| 2017/18 | backfill | 1/10 ⚠ | 0/6 ⚠ | 4/10 ⚠ | 3/8 ⚠ | 7/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 8/10 ⚠ | 4/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 21/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 18/20 ⚠ | 4/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 22/22 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/10 ⚠ | 1/10 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 3/16 ⚠ | — | 6/18 ⚠ | 1/14 ⚠ | 9/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 7/12 ⚠ | 21/22 ⚠ |
-| 2016/17 | backfill | 0/10 ⚠ | 0/6 ⚠ | 5/10 ⚠ | 3/8 ⚠ | 8/16 ⚠ | 3/14 ⚠ | 1/16 ⚠ | 8/11 ⚠ | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 19/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 18/20 ⚠ | 4/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 3/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/11 ⚠ | 0/10 ⚠ | 14/18 ⚠ | 8/16 ⚠ | 2/16 ⚠ | — | 4/18 ⚠ | 1/14 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 1/16 ⚠ | 1/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 8/12 ⚠ | 19/20 ⚠ |
-| 2015/16 | backfill | 1/10 ⚠ | 0/8 ⚠ | 5/10 ⚠ | 3/10 ⚠ | 7/16 ⚠ | 2/10 ⚠ | 0/14 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 20/20 ✓ | 16/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | 5/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 0/8 ⚠ | 4/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/10 ⚠ | 1/10 ⚠ | 14/18 ⚠ | 7/16 ⚠ | 2/16 ⚠ | — | 4/18 ⚠ | 1/14 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 5/14 ⚠ | 18/20 ⚠ |
-| 2014/15 | backfill | 1/10 ⚠ | 0/8 ⚠ | 5/10 ⚠ | 3/10 ⚠ | 8/16 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 6/10 ⚠ | 2/12 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 20/20 ✓ | 13/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 15/20 ⚠ | 3/18 ⚠ | 3/10 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 4/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/11 ⚠ | 1/10 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 2/16 ⚠ | — | 6/18 ⚠ | 2/18 ⚠ | 9/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 5/14 ⚠ | 17/19 ⚠ |
-| 2013/14 | backfill | 1/12 ⚠ | 0/8 ⚠ | 4/10 ⚠ | 3/10 ⚠ | 6/16 ⚠ | 3/14 ⚠ | 0/12 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 19/20 ⚠ | 13/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 17/20 ⚠ | 4/18 ⚠ | 3/10 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 22/22 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 1/16 ⚠ | — | 5/16 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 7/16 ⚠ | 16/19 ⚠ |
-| 2012/13 | backfill | 1/14 ⚠ | 0/8 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 5/16 ⚠ | 3/16 ⚠ | 1/11 ⚠ | 8/10 ⚠ | 3/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 17/20 ⚠ | 15/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 5/16 ⚠ | 3/12 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/14 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 8/18 ⚠ | 5/16 ⚠ | 1/16 ⚠ | — | 6/16 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 5/16 ⚠ | 16/19 ⚠ |
-| 2011/12 | backfill | 1/14 ⚠ | 0/8 ⚠ | 4/10 ⚠ | 3/12 ⚠ | 7/16 ⚠ | 3/16 ⚠ | 1/12 ⚠ | 7/10 ⚠ | 2/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 18/20 ⚠ | 9/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | 6/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 2/10 ⚠ | 3/17 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/9 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 7/18 ⚠ | 3/16 ⚠ | 2/16 ⚠ | — | 4/16 ⚠ | 3/18 ⚠ | 10/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 6/16 ⚠ | 16/18 ⚠ |
-| 2010/11 | backfill | 1/12 ⚠ | 0/8 ⚠ | 2/10 ⚠ | 3/12 ⚠ | 6/16 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 7/11 ⚠ | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 22/24 ⚠ | 20/20 ✓ | 16/20 ⚠ | 8/22 ⚠ | 0/14 ⚠ | 20/20 ✓ | 8/20 ⚠ | 5/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 1/10 ⚠ | 0/16 ⚠ | 20/20 ✓ | 21/22 ⚠ | 1/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/14 ⚠ | 0/12 ⚠ | 6/18 ⚠ | 4/16 ⚠ | 1/16 ⚠ | — | 4/16 ⚠ | 4/18 ⚠ | 7/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 8/18 ⚠ | — | — | 5/16 ⚠ | 13/16 ⚠ |
+| Saison | État | ALB-L1 | ARG-PD | ARM-L1 | AUT-L1 | AZE-L1 | BEL-PL | BGR-L1 | BLR-L1 | BRA-SA | CHE-L1 | CYP-L1 | CZE-L1 | DEU-B2 | DEU-BL | DNK-L1 | ENG-CH | ENG-PL | ESP-LL | ESP-SD | FIN-L1 | FRA-L1 | FRA-L2 | GRC-L1 | HRV-L1 | HUN-L1 | IRL-L1 | ISR-L1 | ITA-SA | ITA-SB | KAZ-L1 | LUX-L1 | LVA-L1 | MDA-L1 | MKD-L1 | NLD-ED | NOR-L1 | POL-L1 | PRT-L1 | PRT-PL | ROU-L1 | RUS-L1 | SAU-PL | SCO-L1 | SRB-L1 | SVK-L1 | SVN-L1 | SWE-L1 | TUR-SL | UEFA-CL | UEFA-EL | UKR-L1 | USA-MLS |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026/27 | open | 1/10 ⚠ | 30/30 ✓ | 1/12 ⚠ | 6/12 ⚠ | 4/12 ⚠ | 18/18 ✓ | 3/14 ⚠ | 1/16 ⚠ | 20/20 ✓ | 9/12 ⚠ | 5/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | — | 18/18 ✓ | 18/18 ✓ | 7/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/16 ⚠ | — | 1/10 ⚠ | 1/8 ⚠ | 1/10 ⚠ | 18/18 ✓ | 8/16 ⚠ | 4/18 ⚠ | 1/1 ✓ | 18/18 ✓ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 2/14 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 18/18 ✓ | — | — | 6/17 ⚠ | 30/30 ✓ |
+| 2025/26 | backfill | 0/10 ⚠ | 19/30 ⚠ | 1/10 ⚠ | 5/12 ⚠ | 4/12 ⚠ | 12/16 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 18/20 ⚠ | 4/12 ⚠ | 2/14 ⚠ | 2/16 ⚠ | 7/18 ⚠ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 5/22 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 5/14 ⚠ | 2/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 10/18 ⚠ | 6/16 ⚠ | 2/18 ⚠ | — | 5/18 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 3/18 ⚠ | — | — | 3/16 ⚠ | 29/30 ⚠ |
+| 2024/25 | backfill | 0/10 ⚠ | 5/28 ⚠ | 1/11 ⚠ | 6/12 ⚠ | 3/10 ⚠ | 13/16 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 13/20 ⚠ | 3/12 ⚠ | 1/14 ⚠ | 1/16 ⚠ | 5/18 ⚠ | 16/18 ⚠ | 3/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 15/22 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/13 ⚠ | 0/16 ⚠ | 1/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 9/18 ⚠ | 8/16 ⚠ | 2/18 ⚠ | — | 7/18 ⚠ | 2/16 ⚠ | 7/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 1/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 17/19 ⚠ | — | — | 4/16 ⚠ | 26/29 ⚠ |
+| 2023/24 | backfill | 0/10 ⚠ | 5/28 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 16/16 ✓ | 3/16 ⚠ | 0/15 ⚠ | 14/20 ⚠ | 7/12 ⚠ | 3/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 18/18 ✓ | 20/20 ✓ | 5/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 3/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/16 ⚠ | 3/18 ⚠ | — | 17/18 ⚠ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 3/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 1/16 ⚠ | 20/20 ✓ | — | — | 4/16 ⚠ | 29/29 ✓ |
+| 2022/23 | backfill | 0/10 ⚠ | 5/28 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 18/18 ✓ | 3/16 ⚠ | 0/16 ⚠ | 10/20 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 20/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/1 ✓ | 0/12 ⚠ | 18/18 ✓ | 7/16 ⚠ | 4/18 ⚠ | — | 18/18 ✓ | 2/16 ⚠ | 6/16 ⚠ | 16/16 ✓ | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 19/19 ✓ | — | — | 2/16 ⚠ | 27/28 ⚠ |
+| 2021/22 | backfill | 0/10 ⚠ | 4/26 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 0/16 ⚠ | 11/20 ⚠ | 8/10 ⚠ | 2/12 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/14 ⚠ | 0/16 ⚠ | 0/9 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 18/18 ✓ | 7/15 ⚠ | 3/18 ⚠ | — | 18/18 ✓ | 2/16 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 11/20 ⚠ | — | — | 2/16 ⚠ | 24/27 ⚠ |
+| 2020/21 | backfill | 0/10 ⚠ | 2/24 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 1/16 ⚠ | 7/20 ⚠ | 8/10 ⚠ | 3/14 ⚠ | 4/18 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/12 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/10 ⚠ | 0/12 ⚠ | 18/18 ✓ | 5/15 ⚠ | 4/16 ⚠ | — | 12/18 ⚠ | 2/16 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/20 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 21/21 ✓ | — | — | 5/14 ⚠ | 23/26 ⚠ |
+| 2019/20 | backfill | 0/10 ⚠ | 24/24 ✓ | 1/10 ⚠ | 5/12 ⚠ | 4/8 ⚠ | 10/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 6/20 ⚠ | 8/10 ⚠ | 1/12 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 17/20 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/9 ⚠ | 1/8 ⚠ | 0/10 ⚠ | 14/18 ⚠ | 7/15 ⚠ | 2/16 ⚠ | — | 5/18 ⚠ | 2/14 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 18/18 ✓ | — | — | 6/12 ⚠ | 22/24 ⚠ |
+| 2018/19 | backfill | 0/10 ⚠ | 6/26 ⚠ | 1/9 ⚠ | 3/12 ⚠ | 4/8 ⚠ | 10/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 7/20 ⚠ | 7/10 ⚠ | 1/12 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 14/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 15/20 ⚠ | 5/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 19/19 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/8 ⚠ | 0/10 ⚠ | 9/18 ⚠ | 6/15 ⚠ | 3/16 ⚠ | — | 6/18 ⚠ | 1/14 ⚠ | 9/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 7/12 ⚠ | 22/23 ⚠ |
+| 2017/18 | backfill | 1/10 ⚠ | 28/28 ✓ | 0/6 ⚠ | 4/10 ⚠ | 3/8 ⚠ | 7/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 8/20 ⚠ | 8/10 ⚠ | 4/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 21/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 18/20 ⚠ | 4/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 22/22 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/10 ⚠ | 1/10 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 3/16 ⚠ | — | 6/18 ⚠ | 1/14 ⚠ | 9/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 7/12 ⚠ | 21/22 ⚠ |
+| 2016/17 | backfill | 0/10 ⚠ | 10/31 ⚠ | 0/6 ⚠ | 5/10 ⚠ | 3/8 ⚠ | 8/16 ⚠ | 3/14 ⚠ | 1/16 ⚠ | 9/20 ⚠ | 8/11 ⚠ | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 19/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 18/20 ⚠ | 4/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 3/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/11 ⚠ | 0/10 ⚠ | 14/18 ⚠ | 8/16 ⚠ | 2/16 ⚠ | — | 4/18 ⚠ | 1/14 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 1/16 ⚠ | 1/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 8/12 ⚠ | 19/20 ⚠ |
+| 2015/16 | backfill | 1/10 ⚠ | 8/30 ⚠ | 0/8 ⚠ | 5/10 ⚠ | 3/10 ⚠ | 7/16 ⚠ | 2/10 ⚠ | 0/14 ⚠ | 9/20 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 20/20 ✓ | 16/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | 5/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 0/8 ⚠ | 4/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/10 ⚠ | 1/10 ⚠ | 14/18 ⚠ | 7/16 ⚠ | 2/16 ⚠ | — | 4/18 ⚠ | 1/14 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 5/14 ⚠ | 18/20 ⚠ |
+| 2014/15 | backfill | 1/10 ⚠ | 5/20 ⚠ | 0/8 ⚠ | 5/10 ⚠ | 3/10 ⚠ | 8/16 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 7/20 ⚠ | 6/10 ⚠ | 2/12 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 20/20 ✓ | 13/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 15/20 ⚠ | 3/18 ⚠ | 3/10 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 4/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/11 ⚠ | 1/10 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 2/16 ⚠ | — | 6/18 ⚠ | 2/18 ⚠ | 9/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 5/14 ⚠ | 17/19 ⚠ |
+| 2013/14 | backfill | 1/12 ⚠ | 5/20 ⚠ | 0/8 ⚠ | 4/10 ⚠ | 3/10 ⚠ | 6/16 ⚠ | 3/14 ⚠ | 0/12 ⚠ | 9/20 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 19/20 ⚠ | 13/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 17/20 ⚠ | 4/18 ⚠ | 3/10 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 22/22 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 1/16 ⚠ | — | 5/16 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 7/16 ⚠ | 16/19 ⚠ |
+| 2012/13 | backfill | 1/14 ⚠ | 4/20 ⚠ | 0/8 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 5/16 ⚠ | 3/16 ⚠ | 1/11 ⚠ | 9/20 ⚠ | 8/10 ⚠ | 3/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 17/20 ⚠ | 15/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 5/16 ⚠ | 3/12 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/14 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 8/18 ⚠ | 5/16 ⚠ | 1/16 ⚠ | — | 6/16 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 5/16 ⚠ | 16/19 ⚠ |
+| 2011/12 | backfill | 1/14 ⚠ | 3/20 ⚠ | 0/8 ⚠ | 4/10 ⚠ | 3/12 ⚠ | 7/16 ⚠ | 3/16 ⚠ | 1/12 ⚠ | 5/20 ⚠ | 7/10 ⚠ | 2/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 18/20 ⚠ | 9/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | 6/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 2/10 ⚠ | 3/17 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/9 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 7/18 ⚠ | 3/16 ⚠ | 2/16 ⚠ | — | 4/16 ⚠ | 3/18 ⚠ | 10/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 6/16 ⚠ | 16/18 ⚠ |
+| 2010/11 | backfill | 1/12 ⚠ | 1/20 ⚠ | 0/8 ⚠ | 2/10 ⚠ | 3/12 ⚠ | 6/16 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 6/20 ⚠ | 7/11 ⚠ | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 22/24 ⚠ | 20/20 ✓ | 16/20 ⚠ | 8/22 ⚠ | 0/14 ⚠ | 20/20 ✓ | 8/20 ⚠ | 5/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 1/10 ⚠ | 0/16 ⚠ | 20/20 ✓ | 21/22 ⚠ | 1/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/14 ⚠ | 0/12 ⚠ | 6/18 ⚠ | 4/16 ⚠ | 1/16 ⚠ | — | 4/16 ⚠ | 4/18 ⚠ | 7/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 8/18 ⚠ | — | — | 5/16 ⚠ | 13/16 ⚠ |
 
-**Total : 5754 / 11919 effectifs (48.3 %).**
+**Total : 6086 / 12692 effectifs (48.0 %).**
 
 ## Manques : club-saisons sans effectif
 
@@ -322,6 +322,17 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2025/26 | ALB-L1 | KF Tirana | **non validé** |
 | 2025/26 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2025/26 | ALB-L1 | Vora FK | **non validé** |
+| 2025/26 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2025/26 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2025/26 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2025/26 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2025/26 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2025/26 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2025/26 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2025/26 | ARG-PD | Deportivo Riestra | **non validé** |
+| 2025/26 | ARG-PD | Independiente Rivadavia | **non validé** |
+| 2025/26 | ARG-PD | Instituto Atlético Central Córdoba | **non validé** |
+| 2025/26 | ARG-PD | San Martín de San Juan | **non validé** |
 | 2025/26 | ARM-L1 | FC Alashkert | **non validé** |
 | 2025/26 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2025/26 | ARM-L1 | FC BKMA Yerevan | **non validé** |
@@ -379,6 +390,8 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2025/26 | BLR-L1 | FC Smorgon | **non validé** |
 | 2025/26 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2025/26 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2025/26 | BRA-SA | Mirassol Futebol Clube | **non validé** |
+| 2025/26 | BRA-SA | Red Bull Bragantino | **non validé** |
 | 2025/26 | CHE-L1 | BSC Young Boys | **non validé** |
 | 2025/26 | CHE-L1 | FC Lausanne-Sport | **non validé** |
 | 2025/26 | CHE-L1 | FC Lugano | **non validé** |
@@ -747,6 +760,29 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2024/25 | ALB-L1 | KF Teuta | **non validé** |
 | 2024/25 | ALB-L1 | KF Tirana | **non validé** |
 | 2024/25 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2024/25 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2024/25 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2024/25 | ARG-PD | Barracas Central | **non validé** |
+| 2024/25 | ARG-PD | Central Córdoba de Santiago del Estero | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Independiente | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Platense | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Sarmiento | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2024/25 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2024/25 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2024/25 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2024/25 | ARG-PD | Deportivo Riestra | **non validé** |
+| 2024/25 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2024/25 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2024/25 | ARG-PD | Independiente Rivadavia | **non validé** |
+| 2024/25 | ARG-PD | Instituto Atlético Central Córdoba | **non validé** |
+| 2024/25 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2024/25 | ARG-PD | Rosario Central | **non validé** |
+| 2024/25 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2024/25 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2024/25 | ARM-L1 | FC Alashkert | **non validé** |
 | 2024/25 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2024/25 | ARM-L1 | FC BKMA Yerevan | **non validé** |
@@ -802,6 +838,13 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2024/25 | BLR-L1 | FC Smorgon | **non validé** |
 | 2024/25 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2024/25 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2024/25 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2024/25 | BRA-SA | CR Vasco da Gama | **non validé** |
+| 2024/25 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2024/25 | BRA-SA | Criciúma Esporte Clube | **non validé** |
+| 2024/25 | BRA-SA | Cuiabá Esporte Clube | **non validé** |
+| 2024/25 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2024/25 | BRA-SA | Esporte Clube Juventude | **non validé** |
 | 2024/25 | CHE-L1 | FC Lausanne-Sport | **non validé** |
 | 2024/25 | CHE-L1 | FC Luzern | **non validé** |
 | 2024/25 | CHE-L1 | FC Sion | **non validé** |
@@ -1145,6 +1188,29 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2023/24 | ALB-L1 | KF Teuta | **non validé** |
 | 2023/24 | ALB-L1 | KF Tirana | **non validé** |
 | 2023/24 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2023/24 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2023/24 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2023/24 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2023/24 | ARG-PD | Barracas Central | **non validé** |
+| 2023/24 | ARG-PD | Central Córdoba de Santiago del Estero | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Independiente | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Platense | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Sarmiento | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2023/24 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2023/24 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2023/24 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2023/24 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2023/24 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2023/24 | ARG-PD | Instituto Atlético Central Córdoba | **non validé** |
+| 2023/24 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2023/24 | ARG-PD | Rosario Central | **non validé** |
+| 2023/24 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2023/24 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2023/24 | ARM-L1 | FC Alashkert | **non validé** |
 | 2023/24 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2023/24 | ARM-L1 | FC BKMA Yerevan | **non validé** |
@@ -1194,6 +1260,12 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2023/24 | BLR-L1 | FC Slutsk | **non validé** |
 | 2023/24 | BLR-L1 | FC Smorgon | **non validé** |
 | 2023/24 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2023/24 | BRA-SA | América Futebol Clube (MG) | **non validé** |
+| 2023/24 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2023/24 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2023/24 | BRA-SA | Cuiabá Esporte Clube | **non validé** |
+| 2023/24 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2023/24 | BRA-SA | Red Bull Bragantino | **non validé** |
 | 2023/24 | CHE-L1 | FC Luzern | **non validé** |
 | 2023/24 | CHE-L1 | FC Stade Lausanne Ouchy | **non validé** |
 | 2023/24 | CHE-L1 | FC Winterthur | **non validé** |
@@ -1470,6 +1542,29 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2022/23 | ALB-L1 | KF Tirana | **non validé** |
 | 2022/23 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2022/23 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2022/23 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2022/23 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2022/23 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2022/23 | ARG-PD | Barracas Central | **non validé** |
+| 2022/23 | ARG-PD | Central Córdoba de Santiago del Estero | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Independiente | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Patronato | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Platense | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Sarmiento | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2022/23 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2022/23 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2022/23 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2022/23 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2022/23 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2022/23 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2022/23 | ARG-PD | Rosario Central | **non validé** |
+| 2022/23 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2022/23 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2022/23 | ARM-L1 | FC Alashkert | **non validé** |
 | 2022/23 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2022/23 | ARM-L1 | FC BKMA Yerevan | **non validé** |
@@ -1520,6 +1615,16 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2022/23 | BLR-L1 | FC Slutsk | **non validé** |
 | 2022/23 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2022/23 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2022/23 | BRA-SA | América Futebol Clube (MG) | **non validé** |
+| 2022/23 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2022/23 | BRA-SA | Avaí FC | **non validé** |
+| 2022/23 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2022/23 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2022/23 | BRA-SA | Cuiabá Esporte Clube | **non validé** |
+| 2022/23 | BRA-SA | Esporte Clube Juventude | **non validé** |
+| 2022/23 | BRA-SA | Fluminense FC | **non validé** |
+| 2022/23 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2022/23 | BRA-SA | Red Bull Bragantino | **non validé** |
 | 2022/23 | CHE-L1 | FC Luzern | **non validé** |
 | 2022/23 | CHE-L1 | FC Winterthur | **non validé** |
 | 2022/23 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
@@ -1794,6 +1899,28 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2021/22 | ALB-L1 | KF Tirana | **non validé** |
 | 2021/22 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2021/22 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2021/22 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2021/22 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2021/22 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2021/22 | ARG-PD | Central Córdoba de Santiago del Estero | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Independiente | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Patronato | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Platense | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Sarmiento | **non validé** |
+| 2021/22 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2021/22 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2021/22 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2021/22 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2021/22 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2021/22 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2021/22 | ARG-PD | Rosario Central | **non validé** |
+| 2021/22 | ARG-PD | San Lorenzo de Almagro | **non validé** |
+| 2021/22 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2021/22 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2021/22 | ARM-L1 | FC Alashkert | **non validé** |
 | 2021/22 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2021/22 | ARM-L1 | FC BKMA Yerevan | **non validé** |
@@ -1840,6 +1967,15 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2021/22 | BLR-L1 | FC Sputnik Rechitsa | **non validé** |
 | 2021/22 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2021/22 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2021/22 | BRA-SA | América Futebol Clube (MG) | **non validé** |
+| 2021/22 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2021/22 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2021/22 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2021/22 | BRA-SA | Cuiabá Esporte Clube | **non validé** |
+| 2021/22 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2021/22 | BRA-SA | Esporte Clube Juventude | **non validé** |
+| 2021/22 | BRA-SA | Fluminense FC | **non validé** |
+| 2021/22 | BRA-SA | Red Bull Bragantino | **non validé** |
 | 2021/22 | CHE-L1 | FC Luzern | **non validé** |
 | 2021/22 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
 | 2021/22 | CYP-L1 | AC Omonia | **non validé** |
@@ -2122,6 +2258,28 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2020/21 | ALB-L1 | KF Tirana | **non validé** |
 | 2020/21 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2020/21 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2020/21 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2020/21 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2020/21 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2020/21 | ARG-PD | Central Córdoba de Santiago del Estero | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Colón | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Independiente | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Patronato | **non validé** |
+| 2020/21 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2020/21 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2020/21 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2020/21 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2020/21 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2020/21 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2020/21 | ARG-PD | Racing Club de Avellaneda | **non validé** |
+| 2020/21 | ARG-PD | Rosario Central | **non validé** |
+| 2020/21 | ARG-PD | San Lorenzo de Almagro | **non validé** |
+| 2020/21 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2020/21 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2020/21 | ARM-L1 | FC Alashkert | **non validé** |
 | 2020/21 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2020/21 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
@@ -2167,6 +2325,19 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2020/21 | BLR-L1 | FC Smolevichi | **non validé** |
 | 2020/21 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2020/21 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2020/21 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2020/21 | BRA-SA | Botafogo FR | **non validé** |
+| 2020/21 | BRA-SA | CR Vasco da Gama | **non validé** |
+| 2020/21 | BRA-SA | Ceará Sporting Club | **non validé** |
+| 2020/21 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2020/21 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2020/21 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2020/21 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2020/21 | BRA-SA | Fluminense FC | **non validé** |
+| 2020/21 | BRA-SA | Fortaleza Esporte Clube | **non validé** |
+| 2020/21 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2020/21 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2020/21 | BRA-SA | Red Bull Bragantino | **non validé** |
 | 2020/21 | CHE-L1 | FC Luzern | **non validé** |
 | 2020/21 | CHE-L1 | FC Vaduz | **non validé** |
 | 2020/21 | CYP-L1 | AC Omonia | **non validé** |
@@ -2501,6 +2672,20 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2019/20 | BLR-L1 | FC Torpedo Minsk | **non validé** |
 | 2019/20 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2019/20 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2019/20 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2019/20 | BRA-SA | Avaí FC | **non validé** |
+| 2019/20 | BRA-SA | Botafogo FR | **non validé** |
+| 2019/20 | BRA-SA | CR Vasco da Gama | **non validé** |
+| 2019/20 | BRA-SA | Centro Sportivo Alagoano | **non validé** |
+| 2019/20 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2019/20 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2019/20 | BRA-SA | Cruzeiro EC | **non validé** |
+| 2019/20 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2019/20 | BRA-SA | Fluminense FC | **non validé** |
+| 2019/20 | BRA-SA | Fortaleza Esporte Clube | **non validé** |
+| 2019/20 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2019/20 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2019/20 | BRA-SA | SC Internacional | **non validé** |
 | 2019/20 | CHE-L1 | FC Luzern | **non validé** |
 | 2019/20 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
 | 2019/20 | CYP-L1 | AC Omonia | **non validé** |
@@ -2783,6 +2968,26 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2018/19 | ALB-L1 | KF Tirana | **non validé** |
 | 2018/19 | ALB-L1 | KS Kastrioti | **non validé** |
 | 2018/19 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2018/19 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2018/19 | ARG-PD | Atlético Tucumán | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Patronato | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2018/19 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2018/19 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2018/19 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2018/19 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2018/19 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2018/19 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2018/19 | ARG-PD | Rosario Central | **non validé** |
+| 2018/19 | ARG-PD | San Martín de San Juan | **non validé** |
+| 2018/19 | ARG-PD | San Martín de Tucumán | **non validé** |
+| 2018/19 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2018/19 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2018/19 | ARM-L1 | FC Alashkert | **non validé** |
 | 2018/19 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2018/19 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
@@ -2837,6 +3042,19 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2018/19 | BLR-L1 | FC Torpedo Minsk | **non validé** |
 | 2018/19 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2018/19 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2018/19 | BRA-SA | América Futebol Clube (MG) | **non validé** |
+| 2018/19 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2018/19 | BRA-SA | Botafogo FR | **non validé** |
+| 2018/19 | BRA-SA | Ceará Sporting Club | **non validé** |
+| 2018/19 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2018/19 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2018/19 | BRA-SA | Cruzeiro EC | **non validé** |
+| 2018/19 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2018/19 | BRA-SA | Esporte Clube Vitória | **non validé** |
+| 2018/19 | BRA-SA | Fluminense FC | **non validé** |
+| 2018/19 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2018/19 | BRA-SA | Paraná Clube | **non validé** |
+| 2018/19 | BRA-SA | SC Internacional | **non validé** |
 | 2018/19 | CHE-L1 | FC Luzern | **non validé** |
 | 2018/19 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
 | 2018/19 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
@@ -3196,6 +3414,18 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2017/18 | BLR-L1 | FC Slutsk | **non validé** |
 | 2017/18 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2017/18 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2017/18 | BRA-SA | Associação Atlética Ponte Preta | **non validé** |
+| 2017/18 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2017/18 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2017/18 | BRA-SA | Avaí FC | **non validé** |
+| 2017/18 | BRA-SA | Botafogo FR | **non validé** |
+| 2017/18 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2017/18 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2017/18 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2017/18 | BRA-SA | Cruzeiro EC | **non validé** |
+| 2017/18 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2017/18 | BRA-SA | Esporte Clube Vitória | **non validé** |
+| 2017/18 | BRA-SA | Fluminense FC | **non validé** |
 | 2017/18 | CHE-L1 | FC Luzern | **non validé** |
 | 2017/18 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
 | 2017/18 | CYP-L1 | AEK Larnaca FC | **non validé** |
@@ -3493,6 +3723,27 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2016/17 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2016/17 | ALB-L1 | KS Korabi | **non validé** |
 | 2016/17 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2016/17 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2016/17 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2016/17 | ARG-PD | Atlético de Rafaela | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Patronato | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Sarmiento | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Temperley | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2016/17 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2016/17 | ARG-PD | Club Olimpo | **non validé** |
+| 2016/17 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2016/17 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2016/17 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2016/17 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2016/17 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2016/17 | ARG-PD | San Martín de San Juan | **non validé** |
+| 2016/17 | ARG-PD | Talleres de Córdoba | **non validé** |
+| 2016/17 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2016/17 | ARM-L1 | FC Alashkert | **non validé** |
 | 2016/17 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2016/17 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
@@ -3543,6 +3794,17 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2016/17 | BLR-L1 | FC Slutsk | **non validé** |
 | 2016/17 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2016/17 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2016/17 | BRA-SA | América Futebol Clube (MG) | **non validé** |
+| 2016/17 | BRA-SA | Associação Atlética Ponte Preta | **non validé** |
+| 2016/17 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2016/17 | BRA-SA | Botafogo FR | **non validé** |
+| 2016/17 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2016/17 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2016/17 | BRA-SA | Cruzeiro EC | **non validé** |
+| 2016/17 | BRA-SA | Esporte Clube Vitória | **non validé** |
+| 2016/17 | BRA-SA | Figueirense FC | **non validé** |
+| 2016/17 | BRA-SA | Fluminense FC | **non validé** |
+| 2016/17 | BRA-SA | SC Internacional | **non validé** |
 | 2016/17 | CHE-L1 | FC Luzern | **non validé** |
 | 2016/17 | CHE-L1 | FC Vaduz | **non validé** |
 | 2016/17 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
@@ -3845,6 +4107,28 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2015/16 | ALB-L1 | KF Tirana | **non validé** |
 | 2015/16 | ALB-L1 | KF Tërbuni | **non validé** |
 | 2015/16 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2015/16 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2015/16 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2015/16 | ARG-PD | Atlético de Rafaela | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Aldosivi | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Nueva Chicago | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Sarmiento | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Temperley | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2015/16 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2015/16 | ARG-PD | Club Olimpo | **non validé** |
+| 2015/16 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2015/16 | ARG-PD | Crucero del Norte | **non validé** |
+| 2015/16 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2015/16 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2015/16 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2015/16 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2015/16 | ARG-PD | Quilmes Atlético Club | **non validé** |
+| 2015/16 | ARG-PD | San Martín de San Juan | **non validé** |
+| 2015/16 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2015/16 | ARM-L1 | FC Alashkert | **non validé** |
 | 2015/16 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2015/16 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
@@ -3896,6 +4180,17 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2015/16 | BLR-L1 | FC Slutsk | **non validé** |
 | 2015/16 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2015/16 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2015/16 | BRA-SA | Associação Atlética Ponte Preta | **non validé** |
+| 2015/16 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2015/16 | BRA-SA | Avaí FC | **non validé** |
+| 2015/16 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2015/16 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2015/16 | BRA-SA | Cruzeiro EC | **non validé** |
+| 2015/16 | BRA-SA | Figueirense FC | **non validé** |
+| 2015/16 | BRA-SA | Fluminense FC | **non validé** |
+| 2015/16 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2015/16 | BRA-SA | Joinville Esporte Clube | **non validé** |
+| 2015/16 | BRA-SA | SC Internacional | **non validé** |
 | 2015/16 | CHE-L1 | FC Luzern | **non validé** |
 | 2015/16 | CHE-L1 | FC Vaduz | **non validé** |
 | 2015/16 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
@@ -4202,6 +4497,21 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2014/15 | ALB-L1 | KF Teuta | **non validé** |
 | 2014/15 | ALB-L1 | KF Tirana | **non validé** |
 | 2014/15 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2014/15 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2014/15 | ARG-PD | Atlético de Rafaela | **non validé** |
+| 2014/15 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2014/15 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2014/15 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2014/15 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2014/15 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2014/15 | ARG-PD | Club Olimpo | **non validé** |
+| 2014/15 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2014/15 | ARG-PD | Defensa y Justicia | **non validé** |
+| 2014/15 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2014/15 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2014/15 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2014/15 | ARG-PD | Quilmes Atlético Club | **non validé** |
+| 2014/15 | ARG-PD | San Lorenzo de Almagro | **non validé** |
 | 2014/15 | ARM-L1 | FC Alashkert | **non validé** |
 | 2014/15 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2014/15 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
@@ -4250,6 +4560,19 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2014/15 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
 | 2014/15 | BLR-L1 | FC Slutsk | **non validé** |
 | 2014/15 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2014/15 | BRA-SA | Associação Chapecoense de Futebol | **non validé** |
+| 2014/15 | BRA-SA | Botafogo FR | **non validé** |
+| 2014/15 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2014/15 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2014/15 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2014/15 | BRA-SA | Criciúma Esporte Clube | **non validé** |
+| 2014/15 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2014/15 | BRA-SA | Esporte Clube Vitória | **non validé** |
+| 2014/15 | BRA-SA | Figueirense FC | **non validé** |
+| 2014/15 | BRA-SA | Fluminense FC | **non validé** |
+| 2014/15 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2014/15 | BRA-SA | SC Corinthians Paulista | **non validé** |
+| 2014/15 | BRA-SA | SC Internacional | **non validé** |
 | 2014/15 | CHE-L1 | FC Aarau | **non validé** |
 | 2014/15 | CHE-L1 | FC Luzern | **non validé** |
 | 2014/15 | CHE-L1 | FC Vaduz | **non validé** |
@@ -4583,6 +4906,21 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2013/14 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2013/14 | ALB-L1 | KS Kastrioti | **non validé** |
 | 2013/14 | ALB-L1 | KS Lushnja | **non validé** |
+| 2013/14 | ARG-PD | All Boys | **non validé** |
+| 2013/14 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2013/14 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2013/14 | ARG-PD | Atlético de Rafaela | **non validé** |
+| 2013/14 | ARG-PD | Boca Juniors | **non validé** |
+| 2013/14 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2013/14 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2013/14 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2013/14 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2013/14 | ARG-PD | Club Olimpo | **non validé** |
+| 2013/14 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2013/14 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2013/14 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2013/14 | ARG-PD | Quilmes Atlético Club | **non validé** |
+| 2013/14 | ARG-PD | San Lorenzo de Almagro | **non validé** |
 | 2013/14 | ARM-L1 | FC Alashkert | **non validé** |
 | 2013/14 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2013/14 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
@@ -4637,6 +4975,17 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2013/14 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
 | 2013/14 | BLR-L1 | FC Slavia Mozyr | **non validé** |
 | 2013/14 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2013/14 | BRA-SA | Associação Atlética Ponte Preta | **non validé** |
+| 2013/14 | BRA-SA | Botafogo FR | **non validé** |
+| 2013/14 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2013/14 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2013/14 | BRA-SA | Criciúma Esporte Clube | **non validé** |
+| 2013/14 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2013/14 | BRA-SA | Esporte Clube Vitória | **non validé** |
+| 2013/14 | BRA-SA | Fluminense FC | **non validé** |
+| 2013/14 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2013/14 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2013/14 | BRA-SA | SC Internacional | **non validé** |
 | 2013/14 | CHE-L1 | FC Aarau | **non validé** |
 | 2013/14 | CHE-L1 | FC Luzern | **non validé** |
 | 2013/14 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
@@ -4971,6 +5320,22 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2012/13 | ALB-L1 | KS Kastrioti | **non validé** |
 | 2012/13 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2012/13 | ARG-PD | All Boys | **non validé** |
+| 2012/13 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2012/13 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2012/13 | ARG-PD | Atlético de Rafaela | **non validé** |
+| 2012/13 | ARG-PD | Boca Juniors | **non validé** |
+| 2012/13 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2012/13 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2012/13 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2012/13 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2012/13 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2012/13 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2012/13 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2012/13 | ARG-PD | Quilmes Atlético Club | **non validé** |
+| 2012/13 | ARG-PD | San Lorenzo de Almagro | **non validé** |
+| 2012/13 | ARG-PD | San Martín de San Juan | **non validé** |
+| 2012/13 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2012/13 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2012/13 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
 | 2012/13 | ARM-L1 | FC Mika | **non validé** |
@@ -5029,6 +5394,17 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
 | 2012/13 | BLR-L1 | FC Slavia Mozyr | **non validé** |
 | 2012/13 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2012/13 | BRA-SA | Associação Atlética Ponte Preta | **non validé** |
+| 2012/13 | BRA-SA | Associação Portuguesa de Desportos | **non validé** |
+| 2012/13 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2012/13 | BRA-SA | Botafogo FR | **non validé** |
+| 2012/13 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2012/13 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2012/13 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2012/13 | BRA-SA | Figueirense FC | **non validé** |
+| 2012/13 | BRA-SA | Fluminense FC | **non validé** |
+| 2012/13 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2012/13 | BRA-SA | SC Internacional | **non validé** |
 | 2012/13 | CHE-L1 | FC Luzern | **non validé** |
 | 2012/13 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
 | 2012/13 | CYP-L1 | AEL Limassol | **non validé** |
@@ -5365,6 +5741,23 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2011/12 | ALB-L1 | KS Kastrioti | **non validé** |
 | 2011/12 | ALB-L1 | KS Pogradeci | **non validé** |
+| 2011/12 | ARG-PD | All Boys | **non validé** |
+| 2011/12 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2011/12 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2011/12 | ARG-PD | Atlético de Rafaela | **non validé** |
+| 2011/12 | ARG-PD | Boca Juniors | **non validé** |
+| 2011/12 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2011/12 | ARG-PD | Club Atlético Belgrano | **non validé** |
+| 2011/12 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2011/12 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2011/12 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2011/12 | ARG-PD | Club Olimpo | **non validé** |
+| 2011/12 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2011/12 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2011/12 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2011/12 | ARG-PD | San Lorenzo de Almagro | **non validé** |
+| 2011/12 | ARG-PD | San Martín de San Juan | **non validé** |
+| 2011/12 | ARG-PD | Unión de Santa Fe | **non validé** |
 | 2011/12 | ARM-L1 | FC Ararat Yerevan | **non validé** |
 | 2011/12 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
 | 2011/12 | ARM-L1 | FC Mika | **non validé** |
@@ -5421,6 +5814,21 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
 | 2011/12 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2011/12 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2011/12 | BRA-SA | América Futebol Clube (MG) | **non validé** |
+| 2011/12 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2011/12 | BRA-SA | Avaí FC | **non validé** |
+| 2011/12 | BRA-SA | Botafogo FR | **non validé** |
+| 2011/12 | BRA-SA | Ceará Sporting Club | **non validé** |
+| 2011/12 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2011/12 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2011/12 | BRA-SA | Coritiba Foot Ball Club | **non validé** |
+| 2011/12 | BRA-SA | Cruzeiro EC | **non validé** |
+| 2011/12 | BRA-SA | Esporte Clube Bahia | **non validé** |
+| 2011/12 | BRA-SA | Figueirense FC | **non validé** |
+| 2011/12 | BRA-SA | Fluminense FC | **non validé** |
+| 2011/12 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2011/12 | BRA-SA | SC Corinthians Paulista | **non validé** |
+| 2011/12 | BRA-SA | SC Internacional | **non validé** |
 | 2011/12 | CHE-L1 | FC Luzern | **non validé** |
 | 2011/12 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
 | 2011/12 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
@@ -5770,6 +6178,25 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | ALB-L1 | KF Tirana | **non validé** |
 | 2010/11 | ALB-L1 | KF Vllaznia | **non validé** |
 | 2010/11 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2010/11 | ARG-PD | All Boys | **non validé** |
+| 2010/11 | ARG-PD | Argentinos Juniors | **non validé** |
+| 2010/11 | ARG-PD | Arsenal de Sarandí | **non validé** |
+| 2010/11 | ARG-PD | Boca Juniors | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético Banfield | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético Huracán | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético Independiente | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético Lanús | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético River Plate | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético Tigre | **non validé** |
+| 2010/11 | ARG-PD | Club Atlético Vélez Sarsfield | **non validé** |
+| 2010/11 | ARG-PD | Club Olimpo | **non validé** |
+| 2010/11 | ARG-PD | Club de Gimnasia y Esgrima La Plata | **non validé** |
+| 2010/11 | ARG-PD | Estudiantes de La Plata | **non validé** |
+| 2010/11 | ARG-PD | Godoy Cruz Antonio Tomba | **non validé** |
+| 2010/11 | ARG-PD | Newell's Old Boys | **non validé** |
+| 2010/11 | ARG-PD | Quilmes Atlético Club | **non validé** |
+| 2010/11 | ARG-PD | Racing Club de Avellaneda | **non validé** |
+| 2010/11 | ARG-PD | San Lorenzo de Almagro | **non validé** |
 | 2010/11 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
 | 2010/11 | ARM-L1 | FC Mika | **non validé** |
 | 2010/11 | ARM-L1 | FC Pyunik | **non validé** |
@@ -5831,6 +6258,20 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
 | 2010/11 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
 | 2010/11 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2010/11 | BRA-SA | Atlético Clube Goianiense | **non validé** |
+| 2010/11 | BRA-SA | Avaí FC | **non validé** |
+| 2010/11 | BRA-SA | Botafogo FR | **non validé** |
+| 2010/11 | BRA-SA | Ceará Sporting Club | **non validé** |
+| 2010/11 | BRA-SA | Club Athletico Paranaense | **non validé** |
+| 2010/11 | BRA-SA | Clube Atlético Mineiro | **non validé** |
+| 2010/11 | BRA-SA | Esporte Clube Vitória | **non validé** |
+| 2010/11 | BRA-SA | Fluminense FC | **non validé** |
+| 2010/11 | BRA-SA | Goiás Esporte Clube | **non validé** |
+| 2010/11 | BRA-SA | Grêmio Barueri Futebol | **non validé** |
+| 2010/11 | BRA-SA | Grêmio FBPA | **non validé** |
+| 2010/11 | BRA-SA | Guarani FC | **non validé** |
+| 2010/11 | BRA-SA | SC Corinthians Paulista | **non validé** |
+| 2010/11 | BRA-SA | SC Internacional | **non validé** |
 | 2010/11 | CHE-L1 | AC Bellinzona | **non validé** |
 | 2010/11 | CHE-L1 | FC Luzern | **non validé** |
 | 2010/11 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
@@ -6202,25 +6643,25 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 
 | Donnée | Manquants | Sur |
 |---|---|---|
-| Joueurs sans identité Wikidata (QID) | 15948 | 55070 |
-| Joueurs sans carrière (infobox) | 16593 | 55070 |
-| Joueurs sans date de naissance au jour près | 16424 | 55070 |
-| Lignes d'effectif sans nationalité | 4092 | 200065 |
-| Lignes d'effectif sans poste | 1184 | 200065 |
-| Lignes d'effectif à statut inconnu (prêt/transfert) | 165407 | 200065 |
-| Clubs à effectifs sans logo | 127 | 1401 |
-| Clubs à effectifs sans page Wikipedia française | 83 | 1401 |
+| Joueurs sans identité Wikidata (QID) | 17124 | 59379 |
+| Joueurs sans carrière (infobox) | 17865 | 59379 |
+| Joueurs sans date de naissance au jour près | 17688 | 59379 |
+| Lignes d'effectif sans nationalité | 4399 | 212756 |
+| Lignes d'effectif sans poste | 1329 | 212756 |
+| Lignes d'effectif à statut inconnu (prêt/transfert) | 176237 | 212756 |
+| Clubs à effectifs sans logo | 144 | 1485 |
+| Clubs à effectifs sans page Wikipedia française | 83 | 1485 |
 
 ## Clubs du monde (fiches club)
 
 | Donnée | Clubs | Sur |
 |---|---|---|
-| Clubs au total (table `club`) | 44372 | 44372 |
-| … dont avec effectifs détaillés | 1401 | 44372 |
-| … avec un logo (infobox ou Commons) | 17940 | 44372 |
-| … avec stade | 9886 | 44372 |
-| … avec date de fondation | 23588 | 44372 |
-| … avec page Wikipedia anglaise | 27122 | 44372 |
+| Clubs au total (table `club`) | 44409 | 44409 |
+| … dont avec effectifs détaillés | 1485 | 44409 |
+| … avec un logo (infobox ou Commons) | 17949 | 44409 |
+| … avec stade | 9886 | 44409 |
+| … avec date de fondation | 23588 | 44409 |
+| … avec page Wikipedia anglaise | 27159 | 44409 |
 
 ## À faire
 

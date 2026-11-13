@@ -127,6 +127,22 @@ Exemples réels : la Belgique, les Pays-Bas, le Portugal et la Turquie ont été
    dans le pays du championnat, par choix de simplicité. **Ne lire qu'une partie des saisons**
    (Arabie saoudite depuis 2022-23) : ne lancez que ces saisons ; `team_count` peut commencer à cette année.
 
+   **Format irrégulier** (Argentine : deux courts tournois par saison jusqu'en 2013, demi-années en 2014-2016, Superliga, puis
+   année civile) : indiquez à la main, par année de début, les pages à lire. Leurs clubs sont **fusionnés** et `n` est le
+   nombre de clubs de la saison (l'union, pas un tournoi) :
+   ```toml
+   [[season_page]]
+   year = 2016
+   pages = ["2016 Argentine Primera División", "2016–17 Argentine Primera División"]
+   n = 34
+   ```
+   Une année sans `[[season_page]]` garde le titre construit (`<saison> <nom>`). Voir `openfootball/scopes/arg.toml`. Pour trouver
+   les titres et le bon `n`, essayez `_league_teams` (`openfootball/backfill.py`) sur chaque année sans rien écrire.
+
+   **Pays dont les pages « saison du club » sont surtout en portugais** (Brésil) : `langs = ["en", "pt"]`. Wikidata ne relie pas ces
+   pages ; le programme les cherche sous « Temporada do / da / de <titre pt du club> de <année> » (`_pt_season_titles`). Peu de
+   clubs ont une telle page (une dizaine par an en tout, Flamengo, São Paulo…) : beaucoup de club-saisons resteront « Sans effectif ».
+
 6. **Mettez à jour le test** `test_scope_files_load` (`tests/test_backfill.py`) : il liste les pays déclarés.
 
 7. **Lancez**, de la saison courante vers le passé :
@@ -173,7 +189,7 @@ Le titre doit être **vérifiable** sur Wikipedia ; l'effectif doit passer les m
 
 Deux voies, dans `openfootball/parse/` :
 
-**A. Langue à modèle de joueur (fr, it, es) — lecture du wikitexte.**
+**A. Langue à modèle de joueur (fr, it, es, pt) — lecture du wikitexte.** Le portugais lit deux modèles de terrain (`{{Elenco de Futebol}}`, `{{Elenco atual de futebol}}`) dans `parse/squad_pt.py` ; ses tableaux passent par le HTML rendu.
 1. Repérez sur une vraie page le modèle de joueur (fr `Feff joueur`, it `Calciatore in rosa`, es
    `Jugador de fútbol con esquema`) ; copiez un extrait dans `tests/fixtures/`.
 2. Écrivez `parse_squad_<lang>` dans `squad_i18n.py` (même contrat que `parse_squad` : `section` = titre au-dessus ; rien
