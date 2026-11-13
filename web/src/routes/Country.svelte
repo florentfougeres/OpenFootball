@@ -45,7 +45,7 @@
     <h2 class="mt-8 mb-3 text-xl font-bold">{t("competitions")}</h2>
     <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {#each res.data.comps as x (x.code)}
-        <li><CompetitionCard code={x.code} countryCode={code} clubs={x.latest?.clubs} season={x.latest?.season} /></li>
+        <li><CompetitionCard code={x.code} countryCode={code} logo={x.logo_url} clubs={x.latest?.clubs} season={x.latest?.season} /></li>
       {/each}
     </ul>
     <h2 class="mt-8 mb-3 text-xl font-bold">{t("topClubs")}</h2>
