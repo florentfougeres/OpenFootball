@@ -249,3 +249,25 @@ def drop_stale_current_rows(con: duckdb.DuckDBPyConnection) -> int:
         con.execute("DELETE FROM squad_row_source WHERE club_season_id = ? AND player_id = ?", [cs_id, player_id])
         con.execute("DELETE FROM player_club_season WHERE id = ?", [pcs_id])
     return len(rows)
+
+
+def drop_summer_departures(con: duckdb.DuckDBPyConnection) -> int:
+    """Retire d'un club le joueur qui l'a QUITTÉ dans la fenêtre d'été, avant le 2 septembre de la saison (même limite que
+    `is_mid_season`) sans prêt ni retour, et qui figure dans un autre club la même saison : il n'a pas joué pour ce club cette saison
+    (Lewandowski : fin de contrat au Barça le 1er juillet 2026, joueur de Chicago ; l'« Altas y bajas » de la page espagnole le citait encore).
+    Un joueur qui n'est que dans ce club (parti vers un club hors base) n'est pas touché. Les saisons figées ne sont pas modifiées."""
+    rows = con.execute("""
+        SELECT pcs.id, pcs.club_season_id, pcs.player_id
+        FROM player_club_season pcs
+        JOIN club_season cs ON cs.id = pcs.club_season_id JOIN season s ON s.id = cs.season_id
+        WHERE s.status <> 'frozen'
+          AND EXISTS (SELECT 1 FROM squad_movement m WHERE m.club_season_id = pcs.club_season_id AND m.player_id = pcs.player_id
+                      AND m.direction = 'out' AND m.kind <> 'loan' AND m.moved_on < make_date(s.start_year, 9, 2))
+          AND NOT EXISTS (SELECT 1 FROM squad_movement m WHERE m.club_season_id = pcs.club_season_id AND m.player_id = pcs.player_id
+                          AND (m.direction = 'in' OR m.kind = 'loan'))
+          AND EXISTS (SELECT 1 FROM player_club_season o JOIN club_season ocs ON ocs.id = o.club_season_id
+                      WHERE o.player_id = pcs.player_id AND ocs.season_id = cs.season_id AND ocs.id <> cs.id)""").fetchall()
+    for pcs_id, cs_id, player_id in rows:
+        con.execute("DELETE FROM squad_row_source WHERE club_season_id = ? AND player_id = ?", [cs_id, player_id])
+        con.execute("DELETE FROM player_club_season WHERE id = ?", [pcs_id])
+    return len(rows)

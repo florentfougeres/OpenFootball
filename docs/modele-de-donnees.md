@@ -61,7 +61,7 @@ squad.player_qid ──< career.player_qid, national.player_qid, birth.player_qi
 
 Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'un club cette saison**. Un fichier par saison (`squad/<saison>.<sha8>.parquet`). Les joueurs prêtés ailleurs (`loan_out`) n'y figurent pas.
 
-- Fichiers : 17 fichiers (un par saison), ex. `squad/2026-27.fe7c1566.parquet` — **181 879 lignes**
+- Fichiers : 17 fichiers (un par saison), ex. `squad/2026-27.1afe2261.parquet` — **180 897 lignes**
 - Clé : (season, club, player_qid ou player)
 
 | Colonne | Type | Description |
@@ -93,7 +93,7 @@ Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'u
 
 Une ligne = **un club dans un championnat pour une saison** (avec ou sans effectif). Un fichier par saison (`club_season/<saison>.<sha8>.parquet`).
 
-- Fichiers : 17 fichiers (un par saison), ex. `club_season/2026-27.2c495929.parquet` — **11 919 lignes**
+- Fichiers : 17 fichiers (un par saison), ex. `club_season/2026-27.7ca40b9e.parquet` — **11 919 lignes**
 - Clé : (season, club)
 
 | Colonne | Type | Description |

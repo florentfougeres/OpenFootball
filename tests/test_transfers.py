@@ -211,3 +211,23 @@ def test_open_season_drops_player_listed_only_by_a_lagging_language():
     assert drop_stale_current_rows(c) == 1
     assert [r[0] for r in c.execute("SELECT club_season_id FROM player_club_season").fetchall()] == [2]
     assert drop_stale_current_rows(c) == 0
+
+
+def test_summer_departure_present_elsewhere_is_dropped_but_a_single_club_player_stays():
+    from openfootball.transfers import drop_summer_departures
+    c = duckdb.connect(":memory:")
+    migrate(c)
+    c.execute("INSERT INTO country VALUES ('ESP', 'Spain', 'Espagne')")
+    c.execute("INSERT INTO competition (id, code, name_en, name_fr, country_code, level) VALUES (1, 'ESP-LL', 'La Liga', 'La Liga', 'ESP', 1)")
+    c.execute("INSERT INTO season (id, start_year, label, status) VALUES (1, 2026, '2026/27', 'open')")
+    for cid, title in ((1, "Barca"), (2, "Chicago")):
+        c.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title) VALUES (?, ?, 'ESP', ?)", [cid, title, title])
+        c.execute("INSERT INTO club_season (id, club_id, season_id, competition_id) VALUES (?, ?, 1, 1)", [cid, cid])
+    for pid, name in ((1, "Lewa"), (2, "Solo")):
+        c.execute("INSERT INTO player (id, name) VALUES (?, ?)", [pid, name])
+        c.execute("INSERT INTO player_club_season (id, player_id, club_season_id, stint, confidence, source) VALUES (?, ?, 1, 'left_mid', 'attested', 'wikipedia_season')", [pid, pid])
+    c.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) VALUES (9, 1, 2, 'attested', 'wikipedia_season')")
+    for pid in (1, 2):
+        c.execute("INSERT INTO squad_movement (club_season_id, player_id, direction, kind, moved_on, mid_season, source_title) VALUES (1, ?, 'out', 'transfer', DATE '2026-07-01', false, 'x')", [pid])
+    assert drop_summer_departures(c) == 1
+    assert [r[0] for r in c.execute("SELECT player_id FROM player_club_season WHERE club_season_id = 1").fetchall()] == [2]

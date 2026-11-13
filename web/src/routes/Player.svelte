@@ -23,7 +23,7 @@
     const career = app.has.career ? await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title, w.wikidata_qid AS club_qid, w.logo_url AS club_logo, w.colors_hex AS club_colors
         FROM career c LEFT JOIN club w ON ${app.careerHasClubQid ? "w.wikidata_qid = c.club_qid" : "w.wikipedia_title = c.club_link"} WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]) : [];
     const profile = app.has.player_profile
-      ? (await q(`SELECT full_name, birth_place, height_cm, death_date, photo_caption, photo_url, photo_page, photo_license, photo_author FROM player_profile
+      ? (await q(`SELECT full_name, birth_place, height_cm, photo_caption, photo_url, photo_page, photo_license, photo_author FROM player_profile
           WHERE COALESCE(player_qid, 'name:' || player) = ?`, [key]))[0] ?? null : null;
     const national = app.has.national ? await q(`SELECT years_raw, team_name, team_link, caps, goals FROM national
         WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]) : [];
@@ -84,7 +84,6 @@
       {#if born}<span>{born}</span>{/if}
       {#if d.profile?.birth_place}<span>{t("birthPlace")} : {d.profile.birth_place}</span>{/if}
       {#if d.profile?.height_cm}<span>{t("heightLabel")} : {(d.profile.height_cm / 100).toLocaleString(app.lang, { minimumFractionDigits: 2 })} m</span>{/if}
-      {#if d.profile?.death_date}<span>{t("diedOn")} {d.profile.death_date.length === 10 ? new Date(d.profile.death_date + "T00:00:00").toLocaleDateString(app.lang, { day: "numeric", month: "long", year: "numeric" }) : d.profile.death_date}</span>{/if}
     </p>
     {#if totals}
       <ul class="mt-4 flex flex-wrap gap-3">

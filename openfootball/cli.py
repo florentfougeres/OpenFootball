@@ -16,7 +16,7 @@ from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
-from openfootball.transfers import apply_transfers, drop_stale_current_rows
+from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
@@ -506,6 +506,9 @@ def transfers_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     r = apply_transfers(con, WikipediaClient(args.cache), fr_wp=WikipediaClient("cache/wikipedia_fr", lang="fr"), start_year=args.season)
+    summer = drop_summer_departures(con)
+    if summer:
+        print(f"{summer} joueurs retirés d'un club qu'ils ont quitté avant la saison (fenêtre d'été), présents ailleurs la même saison")
     stale = drop_stale_current_rows(con)
     if stale:
         print(f"{stale} joueurs retirés de la saison en cours (partis ailleurs, encore listés par une seule langue en retard)")
