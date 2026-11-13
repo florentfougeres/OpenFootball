@@ -164,12 +164,13 @@
 {/snippet}
 
 <section class="card mt-6 overflow-hidden">
-  <div class="flex flex-wrap items-center justify-between gap-3 px-5 pt-4">
+  <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-3 px-5 pt-4">
     <h2 class="text-lg font-bold">{t("statsTitle")}</h2>
-    <div class="inline-flex flex-wrap rounded-lg border border-line bg-surface p-0.5" role="group" aria-label={t("statsView")}>
+    <!-- Mobile : une seule ligne de boutons égaux sur toute la largeur, libellés courts ; dès sm : une barre segmentée compacte, libellés complets. -->
+    <div class="grid w-full grid-flow-col auto-cols-fr gap-0.5 rounded-lg border border-line bg-surface p-0.5 sm:inline-flex sm:w-auto" role="group" aria-label={t("statsView")}>
       {#each VIEWS as [v, k]}
         {#if v !== "nat" || national.length}
-          <button type="button" class="rounded-md px-3 py-1 text-sm font-medium transition {view === v ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}" aria-pressed={view === v} onclick={() => setView(v)}>{t(k)}</button>
+          <button type="button" class="min-w-0 truncate rounded-md px-1 py-2 text-center text-[0.8rem] font-medium transition sm:px-3 sm:py-1 sm:text-sm {view === v ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}" aria-pressed={view === v} onclick={() => setView(v)}><span class="sm:hidden">{t(k + "S")}</span><span class="hidden sm:inline">{t(k)}</span></button>
         {/if}
       {/each}
     </div>
