@@ -4,6 +4,10 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.12.0 — 2026-11-13
+- **Statistiques de carrière** (nouvelles tables `stat_club`, `stat_national`, `stat_source`) : matchs et buts par club, saison et compétition (championnat, coupe nationale, coupe de la Ligue, continental, autres), puis par sélection et année, lus dans la section « Career statistics » de la page Wikipedia anglaise de 4 695 joueurs de clubs de France, d'Angleterre, d'Italie, d'Espagne, des Pays-Bas, du Portugal et d'Allemagne une saison de Ligue des champions depuis 2010 (4 134 ont un tableau club, 161 480 lignes). Valeurs telles que publiées, non vérifiées. Nouveau bloc « Statistiques de carrière » sur la fiche joueur : par saison, par club, par compétition, sélection.
+- **Fiche joueur** : les totaux de carrière utilisent ce tableau (toutes compétitions) quand il existe, au lieu de l'infobox (championnat seulement).
+
 ## Data 1.11.0 — 2026-11-13
 - **Saisons 2000/01 à 2009/10 pour les cinq grands championnats** (Premier League, Liga, Serie A, Bundesliga, Ligue 1) : 10 saisons de plus, 932 club-saisons, 789 effectifs lus. Sans page « saison du club » sur Wikipedia, l'effectif reste vide et est listé comme tel (surtout Liga et Ligue 1 avant 2005).
 - **Effectifs reconstitués** (nouvelle commande `reconstruct`) : quand un club-saison n'a pas d'effectif mais que sa page liste les transferts, l'effectif est reconstruit comme celui de la saison précédente, moins les départs, plus les arrivées. Les lignes sont marquées `inferred` (jamais `attested`) et le trou reste documenté. Premier usage : Holstein Kiel et VfL Bochum 2024/25.

@@ -62,7 +62,7 @@ squad.player_qid ──< career.player_qid, national.player_qid, birth.player_qi
 
 A club's squad for one season: **one row = one player in a club's squad that season**. One file per season (`squad/<season>.<sha8>.parquet`). Players loaned out elsewhere (`loan_out`) are not listed.
 
-- Files : 17 files (one per season), e.g. `squad/2026-27.1859627b.parquet` — **198 208 rows**
+- Files : 27 files (one per season), e.g. `squad/2026-27.92dd6068.parquet` — **232 946 rows**
 - Key : (season, club, player_qid or player)
 
 | Column | Type | Description |
@@ -94,7 +94,7 @@ A club's squad for one season: **one row = one player in a club's squad that sea
 
 One row = **a club in a league for one season** (with or without a squad). One file per season (`club_season/<season>.<sha8>.parquet`).
 
-- Files : 17 files (one per season), e.g. `club_season/2026-27.46b4c9b1.parquet` — **18 582 rows**
+- Files : 27 files (one per season), e.g. `club_season/2026-27.3eb0f04a.parquet` — **19 514 rows**
 - Key : (season, club)
 
 | Column | Type | Description |
@@ -112,7 +112,7 @@ One row = **a club in a league for one season** (with or without a squad). One f
 
 The "club season" pages whose **union** makes the squad: a squad is read from every language of the country (the country's language first, then English, Italian…) to be as complete as possible. **One row = one page used.**
 
-- Files : `squad_source/squad_source.2d6d1720.parquet` — **9 697 rows**
+- Files : `squad_source/squad_source.beadfcae.parquet` — **10 932 rows**
 - Key : (season, club, source_lang)
 
 | Column | Type | Description |
@@ -131,7 +131,7 @@ The "club season" pages whose **union** makes the squad: a squad is read from ev
 
 Every known football club (≈ 43,000, source: Wikidata). `has_squads` tells the clubs whose squads we have.
 
-- Files : `club/club.3e7138ab.parquet` — **44 455 rows**
+- Files : `club/club.1108ad7e.parquet` — **44 523 rows**
 - Key : wikidata_qid (wikipedia_title is also unique when present)
 
 | Column | Type | Description |
@@ -205,7 +205,7 @@ The countries covered by `competition`.
 
 The seasons present and their state.
 
-- Files : `season/season.10791af1.parquet` — **17 rows**
+- Files : `season/season.c115f1cd.parquet` — **27 rows**
 - Key : label
 
 | Column | Type | Description |
@@ -219,7 +219,7 @@ The seasons present and their state.
 
 Clubs taking part in a competition, by season: the league's clubs (from `club_season`) **and** those that take part in addition to their league (continental cups, table `competition_entry`).
 
-- Files : `competition_club/competition_club.613cdb86.parquet` — **21 396 rows**
+- Files : `competition_club/competition_club.4db6a699.parquet` — **22 328 rows**
 - Key : (season, competition, club)
 
 | Column | Type | Description |
@@ -232,7 +232,7 @@ Clubs taking part in a competition, by season: the league's clubs (from `club_se
 
 Squads that cannot be found and whose absence was **explicitly validated** (the source does not exist).
 
-- Files : `known_gap/known_gap.037c09df.parquet` — **12 rows**
+- Files : `known_gap/known_gap.81a53e27.parquet` — **12 rows**
 - Key : (season, club)
 
 | Column | Type | Description |
@@ -245,7 +245,7 @@ Squads that cannot be found and whose absence was **explicitly validated** (the 
 
 A player's senior career, read from the infobox of his **English** Wikipedia page: **one row = one spell at a club**.
 
-- Files : `career/career.fd05f672.parquet` — **337 981 rows**
+- Files : `career/career.07ad4efd.parquet` — **355 832 rows**
 - Key : (player_qid or player, seq)
 
 | Column | Type | Description |
@@ -270,7 +270,7 @@ A player's senior career, read from the infobox of his **English** Wikipedia pag
 
 National-team appearances (youth included), read from the infobox: **one row = one team**.
 
-- Files : `national/national.4a28f232.parquet` — **72 752 rows**
+- Files : `national/national.7b8e5100.parquet` — **75 236 rows**
 - Key : (player_qid or player, seq)
 
 | Column | Type | Description |
@@ -284,11 +284,68 @@ National-team appearances (youth included), read from the infobox: **one row = o
 | `caps` | INTEGER | Caps, **as published, unverified**. |
 | `goals` | INTEGER | International goals, **as published, unverified**. |
 
+### `stat_club`
+
+Career statistics **by club, season and competition**, read from the "Career statistics" section of the player's English Wikipedia page (players of Champions League clubs from the 7 major countries, since 2010). **One row = one club, one season, one competition group.** Values **as published, unverified**; an empty cell or "—" is empty, not zero.
+
+- Files : `stat_club/stat_club.b0ee81c9.parquet` — **161 480 rows**
+- Key : (player_qid or player, seq)
+
+| Column | Type | Description |
+|---|---|---|
+| `player_qid` | VARCHAR | Player's Wikidata QID. |
+| `player` | VARCHAR | Player name (key fallback: `'name:' || player`). |
+| `seq` | INTEGER | Rank in the table. |
+| `club` | VARCHAR | Club, as written. |
+| `club_link` | VARCHAR | Title of the club's Wikipedia page. |
+| `club_qid` | VARCHAR | Club's Wikidata QID, when known. |
+| `season` | VARCHAR | Season `2008–09`, or the year alone (`2022`) for a calendar-year league. |
+| `division` | VARCHAR | Division, as written. |
+| `competition_group` | VARCHAR | Competition group: `League`, `National cup`, `League cup`, `Continental` (or `Europe`), `Other`. |
+| `apps` | INTEGER | Appearances. |
+| `goals` | INTEGER | Goals. |
+| `assists` | INTEGER | Assists, when the page gives them. |
+
+### `stat_national`
+
+National-team statistics **by team and year**, read from the "Career statistics" section (same scope as `stat_club`). Values **as published, unverified**.
+
+- Files : `stat_national/stat_national.16e3dfa2.parquet` — **15 623 rows**
+- Key : (player_qid or player, seq)
+
+| Column | Type | Description |
+|---|---|---|
+| `player_qid` | VARCHAR | Player's Wikidata QID. |
+| `player` | VARCHAR | Player name. |
+| `seq` | INTEGER | Rank in the table. |
+| `team` | VARCHAR | Team: `France`, `Portugal U21`… |
+| `team_link` | VARCHAR | Title of the team's Wikipedia page. |
+| `year` | VARCHAR | Year (`2014`) or period (`2014–15`). |
+| `competition_group` | VARCHAR | `Competitive`, `Friendly`, or `Total` when the page does not split them. |
+| `apps` | INTEGER | Caps. |
+| `goals` | INTEGER | International goals. |
+
+### `stat_source`
+
+Provenance of the statistics: the page read for each player (one row per player read, even without a table).
+
+- Files : `stat_source/stat_source.2b3d3a22.parquet` — **4 695 rows**
+- Key : (player_qid or player)
+
+| Column | Type | Description |
+|---|---|---|
+| `player_qid` | VARCHAR | Player's Wikidata QID. |
+| `player` | VARCHAR | Player name. |
+| `source_title` | VARCHAR | Title of the English Wikipedia page read. |
+| `source_revid` | BIGINT | Revision read. |
+| `club_rows` | INTEGER | Rows read into `stat_club`. |
+| `national_rows` | INTEGER | Rows read into `stat_national`. |
+
 ### `player_profile`
 
 Profile read from the English Wikipedia infobox: full name, birthplace, height, death and **photo** (one row per player with at least one of these). Values **published as is by Wikipedia, unverified**.
 
-- Files : `player_profile/player_profile.06fa652f.parquet` — **42 658 rows**
+- Files : `player_profile/player_profile.e7e4aec5.parquet` — **42 660 rows**
 - Key : (player_qid or player)
 
 | Column | Type | Description |
@@ -309,7 +366,7 @@ Profile read from the English Wikipedia infobox: full name, birthplace, height, 
 
 Birth dates (Wikidata P569) of identified players.
 
-- Files : `birth/birth.14641488.parquet` — **43 225 rows**
+- Files : `birth/birth.eb833d73.parquet` — **49 012 rows**
 - Key : player_qid
 
 | Column | Type | Description |
@@ -322,7 +379,7 @@ Birth dates (Wikidata P569) of identified players.
 
 Wikipedia page of a club or a player in each language (en, fr, it, de, es for clubs; en, fr for players).
 
-- Files : `entity_wiki/entity_wiki.80dfabfc.parquet` — **75 607 rows**
+- Files : `entity_wiki/entity_wiki.bbf776a0.parquet` — **83 200 rows**
 - Key : (qid, lang)
 
 | Column | Type | Description |

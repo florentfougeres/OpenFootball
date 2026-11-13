@@ -4,6 +4,10 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.12.0 — 2026-11-13
+- **Career statistics** (new tables `stat_club`, `stat_national`, `stat_source`): appearances and goals by club, season and competition (league, national cup, league cup, continental, other), then by national team and year, read from the "Career statistics" section of the English Wikipedia page of 4,695 players of clubs from France, England, Italy, Spain, the Netherlands, Portugal and Germany in a Champions League season since 2010 (4,134 have a club table, 161,480 rows). Values as published, unverified. New "Career statistics" block on the player page: by season, by club, by competition, national team.
+- **Player page**: the career totals use this table (all competitions) when it exists, instead of the infobox (league only).
+
 ## Data 1.11.0 — 2026-11-13
 - **Seasons 2000/01 to 2009/10 for the five major leagues** (Premier League, La Liga, Serie A, Bundesliga, Ligue 1): 10 more seasons, 932 club-seasons, 789 squads read. Without a "club season" page on Wikipedia the squad stays empty and is listed as such (mostly La Liga and Ligue 1 before 2005).
 - **Reconstructed squads** (new command `reconstruct`): when a club-season has no squad but its page lists transfers in and out, the squad is rebuilt as the previous season's squad minus departures plus arrivals. Rows are marked `inferred` (never `attested`) and the gap stays documented. First use: Holstein Kiel and VfL Bochum 2024/25.

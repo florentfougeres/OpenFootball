@@ -109,7 +109,7 @@ def restore_database(data_dir: str | Path, db_path: str | Path, *, log: Callable
         con.execute(f"CREATE TEMP VIEW {view} AS SELECT * FROM read_parquet({_paths(data, files)}, union_by_name = true)")
 
     for name in ("club", "competition", "country", "season", "career", "national", "birth", "entity_wiki", "player_profile",
-                 "squad_source", "known_gap", "competition_club"):
+                 "squad_source", "known_gap", "competition_club", "stat_club", "stat_national", "stat_source"):
         if name in tables:
             stage(f"x_{name}", [tables[name]])
     stage("x_squad", [s["files"]["squad"]["path"] for s in seasons.values()])
@@ -165,7 +165,8 @@ def restore_database(data_dir: str | Path, db_path: str | Path, *, log: Callable
             FROM (SELECT player, player_qid, link_lang, link_title FROM x_squad
                   UNION ALL SELECT player, player_qid, NULL, NULL FROM x_career
                   UNION ALL SELECT player, player_qid, NULL, NULL FROM x_national
-                  UNION ALL SELECT player, player_qid, NULL, NULL FROM x_player_profile) GROUP BY 1""")
+                  UNION ALL SELECT player, player_qid, NULL, NULL FROM x_player_profile
+                  {stat_keys}) GROUP BY 1""".format(stat_keys="UNION ALL SELECT player, player_qid, NULL, NULL FROM x_stat_source" if "stat_source" in tables else ""))
         con.execute("""CREATE TEMP TABLE _players AS
             SELECT row_number() OVER (ORDER BY k) AS id, k, name, qid, link_lang, link_title,
                    row_number() OVER (PARTITION BY link_lang, link_title ORDER BY k) AS rk FROM _keys""")
@@ -210,6 +211,18 @@ def restore_database(data_dir: str | Path, db_path: str | Path, *, log: Callable
                               nullif(url_decode(regexp_extract(x.photo_url, 'Special:FilePath/([^?]+)', 1)), ''), x.photo_caption, x.photo_url,
                               x.photo_page, x.photo_license, x.photo_author, CASE WHEN x.photo_license IS NOT NULL THEN true END
                        FROM x_player_profile x JOIN _players p ON p.k = coalesce(x.player_qid, 'name:' || x.player)""")
+        if "stat_club" in tables:
+            con.execute("""INSERT INTO player_stat_club (player_id, seq, club, club_link, season, division, competition_group, apps, goals, assists)
+                           SELECT p.id, x.seq, x.club, x.club_link, x.season, x.division, x.competition_group, x.apps, x.goals, x.assists
+                           FROM x_stat_club x JOIN _players p ON p.k = coalesce(x.player_qid, 'name:' || x.player)""")
+        if "stat_national" in tables:
+            con.execute("""INSERT INTO player_stat_national (player_id, seq, team, team_link, year, competition_group, apps, goals)
+                           SELECT p.id, x.seq, x.team, x.team_link, x.year, x.competition_group, x.apps, x.goals
+                           FROM x_stat_national x JOIN _players p ON p.k = coalesce(x.player_qid, 'name:' || x.player)""")
+        if "stat_source" in tables:
+            con.execute("""INSERT INTO player_stat_source (player_id, source_title, source_revid, club_rows, national_rows)
+                           SELECT p.id, x.source_title, x.source_revid, x.club_rows, x.national_rows
+                           FROM x_stat_source x JOIN _players p ON p.k = coalesce(x.player_qid, 'name:' || x.player)""")
         con.execute("INSERT INTO entity_wiki SELECT qid, lang, title FROM x_entity_wiki")
         con.execute("COMMIT")
     except Exception:

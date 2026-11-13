@@ -9,6 +9,7 @@
   import ErrorBox from "../components/ErrorBox.svelte";
   import Flag from "../components/Flag.svelte";
   import Logo from "../components/Logo.svelte";
+  import PlayerStats from "../components/PlayerStats.svelte";
   import Spinner from "../components/Spinner.svelte";
   import WikiButton from "../components/WikiButton.svelte";
 
@@ -27,10 +28,16 @@
           WHERE COALESCE(player_qid, 'name:' || player) = ?`, [key]))[0] ?? null : null;
     const national = app.has.national ? await q(`SELECT years_raw, team_name, team_link, caps, goals FROM national
         WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]) : [];
+    const statClub = app.has.stat_club ? await q(`SELECT c.seq, c.club, c.club_link, c.club_qid, w.logo_url AS club_logo, w.colors_hex AS club_colors, c.season, c.division,
+        c.competition_group, c.apps, c.goals, c.assists FROM stat_club c LEFT JOIN club w ON w.wikidata_qid = c.club_qid
+        WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]) : [];
+    const statNat = app.has.stat_national ? await q(`SELECT seq, team, team_link, year, competition_group, apps, goals FROM stat_national
+        WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]) : [];
+    const statSource = statClub.length && app.has.stat_source ? (await q(`SELECT source_title FROM stat_source WHERE COALESCE(player_qid, 'name:' || player) = ?`, [key]))[0]?.source_title : undefined;
     const urls: Record<string, string> = {};
     if (p.qid && app.has.entity_wiki) for (const r of await q(`SELECT lang, title FROM entity_wiki WHERE qid = ?`, [p.qid])) urls[r.lang] = wikiUrl(r.lang, r.title);
     if (!urls.en && p.link_title) urls.en = wikiUrl("en", p.link_title);
-    return { p, birth, profile, career, national, urls };
+    return { p, birth, profile, career, national, statClub, statNat, statSource, urls };
   });
   const d = $derived(res.data);
 
@@ -74,8 +81,10 @@
   const sum = (rows: any[], k: "apps" | "goals") => rows.reduce((n, r) => n + (r[k] ?? 0), 0);
   // Résumé de carrière : clubs (toutes les lignes de l'infobox, prêts compris) + sélection A. Pas de passes : Wikipedia ne les publie pas.
   const totals = $derived.by(() => {
-    if (!d || (!d.career.length && !senior)) return null;
-    const clubApps = sum(d.career, "apps"), clubGoals = sum(d.career, "goals");
+    if (!d || (!d.career.length && !senior && !d.statClub.length)) return null;
+    // Le tableau « Career statistics » (toutes compétitions) prime sur l'infobox (championnat seulement) quand il existe.
+    const useStats = d.statClub.length > 0;
+    const clubApps = sum(useStats ? d.statClub : d.career, "apps"), clubGoals = sum(useStats ? d.statClub : d.career, "goals");
     const natApps = senior?.caps ?? 0, natGoals = senior?.goals ?? 0;
     return { apps: clubApps + natApps, goals: clubGoals + natGoals, clubApps, clubGoals, natApps, natGoals, hasNat: !!senior };
   });
@@ -179,6 +188,10 @@
     </section>
   {:else}
     <p class="mt-6 text-muted">{t("noCareer")}</p>
+  {/if}
+
+  {#if d.statClub.length}
+    <PlayerStats club={d.statClub} national={d.statNat} source={d.statSource} />
   {/if}
 
   {#if d.national.length}

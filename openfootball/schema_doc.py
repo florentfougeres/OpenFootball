@@ -190,6 +190,53 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "goals": "Buts en sélection, **tels que publiés, non vérifiés**.",
         },
     ),
+    "stat_club": (
+        "Statistiques de carrière **par club, saison et compétition**, lues dans la section « Career statistics » de la page Wikipedia anglaise "
+        "du joueur (joueurs de clubs de Ligue des champions des 7 grands pays, depuis 2010). **Une ligne = un club, une saison, un groupe de compétition.** "
+        "Valeurs **publiées telles quelles, non vérifiées** ; une cellule vide ou « — » est vide, pas zéro.",
+        "(player_qid ou player, seq)",
+        {
+            "player_qid": "QID Wikidata du joueur.",
+            "player": "Nom du joueur (repli de clé : `'name:' || player`).",
+            "seq": "Rang dans le tableau.",
+            "club": "Club, tel qu'écrit.",
+            "club_link": "Titre de la page Wikipedia du club.",
+            "club_qid": "QID Wikidata du club, quand il est connu.",
+            "season": "Saison `2008–09`, ou l'année seule (`2022`) pour un championnat sur l'année civile.",
+            "division": "Division, telle qu'écrite.",
+            "competition_group": "Groupe de compétition : `League`, `National cup`, `League cup`, `Continental` (ou `Europe`), `Other`.",
+            "apps": "Matchs joués.",
+            "goals": "Buts.",
+            "assists": "Passes décisives, quand la page les donne.",
+        },
+    ),
+    "stat_national": (
+        "Statistiques en sélection **par équipe nationale et année**, lues dans la section « Career statistics » (même périmètre que `stat_club`). "
+        "Valeurs **publiées telles quelles, non vérifiées**.",
+        "(player_qid ou player, seq)",
+        {
+            "player_qid": "QID Wikidata du joueur.",
+            "player": "Nom du joueur.",
+            "seq": "Rang dans le tableau.",
+            "team": "Équipe : `France`, `Portugal U21`…",
+            "team_link": "Titre de la page Wikipedia de l'équipe.",
+            "year": "Année (`2014`) ou période (`2014–15`).",
+            "competition_group": "`Competitive`, `Friendly`, ou `Total` quand la page ne distingue pas.",
+            "apps": "Sélections.",
+            "goals": "Buts en sélection.",
+        },
+    ),
+    "stat_source": (
+        "Provenance des statistiques : la page lue pour chaque joueur (une ligne par joueur lu, même sans tableau).", "(player_qid ou player)",
+        {
+            "player_qid": "QID Wikidata du joueur.",
+            "player": "Nom du joueur.",
+            "source_title": "Titre de la page Wikipedia anglaise lue.",
+            "source_revid": "Révision lue.",
+            "club_rows": "Lignes lues dans `stat_club`.",
+            "national_rows": "Lignes lues dans `stat_national`.",
+        },
+    ),
     "player_profile": (
         "Profil lu dans l'infobox Wikipedia anglaise : nom complet, lieu de naissance, taille, décès et **photo** (une ligne par joueur "
         "ayant au moins une de ces informations). Valeurs **publiées telles quelles par Wikipedia, non vérifiées**.",
@@ -227,7 +274,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
     ),
 }
 
-ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "player_profile", "birth", "entity_wiki"]
+ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "stat_club", "stat_national", "stat_source", "player_profile", "birth", "entity_wiki"]
 
 INTRO = """# OpenFootballBase — dictionnaire de données
 

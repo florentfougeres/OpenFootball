@@ -17,6 +17,7 @@ from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
 from openfootball.reconstruct import reconstruct
+from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_players
 from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -550,6 +551,19 @@ def reconstruct_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def stats_cmd(args: argparse.Namespace) -> int:
+    """Statistiques de carrière (section « Career statistics ») des joueurs d'un club de Ligue des champions des pays choisis."""
+    con = connect(args.db)
+    migrate(con)
+    players = select_players(con, since=args.since, countries=tuple(args.country))
+    if args.limit:
+        players = players[:args.limit]
+    print(f"{len(players)} joueurs à lire")
+    read, with_table, rows = import_stats(con, StatsClient(args.cache), players)
+    print(f"{read} pages lues, {with_table} avec un tableau club, {rows} lignes")
+    return 0
+
+
 def fix_player_cmd(args: argparse.Namespace) -> int:
     """Rustine : le joueur que la page du club nomme `name` (sans lien) est celui dont la page Wikipedia est `--page`."""
     con = connect(args.db)
@@ -741,6 +755,13 @@ def main(argv: list[str] | None = None) -> int:
     rc.add_argument("--club", nargs="+", required=True, help="titres Wikipedia des clubs")
     rc.add_argument("--cache", default="cache/wikipedia")
     rc.set_defaults(func=reconstruct_cmd)
+    st = sub.add_parser("stats", help="statistiques de carrière (matchs, buts par club, saison, compétition, sélection) depuis la page du joueur")
+    st.add_argument("--db", default=DB_DEFAULT)
+    st.add_argument("--since", type=int, default=2010, help="première saison de Ligue des champions prise en compte (année de début)")
+    st.add_argument("--country", nargs="+", default=list(COUNTRIES), help="pays des clubs (codes de la base)")
+    st.add_argument("--limit", type=int, help="seulement les N premiers joueurs (essai)")
+    st.add_argument("--cache", default="cache/wikipedia_stats")
+    st.set_defaults(func=stats_cmd)
     fp = sub.add_parser("fix-player", help="rustine : relie le nom écrit sur une page de club (sans lien) à la page Wikipedia du joueur")
     fp.add_argument("name", help="le nom tel qu'écrit sur la page du club, ex. \"Joseph Layousse\"")
     fp.add_argument("--lang", required=True, help="langue de la page du joueur, ex. fr")

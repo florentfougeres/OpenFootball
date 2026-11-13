@@ -26,7 +26,7 @@
 ## Highlights
 
 - **Squads, season by season, 2000/01 → 2026/27** (the 5 major leagues from 2000/01, the others from 2010/11), with shirt number, position, nationality and age, for 18 top-flight and second-tier leagues and the UEFA club competitions.
-- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place.
+- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place, and — for the players of Champions League clubs from the 7 major countries — **career statistics** by club, season, competition and national team.
 - **Open, reusable data**: Parquet files published with every [release](https://github.com/florentfougeres/OpenFootballBase/releases), queryable with DuckDB, pandas, Polars or any Parquet reader.
 - **Traceable**: every squad cites the Wikipedia page and revision it came from. Nothing is invented; a missing squad stays missing and is shown as such.
 - **A bilingual static website** (English / French) that queries the Parquet files directly in the browser with DuckDB-WASM — no server, no analytics, no cookies.

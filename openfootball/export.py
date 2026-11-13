@@ -84,6 +84,24 @@ FROM player_profile pp JOIN player p ON p.id = pp.player_id LEFT JOIN player_wik
 WHERE pp.full_name IS NOT NULL OR pp.birth_place IS NOT NULL OR pp.height_cm IS NOT NULL OR pp.death_date IS NOT NULL OR pp.image_file IS NOT NULL
 ORDER BY coalesce(w.qid, 'name:' || p.name)"""
 
+_STAT_CLUB = """
+SELECT w.qid AS player_qid, p.name AS player, c.seq, c.club, c.club_link, coalesce(cl.wikidata_qid, m.qid) AS club_qid, c.season, c.division,
+       c.competition_group, c.apps, c.goals, c.assists
+FROM player_stat_club c JOIN player p ON p.id = c.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+LEFT JOIN club cl ON cl.wikipedia_title = c.club_link
+LEFT JOIN club_link_qid m ON m.link_title = c.club_link
+ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
+
+_STAT_NATIONAL = """
+SELECT w.qid AS player_qid, p.name AS player, n.seq, n.team, n.team_link, n.year, n.competition_group, n.apps, n.goals
+FROM player_stat_national n JOIN player p ON p.id = n.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+ORDER BY coalesce(w.qid, 'name:' || p.name), n.seq"""
+
+_STAT_SOURCE = """
+SELECT w.qid AS player_qid, p.name AS player, s.source_title, s.source_revid, s.club_rows, s.national_rows
+FROM player_stat_source s JOIN player p ON p.id = s.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+ORDER BY coalesce(w.qid, 'name:' || p.name)"""
+
 _NATIONAL = """
 SELECT w.qid AS player_qid, p.name AS player, n.seq, n.years_raw, n.team_name, n.team_link, n.caps, n.goals
 FROM player_national n JOIN player p ON p.id = n.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
@@ -190,6 +208,9 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         manifest["tables"][name] = _write(con, sql, out, name, name)
     manifest["tables"]["career"] = _write(con, _CAREER, out, "career", "career")
     manifest["tables"]["national"] = _write(con, _NATIONAL, out, "national", "national")
+    for name, sql in (("stat_club", _STAT_CLUB), ("stat_national", _STAT_NATIONAL), ("stat_source", _STAT_SOURCE)):
+        if con.execute(f"SELECT count(*) FROM player_{name}").fetchone()[0]:           # table publiée seulement si `stats` a été lancé
+            manifest["tables"][name] = _write(con, sql, out, name, name)
     manifest["tables"]["player_profile"] = _write(con, _PROFILE, out, "player_profile", "player_profile")
     manifest["tables"]["squad_source"] = _write(con, _SQUAD_SOURCE, out, "squad_source", "squad_source")
     manifest["tables"]["known_gap"] = _write(con, """

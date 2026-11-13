@@ -185,6 +185,53 @@ TABLES_EN: dict[str, tuple[str, str, dict[str, str]]] = {
             "goals": "International goals, **as published, unverified**.",
         },
     ),
+    "stat_club": (
+        "Career statistics **by club, season and competition**, read from the \"Career statistics\" section of the player's English Wikipedia page "
+        "(players of Champions League clubs from the 7 major countries, since 2010). **One row = one club, one season, one competition group.** "
+        "Values **as published, unverified**; an empty cell or \"—\" is empty, not zero.",
+        "(player_qid or player, seq)",
+        {
+            "player_qid": "Player's Wikidata QID.",
+            "player": "Player name (key fallback: `'name:' || player`).",
+            "seq": "Rank in the table.",
+            "club": "Club, as written.",
+            "club_link": "Title of the club's Wikipedia page.",
+            "club_qid": "Club's Wikidata QID, when known.",
+            "season": "Season `2008–09`, or the year alone (`2022`) for a calendar-year league.",
+            "division": "Division, as written.",
+            "competition_group": "Competition group: `League`, `National cup`, `League cup`, `Continental` (or `Europe`), `Other`.",
+            "apps": "Appearances.",
+            "goals": "Goals.",
+            "assists": "Assists, when the page gives them.",
+        },
+    ),
+    "stat_national": (
+        "National-team statistics **by team and year**, read from the \"Career statistics\" section (same scope as `stat_club`). "
+        "Values **as published, unverified**.",
+        "(player_qid or player, seq)",
+        {
+            "player_qid": "Player's Wikidata QID.",
+            "player": "Player name.",
+            "seq": "Rank in the table.",
+            "team": "Team: `France`, `Portugal U21`…",
+            "team_link": "Title of the team's Wikipedia page.",
+            "year": "Year (`2014`) or period (`2014–15`).",
+            "competition_group": "`Competitive`, `Friendly`, or `Total` when the page does not split them.",
+            "apps": "Caps.",
+            "goals": "International goals.",
+        },
+    ),
+    "stat_source": (
+        "Provenance of the statistics: the page read for each player (one row per player read, even without a table).", "(player_qid or player)",
+        {
+            "player_qid": "Player's Wikidata QID.",
+            "player": "Player name.",
+            "source_title": "Title of the English Wikipedia page read.",
+            "source_revid": "Revision read.",
+            "club_rows": "Rows read into `stat_club`.",
+            "national_rows": "Rows read into `stat_national`.",
+        },
+    ),
     "player_profile": (
         "Profile read from the English Wikipedia infobox: full name, birthplace, height, death and **photo** (one row per player "
         "with at least one of these). Values **published as is by Wikipedia, unverified**.",
