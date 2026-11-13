@@ -257,3 +257,29 @@ def test_wikidata_identification_merges_into_the_player_who_already_has_the_qid(
     ent = "http://www.wikidata.org/entity/"
     r = reconcile_by_wikidata(con, FakeWdq([{"p": ent + "Q50", "l": "Ali Same", "club": ent + "QTOU"}]), log=lambda *_: None)
     assert r.merged == 1 and con.execute("SELECT count(*) FROM player WHERE name = 'Ali Same'").fetchone()[0] == 1
+
+
+def test_player_alias_links_a_loose_player_to_the_page():
+    import duckdb
+    from openfootball.db import migrate
+    from openfootball import reconcile
+    con = duckdb.connect(":memory:"); migrate(con)
+    con.execute("INSERT INTO player_alias VALUES ('Joseph Layousse', 'fr', 'Layousse Samb')")
+    con.execute("INSERT INTO player (id, name) VALUES (1, 'Joseph Layousse')")
+    assert reconcile.apply_player_aliases(con) == 1
+    assert con.execute("SELECT link_lang, link_title FROM player").fetchall() == [("fr", "Layousse Samb")]
+    con.execute("INSERT INTO player (id, name) VALUES (5, 'Joseph Layousse')")          # doublon sans lien : fusionné dans le joueur 1
+    assert reconcile.apply_player_aliases(con) == 1
+    assert con.execute("SELECT count(*) FROM player").fetchone()[0] == 1
+
+
+def test_merge_moves_national_rows_and_birth_of_the_duplicate():
+    import duckdb
+    from openfootball.db import migrate
+    from openfootball.reconcile import _merge
+    con = duckdb.connect(":memory:"); migrate(con)
+    con.execute("INSERT INTO player (id, name) VALUES (1, 'A'), (2, 'A')")
+    con.execute("INSERT INTO player_national (id, player_id, seq, years_raw, team_name) VALUES (1, 2, 1, '2020–', 'Moldova')")
+    _merge(con, 1, 2)
+    assert con.execute("SELECT player_id FROM player_national").fetchall() == [(1,)]
+    assert con.execute("SELECT count(*) FROM player").fetchone()[0] == 1

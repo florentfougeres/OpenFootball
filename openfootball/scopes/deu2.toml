@@ -1,0 +1,16 @@
+# Deuxième division : même pays que la première (fichier voisin), autre compétition de niveau 2.
+code = "DEU"
+name_en = "Germany"
+name_fr = "Allemagne"
+
+langs = ["de", "en", "it", "fr"]
+
+[competition]
+code = "DEU-B2"
+name_en = "2. Bundesliga"
+name_fr = "2. Bundesliga"
+level = 2
+
+[[team_count]]
+from = 2010
+n = 18

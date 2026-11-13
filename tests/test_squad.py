@@ -305,3 +305,50 @@ def test_wiki_emphasis_and_category_annotations_are_removed_from_names():
     assert clean_name("\"Luismi\" '''Quezada'''") == "\"Luismi\" Quezada"
     assert clean_name("Giorgi Ts'it'aishvili") == "Giorgi Ts'it'aishvili"          # une apostrophe simple reste
     assert clean_name("Cissokho, MamoudouMamoudou Cissokho") == "Mamoudou Cissokho"
+
+
+def test_player_listed_in_squad_and_in_on_loan_section_is_loaned_out():
+    """Shakhtar : le tableau « Squad » liste tout le monde, puis « On loan » cite les prêtés une seconde fois."""
+    from openfootball.parse.squad import parse_squad
+    from openfootball.store import stint_of
+    wt = ("==Squad==\n{{Fs start}}\n{{Fs player|no=1|nat=UKR|pos=GK|name=[[Gardien Un]]}}\n"
+          "{{Fs player|no=9|nat=BRA|pos=FW|name=[[Avant Prete]]}}\n{{Fs end}}\n"
+          "===On loan===\n{{Fs start}}\n{{Fs player|no=|nat=BRA|pos=FW|name=[[Avant Prete]]|other=at [[FC Mynai]] until 30 June 2024}}\n{{Fs end}}\n"
+          "==Transfers==\n").replace("\\\n", "\n")
+    got = {e.name: stint_of(e) for e in parse_squad(wt)}
+    assert got == {"Gardien Un": "unknown", "Avant Prete": "loan_out"}
+
+
+def test_table_group_row_away_on_loan_marks_the_following_players_as_loaned_out():
+    """Slavia Prague : tableau « Squad » avec une ligne de groupe « Away on loan » en fin de tableau."""
+    from openfootball.parse.squad import parse_squad
+    from openfootball.store import stint_of
+    wt = ("==Squad==\n{| class=\"wikitable\"\n|-\n! No.\n! Name\n! Position\n! Signed from\n"
+          "|-\n! colspan=\"4\" | Goalkeepers\n|-\n| 1 || [[Gardien Un]] || GK || [[Club A]]\n"
+          "|-\n| 10 || [[Prete Recu]] || MF || on loan from [[Trabzonspor]]\n"
+          "|-\n! colspan=\"4\" | Away on loan\n|-\n| 20 || [[Prete Parti]] || FW || [[Club B]]\n|}\n==Transfers==\n")
+    got = {e.name: stint_of(e) for e in parse_squad(wt)}
+    assert got == {"Gardien Un": "unknown", "Prete Recu": "loan_in", "Prete Parti": "loan_out"}
+
+
+def test_roster_section_before_player_movement():
+    from openfootball.parse.squad import parse_squad
+    wt = """== Club ==
+=== Roster ===
+{| class="wikitable"
+! No. !! Name !! Nationality !! Position
+|-
+| 13 || [[Evan Louro]] || {{USA}} || GK
+|-
+| 2 || [[Alvas Powell]] || {{JAM}} || DF
+|}
+== Player movement ==
+=== In ===
+{| class="wikitable"
+! No. !! Name !! Nationality !! Position
+|-
+| 9 || [[Kristian Fletcher]] || {{ENG}} || FW
+|}
+== Competitions ==
+"""
+    assert {e.name for e in parse_squad(wt)} == {"Evan Louro", "Alvas Powell"}

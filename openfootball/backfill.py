@@ -308,11 +308,11 @@ def run_backfill(
 
     for sc in scopes:
         competition_id = _ensure_scope_rows(con, sc)
-        names = sc.league_page_names
-        league_pages = wp.get_pages([f"{label} {n}" for n in names])
+        titles_try = sc.league_page_titles(start_year, label)
+        league_pages = wp.get_pages(titles_try)
         # Le championnat a pu être renommé (Belgique : First Division A -> Pro League) : première page qui existe.
-        league_title, league_page = next(((f"{label} {n}", pg) for n, pg in zip(names, league_pages) if pg.exists),
-                                         (f"{label} {sc.competition_en}", league_pages[0]))
+        league_title, league_page = next(((t, pg) for t, pg in zip(titles_try, league_pages) if pg.exists),
+                                         (titles_try[0], league_pages[0]))
         want = sc.expected_teams(start_year)
         teams = league_teams(league_page.wikitext or "", want) if league_page.exists else []
         if len(teams) != want and league_page.exists and getattr(wp, "render", None):

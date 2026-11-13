@@ -20,7 +20,7 @@ export const app = $state({
 /** Nom du pays dans la langue de l'app, drapeau et code : lus dans la table `country` des données. */
 export const countryOf = (code?: string | null) => {
   const c = code ? app.countries.get(code) : undefined;
-  return { code: code ?? "", flag: (c?.flag as string) ?? null, name: c ? (app.lang === "fr" ? c.name_fr : c.name_en) : code ?? "" };
+  return { code: code ?? "", flag: code === "EUR" ? "europe" : (c?.flag as string) ?? null, name: c ? (app.lang === "fr" ? c.name_fr : c.name_en) : code ?? "" };
 };
 
 /** « 1 club » / « 2 clubs » : clés `<k>N1` (singulier) et `<k>N` (pluriel). */

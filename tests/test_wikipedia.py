@@ -81,3 +81,13 @@ def test_pace_slows_after_429_and_recovers():
     for _ in range(40 * 20):
         _Pace.ok()
     assert _Pace.extra == 0.0                                        # revenu au rythme normal
+
+
+def test_cache_survives_missing_or_half_written_file(tmp_path):
+    from openfootball.sources.wikipedia import Page, WikipediaClient
+    c = WikipediaClient(tmp_path)
+    assert c._cache_get("A") is None                                   # absent
+    c._cache_path("A").write_text('{"title": "A", "exi', encoding="utf-8")
+    assert c._cache_get("A") is None                                   # à moitié écrit
+    c._cache_put(Page(title="A", exists=True, wikitext="x"))
+    assert c._cache_get("A").wikitext == "x" and not list(tmp_path.glob("*.tmp"))

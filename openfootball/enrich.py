@@ -94,6 +94,51 @@ def enrich_career_clubs(con: duckdb.DuckDBPyConnection, wp, *, log: Callable[[st
     return found
 
 
+def add_career_clubs(con: duckdb.DuckDBPyConnection, wd, *, log: Callable[[str], None] = print) -> int:
+    """Ajoute à `club` les clubs cités dans les carrières dont le QID n'est pas dans l'import mondial (Boca Juniors, équipes
+    réserves…), pour que la ligne de carrière mène à une fiche. Nom, pays, logo viennent de Wikidata ; aucun effectif."""
+    qids = [r[0] for r in con.execute("""SELECT DISTINCT m.qid FROM player_career c JOIN club_link_qid m ON m.link_title = c.club_link
+        WHERE m.qid IS NOT NULL AND m.qid NOT IN (SELECT wikidata_qid FROM club WHERE wikidata_qid IS NOT NULL) ORDER BY m.qid""").fetchall()]
+    iso_of = dict(con.execute("SELECT DISTINCT country_qid, country_iso FROM club WHERE country_qid IS NOT NULL AND country_iso IS NOT NULL").fetchall())
+    added = 0
+    for chunk in _chunks(qids, BATCH):
+        ents = wd.entities(chunk, props="labels|claims|sitelinks", languages="en|fr", sitefilter="enwiki")
+        con.execute("BEGIN")
+        for qid in chunk:
+            e = ents.get(qid) or {}
+            en = (e.get("labels", {}).get("en") or {}).get("value")
+            fr = (e.get("labels", {}).get("fr") or {}).get("value")
+            if not (en or fr):
+                continue
+            claims = e.get("claims", {})
+
+            def first(prop: str):
+                for c in claims.get(prop, []):
+                    v = c.get("mainsnak", {}).get("datavalue", {}).get("value")
+                    if v:
+                        return v
+                return None
+            country = first("P17")
+            cq = country.get("id") if isinstance(country, dict) else None
+            logo = first("P154")
+            title = (e.get("sitelinks", {}).get("enwiki") or {}).get("title")
+            if title and con.execute("SELECT 1 FROM club WHERE wikipedia_title = ?", [title]).fetchone():
+                title = None                                              # UNIQUE : le titre est déjà pris
+            new_id = con.execute("SELECT coalesce(max(id), 0) + 1 FROM club").fetchone()[0]
+            con.execute("""INSERT INTO club (id, wikidata_qid, wikipedia_title, name_local, name_en, country_qid, country_iso, logo_commons_url)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                        [new_id, qid, title, fr or en, en or fr, cq, iso_of.get(cq),
+                         f"https://commons.wikimedia.org/wiki/Special:FilePath/{str(logo).replace(' ', '_')}" if logo else None])
+            if fr:
+                con.execute("INSERT INTO entity_label VALUES (?, 'fr', ?) ON CONFLICT DO NOTHING", [qid, fr])
+            if en:
+                con.execute("INSERT INTO entity_label VALUES (?, 'en', ?) ON CONFLICT DO NOTHING", [qid, en])
+            added += 1
+        con.execute("COMMIT")
+    log(f"  clubs des carrières absents de l'import mondial : {len(qids)} lus, {added} ajoutés")
+    return added
+
+
 def parse_birth(rows: list[dict]) -> dict[str, tuple[date, int]]:
     """Lignes SPARQL (?p ?dob ?prec) -> {qid: (date, précision)} ; si plusieurs, la plus précise."""
     best: dict[str, tuple[date, int]] = {}

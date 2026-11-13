@@ -4,6 +4,7 @@
 #   tools/refresh.sh 2026                      # relit la saison 2026/27
 #   tools/refresh.sh --open-season 2026 2026   # idem, et la marque « en cours »
 #   tools/refresh.sh 2025 2026 --infobox       # + identification des joueurs sans lien par l'infobox (LONG)
+#   tools/refresh.sh --cup UCL --cup UEL 2025 2026   # + participants et clubs des coupes d'Europe (docs/coupes-d-europe.md)
 #
 # Prérequis : environnement installé (README), `export OPENFOOTBALL_CONTACT="votre-contact"`.
 # Une sauvegarde de la base est faite avant toute écriture. Ne lancez pas une autre commande openfootball en parallèle.
@@ -14,11 +15,12 @@ cd "$(dirname "$0")/.."
 OF="${OF:-.venv/bin/openfootball}"
 [ -x "$OF" ] || { echo "introuvable : $OF (voir README : installation)"; exit 1; }
 
-OPEN_YEAR=""; INFOBOX=""; SEASONS=()
+OPEN_YEAR=""; INFOBOX=""; SEASONS=(); CUPS=()
 while [ $# -gt 0 ]; do
   case "$1" in
     --open-season) OPEN_YEAR="$2"; shift 2 ;;
     --infobox) INFOBOX="--infobox"; shift ;;
+    --cup) CUPS+=("$2"); shift 2 ;;
     -*) echo "option inconnue : $1"; exit 1 ;;
     *) SEASONS+=("$1"); shift ;;
   esac
@@ -31,6 +33,9 @@ DB=data/work/openfootball.duckdb
 for y in "${SEASONS[@]}"; do
   extra=""; [ "$y" = "$OPEN_YEAR" ] && extra="--open"
   "$OF" backfill --season "$y" $extra               # une saison figée est refusée (garde)
+done
+for c in "${CUPS[@]:-}"; do                           # coupes d'Europe : APRÈS les championnats, saisons de la plus récente à la plus ancienne
+  [ -n "$c" ] && "$OF" uefa --cup "$c" --season $(printf '%s\n' "${SEASONS[@]}" | sort -rn | tr '\n' ' ')
 done
 "$OF" transfers                                      # arrivées/départs/prêts en cours de saison (cache Wikipedia, rapide)
 "$OF" reconcile --names --wikidata $INFOBOX          # un joueur = un QID ; obligatoire après un backfill

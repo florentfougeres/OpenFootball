@@ -61,7 +61,7 @@ def setup_pages(missing_en=(), bad_en=()):
 
 
 def run(con, wp, it=None, fr=None, qids=None):
-    sc = load_scopes(["FRA"])
+    sc = load_scopes(["FRA-L1"])
     items = {"Q1": [{"article": "https://it.wikipedia.org/wiki/Club_1_2023-2024"}]}
     return run_backfill(
         con, sc, 2023, wp=FakeWiki(wp),
@@ -70,8 +70,8 @@ def run(con, wp, it=None, fr=None, qids=None):
 
 
 def test_scope_files_load():
-    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR"}
-    fra = load_scopes(["FRA"])[0]
+    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR", "USA", "SAU"}
+    fra = load_scopes(["FRA-L1"])[0]
     assert (fra.expected_teams(2022), fra.expected_teams(2023)) == (20, 18)
 
 
@@ -152,7 +152,7 @@ def test_english_title_from_wikidata_when_constructed_title_is_wrong(con):
     pages[real] = page(real, squad_wikitext("One"))
     items = {"Q1": [{"article": "https://en.wikipedia.org/wiki/2023%E2%80%9324_Club_One_season"}]}
     res = run_backfill(
-        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(pages),
+        con, load_scopes(["FRA-L1"]), 2023, wp=FakeWiki(pages),
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})}, wd=FakeWikidata(items),
         qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None)
     r = next(x for x in res if x.club == "Club 1")
@@ -164,7 +164,7 @@ def test_manual_override_page_is_used_as_last_resort(con):
     fr_text = "== Effectif ==\n" + "\n".join(
         f"{{{{Feff joueur |num={i} |prénom=Prénom{i}|nom=Nom|pos={'G' if i == 1 else 'M'} |nat=France}}}}" for i in range(1, 13))
     res = run_backfill(
-        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 2"})),
+        con, load_scopes(["FRA-L1"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 2"})),
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, fr_text)})},
         wd=FakeWikidata({}), qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None,
         overrides={(2023, "Club 2"): [("fr", fr_title)]})
@@ -184,7 +184,7 @@ def test_rendered_html_fallback_reads_a_table_the_wikitext_parser_cannot(con):
     pages = setup_pages()
     pages["2023–24 Club 5 season"] = page("2023–24 Club 5 season", "== Appearances and goals ==\n{| class=wikitable\n|-\n! No.\n! Name\n|}")
     res = run_backfill(
-        con, load_scopes(["FRA"]), 2023, wp=WithRender(pages),
+        con, load_scopes(["FRA-L1"]), 2023, wp=WithRender(pages),
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})}, wd=FakeWikidata({}),
         qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None, overrides={})
     r = next(x for x in res if x.club == "Club 5")
@@ -216,7 +216,7 @@ def test_french_club_uses_the_french_page_before_english(con):
     fr_title = "Saison 2023-2024 de Club 2"
     wd = FakeWikidata({"Q2": [{"article": "https://fr.wikipedia.org/wiki/Saison_2023-2024_de_Club_2"}]})
     res = run_backfill(
-        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages()),            # la page anglaise de « Club 2 » existe aussi
+        con, load_scopes(["FRA-L1"]), 2023, wp=FakeWiki(setup_pages()),            # la page anglaise de « Club 2 » existe aussi
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, _fr_squad())})}, wd=wd,
         qid_lookup=lambda ts: {t: ("Q2" if t == "Club 2" else None) for t in ts}, log=lambda s: None)
     r = {x.club: x for x in res}
@@ -231,7 +231,7 @@ def test_french_club_uses_the_french_page_before_english(con):
 
 def test_english_only_country_ignores_local_pages(con):
     # ENG : l'anglais d'abord, même si une page française existe
-    assert load_scopes(["ENG"])[0].langs[0] == "en"
+    assert load_scopes(["ENG-PL"])[0].langs[0] == "en"
 
 
 def test_fallbacks_follow_the_country_language_order(con):
@@ -253,7 +253,7 @@ def test_fallbacks_follow_the_country_language_order(con):
     pages["2023–24 Club 5 season"] = page("2023–24 Club 5 season", "== Appearances and goals ==\n{| class=wikitable\n|-\n! No.\n! Name\n|}")
 
     def run(langs):
-        sc = dataclasses.replace(load_scopes(["FRA"])[0], langs=langs)
+        sc = dataclasses.replace(load_scopes(["FRA-L1"])[0], langs=langs)
         res = run_backfill(con, [sc], 2023, wp=WithRender(pages),
                            lang_clients={"it": FakeWiki({}), "fr": FakeWiki({fr_title: page(fr_title, fr_text)})}, wd=FakeWikidata({}),
                            qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None,
@@ -280,7 +280,7 @@ def test_english_html_is_read_before_falling_back_to_another_language(con):
     pages = setup_pages()
     pages["2023–24 Club 5 season"] = page("2023–24 Club 5 season", "== Appearances and goals ==\n{| class=wikitable\n|-\n! No.\n! Name\n|}")
     wd = FakeWikidata({"Q5": [{"article": "https://it.wikipedia.org/wiki/Club_5_2023-2024"}]})
-    sc = dataclasses.replace(load_scopes(["FRA"])[0], langs=("en", "it", "fr"))
+    sc = dataclasses.replace(load_scopes(["FRA-L1"])[0], langs=("en", "it", "fr"))
     res = run_backfill(con, [sc], 2023, wp=WithRender(pages),
                        lang_clients={"it": FakeWiki({it_title: page(it_title, it_text)}), "fr": FakeWiki({})}, wd=wd,
                        qid_lookup=lambda ts: {t: ("Q5" if t == "Club 5" else None) for t in ts}, log=lambda s: None, overrides={})
@@ -303,7 +303,7 @@ def _run_club_page(con, current, **kw):
     """Club 1 n'a aucune page « saison du club » ; sa page de club (fr, via entity_wiki) porte l'effectif courant."""
     con.execute("INSERT INTO entity_wiki VALUES ('Q1', 'fr', 'Club 1 (fr)')")
     fr = {"Club 1 (fr)": page("Club 1 (fr)", _club_page(**kw))}
-    sc = load_scopes(["FRA"])
+    sc = load_scopes(["FRA-L1"])
     return run_backfill(
         con, sc, 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki(fr)}, wd=FakeWikidata({}),
@@ -340,7 +340,7 @@ def test_club_page_title_comes_from_wikidata_when_club_was_never_enriched(con):
             return {"Q1": {"sitelinks": {"frwiki": {"title": "Club 1 (fr)"}}}}
     fr = {"Club 1 (fr)": page("Club 1 (fr)", _club_page())}
     res = run_backfill(
-        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
+        con, load_scopes(["FRA-L1"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki(fr)}, wd=WdWithSitelinks({}),
         qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None, current=True)
     assert next(x for x in res if x.club == "Club 1").lang == "fr"
@@ -353,7 +353,7 @@ def test_club_page_with_current_squad_heading_is_accepted_without_season_text(co
     txt = f"== Joueurs ==\\n=== Effectif actuel ===\\n{{{{Fs start}}}}\\n{rows}\\n{{{{Fs end}}}}\\n".replace("\\n", "\n")
     con.execute("INSERT INTO entity_wiki VALUES ('Q1', 'fr', 'Club 1 (fr)')")
     res = run_backfill(
-        con, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
+        con, load_scopes(["FRA-L1"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 1"})),
         lang_clients={"it": FakeWiki({}), "fr": FakeWiki({"Club 1 (fr)": page("Club 1 (fr)", txt)})}, wd=FakeWikidata({}),
         qid_lookup=lambda ts: {t: ("Q1" if t == "Club 1" else None) for t in ts}, log=lambda s: None, current=True)
     assert next(x for x in res if x.club == "Club 1").lang == "fr"
@@ -373,3 +373,15 @@ def test_renamed_competition_in_scope_file_updates_the_database(con):
     con.execute("UPDATE competition SET name_fr = 'Ancien nom' WHERE code = 'FRA-L1'")
     run(con, setup_pages())                                  # les club-saisons référencent la compétition
     assert con.execute("SELECT name_fr FROM competition WHERE code = 'FRA-L1'").fetchone()[0] == "Ligue 1"
+
+
+def test_calendar_year_page_format(con):
+    """MLS : la page du championnat s'appelle « 2023 … season »."""
+    import dataclasses
+    sc = dataclasses.replace(load_scopes(["FRA-L1"])[0], page_format="{year} {name} season")
+    assert sc.league_page_titles(2023, "2023–24") == ["2023 Ligue 1 season"]
+    pages = setup_pages()
+    pages["2023 Ligue 1 season"] = pages.pop("2023–24 Ligue 1")
+    run_backfill(con, [sc], 2023, wp=FakeWiki(pages), lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})},
+                 wd=FakeWikidata({}), qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None)
+    assert con.execute("SELECT count(*) FROM club_season").fetchone()[0] == 18

@@ -32,7 +32,7 @@
       code: c.code, name_en: c.name_en, name_fr: c.name_fr, flag: c.flag as string | null,
       comps: comps.filter((x) => x.country_code === c.code).length,
       clubs: squadClubs.filter((x) => x.country_code === c.code).length,
-    })).filter((c) => (c.comps || c.clubs) && c.code !== "EUR");
+    })).filter((c) => c.comps || c.clubs);
     const last = Object.fromEntries((await q(`SELECT club, max(season) AS season FROM club_season WHERE players > 0 GROUP BY club`)).map((r) => [r.club, r.season as string]));
     const clubs = squadClubs.filter((c) => last[c.wikipedia_title]).sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0)).slice(0, 12)
       .map((c) => ({ wikipedia_title: c.wikipedia_title, name_en: c.name_en, name_fr: c.name_fr, logo_url: c.logo_url, colors_hex: c.colors_hex, season: last[c.wikipedia_title] }));
@@ -79,20 +79,15 @@
       </ul>
     </section>
 
-    <div class="mt-8 grid gap-4 lg:grid-cols-[2fr_1fr]">
+    <div class="mt-8">
       <section class="card p-5" aria-labelledby="by-country">
         <h2 id="by-country" class="text-2xl font-bold">{t("byCountry")}</h2>
         <p class="mt-1 text-sm text-muted">{t("byCountryLead")}</p>
-        <ul class="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+        <ul class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {#each countries as c (c.code)}
-            <li><CountryTile code={c.code} name={c.name} flag={c.flag} comps={c.comps} clubs={c.clubs} /></li>
+            <li><CountryTile code={c.code} name={c.name} flag={c.code === "EUR" ? "europe" : c.flag} comps={c.comps} clubs={c.clubs} /></li>
           {/each}
         </ul>
-      </section>
-      <section class="card flex flex-col p-5" aria-labelledby="all-clubs">
-        <h2 id="all-clubs" class="text-2xl font-bold">{t("allClubs")}</h2>
-        <p class="mt-1 text-sm text-muted">{t("allClubsLead")}</p>
-        <p class="mt-auto pt-6"><a class="btn" href={href("clubs")}>{t("browseClubs")}</a></p>
       </section>
     </div>
   {/if}

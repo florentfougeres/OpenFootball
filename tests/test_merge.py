@@ -78,3 +78,8 @@ def test_dotless_i_and_special_letters_match_across_languages():
     from openfootball.names import fold
     assert fold("Hamit Altıntop") == fold("Hamit Altintop") == "hamit altintop"
     assert fold("Łukasz Fabiański") == "lukasz fabianski"
+
+
+def test_jr_and_junior_are_the_same_player():
+    from openfootball.merge import _tokens
+    assert _tokens("Vinícius Jr.") == _tokens("Vinícius Júnior")

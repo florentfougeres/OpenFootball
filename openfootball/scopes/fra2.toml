@@ -1,0 +1,20 @@
+# Deuxième division : même pays que la première (fichier voisin), autre compétition de niveau 2.
+code = "FRA"
+name_en = "France"
+name_fr = "France"
+
+langs = ["fr", "en", "it"]
+
+[competition]
+code = "FRA-L2"
+name_en = "Ligue 2"
+name_fr = "Ligue 2"
+level = 2
+
+[[team_count]]
+from = 2010
+n = 20
+
+[[team_count]]
+from = 2024
+n = 18

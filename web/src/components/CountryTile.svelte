@@ -10,6 +10,6 @@
   <span class="grid size-10 shrink-0 place-items-center rounded-lg bg-surface-2"><Flag code={flag} label={name} size={30} /></span>
   <span class="min-w-0">
     <span class="block truncate font-semibold">{name}</span>
-    <span class="block truncate text-xs text-muted">{comps ? plural(comps, "compsN") + " · " : ""}{plural(clubs, "clubsN")}</span>
+    <span class="block truncate text-xs text-muted">{[comps ? plural(comps, code === "EUR" ? "cupsN" : "compsN") : "", clubs ? plural(clubs, "clubsN") : ""].filter(Boolean).join(" · ")}</span>
   </span>
 </a>

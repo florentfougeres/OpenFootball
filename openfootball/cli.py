@@ -10,13 +10,13 @@ from pathlib import Path
 from openfootball.backfill import run_backfill
 from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
-from openfootball.enrich import enrich_birth_dates, enrich_career_clubs, enrich_context_labels, enrich_league_logos, enrich_logos, enrich_wiki_links
+from openfootball.enrich import add_career_clubs, enrich_birth_dates, enrich_career_clubs, enrich_context_labels, enrich_league_logos, enrich_logos, enrich_wiki_links
 from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
-from openfootball.transfers import apply_transfers
-from openfootball.reconcile import reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
+from openfootball.transfers import apply_transfers, drop_stale_current_rows
+from openfootball.reconcile import apply_player_aliases, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
 from openfootball.store import FreezeRefused, SeasonFrozen, freeze
@@ -26,7 +26,8 @@ from openfootball.parse.squad_i18n import PARSERS
 from openfootball.sources.wikidata import WikidataClient, club_qids, season_articles
 from openfootball.sources.wikipedia import WikipediaClient
 
-LEAGUES = {sc.code: sc.competition_en for sc in load_scopes()}      # un fichier scopes/*.toml par pays
+LEAGUE_CHOICES = sorted({sc.code for sc in load_scopes()} | {sc.competition_code for sc in load_scopes()})   # pays (toutes ses divisions) ou compétition
+LEAGUES = {sc.competition_code: sc.competition_en for sc in load_scopes()}      # un fichier scopes/*.toml par championnat
 
 
 def expected_teams(code: str, year: int) -> int:
@@ -51,7 +52,7 @@ def classify(page, entries) -> str:
 
 def probe(args: argparse.Namespace) -> int:
     client = WikipediaClient(args.cache)
-    leagues = {k: v for k, v in LEAGUES.items() if not args.league or k in args.league}
+    leagues = {k: v for k, v in LEAGUES.items() if not args.league or k in args.league or k.split("-")[0] in args.league}
     years = range(args.first, args.last + 1)
 
     league_titles = [(c, y, f"{season_label(y)} {name}") for c, name in leagues.items() for y in years]
@@ -252,18 +253,55 @@ def backfill_cmd(args: argparse.Namespace) -> int:
 
 def uefa_cmd(args: argparse.Namespace) -> int:
     """Participants de la Ligue des champions (phase de groupes / de ligue) et effectif des clubs pas encore couverts."""
-    from openfootball.uefa import run_ucl
+    from openfootball.uefa import CUPS, run_cup
     con = connect(args.db)
     migrate(con)
     wp = WikipediaClient(args.cache)
     langs = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in PARSERS}
     wd = WikidataClient(args.wd_cache)
     for year in args.season:
-        print(f"=== Ligue des champions {year}/{str(year + 1)[2:]} ===")
+        print(f"=== {CUPS[args.cup].page} {year}/{str(year + 1)[2:]} ===")
         try:
-            res = run_ucl(con, year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts))
+            res = run_cup(con, CUPS[args.cup], year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts))
         except SeasonFrozen as exc:
             raise SystemExit(f"refusé : {exc}")
+        except Exception as exc:                  # exécution longue sans surveillance : on note la saison en échec et on continue
+            print(f"  ECHEC saison {year}: {type(exc).__name__}: {str(exc)[:120]}")
+            continue
+        gaps = [r for r in res if r.lang is None]
+        print(f"  {len(res) - len(gaps)}/{len(res)} nouveaux clubs avec effectif ; {len(gaps)} sans effectif")
+    # Une fois toutes les saisons lues (les championnats nationaux existent), on les complète : tous les clubs, avec ou sans effectif.
+    from openfootball.uefa import fill_national_leagues
+    for year in args.season:
+        print(f"=== Championnats nationaux {year}/{str(year + 1)[2:]} ===")
+        try:
+            n = fill_national_leagues(con, year, wp=wp, qid_lookup=lambda ts: club_qids(wp, ts))
+        except SeasonFrozen as exc:
+            raise SystemExit(f"refusé : {exc}")
+        except Exception as exc:
+            print(f"  ECHEC saison {year}: {type(exc).__name__}: {str(exc)[:120]}")
+            continue
+        print(f"  {n} nouveaux clubs-saisons listés (sans effectif)")
+    return 0
+
+
+def complete_clubs_cmd(args: argparse.Namespace) -> int:
+    """Lit l'effectif de TOUTES les saisons en première division des clubs étrangers déjà vus en coupe d'Europe."""
+    from openfootball.uefa import complete_national_clubs
+    con = connect(args.db)
+    migrate(con)
+    wp = WikipediaClient(args.cache)
+    langs = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in PARSERS}
+    wd = WikidataClient(args.wd_cache)
+    for year in args.season:
+        print(f"=== Clubs européens à compléter {year}/{str(year + 1)[2:]} ===")
+        try:
+            res = complete_national_clubs(con, year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts))
+        except SeasonFrozen as exc:
+            raise SystemExit(f"refusé : {exc}")
+        except Exception as exc:
+            print(f"  ECHEC saison {year}: {type(exc).__name__}: {str(exc)[:120]}")
+            continue
         gaps = [r for r in res if r.lang is None]
         print(f"  {len(res) - len(gaps)}/{len(res)} nouveaux clubs avec effectif ; {len(gaps)} sans effectif")
     return 0
@@ -362,6 +400,9 @@ def reconcile_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     clients = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in ("en", *PARSERS)}
+    aliased = apply_player_aliases(con)
+    if aliased:
+        print(f"{aliased} joueurs rattachés à leur page (table `player_alias`)")
     before = con.execute("SELECT count(*) FROM player").fetchone()[0]
     r = reconcile_players(con, clients)
     after = con.execute("SELECT count(*) FROM player").fetchone()[0]
@@ -427,6 +468,7 @@ def enrich_cmd(args: argparse.Namespace) -> int:
         enrich_birth_dates(con, wd)
     if "careerclubs" in what:
         enrich_career_clubs(con, wp)
+        add_career_clubs(con, wd)
     if "labels" in what:
         enrich_context_labels(con, wd)
     if "leaguelogos" in what:
@@ -449,8 +491,23 @@ def transfers_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     r = apply_transfers(con, WikipediaClient(args.cache), fr_wp=WikipediaClient("cache/wikipedia_fr", lang="fr"), start_year=args.season)
+    stale = drop_stale_current_rows(con)
+    if stale:
+        print(f"{stale} joueurs retirés de la saison en cours (partis ailleurs, encore listés par une seule langue en retard)")
     print(f"{r.club_seasons} club-saisons lues, {r.with_transfers} avec des transferts reconnus : "
           f"{r.marked} statuts posés, {r.added} joueurs ajoutés (partis/arrivés autour de l'instantané), {r.movements} mouvements")
+    return 0
+
+
+def fix_player_cmd(args: argparse.Namespace) -> int:
+    """Rustine : le joueur que la page du club nomme `name` (sans lien) est celui dont la page Wikipedia est `--page`."""
+    con = connect(args.db)
+    migrate(con)
+    con.execute("INSERT INTO player_alias VALUES (?, ?, ?) ON CONFLICT (name) DO UPDATE SET link_lang = excluded.link_lang, "
+                "link_title = excluded.link_title", [args.name, args.lang, args.page])
+    n = apply_player_aliases(con)
+    print(f"« {args.name} » -> {args.lang}:{args.page} enregistré ; {n} joueur(s) déjà en base rattaché(s). "
+          f"Étapes suivantes : openfootball reconcile --names, careers, enrich --what players, export")
     return 0
 
 
@@ -481,7 +538,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("probe", help="mesure la couverture des pages « saison du club »")
     p.add_argument("--first", type=int, default=2010)
     p.add_argument("--last", type=int, default=2025)
-    p.add_argument("--league", nargs="*", choices=sorted(LEAGUES))
+    p.add_argument("--league", nargs="*", choices=LEAGUE_CHOICES)
     p.add_argument("--cache", default="cache/wikipedia")
     p.add_argument("--out", default="data/work/probe/results.json")
     p.set_defaults(func=probe)
@@ -500,7 +557,7 @@ def main(argv: list[str] | None = None) -> int:
     common = lambda p: (p.add_argument("--db", default=DB_DEFAULT), p.add_argument("--season", type=int, required=True))
     b = sub.add_parser("backfill", help="construit une saison (une seule fois), sans la figer")
     common(b)
-    b.add_argument("--league", nargs="*", choices=sorted(LEAGUES))
+    b.add_argument("--league", nargs="*", choices=LEAGUE_CHOICES)
     b.add_argument("--open", action="store_true", help="marque la saison comme « en cours » (saison courante)")
     b.add_argument("--cache", default="cache/wikipedia")
     b.add_argument("--wd-cache", default="cache/wikidata")
@@ -508,9 +565,16 @@ def main(argv: list[str] | None = None) -> int:
     u = sub.add_parser("uefa", help="Ligue des champions : participants (phase de groupes/ligue) et effectifs des clubs manquants")
     u.add_argument("--db", default=DB_DEFAULT)
     u.add_argument("--season", type=int, nargs="+", required=True)
+    u.add_argument("--cup", choices=["UCL", "UEL", "UECL"], default="UCL", help="UCL = Ligue des champions (défaut), UEL = Ligue Europa, UECL = Ligue Conférence")
     u.add_argument("--cache", default="cache/wikipedia")
     u.add_argument("--wd-cache", default="cache/wikidata")
     u.set_defaults(func=uefa_cmd)
+    cc_ = sub.add_parser("complete-clubs", help="effectif de toutes les saisons des clubs étrangers déjà vus en coupe d'Europe")
+    cc_.add_argument("--db", default=DB_DEFAULT)
+    cc_.add_argument("--season", type=int, nargs="+", required=True)
+    cc_.add_argument("--cache", default="cache/wikipedia")
+    cc_.add_argument("--wd-cache", default="cache/wikidata")
+    cc_.set_defaults(func=complete_clubs_cmd)
     t = sub.add_parser("status", help="état d'une saison et invariants")
     common(t)
     t.set_defaults(func=status_cmd)
@@ -566,6 +630,12 @@ def main(argv: list[str] | None = None) -> int:
     tr.add_argument("--season", type=int, help="une seule saison (année de début) ; par défaut toutes les saisons non figées")
     tr.add_argument("--cache", default="cache/wikipedia")
     tr.set_defaults(func=transfers_cmd)
+    fp = sub.add_parser("fix-player", help="rustine : relie le nom écrit sur une page de club (sans lien) à la page Wikipedia du joueur")
+    fp.add_argument("name", help="le nom tel qu'écrit sur la page du club, ex. \"Joseph Layousse\"")
+    fp.add_argument("--lang", required=True, help="langue de la page du joueur, ex. fr")
+    fp.add_argument("--page", required=True, help="titre exact de la page Wikipedia du joueur, ex. \"Layousse Samb\"")
+    fp.add_argument("--db", default="data/work/openfootball.duckdb")
+    fp.set_defaults(func=fix_player_cmd)
     sc_ = sub.add_parser("schema", help="écrit le dictionnaire de données des Parquet (Markdown) depuis un export")
     sc_.add_argument("--data", default="dist/data", help="dossier d'export (avec manifest.json)")
     sc_.add_argument("--out", default="docs/modele-de-donnees.md")

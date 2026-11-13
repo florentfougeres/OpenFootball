@@ -1,0 +1,16 @@
+# Deuxième division : même pays que la première (fichier voisin), autre compétition de niveau 2.
+code = "ESP"
+name_en = "Spain"
+name_fr = "Espagne"
+
+langs = ["es", "en", "it", "fr"]
+
+[competition]
+code = "ESP-SD"
+name_en = "Segunda División"
+name_fr = "Segunda División"
+level = 2
+
+[[team_count]]
+from = 2010
+n = 22

@@ -31,6 +31,12 @@ openfootball status --season 2026                    # invariants, trous, taille
 - Sortie : `=== backfill 2026/27 : 35/38 effectifs attestés ===` puis la liste des `TROU`.
 - Un backfill peut être relancé tant que la saison n'est pas figée (il réécrit la saison ; faites alors
   `reconcile --names`).
+- **Pages en année civile.** Les ligues qui jouent de mars à novembre (Norvège, Suède, Kazakhstan…) nomment leurs pages
+  `2025 FK Bodø/Glimt season`, pas `2025–26 …`. Le programme essaie les deux titres.
+- **Saison en cours : la page du club en dernier recours.** Au début d'une saison la page « saison du club » n'existe pas
+  toujours. Pour la seule saison en cours (`--open`), un club encore sans effectif est cherché sur **sa page de club**, dans
+  toutes les langues lisibles, et retenu si la page cite la saison **ou** a une section d'effectif courant
+  (« Current squad », « Effectif actuel », « Kadro »). Jamais pour une saison passée.
 
 ### Trous (club-saisons sans effectif)
 1. Cherchez une cause : titre de page différent, page absente, effectif incomplet. Si une page existe sous un
@@ -52,33 +58,96 @@ Une fois figée, la saison ne bougera plus. Ne figez que ce que vous avez relu.
 
 ## 2. Ajouter un championnat / un pays
 
-1. Créez `openfootball/scopes/<iso3>.toml` (copiez `fra.toml`) :
+Exemples réels : la Belgique, les Pays-Bas, le Portugal et la Turquie ont été ajoutés ainsi (`openfootball/scopes/bel.toml`,
+`nld.toml`, `prt.toml`, `tur.toml`). Pour une **coupe d'Europe**, voir [coupes-d-europe.md](coupes-d-europe.md).
+
+1. **Créez `openfootball/scopes/<iso3>.toml`** (copiez `bel.toml`, le plus complet) :
    ```toml
-   code = "NLD"                 # code pays à 3 lettres (clé de la table country)
+   code = "NLD"                 # code pays interne : ISO 3166 alpha-3 (CHE, DNK…) ; ENG pour l'Angleterre
    name_en = "Netherlands"
    name_fr = "Pays-Bas"
    # Langues des pages « saison du club », dans l'ordre : langue du pays d'abord, anglais en secours.
-   # Une langue sans analyseur est ignorée (disponibles : en, fr, it, es).
-   langs = ["en", "fr", "it"]
+   langs = ["nl", "en", "fr"]
 
    [competition]
-   code = "NLD-ED"
-   name_en = "Eredivisie"       # DOIT être le nom exact utilisé dans le titre de page : « 2025–26 Eredivisie »
-   name_fr = "Eredivisie"
+   code = "NLD-ED"              # <PAYS>-<ABRÉVIATION> ; si le pays a déjà été créé par une coupe d'Europe : "<ISO3>-L1"
+   name_en = "Eredivisie"       # DOIT être le nom exact dans le titre de page : « 2025–26 Eredivisie »
+   name_fr = "Eredivisie"       # nom d'usage en français (« Ligue 1 », « Pro League »), pas « Championnat de … »
    level = 1
+   page_names = ["Belgian First Division A"]   # (facultatif) autres noms dans les titres : championnat renommé
 
-   [[team_count]]               # taille du championnat ; ajoutez une entrée à chaque changement de format
+   [[team_count]]               # taille du championnat ; une entrée à chaque changement de format
    from = 2010
    n = 18
    ```
-2. Vérifiez que la page championnat existe en anglais sous le titre `"<saison> <name_en>"`
-   (ex. `2025–26 Eredivisie`) et que son classement liste bien `n` clubs.
-3. Lancez `openfootball backfill --season 2025 --league NLD` puis `status`. Les lignes `country` et
-   `competition` sont créées automatiquement.
-4. Si un championnat n'est pas lisible (classement non standard), le programme tente le rendu HTML ; sinon
-   le club-saison apparaît comme `TROU`.
-5. Ajoutez les saisons une à une (2010→courante), `reconcile --names`, puis `careers` et `enrich` (guides suivants).
-6. Ajoutez une ligne dans `tests/` si le format de page est nouveau (voir §5) et lancez `pytest -q`.
+   Un nom corrigé plus tard dans ce fichier est repris par la base au prochain `backfill`.
+
+2. **Choisissez les langues** (`langs`). Seules celles qui ont un analyseur sont lues, les autres sont ignorées sans erreur :
+
+   | Langue | Lecture | Remarque |
+   |---|---|---|
+   | `en` | wikitexte (`Fs player`, tableaux) puis HTML rendu | La plus complète. |
+   | `fr`, `it`, `es` | wikitexte (`Feff joueur`, `Calciatore in rosa`…) puis HTML rendu | |
+   | `nl`, `tr` | **HTML rendu** seulement | Voir §5. |
+   | `pt` et autres | pas de lecture | Pas de pages « saison du club » portugaises sur Wikidata : le Portugal repose sur l'anglais. |
+
+   Pour savoir ce que Wikidata connaît d'un pays, regardez quelles langues ont des pages « saison du club » : l'anglais couvre
+   souvent 30 à 60 % des clubs, la langue locale ajoute le reste.
+
+3. **Trouvez le nombre de clubs de chaque saison** (`team_count`). Le programme s'arrête (`EnumerationError`) si le nombre
+   lu diffère : c'est voulu, on n'écrit jamais de données partielles. Pour les lister toutes d'un coup, sans rien écrire :
+   ```bash
+   .venv/bin/python - <<'E'
+   from openfootball.sources.wikipedia import WikipediaClient
+   from openfootball.parse.league import league_teams, league_teams_html, season_label
+   wp = WikipediaClient("cache/wikipedia")
+   NAMES = ["Eredivisie"]                       # nom(s) de la ligue, titres « <saison> <nom> »
+   for y in range(2010, 2027):
+       l = season_label(y)
+       pages = wp.get_pages([f"{l} {n}" for n in NAMES])
+       title, page = next((f"{l} {n}", p) for n, p in zip(NAMES, pages) if p.exists)
+       teams = league_teams(page.wikitext)
+       print(y, len(teams), "(html :", len(league_teams_html(wp.render(title).wikitext, None)), ")")
+   E
+   ```
+   Comparez avec l'article de la saison (changements de format : 16 → 18 clubs, saison à 19 ou 21 clubs…). Pièges rencontrés :
+   codes d'équipe **accentués** (`name_BEŞ`, `name_ÜMR` : lus), saison à effectif exceptionnel (Turquie 2020 : 21 clubs,
+   2022 : 19 clubs), format qui change l'année N sans que la page le dise (Belgique 2026 : 18 clubs).
+
+4. **Titres de pages.** `name_en` doit être le nom sous lequel la page existe **pour toutes les saisons**. Si la ligue a
+   été renommée (Belgique : « Belgian First Division A » jusqu'en 2022), listez les anciens noms dans `page_names`.
+
+5. **Plusieurs divisions d'un même pays** : un fichier par championnat, avec le même `code` pays et une autre `[competition]`
+   (`level = 2`) : `eng.toml` / `eng2.toml` (Premier League, EFL Championship), de même pour l'Espagne, la France, l'Allemagne et
+   l'Italie. `--league ENG` prend toutes les divisions du pays, `--league ENG-CH` une seule. Le nom de page peut avoir changé
+   (« Football League Championship » avant 2016) : `page_names`. Les clubs qui montent ou descendent restent le même club.
+
+   **Saison en année civile** (MLS, Norvège, Suède…) : `page_format = "{year} {name} season"` dans `[competition]` (les variables
+   sont `{year}`, `{label}` et `{name}`). **Club d'un autre pays** (les franchises canadiennes de la MLS) : rangé
+   dans le pays du championnat, par choix de simplicité. **Ne lire qu'une partie des saisons**
+   (Arabie saoudite depuis 2022-23) : ne lancez que ces saisons ; `team_count` peut commencer à cette année.
+
+6. **Mettez à jour le test** `test_scope_files_load` (`tests/test_backfill.py`) : il liste les pays déclarés.
+
+7. **Lancez**, de la saison courante vers le passé :
+   ```bash
+   openfootball backfill --season 2026 --open --league NLD
+   for y in 2025 2024 2023 …; do openfootball backfill --season $y --league NLD; done
+   openfootball transfers
+   openfootball reconcile --names
+   openfootball careers
+   openfootball enrich --what clubs players careerclubs labels leaguelogos   # liens, âges, carrières, logo du championnat
+   openfootball progress && openfootball export --out web/public/data
+   ```
+   Les lignes `country` et `competition` sont créées automatiquement. Un club sans effectif apparaît comme `TROU`
+   (voir « Trous » plus bas) : c'est normal, surtout pour les saisons anciennes (de 25 à 70 % des effectifs seulement pour
+   les 4 pays ajoutés en dernier, contre 100 % pour les grands championnats).
+
+8. **Noms de pays dans une langue nouvelle.** Les pages d'effectif écrivent la nationalité dans leur langue
+   (« Denemarken », « Almanya »). Le référentiel `openfootball/data/countries.json` connaît en, fr, es, it, de, nl, pt, tr ;
+   pour une autre langue, voir §5, étape 5.
+
+9. **Vérifiez** avec `openfootball status --season 2025`, la page Couverture du site, puis `pytest -q`.
 
 ## 3. Remonter avant 2010
 
@@ -102,17 +171,53 @@ Le titre doit être **vérifiable** sur Wikipedia ; l'effectif doit passer les m
 
 ## 5. Ajouter une langue (analyseur)
 
-Une langue n'est utilisée que si elle a un analyseur dans `openfootball/parse/squad_i18n.py` (`PARSERS`) :
-1. Repérez sur une vraie page le modèle de joueur (ex. fr `Feff joueur`, it `Calciatore in rosa`, es
+Deux voies, dans `openfootball/parse/` :
+
+**A. Langue à modèle de joueur (fr, it, es) — lecture du wikitexte.**
+1. Repérez sur une vraie page le modèle de joueur (fr `Feff joueur`, it `Calciatore in rosa`, es
    `Jugador de fútbol con esquema`) ; copiez un extrait dans `tests/fixtures/`.
-2. Écrivez `parse_squad_<lang>` (même contrat que `parse_squad` : `section` = titre au-dessus ; rien n'est deviné),
-   enregistrez-le dans `PARSERS`, ajoutez les codes de poste de la langue.
+2. Écrivez `parse_squad_<lang>` dans `squad_i18n.py` (même contrat que `parse_squad` : `section` = titre au-dessus ; rien
+   n'est deviné), enregistrez-le dans `PARSERS`, ajoutez les codes de poste de la langue.
 3. Ajoutez les mots de la langue pour « prêt »/« réserve » dans `store.py` (`_LOAN_OUT`) et `parse/squad.py`
-   (`_EXCLUDED_SECTION`).
-4. Écrivez les tests (`tests/test_squad_i18n.py`), `pytest -q`.
-5. Mettez la langue dans `langs` du TOML du pays et relancez les backfills de ce pays.
+   (`_EXCLUDED_SECTION`, `_LOANED_OUT_SECTION`).
+
+**B. Langue sans modèle stable (nl, tr) — lecture du HTML rendu.** Les effectifs néerlandais et turcs sont des tableaux
+(parfois issus d'un modèle). On enregistre `PARSERS["xx"] = parse_squad_rendered_only` (il rend `[]`) : le programme lit alors
+le **HTML rendu de la même page** avec `parse/squad_html.py`. Étapes :
+1. Mots d'en-tête de colonnes dans `squad_html.py` : `_NAME` (« naam », « oyuncu »…), `_NAT`, `_POS`, `_NUM` (« No. »).
+2. Postes d'une lettre propres à la langue : `_LETTERS["tr"] = {"KL": "GK", …}`.
+3. Titres de groupes de lignes (« Keepers », « Verdedigers »…) : mots de poste dans `positions.py` (`_WORDS`). Une ligne de
+   groupe à une seule cellule donne le poste ; « Away on loan » marque les joueurs suivants comme prêtés ailleurs.
+4. Tableaux à ignorer : `_SKIP_HEADING` (transferts, buteurs, passeurs, triplés…).
+5. **Pays** : ajoutez la langue à la requête SPARQL de `countries.py` (variable `?xx` et liste `("en", "fr", …)` de
+   `build_reference`), puis régénérez le référentiel :
+   ```bash
+   .venv/bin/python - <<'E'
+   import json
+   from openfootball.countries import SPARQL, SPARQL_FIFA, build_reference
+   from openfootball.sources.wikidata import WikidataClient
+   wd = WikidataClient("cache/wikidata_countries")
+   json.dump(build_reference(wd.query(SPARQL), wd.query(SPARQL_FIFA)), open("openfootball/data/countries.json", "w"), ensure_ascii=False, indent=1)
+   E
+   ```
+   Si les drapeaux sont décrits par un texte préfixé (« Vlag van … », « Drapeau de … »), ajoutez le préfixe à `_PREFIX`.
+6. `enrich.SITES` : le code du wiki (`nlwiki`) pour que Wikidata donne le titre de la page du club dans cette langue (secours
+   « page du club » de la saison en cours).
+
+Dans les deux cas : créez les tests (`tests/test_squad_i18n.py` ou `tests/test_squad_html.py`) sur de **vraies** pages
+réduites, lancez `pytest -q`, mettez la langue dans `langs` du TOML du pays et relancez les backfills de ce pays.
 
 ## 6. Corriger un effectif sans toucher au code
+- **Un joueur que la page du club nomme autrement que sa page Wikipedia** (« Joseph Layousse » sur la page du Stade lavallois,
+  « Layousse Samb » pour sa propre page) : il apparaît sans fiche ni carrière. Enregistrez une **rustine** dans la base :
+  ```bash
+  openfootball fix-player "Joseph Layousse" --lang fr --page "Layousse Samb"
+  openfootball reconcile --names && openfootball careers && openfootball enrich --what players
+  openfootball export --out web/public/data
+  ```
+  La commande écrit dans la table `player_alias` de la base (pas exportée) et rattache tout de suite les joueurs déjà présents ;
+  `reconcile` apprend ensuite leur QID, et les prochains `backfill` rejouent la rustine. Le nom vaut pour tous les clubs et toutes
+  les saisons : évitez un nom porté par plusieurs joueurs. Pour la lister : `duckdb -readonly data/work/openfootball.duckdb "SELECT * FROM player_alias"`.
 - Page Wikipedia corrigée à la source (c'est la vérité) → relancer `backfill` sur la saison (si non figée).
 - Saison figée à rectifier → procédure d'amendement de la SPEC (§5bis) : jamais d'édition silencieuse.
 

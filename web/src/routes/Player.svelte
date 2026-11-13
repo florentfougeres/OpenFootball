@@ -2,7 +2,7 @@
   import { app, href, enc, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
-  import { ageAt, countryName, isOngoing, wikiUrl } from "../lib/format";
+  import { ageAt, countryName, isOngoing, nationalTeam, wikiUrl } from "../lib/format";
   import Badge from "../components/Badge.svelte";
   import Crumbs from "../components/Crumbs.svelte";
   import ErrorBox from "../components/ErrorBox.svelte";
@@ -122,9 +122,11 @@
           <thead><tr><th>{t("colYears")}</th><th>{t("colTeam")}</th><th class="num">{t("colCaps")}</th><th class="num">{t("colGoals")}</th></tr></thead>
           <tbody>
             {#each d.national as r}
+              {@const nt = nationalTeam(r.team_name)}
               <tr>
                 <td class="whitespace-nowrap">{r.years_raw ?? ""}{#if isOngoing(r.years_raw)} <span class="text-muted">{t("ongoing")}</span>{/if}</td>
-                <td>{#if r.team_link}<a class="link" href={wikiUrl("en", r.team_link)} hreflang="en" target="_blank" rel="noopener">{r.team_name}</a>{:else}{r.team_name}{/if}</td>
+                <td><span class="flex items-center gap-2.5">{#if nt.flag}<Flag code={nt.flag} label={nt.name} />{/if}
+                  {#if r.team_link}<a class="link" href={wikiUrl("en", r.team_link)} hreflang="en" target="_blank" rel="noopener">{nt.name}</a>{:else}{nt.name}{/if}</span></td>
                 <td class="num">{r.caps ?? ""}</td><td class="num">{r.goals ?? ""}</td>
               </tr>
             {/each}

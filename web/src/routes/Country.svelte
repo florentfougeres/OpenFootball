@@ -22,20 +22,7 @@
     const by = Object.fromEntries(latest.map((r) => [r.competition, r]));
     const clubs = [...app.clubs.values()].filter((x) => x.country_code === code)
       .sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0));
-    // Coupes d'Europe auxquelles des clubs du pays ont pris part (un club suisse n'a pas de championnat chez nous).
-    const own = new Set(comps.map((x) => x.code));
-    // Pour une coupe, on compte les clubs DE CE PAYS (pas tous les participants), à la dernière saison où l'un d'eux a joué.
-    const cupRows = app.has.competition_club
-      ? await q(`SELECT cc.competition, cc.season, count(*) AS clubs FROM competition_club cc JOIN club c ON c.wikipedia_title = cc.club
-          WHERE c.country_code = ? GROUP BY cc.competition, cc.season ORDER BY cc.season DESC`, [code])
-      : [];
-    const cups: string[] = [];
-    for (const r of cupRows) {
-      if (own.has(r.competition) || !app.comps.has(r.competition) || cups.includes(r.competition)) continue;
-      cups.push(r.competition);
-      by[r.competition] = r;
-    }
-    return { comps: [...comps, ...cups.map((c) => app.comps.get(c)!)].map((x): Row => ({ ...x, latest: by[x.code] })), clubs };
+    return { comps: comps.map((x): Row => ({ ...x, latest: by[x.code] })), clubs };
   });
 </script>
 

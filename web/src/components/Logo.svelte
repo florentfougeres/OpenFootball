@@ -1,9 +1,11 @@
 <script lang="ts">
   import type { Row } from "../lib/app.svelte";
+  import { commonsLogo } from "../lib/format";
   // club : { logo_url?, colors_hex? ("#aa0000 | #ffffff"), name_en? / name_local? / club_name? / wikipedia_title? }
   let { club, size = 28 }: { club: Row; size?: number } = $props();
   let broken = $state(false);
-  $effect(() => { club.logo_url; broken = false; });
+  const src = $derived(club.logo_url || commonsLogo(club.logo_commons_url));
+  $effect(() => { src; broken = false; });
 
   const HEX = /^#[0-9a-fA-F]{6}$/;
   const STOP = new Set(["fc", "afc", "cf", "ac", "sc", "as", "ss", "us", "ssc", "fk", "sk", "cd", "ud", "rc", "sv", "vfb", "vfl", "tsg", "the", "de", "la", "le", "del", "di", "club", "football", "calcio", "futbol", "men", "women", "s", "national", "association", "team", "under"]);
@@ -26,8 +28,8 @@
   const edge = $derived(colors[1] && colors[1].toLowerCase() !== colors[0]?.toLowerCase() ? colors[1] : null);
 </script>
 
-{#if club.logo_url && !broken}
-  <img class="shrink-0 object-contain" style:width="{size}px" style:height="{size}px" src={club.logo_url} alt="" width={size} height={size} loading="lazy"
+{#if src && !broken}
+  <img class="shrink-0 object-contain" style:width="{size}px" style:height="{size}px" {src} alt="" width={size} height={size} loading="lazy"
     onerror={() => (broken = true)} />
 {:else}
   <svg class="shrink-0" width={size} height={size} viewBox="0 0 32 36" role="img" aria-label={label}>

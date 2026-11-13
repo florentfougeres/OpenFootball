@@ -40,16 +40,28 @@
   const lastSquad = $derived(d?.seasons.find((r) => r.players) ?? d?.seasons[0]);
   const kit = $derived((String(logo.colors_hex ?? "").split(/\s*\|\s*/)).filter((c: string) => /^#[0-9a-fA-F]{6}$/.test(c)));
 
+  // Championnat de la fiche : cliquable quand on le couvre (même nom qu'une de nos compétitions, sinon celle de sa saison la plus récente).
+  const normName = (x: unknown) => String(x ?? "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+  const leagueCode = $derived.by(() => {
+    const w = d?.w;
+    if (!w?.league) return null;
+    const n = normName(w.league);
+    const byName = [...app.comps.values()].find((c) => normName(c.name_en) === n || normName(c.name_fr) === n);
+    if (byName) return byName.code as string;
+    // Wikidata nomme la ligue autrement (« championnat de France de football ») : on prend la compétition de sa saison la plus récente.
+    return d?.seasons[0]?.competition && app.comps.has(d.seasons[0].competition) ? (d.seasons[0].competition as string) : null;
+  });
+
   const info = $derived.by(() => {
     const w = d?.w;
-    if (!w) return [] as { label: string; value: string; href?: string }[];
-    const items: { label: string; value: string; href?: string }[] = [];
-    const add = (label: string, value: string | null | undefined, href?: string) => { if (value) items.push({ label, value, href }); };
+    if (!w) return [] as { label: string; value: string; href?: string; to?: string }[];
+    const items: { label: string; value: string; href?: string; to?: string }[] = [];
+    const add = (label: string, value: string | null | undefined, href?: string, to?: string) => { if (value) items.push({ label, value, href, to }); };
     add(t("nickname"), w.nickname);
     add(t("city"), w.city);
     add(t("founded"), fmtFounded(w.founded));
     add(t("stadium"), w.stadium ? w.stadium + (w.stadium_capacity ? ` · ${Number(w.stadium_capacity).toLocaleString(app.lang)} ${t("capacity")}` : "") : "");
-    add(t("league"), w.league ? w.league + (w.division ? ` · ${t("division")} ${w.division}` : "") : "");
+    add(t("league"), w.league ? w.league + (w.division ? ` · ${t("division")} ${w.division}` : "") : "", undefined, leagueCode ? href("competition", leagueCode) : undefined);
     add(t("website"), w.website ? String(w.website).replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") : "", w.website);
     if (w.lat != null && w.lon != null)
       add("GPS", `${t("map")} · ${w.lat.toFixed(3)}, ${w.lon.toFixed(3)}`, `https://www.openstreetmap.org/?mlat=${w.lat}&mlon=${w.lon}#map=14/${w.lat}/${w.lon}`);
@@ -113,7 +125,7 @@
       <dl class="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
         {#each info as it}
           <div><dt class="eyebrow">{it.label}</dt>
-            <dd class="mt-0.5 font-medium">{#if it.href}<a class="link" href={it.href} target="_blank" rel="noopener">{it.value}</a>{:else}{it.value}{/if}</dd></div>
+            <dd class="mt-0.5 font-medium">{#if it.to}<a class="link" href={it.to}>{it.value}</a>{:else if it.href}<a class="link" href={it.href} target="_blank" rel="noopener">{it.value}</a>{:else}{it.value}{/if}</dd></div>
         {/each}
         {#if external.length}
           <div><dt class="eyebrow">{t("externalIds")}</dt>

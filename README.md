@@ -13,20 +13,32 @@ de chaque joueur. Une base ouverte (fichiers Parquet), un pipeline Python et un 
 
 ## Championnats et saisons disponibles
 
-Cinq championnats de première division, de **2010/11 à 2026/27** (2026/27 est « en cours » : elle change à chaque release).
-Chiffres au 2026-11-12 (état à jour : [PROGRESS.md](PROGRESS.md)).
+Seize championnats (premières et deuxièmes divisions), de **2010/11 à 2026/27** (2026/27 est « en cours » : elle change à chaque release),
+plus les participants de la Ligue des champions et de la Ligue Europa sur la même période.
+Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 
-| Championnat | Pays | Saisons | Clubs par saison | Effectifs établis | Trous validés | Non encore examinés |
-|---|---|---|---|---|---|---|
-| Premier League (`ENG-PL`) | Angleterre | 2010/11 → 2026/27 | 20 | 340 / 340 | 0 | 0 |
-| La Liga (`ESP-LL`) | Espagne | 2010/11 → 2026/27 | 20 | 329 / 340 | 10 | 1 |
-| Serie A (`ITA-SA`) | Italie | 2010/11 → 2026/27 | 20 | 340 / 340 | 0 | 0 |
-| Bundesliga (`DEU-BL`) | Allemagne | 2010/11 → 2026/27 | 18 | 303 / 306 | 2 | 1 |
-| Ligue 1 (`FRA-L1`) | France | 2010/11 → 2026/27 | 20 (18 depuis 2023/24) | 329 / 332 | 0 | 3 |
+| Championnat | Pays | Saisons | Effectifs établis / club-saisons |
+|---|---|---|---|
+| Premier League (`ENG-PL`) | Angleterre | 2010/11 → 2026/27 | 340 / 340 |
+| Championship (`ENG-CH`) | Angleterre | 2010/11 → 2026/27 | 401 / 406 |
+| La Liga (`ESP-LL`) | Espagne | 2010/11 → 2026/27 | 330 / 340 |
+| Segunda División (`ESP-SD`) | Espagne | 2010/11 → 2026/27 | 278 / 374 |
+| Serie A (`ITA-SA`) | Italie | 2010/11 → 2026/27 | 340 / 340 |
+| Serie B (`ITA-SB`) | Italie | 2010/11 → 2026/27 | 349 / 355 |
+| Bundesliga (`DEU-BL`) | Allemagne | 2010/11 → 2026/27 | 304 / 306 |
+| 2. Bundesliga (`DEU-B2`) | Allemagne | 2010/11 → 2026/27 | 282 / 306 |
+| Ligue 1 (`FRA-L1`) | France | 2010/11 → 2026/27 | 332 / 332 |
+| Ligue 2 (`FRA-L2`) | France | 2010/11 → 2026/27 | 270 / 334 |
+| Pro League (`BEL-PL`) | Belgique | 2010/11 → 2026/27 | 187 / 280 |
+| Primeira Liga (`PRT-PL`) | Portugal | 2010/11 → 2026/27 | 145 / 298 |
+| Eredivisie (`NLD-ED`) | Pays-Bas | 2010/11 → 2026/27 | 214 / 306 |
+| Süper Lig (`TUR-SL`) | Turquie | 2010/11 → 2026/27 | 178 / 315 |
+| MLS (`USA-MLS`) | États-Unis (clubs canadiens inclus) | 2010 → 2026 | 368 / 399 |
+| Saudi Pro League (`SAU-PL`) | Arabie saoudite | 2022/23 → 2026/27 | 88 / 88 |
 
-**Total : 1 641 effectifs sur 1 658 club-saisons** (189 clubs). Les *trous validés* sont des effectifs introuvables dont
-l'absence a été vérifiée (page Wikipedia inexistante ou sans effectif) ; les *non encore examinés* sont des promus de 2026/27
-sans page pour l'instant. Autour : les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
+**Total : 1 224 clubs, 10 439 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
+pays (liste complète des clubs, avec ou sans effectif) ; ceux sans page « saison du club » lisible restent « Sans effectif »
+(page *Couverture* du site). Les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
 
 Un effectif est **l'union des instantanés publiés sur les pages Wikipedia** « saison du club » de toutes les langues du pays (langue du pays d'abord, puis anglais, italien…), pour être le plus complet possible ;
 les prêts, les limites et les licences sont expliqués dans le dictionnaire de données et sur la page *À propos* du site.

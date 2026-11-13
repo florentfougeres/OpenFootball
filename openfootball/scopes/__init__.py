@@ -18,6 +18,12 @@ class Scope:
     team_counts: tuple[tuple[int, int], ...]   # (à partir de l'année, nombre de clubs)
     langs: tuple[str, ...] = ("en", "it", "fr")  # ordre des langues des pages « saison du club »
     page_names: tuple[str, ...] = ()           # autres noms du championnat dans les titres de pages (renommages)
+    page_format: str = ""                      # titre de la page d'une saison si ce n'est pas « <saison> <nom> » : « {year} {name} season »
+
+    def league_page_titles(self, start_year: int, label: str) -> list[str]:
+        """Titres essayés, dans l'ordre, pour la page du championnat d'une saison (noms actuels puis anciens)."""
+        fmt = self.page_format or "{label} {name}"
+        return [fmt.format(label=label, year=start_year, name=n) for n in self.league_page_names]
 
     @property
     def league_page_names(self) -> tuple[str, ...]:
@@ -45,8 +51,9 @@ def load_scopes(codes: list[str] | None = None) -> list[Scope]:
             code=d["code"], name_en=d["name_en"], name_fr=d["name_fr"],
             competition_code=c["code"], competition_en=c["name_en"], competition_fr=c["name_fr"],
             level=c["level"], team_counts=tuple((t["from"], t["n"]) for t in d["team_count"]),
-            langs=tuple(d.get("langs", ("en", "it", "fr"))), page_names=tuple(c.get("page_names", ())))
-        if codes is None or sc.code in codes:
+            langs=tuple(d.get("langs", ("en", "it", "fr"))), page_names=tuple(c.get("page_names", ())),
+            page_format=c.get("page_format", ""))
+        if codes is None or sc.code in codes or sc.competition_code in codes:   # un code pays les prend toutes ; un code compétition une seule
             out.append(sc)
     return out
 
@@ -61,3 +68,4 @@ def load_overrides() -> dict[tuple[int, str], list[tuple[str, str]]]:
     for p in tomllib.loads(f.read_text(encoding="utf-8")).get("page", []):
         out.setdefault((int(p["season"]), p["club"]), []).append((p["lang"], p["title"]))
     return out
+

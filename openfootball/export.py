@@ -19,7 +19,6 @@ import duckdb
 from openfootball.countries import flag_code
 from openfootball.enrich import NON_LATIN
 from openfootball.schema_doc import build_schema_doc
-from openfootball.scopes import load_scopes
 
 _SQUAD = """
 SELECT s.label AS season, co.code AS competition, cl.wikipedia_title AS club,
@@ -89,9 +88,15 @@ JOIN competition co ON co.id = cs.competition_id JOIN club cl ON cl.id = cs.club
 ORDER BY s.start_year, cl.wikipedia_title, ss.rank"""
 
 _GLOBAL = {
-    "club": "SELECT c.wikidata_qid, c.wikipedia_title, coalesce(le.label, c.name_en) AS name_en, "
+    "club": "SELECT c.wikidata_qid, c.wikipedia_title, "
+            # Le titre de la page Wikipedia anglaise suit les renommages de près, le libellé Wikidata en retard (« Lopes Tavares F.C. » pour
+            # Athletic Newham) : le titre fait foi, sauf s'il porte une précision entre parenthèses (« (2023) », « (women) »).
+            "CASE WHEN c.wikipedia_title IS NOT NULL AND c.wikipedia_title NOT LIKE '%(%' THEN c.wikipedia_title "
+            "ELSE coalesce(le.label, c.name_en) END AS name_en, "
             "coalesce(lf.label, c.name_fr) AS name_fr, "
-            f"CASE WHEN regexp_matches(c.name_local, '{NON_LATIN}') AND c.name_en IS NOT NULL THEN c.name_en ELSE c.name_local END AS name_local, "
+            f"CASE WHEN regexp_matches(c.name_local, '{NON_LATIN}') AND c.name_en IS NOT NULL THEN c.name_en "
+            "WHEN c.wikipedia_title IS NOT NULL AND c.wikipedia_title NOT LIKE '%(%' AND c.name_local = coalesce(le.label, c.name_en) THEN c.wikipedia_title "
+            "ELSE c.name_local END AS name_local, "
             f"CASE WHEN regexp_matches(c.nickname, '{NON_LATIN}') THEN NULL ELSE c.nickname END AS nickname, "
             "c.category, c.country_code, "
             f"c.country_iso, c.country, {_latin_or_english('city', 'ci')} AS city, "
@@ -111,9 +116,7 @@ _GLOBAL = {
     "birth": "SELECT w.qid AS player_qid, strftime(b.birth_date, '%Y-%m-%d') AS birth_date, b.precision "
              "FROM player_birth b JOIN player_wikidata w ON w.player_id = b.player_id ORDER BY w.qid",
     "entity_wiki": "SELECT qid, lang, title FROM entity_wiki ORDER BY qid, lang",
-    # `partial` : championnat HORS périmètre, créé pour rattacher les clubs vus en coupe d'Europe (il ne contient qu'eux).
-    "competition": "SELECT c.code, c.name_en, c.name_fr, c.country_code, c.level, c.wikidata_qid, i.wikipedia_title, i.logo_url, i.logo_license, "
-                   f"(c.code <> 'UEFA-CL' AND c.code NOT IN ({', '.join(repr(sc.competition_code) for sc in load_scopes())})) AS partial "
+    "competition": "SELECT c.code, c.name_en, c.name_fr, c.country_code, c.level, c.wikidata_qid, i.wikipedia_title, i.logo_url, i.logo_license "
                    "FROM competition c LEFT JOIN competition_info i ON i.code = c.code ORDER BY c.code",
     "season": "SELECT label, start_year, status, content_hash FROM season ORDER BY start_year",
     "country": "SELECT code, name_en, name_fr, flag FROM country_export ORDER BY code",

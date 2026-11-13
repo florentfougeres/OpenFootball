@@ -15,7 +15,7 @@ from test_backfill import FakeWiki, FakeWikidata, setup_pages
 def con():
     c = duckdb.connect(":memory:")
     migrate(c)
-    run_backfill(c, load_scopes(["FRA"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 3"})),
+    run_backfill(c, load_scopes(["FRA-L1"]), 2023, wp=FakeWiki(setup_pages(missing_en={"Club 3"})),
                  lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})}, wd=FakeWikidata({}),
                  qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None)
     c.execute("INSERT INTO known_gap SELECT cs.id, 'page absente', now() FROM club_season cs "

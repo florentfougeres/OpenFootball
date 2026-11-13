@@ -41,11 +41,37 @@ def _merge(con, keep: int, dup: int) -> None:
         con.execute("DELETE FROM player_career WHERE player_id = ?", [dup])           # on garde la carrière du joueur conservé
     else:
         con.execute("UPDATE player_career SET player_id = ? WHERE player_id = ?", [keep, dup])
+    for table in ("player_national", "player_birth"):        # même règle que la carrière : on garde celles du joueur conservé
+        if con.execute(f"SELECT count(*) FROM {table} WHERE player_id = ?", [keep]).fetchone()[0]:
+            con.execute(f"DELETE FROM {table} WHERE player_id = ?", [dup])
+        else:
+            con.execute(f"UPDATE {table} SET player_id = ? WHERE player_id = ?", [keep, dup])
     con.execute("""INSERT INTO player_link SELECT link_lang, link_title, ? FROM player
                    WHERE id = ? AND link_title IS NOT NULL ON CONFLICT DO NOTHING""", [keep, dup])
     con.execute("UPDATE player_link SET player_id = ? WHERE player_id = ?", [keep, dup])
     con.execute("DELETE FROM player_wikidata WHERE player_id = ?", [dup])
     con.execute("DELETE FROM player WHERE id = ?", [dup])
+
+
+def apply_player_aliases(con: duckdb.DuckDBPyConnection) -> int:
+    """Applique la table `player_alias` aux joueurs déjà en base : un joueur SANS lien dont le nom est listé reçoit la page indiquée
+    (ou est fusionné avec le joueur qui l'a déjà). `reconcile_players` en apprend ensuite le QID. Rend le nombre de joueurs touchés."""
+    done = 0
+    for name, lang, title in con.execute("SELECT name, link_lang, link_title FROM player_alias").fetchall():
+        loose = [r[0] for r in con.execute("SELECT id FROM player WHERE name = ? AND link_title IS NULL", [name]).fetchall()]
+        target = con.execute("SELECT player_id FROM player_link WHERE link_lang = ? AND link_title = ?", [lang, title]).fetchone() \
+            or con.execute("SELECT id FROM player WHERE link_lang = ? AND link_title = ?", [lang, title]).fetchone()
+        for pid in loose:
+            if _frozen_rows(con, pid):
+                continue
+            if not target:       # DuckDB ne modifie pas un joueur référencé : on crée le joueur lié, puis on y fusionne l'autre
+                new_id = con.execute("SELECT coalesce(max(id), 0) + 1 FROM player").fetchone()[0]
+                con.execute("INSERT INTO player (id, name, link_lang, link_title) VALUES (?, ?, ?, ?)", [new_id, name, lang, title])
+                target = (new_id,)
+            if target[0] != pid:
+                _merge(con, target[0], pid)
+            done += 1
+    return done
 
 
 def reconcile_players(con: duckdb.DuckDBPyConnection, clients: dict, *, batch: int = 50) -> ReconcileReport:

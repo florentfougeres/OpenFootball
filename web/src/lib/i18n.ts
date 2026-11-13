@@ -3,7 +3,7 @@ export type Lang = "fr" | "en";
 export const LANGS: Lang[] = ["fr", "en"];
 export const T: Record<Lang, Record<string, string>> = {
   fr: {
-    countries: "Pays", competitions: "Championnats", allComps: "Compétitions", allCompsLead: "Les championnats couverts, pays par pays.", featuredComps: "Championnats à la une", featuredClubs: "Clubs à la une", clubsN: "clubs", playersN: "joueurs", compsN: "championnats", compsN1: "championnat", compN1: "championnat", clubN1: "club", latestSeason: "Dernière saison", allSeasons: "Saisons", topClubs: "Clubs les plus connus", clubsOfSeason: "Clubs de la saison", countryNotFound: "Pays introuvable.", compNotFound: "Championnat introuvable.", divisionN: "Division", searchHint: "Un club, un joueur, un pays…", exploreBy: "Explorer par pays", searchWaiting: "Le moteur de recherche se charge, les résultats arrivent dans un instant…", byCountry: "Par pays et championnat", byCountryLead: "Choisissez un pays, puis un championnat et une saison.", allClubs: "Tous les clubs", allClubsLead: "La liste des clubs dont on connaît les effectifs, à filtrer par nom ou par pays.", browseClubs: "Voir les clubs", filterClubs: "Filtrer par nom", allCountries: "Tous les pays", clubsFound: "clubs", seasonsOf: "saisons", noClub: "Aucun club ne correspond.", about_club: "À propos", seasonsTitle: "Saisons",
+    countries: "Pays", competitions: "Championnats", allComps: "Compétitions", allCompsLead: "Les championnats couverts, pays par pays.", featuredComps: "Championnats à la une", featuredClubs: "Clubs à la une", clubsN: "clubs", playersN: "joueurs", compsN: "championnats", compsN1: "championnat", cupsN: "compétitions", cupsN1: "compétition", compN1: "championnat", clubN1: "club", latestSeason: "Dernière saison", allSeasons: "Saisons", topClubs: "Clubs les plus connus", clubsOfSeason: "Clubs de la saison", countryNotFound: "Pays introuvable.", compNotFound: "Championnat introuvable.", divisionN: "Division", searchHint: "Un club, un joueur, un pays…", exploreBy: "Explorer par pays", searchWaiting: "Le moteur de recherche se charge, les résultats arrivent dans un instant…", byCountry: "Par pays et championnat", byCountryLead: "Choisissez un pays, puis un championnat et une saison.", allClubs: "Tous les clubs", allClubsLead: "La liste des clubs dont on connaît les effectifs, à filtrer par nom ou par pays.", browseClubs: "Voir les clubs", filterClubs: "Filtrer par nom", allCountries: "Tous les pays", clubsFound: "clubs", seasonsOf: "saisons", noClub: "Aucun club ne correspond.", about_club: "À propos", seasonsTitle: "Saisons",
     theme: "Thème", themeLight: "Clair", themeDark: "Sombre", themeAuto: "Auto", menu: "Menu", back: "Retour", showMore: "Voir plus", filterPh: "Filtrer", all: "Tous", title: "OpenFootballBase", home: "Accueil", coverage: "Couverture", about: "À propos", other: "English",
     skip: "Aller au contenu", loading: "Chargement des données… (la première visite télécharge le moteur de requêtes, quelques secondes ; ensuite c'est instantané)", errTitle: "Impossible de charger les données",
     heroKicker: "Football européen · depuis 2010", heroTitle: "La base de données ouverte du football",
@@ -12,7 +12,7 @@ export const T: Record<Lang, Record<string, string>> = {
     statClubs: "clubs", statPlayers: "joueurs", statSeasons: "saisons", statLeagues: "championnats",
     clubInfo: "Informations", nickname: "Surnom", city: "Ville", founded: "Fondé", stadium: "Stade", capacity: "places",
     league: "Championnat", division: "niveau", colors: "Couleurs", website: "Site officiel", map: "Voir sur la carte",
-    externalIds: "Voir aussi", worldClubs: "Autres clubs", noSquadsHere: "Pas encore d'effectifs détaillés pour ce club : seuls certains clubs et championnats sont couverts pour l'instant.",
+    externalIds: "Voir aussi", worldClubs: "Autres clubs", noSquadsHere: "Nous ne couvrons pas encore ce club, mais ça arrive : de nouveaux clubs et championnats sont ajoutés régulièrement.",
     clubNotFound: "Club introuvable.", categoryLabel: "Catégorie", wikiLocalOnly: "page dans la langue du club",
     noResult: "Aucun résultat.", season: "Saison", seasons: "saisons", browseTitle: "Les championnats", seasonOf: "Saison",
     viewMode: "Affichage", viewList: "Liste", viewCards: "Cartes", ageYears: "ans",
@@ -23,7 +23,7 @@ export const T: Record<Lang, Record<string, string>> = {
     loan_in: "Prêt", loan_out: "Prêté", arrived_mid: "Arrivé", left_mid: "Parti", fromClub: "depuis", toClub: "vers", winter: "hiver",
    
     noSquad: "Aucun effectif n'a pu être établi pour ce club cette saison.",
-    gap: "Trou connu", gapReason: "Motif", unresolved: "Sans effectif, non validé",
+    gap: "Trou connu", gapReason: "Motif", unresolved: "Sans effectif",
     history: "Saisons du club", leaguesPlayed: "Championnats",
     wikiClub: "Page Wikipédia du club", wikiPlayer: "Page Wikipédia", wikiIn: "en", wikiFallback: "pas de version française : page en anglais",
     seeSquad: "Voir l'effectif",
@@ -33,7 +33,7 @@ export const T: Record<Lang, Record<string, string>> = {
     noCareer: "Pas de carrière détaillée disponible pour ce joueur.",
     born: "Né le", bornIn: "Né en", yearsOld: "ans",
     covTitle: "Couverture des données", covLead: "Pour chaque saison : combien de clubs ont un effectif établi, et lesquels n'en ont pas.",
-    covSquads: "Effectifs", covGaps: "Trous validés", covOpen: "Sans effectif", covMissing: "Manquants", partialComp: "Championnat partiel : seuls les clubs vus en coupe d'Europe (Ligue des champions) y figurent pour l'instant.", covByCountry: "Détail par pays", covComplete: "Complet", covDetail: "Détail", covHint: "Cliquez sur une saison pour voir, pays par pays, les clubs qui n'ont pas encore d'effectif.",
+    covSquads: "Effectifs", covGaps: "Trous validés", covOpen: "Sans effectif", covMissing: "Manquants", covByCountry: "Détail par pays", covComplete: "Complet", covDetail: "Détail", covHint: "Cliquez sur une saison pour voir, pays par pays, les clubs qui n'ont pas encore d'effectif.",
     aboutTitle: "À propos", beta: "Bêta", betaNote: "Site en bêta : les données sont en cours de vérification et peuvent contenir des erreurs.",
     about1: "OpenFootballBase recense, saison par saison depuis 2010/11, l'effectif des clubs de nombreux championnats de première division et des participants à la Ligue des champions.",
     about2h: "Sources et licences",
@@ -47,7 +47,7 @@ export const T: Record<Lang, Record<string, string>> = {
     version: "Données générées le", openBy: "Code et données ouverts",
   },
   en: {
-    countries: "Countries", competitions: "Competitions", allComps: "Competitions", allCompsLead: "The leagues we cover, country by country.", featuredComps: "Featured competitions", featuredClubs: "Featured clubs", clubsN: "clubs", playersN: "players", compsN: "competitions", compsN1: "competition", compN1: "competition", clubN1: "club", latestSeason: "Latest season", allSeasons: "Seasons", topClubs: "Best-known clubs", clubsOfSeason: "Clubs of the season", countryNotFound: "Country not found.", compNotFound: "Competition not found.", divisionN: "Division", searchHint: "A club, a player, a country…", exploreBy: "Browse by country", searchWaiting: "The search engine is loading, results will appear in a moment…", byCountry: "By country and league", byCountryLead: "Pick a country, then a league and a season.", allClubs: "All clubs", allClubsLead: "Every club whose squads we know, filterable by name or country.", browseClubs: "Browse clubs", filterClubs: "Filter by name", allCountries: "All countries", clubsFound: "clubs", seasonsOf: "seasons", noClub: "No club matches.", about_club: "About", seasonsTitle: "Seasons",
+    countries: "Countries", competitions: "Competitions", allComps: "Competitions", allCompsLead: "The leagues we cover, country by country.", featuredComps: "Featured competitions", featuredClubs: "Featured clubs", clubsN: "clubs", playersN: "players", compsN: "competitions", compsN1: "competition", cupsN: "competitions", cupsN1: "competition", compN1: "competition", clubN1: "club", latestSeason: "Latest season", allSeasons: "Seasons", topClubs: "Best-known clubs", clubsOfSeason: "Clubs of the season", countryNotFound: "Country not found.", compNotFound: "Competition not found.", divisionN: "Division", searchHint: "A club, a player, a country…", exploreBy: "Browse by country", searchWaiting: "The search engine is loading, results will appear in a moment…", byCountry: "By country and league", byCountryLead: "Pick a country, then a league and a season.", allClubs: "All clubs", allClubsLead: "Every club whose squads we know, filterable by name or country.", browseClubs: "Browse clubs", filterClubs: "Filter by name", allCountries: "All countries", clubsFound: "clubs", seasonsOf: "seasons", noClub: "No club matches.", about_club: "About", seasonsTitle: "Seasons",
     theme: "Theme", themeLight: "Light", themeDark: "Dark", themeAuto: "Auto", menu: "Menu", back: "Back", showMore: "Show more", filterPh: "Filter", all: "All", title: "OpenFootballBase", home: "Home", coverage: "Coverage", about: "About", other: "Français",
     skip: "Skip to content", loading: "Loading data… (the first visit downloads the query engine, a few seconds; after that it is instant)", errTitle: "Could not load the data",
     heroKicker: "European football · since 2010", heroTitle: "The open football database",
@@ -56,7 +56,7 @@ export const T: Record<Lang, Record<string, string>> = {
     statClubs: "clubs", statPlayers: "players", statSeasons: "seasons", statLeagues: "leagues",
     clubInfo: "Information", nickname: "Nickname", city: "City", founded: "Founded", stadium: "Stadium", capacity: "seats",
     league: "League", division: "level", colors: "Colours", website: "Official website", map: "View on map",
-    externalIds: "See also", worldClubs: "Other clubs", noSquadsHere: "No detailed squads for this club yet: only some clubs and leagues are covered so far.",
+    externalIds: "See also", worldClubs: "Other clubs", noSquadsHere: "We don't cover this club yet, but it's coming: new clubs and leagues are added regularly.",
     clubNotFound: "Club not found.", categoryLabel: "Category", wikiLocalOnly: "page in the club's own language",
     noResult: "No results.", season: "Season", seasons: "seasons", browseTitle: "The leagues", seasonOf: "Season",
     viewMode: "View", viewList: "List", viewCards: "Cards", ageYears: "y/o",
@@ -67,7 +67,7 @@ export const T: Record<Lang, Record<string, string>> = {
     loan_in: "On loan", loan_out: "Loaned out", arrived_mid: "Joined", left_mid: "Left", fromClub: "from", toClub: "to", winter: "winter",
    
     noSquad: "No squad could be established for this club this season.",
-    gap: "Known gap", gapReason: "Reason", unresolved: "No squad, not yet reviewed",
+    gap: "Known gap", gapReason: "Reason", unresolved: "No squad",
     history: "Club seasons", leaguesPlayed: "Leagues",
     wikiClub: "Club's Wikipedia page", wikiPlayer: "Wikipedia page", wikiIn: "in", wikiFallback: "no version in your language: English page",
     seeSquad: "See the squad",
@@ -77,7 +77,7 @@ export const T: Record<Lang, Record<string, string>> = {
     noCareer: "No detailed career available for this player.",
     born: "Born", bornIn: "Born in", yearsOld: "years old",
     covTitle: "Data coverage", covLead: "For each season: how many clubs have an established squad, and which ones do not.",
-    covSquads: "Squads", covGaps: "Reviewed gaps", covOpen: "No squad", covMissing: "Missing", partialComp: "Partial league: only clubs seen in European competition (Champions League) are listed for now.", covByCountry: "Breakdown by country", covComplete: "Complete", covDetail: "Details", covHint: "Click a season to see, country by country, which clubs still have no squad.",
+    covSquads: "Squads", covGaps: "Reviewed gaps", covOpen: "No squad", covMissing: "Missing", covByCountry: "Breakdown by country", covComplete: "Complete", covDetail: "Details", covHint: "Click a season to see, country by country, which clubs still have no squad.",
     aboutTitle: "About", beta: "Beta", betaNote: "Beta site: the data is still being checked and may contain errors.",
     about1: "OpenFootballBase lists, season by season since 2010/11, the squads of clubs from many top-flight leagues and of Champions League participants.",
     about2h: "Sources and licences",

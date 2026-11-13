@@ -11,6 +11,7 @@ déduise le `stint` (D6) : prêt, parti, réserve… Rien n'est deviné ici.
 from __future__ import annotations
 
 import re
+import dataclasses
 from dataclasses import dataclass
 
 from openfootball.parse.positions import normalize_position
@@ -34,7 +35,7 @@ _COMMENT = re.compile(r"<!--.*?-->", re.S)
 _HEADING = re.compile(r"^(={2,6})\s*=?\s*(.*?)\s*=?\s*\1\s*$", re.M)
 _LINK = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]*))?\]\]")
 _PLAYERS_START = re.compile(
-    r"^(players?|squads?|first[- ]team|current squad|senior squad|playing (staff|squad)|team)\b", re.I)
+    r"^(players?(?!\s+(?:movement|transfers?))|squads?|rosters?|first[- ]team|current squad|senior squad|playing (staff|squad)|team)\b", re.I)
 _REGION_END = re.compile(
     r"^(transfers?|competitions?|pre-?season|friendlies|statistics|club|kits?|"
     r"season review|friendly matches|match(es)?|results|notes|references|"
@@ -268,12 +269,16 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
     for tbl in re.findall(r"\{\|.*?\n\|\}", block, re.S):
         cols: dict[str, int] = {}
         group: str | None = None            # « Goalkeepers », « Defenders »… (ligne de groupe)
+        sec = section                       # « Away on loan », « Reserves » : ligne de groupe qui change la section des suivants
         for row in re.split(r"\n\|-[^\n]*", tbl):
             cells = _row_cells(row)
             if not cells:
                 continue
             if len(cells) == 1:
-                group = normalize_position(_cell_text(cells[0][1])) or group
+                title = _cell_text(cells[0][1])
+                group = normalize_position(title) or group
+                if title and not normalize_position(title) and (_is_loaned_out(title) or is_excluded_section(title)):
+                    sec = f"{section} – {title}"
                 continue
             if all(c[0] == "!" for c in cells):
                 cols = _header_columns(cells) or cols
@@ -294,10 +299,13 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
             if not normalize_position(pos_raw) and group:
                 pos_raw = group
             num = _int(cells[cols["num"]][1]) if "num" in cols and len(cells) > cols["num"] else None
+            # « on loan from X » écrit dans la cellule « Signed from » : joueur prêté REÇU
+            note = next((re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", c[1]).strip() for c in cells
+                         if re.search(r"on loan from", c[1], re.I)), None)
             out.append(SquadEntry(
                 name=name, link=link, shirt_number=num, position_raw=pos_raw,
                 position=normalize_position(pos_raw), nationality=nat,
-                section=section, note=None, fmt="table"))
+                section=sec, note=note, fmt="table"))
     return out
 
 
@@ -345,16 +353,31 @@ def _template_entries_anywhere(text: str) -> list[SquadEntry]:
     return out
 
 
+# Section d'un joueur PRÊTÉ AILLEURS (« On loan », « Out on loan », « Prêtés », « Loans out »), pas d'un prêté reçu (« Loans in »).
+_LOANED_OUT_SECTION = re.compile(r"loan|prêt|prest|cedid|cesi[oó]n|préstamo", re.I)
+_LOANED_IN_SECTION = re.compile(r"\bin\b.{0,12}loan|loan(?:ed)?[- ]in\b|loans? in\b|prestito in|prêtés? (?:au club|à nous)", re.I)
+
+
+def _is_loaned_out(section: str | None) -> bool:
+    return bool(section and _LOANED_OUT_SECTION.search(section) and not _LOANED_IN_SECTION.search(section))
+
+
 def _dedupe(entries: list[SquadEntry]) -> list[SquadEntry]:
     """Un joueur cité dans « Squad » puis « Squad statistics » ne compte qu'une fois
-    (première occurrence : la liste d'effectif précède les tableaux de stats)."""
-    seen: set[str] = set()
-    out = []
+    (première occurrence : la liste d'effectif précède les tableaux de stats).
+
+    Exception : un joueur du tableau principal qu'une section « On loan » cite aussi est un joueur PRÊTÉ AILLEURS
+    (Shakhtar : tous les joueurs dans « Squad », puis les prêtés une seconde fois) : la section de prêt l'emporte."""
+    index: dict[str, int] = {}
+    out: list[SquadEntry] = []
     for e in entries:
         key = e.link or e.name
-        if key in seen:
+        if key in index:
+            first = out[index[key]]
+            if _is_loaned_out(e.section) and not _is_loaned_out(first.section):
+                out[index[key]] = dataclasses.replace(first, section=e.section)
             continue
-        seen.add(key)
+        index[key] = len(out)
         out.append(e)
     return out
 

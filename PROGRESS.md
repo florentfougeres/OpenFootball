@@ -1,41 +1,579 @@
 # Suivi de l'avancement
 
-_Généré le 2026-11-12 par `openfootball progress` — ne pas éditer à la main._
+_Généré le 2026-11-13 par `openfootball progress` — ne pas éditer à la main._
 
 ## Effectifs par saison et par championnat
 
 Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un trou ; `✓` = complet.
 
-| Saison | État | BEL-PL | DEU-BL | ENG-PL | ESP-LL | FRA-L1 | ITA-SA | NLD-ED | PRT-PL | TUR-SL | UEFA-CL |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026/27 | open | 18/18 ✓ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ | 18/18 ✓ | 18/18 ✓ | 18/18 ✓ | — |
-| 2025/26 | backfill | 12/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ | 10/18 ⚠ | 5/18 ⚠ | 3/18 ⚠ | 5/7 ⚠ |
-| 2024/25 | backfill | 13/16 ⚠ | 16/18 ⚠ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ | 9/18 ⚠ | 7/18 ⚠ | 17/19 ⚠ | — |
-| 2023/24 | backfill | 16/16 ✓ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 20/20 ✓ | 18/18 ✓ | 17/18 ⚠ | 20/20 ✓ | — |
-| 2022/23 | backfill | 18/18 ✓ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 18/18 ✓ | 19/19 ✓ | — |
-| 2021/22 | backfill | 18/18 ✓ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 18/18 ✓ | 11/20 ⚠ | — |
-| 2020/21 | backfill | 18/18 ✓ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 18/18 ✓ | 12/18 ⚠ | 21/21 ✓ | — |
-| 2019/20 | backfill | 10/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 14/18 ⚠ | 5/18 ⚠ | 18/18 ✓ | — |
-| 2018/19 | backfill | 10/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 9/18 ⚠ | 6/18 ⚠ | 6/18 ⚠ | — |
-| 2017/18 | backfill | 7/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 11/18 ⚠ | 6/18 ⚠ | 5/18 ⚠ | — |
-| 2016/17 | backfill | 8/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 14/18 ⚠ | 4/18 ⚠ | 6/18 ⚠ | — |
-| 2015/16 | backfill | 7/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 14/18 ⚠ | 4/18 ⚠ | 5/18 ⚠ | — |
-| 2014/15 | backfill | 8/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 20/20 ✓ | 11/18 ⚠ | 6/18 ⚠ | 5/18 ⚠ | — |
-| 2013/14 | backfill | 6/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 19/20 ⚠ | 20/20 ✓ | 20/20 ✓ | 11/18 ⚠ | 5/16 ⚠ | 5/18 ⚠ | — |
-| 2012/13 | backfill | 5/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 17/20 ⚠ | 20/20 ✓ | 20/20 ✓ | 8/18 ⚠ | 6/16 ⚠ | 6/18 ⚠ | — |
-| 2011/12 | backfill | 7/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 18/20 ⚠ | 20/20 ✓ | 20/20 ✓ | 7/18 ⚠ | 4/16 ⚠ | 5/18 ⚠ | — |
-| 2010/11 | backfill | 6/16 ⚠ | 18/18 ✓ | 20/20 ✓ | 16/20 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/18 ⚠ | 4/16 ⚠ | 8/18 ⚠ | — |
+| Saison | État | ALB-L1 | ARM-L1 | AUT-L1 | AZE-L1 | BEL-PL | BGR-L1 | BLR-L1 | CHE-L1 | CYP-L1 | CZE-L1 | DEU-B2 | DEU-BL | DNK-L1 | ENG-CH | ENG-PL | ESP-LL | ESP-SD | FIN-L1 | FRA-L1 | FRA-L2 | GRC-L1 | HRV-L1 | HUN-L1 | IRL-L1 | ISR-L1 | ITA-SA | ITA-SB | KAZ-L1 | LUX-L1 | LVA-L1 | MDA-L1 | MKD-L1 | NLD-ED | NOR-L1 | POL-L1 | PRT-L1 | PRT-PL | ROU-L1 | RUS-L1 | SAU-PL | SCO-L1 | SRB-L1 | SVK-L1 | SVN-L1 | SWE-L1 | TUR-SL | UEFA-CL | UEFA-EL | UKR-L1 | USA-MLS |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026/27 | open | 1/10 ⚠ | 1/12 ⚠ | 6/12 ⚠ | 4/12 ⚠ | 18/18 ✓ | 3/14 ⚠ | 1/16 ⚠ | 9/12 ⚠ | 5/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | — | 18/18 ✓ | 18/18 ✓ | 7/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/16 ⚠ | — | 1/10 ⚠ | 1/8 ⚠ | 1/10 ⚠ | 18/18 ✓ | 8/16 ⚠ | 4/18 ⚠ | 1/1 ✓ | 18/18 ✓ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 2/14 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 18/18 ✓ | — | — | 6/17 ⚠ | 30/30 ✓ |
+| 2025/26 | backfill | 0/10 ⚠ | 1/10 ⚠ | 5/12 ⚠ | 4/12 ⚠ | 12/16 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 4/12 ⚠ | 2/14 ⚠ | 2/16 ⚠ | 7/18 ⚠ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 5/22 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 5/14 ⚠ | 2/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 10/18 ⚠ | 6/16 ⚠ | 2/18 ⚠ | — | 5/18 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 3/18 ⚠ | — | — | 3/16 ⚠ | 29/30 ⚠ |
+| 2024/25 | backfill | 0/10 ⚠ | 1/11 ⚠ | 6/12 ⚠ | 3/10 ⚠ | 13/16 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 3/12 ⚠ | 1/14 ⚠ | 1/16 ⚠ | 5/18 ⚠ | 16/18 ⚠ | 3/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 15/22 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/13 ⚠ | 0/16 ⚠ | 1/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 9/18 ⚠ | 8/16 ⚠ | 2/18 ⚠ | — | 7/18 ⚠ | 2/16 ⚠ | 7/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 1/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 17/19 ⚠ | — | — | 4/16 ⚠ | 26/29 ⚠ |
+| 2023/24 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 16/16 ✓ | 3/16 ⚠ | 0/15 ⚠ | 7/12 ⚠ | 3/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 18/18 ✓ | 20/20 ✓ | 5/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 3/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/16 ⚠ | 3/18 ⚠ | — | 17/18 ⚠ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 2/12 ⚠ | 3/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 1/16 ⚠ | 20/20 ✓ | — | — | 4/16 ⚠ | 29/29 ✓ |
+| 2022/23 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 18/18 ✓ | 3/16 ⚠ | 0/16 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 20/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 2/14 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/1 ✓ | 0/12 ⚠ | 18/18 ✓ | 7/16 ⚠ | 4/18 ⚠ | — | 18/18 ✓ | 2/16 ⚠ | 6/16 ⚠ | 16/16 ✓ | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 19/19 ✓ | — | — | 2/16 ⚠ | 27/28 ⚠ |
+| 2021/22 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 0/16 ⚠ | 8/10 ⚠ | 2/12 ⚠ | 4/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/14 ⚠ | 0/16 ⚠ | 0/9 ⚠ | 1/8 ⚠ | 0/12 ⚠ | 18/18 ✓ | 7/15 ⚠ | 3/18 ⚠ | — | 18/18 ✓ | 2/16 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 11/20 ⚠ | — | — | 2/16 ⚠ | 24/27 ⚠ |
+| 2020/21 | backfill | 0/10 ⚠ | 1/10 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 1/16 ⚠ | 8/10 ⚠ | 3/14 ⚠ | 4/18 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 6/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/12 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 1/10 ⚠ | 0/12 ⚠ | 18/18 ✓ | 5/15 ⚠ | 4/16 ⚠ | — | 12/18 ⚠ | 2/16 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/20 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 21/21 ✓ | — | — | 5/14 ⚠ | 23/26 ⚠ |
+| 2019/20 | backfill | 0/10 ⚠ | 1/10 ⚠ | 5/12 ⚠ | 4/8 ⚠ | 10/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 8/10 ⚠ | 1/12 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 0/12 ⚠ | 20/20 ✓ | 17/20 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/9 ⚠ | 1/8 ⚠ | 0/10 ⚠ | 14/18 ⚠ | 7/15 ⚠ | 2/16 ⚠ | — | 5/18 ⚠ | 2/14 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 18/18 ✓ | — | — | 6/12 ⚠ | 22/24 ⚠ |
+| 2018/19 | backfill | 0/10 ⚠ | 1/9 ⚠ | 3/12 ⚠ | 4/8 ⚠ | 10/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 7/10 ⚠ | 1/12 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 14/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 15/20 ⚠ | 5/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/10 ⚠ | 2/14 ⚠ | 20/20 ✓ | 19/19 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/8 ⚠ | 0/10 ⚠ | 9/18 ⚠ | 6/15 ⚠ | 3/16 ⚠ | — | 6/18 ⚠ | 1/14 ⚠ | 9/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 7/12 ⚠ | 22/23 ⚠ |
+| 2017/18 | backfill | 1/10 ⚠ | 0/6 ⚠ | 4/10 ⚠ | 3/8 ⚠ | 7/16 ⚠ | 3/14 ⚠ | 0/16 ⚠ | 8/10 ⚠ | 4/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 21/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 18/20 ⚠ | 4/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 22/22 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/10 ⚠ | 1/10 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 3/16 ⚠ | — | 6/18 ⚠ | 1/14 ⚠ | 9/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 7/12 ⚠ | 21/22 ⚠ |
+| 2016/17 | backfill | 0/10 ⚠ | 0/6 ⚠ | 5/10 ⚠ | 3/8 ⚠ | 8/16 ⚠ | 3/14 ⚠ | 1/16 ⚠ | 8/11 ⚠ | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/14 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 19/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 18/20 ⚠ | 4/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 3/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/11 ⚠ | 0/10 ⚠ | 14/18 ⚠ | 8/16 ⚠ | 2/16 ⚠ | — | 4/18 ⚠ | 1/14 ⚠ | 8/16 ⚠ | — | 2/12 ⚠ | 1/16 ⚠ | 1/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 8/12 ⚠ | 19/20 ⚠ |
+| 2015/16 | backfill | 1/10 ⚠ | 0/8 ⚠ | 5/10 ⚠ | 3/10 ⚠ | 7/16 ⚠ | 2/10 ⚠ | 0/14 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 20/20 ✓ | 16/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | 5/16 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 0/8 ⚠ | 4/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/8 ⚠ | 1/10 ⚠ | 1/10 ⚠ | 14/18 ⚠ | 7/16 ⚠ | 2/16 ⚠ | — | 4/18 ⚠ | 1/14 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 2/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 5/14 ⚠ | 18/20 ⚠ |
+| 2014/15 | backfill | 1/10 ⚠ | 0/8 ⚠ | 5/10 ⚠ | 3/10 ⚠ | 8/16 ⚠ | 3/12 ⚠ | 1/12 ⚠ | 6/10 ⚠ | 2/12 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 20/20 ✓ | 13/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 15/20 ⚠ | 3/18 ⚠ | 3/10 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 4/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/11 ⚠ | 1/10 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 2/16 ⚠ | — | 6/18 ⚠ | 2/18 ⚠ | 9/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 5/14 ⚠ | 17/19 ⚠ |
+| 2013/14 | backfill | 1/12 ⚠ | 0/8 ⚠ | 4/10 ⚠ | 3/10 ⚠ | 6/16 ⚠ | 3/14 ⚠ | 0/12 ⚠ | 7/10 ⚠ | 3/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 19/20 ⚠ | 13/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 17/20 ⚠ | 4/18 ⚠ | 3/10 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 22/22 ✓ | 3/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 11/18 ⚠ | 7/16 ⚠ | 1/16 ⚠ | — | 5/16 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 7/16 ⚠ | 16/19 ⚠ |
+| 2012/13 | backfill | 1/14 ⚠ | 0/8 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 5/16 ⚠ | 3/16 ⚠ | 1/11 ⚠ | 8/10 ⚠ | 3/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 24/24 ✓ | 20/20 ✓ | 17/20 ⚠ | 15/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 5/16 ⚠ | 3/12 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/14 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 8/18 ⚠ | 5/16 ⚠ | 1/16 ⚠ | — | 6/16 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 1/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 6/18 ⚠ | — | — | 5/16 ⚠ | 16/19 ⚠ |
+| 2011/12 | backfill | 1/14 ⚠ | 0/8 ⚠ | 4/10 ⚠ | 3/12 ⚠ | 7/16 ⚠ | 3/16 ⚠ | 1/12 ⚠ | 7/10 ⚠ | 2/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 23/24 ⚠ | 20/20 ✓ | 18/20 ⚠ | 9/22 ⚠ | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | 6/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 2/10 ⚠ | 3/17 ⚠ | 20/20 ✓ | 21/22 ⚠ | 3/12 ⚠ | 0/14 ⚠ | 0/9 ⚠ | 1/12 ⚠ | 1/12 ⚠ | 7/18 ⚠ | 3/16 ⚠ | 2/16 ⚠ | — | 4/16 ⚠ | 3/18 ⚠ | 10/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 5/18 ⚠ | — | — | 6/16 ⚠ | 16/18 ⚠ |
+| 2010/11 | backfill | 1/12 ⚠ | 0/8 ⚠ | 2/10 ⚠ | 3/12 ⚠ | 6/16 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 7/11 ⚠ | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 22/24 ⚠ | 20/20 ✓ | 16/20 ⚠ | 8/22 ⚠ | 0/14 ⚠ | 20/20 ✓ | 8/20 ⚠ | 5/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 1/10 ⚠ | 0/16 ⚠ | 20/20 ✓ | 21/22 ⚠ | 1/12 ⚠ | 0/14 ⚠ | 0/10 ⚠ | 1/14 ⚠ | 0/12 ⚠ | 6/18 ⚠ | 4/16 ⚠ | 1/16 ⚠ | — | 4/16 ⚠ | 4/18 ⚠ | 7/16 ⚠ | — | 2/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 2/16 ⚠ | 8/18 ⚠ | — | — | 5/16 ⚠ | 13/16 ⚠ |
 
-**Total : 2375 / 2864 effectifs (82.9 %).**
+**Total : 5754 / 11919 effectifs (48.3 %).**
 
 ## Manques : club-saisons sans effectif
 
 | Saison | Championnat | Club | Statut du trou |
 |---|---|---|---|
+| 2026/27 | ALB-L1 | AF Elbasani | **non validé** |
+| 2026/27 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2026/27 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2026/27 | ALB-L1 | KF Egnatia | **non validé** |
+| 2026/27 | ALB-L1 | KF Laçi | **non validé** |
+| 2026/27 | ALB-L1 | KF Teuta | **non validé** |
+| 2026/27 | ALB-L1 | KF Tirana | **non validé** |
+| 2026/27 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2026/27 | ALB-L1 | Vora FK | **non validé** |
+| 2026/27 | ARM-L1 | FC Alashkert | **non validé** |
+| 2026/27 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2026/27 | ARM-L1 | FC BKMA Yerevan | **non validé** |
+| 2026/27 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2026/27 | ARM-L1 | FC Noah | **non validé** |
+| 2026/27 | ARM-L1 | FC Pyunik | **non validé** |
+| 2026/27 | ARM-L1 | FC Sardarapat | **non validé** |
+| 2026/27 | ARM-L1 | FC Syunik | **non validé** |
+| 2026/27 | ARM-L1 | FC Urartu | **non validé** |
+| 2026/27 | ARM-L1 | FC Van | **non validé** |
+| 2026/27 | ARM-L1 | Shirak SC | **non validé** |
+| 2026/27 | AUT-L1 | Grazer AK | **non validé** |
+| 2026/27 | AUT-L1 | SC Austria Lustenau | **non validé** |
+| 2026/27 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2026/27 | AUT-L1 | SV Ried | **non validé** |
+| 2026/27 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2026/27 | AUT-L1 | WSG Tirol | **non validé** |
+| 2026/27 | AZE-L1 | Araz-Naxçıvan PFK | **non validé** |
+| 2026/27 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2026/27 | AZE-L1 | Shafa Baku FK | **non validé** |
+| 2026/27 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2026/27 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2026/27 | AZE-L1 | Zira FK | **non validé** |
+| 2026/27 | AZE-L1 | İmişli FK | **non validé** |
+| 2026/27 | AZE-L1 | Şamaxı FK | **non validé** |
+| 2026/27 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2026/27 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2026/27 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2026/27 | BGR-L1 | FC Dunav Ruse | **non validé** |
+| 2026/27 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2026/27 | BGR-L1 | FC Spartak Varna | **non validé** |
+| 2026/27 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2026/27 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2026/27 | BGR-L1 | PFC Septemvri Sofia | **non validé** |
+| 2026/27 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2026/27 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2026/27 | BLR-L1 | FC Arsenal Dzerzhinsk | **non validé** |
+| 2026/27 | BLR-L1 | FC Baranovichi | **non validé** |
+| 2026/27 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2026/27 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2026/27 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2026/27 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2026/27 | BLR-L1 | FC Gomel | **non validé** |
+| 2026/27 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2026/27 | BLR-L1 | FC Maxline Vitebsk | **non validé** |
+| 2026/27 | BLR-L1 | FC Minsk | **non validé** |
+| 2026/27 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2026/27 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2026/27 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2026/27 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2026/27 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2026/27 | CHE-L1 | FC Luzern | **non validé** |
+| 2026/27 | CHE-L1 | FC Vaduz | **non validé** |
+| 2026/27 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2026/27 | CYP-L1 | AEL Limassol | **non validé** |
+| 2026/27 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2026/27 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2026/27 | CYP-L1 | Karmiotissa FC | **non validé** |
+| 2026/27 | CYP-L1 | Krasava ENY Ypsonas FC | **non validé** |
+| 2026/27 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2026/27 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2026/27 | CYP-L1 | Omonia Aradippou | **non validé** |
+| 2026/27 | CYP-L1 | PAC Omonia 29M | **non validé** |
+| 2026/27 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2026/27 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2026/27 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2026/27 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2026/27 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2026/27 | CZE-L1 | FC Zlín | **non validé** |
+| 2026/27 | CZE-L1 | FK Jablonec | **non validé** |
+| 2026/27 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2026/27 | CZE-L1 | FK Pardubice | **non validé** |
+| 2026/27 | CZE-L1 | FK Teplice | **non validé** |
+| 2026/27 | CZE-L1 | SK Artis Brno | **non validé** |
+| 2026/27 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2026/27 | DNK-L1 | AC Horsens | **non validé** |
+| 2026/27 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2026/27 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2026/27 | DNK-L1 | Randers FC | **non validé** |
+| 2026/27 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2026/27 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2026/27 | DNK-L1 | Viborg FF | **non validé** |
+| 2026/27 | GRC-L1 | A.E. Kifisia F.C. | **non validé** |
+| 2026/27 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2026/27 | GRC-L1 | Iraklis F.C. (Thessaloniki) | **non validé** |
+| 2026/27 | GRC-L1 | Kalamata F.C. | **non validé** |
+| 2026/27 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2026/27 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2026/27 | GRC-L1 | Volos F.C. | **non validé** |
+| 2026/27 | HRV-L1 | HNK Gorica | **non validé** |
+| 2026/27 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2026/27 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2026/27 | HRV-L1 | NK Osijek | **non validé** |
+| 2026/27 | HRV-L1 | NK Rudeš | **non validé** |
+| 2026/27 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2026/27 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2026/27 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2026/27 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2026/27 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2026/27 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2026/27 | HUN-L1 | Nyíregyháza Spartacus FC | **non validé** |
+| 2026/27 | HUN-L1 | Paksi FC | **non validé** |
+| 2026/27 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2026/27 | HUN-L1 | Vasas SC | **non validé** |
+| 2026/27 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2026/27 | HUN-L1 | Újpest FC | **non validé** |
+| 2026/27 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2026/27 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2026/27 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2026/27 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2026/27 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2026/27 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2026/27 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2026/27 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Hapoel Jerusalem F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Hapoel Petah Tikva F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Hapoel Ramat Gan Givatayim F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Ironi Tiberias F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2026/27 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2026/27 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2026/27 | KAZ-L1 | FC Altai | **non validé** |
+| 2026/27 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2026/27 | KAZ-L1 | FC Caspiy | **non validé** |
+| 2026/27 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2026/27 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2026/27 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2026/27 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2026/27 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2026/27 | KAZ-L1 | FC Tobol | **non validé** |
+| 2026/27 | KAZ-L1 | FC Ulytau | **non validé** |
+| 2026/27 | KAZ-L1 | FC Yelimay | **non validé** |
+| 2026/27 | KAZ-L1 | FC Zhenis | **non validé** |
+| 2026/27 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2026/27 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2026/27 | LVA-L1 | FK Auda | **non validé** |
+| 2026/27 | LVA-L1 | FK Grobiņa | **non validé** |
+| 2026/27 | LVA-L1 | FK Liepāja | **non validé** |
+| 2026/27 | LVA-L1 | FK Tukums 2000 | **non validé** |
+| 2026/27 | LVA-L1 | FS Jelgava | **non validé** |
+| 2026/27 | LVA-L1 | Ogre United | **non validé** |
+| 2026/27 | LVA-L1 | Riga FC | **non validé** |
+| 2026/27 | LVA-L1 | SK Super Nova | **non validé** |
+| 2026/27 | MDA-L1 | FC Bălți | **non validé** |
+| 2026/27 | MDA-L1 | FC Dacia Buiucani | **non validé** |
+| 2026/27 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2026/27 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2026/27 | MDA-L1 | FC Politehnica UTM Chișinău | **non validé** |
+| 2026/27 | MDA-L1 | FC Real Sireți | **non validé** |
+| 2026/27 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2026/27 | MKD-L1 | FC Struga | **non validé** |
+| 2026/27 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2026/27 | MKD-L1 | FK Sileks | **non validé** |
+| 2026/27 | MKD-L1 | FK Skopje | **non validé** |
+| 2026/27 | MKD-L1 | GFK Tikvesh | **non validé** |
+| 2026/27 | MKD-L1 | KF Arsimi | **non validé** |
+| 2026/27 | MKD-L1 | KF Bashkimi 1947 | **non validé** |
+| 2026/27 | MKD-L1 | KF Shkëndija | **non validé** |
+| 2026/27 | MKD-L1 | KF Shkëndija Haraçinë | **non validé** |
+| 2026/27 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2026/27 | NOR-L1 | Fredrikstad FK | **non validé** |
+| 2026/27 | NOR-L1 | Hamarkameratene | **non validé** |
+| 2026/27 | NOR-L1 | IK Start | **non validé** |
+| 2026/27 | NOR-L1 | KFUM-Kameratene Oslo | **non validé** |
+| 2026/27 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2026/27 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2026/27 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2026/27 | POL-L1 | GKS Katowice | **non validé** |
+| 2026/27 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2026/27 | POL-L1 | KS Cracovia | **non validé** |
+| 2026/27 | POL-L1 | Korona Kielce | **non validé** |
+| 2026/27 | POL-L1 | Motor Lublin | **non validé** |
+| 2026/27 | POL-L1 | Piast Gliwice | **non validé** |
+| 2026/27 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2026/27 | POL-L1 | Radomiak Radom | **non validé** |
+| 2026/27 | POL-L1 | Widzew Łódź | **non validé** |
+| 2026/27 | POL-L1 | Wieczysta Kraków | **non validé** |
+| 2026/27 | POL-L1 | Wisła Kraków | **non validé** |
+| 2026/27 | POL-L1 | Wisła Płock | **non validé** |
+| 2026/27 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2026/27 | POL-L1 | Śląsk Wrocław | **non validé** |
+| 2026/27 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2026/27 | ROU-L1 | FC Argeș Pitești | **non validé** |
+| 2026/27 | ROU-L1 | FC Botoșani | **non validé** |
+| 2026/27 | ROU-L1 | FC Corvinul Hunedoara | **non validé** |
+| 2026/27 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2026/27 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2026/27 | ROU-L1 | FC Rapid București | **non validé** |
+| 2026/27 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2026/27 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2026/27 | ROU-L1 | FC Voluntari | **non validé** |
+| 2026/27 | ROU-L1 | FCV Farul Constanța | **non validé** |
+| 2026/27 | ROU-L1 | FK Csíkszereda Miercurea Ciuc | **non validé** |
+| 2026/27 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2026/27 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2026/27 | RUS-L1 | FC Akron Tolyatti | **non validé** |
+| 2026/27 | RUS-L1 | FC Baltika Kaliningrad | **non validé** |
+| 2026/27 | RUS-L1 | FC Dynamo Makhachkala | **non validé** |
+| 2026/27 | RUS-L1 | FC Fakel Voronezh | **non validé** |
+| 2026/27 | RUS-L1 | FC Orenburg | **non validé** |
+| 2026/27 | RUS-L1 | FC Rodina Moscow | **non validé** |
+| 2026/27 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2026/27 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Falkirk F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2026/27 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2026/27 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2026/27 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2026/27 | SRB-L1 | FK IMT | **non validé** |
+| 2026/27 | SRB-L1 | FK Mačva Šabac | **non validé** |
+| 2026/27 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2026/27 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2026/27 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2026/27 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2026/27 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2026/27 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2026/27 | SRB-L1 | FK Zemun | **non validé** |
+| 2026/27 | SRB-L1 | FK Čukarički | **non validé** |
+| 2026/27 | SRB-L1 | FK Železničar Pančevo | **non validé** |
+| 2026/27 | SRB-L1 | OFK Beograd | **non validé** |
+| 2026/27 | SVK-L1 | AS Trenčín | **non validé** |
+| 2026/27 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2026/27 | SVK-L1 | FC Košice | **non validé** |
+| 2026/27 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2026/27 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2026/27 | SVK-L1 | KFC Komárno | **non validé** |
+| 2026/27 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2026/27 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2026/27 | SVK-L1 | MFK Skalica | **non validé** |
+| 2026/27 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2026/27 | SVN-L1 | FC Koper | **non validé** |
+| 2026/27 | SVN-L1 | NK Aluminij | **non validé** |
+| 2026/27 | SVN-L1 | NK Bravo | **non validé** |
+| 2026/27 | SVN-L1 | NK Brinje Grosuplje | **non validé** |
+| 2026/27 | SVN-L1 | NK Nafta 1903 | **non validé** |
+| 2026/27 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2026/27 | SVN-L1 | NK Radomlje | **non validé** |
+| 2026/27 | SVN-L1 | NŠ Mura | **non validé** |
+| 2026/27 | SWE-L1 | BK Häcken | **non validé** |
+| 2026/27 | SWE-L1 | Degerfors IF | **non validé** |
+| 2026/27 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2026/27 | SWE-L1 | GAIS | **non validé** |
+| 2026/27 | SWE-L1 | Halmstads BK | **non validé** |
+| 2026/27 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2026/27 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2026/27 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2026/27 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2026/27 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2026/27 | SWE-L1 | Kalmar FF | **non validé** |
+| 2026/27 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2026/27 | SWE-L1 | Västerås SK Fotboll | **non validé** |
+| 2026/27 | SWE-L1 | Örgryte IS | **non validé** |
+| 2026/27 | UKR-L1 | FC Epitsentr Kamianets-Podilskyi | **non validé** |
+| 2026/27 | UKR-L1 | FC Kharkiv | **non validé** |
+| 2026/27 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2026/27 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2026/27 | UKR-L1 | FC Kudrivka | **non validé** |
+| 2026/27 | UKR-L1 | FC LNZ Cherkasy | **non validé** |
+| 2026/27 | UKR-L1 | FC Livyi Bereh Kyiv | **non validé** |
+| 2026/27 | UKR-L1 | FC Obolon Kyiv | **non validé** |
+| 2026/27 | UKR-L1 | FC Polissya Zhytomyr | **non validé** |
+| 2026/27 | UKR-L1 | FSC Bukovyna Chernivtsi | **non validé** |
+| 2026/27 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2025/26 | ALB-L1 | AF Elbasani | **non validé** |
+| 2025/26 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2025/26 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2025/26 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2025/26 | ALB-L1 | KF Bylis | **non validé** |
+| 2025/26 | ALB-L1 | KF Egnatia | **non validé** |
+| 2025/26 | ALB-L1 | KF Teuta | **non validé** |
+| 2025/26 | ALB-L1 | KF Tirana | **non validé** |
+| 2025/26 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2025/26 | ALB-L1 | Vora FK | **non validé** |
+| 2025/26 | ARM-L1 | FC Alashkert | **non validé** |
+| 2025/26 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2025/26 | ARM-L1 | FC BKMA Yerevan | **non validé** |
+| 2025/26 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2025/26 | ARM-L1 | FC Noah | **non validé** |
+| 2025/26 | ARM-L1 | FC Pyunik | **non validé** |
+| 2025/26 | ARM-L1 | FC Urartu | **non validé** |
+| 2025/26 | ARM-L1 | FC Van | **non validé** |
+| 2025/26 | ARM-L1 | Shirak SC | **non validé** |
+| 2025/26 | AUT-L1 | FC Blau-Weiß Linz | **non validé** |
+| 2025/26 | AUT-L1 | Grazer AK | **non validé** |
+| 2025/26 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2025/26 | AUT-L1 | SV Ried | **non validé** |
+| 2025/26 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2025/26 | AUT-L1 | WSG Tirol | **non validé** |
+| 2025/26 | AUT-L1 | Wolfsberger AC | **non validé** |
+| 2025/26 | AZE-L1 | Araz-Naxçıvan PFK | **non validé** |
+| 2025/26 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2025/26 | AZE-L1 | Karvan İK | **non validé** |
+| 2025/26 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2025/26 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2025/26 | AZE-L1 | Zira FK | **non validé** |
+| 2025/26 | AZE-L1 | İmişli FK | **non validé** |
+| 2025/26 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2025/26 | BEL-PL | FCV Dender EH | **non validé** |
 | 2025/26 | BEL-PL | RAAL La Louvière | **non validé** |
 | 2025/26 | BEL-PL | Royal Charleroi SC | **non validé** |
 | 2025/26 | BEL-PL | SV Zulte Waregem | **non validé** |
+| 2025/26 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2025/26 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2025/26 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2025/26 | BGR-L1 | FC Dobrudzha Dobrich | **non validé** |
+| 2025/26 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2025/26 | BGR-L1 | FC Spartak Varna | **non validé** |
+| 2025/26 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2025/26 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2025/26 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2025/26 | BGR-L1 | PFC Montana | **non validé** |
+| 2025/26 | BGR-L1 | PFC Septemvri Sofia | **non validé** |
+| 2025/26 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2025/26 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2025/26 | BLR-L1 | FC Arsenal Dzerzhinsk | **non validé** |
+| 2025/26 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2025/26 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2025/26 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2025/26 | BLR-L1 | FC Gomel | **non validé** |
+| 2025/26 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2025/26 | BLR-L1 | FC Maxline Vitebsk | **non validé** |
+| 2025/26 | BLR-L1 | FC Minsk | **non validé** |
+| 2025/26 | BLR-L1 | FC Molodechno | **non validé** |
+| 2025/26 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2025/26 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2025/26 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2025/26 | BLR-L1 | FC Slutsk | **non validé** |
+| 2025/26 | BLR-L1 | FC Smorgon | **non validé** |
+| 2025/26 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2025/26 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2025/26 | CHE-L1 | BSC Young Boys | **non validé** |
+| 2025/26 | CHE-L1 | FC Lausanne-Sport | **non validé** |
+| 2025/26 | CHE-L1 | FC Lugano | **non validé** |
+| 2025/26 | CHE-L1 | FC Luzern | **non validé** |
+| 2025/26 | CHE-L1 | FC Sion | **non validé** |
+| 2025/26 | CHE-L1 | FC Winterthur | **non validé** |
+| 2025/26 | CHE-L1 | FC Zürich | **non validé** |
+| 2025/26 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2025/26 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2025/26 | CYP-L1 | AEL Limassol | **non validé** |
+| 2025/26 | CYP-L1 | APOEL FC | **non validé** |
+| 2025/26 | CYP-L1 | Akritas Chlorakas | **non validé** |
+| 2025/26 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2025/26 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2025/26 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2025/26 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2025/26 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2025/26 | CYP-L1 | Krasava ENY Ypsonas FC | **non validé** |
+| 2025/26 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2025/26 | CYP-L1 | Omonia Aradippou | **non validé** |
+| 2025/26 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2025/26 | CZE-L1 | AC Sparta Prague | **non validé** |
+| 2025/26 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2025/26 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2025/26 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2025/26 | CZE-L1 | FC Viktoria Plzeň | **non validé** |
+| 2025/26 | CZE-L1 | FC Zlín | **non validé** |
+| 2025/26 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2025/26 | CZE-L1 | FK Jablonec | **non validé** |
+| 2025/26 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2025/26 | CZE-L1 | FK Pardubice | **non validé** |
+| 2025/26 | CZE-L1 | FK Teplice | **non validé** |
+| 2025/26 | CZE-L1 | MFK Karviná | **non validé** |
+| 2025/26 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2025/26 | DEU-B2 | 1. FC Kaiserslautern | **non validé** |
+| 2025/26 | DEU-B2 | Arminia Bielefeld | **non validé** |
+| 2025/26 | DEU-B2 | Dynamo Dresden | **non validé** |
+| 2025/26 | DEU-B2 | Eintracht Braunschweig | **non validé** |
+| 2025/26 | DEU-B2 | Fortuna Düsseldorf | **non validé** |
+| 2025/26 | DEU-B2 | Hertha BSC | **non validé** |
+| 2025/26 | DEU-B2 | Holstein Kiel | **non validé** |
+| 2025/26 | DEU-B2 | Karlsruher SC | **non validé** |
+| 2025/26 | DEU-B2 | SC Paderborn 07 | **non validé** |
+| 2025/26 | DEU-B2 | SC Preußen Münster | **non validé** |
+| 2025/26 | DEU-B2 | SV Darmstadt 98 | **non validé** |
+| 2025/26 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2025/26 | DNK-L1 | FC Fredericia | **non validé** |
+| 2025/26 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2025/26 | DNK-L1 | Randers FC | **non validé** |
+| 2025/26 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2025/26 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2025/26 | DNK-L1 | Vejle Boldklub | **non validé** |
+| 2025/26 | DNK-L1 | Viborg FF | **non validé** |
+| 2025/26 | ESP-SD | AD Ceuta FC | **non validé** |
+| 2025/26 | ESP-SD | Albacete Balompié | **non validé** |
+| 2025/26 | ESP-SD | Burgos CF | **non validé** |
+| 2025/26 | ESP-SD | CD Leganés | **non validé** |
+| 2025/26 | ESP-SD | CD Mirandés | **non validé** |
+| 2025/26 | ESP-SD | Cultural y Deportiva Leonesa | **non validé** |
+| 2025/26 | ESP-SD | Cádiz CF | **non validé** |
+| 2025/26 | ESP-SD | Córdoba CF | **non validé** |
+| 2025/26 | ESP-SD | Deportivo de La Coruña | **non validé** |
+| 2025/26 | ESP-SD | Málaga CF | **non validé** |
+| 2025/26 | ESP-SD | Real Sociedad B | **non validé** |
+| 2025/26 | ESP-SD | Real Valladolid | **non validé** |
+| 2025/26 | ESP-SD | Real Zaragoza | **non validé** |
+| 2025/26 | ESP-SD | SD Eibar | **non validé** |
+| 2025/26 | ESP-SD | SD Huesca | **non validé** |
+| 2025/26 | ESP-SD | Sporting de Gijón | **non validé** |
+| 2025/26 | ESP-SD | UD Almería | **non validé** |
+| 2025/26 | FIN-L1 | AC Oulu | **non validé** |
+| 2025/26 | FIN-L1 | FC Haka | **non validé** |
+| 2025/26 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2025/26 | FIN-L1 | FF Jaro | **non validé** |
+| 2025/26 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2025/26 | FIN-L1 | IF Gnistan | **non validé** |
+| 2025/26 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2025/26 | FIN-L1 | Ilves (football) | **non validé** |
+| 2025/26 | FIN-L1 | Kotkan Työväen Palloilijat | **non validé** |
+| 2025/26 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2025/26 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2025/26 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2025/26 | FRA-L2 | AS Nancy | **non validé** |
+| 2025/26 | FRA-L2 | Clermont Foot | **non validé** |
+| 2025/26 | FRA-L2 | Grenoble Foot 38 | **non validé** |
+| 2025/26 | FRA-L2 | Red Star FC | **non validé** |
+| 2025/26 | FRA-L2 | Rodez AF | **non validé** |
+| 2025/26 | FRA-L2 | SC Bastia | **non validé** |
+| 2025/26 | FRA-L2 | Stade de Reims | **non validé** |
+| 2025/26 | FRA-L2 | Troyes AC | **non validé** |
+| 2025/26 | FRA-L2 | US Boulogne | **non validé** |
+| 2025/26 | FRA-L2 | USL Dunkerque | **non validé** |
+| 2025/26 | GRC-L1 | A.E. Kifisia F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2025/26 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Panserraikos F.C. | **non validé** |
+| 2025/26 | GRC-L1 | Volos F.C. | **non validé** |
+| 2025/26 | HRV-L1 | GNK Dinamo Zagreb | **non validé** |
+| 2025/26 | HRV-L1 | HNK Gorica | **non validé** |
+| 2025/26 | HRV-L1 | HNK Vukovar 1991 | **non validé** |
+| 2025/26 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2025/26 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2025/26 | HRV-L1 | NK Osijek | **non validé** |
+| 2025/26 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2025/26 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2025/26 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2025/26 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2025/26 | HUN-L1 | Kazincbarcikai SC | **non validé** |
+| 2025/26 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2025/26 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2025/26 | HUN-L1 | Nyíregyháza Spartacus FC | **non validé** |
+| 2025/26 | HUN-L1 | Paksi FC | **non validé** |
+| 2025/26 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2025/26 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2025/26 | HUN-L1 | Újpest FC | **non validé** |
+| 2025/26 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2025/26 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2025/26 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2025/26 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2025/26 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Hapoel Jerusalem F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Hapoel Petah Tikva F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Ironi Tiberias F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Maccabi Bnei Reineh F.C. | **non validé** |
+| 2025/26 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2025/26 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2025/26 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2025/26 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2025/26 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2025/26 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2025/26 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2025/26 | KAZ-L1 | FC Tobol | **non validé** |
+| 2025/26 | KAZ-L1 | FC Turan | **non validé** |
+| 2025/26 | KAZ-L1 | FC Ulytau | **non validé** |
+| 2025/26 | KAZ-L1 | FC Yelimay | **non validé** |
+| 2025/26 | KAZ-L1 | FC Zhenis | **non validé** |
+| 2025/26 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2025/26 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2025/26 | LUX-L1 | FC Atert Bissen | **non validé** |
+| 2025/26 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2025/26 | LUX-L1 | FC Jeunesse Canach | **non validé** |
+| 2025/26 | LUX-L1 | FC Mamer 32 | **non validé** |
+| 2025/26 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2025/26 | LUX-L1 | FC Rodange 91 | **non validé** |
+| 2025/26 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2025/26 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2025/26 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2025/26 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2025/26 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2025/26 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2025/26 | LUX-L1 | US Hostert | **non validé** |
+| 2025/26 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2025/26 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2025/26 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2025/26 | LVA-L1 | FK Auda | **non validé** |
+| 2025/26 | LVA-L1 | FK Grobiņa | **non validé** |
+| 2025/26 | LVA-L1 | FK Liepāja | **non validé** |
+| 2025/26 | LVA-L1 | FK Metta | **non validé** |
+| 2025/26 | LVA-L1 | FK RFS | **non validé** |
+| 2025/26 | LVA-L1 | FK Tukums 2000 | **non validé** |
+| 2025/26 | LVA-L1 | FS Jelgava | **non validé** |
+| 2025/26 | LVA-L1 | Riga FC | **non validé** |
+| 2025/26 | LVA-L1 | SK Super Nova | **non validé** |
+| 2025/26 | MDA-L1 | CSF Spartanii Sportul | **non validé** |
+| 2025/26 | MDA-L1 | FC Bălți | **non validé** |
+| 2025/26 | MDA-L1 | FC Dacia Buiucani | **non validé** |
+| 2025/26 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2025/26 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2025/26 | MDA-L1 | FC Politehnica UTM Chișinău | **non validé** |
+| 2025/26 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2025/26 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2025/26 | MKD-L1 | FC Struga | **non validé** |
+| 2025/26 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2025/26 | MKD-L1 | FK Pelister | **non validé** |
+| 2025/26 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2025/26 | MKD-L1 | FK Sileks | **non validé** |
+| 2025/26 | MKD-L1 | FK Vardar | **non validé** |
+| 2025/26 | MKD-L1 | GFK Tikvesh | **non validé** |
+| 2025/26 | MKD-L1 | KF Arsimi | **non validé** |
+| 2025/26 | MKD-L1 | KF Bashkimi 1947 | **non validé** |
+| 2025/26 | MKD-L1 | KF Shkupi | **non validé** |
+| 2025/26 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2025/26 | NLD-ED | FC Groningen | **non validé** |
 | 2025/26 | NLD-ED | FC Volendam | **non validé** |
 | 2025/26 | NLD-ED | Fortuna Sittard | **non validé** |
@@ -44,6 +582,32 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2025/26 | NLD-ED | PEC Zwolle | **non validé** |
 | 2025/26 | NLD-ED | SC Heerenveen | **non validé** |
 | 2025/26 | NLD-ED | Sparta Rotterdam | **non validé** |
+| 2025/26 | NOR-L1 | Bryne FK | **non validé** |
+| 2025/26 | NOR-L1 | FK Haugesund | **non validé** |
+| 2025/26 | NOR-L1 | Fredrikstad FK | **non validé** |
+| 2025/26 | NOR-L1 | Hamarkameratene | **non validé** |
+| 2025/26 | NOR-L1 | KFUM-Kameratene Oslo | **non validé** |
+| 2025/26 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2025/26 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2025/26 | NOR-L1 | Sarpsborg 08 FF | **non validé** |
+| 2025/26 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2025/26 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2025/26 | POL-L1 | Arka Gdynia | **non validé** |
+| 2025/26 | POL-L1 | Bruk-Bet Termalica Nieciecza | **non validé** |
+| 2025/26 | POL-L1 | GKS Katowice | **non validé** |
+| 2025/26 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2025/26 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2025/26 | POL-L1 | KS Cracovia | **non validé** |
+| 2025/26 | POL-L1 | Korona Kielce | **non validé** |
+| 2025/26 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2025/26 | POL-L1 | Motor Lublin | **non validé** |
+| 2025/26 | POL-L1 | Piast Gliwice | **non validé** |
+| 2025/26 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2025/26 | POL-L1 | Radomiak Radom | **non validé** |
+| 2025/26 | POL-L1 | Raków Częstochowa | **non validé** |
+| 2025/26 | POL-L1 | Widzew Łódź | **non validé** |
+| 2025/26 | POL-L1 | Wisła Płock | **non validé** |
+| 2025/26 | POL-L1 | Zagłębie Lubin | **non validé** |
 | 2025/26 | PRT-PL | AVS Futebol SAD | **non validé** |
 | 2025/26 | PRT-PL | C.D. Santa Clara | **non validé** |
 | 2025/26 | PRT-PL | C.D. Tondela | **non validé** |
@@ -57,6 +621,93 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2025/26 | PRT-PL | Rio Ave F.C. | **non validé** |
 | 2025/26 | PRT-PL | S.C. Braga | **non validé** |
 | 2025/26 | PRT-PL | Vitória S.C. | **non validé** |
+| 2025/26 | ROU-L1 | AFC Unirea Slobozia | **non validé** |
+| 2025/26 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2025/26 | ROU-L1 | FC Argeș Pitești | **non validé** |
+| 2025/26 | ROU-L1 | FC Botoșani | **non validé** |
+| 2025/26 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2025/26 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2025/26 | ROU-L1 | FC Metaloglobus București | **non validé** |
+| 2025/26 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2025/26 | ROU-L1 | FC Rapid București | **non validé** |
+| 2025/26 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2025/26 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2025/26 | ROU-L1 | FCV Farul Constanța | **non validé** |
+| 2025/26 | ROU-L1 | FK Csíkszereda Miercurea Ciuc | **non validé** |
+| 2025/26 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2025/26 | RUS-L1 | FC Akron Tolyatti | **non validé** |
+| 2025/26 | RUS-L1 | FC Baltika Kaliningrad | **non validé** |
+| 2025/26 | RUS-L1 | FC Dynamo Makhachkala | **non validé** |
+| 2025/26 | RUS-L1 | FC Dynamo Moscow | **non validé** |
+| 2025/26 | RUS-L1 | FC Krasnodar | **non validé** |
+| 2025/26 | RUS-L1 | FC Lokomotiv Moscow | **non validé** |
+| 2025/26 | RUS-L1 | FC Nizhny Novgorod | **non validé** |
+| 2025/26 | RUS-L1 | FC Orenburg | **non validé** |
+| 2025/26 | RUS-L1 | FC Rostov | **non validé** |
+| 2025/26 | RUS-L1 | FC Rubin Kazan | **non validé** |
+| 2025/26 | RUS-L1 | FC Spartak Moscow | **non validé** |
+| 2025/26 | RUS-L1 | FC Zenit Saint Petersburg | **non validé** |
+| 2025/26 | RUS-L1 | PFC CSKA Moscow | **non validé** |
+| 2025/26 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2025/26 | RUS-L1 | PFC Sochi | **non validé** |
+| 2025/26 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Falkirk F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2025/26 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2025/26 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2025/26 | SRB-L1 | FK IMT | **non validé** |
+| 2025/26 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2025/26 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2025/26 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2025/26 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2025/26 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2025/26 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2025/26 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2025/26 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2025/26 | SRB-L1 | FK TSC | **non validé** |
+| 2025/26 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2025/26 | SRB-L1 | FK Čukarički | **non validé** |
+| 2025/26 | SRB-L1 | FK Železničar Pančevo | **non validé** |
+| 2025/26 | SRB-L1 | OFK Beograd | **non validé** |
+| 2025/26 | SVK-L1 | 1. FC Tatran Prešov | **non validé** |
+| 2025/26 | SVK-L1 | AS Trenčín | **non validé** |
+| 2025/26 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2025/26 | SVK-L1 | FC Košice | **non validé** |
+| 2025/26 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2025/26 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2025/26 | SVK-L1 | KFC Komárno | **non validé** |
+| 2025/26 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2025/26 | SVK-L1 | MFK Skalica | **non validé** |
+| 2025/26 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2025/26 | SVN-L1 | FC Koper | **non validé** |
+| 2025/26 | SVN-L1 | ND Primorje | **non validé** |
+| 2025/26 | SVN-L1 | NK Aluminij | **non validé** |
+| 2025/26 | SVN-L1 | NK Bravo | **non validé** |
+| 2025/26 | SVN-L1 | NK Celje | **non validé** |
+| 2025/26 | SVN-L1 | NK Domžale | **non validé** |
+| 2025/26 | SVN-L1 | NK Maribor | **non validé** |
+| 2025/26 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2025/26 | SVN-L1 | NK Radomlje | **non validé** |
+| 2025/26 | SVN-L1 | NŠ Mura | **non validé** |
+| 2025/26 | SWE-L1 | BK Häcken | **non validé** |
+| 2025/26 | SWE-L1 | Degerfors IF | **non validé** |
+| 2025/26 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2025/26 | SWE-L1 | GAIS | **non validé** |
+| 2025/26 | SWE-L1 | Halmstads BK | **non validé** |
+| 2025/26 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2025/26 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2025/26 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2025/26 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2025/26 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2025/26 | SWE-L1 | IFK Värnamo | **non validé** |
+| 2025/26 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2025/26 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2025/26 | SWE-L1 | Östers IF | **non validé** |
 | 2025/26 | TUR-SL | Alanyaspor | **non validé** |
 | 2025/26 | TUR-SL | Antalyaspor | **non validé** |
 | 2025/26 | TUR-SL | Eyüpspor | **non validé** |
@@ -72,13 +723,275 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2025/26 | TUR-SL | Trabzonspor | **non validé** |
 | 2025/26 | TUR-SL | Çaykur Rizespor | **non validé** |
 | 2025/26 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
-| 2025/26 | UEFA-CL | FC Kairat | **non validé** |
-| 2025/26 | UEFA-CL | FK Bodø/Glimt | **non validé** |
+| 2025/26 | UKR-L1 | FC Epitsentr Kamianets-Podilskyi | **non validé** |
+| 2025/26 | UKR-L1 | FC Kharkiv | **non validé** |
+| 2025/26 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2025/26 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2025/26 | UKR-L1 | FC Kudrivka | **non validé** |
+| 2025/26 | UKR-L1 | FC LNZ Cherkasy | **non validé** |
+| 2025/26 | UKR-L1 | FC Obolon Kyiv | **non validé** |
+| 2025/26 | UKR-L1 | FC Oleksandriya | **non validé** |
+| 2025/26 | UKR-L1 | FC Polissya Zhytomyr | **non validé** |
+| 2025/26 | UKR-L1 | FC Rukh Lviv | **non validé** |
+| 2025/26 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2025/26 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2025/26 | UKR-L1 | SC Poltava | **non validé** |
+| 2025/26 | USA-MLS | Portland Timbers | **non validé** |
+| 2024/25 | ALB-L1 | AF Elbasani | **non validé** |
+| 2024/25 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2024/25 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2024/25 | ALB-L1 | KF Bylis | **non validé** |
+| 2024/25 | ALB-L1 | KF Egnatia | **non validé** |
+| 2024/25 | ALB-L1 | KF Laçi | **non validé** |
+| 2024/25 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2024/25 | ALB-L1 | KF Teuta | **non validé** |
+| 2024/25 | ALB-L1 | KF Tirana | **non validé** |
+| 2024/25 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2024/25 | ARM-L1 | FC Alashkert | **non validé** |
+| 2024/25 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2024/25 | ARM-L1 | FC BKMA Yerevan | **non validé** |
+| 2024/25 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2024/25 | ARM-L1 | FC Noah | **non validé** |
+| 2024/25 | ARM-L1 | FC Pyunik | **non validé** |
+| 2024/25 | ARM-L1 | FC Urartu | **non validé** |
+| 2024/25 | ARM-L1 | FC Van | **non validé** |
+| 2024/25 | ARM-L1 | FC West Armenia | **non validé** |
+| 2024/25 | ARM-L1 | Shirak SC | **non validé** |
+| 2024/25 | AUT-L1 | FC Blau-Weiß Linz | **non validé** |
+| 2024/25 | AUT-L1 | Grazer AK | **non validé** |
+| 2024/25 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2024/25 | AUT-L1 | SK Austria Klagenfurt (2007) | **non validé** |
+| 2024/25 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2024/25 | AUT-L1 | WSG Tirol | **non validé** |
+| 2024/25 | AZE-L1 | Araz-Naxçıvan PFK | **non validé** |
+| 2024/25 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2024/25 | AZE-L1 | Sabail FK | **non validé** |
+| 2024/25 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2024/25 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2024/25 | AZE-L1 | Zira FK | **non validé** |
+| 2024/25 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2024/25 | BEL-PL | KV Kortrijk | **non validé** |
 | 2024/25 | BEL-PL | KV Mechelen | **non validé** |
 | 2024/25 | BEL-PL | KVC Westerlo | **non validé** |
+| 2024/25 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2024/25 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2024/25 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2024/25 | BGR-L1 | FC Hebar Pazardzhik | **non validé** |
+| 2024/25 | BGR-L1 | FC Krumovgrad | **non validé** |
+| 2024/25 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2024/25 | BGR-L1 | FC Spartak Varna | **non validé** |
+| 2024/25 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2024/25 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2024/25 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2024/25 | BGR-L1 | PFC Septemvri Sofia | **non validé** |
+| 2024/25 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2024/25 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2024/25 | BLR-L1 | FC Arsenal Dzerzhinsk | **non validé** |
+| 2024/25 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2024/25 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2024/25 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2024/25 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2024/25 | BLR-L1 | FC Gomel | **non validé** |
+| 2024/25 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2024/25 | BLR-L1 | FC Minsk | **non validé** |
+| 2024/25 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2024/25 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2024/25 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2024/25 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2024/25 | BLR-L1 | FC Slutsk | **non validé** |
+| 2024/25 | BLR-L1 | FC Smorgon | **non validé** |
+| 2024/25 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2024/25 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2024/25 | CHE-L1 | FC Lausanne-Sport | **non validé** |
+| 2024/25 | CHE-L1 | FC Luzern | **non validé** |
+| 2024/25 | CHE-L1 | FC Sion | **non validé** |
+| 2024/25 | CHE-L1 | FC St. Gallen | **non validé** |
+| 2024/25 | CHE-L1 | FC Winterthur | **non validé** |
+| 2024/25 | CHE-L1 | FC Zürich | **non validé** |
+| 2024/25 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2024/25 | CHE-L1 | Servette FC | **non validé** |
+| 2024/25 | CHE-L1 | Yverdon-Sport FC | **non validé** |
+| 2024/25 | CYP-L1 | AC Omonia | **non validé** |
+| 2024/25 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2024/25 | CYP-L1 | AEL Limassol | **non validé** |
+| 2024/25 | CYP-L1 | APOEL FC | **non validé** |
+| 2024/25 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2024/25 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2024/25 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2024/25 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2024/25 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2024/25 | CYP-L1 | Karmiotissa FC | **non validé** |
+| 2024/25 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2024/25 | CYP-L1 | Omonia Aradippou | **non validé** |
+| 2024/25 | CYP-L1 | PAC Omonia 29M | **non validé** |
+| 2024/25 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2024/25 | CZE-L1 | AC Sparta Prague | **non validé** |
+| 2024/25 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2024/25 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2024/25 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2024/25 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2024/25 | CZE-L1 | FC Viktoria Plzeň | **non validé** |
+| 2024/25 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2024/25 | CZE-L1 | FK Jablonec | **non validé** |
+| 2024/25 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2024/25 | CZE-L1 | FK Pardubice | **non validé** |
+| 2024/25 | CZE-L1 | FK Teplice | **non validé** |
+| 2024/25 | CZE-L1 | MFK Karviná | **non validé** |
+| 2024/25 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2024/25 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2024/25 | DEU-B2 | 1. FC Kaiserslautern | **non validé** |
+| 2024/25 | DEU-B2 | 1. FC Köln | **non validé** |
+| 2024/25 | DEU-B2 | 1. FC Magdeburg | **non validé** |
+| 2024/25 | DEU-B2 | 1. FC Nürnberg | **non validé** |
+| 2024/25 | DEU-B2 | Eintracht Braunschweig | **non validé** |
+| 2024/25 | DEU-B2 | Hertha BSC | **non validé** |
+| 2024/25 | DEU-B2 | Karlsruher SC | **non validé** |
+| 2024/25 | DEU-B2 | SC Paderborn 07 | **non validé** |
+| 2024/25 | DEU-B2 | SC Preußen Münster | **non validé** |
+| 2024/25 | DEU-B2 | SSV Jahn Regensburg | **non validé** |
+| 2024/25 | DEU-B2 | SSV Ulm 1846 | **non validé** |
+| 2024/25 | DEU-B2 | SV Darmstadt 98 | **non validé** |
+| 2024/25 | DEU-B2 | SV Elversberg | **non validé** |
 | 2024/25 | DEU-BL | Holstein Kiel | validé : page anglaise de la saison sans section d'effectif (transferts et matchs seulement) ; aucune autre source libre trouvée |
 | 2024/25 | DEU-BL | VfL Bochum | validé : page anglaise de la saison sans section d'effectif (transferts et matchs seulement) ; aucune autre source libre trouvée |
+| 2024/25 | DNK-L1 | AaB Fodbold | **non validé** |
+| 2024/25 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2024/25 | DNK-L1 | Brøndby IF | **non validé** |
+| 2024/25 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2024/25 | DNK-L1 | Randers FC | **non validé** |
+| 2024/25 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2024/25 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2024/25 | DNK-L1 | Vejle Boldklub | **non validé** |
+| 2024/25 | DNK-L1 | Viborg FF | **non validé** |
+| 2024/25 | ESP-SD | Burgos CF | **non validé** |
+| 2024/25 | ESP-SD | CD Castellón | **non validé** |
+| 2024/25 | ESP-SD | CD Mirandés | **non validé** |
+| 2024/25 | ESP-SD | CD Tenerife | **non validé** |
+| 2024/25 | ESP-SD | FC Cartagena | **non validé** |
+| 2024/25 | ESP-SD | Racing de Ferrol | **non validé** |
+| 2024/25 | ESP-SD | Sporting de Gijón | **non validé** |
+| 2024/25 | FIN-L1 | AC Oulu | **non validé** |
+| 2024/25 | FIN-L1 | Ekenäs IF | **non validé** |
+| 2024/25 | FIN-L1 | FC Haka | **non validé** |
+| 2024/25 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2024/25 | FIN-L1 | FC Lahti | **non validé** |
+| 2024/25 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2024/25 | FIN-L1 | IF Gnistan | **non validé** |
+| 2024/25 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2024/25 | FIN-L1 | Ilves (football) | **non validé** |
+| 2024/25 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2024/25 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2024/25 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2024/25 | FRA-L2 | AC Ajaccio | **non validé** |
+| 2024/25 | FRA-L2 | Amiens SC | **non validé** |
+| 2024/25 | FRA-L2 | Clermont Foot | **non validé** |
+| 2024/25 | FRA-L2 | FC Martigues | **non validé** |
+| 2024/25 | FRA-L2 | Grenoble Foot 38 | **non validé** |
+| 2024/25 | FRA-L2 | Red Star FC | **non validé** |
+| 2024/25 | FRA-L2 | Rodez AF | **non validé** |
+| 2024/25 | FRA-L2 | SC Bastia | **non validé** |
+| 2024/25 | FRA-L2 | Troyes AC | **non validé** |
+| 2024/25 | FRA-L2 | USL Dunkerque | **non validé** |
+| 2024/25 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2024/25 | GRC-L1 | Athens Kallithea F.C. | **non validé** |
+| 2024/25 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2024/25 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2024/25 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2024/25 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2024/25 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2024/25 | GRC-L1 | Panserraikos F.C. | **non validé** |
+| 2024/25 | GRC-L1 | Volos F.C. | **non validé** |
+| 2024/25 | HRV-L1 | HNK Gorica | **non validé** |
+| 2024/25 | HRV-L1 | HNK Šibenik | **non validé** |
+| 2024/25 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2024/25 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2024/25 | HRV-L1 | NK Osijek | **non validé** |
+| 2024/25 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2024/25 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2024/25 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2024/25 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2024/25 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2024/25 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2024/25 | HUN-L1 | Nyíregyháza Spartacus FC | **non validé** |
+| 2024/25 | HUN-L1 | Paksi FC | **non validé** |
+| 2024/25 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2024/25 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2024/25 | HUN-L1 | Újpest FC | **non validé** |
+| 2024/25 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2024/25 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2024/25 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2024/25 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2024/25 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Hapoel Jerusalem F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Ironi Tiberias F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Maccabi Bnei Reineh F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2024/25 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2024/25 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2024/25 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2024/25 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2024/25 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2024/25 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2024/25 | KAZ-L1 | FC Tobol | **non validé** |
+| 2024/25 | KAZ-L1 | FC Turan | **non validé** |
+| 2024/25 | KAZ-L1 | FC Yelimay | **non validé** |
+| 2024/25 | KAZ-L1 | FC Zhenis | **non validé** |
+| 2024/25 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2024/25 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2024/25 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2024/25 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2024/25 | LUX-L1 | FC Mondercange | **non validé** |
+| 2024/25 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2024/25 | LUX-L1 | FC Rodange 91 | **non validé** |
+| 2024/25 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2024/25 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2024/25 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2024/25 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2024/25 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2024/25 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2024/25 | LUX-L1 | SC Bettembourg | **non validé** |
+| 2024/25 | LUX-L1 | US Hostert | **non validé** |
+| 2024/25 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2024/25 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2024/25 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2024/25 | LVA-L1 | FK Auda | **non validé** |
+| 2024/25 | LVA-L1 | FK Grobiņa | **non validé** |
+| 2024/25 | LVA-L1 | FK Liepāja | **non validé** |
+| 2024/25 | LVA-L1 | FK Metta | **non validé** |
+| 2024/25 | LVA-L1 | FK Tukums 2000 | **non validé** |
+| 2024/25 | LVA-L1 | FS Jelgava | **non validé** |
+| 2024/25 | LVA-L1 | Riga FC | **non validé** |
+| 2024/25 | LVA-L1 | Valmiera FC | **non validé** |
+| 2024/25 | MDA-L1 | CSF Spartanii Sportul | **non validé** |
+| 2024/25 | MDA-L1 | FC Bălți | **non validé** |
+| 2024/25 | MDA-L1 | FC Dacia Buiucani | **non validé** |
+| 2024/25 | MDA-L1 | FC Florești | **non validé** |
+| 2024/25 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2024/25 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2024/25 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2024/25 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2024/25 | MKD-L1 | FC Struga | **non validé** |
+| 2024/25 | MKD-L1 | FK Pelister | **non validé** |
+| 2024/25 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2024/25 | MKD-L1 | FK Sileks | **non validé** |
+| 2024/25 | MKD-L1 | FK Vardar | **non validé** |
+| 2024/25 | MKD-L1 | FK Voska Sport | **non validé** |
+| 2024/25 | MKD-L1 | GFK Tikvesh | **non validé** |
+| 2024/25 | MKD-L1 | KF Besa Dobërdoll | **non validé** |
+| 2024/25 | MKD-L1 | KF Gostivari | **non validé** |
+| 2024/25 | MKD-L1 | KF Shkupi | **non validé** |
+| 2024/25 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2024/25 | NLD-ED | AZ Alkmaar | **non validé** |
 | 2024/25 | NLD-ED | Almere City FC | **non validé** |
 | 2024/25 | NLD-ED | FC Twente | **non validé** |
@@ -88,6 +1001,30 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2024/25 | NLD-ED | NAC Breda | **non validé** |
 | 2024/25 | NLD-ED | PEC Zwolle | **non validé** |
 | 2024/25 | NLD-ED | Sparta Rotterdam | **non validé** |
+| 2024/25 | NOR-L1 | FK Haugesund | **non validé** |
+| 2024/25 | NOR-L1 | Fredrikstad FK | **non validé** |
+| 2024/25 | NOR-L1 | Hamarkameratene | **non validé** |
+| 2024/25 | NOR-L1 | KFUM-Kameratene Oslo | **non validé** |
+| 2024/25 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2024/25 | NOR-L1 | Odds BK | **non validé** |
+| 2024/25 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2024/25 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2024/25 | POL-L1 | GKS Katowice | **non validé** |
+| 2024/25 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2024/25 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2024/25 | POL-L1 | KS Cracovia | **non validé** |
+| 2024/25 | POL-L1 | Korona Kielce | **non validé** |
+| 2024/25 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2024/25 | POL-L1 | Motor Lublin | **non validé** |
+| 2024/25 | POL-L1 | Piast Gliwice | **non validé** |
+| 2024/25 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2024/25 | POL-L1 | Puszcza Niepołomice | **non validé** |
+| 2024/25 | POL-L1 | Radomiak Radom | **non validé** |
+| 2024/25 | POL-L1 | Raków Częstochowa | **non validé** |
+| 2024/25 | POL-L1 | Stal Mielec | **non validé** |
+| 2024/25 | POL-L1 | Widzew Łódź | **non validé** |
+| 2024/25 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2024/25 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2024/25 | PRT-PL | AVS Futebol SAD | **non validé** |
 | 2024/25 | PRT-PL | Boavista F.C. | **non validé** |
 | 2024/25 | PRT-PL | C.D. Santa Clara | **non validé** |
@@ -99,9 +1036,1056 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2024/25 | PRT-PL | Moreirense F.C. | **non validé** |
 | 2024/25 | PRT-PL | Rio Ave F.C. | **non validé** |
 | 2024/25 | PRT-PL | Vitória S.C. | **non validé** |
+| 2024/25 | ROU-L1 | AFC Unirea Slobozia | **non validé** |
+| 2024/25 | ROU-L1 | CFR Cluj | **non validé** |
+| 2024/25 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2024/25 | ROU-L1 | FC Botoșani | **non validé** |
+| 2024/25 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2024/25 | ROU-L1 | FC Gloria Buzău | **non validé** |
+| 2024/25 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2024/25 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2024/25 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2024/25 | ROU-L1 | FC Rapid București | **non validé** |
+| 2024/25 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2024/25 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2024/25 | ROU-L1 | FCV Farul Constanța | **non validé** |
+| 2024/25 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2024/25 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2024/25 | RUS-L1 | FC Akron Tolyatti | **non validé** |
+| 2024/25 | RUS-L1 | FC Dynamo Makhachkala | **non validé** |
+| 2024/25 | RUS-L1 | FC Dynamo Moscow | **non validé** |
+| 2024/25 | RUS-L1 | FC Fakel Voronezh | **non validé** |
+| 2024/25 | RUS-L1 | FC Khimki | **non validé** |
+| 2024/25 | RUS-L1 | FC Nizhny Novgorod | **non validé** |
+| 2024/25 | RUS-L1 | FC Orenburg | **non validé** |
+| 2024/25 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2024/25 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2024/25 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2024/25 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2024/25 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2024/25 | SRB-L1 | FK IMT | **non validé** |
+| 2024/25 | SRB-L1 | FK Jedinstvo Ub | **non validé** |
+| 2024/25 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2024/25 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2024/25 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2024/25 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2024/25 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2024/25 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2024/25 | SRB-L1 | FK TSC | **non validé** |
+| 2024/25 | SRB-L1 | FK Tekstilac Odžaci | **non validé** |
+| 2024/25 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2024/25 | SRB-L1 | FK Čukarički | **non validé** |
+| 2024/25 | SRB-L1 | FK Železničar Pančevo | **non validé** |
+| 2024/25 | SRB-L1 | OFK Beograd | **non validé** |
+| 2024/25 | SRB-L1 | Red Star Belgrade | **non validé** |
+| 2024/25 | SVK-L1 | AS Trenčín | **non validé** |
+| 2024/25 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2024/25 | SVK-L1 | FC Košice | **non validé** |
+| 2024/25 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2024/25 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2024/25 | SVK-L1 | KFC Komárno | **non validé** |
+| 2024/25 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2024/25 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2024/25 | SVK-L1 | MFK Skalica | **non validé** |
+| 2024/25 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2024/25 | SVN-L1 | FC Koper | **non validé** |
+| 2024/25 | SVN-L1 | ND Primorje | **non validé** |
+| 2024/25 | SVN-L1 | NK Bravo | **non validé** |
+| 2024/25 | SVN-L1 | NK Celje | **non validé** |
+| 2024/25 | SVN-L1 | NK Domžale | **non validé** |
+| 2024/25 | SVN-L1 | NK Maribor | **non validé** |
+| 2024/25 | SVN-L1 | NK Nafta 1903 | **non validé** |
+| 2024/25 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2024/25 | SVN-L1 | NK Radomlje | **non validé** |
+| 2024/25 | SVN-L1 | NŠ Mura | **non validé** |
+| 2024/25 | SWE-L1 | BK Häcken | **non validé** |
+| 2024/25 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2024/25 | SWE-L1 | GAIS | **non validé** |
+| 2024/25 | SWE-L1 | Halmstads BK | **non validé** |
+| 2024/25 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2024/25 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2024/25 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2024/25 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2024/25 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2024/25 | SWE-L1 | IFK Värnamo | **non validé** |
+| 2024/25 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2024/25 | SWE-L1 | Kalmar FF | **non validé** |
+| 2024/25 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2024/25 | SWE-L1 | Västerås SK Fotboll | **non validé** |
 | 2024/25 | TUR-SL | Kayserispor | **non validé** |
 | 2024/25 | TUR-SL | Samsunspor | **non validé** |
+| 2024/25 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2024/25 | UKR-L1 | FC Inhulets Petrove | **non validé** |
+| 2024/25 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2024/25 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2024/25 | UKR-L1 | FC LNZ Cherkasy | **non validé** |
+| 2024/25 | UKR-L1 | FC Livyi Bereh Kyiv | **non validé** |
+| 2024/25 | UKR-L1 | FC Obolon Kyiv | **non validé** |
+| 2024/25 | UKR-L1 | FC Polissya Zhytomyr | **non validé** |
+| 2024/25 | UKR-L1 | FC Rukh Lviv | **non validé** |
+| 2024/25 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2024/25 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2024/25 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2024/25 | USA-MLS | Colorado Rapids | **non validé** |
+| 2024/25 | USA-MLS | Philadelphia Union | **non validé** |
+| 2024/25 | USA-MLS | Portland Timbers | **non validé** |
+| 2023/24 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2023/24 | ALB-L1 | FK Kukësi | **non validé** |
+| 2023/24 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2023/24 | ALB-L1 | KF Egnatia | **non validé** |
+| 2023/24 | ALB-L1 | KF Erzeni | **non validé** |
+| 2023/24 | ALB-L1 | KF Laçi | **non validé** |
+| 2023/24 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2023/24 | ALB-L1 | KF Teuta | **non validé** |
+| 2023/24 | ALB-L1 | KF Tirana | **non validé** |
+| 2023/24 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2023/24 | ARM-L1 | FC Alashkert | **non validé** |
+| 2023/24 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2023/24 | ARM-L1 | FC BKMA Yerevan | **non validé** |
+| 2023/24 | ARM-L1 | FC Noah | **non validé** |
+| 2023/24 | ARM-L1 | FC Pyunik | **non validé** |
+| 2023/24 | ARM-L1 | FC Urartu | **non validé** |
+| 2023/24 | ARM-L1 | FC Van | **non validé** |
+| 2023/24 | ARM-L1 | FC West Armenia | **non validé** |
+| 2023/24 | ARM-L1 | Shirak SC | **non validé** |
+| 2023/24 | AUT-L1 | FC Blau-Weiß Linz | **non validé** |
+| 2023/24 | AUT-L1 | SC Austria Lustenau | **non validé** |
+| 2023/24 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2023/24 | AUT-L1 | SK Austria Klagenfurt (2007) | **non validé** |
+| 2023/24 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2023/24 | AUT-L1 | WSG Tirol | **non validé** |
+| 2023/24 | AZE-L1 | Araz-Naxçıvan PFK | **non validé** |
+| 2023/24 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2023/24 | AZE-L1 | Sabail FK | **non validé** |
+| 2023/24 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2023/24 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2023/24 | AZE-L1 | Zira FK | **non validé** |
+| 2023/24 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2023/24 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2023/24 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2023/24 | BGR-L1 | FC Hebar Pazardzhik | **non validé** |
+| 2023/24 | BGR-L1 | FC Krumovgrad | **non validé** |
+| 2023/24 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2023/24 | BGR-L1 | OFC Pirin Blagoevgrad | **non validé** |
+| 2023/24 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2023/24 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2023/24 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2023/24 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2023/24 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2023/24 | BGR-L1 | SFC Etar Veliko Tarnovo | **non validé** |
+| 2023/24 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2023/24 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2023/24 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2023/24 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2023/24 | BLR-L1 | FC Gomel | **non validé** |
+| 2023/24 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2023/24 | BLR-L1 | FC Minsk | **non validé** |
+| 2023/24 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2023/24 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2023/24 | BLR-L1 | FC SKA-1938 Minsk | **non validé** |
+| 2023/24 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2023/24 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2023/24 | BLR-L1 | FC Slutsk | **non validé** |
+| 2023/24 | BLR-L1 | FC Smorgon | **non validé** |
+| 2023/24 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2023/24 | CHE-L1 | FC Luzern | **non validé** |
+| 2023/24 | CHE-L1 | FC Stade Lausanne Ouchy | **non validé** |
+| 2023/24 | CHE-L1 | FC Winterthur | **non validé** |
+| 2023/24 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2023/24 | CHE-L1 | Yverdon-Sport FC | **non validé** |
+| 2023/24 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2023/24 | CYP-L1 | AEL Limassol | **non validé** |
+| 2023/24 | CYP-L1 | AEZ Zakakiou | **non validé** |
+| 2023/24 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2023/24 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2023/24 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2023/24 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2023/24 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2023/24 | CYP-L1 | Karmiotissa FC | **non validé** |
+| 2023/24 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2023/24 | CYP-L1 | Othellos Athienou FC | **non validé** |
+| 2023/24 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2023/24 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2023/24 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2023/24 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2023/24 | CZE-L1 | FC Zlín | **non validé** |
+| 2023/24 | CZE-L1 | FK Jablonec | **non validé** |
+| 2023/24 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2023/24 | CZE-L1 | FK Pardubice | **non validé** |
+| 2023/24 | CZE-L1 | FK Teplice | **non validé** |
+| 2023/24 | CZE-L1 | MFK Karviná | **non validé** |
+| 2023/24 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2023/24 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2023/24 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2023/24 | DNK-L1 | Hvidovre IF | **non validé** |
+| 2023/24 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2023/24 | DNK-L1 | Randers FC | **non validé** |
+| 2023/24 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2023/24 | DNK-L1 | Vejle Boldklub | **non validé** |
+| 2023/24 | DNK-L1 | Viborg FF | **non validé** |
+| 2023/24 | FIN-L1 | AC Oulu | **non validé** |
+| 2023/24 | FIN-L1 | FC Haka | **non validé** |
+| 2023/24 | FIN-L1 | FC Honka | **non validé** |
+| 2023/24 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2023/24 | FIN-L1 | FC Lahti | **non validé** |
+| 2023/24 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2023/24 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2023/24 | FIN-L1 | Ilves (football) | **non validé** |
+| 2023/24 | FIN-L1 | Kotkan Työväen Palloilijat | **non validé** |
+| 2023/24 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2023/24 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2023/24 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2023/24 | GRC-L1 | A.E. Kifisia F.C. | **non validé** |
+| 2023/24 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2023/24 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2023/24 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2023/24 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2023/24 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2023/24 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2023/24 | GRC-L1 | Panserraikos F.C. | **non validé** |
+| 2023/24 | GRC-L1 | Volos F.C. | **non validé** |
+| 2023/24 | HRV-L1 | HNK Gorica | **non validé** |
+| 2023/24 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2023/24 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2023/24 | HRV-L1 | NK Osijek | **non validé** |
+| 2023/24 | HRV-L1 | NK Rudeš | **non validé** |
+| 2023/24 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2023/24 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2023/24 | HUN-L1 | Debreceni VSC | **non validé** |
+| 2023/24 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2023/24 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2023/24 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2023/24 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2023/24 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2023/24 | HUN-L1 | Paksi FC | **non validé** |
+| 2023/24 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2023/24 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2023/24 | HUN-L1 | Újpest FC | **non validé** |
+| 2023/24 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2023/24 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2023/24 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2023/24 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2023/24 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2023/24 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2023/24 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2023/24 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2023/24 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2023/24 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2023/24 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Hapoel Jerusalem F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Hapoel Petah Tikva F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Maccabi Bnei Reineh F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2023/24 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2023/24 | KAZ-L1 | FC Aksu | **non validé** |
+| 2023/24 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2023/24 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2023/24 | KAZ-L1 | FC Caspiy | **non validé** |
+| 2023/24 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2023/24 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2023/24 | KAZ-L1 | FC Maktaaral | **non validé** |
+| 2023/24 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2023/24 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2023/24 | KAZ-L1 | FC Shakhter Karagandy | **non validé** |
+| 2023/24 | KAZ-L1 | FC Tobol | **non validé** |
+| 2023/24 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2023/24 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2023/24 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2023/24 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2023/24 | LUX-L1 | FC Mondercange | **non validé** |
+| 2023/24 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2023/24 | LUX-L1 | FC Schifflange 95 | **non validé** |
+| 2023/24 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2023/24 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2023/24 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2023/24 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2023/24 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2023/24 | LUX-L1 | Marisca Mersch | **non validé** |
+| 2023/24 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2023/24 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2023/24 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2023/24 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2023/24 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2023/24 | LVA-L1 | FK Auda | **non validé** |
+| 2023/24 | LVA-L1 | FK Liepāja | **non validé** |
+| 2023/24 | LVA-L1 | FK Metta | **non validé** |
+| 2023/24 | LVA-L1 | FK RFS | **non validé** |
+| 2023/24 | LVA-L1 | FK Tukums 2000 | **non validé** |
+| 2023/24 | LVA-L1 | FS Jelgava | **non validé** |
+| 2023/24 | LVA-L1 | Riga FC | **non validé** |
+| 2023/24 | LVA-L1 | SK Super Nova | **non validé** |
+| 2023/24 | LVA-L1 | Valmiera FC | **non validé** |
+| 2023/24 | MDA-L1 | CSF Spartanii Sportul | **non validé** |
+| 2023/24 | MDA-L1 | FC Bălți | **non validé** |
+| 2023/24 | MDA-L1 | FC Dacia Buiucani | **non validé** |
+| 2023/24 | MDA-L1 | FC Florești | **non validé** |
+| 2023/24 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2023/24 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2023/24 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2023/24 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2023/24 | MKD-L1 | FC Struga | **non validé** |
+| 2023/24 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2023/24 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2023/24 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2023/24 | MKD-L1 | FK Sileks | **non validé** |
+| 2023/24 | MKD-L1 | FK Vardar | **non validé** |
+| 2023/24 | MKD-L1 | FK Voska Sport | **non validé** |
+| 2023/24 | MKD-L1 | GFK Tikvesh | **non validé** |
+| 2023/24 | MKD-L1 | KF Gostivari | **non validé** |
+| 2023/24 | MKD-L1 | KF Shkupi | **non validé** |
+| 2023/24 | MKD-L1 | KF Shkëndija | **non validé** |
+| 2023/24 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2023/24 | NOR-L1 | FK Haugesund | **non validé** |
+| 2023/24 | NOR-L1 | Hamarkameratene | **non validé** |
+| 2023/24 | NOR-L1 | Odds BK | **non validé** |
+| 2023/24 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2023/24 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2023/24 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2023/24 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2023/24 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2023/24 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2023/24 | POL-L1 | KS Cracovia | **non validé** |
+| 2023/24 | POL-L1 | Korona Kielce | **non validé** |
+| 2023/24 | POL-L1 | Piast Gliwice | **non validé** |
+| 2023/24 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2023/24 | POL-L1 | Puszcza Niepołomice | **non validé** |
+| 2023/24 | POL-L1 | Radomiak Radom | **non validé** |
+| 2023/24 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2023/24 | POL-L1 | Stal Mielec | **non validé** |
+| 2023/24 | POL-L1 | Warta Poznań | **non validé** |
+| 2023/24 | POL-L1 | Widzew Łódź | **non validé** |
+| 2023/24 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2023/24 | POL-L1 | ŁKS Łódź | **non validé** |
+| 2023/24 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2023/24 | PRT-PL | F.C. Vizela | **non validé** |
+| 2023/24 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2023/24 | ROU-L1 | FC Botoșani | **non validé** |
+| 2023/24 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2023/24 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2023/24 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2023/24 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2023/24 | ROU-L1 | FC Rapid București | **non validé** |
+| 2023/24 | ROU-L1 | FC U Craiova 1948 | **non validé** |
+| 2023/24 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2023/24 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2023/24 | ROU-L1 | FC Voluntari | **non validé** |
+| 2023/24 | ROU-L1 | FCV Farul Constanța | **non validé** |
+| 2023/24 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2023/24 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2023/24 | RUS-L1 | FC Baltika Kaliningrad | **non validé** |
+| 2023/24 | RUS-L1 | FC Fakel Voronezh | **non validé** |
+| 2023/24 | RUS-L1 | FC Nizhny Novgorod | **non validé** |
+| 2023/24 | RUS-L1 | FC Orenburg | **non validé** |
+| 2023/24 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2023/24 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2023/24 | RUS-L1 | PFC Sochi | **non validé** |
+| 2023/24 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2023/24 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2023/24 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2023/24 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2023/24 | SRB-L1 | FK IMT | **non validé** |
+| 2023/24 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2023/24 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2023/24 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2023/24 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2023/24 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2023/24 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2023/24 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2023/24 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2023/24 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2023/24 | SRB-L1 | FK Voždovac | **non validé** |
+| 2023/24 | SRB-L1 | FK Čukarički | **non validé** |
+| 2023/24 | SRB-L1 | FK Železničar Pančevo | **non validé** |
+| 2023/24 | SVK-L1 | AS Trenčín | **non validé** |
+| 2023/24 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2023/24 | SVK-L1 | FC Košice | **non validé** |
+| 2023/24 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2023/24 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2023/24 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2023/24 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2023/24 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2023/24 | SVK-L1 | MFK Skalica | **non validé** |
+| 2023/24 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2023/24 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2023/24 | SVN-L1 | FC Koper | **non validé** |
+| 2023/24 | SVN-L1 | NK Aluminij | **non validé** |
+| 2023/24 | SVN-L1 | NK Bravo | **non validé** |
+| 2023/24 | SVN-L1 | NK Celje | **non validé** |
+| 2023/24 | SVN-L1 | NK Domžale | **non validé** |
+| 2023/24 | SVN-L1 | NK Maribor | **non validé** |
+| 2023/24 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2023/24 | SVN-L1 | NK Radomlje | **non validé** |
+| 2023/24 | SVN-L1 | NK Rogaška | **non validé** |
+| 2023/24 | SVN-L1 | NŠ Mura | **non validé** |
+| 2023/24 | SWE-L1 | AIK Fotboll | **non validé** |
+| 2023/24 | SWE-L1 | BK Häcken | **non validé** |
+| 2023/24 | SWE-L1 | Degerfors IF | **non validé** |
+| 2023/24 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2023/24 | SWE-L1 | Halmstads BK | **non validé** |
+| 2023/24 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2023/24 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2023/24 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2023/24 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2023/24 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2023/24 | SWE-L1 | IFK Värnamo | **non validé** |
+| 2023/24 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2023/24 | SWE-L1 | Kalmar FF | **non validé** |
+| 2023/24 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2023/24 | SWE-L1 | Varbergs BoIS | **non validé** |
+| 2023/24 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2023/24 | UKR-L1 | FC Kharkiv | **non validé** |
+| 2023/24 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2023/24 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2023/24 | UKR-L1 | FC LNZ Cherkasy | **non validé** |
+| 2023/24 | UKR-L1 | FC Mynai | **non validé** |
+| 2023/24 | UKR-L1 | FC Obolon Kyiv | **non validé** |
+| 2023/24 | UKR-L1 | FC Oleksandriya | **non validé** |
+| 2023/24 | UKR-L1 | FC Polissya Zhytomyr | **non validé** |
+| 2023/24 | UKR-L1 | FC Rukh Lviv | **non validé** |
+| 2023/24 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2023/24 | UKR-L1 | SC Dnipro-1 | **non validé** |
+| 2022/23 | ALB-L1 | FK Kukësi | **non validé** |
+| 2022/23 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2022/23 | ALB-L1 | KF Bylis | **non validé** |
+| 2022/23 | ALB-L1 | KF Egnatia | **non validé** |
+| 2022/23 | ALB-L1 | KF Erzeni | **non validé** |
+| 2022/23 | ALB-L1 | KF Laçi | **non validé** |
+| 2022/23 | ALB-L1 | KF Teuta | **non validé** |
+| 2022/23 | ALB-L1 | KF Tirana | **non validé** |
+| 2022/23 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2022/23 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2022/23 | ARM-L1 | FC Alashkert | **non validé** |
+| 2022/23 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2022/23 | ARM-L1 | FC BKMA Yerevan | **non validé** |
+| 2022/23 | ARM-L1 | FC Noah | **non validé** |
+| 2022/23 | ARM-L1 | FC Pyunik | **non validé** |
+| 2022/23 | ARM-L1 | FC Urartu | **non validé** |
+| 2022/23 | ARM-L1 | FC Van | **non validé** |
+| 2022/23 | ARM-L1 | Lernayin Artsakh FC | **non validé** |
+| 2022/23 | ARM-L1 | Shirak SC | **non validé** |
+| 2022/23 | AUT-L1 | SC Austria Lustenau | **non validé** |
+| 2022/23 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2022/23 | AUT-L1 | SK Austria Klagenfurt (2007) | **non validé** |
+| 2022/23 | AUT-L1 | SV Ried | **non validé** |
+| 2022/23 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2022/23 | AUT-L1 | WSG Tirol | **non validé** |
+| 2022/23 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2022/23 | AZE-L1 | Sabail FK | **non validé** |
+| 2022/23 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2022/23 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2022/23 | AZE-L1 | Zira FK | **non validé** |
+| 2022/23 | AZE-L1 | Şamaxı FK | **non validé** |
+| 2022/23 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2022/23 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2022/23 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2022/23 | BGR-L1 | FC Hebar Pazardzhik | **non validé** |
+| 2022/23 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2022/23 | BGR-L1 | FC Spartak Varna | **non validé** |
+| 2022/23 | BGR-L1 | OFC Pirin Blagoevgrad | **non validé** |
+| 2022/23 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2022/23 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2022/23 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2022/23 | BGR-L1 | PFC Septemvri Sofia | **non validé** |
+| 2022/23 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2022/23 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2022/23 | BLR-L1 | FC Arsenal Dzerzhinsk | **non validé** |
+| 2022/23 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2022/23 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2022/23 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2022/23 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2022/23 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2022/23 | BLR-L1 | FC Gomel | **non validé** |
+| 2022/23 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2022/23 | BLR-L1 | FC Minsk | **non validé** |
+| 2022/23 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2022/23 | BLR-L1 | FC SKA-1938 Minsk | **non validé** |
+| 2022/23 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2022/23 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2022/23 | BLR-L1 | FC Slutsk | **non validé** |
+| 2022/23 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2022/23 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2022/23 | CHE-L1 | FC Luzern | **non validé** |
+| 2022/23 | CHE-L1 | FC Winterthur | **non validé** |
+| 2022/23 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2022/23 | CYP-L1 | AC Omonia | **non validé** |
+| 2022/23 | CYP-L1 | AEL Limassol | **non validé** |
+| 2022/23 | CYP-L1 | APOEL FC | **non validé** |
+| 2022/23 | CYP-L1 | Akritas Chlorakas | **non validé** |
+| 2022/23 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2022/23 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2022/23 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2022/23 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2022/23 | CYP-L1 | Karmiotissa FC | **non validé** |
+| 2022/23 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2022/23 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2022/23 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2022/23 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2022/23 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2022/23 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2022/23 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2022/23 | CZE-L1 | FC Zlín | **non validé** |
+| 2022/23 | CZE-L1 | FK Jablonec | **non validé** |
+| 2022/23 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2022/23 | CZE-L1 | FK Pardubice | **non validé** |
+| 2022/23 | CZE-L1 | FK Teplice | **non validé** |
+| 2022/23 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2022/23 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2022/23 | DNK-L1 | AC Horsens | **non validé** |
+| 2022/23 | DNK-L1 | AaB Fodbold | **non validé** |
+| 2022/23 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2022/23 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2022/23 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2022/23 | DNK-L1 | Randers FC | **non validé** |
+| 2022/23 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2022/23 | DNK-L1 | Viborg FF | **non validé** |
+| 2022/23 | ESP-SD | FC Andorra | **non validé** |
+| 2022/23 | ESP-SD | Villarreal CF B | **non validé** |
+| 2022/23 | FIN-L1 | AC Oulu | **non validé** |
+| 2022/23 | FIN-L1 | FC Haka | **non validé** |
+| 2022/23 | FIN-L1 | FC Honka | **non validé** |
+| 2022/23 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2022/23 | FIN-L1 | FC Lahti | **non validé** |
+| 2022/23 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2022/23 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2022/23 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2022/23 | FIN-L1 | Ilves (football) | **non validé** |
+| 2022/23 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2022/23 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2022/23 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2022/23 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2022/23 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2022/23 | GRC-L1 | Ionikos F.C. | **non validé** |
+| 2022/23 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2022/23 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2022/23 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2022/23 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2022/23 | GRC-L1 | Volos F.C. | **non validé** |
+| 2022/23 | HRV-L1 | HNK Gorica | **non validé** |
+| 2022/23 | HRV-L1 | HNK Šibenik | **non validé** |
+| 2022/23 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2022/23 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2022/23 | HRV-L1 | NK Osijek | **non validé** |
+| 2022/23 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2022/23 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2022/23 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2022/23 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2022/23 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2022/23 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2022/23 | HUN-L1 | Paksi FC | **non validé** |
+| 2022/23 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2022/23 | HUN-L1 | Vasas SC | **non validé** |
+| 2022/23 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2022/23 | HUN-L1 | Újpest FC | **non validé** |
+| 2022/23 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2022/23 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2022/23 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2022/23 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2022/23 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2022/23 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2022/23 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2022/23 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2022/23 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2022/23 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2022/23 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Hapoel Jerusalem F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Maccabi Bnei Reineh F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Maccabi Tel Aviv F.C. | **non validé** |
+| 2022/23 | ISR-L1 | Sektzia Ness Ziona F.C. | **non validé** |
+| 2022/23 | KAZ-L1 | FC Aksu | **non validé** |
+| 2022/23 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2022/23 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2022/23 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2022/23 | KAZ-L1 | FC Caspiy | **non validé** |
+| 2022/23 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2022/23 | KAZ-L1 | FC Maktaaral | **non validé** |
+| 2022/23 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2022/23 | KAZ-L1 | FC Shakhter Karagandy | **non validé** |
+| 2022/23 | KAZ-L1 | FC Taraz | **non validé** |
+| 2022/23 | KAZ-L1 | FC Tobol | **non validé** |
+| 2022/23 | KAZ-L1 | FC Turan | **non validé** |
+| 2022/23 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2022/23 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2022/23 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2022/23 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2022/23 | LUX-L1 | FC Mondercange | **non validé** |
+| 2022/23 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2022/23 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2022/23 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2022/23 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2022/23 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2022/23 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2022/23 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2022/23 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2022/23 | LUX-L1 | US Hostert | **non validé** |
+| 2022/23 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2022/23 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2022/23 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2022/23 | LVA-L1 | FK Auda | **non validé** |
+| 2022/23 | LVA-L1 | FK Liepāja | **non validé** |
+| 2022/23 | LVA-L1 | FK Metta | **non validé** |
+| 2022/23 | LVA-L1 | FK RFS | **non validé** |
+| 2022/23 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2022/23 | LVA-L1 | FK Tukums 2000 | **non validé** |
+| 2022/23 | LVA-L1 | Riga FC | **non validé** |
+| 2022/23 | LVA-L1 | SK Super Nova | **non validé** |
+| 2022/23 | LVA-L1 | Valmiera FC | **non validé** |
+| 2022/23 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2022/23 | MKD-L1 | FC Struga | **non validé** |
+| 2022/23 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2022/23 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2022/23 | MKD-L1 | FK Pobeda (2010) | **non validé** |
+| 2022/23 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2022/23 | MKD-L1 | FK Sileks | **non validé** |
+| 2022/23 | MKD-L1 | FK Skopje | **non validé** |
+| 2022/23 | MKD-L1 | GFK Tikvesh | **non validé** |
+| 2022/23 | MKD-L1 | KF Renova | **non validé** |
+| 2022/23 | MKD-L1 | KF Shkupi | **non validé** |
+| 2022/23 | MKD-L1 | KF Shkëndija | **non validé** |
+| 2022/23 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2022/23 | NOR-L1 | FK Haugesund | **non validé** |
+| 2022/23 | NOR-L1 | FK Jerv | **non validé** |
+| 2022/23 | NOR-L1 | Hamarkameratene | **non validé** |
+| 2022/23 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2022/23 | NOR-L1 | Odds BK | **non validé** |
+| 2022/23 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2022/23 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2022/23 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2022/23 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2022/23 | POL-L1 | KS Cracovia | **non validé** |
+| 2022/23 | POL-L1 | Korona Kielce | **non validé** |
+| 2022/23 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2022/23 | POL-L1 | Miedź Legnica | **non validé** |
+| 2022/23 | POL-L1 | Piast Gliwice | **non validé** |
+| 2022/23 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2022/23 | POL-L1 | Radomiak Radom | **non validé** |
+| 2022/23 | POL-L1 | Stal Mielec | **non validé** |
+| 2022/23 | POL-L1 | Warta Poznań | **non validé** |
+| 2022/23 | POL-L1 | Widzew Łódź | **non validé** |
+| 2022/23 | POL-L1 | Wisła Płock | **non validé** |
+| 2022/23 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2022/23 | POL-L1 | Śląsk Wrocław | **non validé** |
+| 2022/23 | ROU-L1 | AFC Chindia Târgoviște | **non validé** |
+| 2022/23 | ROU-L1 | CS Mioveni | **non validé** |
+| 2022/23 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2022/23 | ROU-L1 | FC Argeș Pitești | **non validé** |
+| 2022/23 | ROU-L1 | FC Botoșani | **non validé** |
+| 2022/23 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2022/23 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2022/23 | ROU-L1 | FC Rapid București | **non validé** |
+| 2022/23 | ROU-L1 | FC U Craiova 1948 | **non validé** |
+| 2022/23 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2022/23 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2022/23 | ROU-L1 | FC Voluntari | **non validé** |
+| 2022/23 | ROU-L1 | FCV Farul Constanța | **non validé** |
+| 2022/23 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2022/23 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2022/23 | RUS-L1 | FC Dynamo Moscow | **non validé** |
+| 2022/23 | RUS-L1 | FC Fakel Voronezh | **non validé** |
+| 2022/23 | RUS-L1 | FC Khimki | **non validé** |
+| 2022/23 | RUS-L1 | FC Nizhny Novgorod | **non validé** |
+| 2022/23 | RUS-L1 | FC Orenburg | **non validé** |
+| 2022/23 | RUS-L1 | FC Torpedo Moscow | **non validé** |
+| 2022/23 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2022/23 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2022/23 | RUS-L1 | PFC Sochi | **non validé** |
+| 2022/23 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2022/23 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2022/23 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2022/23 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2022/23 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2022/23 | SRB-L1 | FK Kolubara | **non validé** |
+| 2022/23 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2022/23 | SRB-L1 | FK Mladost Novi Sad | **non validé** |
+| 2022/23 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2022/23 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2022/23 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2022/23 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2022/23 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2022/23 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2022/23 | SRB-L1 | FK TSC | **non validé** |
+| 2022/23 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2022/23 | SRB-L1 | FK Voždovac | **non validé** |
+| 2022/23 | SRB-L1 | FK Čukarički | **non validé** |
+| 2022/23 | SVK-L1 | AS Trenčín | **non validé** |
+| 2022/23 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2022/23 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2022/23 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2022/23 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2022/23 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2022/23 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2022/23 | SVK-L1 | MFK Skalica | **non validé** |
+| 2022/23 | SVK-L1 | MFK Tatran Liptovský Mikuláš | **non validé** |
+| 2022/23 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2022/23 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2022/23 | SVN-L1 | FC Koper | **non validé** |
+| 2022/23 | SVN-L1 | ND Gorica | **non validé** |
+| 2022/23 | SVN-L1 | NK Bravo | **non validé** |
+| 2022/23 | SVN-L1 | NK Celje | **non validé** |
+| 2022/23 | SVN-L1 | NK Domžale | **non validé** |
+| 2022/23 | SVN-L1 | NK Maribor | **non validé** |
+| 2022/23 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2022/23 | SVN-L1 | NK Radomlje | **non validé** |
+| 2022/23 | SVN-L1 | NK Tabor Sežana | **non validé** |
+| 2022/23 | SVN-L1 | NŠ Mura | **non validé** |
+| 2022/23 | SWE-L1 | BK Häcken | **non validé** |
+| 2022/23 | SWE-L1 | Degerfors IF | **non validé** |
+| 2022/23 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2022/23 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2022/23 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2022/23 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2022/23 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2022/23 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2022/23 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2022/23 | SWE-L1 | IFK Värnamo | **non validé** |
+| 2022/23 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2022/23 | SWE-L1 | Kalmar FF | **non validé** |
+| 2022/23 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2022/23 | SWE-L1 | Varbergs BoIS | **non validé** |
+| 2022/23 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2022/23 | UKR-L1 | FC Inhulets Petrove | **non validé** |
+| 2022/23 | UKR-L1 | FC Kharkiv | **non validé** |
+| 2022/23 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2022/23 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2022/23 | UKR-L1 | FC Lviv | **non validé** |
+| 2022/23 | UKR-L1 | FC Metalist Kharkiv | **non validé** |
+| 2022/23 | UKR-L1 | FC Mynai | **non validé** |
+| 2022/23 | UKR-L1 | FC Oleksandriya | **non validé** |
+| 2022/23 | UKR-L1 | FC Rukh Lviv | **non validé** |
+| 2022/23 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2022/23 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2022/23 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2022/23 | UKR-L1 | SC Dnipro-1 | **non validé** |
+| 2022/23 | USA-MLS | Sporting Kansas City | **non validé** |
+| 2021/22 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2021/22 | ALB-L1 | FK Kukësi | **non validé** |
+| 2021/22 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2021/22 | ALB-L1 | KF Egnatia | **non validé** |
+| 2021/22 | ALB-L1 | KF Laçi | **non validé** |
+| 2021/22 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2021/22 | ALB-L1 | KF Teuta | **non validé** |
+| 2021/22 | ALB-L1 | KF Tirana | **non validé** |
+| 2021/22 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2021/22 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2021/22 | ARM-L1 | FC Alashkert | **non validé** |
+| 2021/22 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2021/22 | ARM-L1 | FC BKMA Yerevan | **non validé** |
+| 2021/22 | ARM-L1 | FC Noah | **non validé** |
+| 2021/22 | ARM-L1 | FC Pyunik | **non validé** |
+| 2021/22 | ARM-L1 | FC Urartu | **non validé** |
+| 2021/22 | ARM-L1 | FC Van | **non validé** |
+| 2021/22 | ARM-L1 | Noravank SC | **non validé** |
+| 2021/22 | ARM-L1 | Sevan FC | **non validé** |
+| 2021/22 | AUT-L1 | Admira Wacker | **non validé** |
+| 2021/22 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2021/22 | AUT-L1 | SK Austria Klagenfurt (2007) | **non validé** |
+| 2021/22 | AUT-L1 | SV Ried | **non validé** |
+| 2021/22 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2021/22 | AUT-L1 | WSG Tirol | **non validé** |
+| 2021/22 | AZE-L1 | Sabail FK | **non validé** |
+| 2021/22 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2021/22 | AZE-L1 | Zira FK | **non validé** |
+| 2021/22 | AZE-L1 | Şamaxı FK | **non validé** |
+| 2021/22 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2021/22 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2021/22 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2021/22 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2021/22 | BGR-L1 | FC Tsarsko Selo Sofia | **non validé** |
+| 2021/22 | BGR-L1 | OFC Pirin Blagoevgrad | **non validé** |
+| 2021/22 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2021/22 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2021/22 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2021/22 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2021/22 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2021/22 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2021/22 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2021/22 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2021/22 | BLR-L1 | FC Gomel | **non validé** |
+| 2021/22 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2021/22 | BLR-L1 | FC Minsk | **non validé** |
+| 2021/22 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2021/22 | BLR-L1 | FC Rukh Brest | **non validé** |
+| 2021/22 | BLR-L1 | FC SKA-1938 Minsk | **non validé** |
+| 2021/22 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2021/22 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2021/22 | BLR-L1 | FC Slutsk | **non validé** |
+| 2021/22 | BLR-L1 | FC Smorgon | **non validé** |
+| 2021/22 | BLR-L1 | FC Sputnik Rechitsa | **non validé** |
+| 2021/22 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2021/22 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2021/22 | CHE-L1 | FC Luzern | **non validé** |
+| 2021/22 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2021/22 | CYP-L1 | AC Omonia | **non validé** |
+| 2021/22 | CYP-L1 | AEL Limassol | **non validé** |
+| 2021/22 | CYP-L1 | APOEL FC | **non validé** |
+| 2021/22 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2021/22 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2021/22 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2021/22 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2021/22 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2021/22 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2021/22 | CYP-L1 | PAEEK | **non validé** |
+| 2021/22 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2021/22 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2021/22 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2021/22 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2021/22 | CZE-L1 | FC Zlín | **non validé** |
+| 2021/22 | CZE-L1 | FK Jablonec | **non validé** |
+| 2021/22 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2021/22 | CZE-L1 | FK Pardubice | **non validé** |
+| 2021/22 | CZE-L1 | FK Teplice | **non validé** |
+| 2021/22 | CZE-L1 | MFK Karviná | **non validé** |
+| 2021/22 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2021/22 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2021/22 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2021/22 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2021/22 | DNK-L1 | Randers FC | **non validé** |
+| 2021/22 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2021/22 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2021/22 | DNK-L1 | Vejle Boldklub | **non validé** |
+| 2021/22 | DNK-L1 | Viborg FF | **non validé** |
+| 2021/22 | FIN-L1 | AC Oulu | **non validé** |
+| 2021/22 | FIN-L1 | FC Haka | **non validé** |
+| 2021/22 | FIN-L1 | FC Honka | **non validé** |
+| 2021/22 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2021/22 | FIN-L1 | FC Lahti | **non validé** |
+| 2021/22 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2021/22 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2021/22 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2021/22 | FIN-L1 | Ilves (football) | **non validé** |
+| 2021/22 | FIN-L1 | Kotkan Työväen Palloilijat | **non validé** |
+| 2021/22 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2021/22 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2021/22 | GRC-L1 | Apollon Smyrnis F.C. | **non validé** |
+| 2021/22 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2021/22 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2021/22 | GRC-L1 | Ionikos F.C. | **non validé** |
+| 2021/22 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2021/22 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2021/22 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2021/22 | GRC-L1 | Volos F.C. | **non validé** |
+| 2021/22 | HRV-L1 | HNK Gorica | **non validé** |
+| 2021/22 | HRV-L1 | HNK Šibenik | **non validé** |
+| 2021/22 | HRV-L1 | NK Hrvatski Dragovoljac | **non validé** |
+| 2021/22 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2021/22 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2021/22 | HRV-L1 | NK Osijek | **non validé** |
+| 2021/22 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2021/22 | HUN-L1 | Gyirmót FC Győr | **non validé** |
+| 2021/22 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2021/22 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2021/22 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2021/22 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2021/22 | HUN-L1 | Paksi FC | **non validé** |
+| 2021/22 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2021/22 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2021/22 | HUN-L1 | Újpest FC | **non validé** |
+| 2021/22 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Longford Town F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2021/22 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2021/22 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2021/22 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Jerusalem F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Nof HaGalil F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2021/22 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2021/22 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2021/22 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2021/22 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2021/22 | KAZ-L1 | FC Caspiy | **non validé** |
+| 2021/22 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2021/22 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2021/22 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2021/22 | KAZ-L1 | FC Taraz | **non validé** |
+| 2021/22 | KAZ-L1 | FC Tobol | **non validé** |
+| 2021/22 | KAZ-L1 | FC Turan | **non validé** |
+| 2021/22 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2021/22 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2021/22 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2021/22 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2021/22 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2021/22 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2021/22 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2021/22 | LUX-L1 | FC Rodange 91 | **non validé** |
+| 2021/22 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2021/22 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2021/22 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2021/22 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2021/22 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2021/22 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2021/22 | LUX-L1 | US Hostert | **non validé** |
+| 2021/22 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2021/22 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2021/22 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2021/22 | LVA-L1 | FC Noah Jurmala | **non validé** |
+| 2021/22 | LVA-L1 | FK Liepāja | **non validé** |
+| 2021/22 | LVA-L1 | FK Metta | **non validé** |
+| 2021/22 | LVA-L1 | FK RFS | **non validé** |
+| 2021/22 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2021/22 | LVA-L1 | FK Ventspils | **non validé** |
+| 2021/22 | LVA-L1 | Riga FC | **non validé** |
+| 2021/22 | LVA-L1 | Valmiera FC | **non validé** |
+| 2021/22 | MDA-L1 | FC Bălți | **non validé** |
+| 2021/22 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2021/22 | MDA-L1 | FC Florești | **non validé** |
+| 2021/22 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2021/22 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2021/22 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2021/22 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2021/22 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2021/22 | MKD-L1 | FC Struga | **non validé** |
+| 2021/22 | MKD-L1 | FK Borec | **non validé** |
+| 2021/22 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2021/22 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2021/22 | MKD-L1 | FK Pelister | **non validé** |
+| 2021/22 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2021/22 | MKD-L1 | FK Skopje | **non validé** |
+| 2021/22 | MKD-L1 | GFK Tikvesh | **non validé** |
+| 2021/22 | MKD-L1 | KF Renova | **non validé** |
+| 2021/22 | MKD-L1 | KF Shkupi | **non validé** |
+| 2021/22 | MKD-L1 | KF Shkëndija | **non validé** |
+| 2021/22 | NOR-L1 | FK Haugesund | **non validé** |
+| 2021/22 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2021/22 | NOR-L1 | Mjøndalen IF Fotball | **non validé** |
+| 2021/22 | NOR-L1 | Odds BK | **non validé** |
+| 2021/22 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2021/22 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2021/22 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2021/22 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2021/22 | POL-L1 | Bruk-Bet Termalica Nieciecza | **non validé** |
+| 2021/22 | POL-L1 | GKS Górnik Łęczna | **non validé** |
+| 2021/22 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2021/22 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2021/22 | POL-L1 | KS Cracovia | **non validé** |
+| 2021/22 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2021/22 | POL-L1 | Piast Gliwice | **non validé** |
+| 2021/22 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2021/22 | POL-L1 | Radomiak Radom | **non validé** |
+| 2021/22 | POL-L1 | Stal Mielec | **non validé** |
+| 2021/22 | POL-L1 | Warta Poznań | **non validé** |
+| 2021/22 | POL-L1 | Wisła Kraków | **non validé** |
+| 2021/22 | POL-L1 | Wisła Płock | **non validé** |
+| 2021/22 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2021/22 | POL-L1 | Śląsk Wrocław | **non validé** |
+| 2021/22 | ROU-L1 | ACS Inter Ilfov | **non validé** |
+| 2021/22 | ROU-L1 | AFC Chindia Târgoviște | **non validé** |
+| 2021/22 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2021/22 | ROU-L1 | CS Mioveni | **non validé** |
+| 2021/22 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2021/22 | ROU-L1 | FC Argeș Pitești | **non validé** |
+| 2021/22 | ROU-L1 | FC Botoșani | **non validé** |
+| 2021/22 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2021/22 | ROU-L1 | FC Rapid București | **non validé** |
+| 2021/22 | ROU-L1 | FC U Craiova 1948 | **non validé** |
+| 2021/22 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2021/22 | ROU-L1 | FC Voluntari | **non validé** |
+| 2021/22 | ROU-L1 | FCV Farul Constanța | **non validé** |
+| 2021/22 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2021/22 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2021/22 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2021/22 | RUS-L1 | FC Khimki | **non validé** |
+| 2021/22 | RUS-L1 | FC Nizhny Novgorod | **non validé** |
+| 2021/22 | RUS-L1 | FC Ufa | **non validé** |
+| 2021/22 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2021/22 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2021/22 | RUS-L1 | PFC Sochi | **non validé** |
+| 2021/22 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2021/22 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2021/22 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2021/22 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2021/22 | SRB-L1 | FK Kolubara | **non validé** |
+| 2021/22 | SRB-L1 | FK Metalac Gornji Milanovac | **non validé** |
+| 2021/22 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2021/22 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2021/22 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2021/22 | SRB-L1 | FK Proleter Novi Sad | **non validé** |
+| 2021/22 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2021/22 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2021/22 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2021/22 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2021/22 | SRB-L1 | FK TSC | **non validé** |
+| 2021/22 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2021/22 | SRB-L1 | FK Voždovac | **non validé** |
+| 2021/22 | SRB-L1 | FK Čukarički | **non validé** |
+| 2021/22 | SVK-L1 | AS Trenčín | **non validé** |
+| 2021/22 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2021/22 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2021/22 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2021/22 | SVK-L1 | FK Pohronie | **non validé** |
+| 2021/22 | SVK-L1 | FK Senica | **non validé** |
+| 2021/22 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2021/22 | SVK-L1 | MFK Tatran Liptovský Mikuláš | **non validé** |
+| 2021/22 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2021/22 | SVK-L1 | ŠKF Sereď | **non validé** |
+| 2021/22 | SVN-L1 | FC Koper | **non validé** |
+| 2021/22 | SVN-L1 | NK Aluminij | **non validé** |
+| 2021/22 | SVN-L1 | NK Bravo | **non validé** |
+| 2021/22 | SVN-L1 | NK Celje | **non validé** |
+| 2021/22 | SVN-L1 | NK Domžale | **non validé** |
+| 2021/22 | SVN-L1 | NK Maribor | **non validé** |
+| 2021/22 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2021/22 | SVN-L1 | NK Radomlje | **non validé** |
+| 2021/22 | SVN-L1 | NK Tabor Sežana | **non validé** |
+| 2021/22 | SVN-L1 | NŠ Mura | **non validé** |
+| 2021/22 | SWE-L1 | BK Häcken | **non validé** |
+| 2021/22 | SWE-L1 | Degerfors IF | **non validé** |
+| 2021/22 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2021/22 | SWE-L1 | Halmstads BK | **non validé** |
+| 2021/22 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2021/22 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2021/22 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2021/22 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2021/22 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2021/22 | SWE-L1 | Kalmar FF | **non validé** |
+| 2021/22 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2021/22 | SWE-L1 | Varbergs BoIS | **non validé** |
+| 2021/22 | SWE-L1 | Örebro SK | **non validé** |
+| 2021/22 | SWE-L1 | Östersunds FK | **non validé** |
 | 2021/22 | TUR-SL | Altay S.K. | **non validé** |
 | 2021/22 | TUR-SL | Gaziantep F.K. | **non validé** |
 | 2021/22 | TUR-SL | Giresunspor | **non validé** |
@@ -111,22 +2095,584 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2021/22 | TUR-SL | Konyaspor | **non validé** |
 | 2021/22 | TUR-SL | Yeni Malatyaspor | **non validé** |
 | 2021/22 | TUR-SL | Çaykur Rizespor | **non validé** |
+| 2021/22 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2021/22 | UKR-L1 | FC Desna Chernihiv | **non validé** |
+| 2021/22 | UKR-L1 | FC Inhulets Petrove | **non validé** |
+| 2021/22 | UKR-L1 | FC Kharkiv | **non validé** |
+| 2021/22 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2021/22 | UKR-L1 | FC Lviv | **non validé** |
+| 2021/22 | UKR-L1 | FC Mariupol | **non validé** |
+| 2021/22 | UKR-L1 | FC Mynai | **non validé** |
+| 2021/22 | UKR-L1 | FC Oleksandriya | **non validé** |
+| 2021/22 | UKR-L1 | FC Rukh Lviv | **non validé** |
+| 2021/22 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2021/22 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2021/22 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2021/22 | UKR-L1 | SC Dnipro-1 | **non validé** |
+| 2021/22 | USA-MLS | Chicago Fire FC | **non validé** |
+| 2021/22 | USA-MLS | Portland Timbers | **non validé** |
+| 2021/22 | USA-MLS | San Jose Earthquakes | **non validé** |
+| 2020/21 | ALB-L1 | FK Apolonia | **non validé** |
+| 2020/21 | ALB-L1 | FK Kukësi | **non validé** |
+| 2020/21 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2020/21 | ALB-L1 | KF Bylis | **non validé** |
+| 2020/21 | ALB-L1 | KF Laçi | **non validé** |
+| 2020/21 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2020/21 | ALB-L1 | KF Teuta | **non validé** |
+| 2020/21 | ALB-L1 | KF Tirana | **non validé** |
+| 2020/21 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2020/21 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2020/21 | ARM-L1 | FC Alashkert | **non validé** |
+| 2020/21 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2020/21 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2020/21 | ARM-L1 | FC Noah | **non validé** |
+| 2020/21 | ARM-L1 | FC Pyunik | **non validé** |
+| 2020/21 | ARM-L1 | FC Urartu | **non validé** |
+| 2020/21 | ARM-L1 | FC Van | **non validé** |
+| 2020/21 | ARM-L1 | Lori FC | **non validé** |
+| 2020/21 | ARM-L1 | Shirak SC | **non validé** |
+| 2020/21 | AUT-L1 | Admira Wacker | **non validé** |
+| 2020/21 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2020/21 | AUT-L1 | SKN St. Pölten | **non validé** |
+| 2020/21 | AUT-L1 | SV Ried | **non validé** |
+| 2020/21 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2020/21 | AUT-L1 | WSG Tirol | **non validé** |
+| 2020/21 | AZE-L1 | Sabail FK | **non validé** |
+| 2020/21 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2020/21 | AZE-L1 | Zira FK | **non validé** |
+| 2020/21 | AZE-L1 | Şamaxı FK | **non validé** |
+| 2020/21 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2020/21 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2020/21 | BGR-L1 | FC CSKA 1948 Sofia | **non validé** |
+| 2020/21 | BGR-L1 | FC Tsarsko Selo Sofia | **non validé** |
+| 2020/21 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2020/21 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2020/21 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2020/21 | BGR-L1 | PFC Montana | **non validé** |
+| 2020/21 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2020/21 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2020/21 | BGR-L1 | SFC Etar Veliko Tarnovo | **non validé** |
+| 2020/21 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2020/21 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2020/21 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2020/21 | BLR-L1 | FC Gorodeya | **non validé** |
+| 2020/21 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2020/21 | BLR-L1 | FC Minsk | **non validé** |
+| 2020/21 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2020/21 | BLR-L1 | FC Rukh Brest | **non validé** |
+| 2020/21 | BLR-L1 | FC SKA-1938 Minsk | **non validé** |
+| 2020/21 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2020/21 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2020/21 | BLR-L1 | FC Slutsk | **non validé** |
+| 2020/21 | BLR-L1 | FC Smolevichi | **non validé** |
+| 2020/21 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2020/21 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2020/21 | CHE-L1 | FC Luzern | **non validé** |
+| 2020/21 | CHE-L1 | FC Vaduz | **non validé** |
+| 2020/21 | CYP-L1 | AC Omonia | **non validé** |
+| 2020/21 | CYP-L1 | AEL Limassol | **non validé** |
+| 2020/21 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2020/21 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2020/21 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2020/21 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2020/21 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2020/21 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2020/21 | CYP-L1 | Karmiotissa FC | **non validé** |
+| 2020/21 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2020/21 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2020/21 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2020/21 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2020/21 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2020/21 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2020/21 | CZE-L1 | FC Zlín | **non validé** |
+| 2020/21 | CZE-L1 | FK Jablonec | **non validé** |
+| 2020/21 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2020/21 | CZE-L1 | FK Pardubice | **non validé** |
+| 2020/21 | CZE-L1 | FK Příbram | **non validé** |
+| 2020/21 | CZE-L1 | FK Teplice | **non validé** |
+| 2020/21 | CZE-L1 | MFK Karviná | **non validé** |
+| 2020/21 | CZE-L1 | SFC Opava | **non validé** |
+| 2020/21 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2020/21 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2020/21 | DNK-L1 | AC Horsens | **non validé** |
+| 2020/21 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2020/21 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2020/21 | DNK-L1 | Randers FC | **non validé** |
+| 2020/21 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2020/21 | DNK-L1 | Vejle Boldklub | **non validé** |
+| 2020/21 | FIN-L1 | FC Haka | **non validé** |
+| 2020/21 | FIN-L1 | FC Honka | **non validé** |
+| 2020/21 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2020/21 | FIN-L1 | FC Lahti | **non validé** |
+| 2020/21 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2020/21 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2020/21 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2020/21 | FIN-L1 | Ilves (football) | **non validé** |
+| 2020/21 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2020/21 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2020/21 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2020/21 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2020/21 | GRC-L1 | Apollon Smyrnis F.C. | **non validé** |
+| 2020/21 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2020/21 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2020/21 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2020/21 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2020/21 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2020/21 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2020/21 | GRC-L1 | Volos F.C. | **non validé** |
+| 2020/21 | HRV-L1 | HNK Gorica | **non validé** |
+| 2020/21 | HRV-L1 | HNK Šibenik | **non validé** |
+| 2020/21 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2020/21 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2020/21 | HRV-L1 | NK Osijek | **non validé** |
+| 2020/21 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2020/21 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2020/21 | HUN-L1 | Budafoki MTE | **non validé** |
+| 2020/21 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2020/21 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2020/21 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2020/21 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2020/21 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2020/21 | HUN-L1 | Paksi FC | **non validé** |
+| 2020/21 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2020/21 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2020/21 | HUN-L1 | Újpest FC | **non validé** |
+| 2020/21 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2020/21 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2020/21 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2020/21 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2020/21 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Hapoel Kfar Saba F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2020/21 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2020/21 | KAZ-L1 | FC Caspiy | **non validé** |
+| 2020/21 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2020/21 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2020/21 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2020/21 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2020/21 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2020/21 | KAZ-L1 | FC Taraz | **non validé** |
+| 2020/21 | KAZ-L1 | FC Tobol | **non validé** |
+| 2020/21 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2020/21 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2020/21 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2020/21 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2020/21 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2020/21 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2020/21 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2020/21 | LUX-L1 | FC Rodange 91 | **non validé** |
+| 2020/21 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2020/21 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2020/21 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2020/21 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2020/21 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2020/21 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2020/21 | LUX-L1 | US Hostert | **non validé** |
+| 2020/21 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2020/21 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2020/21 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2020/21 | LVA-L1 | FK Jelgava | **non validé** |
+| 2020/21 | LVA-L1 | FK Liepāja | **non validé** |
+| 2020/21 | LVA-L1 | FK Metta | **non validé** |
+| 2020/21 | LVA-L1 | FK RFS | **non validé** |
+| 2020/21 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2020/21 | LVA-L1 | FK Tukums 2000 | **non validé** |
+| 2020/21 | LVA-L1 | FK Ventspils | **non validé** |
+| 2020/21 | LVA-L1 | Riga FC | **non validé** |
+| 2020/21 | LVA-L1 | Valmiera FC | **non validé** |
+| 2020/21 | MDA-L1 | FC Codru Lozova | **non validé** |
+| 2020/21 | MDA-L1 | FC Dacia Buiucani | **non validé** |
+| 2020/21 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2020/21 | MDA-L1 | FC Florești | **non validé** |
+| 2020/21 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2020/21 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2020/21 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2020/21 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2020/21 | MDA-L1 | Speranța Nisporeni | **non validé** |
+| 2020/21 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2020/21 | MKD-L1 | FC Struga | **non validé** |
+| 2020/21 | MKD-L1 | FK Belasica | **non validé** |
+| 2020/21 | MKD-L1 | FK Borec | **non validé** |
+| 2020/21 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2020/21 | MKD-L1 | FK Pelister | **non validé** |
+| 2020/21 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2020/21 | MKD-L1 | FK Sileks | **non validé** |
+| 2020/21 | MKD-L1 | FK Vardar | **non validé** |
+| 2020/21 | MKD-L1 | KF Renova | **non validé** |
+| 2020/21 | MKD-L1 | KF Shkupi | **non validé** |
+| 2020/21 | MKD-L1 | KF Shkëndija | **non validé** |
+| 2020/21 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2020/21 | NOR-L1 | FK Haugesund | **non validé** |
+| 2020/21 | NOR-L1 | IK Start | **non validé** |
+| 2020/21 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2020/21 | NOR-L1 | Mjøndalen IF Fotball | **non validé** |
+| 2020/21 | NOR-L1 | Odds BK | **non validé** |
+| 2020/21 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2020/21 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2020/21 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2020/21 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2020/21 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2020/21 | POL-L1 | KS Cracovia | **non validé** |
+| 2020/21 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2020/21 | POL-L1 | Piast Gliwice | **non validé** |
+| 2020/21 | POL-L1 | Podbeskidzie Bielsko-Biała | **non validé** |
+| 2020/21 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2020/21 | POL-L1 | Stal Mielec | **non validé** |
+| 2020/21 | POL-L1 | Warta Poznań | **non validé** |
+| 2020/21 | POL-L1 | Wisła Kraków | **non validé** |
+| 2020/21 | POL-L1 | Wisła Płock | **non validé** |
+| 2020/21 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2020/21 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2020/21 | PRT-PL | B-SAD | **non validé** |
 | 2020/21 | PRT-PL | C.D. Nacional | **non validé** |
 | 2020/21 | PRT-PL | C.D. Tondela | **non validé** |
 | 2020/21 | PRT-PL | C.S. Marítimo | **non validé** |
 | 2020/21 | PRT-PL | Gil Vicente F.C. | **non validé** |
 | 2020/21 | PRT-PL | Portimonense S.C. | **non validé** |
+| 2020/21 | ROU-L1 | ACS Inter Ilfov | **non validé** |
+| 2020/21 | ROU-L1 | AFC Chindia Târgoviște | **non validé** |
+| 2020/21 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2020/21 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2020/21 | ROU-L1 | FC Argeș Pitești | **non validé** |
+| 2020/21 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2020/21 | ROU-L1 | FC Botoșani | **non validé** |
+| 2020/21 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2020/21 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2020/21 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2020/21 | ROU-L1 | FC UTA Arad | **non validé** |
+| 2020/21 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2020/21 | ROU-L1 | FC Voluntari | **non validé** |
+| 2020/21 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2020/21 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2020/21 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2020/21 | RUS-L1 | FC Khimki | **non validé** |
+| 2020/21 | RUS-L1 | FC Rotor Volgograd | **non validé** |
+| 2020/21 | RUS-L1 | FC Tambov | **non validé** |
+| 2020/21 | RUS-L1 | FC Ufa | **non validé** |
+| 2020/21 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2020/21 | RUS-L1 | PFC Sochi | **non validé** |
+| 2020/21 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2020/21 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2020/21 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2020/21 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2020/21 | SRB-L1 | FK Inđija | **non validé** |
+| 2020/21 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2020/21 | SRB-L1 | FK Mačva Šabac | **non validé** |
+| 2020/21 | SRB-L1 | FK Metalac Gornji Milanovac | **non validé** |
+| 2020/21 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2020/21 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2020/21 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2020/21 | SRB-L1 | FK Proleter Novi Sad | **non validé** |
+| 2020/21 | SRB-L1 | FK Rad | **non validé** |
+| 2020/21 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2020/21 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2020/21 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2020/21 | SRB-L1 | FK TSC | **non validé** |
+| 2020/21 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2020/21 | SRB-L1 | FK Voždovac | **non validé** |
+| 2020/21 | SRB-L1 | FK Zlatibor Čajetina | **non validé** |
+| 2020/21 | SRB-L1 | FK Čukarički | **non validé** |
+| 2020/21 | SRB-L1 | OFK Bačka | **non validé** |
+| 2020/21 | SVK-L1 | AS Trenčín | **non validé** |
+| 2020/21 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2020/21 | SVK-L1 | FC Nitra | **non validé** |
+| 2020/21 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2020/21 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2020/21 | SVK-L1 | FK Pohronie | **non validé** |
+| 2020/21 | SVK-L1 | FK Senica | **non validé** |
+| 2020/21 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2020/21 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2020/21 | SVK-L1 | ŠKF Sereď | **non validé** |
+| 2020/21 | SVN-L1 | FC Koper | **non validé** |
+| 2020/21 | SVN-L1 | ND Gorica | **non validé** |
+| 2020/21 | SVN-L1 | NK Aluminij | **non validé** |
+| 2020/21 | SVN-L1 | NK Bravo | **non validé** |
+| 2020/21 | SVN-L1 | NK Celje | **non validé** |
+| 2020/21 | SVN-L1 | NK Domžale | **non validé** |
+| 2020/21 | SVN-L1 | NK Maribor | **non validé** |
+| 2020/21 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2020/21 | SVN-L1 | NK Tabor Sežana | **non validé** |
+| 2020/21 | SVN-L1 | NŠ Mura | **non validé** |
+| 2020/21 | SWE-L1 | BK Häcken | **non validé** |
+| 2020/21 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2020/21 | SWE-L1 | Falkenbergs FF | **non validé** |
+| 2020/21 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2020/21 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2020/21 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2020/21 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2020/21 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2020/21 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2020/21 | SWE-L1 | Kalmar FF | **non validé** |
+| 2020/21 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2020/21 | SWE-L1 | Varbergs BoIS | **non validé** |
+| 2020/21 | SWE-L1 | Örebro SK | **non validé** |
+| 2020/21 | SWE-L1 | Östersunds FK | **non validé** |
+| 2020/21 | UKR-L1 | FC Desna Chernihiv | **non validé** |
+| 2020/21 | UKR-L1 | FC Inhulets Petrove | **non validé** |
+| 2020/21 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2020/21 | UKR-L1 | FC Lviv | **non validé** |
+| 2020/21 | UKR-L1 | FC Mariupol | **non validé** |
+| 2020/21 | UKR-L1 | FC Mynai | **non validé** |
+| 2020/21 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2020/21 | UKR-L1 | FC Rukh Lviv | **non validé** |
+| 2020/21 | UKR-L1 | SC Dnipro-1 | **non validé** |
+| 2020/21 | USA-MLS | CF Montréal | **non validé** |
+| 2020/21 | USA-MLS | Chicago Fire FC | **non validé** |
+| 2020/21 | USA-MLS | Houston Dynamo FC | **non validé** |
+| 2019/20 | ALB-L1 | FK Kukësi | **non validé** |
+| 2019/20 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2019/20 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2019/20 | ALB-L1 | KF Bylis | **non validé** |
+| 2019/20 | ALB-L1 | KF Laçi | **non validé** |
+| 2019/20 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2019/20 | ALB-L1 | KF Teuta | **non validé** |
+| 2019/20 | ALB-L1 | KF Tirana | **non validé** |
+| 2019/20 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2019/20 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2019/20 | ARM-L1 | FC Alashkert | **non validé** |
+| 2019/20 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2019/20 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2019/20 | ARM-L1 | FC Noah | **non validé** |
+| 2019/20 | ARM-L1 | FC Pyunik | **non validé** |
+| 2019/20 | ARM-L1 | FC Urartu | **non validé** |
+| 2019/20 | ARM-L1 | FC Yerevan | **non validé** |
+| 2019/20 | ARM-L1 | Lori FC | **non validé** |
+| 2019/20 | ARM-L1 | Shirak SC | **non validé** |
+| 2019/20 | AUT-L1 | Admira Wacker | **non validé** |
+| 2019/20 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2019/20 | AUT-L1 | SK Sturm Graz | **non validé** |
+| 2019/20 | AUT-L1 | SKN St. Pölten | **non validé** |
+| 2019/20 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2019/20 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2019/20 | AUT-L1 | WSG Tirol | **non validé** |
+| 2019/20 | AZE-L1 | Sabail FK | **non validé** |
+| 2019/20 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2019/20 | AZE-L1 | Zira FK | **non validé** |
+| 2019/20 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2019/20 | BEL-PL | KV Kortrijk | **non validé** |
 | 2019/20 | BEL-PL | KV Mechelen | **non validé** |
 | 2019/20 | BEL-PL | KV Oostende | **non validé** |
 | 2019/20 | BEL-PL | Royal Excel Mouscron | **non validé** |
 | 2019/20 | BEL-PL | SK Beveren | **non validé** |
 | 2019/20 | BEL-PL | Sint-Truidense VV | **non validé** |
+| 2019/20 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2019/20 | BGR-L1 | FC Arda Kardzhali | **non validé** |
+| 2019/20 | BGR-L1 | FC Dunav Ruse | **non validé** |
+| 2019/20 | BGR-L1 | FC Tsarsko Selo Sofia | **non validé** |
+| 2019/20 | BGR-L1 | FC Vitosha Bistritsa | **non validé** |
+| 2019/20 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2019/20 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2019/20 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2019/20 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2019/20 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2019/20 | BGR-L1 | SFC Etar Veliko Tarnovo | **non validé** |
+| 2019/20 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2019/20 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2019/20 | BLR-L1 | FC Dnyapro Mogilev | **non validé** |
+| 2019/20 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2019/20 | BLR-L1 | FC Gomel | **non validé** |
+| 2019/20 | BLR-L1 | FC Gorodeya | **non validé** |
+| 2019/20 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2019/20 | BLR-L1 | FC Minsk | **non validé** |
+| 2019/20 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2019/20 | BLR-L1 | FC SKA-1938 Minsk | **non validé** |
+| 2019/20 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2019/20 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2019/20 | BLR-L1 | FC Slutsk | **non validé** |
+| 2019/20 | BLR-L1 | FC Torpedo Minsk | **non validé** |
+| 2019/20 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2019/20 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2019/20 | CHE-L1 | FC Luzern | **non validé** |
+| 2019/20 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
+| 2019/20 | CYP-L1 | AC Omonia | **non validé** |
+| 2019/20 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2019/20 | CYP-L1 | AEL Limassol | **non validé** |
+| 2019/20 | CYP-L1 | APOEL FC | **non validé** |
+| 2019/20 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2019/20 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2019/20 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2019/20 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2019/20 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2019/20 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2019/20 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2019/20 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2019/20 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2019/20 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2019/20 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2019/20 | CZE-L1 | FC Zlín | **non validé** |
+| 2019/20 | CZE-L1 | FK Jablonec | **non validé** |
+| 2019/20 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2019/20 | CZE-L1 | FK Příbram | **non validé** |
+| 2019/20 | CZE-L1 | FK Teplice | **non validé** |
+| 2019/20 | CZE-L1 | MFK Karviná | **non validé** |
+| 2019/20 | CZE-L1 | SFC Opava | **non validé** |
+| 2019/20 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2019/20 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2019/20 | DNK-L1 | AC Horsens | **non validé** |
+| 2019/20 | DNK-L1 | AaB Fodbold | **non validé** |
+| 2019/20 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2019/20 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2019/20 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2019/20 | DNK-L1 | Hobro IK | **non validé** |
+| 2019/20 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2019/20 | DNK-L1 | Randers FC | **non validé** |
+| 2019/20 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2019/20 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2019/20 | FIN-L1 | FC Honka | **non validé** |
+| 2019/20 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2019/20 | FIN-L1 | FC Lahti | **non validé** |
+| 2019/20 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2019/20 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2019/20 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2019/20 | FIN-L1 | Ilves (football) | **non validé** |
+| 2019/20 | FIN-L1 | Kokkolan Palloveikot | **non validé** |
+| 2019/20 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2019/20 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2019/20 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2019/20 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2019/20 | FRA-L2 | FC Chambly Oise | **non validé** |
+| 2019/20 | FRA-L2 | Rodez AF | **non validé** |
+| 2019/20 | FRA-L2 | US Orléans | **non validé** |
+| 2019/20 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2019/20 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2019/20 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2019/20 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2019/20 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2019/20 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2019/20 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2019/20 | GRC-L1 | Volos F.C. | **non validé** |
+| 2019/20 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2019/20 | HRV-L1 | HNK Gorica | **non validé** |
+| 2019/20 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2019/20 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2019/20 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2019/20 | HRV-L1 | NK Osijek | **non validé** |
+| 2019/20 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2019/20 | HRV-L1 | NK Varaždin (2012) | **non validé** |
+| 2019/20 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2019/20 | HUN-L1 | Kaposvári Rákóczi FC | **non validé** |
+| 2019/20 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2019/20 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2019/20 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2019/20 | HUN-L1 | Paksi FC | **non validé** |
+| 2019/20 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2019/20 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2019/20 | HUN-L1 | Újpest FC | **non validé** |
+| 2019/20 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2019/20 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2019/20 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2019/20 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2019/20 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2019/20 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2019/20 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2019/20 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2019/20 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2019/20 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Kfar Saba F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2019/20 | ISR-L1 | Sektzia Ness Ziona F.C. | **non validé** |
+| 2019/20 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2019/20 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2019/20 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2019/20 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2019/20 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2019/20 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2019/20 | KAZ-L1 | FC Taraz | **non validé** |
+| 2019/20 | KAZ-L1 | FC Tobol | **non validé** |
+| 2019/20 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2019/20 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2019/20 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2019/20 | LUX-L1 | FC Blue Boys Muhlenbach | **non validé** |
+| 2019/20 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2019/20 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2019/20 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2019/20 | LUX-L1 | FC Rodange 91 | **non validé** |
+| 2019/20 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2019/20 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2019/20 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2019/20 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2019/20 | LUX-L1 | US Hostert | **non validé** |
+| 2019/20 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2019/20 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2019/20 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2019/20 | LVA-L1 | FK Jelgava | **non validé** |
+| 2019/20 | LVA-L1 | FK Liepāja | **non validé** |
+| 2019/20 | LVA-L1 | FK Metta | **non validé** |
+| 2019/20 | LVA-L1 | FK RFS | **non validé** |
+| 2019/20 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2019/20 | LVA-L1 | FK Ventspils | **non validé** |
+| 2019/20 | LVA-L1 | Riga FC | **non validé** |
+| 2019/20 | LVA-L1 | Valmiera FC | **non validé** |
+| 2019/20 | MDA-L1 | FC Codru Lozova | **non validé** |
+| 2019/20 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2019/20 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2019/20 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2019/20 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2019/20 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2019/20 | MDA-L1 | Speranța Nisporeni | **non validé** |
+| 2019/20 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2019/20 | MKD-L1 | FC Struga | **non validé** |
+| 2019/20 | MKD-L1 | FK Borec | **non validé** |
+| 2019/20 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2019/20 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2019/20 | MKD-L1 | FK Sileks | **non validé** |
+| 2019/20 | MKD-L1 | FK Vardar | **non validé** |
+| 2019/20 | MKD-L1 | KF Renova | **non validé** |
+| 2019/20 | MKD-L1 | KF Shkupi | **non validé** |
+| 2019/20 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2019/20 | NLD-ED | ADO Den Haag | **non validé** |
 | 2019/20 | NLD-ED | FC Emmen | **non validé** |
 | 2019/20 | NLD-ED | Heracles Almelo | **non validé** |
 | 2019/20 | NLD-ED | SC Heerenveen | **non validé** |
+| 2019/20 | NOR-L1 | FK Haugesund | **non validé** |
+| 2019/20 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2019/20 | NOR-L1 | Mjøndalen IF Fotball | **non validé** |
+| 2019/20 | NOR-L1 | Odds BK | **non validé** |
+| 2019/20 | NOR-L1 | Ranheim Fotball | **non validé** |
+| 2019/20 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2019/20 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2019/20 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2019/20 | POL-L1 | Arka Gdynia | **non validé** |
+| 2019/20 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2019/20 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2019/20 | POL-L1 | KS Cracovia | **non validé** |
+| 2019/20 | POL-L1 | Korona Kielce | **non validé** |
+| 2019/20 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2019/20 | POL-L1 | Piast Gliwice | **non validé** |
+| 2019/20 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2019/20 | POL-L1 | Raków Częstochowa | **non validé** |
+| 2019/20 | POL-L1 | Wisła Kraków | **non validé** |
+| 2019/20 | POL-L1 | Wisła Płock | **non validé** |
+| 2019/20 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2019/20 | POL-L1 | ŁKS Łódź | **non validé** |
+| 2019/20 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2019/20 | PRT-PL | B-SAD | **non validé** |
 | 2019/20 | PRT-PL | Boavista F.C. | **non validé** |
 | 2019/20 | PRT-PL | C.D. Santa Clara | **non validé** |
@@ -140,12 +2686,314 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2019/20 | PRT-PL | Rio Ave F.C. | **non validé** |
 | 2019/20 | PRT-PL | Vitória F.C. | **non validé** |
 | 2019/20 | PRT-PL | Vitória S.C. | **non validé** |
+| 2019/20 | ROU-L1 | ACS Inter Ilfov | **non validé** |
+| 2019/20 | ROU-L1 | AFC Chindia Târgoviște | **non validé** |
+| 2019/20 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2019/20 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2019/20 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2019/20 | ROU-L1 | FC Botoșani | **non validé** |
+| 2019/20 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2019/20 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2019/20 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2019/20 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2019/20 | ROU-L1 | FC Voluntari | **non validé** |
+| 2019/20 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2019/20 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2019/20 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2019/20 | RUS-L1 | FC Orenburg | **non validé** |
+| 2019/20 | RUS-L1 | FC Tambov | **non validé** |
+| 2019/20 | RUS-L1 | FC Ufa | **non validé** |
+| 2019/20 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2019/20 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2019/20 | RUS-L1 | PFC Sochi | **non validé** |
+| 2019/20 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2019/20 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2019/20 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2019/20 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2019/20 | SRB-L1 | FK Inđija | **non validé** |
+| 2019/20 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2019/20 | SRB-L1 | FK Mačva Šabac | **non validé** |
+| 2019/20 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2019/20 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2019/20 | SRB-L1 | FK Proleter Novi Sad | **non validé** |
+| 2019/20 | SRB-L1 | FK Rad | **non validé** |
+| 2019/20 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2019/20 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2019/20 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2019/20 | SRB-L1 | FK TSC | **non validé** |
+| 2019/20 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2019/20 | SRB-L1 | FK Voždovac | **non validé** |
+| 2019/20 | SRB-L1 | FK Čukarički | **non validé** |
+| 2019/20 | SVK-L1 | AS Trenčín | **non validé** |
+| 2019/20 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2019/20 | SVK-L1 | FC Nitra | **non validé** |
+| 2019/20 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2019/20 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2019/20 | SVK-L1 | FK Pohronie | **non validé** |
+| 2019/20 | SVK-L1 | FK Senica | **non validé** |
+| 2019/20 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2019/20 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2019/20 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2019/20 | SVK-L1 | ŠKF Sereď | **non validé** |
+| 2019/20 | SVN-L1 | NK Aluminij | **non validé** |
+| 2019/20 | SVN-L1 | NK Bravo | **non validé** |
+| 2019/20 | SVN-L1 | NK Celje | **non validé** |
+| 2019/20 | SVN-L1 | NK Domžale | **non validé** |
+| 2019/20 | SVN-L1 | NK Maribor | **non validé** |
+| 2019/20 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2019/20 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2019/20 | SVN-L1 | NK Tabor Sežana | **non validé** |
+| 2019/20 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2019/20 | SVN-L1 | NŠ Mura | **non validé** |
+| 2019/20 | SWE-L1 | AFC Eskilstuna | **non validé** |
+| 2019/20 | SWE-L1 | BK Häcken | **non validé** |
+| 2019/20 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2019/20 | SWE-L1 | Falkenbergs FF | **non validé** |
+| 2019/20 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2019/20 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2019/20 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2019/20 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2019/20 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2019/20 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2019/20 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2019/20 | SWE-L1 | Kalmar FF | **non validé** |
+| 2019/20 | SWE-L1 | Örebro SK | **non validé** |
+| 2019/20 | SWE-L1 | Östersunds FK | **non validé** |
+| 2019/20 | UKR-L1 | FC Desna Chernihiv | **non validé** |
+| 2019/20 | UKR-L1 | FC Kolos Kovalivka | **non validé** |
+| 2019/20 | UKR-L1 | FC Lviv | **non validé** |
+| 2019/20 | UKR-L1 | FC Mariupol | **non validé** |
+| 2019/20 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2019/20 | UKR-L1 | SC Dnipro-1 | **non validé** |
+| 2019/20 | USA-MLS | CF Montréal | **non validé** |
+| 2019/20 | USA-MLS | Chicago Fire FC | **non validé** |
+| 2018/19 | ALB-L1 | FC Kamza | **non validé** |
+| 2018/19 | ALB-L1 | FK Kukësi | **non validé** |
+| 2018/19 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2018/19 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2018/19 | ALB-L1 | KF Laçi | **non validé** |
+| 2018/19 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2018/19 | ALB-L1 | KF Teuta | **non validé** |
+| 2018/19 | ALB-L1 | KF Tirana | **non validé** |
+| 2018/19 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2018/19 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2018/19 | ARM-L1 | FC Alashkert | **non validé** |
+| 2018/19 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2018/19 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2018/19 | ARM-L1 | FC Noah | **non validé** |
+| 2018/19 | ARM-L1 | FC Pyunik | **non validé** |
+| 2018/19 | ARM-L1 | FC Urartu | **non validé** |
+| 2018/19 | ARM-L1 | Lori FC | **non validé** |
+| 2018/19 | ARM-L1 | Shirak SC | **non validé** |
+| 2018/19 | AUT-L1 | Admira Wacker | **non validé** |
+| 2018/19 | AUT-L1 | FC Wacker Innsbruck (2002) | **non validé** |
+| 2018/19 | AUT-L1 | FK Austria Wien | **non validé** |
+| 2018/19 | AUT-L1 | LASK | **non validé** |
+| 2018/19 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2018/19 | AUT-L1 | SKN St. Pölten | **non validé** |
+| 2018/19 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2018/19 | AUT-L1 | TSV Hartberg | **non validé** |
+| 2018/19 | AUT-L1 | Wolfsberger AC | **non validé** |
+| 2018/19 | AZE-L1 | Sabail FK | **non validé** |
+| 2018/19 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2018/19 | AZE-L1 | Zira FK | **non validé** |
+| 2018/19 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2018/19 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
 | 2018/19 | BEL-PL | KAS Eupen | **non validé** |
 | 2018/19 | BEL-PL | KV Kortrijk | **non validé** |
 | 2018/19 | BEL-PL | KV Oostende | **non validé** |
 | 2018/19 | BEL-PL | Royal Excel Mouscron | **non validé** |
 | 2018/19 | BEL-PL | SK Beveren | **non validé** |
+| 2018/19 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2018/19 | BGR-L1 | FC Dunav Ruse | **non validé** |
+| 2018/19 | BGR-L1 | FC Vereya | **non validé** |
+| 2018/19 | BGR-L1 | FC Vitosha Bistritsa | **non validé** |
+| 2018/19 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2018/19 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2018/19 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2018/19 | BGR-L1 | PFC Septemvri Sofia | **non validé** |
+| 2018/19 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2018/19 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2018/19 | BGR-L1 | SFC Etar Veliko Tarnovo | **non validé** |
+| 2018/19 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2018/19 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2018/19 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2018/19 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2018/19 | BLR-L1 | FC Gomel | **non validé** |
+| 2018/19 | BLR-L1 | FC Gorodeya | **non validé** |
+| 2018/19 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2018/19 | BLR-L1 | FC Luch Minsk (2012) | **non validé** |
+| 2018/19 | BLR-L1 | FC Minsk | **non validé** |
+| 2018/19 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2018/19 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2018/19 | BLR-L1 | FC Slutsk | **non validé** |
+| 2018/19 | BLR-L1 | FC Smolevichi | **non validé** |
+| 2018/19 | BLR-L1 | FC Torpedo Minsk | **non validé** |
+| 2018/19 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2018/19 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2018/19 | CHE-L1 | FC Luzern | **non validé** |
+| 2018/19 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2018/19 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
+| 2018/19 | CYP-L1 | AC Omonia | **non validé** |
+| 2018/19 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2018/19 | CYP-L1 | AEL Limassol | **non validé** |
+| 2018/19 | CYP-L1 | APOEL FC | **non validé** |
+| 2018/19 | CYP-L1 | Alki Oroklini | **non validé** |
+| 2018/19 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2018/19 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2018/19 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2018/19 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2018/19 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2018/19 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2018/19 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2018/19 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2018/19 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2018/19 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2018/19 | CZE-L1 | FC Zlín | **non validé** |
+| 2018/19 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2018/19 | CZE-L1 | FK Jablonec | **non validé** |
+| 2018/19 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2018/19 | CZE-L1 | FK Příbram | **non validé** |
+| 2018/19 | CZE-L1 | FK Teplice | **non validé** |
+| 2018/19 | CZE-L1 | MFK Karviná | **non validé** |
+| 2018/19 | CZE-L1 | SFC Opava | **non validé** |
+| 2018/19 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2018/19 | DNK-L1 | AC Horsens | **non validé** |
+| 2018/19 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2018/19 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2018/19 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2018/19 | DNK-L1 | Hobro IK | **non validé** |
+| 2018/19 | DNK-L1 | Randers FC | **non validé** |
+| 2018/19 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2018/19 | DNK-L1 | Vejle Boldklub | **non validé** |
+| 2018/19 | DNK-L1 | Vendsyssel FF | **non validé** |
+| 2018/19 | ESP-SD | AD Alcorcón | **non validé** |
+| 2018/19 | ESP-SD | CD Lugo | **non validé** |
+| 2018/19 | ESP-SD | CD Numancia | **non validé** |
+| 2018/19 | ESP-SD | CF Rayo Majadahonda | **non validé** |
+| 2018/19 | ESP-SD | CF Reus Deportiu | **non validé** |
+| 2018/19 | ESP-SD | Córdoba CF | **non validé** |
+| 2018/19 | ESP-SD | Extremadura UD | **non validé** |
+| 2018/19 | ESP-SD | UD Las Palmas | **non validé** |
+| 2018/19 | FIN-L1 | FC Honka | **non validé** |
+| 2018/19 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2018/19 | FIN-L1 | FC Lahti | **non validé** |
+| 2018/19 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2018/19 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2018/19 | FIN-L1 | Ilves (football) | **non validé** |
+| 2018/19 | FIN-L1 | Kemin Palloseura | **non validé** |
+| 2018/19 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2018/19 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2018/19 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2018/19 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2018/19 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2018/19 | FRA-L2 | AS Béziers (2007) | **non validé** |
+| 2018/19 | FRA-L2 | Gazélec Ajaccio | **non validé** |
+| 2018/19 | FRA-L2 | LB Châteauroux | **non validé** |
+| 2018/19 | FRA-L2 | Red Star FC | **non validé** |
+| 2018/19 | FRA-L2 | US Orléans | **non validé** |
+| 2018/19 | GRC-L1 | Apollon Smyrnis F.C. | **non validé** |
+| 2018/19 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2018/19 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2018/19 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2018/19 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2018/19 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2018/19 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2018/19 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2018/19 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2018/19 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2018/19 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2018/19 | HRV-L1 | HNK Gorica | **non validé** |
+| 2018/19 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2018/19 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2018/19 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2018/19 | HRV-L1 | NK Osijek | **non validé** |
+| 2018/19 | HRV-L1 | NK Rudeš | **non validé** |
+| 2018/19 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2018/19 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2018/19 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2018/19 | HUN-L1 | Kisvárda FC | **non validé** |
+| 2018/19 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2018/19 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2018/19 | HUN-L1 | Paksi FC | **non validé** |
+| 2018/19 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2018/19 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2018/19 | HUN-L1 | Újpest FC | **non validé** |
+| 2018/19 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Limerick F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2018/19 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2018/19 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2018/19 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2018/19 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Hapoel Hadera F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2018/19 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2018/19 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2018/19 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2018/19 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2018/19 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2018/19 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2018/19 | KAZ-L1 | FC Kyzylzhar | **non validé** |
+| 2018/19 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2018/19 | KAZ-L1 | FC Tobol | **non validé** |
+| 2018/19 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2018/19 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2018/19 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2018/19 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2018/19 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2018/19 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2018/19 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2018/19 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2018/19 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2018/19 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2018/19 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2018/19 | LUX-L1 | US Hostert | **non validé** |
+| 2018/19 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2018/19 | LUX-L1 | US Rumelange | **non validé** |
+| 2018/19 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2018/19 | LVA-L1 | FK Jelgava | **non validé** |
+| 2018/19 | LVA-L1 | FK Liepāja | **non validé** |
+| 2018/19 | LVA-L1 | FK Metta | **non validé** |
+| 2018/19 | LVA-L1 | FK RFS | **non validé** |
+| 2018/19 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2018/19 | LVA-L1 | FK Ventspils | **non validé** |
+| 2018/19 | LVA-L1 | Riga FC | **non validé** |
+| 2018/19 | LVA-L1 | Valmiera FC | **non validé** |
+| 2018/19 | MDA-L1 | FC Bălți | **non validé** |
+| 2018/19 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2018/19 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2018/19 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2018/19 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2018/19 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2018/19 | MDA-L1 | Speranța Nisporeni | **non validé** |
+| 2018/19 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2018/19 | MKD-L1 | FK Belasica | **non validé** |
+| 2018/19 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2018/19 | MKD-L1 | FK Pobeda (2010) | **non validé** |
+| 2018/19 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2018/19 | MKD-L1 | FK Sileks | **non validé** |
+| 2018/19 | MKD-L1 | FK Vardar | **non validé** |
+| 2018/19 | MKD-L1 | KF Renova | **non validé** |
+| 2018/19 | MKD-L1 | KF Shkupi | **non validé** |
+| 2018/19 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2018/19 | NLD-ED | ADO Den Haag | **non validé** |
 | 2018/19 | NLD-ED | De Graafschap | **non validé** |
 | 2018/19 | NLD-ED | FC Emmen | **non validé** |
@@ -155,6 +3003,28 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2018/19 | NLD-ED | NAC Breda | **non validé** |
 | 2018/19 | NLD-ED | PEC Zwolle | **non validé** |
 | 2018/19 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2018/19 | NOR-L1 | FK Haugesund | **non validé** |
+| 2018/19 | NOR-L1 | IK Start | **non validé** |
+| 2018/19 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2018/19 | NOR-L1 | Odds BK | **non validé** |
+| 2018/19 | NOR-L1 | Ranheim Fotball | **non validé** |
+| 2018/19 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2018/19 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2018/19 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2018/19 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2018/19 | POL-L1 | Arka Gdynia | **non validé** |
+| 2018/19 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2018/19 | POL-L1 | KS Cracovia | **non validé** |
+| 2018/19 | POL-L1 | Korona Kielce | **non validé** |
+| 2018/19 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2018/19 | POL-L1 | Miedź Legnica | **non validé** |
+| 2018/19 | POL-L1 | Piast Gliwice | **non validé** |
+| 2018/19 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2018/19 | POL-L1 | Wisła Kraków | **non validé** |
+| 2018/19 | POL-L1 | Wisła Płock | **non validé** |
+| 2018/19 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2018/19 | POL-L1 | Zagłębie Sosnowiec | **non validé** |
+| 2018/19 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2018/19 | PRT-PL | B-SAD | **non validé** |
 | 2018/19 | PRT-PL | Boavista F.C. | **non validé** |
 | 2018/19 | PRT-PL | C.D. Aves | **non validé** |
@@ -167,6 +3037,85 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2018/19 | PRT-PL | Portimonense S.C. | **non validé** |
 | 2018/19 | PRT-PL | Vitória F.C. | **non validé** |
 | 2018/19 | PRT-PL | Vitória S.C. | **non validé** |
+| 2018/19 | ROU-L1 | CFR Cluj | **non validé** |
+| 2018/19 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2018/19 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2018/19 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2018/19 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2018/19 | ROU-L1 | FC Botoșani | **non validé** |
+| 2018/19 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2018/19 | ROU-L1 | FC Dunărea Călărași | **non validé** |
+| 2018/19 | ROU-L1 | FC Hermannstadt | **non validé** |
+| 2018/19 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2018/19 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2018/19 | ROU-L1 | FC Voluntari | **non validé** |
+| 2018/19 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2018/19 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2018/19 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2018/19 | RUS-L1 | FC Orenburg | **non validé** |
+| 2018/19 | RUS-L1 | FC Ufa | **non validé** |
+| 2018/19 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2018/19 | RUS-L1 | FC Yenisey Krasnoyarsk | **non validé** |
+| 2018/19 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2018/19 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Livingston F.C. | **non validé** |
+| 2018/19 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2018/19 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2018/19 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2018/19 | SRB-L1 | FK Dinamo Vranje | **non validé** |
+| 2018/19 | SRB-L1 | FK Mačva Šabac | **non validé** |
+| 2018/19 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2018/19 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2018/19 | SRB-L1 | FK Proleter Novi Sad | **non validé** |
+| 2018/19 | SRB-L1 | FK Rad | **non validé** |
+| 2018/19 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2018/19 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2018/19 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2018/19 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2018/19 | SRB-L1 | FK Voždovac | **non validé** |
+| 2018/19 | SRB-L1 | FK Zemun | **non validé** |
+| 2018/19 | SRB-L1 | FK Čukarički | **non validé** |
+| 2018/19 | SRB-L1 | OFK Bačka | **non validé** |
+| 2018/19 | SVK-L1 | AS Trenčín | **non validé** |
+| 2018/19 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2018/19 | SVK-L1 | FC Nitra | **non validé** |
+| 2018/19 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2018/19 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2018/19 | SVK-L1 | FK Senica | **non validé** |
+| 2018/19 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2018/19 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2018/19 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2018/19 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2018/19 | SVK-L1 | ŠKF Sereď | **non validé** |
+| 2018/19 | SVN-L1 | ND Gorica | **non validé** |
+| 2018/19 | SVN-L1 | NK Aluminij | **non validé** |
+| 2018/19 | SVN-L1 | NK Celje | **non validé** |
+| 2018/19 | SVN-L1 | NK Domžale | **non validé** |
+| 2018/19 | SVN-L1 | NK Krško Posavje | **non validé** |
+| 2018/19 | SVN-L1 | NK Maribor | **non validé** |
+| 2018/19 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2018/19 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2018/19 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2018/19 | SVN-L1 | NŠ Mura | **non validé** |
+| 2018/19 | SWE-L1 | BK Häcken | **non validé** |
+| 2018/19 | SWE-L1 | Dalkurd FF | **non validé** |
+| 2018/19 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2018/19 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2018/19 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2018/19 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2018/19 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2018/19 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2018/19 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2018/19 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2018/19 | SWE-L1 | Kalmar FF | **non validé** |
+| 2018/19 | SWE-L1 | Trelleborgs FF | **non validé** |
+| 2018/19 | SWE-L1 | Örebro SK | **non validé** |
+| 2018/19 | SWE-L1 | Östersunds FK | **non validé** |
 | 2018/19 | TUR-SL | Alanyaspor | **non validé** |
 | 2018/19 | TUR-SL | Antalyaspor | **non validé** |
 | 2018/19 | TUR-SL | Bursaspor | **non validé** |
@@ -179,6 +3128,38 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2018/19 | TUR-SL | Sivasspor | **non validé** |
 | 2018/19 | TUR-SL | Yeni Malatyaspor | **non validé** |
 | 2018/19 | TUR-SL | Çaykur Rizespor | **non validé** |
+| 2018/19 | UKR-L1 | FC Arsenal Kyiv | **non validé** |
+| 2018/19 | UKR-L1 | FC Desna Chernihiv | **non validé** |
+| 2018/19 | UKR-L1 | FC Lviv | **non validé** |
+| 2018/19 | UKR-L1 | FC Mariupol | **non validé** |
+| 2018/19 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2018/19 | USA-MLS | CF Montréal | **non validé** |
+| 2017/18 | ALB-L1 | FC Kamza | **non validé** |
+| 2017/18 | ALB-L1 | FK Kukësi | **non validé** |
+| 2017/18 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2017/18 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2017/18 | ALB-L1 | KF Laçi | **non validé** |
+| 2017/18 | ALB-L1 | KF Teuta | **non validé** |
+| 2017/18 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2017/18 | ALB-L1 | KS Lushnja | **non validé** |
+| 2017/18 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2017/18 | ARM-L1 | FC Alashkert | **non validé** |
+| 2017/18 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2017/18 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2017/18 | ARM-L1 | FC Pyunik | **non validé** |
+| 2017/18 | ARM-L1 | FC Urartu | **non validé** |
+| 2017/18 | ARM-L1 | Shirak SC | **non validé** |
+| 2017/18 | AUT-L1 | Admira Wacker | **non validé** |
+| 2017/18 | AUT-L1 | LASK | **non validé** |
+| 2017/18 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2017/18 | AUT-L1 | SKN St. Pölten | **non validé** |
+| 2017/18 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2017/18 | AUT-L1 | Wolfsberger AC | **non validé** |
+| 2017/18 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2017/18 | AZE-L1 | Sabail FK | **non validé** |
+| 2017/18 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2017/18 | AZE-L1 | Zira FK | **non validé** |
+| 2017/18 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2017/18 | BEL-PL | KAS Eupen | **non validé** |
 | 2017/18 | BEL-PL | KV Kortrijk | **non validé** |
 | 2017/18 | BEL-PL | KV Mechelen | **non validé** |
@@ -188,6 +3169,181 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2017/18 | BEL-PL | Royal Excel Mouscron | **non validé** |
 | 2017/18 | BEL-PL | SK Beveren | **non validé** |
 | 2017/18 | BEL-PL | Sint-Truidense VV | **non validé** |
+| 2017/18 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2017/18 | BGR-L1 | FC Dunav Ruse | **non validé** |
+| 2017/18 | BGR-L1 | FC Vereya | **non validé** |
+| 2017/18 | BGR-L1 | FC Vitosha Bistritsa | **non validé** |
+| 2017/18 | BGR-L1 | OFC Pirin Blagoevgrad | **non validé** |
+| 2017/18 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2017/18 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2017/18 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2017/18 | BGR-L1 | PFC Septemvri Sofia | **non validé** |
+| 2017/18 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2017/18 | BGR-L1 | SFC Etar Veliko Tarnovo | **non validé** |
+| 2017/18 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2017/18 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2017/18 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2017/18 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2017/18 | BLR-L1 | FC Gomel | **non validé** |
+| 2017/18 | BLR-L1 | FC Gorodeya | **non validé** |
+| 2017/18 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2017/18 | BLR-L1 | FC Krumkachy Minsk | **non validé** |
+| 2017/18 | BLR-L1 | FC Minsk | **non validé** |
+| 2017/18 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2017/18 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2017/18 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2017/18 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2017/18 | BLR-L1 | FC Slutsk | **non validé** |
+| 2017/18 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2017/18 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2017/18 | CHE-L1 | FC Luzern | **non validé** |
+| 2017/18 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2017/18 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2017/18 | CYP-L1 | AEL Limassol | **non validé** |
+| 2017/18 | CYP-L1 | Alki Oroklini | **non validé** |
+| 2017/18 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2017/18 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2017/18 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2017/18 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2017/18 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2017/18 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2017/18 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2017/18 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2017/18 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2017/18 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2017/18 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2017/18 | CZE-L1 | FC Vysočina Jihlava | **non validé** |
+| 2017/18 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2017/18 | CZE-L1 | FC Zlín | **non validé** |
+| 2017/18 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2017/18 | CZE-L1 | FK Jablonec | **non validé** |
+| 2017/18 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2017/18 | CZE-L1 | FK Teplice | **non validé** |
+| 2017/18 | CZE-L1 | MFK Karviná | **non validé** |
+| 2017/18 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2017/18 | DNK-L1 | AC Horsens | **non validé** |
+| 2017/18 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2017/18 | DNK-L1 | FC Helsingør | **non validé** |
+| 2017/18 | DNK-L1 | Hobro IK | **non validé** |
+| 2017/18 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2017/18 | DNK-L1 | Randers FC | **non validé** |
+| 2017/18 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2017/18 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2017/18 | ESP-SD | Sevilla Atlético | **non validé** |
+| 2017/18 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2017/18 | FIN-L1 | FC Lahti | **non validé** |
+| 2017/18 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2017/18 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2017/18 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2017/18 | FIN-L1 | Ilves (football) | **non validé** |
+| 2017/18 | FIN-L1 | JJK Jyväskylä | **non validé** |
+| 2017/18 | FIN-L1 | Kemin Palloseura | **non validé** |
+| 2017/18 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2017/18 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2017/18 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2017/18 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2017/18 | FRA-L2 | FC Sochaux-Montbéliard | **non validé** |
+| 2017/18 | FRA-L2 | LB Châteauroux | **non validé** |
+| 2017/18 | GRC-L1 | Apollon Smyrnis F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2017/18 | GRC-L1 | PAE Kerkyra | **non validé** |
+| 2017/18 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2017/18 | GRC-L1 | PAS Lamia 1964 | **non validé** |
+| 2017/18 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Platanias F.C. | **non validé** |
+| 2017/18 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2017/18 | HRV-L1 | HNK Cibalia | **non validé** |
+| 2017/18 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2017/18 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2017/18 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2017/18 | HRV-L1 | NK Osijek | **non validé** |
+| 2017/18 | HRV-L1 | NK Rudeš | **non validé** |
+| 2017/18 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2017/18 | HUN-L1 | Balmazújvárosi FC | **non validé** |
+| 2017/18 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2017/18 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2017/18 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2017/18 | HUN-L1 | Paksi FC | **non validé** |
+| 2017/18 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2017/18 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2017/18 | HUN-L1 | Vasas SC | **non validé** |
+| 2017/18 | HUN-L1 | Újpest FC | **non validé** |
+| 2017/18 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Limerick F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2017/18 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2017/18 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2017/18 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2017/18 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Hapoel Ashkelon F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2017/18 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2017/18 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2017/18 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2017/18 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2017/18 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2017/18 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2017/18 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2017/18 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2017/18 | KAZ-L1 | FC Taraz | **non validé** |
+| 2017/18 | KAZ-L1 | FC Tobol | **non validé** |
+| 2017/18 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2017/18 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2017/18 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2017/18 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2017/18 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2017/18 | LUX-L1 | FC Rodange 91 | **non validé** |
+| 2017/18 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2017/18 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2017/18 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2017/18 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2017/18 | LUX-L1 | US Esch | **non validé** |
+| 2017/18 | LUX-L1 | US Hostert | **non validé** |
+| 2017/18 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2017/18 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2017/18 | LVA-L1 | FK Jelgava | **non validé** |
+| 2017/18 | LVA-L1 | FK Liepāja | **non validé** |
+| 2017/18 | LVA-L1 | FK Metta | **non validé** |
+| 2017/18 | LVA-L1 | FK RFS | **non validé** |
+| 2017/18 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2017/18 | LVA-L1 | FK Ventspils | **non validé** |
+| 2017/18 | LVA-L1 | Riga FC | **non validé** |
+| 2017/18 | LVA-L1 | SK Babīte | **non validé** |
+| 2017/18 | MDA-L1 | FC Bălți | **non validé** |
+| 2017/18 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2017/18 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2017/18 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2017/18 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2017/18 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2017/18 | MDA-L1 | FC Spicul Chișcăreni | **non validé** |
+| 2017/18 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2017/18 | MDA-L1 | Speranța Nisporeni | **non validé** |
+| 2017/18 | MKD-L1 | FC AP Brera Strumica | **non validé** |
+| 2017/18 | MKD-L1 | FK Pelister | **non validé** |
+| 2017/18 | MKD-L1 | FK Pobeda (2010) | **non validé** |
+| 2017/18 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2017/18 | MKD-L1 | FK Sileks | **non validé** |
+| 2017/18 | MKD-L1 | FK Skopje | **non validé** |
+| 2017/18 | MKD-L1 | KF Renova | **non validé** |
+| 2017/18 | MKD-L1 | KF Shkupi | **non validé** |
+| 2017/18 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2017/18 | NLD-ED | ADO Den Haag | **non validé** |
 | 2017/18 | NLD-ED | FC Utrecht | **non validé** |
 | 2017/18 | NLD-ED | Heracles Almelo | **non validé** |
@@ -195,6 +3351,28 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2017/18 | NLD-ED | SC Heerenveen | **non validé** |
 | 2017/18 | NLD-ED | Sparta Rotterdam | **non validé** |
 | 2017/18 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2017/18 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2017/18 | NOR-L1 | FK Haugesund | **non validé** |
+| 2017/18 | NOR-L1 | Kristiansund BK | **non validé** |
+| 2017/18 | NOR-L1 | Odds BK | **non validé** |
+| 2017/18 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2017/18 | NOR-L1 | Sogndal Fotball | **non validé** |
+| 2017/18 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2017/18 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2017/18 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2017/18 | POL-L1 | Arka Gdynia | **non validé** |
+| 2017/18 | POL-L1 | Bruk-Bet Termalica Nieciecza | **non validé** |
+| 2017/18 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2017/18 | POL-L1 | KS Cracovia | **non validé** |
+| 2017/18 | POL-L1 | Korona Kielce | **non validé** |
+| 2017/18 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2017/18 | POL-L1 | Piast Gliwice | **non validé** |
+| 2017/18 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2017/18 | POL-L1 | Sandecja Nowy Sącz | **non validé** |
+| 2017/18 | POL-L1 | Wisła Kraków | **non validé** |
+| 2017/18 | POL-L1 | Wisła Płock | **non validé** |
+| 2017/18 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2017/18 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2017/18 | PRT-PL | Boavista F.C. | **non validé** |
 | 2017/18 | PRT-PL | C.D. Aves | **non validé** |
 | 2017/18 | PRT-PL | C.D. Feirense | **non validé** |
@@ -207,6 +3385,85 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2017/18 | PRT-PL | Rio Ave F.C. | **non validé** |
 | 2017/18 | PRT-PL | S.C. Braga | **non validé** |
 | 2017/18 | PRT-PL | Vitória F.C. | **non validé** |
+| 2017/18 | ROU-L1 | ACS Poli Timișoara | **non validé** |
+| 2017/18 | ROU-L1 | CFR Cluj | **non validé** |
+| 2017/18 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2017/18 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2017/18 | ROU-L1 | CS Oxigen București | **non validé** |
+| 2017/18 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2017/18 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2017/18 | ROU-L1 | FC Botoșani | **non validé** |
+| 2017/18 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2017/18 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2017/18 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2017/18 | ROU-L1 | FC Voluntari | **non validé** |
+| 2017/18 | ROU-L1 | Sepsi OSK Sfântu Gheorghe | **non validé** |
+| 2017/18 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2017/18 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2017/18 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2017/18 | RUS-L1 | FC SKA-Khabarovsk | **non validé** |
+| 2017/18 | RUS-L1 | FC Tosno | **non validé** |
+| 2017/18 | RUS-L1 | FC Ufa | **non validé** |
+| 2017/18 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2017/18 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Partick Thistle F.C. | **non validé** |
+| 2017/18 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2017/18 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2017/18 | SRB-L1 | FK Borac 1926 | **non validé** |
+| 2017/18 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2017/18 | SRB-L1 | FK Mačva Šabac | **non validé** |
+| 2017/18 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2017/18 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2017/18 | SRB-L1 | FK Rad | **non validé** |
+| 2017/18 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2017/18 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2017/18 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2017/18 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2017/18 | SRB-L1 | FK Voždovac | **non validé** |
+| 2017/18 | SRB-L1 | FK Zemun | **non validé** |
+| 2017/18 | SRB-L1 | FK Čukarički | **non validé** |
+| 2017/18 | SRB-L1 | OFK Bačka | **non validé** |
+| 2017/18 | SVK-L1 | 1. FC Tatran Prešov | **non validé** |
+| 2017/18 | SVK-L1 | AS Trenčín | **non validé** |
+| 2017/18 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2017/18 | SVK-L1 | FC Nitra | **non validé** |
+| 2017/18 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2017/18 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2017/18 | SVK-L1 | FK Senica | **non validé** |
+| 2017/18 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2017/18 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2017/18 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2017/18 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2017/18 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2017/18 | SVN-L1 | ND Gorica | **non validé** |
+| 2017/18 | SVN-L1 | NK Aluminij | **non validé** |
+| 2017/18 | SVN-L1 | NK Ankaran | **non validé** |
+| 2017/18 | SVN-L1 | NK Celje | **non validé** |
+| 2017/18 | SVN-L1 | NK Domžale | **non validé** |
+| 2017/18 | SVN-L1 | NK Krško Posavje | **non validé** |
+| 2017/18 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2017/18 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2017/18 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2017/18 | SWE-L1 | AFC Eskilstuna | **non validé** |
+| 2017/18 | SWE-L1 | BK Häcken | **non validé** |
+| 2017/18 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2017/18 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2017/18 | SWE-L1 | Halmstads BK | **non validé** |
+| 2017/18 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2017/18 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2017/18 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2017/18 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2017/18 | SWE-L1 | IK Sirius Fotboll | **non validé** |
+| 2017/18 | SWE-L1 | Jönköpings Södra IF | **non validé** |
+| 2017/18 | SWE-L1 | Kalmar FF | **non validé** |
+| 2017/18 | SWE-L1 | Örebro SK | **non validé** |
+| 2017/18 | SWE-L1 | Östersunds FK | **non validé** |
 | 2017/18 | TUR-SL | Alanyaspor | **non validé** |
 | 2017/18 | TUR-SL | Ankaraspor | **non validé** |
 | 2017/18 | TUR-SL | Antalyaspor | **non validé** |
@@ -220,6 +3477,38 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2017/18 | TUR-SL | Sivasspor | **non validé** |
 | 2017/18 | TUR-SL | Yeni Malatyaspor | **non validé** |
 | 2017/18 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
+| 2017/18 | UKR-L1 | FC Mariupol | **non validé** |
+| 2017/18 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2017/18 | UKR-L1 | FC Stal Kamianske | **non validé** |
+| 2017/18 | UKR-L1 | FC Zirka Kropyvnytskyi | **non validé** |
+| 2017/18 | UKR-L1 | NK Veres Rivne | **non validé** |
+| 2017/18 | USA-MLS | CF Montréal | **non validé** |
+| 2016/17 | ALB-L1 | FK Kukësi | **non validé** |
+| 2016/17 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2016/17 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2016/17 | ALB-L1 | KF Laçi | **non validé** |
+| 2016/17 | ALB-L1 | KF Skënderbeu | **non validé** |
+| 2016/17 | ALB-L1 | KF Teuta | **non validé** |
+| 2016/17 | ALB-L1 | KF Tirana | **non validé** |
+| 2016/17 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2016/17 | ALB-L1 | KS Korabi | **non validé** |
+| 2016/17 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2016/17 | ARM-L1 | FC Alashkert | **non validé** |
+| 2016/17 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2016/17 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2016/17 | ARM-L1 | FC Pyunik | **non validé** |
+| 2016/17 | ARM-L1 | FC Urartu | **non validé** |
+| 2016/17 | ARM-L1 | Shirak SC | **non validé** |
+| 2016/17 | AUT-L1 | Admira Wacker | **non validé** |
+| 2016/17 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2016/17 | AUT-L1 | SKN St. Pölten | **non validé** |
+| 2016/17 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2016/17 | AUT-L1 | SV Ried | **non validé** |
+| 2016/17 | AZE-L1 | AZAL PFK | **non validé** |
+| 2016/17 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2016/17 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2016/17 | AZE-L1 | Zira FK | **non validé** |
+| 2016/17 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2016/17 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
 | 2016/17 | BEL-PL | KAS Eupen | **non validé** |
 | 2016/17 | BEL-PL | KV Kortrijk | **non validé** |
@@ -228,10 +3517,215 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2016/17 | BEL-PL | Royal Excel Mouscron | **non validé** |
 | 2016/17 | BEL-PL | SK Beveren | **non validé** |
 | 2016/17 | BEL-PL | Sint-Truidense VV | **non validé** |
+| 2016/17 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2016/17 | BGR-L1 | FC Dunav Ruse | **non validé** |
+| 2016/17 | BGR-L1 | FC Lokomotiv Gorna Oryahovitsa | **non validé** |
+| 2016/17 | BGR-L1 | FC Vereya | **non validé** |
+| 2016/17 | BGR-L1 | OFC Pirin Blagoevgrad | **non validé** |
+| 2016/17 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2016/17 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2016/17 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2016/17 | BGR-L1 | PFC Montana | **non validé** |
+| 2016/17 | BGR-L1 | PFC Neftochimic Burgas | **non validé** |
+| 2016/17 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2016/17 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2016/17 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2016/17 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2016/17 | BLR-L1 | FC Gorodeya | **non validé** |
+| 2016/17 | BLR-L1 | FC Isloch Minsk Raion | **non validé** |
+| 2016/17 | BLR-L1 | FC Krumkachy Minsk | **non validé** |
+| 2016/17 | BLR-L1 | FC Mikashevichi | **non validé** |
+| 2016/17 | BLR-L1 | FC Minsk | **non validé** |
+| 2016/17 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2016/17 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2016/17 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2016/17 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2016/17 | BLR-L1 | FC Slutsk | **non validé** |
+| 2016/17 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2016/17 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2016/17 | CHE-L1 | FC Luzern | **non validé** |
+| 2016/17 | CHE-L1 | FC Vaduz | **non validé** |
+| 2016/17 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2016/17 | CYP-L1 | AC Omonia | **non validé** |
+| 2016/17 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2016/17 | CYP-L1 | AEL Limassol | **non validé** |
+| 2016/17 | CYP-L1 | AEZ Zakakiou | **non validé** |
+| 2016/17 | CYP-L1 | Anagennisi Deryneia FC | **non validé** |
+| 2016/17 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2016/17 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2016/17 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2016/17 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2016/17 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2016/17 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2016/17 | CYP-L1 | Karmiotissa FC | **non validé** |
+| 2016/17 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2016/17 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2016/17 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2016/17 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2016/17 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2016/17 | CZE-L1 | FC Viktoria Plzeň | **non validé** |
+| 2016/17 | CZE-L1 | FC Vysočina Jihlava | **non validé** |
+| 2016/17 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2016/17 | CZE-L1 | FC Zlín | **non validé** |
+| 2016/17 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2016/17 | CZE-L1 | FK Jablonec | **non validé** |
+| 2016/17 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2016/17 | CZE-L1 | FK Příbram | **non validé** |
+| 2016/17 | CZE-L1 | FK Teplice | **non validé** |
+| 2016/17 | CZE-L1 | MFK Karviná | **non validé** |
+| 2016/17 | DNK-L1 | AC Horsens | **non validé** |
+| 2016/17 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2016/17 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2016/17 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2016/17 | DNK-L1 | Randers FC | **non validé** |
+| 2016/17 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2016/17 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2016/17 | DNK-L1 | Viborg FF | **non validé** |
+| 2016/17 | ESP-SD | Elche CF | **non validé** |
+| 2016/17 | ESP-SD | RCD Mallorca | **non validé** |
+| 2016/17 | ESP-SD | Sevilla Atlético | **non validé** |
+| 2016/17 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2016/17 | FIN-L1 | FC Lahti | **non validé** |
+| 2016/17 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2016/17 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2016/17 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2016/17 | FIN-L1 | Ilves (football) | **non validé** |
+| 2016/17 | FIN-L1 | Kemin Palloseura | **non validé** |
+| 2016/17 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2016/17 | FIN-L1 | PK-35 Vantaa (men) | **non validé** |
+| 2016/17 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2016/17 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2016/17 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2016/17 | FRA-L2 | AC Ajaccio | **non validé** |
+| 2016/17 | FRA-L2 | Gazélec Ajaccio | **non validé** |
+| 2016/17 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Iraklis F.C. (Thessaloniki) | **non validé** |
+| 2016/17 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2016/17 | GRC-L1 | PAE Kerkyra | **non validé** |
+| 2016/17 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Platanias F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Veria F.C. | **non validé** |
+| 2016/17 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2016/17 | HRV-L1 | HNK Cibalia | **non validé** |
+| 2016/17 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2016/17 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2016/17 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2016/17 | HRV-L1 | NK Osijek | **non validé** |
+| 2016/17 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2016/17 | HRV-L1 | RNK Split | **non validé** |
+| 2016/17 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2016/17 | HUN-L1 | Gyirmót FC Győr | **non validé** |
+| 2016/17 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2016/17 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2016/17 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2016/17 | HUN-L1 | Paksi FC | **non validé** |
+| 2016/17 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2016/17 | HUN-L1 | Vasas SC | **non validé** |
+| 2016/17 | HUN-L1 | Újpest FC | **non validé** |
+| 2016/17 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Longford Town F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2016/17 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2016/17 | IRL-L1 | Wexford F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2016/17 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2016/17 | ISR-L1 | Hapoel Ashkelon F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Hapoel Kfar Saba F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2016/17 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2016/17 | ITA-SB | LR Vicenza | **non validé** |
+| 2016/17 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2016/17 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2016/17 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2016/17 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2016/17 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2016/17 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2016/17 | KAZ-L1 | FC Taraz | **non validé** |
+| 2016/17 | KAZ-L1 | FC Tobol | **non validé** |
+| 2016/17 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2016/17 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2016/17 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2016/17 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2016/17 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2016/17 | LUX-L1 | FC Jeunesse Canach | **non validé** |
+| 2016/17 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2016/17 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2016/17 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2016/17 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2016/17 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2016/17 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2016/17 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2016/17 | LUX-L1 | US Rumelange | **non validé** |
+| 2016/17 | LUX-L1 | Union Titus Pétange | **non validé** |
+| 2016/17 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2016/17 | LVA-L1 | FK Jelgava | **non validé** |
+| 2016/17 | LVA-L1 | FK Liepāja | **non validé** |
+| 2016/17 | LVA-L1 | FK Metta | **non validé** |
+| 2016/17 | LVA-L1 | FK RFS | **non validé** |
+| 2016/17 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2016/17 | LVA-L1 | FK Ventspils | **non validé** |
+| 2016/17 | LVA-L1 | Riga FC | **non validé** |
+| 2016/17 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2016/17 | MDA-L1 | FC Bălți | **non validé** |
+| 2016/17 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2016/17 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2016/17 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2016/17 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2016/17 | MDA-L1 | FC Saksan | **non validé** |
+| 2016/17 | MDA-L1 | FC Ungheni | **non validé** |
+| 2016/17 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2016/17 | MDA-L1 | Speranța Nisporeni | **non validé** |
+| 2016/17 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2016/17 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2016/17 | MKD-L1 | FK Pelister | **non validé** |
+| 2016/17 | MKD-L1 | FK Pobeda (2010) | **non validé** |
+| 2016/17 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2016/17 | MKD-L1 | FK Sileks | **non validé** |
+| 2016/17 | MKD-L1 | FK Vardar | **non validé** |
+| 2016/17 | MKD-L1 | KF Renova | **non validé** |
+| 2016/17 | MKD-L1 | KF Shkupi | **non validé** |
+| 2016/17 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2016/17 | NLD-ED | Go Ahead Eagles | **non validé** |
 | 2016/17 | NLD-ED | SC Heerenveen | **non validé** |
 | 2016/17 | NLD-ED | Sparta Rotterdam | **non validé** |
 | 2016/17 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2016/17 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2016/17 | NOR-L1 | FK Haugesund | **non validé** |
+| 2016/17 | NOR-L1 | IK Start | **non validé** |
+| 2016/17 | NOR-L1 | Odds BK | **non validé** |
+| 2016/17 | NOR-L1 | Sogndal Fotball | **non validé** |
+| 2016/17 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2016/17 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2016/17 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2016/17 | POL-L1 | Arka Gdynia | **non validé** |
+| 2016/17 | POL-L1 | Bruk-Bet Termalica Nieciecza | **non validé** |
+| 2016/17 | POL-L1 | GKS Górnik Łęczna | **non validé** |
+| 2016/17 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2016/17 | POL-L1 | KS Cracovia | **non validé** |
+| 2016/17 | POL-L1 | Korona Kielce | **non validé** |
+| 2016/17 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2016/17 | POL-L1 | Piast Gliwice | **non validé** |
+| 2016/17 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2016/17 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2016/17 | POL-L1 | Wisła Kraków | **non validé** |
+| 2016/17 | POL-L1 | Wisła Płock | **non validé** |
+| 2016/17 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2016/17 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2016/17 | PRT-PL | Boavista F.C. | **non validé** |
 | 2016/17 | PRT-PL | C.D. Feirense | **non validé** |
 | 2016/17 | PRT-PL | C.D. Nacional | **non validé** |
@@ -246,6 +3740,85 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2016/17 | PRT-PL | S.C. Braga | **non validé** |
 | 2016/17 | PRT-PL | Vitória F.C. | **non validé** |
 | 2016/17 | PRT-PL | Vitória S.C. | **non validé** |
+| 2016/17 | ROU-L1 | ACS Poli Timișoara | **non validé** |
+| 2016/17 | ROU-L1 | ASA 2013 Târgu Mureș | **non validé** |
+| 2016/17 | ROU-L1 | CFR Cluj | **non validé** |
+| 2016/17 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2016/17 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2016/17 | ROU-L1 | CS Pandurii Târgu Jiu | **non validé** |
+| 2016/17 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2016/17 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2016/17 | ROU-L1 | FC Botoșani | **non validé** |
+| 2016/17 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2016/17 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2016/17 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2016/17 | ROU-L1 | FC Voluntari | **non validé** |
+| 2016/17 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2016/17 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2016/17 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2016/17 | RUS-L1 | FC Orenburg | **non validé** |
+| 2016/17 | RUS-L1 | FC Tom Tomsk | **non validé** |
+| 2016/17 | RUS-L1 | FC Ufa | **non validé** |
+| 2016/17 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2016/17 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2016/17 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Partick Thistle F.C. | **non validé** |
+| 2016/17 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2016/17 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2016/17 | SRB-L1 | FK Borac 1926 | **non validé** |
+| 2016/17 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2016/17 | SRB-L1 | FK Metalac Gornji Milanovac | **non validé** |
+| 2016/17 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2016/17 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2016/17 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2016/17 | SRB-L1 | FK Rad | **non validé** |
+| 2016/17 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2016/17 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2016/17 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2016/17 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2016/17 | SRB-L1 | FK Voždovac | **non validé** |
+| 2016/17 | SRB-L1 | FK Čukarički | **non validé** |
+| 2016/17 | SRB-L1 | OFK Bačka | **non validé** |
+| 2016/17 | SRB-L1 | Red Star Belgrade | **non validé** |
+| 2016/17 | SVK-L1 | 1. FC Tatran Prešov | **non validé** |
+| 2016/17 | SVK-L1 | AS Trenčín | **non validé** |
+| 2016/17 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2016/17 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2016/17 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2016/17 | SVK-L1 | FK Senica | **non validé** |
+| 2016/17 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2016/17 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2016/17 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2016/17 | SVK-L1 | Spartak Myjava | **non validé** |
+| 2016/17 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2016/17 | SVN-L1 | FC Koper | **non validé** |
+| 2016/17 | SVN-L1 | ND Gorica | **non validé** |
+| 2016/17 | SVN-L1 | NK Aluminij | **non validé** |
+| 2016/17 | SVN-L1 | NK Domžale | **non validé** |
+| 2016/17 | SVN-L1 | NK Krško Posavje | **non validé** |
+| 2016/17 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2016/17 | SVN-L1 | NK Radomlje | **non validé** |
+| 2016/17 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2016/17 | SWE-L1 | BK Häcken | **non validé** |
+| 2016/17 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2016/17 | SWE-L1 | Falkenbergs FF | **non validé** |
+| 2016/17 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2016/17 | SWE-L1 | Gefle IF | **non validé** |
+| 2016/17 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2016/17 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2016/17 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2016/17 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2016/17 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2016/17 | SWE-L1 | Jönköpings Södra IF | **non validé** |
+| 2016/17 | SWE-L1 | Kalmar FF | **non validé** |
+| 2016/17 | SWE-L1 | Örebro SK | **non validé** |
+| 2016/17 | SWE-L1 | Östersunds FK | **non validé** |
 | 2016/17 | TUR-SL | Adanaspor | **non validé** |
 | 2016/17 | TUR-SL | Alanyaspor | **non validé** |
 | 2016/17 | TUR-SL | Ankaraspor | **non validé** |
@@ -258,6 +3831,40 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2016/17 | TUR-SL | Kayserispor | **non validé** |
 | 2016/17 | TUR-SL | Konyaspor | **non validé** |
 | 2016/17 | TUR-SL | Çaykur Rizespor | **non validé** |
+| 2016/17 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2016/17 | UKR-L1 | FC Stal Kamianske | **non validé** |
+| 2016/17 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2016/17 | UKR-L1 | FC Zirka Kropyvnytskyi | **non validé** |
+| 2016/17 | USA-MLS | CF Montréal | **non validé** |
+| 2015/16 | ALB-L1 | FK Kukësi | **non validé** |
+| 2015/16 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2015/16 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2015/16 | ALB-L1 | KF Bylis | **non validé** |
+| 2015/16 | ALB-L1 | KF Laçi | **non validé** |
+| 2015/16 | ALB-L1 | KF Teuta | **non validé** |
+| 2015/16 | ALB-L1 | KF Tirana | **non validé** |
+| 2015/16 | ALB-L1 | KF Tërbuni | **non validé** |
+| 2015/16 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2015/16 | ARM-L1 | FC Alashkert | **non validé** |
+| 2015/16 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2015/16 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2015/16 | ARM-L1 | FC Mika | **non validé** |
+| 2015/16 | ARM-L1 | FC Pyunik | **non validé** |
+| 2015/16 | ARM-L1 | FC Urartu | **non validé** |
+| 2015/16 | ARM-L1 | Shirak SC | **non validé** |
+| 2015/16 | ARM-L1 | Ulisses FC | **non validé** |
+| 2015/16 | AUT-L1 | Admira Wacker | **non validé** |
+| 2015/16 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2015/16 | AUT-L1 | SV Grödig | **non validé** |
+| 2015/16 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2015/16 | AUT-L1 | SV Ried | **non validé** |
+| 2015/16 | AZE-L1 | AZAL PFK | **non validé** |
+| 2015/16 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2015/16 | AZE-L1 | Khazar Lankaran FK | **non validé** |
+| 2015/16 | AZE-L1 | Ravan Baku FK | **non validé** |
+| 2015/16 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2015/16 | AZE-L1 | Zira FK | **non validé** |
+| 2015/16 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2015/16 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
 | 2015/16 | BEL-PL | KV Kortrijk | **non validé** |
 | 2015/16 | BEL-PL | KV Mechelen | **non validé** |
@@ -267,10 +3874,209 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2015/16 | BEL-PL | SK Beveren | **non validé** |
 | 2015/16 | BEL-PL | SV Zulte Waregem | **non validé** |
 | 2015/16 | BEL-PL | Sint-Truidense VV | **non validé** |
+| 2015/16 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2015/16 | BGR-L1 | OFC Pirin Blagoevgrad | **non validé** |
+| 2015/16 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2015/16 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2015/16 | BGR-L1 | PFC Litex Lovech | **non validé** |
+| 2015/16 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2015/16 | BGR-L1 | PFC Montana | **non validé** |
+| 2015/16 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2015/16 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2015/16 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2015/16 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2015/16 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2015/16 | BLR-L1 | FC Gomel | **non validé** |
+| 2015/16 | BLR-L1 | FC Mikashevichi | **non validé** |
+| 2015/16 | BLR-L1 | FC Minsk | **non validé** |
+| 2015/16 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2015/16 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2015/16 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2015/16 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2015/16 | BLR-L1 | FC Slutsk | **non validé** |
+| 2015/16 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2015/16 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2015/16 | CHE-L1 | FC Luzern | **non validé** |
+| 2015/16 | CHE-L1 | FC Vaduz | **non validé** |
+| 2015/16 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2015/16 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2015/16 | CYP-L1 | AEL Limassol | **non validé** |
+| 2015/16 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2015/16 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2015/16 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2015/16 | CYP-L1 | Ayia Napa FC | **non validé** |
+| 2015/16 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2015/16 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2015/16 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2015/16 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2015/16 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2015/16 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2015/16 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2015/16 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2015/16 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2015/16 | CZE-L1 | FC Viktoria Plzeň | **non validé** |
+| 2015/16 | CZE-L1 | FC Vysočina Jihlava | **non validé** |
+| 2015/16 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2015/16 | CZE-L1 | FC Zlín | **non validé** |
+| 2015/16 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2015/16 | CZE-L1 | FK Jablonec | **non validé** |
+| 2015/16 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2015/16 | CZE-L1 | FK Příbram | **non validé** |
+| 2015/16 | CZE-L1 | FK Teplice | **non validé** |
+| 2015/16 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2015/16 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2015/16 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2015/16 | DNK-L1 | Hobro IK | **non validé** |
+| 2015/16 | DNK-L1 | Randers FC | **non validé** |
+| 2015/16 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2015/16 | DNK-L1 | Viborg FF | **non validé** |
+| 2015/16 | ENG-CH | Derby County F.C. | **non validé** |
+| 2015/16 | ESP-SD | Albacete Balompié | **non validé** |
+| 2015/16 | ESP-SD | Córdoba CF | **non validé** |
+| 2015/16 | ESP-SD | RCD Mallorca | **non validé** |
+| 2015/16 | ESP-SD | Real Valladolid | **non validé** |
+| 2015/16 | ESP-SD | SD Ponferradina | **non validé** |
+| 2015/16 | ESP-SD | Som Maresme FC | **non validé** |
+| 2015/16 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2015/16 | FIN-L1 | FC Lahti | **non validé** |
+| 2015/16 | FIN-L1 | FF Jaro | **non validé** |
+| 2015/16 | FIN-L1 | HIFK Fotboll | **non validé** |
+| 2015/16 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2015/16 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2015/16 | FIN-L1 | Ilves (football) | **non validé** |
+| 2015/16 | FIN-L1 | Kotkan Työväen Palloilijat | **non validé** |
+| 2015/16 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2015/16 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2015/16 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2015/16 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2015/16 | FRA-L2 | Clermont Foot | **non validé** |
+| 2015/16 | FRA-L2 | Evian Thonon Gaillard FC | **non validé** |
+| 2015/16 | FRA-L2 | Le Havre AC | **non validé** |
+| 2015/16 | FRA-L2 | Stade Lavallois | **non validé** |
+| 2015/16 | FRA-L2 | Tours FC | **non validé** |
+| 2015/16 | FRA-L2 | Union Sportive Créteil Football | **non validé** |
+| 2015/16 | GRC-L1 | AEL Kalloni F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Iraklis F.C. (Thessaloniki) | **non validé** |
+| 2015/16 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2015/16 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Panthrakikos F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Platanias F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Veria F.C. | **non validé** |
+| 2015/16 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2015/16 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2015/16 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2015/16 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2015/16 | HRV-L1 | NK Osijek | **non validé** |
+| 2015/16 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2015/16 | HRV-L1 | NK Zagreb | **non validé** |
+| 2015/16 | HRV-L1 | RNK Split | **non validé** |
+| 2015/16 | HUN-L1 | Békéscsaba 1912 Előre | **non validé** |
+| 2015/16 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2015/16 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2015/16 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2015/16 | HUN-L1 | Paksi FC | **non validé** |
+| 2015/16 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2015/16 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2015/16 | HUN-L1 | Vasas SC | **non validé** |
+| 2015/16 | HUN-L1 | Újpest FC | **non validé** |
+| 2015/16 | IRL-L1 | Athlone Town A.F.C. | **non validé** |
+| 2015/16 | IRL-L1 | Cabinteely F.C. | **non validé** |
+| 2015/16 | IRL-L1 | Cobh Ramblers F.C. | **non validé** |
+| 2015/16 | IRL-L1 | Finn Harps F.C. | **non validé** |
+| 2015/16 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2015/16 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2015/16 | IRL-L1 | Waterford F.C. | **non validé** |
+| 2015/16 | IRL-L1 | Wexford F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Hapoel Kfar Saba F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2015/16 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2015/16 | ITA-SB | LR Vicenza | **non validé** |
+| 2015/16 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2015/16 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2015/16 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2015/16 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2015/16 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2015/16 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2015/16 | KAZ-L1 | FC Taraz | **non validé** |
+| 2015/16 | KAZ-L1 | FC Tobol | **non validé** |
+| 2015/16 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2015/16 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2015/16 | LUX-L1 | CS Grevenmacher | **non validé** |
+| 2015/16 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2015/16 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2015/16 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2015/16 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2015/16 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2015/16 | LUX-L1 | FC UNA Strassen | **non validé** |
+| 2015/16 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2015/16 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2015/16 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2015/16 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2015/16 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2015/16 | LUX-L1 | US Rumelange | **non validé** |
+| 2015/16 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2015/16 | LVA-L1 | FB Gulbene | **non validé** |
+| 2015/16 | LVA-L1 | FK Jelgava | **non validé** |
+| 2015/16 | LVA-L1 | FK Liepāja | **non validé** |
+| 2015/16 | LVA-L1 | FK Metta | **non validé** |
+| 2015/16 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2015/16 | LVA-L1 | FK Ventspils | **non validé** |
+| 2015/16 | LVA-L1 | Skonto FC | **non validé** |
+| 2015/16 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2015/16 | MDA-L1 | FC Bălți | **non validé** |
+| 2015/16 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2015/16 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2015/16 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2015/16 | MDA-L1 | FC Petrocub Hîncești | **non validé** |
+| 2015/16 | MDA-L1 | FC Saksan | **non validé** |
+| 2015/16 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2015/16 | MDA-L1 | Speranța Nisporeni | **non validé** |
+| 2015/16 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2015/16 | MKD-L1 | FK Horizont Turnovo | **non validé** |
+| 2015/16 | MKD-L1 | FK Metalurg Skopje | **non validé** |
+| 2015/16 | MKD-L1 | FK Mladost Carev Dvor | **non validé** |
+| 2015/16 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2015/16 | MKD-L1 | FK Sileks | **non validé** |
+| 2015/16 | MKD-L1 | KF Renova | **non validé** |
+| 2015/16 | MKD-L1 | KF Shkupi | **non validé** |
+| 2015/16 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2015/16 | NLD-ED | De Graafschap | **non validé** |
 | 2015/16 | NLD-ED | Feyenoord | **non validé** |
 | 2015/16 | NLD-ED | SC Heerenveen | **non validé** |
 | 2015/16 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2015/16 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2015/16 | NOR-L1 | FK Haugesund | **non validé** |
+| 2015/16 | NOR-L1 | IK Start | **non validé** |
+| 2015/16 | NOR-L1 | Mjøndalen IF Fotball | **non validé** |
+| 2015/16 | NOR-L1 | Odds BK | **non validé** |
+| 2015/16 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2015/16 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2015/16 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2015/16 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2015/16 | POL-L1 | Bruk-Bet Termalica Nieciecza | **non validé** |
+| 2015/16 | POL-L1 | GKS Górnik Łęczna | **non validé** |
+| 2015/16 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2015/16 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2015/16 | POL-L1 | KS Cracovia | **non validé** |
+| 2015/16 | POL-L1 | Korona Kielce | **non validé** |
+| 2015/16 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2015/16 | POL-L1 | Piast Gliwice | **non validé** |
+| 2015/16 | POL-L1 | Podbeskidzie Bielsko-Biała | **non validé** |
+| 2015/16 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2015/16 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2015/16 | POL-L1 | Wisła Kraków | **non validé** |
+| 2015/16 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2015/16 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2015/16 | PRT-PL | Boavista F.C. | **non validé** |
 | 2015/16 | PRT-PL | C.D. Nacional | **non validé** |
 | 2015/16 | PRT-PL | C.D. Tondela | **non validé** |
@@ -285,6 +4091,84 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2015/16 | PRT-PL | S.C. Braga | **non validé** |
 | 2015/16 | PRT-PL | Vitória F.C. | **non validé** |
 | 2015/16 | PRT-PL | Vitória S.C. | **non validé** |
+| 2015/16 | ROU-L1 | ACS Poli Timișoara | **non validé** |
+| 2015/16 | ROU-L1 | ASA 2013 Târgu Mureș | **non validé** |
+| 2015/16 | ROU-L1 | CFR Cluj | **non validé** |
+| 2015/16 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2015/16 | ROU-L1 | CS Pandurii Târgu Jiu | **non validé** |
+| 2015/16 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2015/16 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2015/16 | ROU-L1 | FC Botoșani | **non validé** |
+| 2015/16 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2015/16 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2015/16 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2015/16 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2015/16 | ROU-L1 | FC Voluntari | **non validé** |
+| 2015/16 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2015/16 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2015/16 | RUS-L1 | FC Mordovia Saransk | **non validé** |
+| 2015/16 | RUS-L1 | FC Ufa | **non validé** |
+| 2015/16 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2015/16 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2015/16 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Partick Thistle F.C. | **non validé** |
+| 2015/16 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2015/16 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2015/16 | SRB-L1 | FK Borac 1926 | **non validé** |
+| 2015/16 | SRB-L1 | FK Jagodina | **non validé** |
+| 2015/16 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2015/16 | SRB-L1 | FK Metalac Gornji Milanovac | **non validé** |
+| 2015/16 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2015/16 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2015/16 | SRB-L1 | FK Rad | **non validé** |
+| 2015/16 | SRB-L1 | FK Radnik Surdulica | **non validé** |
+| 2015/16 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2015/16 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2015/16 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2015/16 | SRB-L1 | FK Voždovac | **non validé** |
+| 2015/16 | SRB-L1 | FK Čukarički | **non validé** |
+| 2015/16 | SRB-L1 | OFK Beograd | **non validé** |
+| 2015/16 | SVK-L1 | AS Trenčín | **non validé** |
+| 2015/16 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2015/16 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2015/16 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2015/16 | SVK-L1 | FK Senica | **non validé** |
+| 2015/16 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2015/16 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2015/16 | SVK-L1 | MFK Skalica | **non validé** |
+| 2015/16 | SVK-L1 | MFK Zemplín Michalovce | **non validé** |
+| 2015/16 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2015/16 | SVK-L1 | Spartak Myjava | **non validé** |
+| 2015/16 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2015/16 | SVN-L1 | FC Koper | **non validé** |
+| 2015/16 | SVN-L1 | ND Gorica | **non validé** |
+| 2015/16 | SVN-L1 | NK Domžale | **non validé** |
+| 2015/16 | SVN-L1 | NK Krka | **non validé** |
+| 2015/16 | SVN-L1 | NK Krško Posavje | **non validé** |
+| 2015/16 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2015/16 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2015/16 | SVN-L1 | NK Zavrč | **non validé** |
+| 2015/16 | SWE-L1 | BK Häcken | **non validé** |
+| 2015/16 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2015/16 | SWE-L1 | Falkenbergs FF | **non validé** |
+| 2015/16 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2015/16 | SWE-L1 | Gefle IF | **non validé** |
+| 2015/16 | SWE-L1 | Halmstads BK | **non validé** |
+| 2015/16 | SWE-L1 | Hammarby Fotboll | **non validé** |
+| 2015/16 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2015/16 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2015/16 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2015/16 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2015/16 | SWE-L1 | Kalmar FF | **non validé** |
+| 2015/16 | SWE-L1 | Åtvidabergs FF | **non validé** |
+| 2015/16 | SWE-L1 | Örebro SK | **non validé** |
 | 2015/16 | TUR-SL | Akhisarspor | **non validé** |
 | 2015/16 | TUR-SL | Ankaraspor | **non validé** |
 | 2015/16 | TUR-SL | Antalyaspor | **non validé** |
@@ -298,6 +4182,46 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2015/16 | TUR-SL | Sivasspor | **non validé** |
 | 2015/16 | TUR-SL | Çaykur Rizespor | **non validé** |
 | 2015/16 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
+| 2015/16 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2015/16 | UKR-L1 | FC Hoverla Uzhhorod | **non validé** |
+| 2015/16 | UKR-L1 | FC Metalist Kharkiv | **non validé** |
+| 2015/16 | UKR-L1 | FC Metalurh Zaporizhzhia | **non validé** |
+| 2015/16 | UKR-L1 | FC Oleksandriya | **non validé** |
+| 2015/16 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2015/16 | UKR-L1 | FC Stal Kamianske | **non validé** |
+| 2015/16 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2015/16 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2015/16 | USA-MLS | CF Montréal | **non validé** |
+| 2015/16 | USA-MLS | Real Salt Lake | **non validé** |
+| 2014/15 | ALB-L1 | FK Apolonia | **non validé** |
+| 2014/15 | ALB-L1 | FK Kukësi | **non validé** |
+| 2014/15 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2014/15 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2014/15 | ALB-L1 | KF Elbasani | **non validé** |
+| 2014/15 | ALB-L1 | KF Laçi | **non validé** |
+| 2014/15 | ALB-L1 | KF Teuta | **non validé** |
+| 2014/15 | ALB-L1 | KF Tirana | **non validé** |
+| 2014/15 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2014/15 | ARM-L1 | FC Alashkert | **non validé** |
+| 2014/15 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2014/15 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2014/15 | ARM-L1 | FC Mika | **non validé** |
+| 2014/15 | ARM-L1 | FC Pyunik | **non validé** |
+| 2014/15 | ARM-L1 | FC Urartu | **non validé** |
+| 2014/15 | ARM-L1 | Shirak SC | **non validé** |
+| 2014/15 | ARM-L1 | Ulisses FC | **non validé** |
+| 2014/15 | AUT-L1 | 1. Wiener Neustädter SC | **non validé** |
+| 2014/15 | AUT-L1 | Admira Wacker | **non validé** |
+| 2014/15 | AUT-L1 | SC Rheindorf Altach | **non validé** |
+| 2014/15 | AUT-L1 | SV Grödig | **non validé** |
+| 2014/15 | AUT-L1 | SV Ried | **non validé** |
+| 2014/15 | AZE-L1 | AZAL PFK | **non validé** |
+| 2014/15 | AZE-L1 | Araz-Naxçıvan PFK | **non validé** |
+| 2014/15 | AZE-L1 | Baku FC | **non validé** |
+| 2014/15 | AZE-L1 | Khazar Lankaran FK | **non validé** |
+| 2014/15 | AZE-L1 | Simurq PIK | **non validé** |
+| 2014/15 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2014/15 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2014/15 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
 | 2014/15 | BEL-PL | KV Kortrijk | **non validé** |
 | 2014/15 | BEL-PL | KV Mechelen | **non validé** |
@@ -306,6 +4230,199 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2014/15 | BEL-PL | Royal Excel Mouscron | **non validé** |
 | 2014/15 | BEL-PL | SK Beveren | **non validé** |
 | 2014/15 | BEL-PL | SV Zulte Waregem | **non validé** |
+| 2014/15 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2014/15 | BGR-L1 | FC Haskovo | **non validé** |
+| 2014/15 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2014/15 | BGR-L1 | FC Marek Dupnitsa | **non validé** |
+| 2014/15 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2014/15 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2014/15 | BGR-L1 | PFC Litex Lovech | **non validé** |
+| 2014/15 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2014/15 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2014/15 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2014/15 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2014/15 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2014/15 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2014/15 | BLR-L1 | FC Gomel | **non validé** |
+| 2014/15 | BLR-L1 | FC Minsk | **non validé** |
+| 2014/15 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2014/15 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2014/15 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2014/15 | BLR-L1 | FC Slutsk | **non validé** |
+| 2014/15 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2014/15 | CHE-L1 | FC Aarau | **non validé** |
+| 2014/15 | CHE-L1 | FC Luzern | **non validé** |
+| 2014/15 | CHE-L1 | FC Vaduz | **non validé** |
+| 2014/15 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2014/15 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2014/15 | CYP-L1 | AEL Limassol | **non validé** |
+| 2014/15 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2014/15 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2014/15 | CYP-L1 | Ayia Napa FC | **non validé** |
+| 2014/15 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2014/15 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2014/15 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2014/15 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2014/15 | CYP-L1 | Othellos Athienou FC | **non validé** |
+| 2014/15 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2014/15 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2014/15 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2014/15 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2014/15 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2014/15 | CZE-L1 | FC Viktoria Plzeň | **non validé** |
+| 2014/15 | CZE-L1 | FC Vysočina Jihlava | **non validé** |
+| 2014/15 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2014/15 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2014/15 | CZE-L1 | FK Jablonec | **non validé** |
+| 2014/15 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2014/15 | CZE-L1 | FK Příbram | **non validé** |
+| 2014/15 | CZE-L1 | FK Teplice | **non validé** |
+| 2014/15 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2014/15 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2014/15 | DNK-L1 | FC Midtjylland | **non validé** |
+| 2014/15 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2014/15 | DNK-L1 | FC Vestsjælland | **non validé** |
+| 2014/15 | DNK-L1 | Hobro IK | **non validé** |
+| 2014/15 | DNK-L1 | Randers FC | **non validé** |
+| 2014/15 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2014/15 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2014/15 | ENG-CH | Rotherham United F.C. | **non validé** |
+| 2014/15 | ESP-SD | Albacete Balompié | **non validé** |
+| 2014/15 | ESP-SD | CD Leganés | **non validé** |
+| 2014/15 | ESP-SD | CD Lugo | **non validé** |
+| 2014/15 | ESP-SD | Deportivo Alavés | **non validé** |
+| 2014/15 | ESP-SD | RCD Mallorca | **non validé** |
+| 2014/15 | ESP-SD | Real Valladolid | **non validé** |
+| 2014/15 | ESP-SD | Recreativo de Huelva | **non validé** |
+| 2014/15 | ESP-SD | SD Ponferradina | **non validé** |
+| 2014/15 | ESP-SD | Som Maresme FC | **non validé** |
+| 2014/15 | FIN-L1 | FC Honka | **non validé** |
+| 2014/15 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2014/15 | FIN-L1 | FC Lahti | **non validé** |
+| 2014/15 | FIN-L1 | FF Jaro | **non validé** |
+| 2014/15 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2014/15 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2014/15 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2014/15 | FIN-L1 | Myllykosken Pallo −47 | **non validé** |
+| 2014/15 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2014/15 | FIN-L1 | Seinäjoen Jalkapallokerho | **non validé** |
+| 2014/15 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2014/15 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2014/15 | FRA-L2 | Clermont Foot | **non validé** |
+| 2014/15 | FRA-L2 | LB Châteauroux | **non validé** |
+| 2014/15 | FRA-L2 | Le Havre AC | **non validé** |
+| 2014/15 | FRA-L2 | Troyes AC | **non validé** |
+| 2014/15 | FRA-L2 | Union Sportive Créteil Football | **non validé** |
+| 2014/15 | GRC-L1 | AEL Kalloni F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Ergotelis F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Niki Volos F.C. | **non validé** |
+| 2014/15 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2014/15 | GRC-L1 | PAE Kerkyra | **non validé** |
+| 2014/15 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Panthrakikos F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Platanias F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Veria F.C. | **non validé** |
+| 2014/15 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2014/15 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2014/15 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2014/15 | HRV-L1 | NK Osijek | **non validé** |
+| 2014/15 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2014/15 | HRV-L1 | NK Zadar | **non validé** |
+| 2014/15 | HRV-L1 | NK Zagreb | **non validé** |
+| 2014/15 | HRV-L1 | RNK Split | **non validé** |
+| 2014/15 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2014/15 | HUN-L1 | Dunaújváros FC (1998) | **non validé** |
+| 2014/15 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2014/15 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2014/15 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2014/15 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2014/15 | HUN-L1 | Nyíregyháza Spartacus FC | **non validé** |
+| 2014/15 | HUN-L1 | Paksi FC | **non validé** |
+| 2014/15 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2014/15 | HUN-L1 | Pápai FC | **non validé** |
+| 2014/15 | HUN-L1 | Pécsi MFC | **non validé** |
+| 2014/15 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2014/15 | HUN-L1 | Újpest FC | **non validé** |
+| 2014/15 | IRL-L1 | Athlone Town A.F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Dundalk F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Limerick F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2014/15 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2014/15 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2014/15 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2014/15 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2014/15 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Hapoel Petah Tikva F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2014/15 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2014/15 | ITA-SB | LR Vicenza | **non validé** |
+| 2014/15 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2014/15 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2014/15 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2014/15 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2014/15 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2014/15 | KAZ-L1 | FC Taraz | **non validé** |
+| 2014/15 | KAZ-L1 | FC Tobol | **non validé** |
+| 2014/15 | KAZ-L1 | FC Yelimay | **non validé** |
+| 2014/15 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2014/15 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2014/15 | LUX-L1 | CS Grevenmacher | **non validé** |
+| 2014/15 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2014/15 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2014/15 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2014/15 | LUX-L1 | FC Jeunesse Canach | **non validé** |
+| 2014/15 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2014/15 | LUX-L1 | FC Victoria Rosport | **non validé** |
+| 2014/15 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2014/15 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2014/15 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2014/15 | LUX-L1 | US Hostert | **non validé** |
+| 2014/15 | LUX-L1 | US Mondorf-les-Bains | **non validé** |
+| 2014/15 | LUX-L1 | US Rumelange | **non validé** |
+| 2014/15 | LVA-L1 | BFC Daugavpils | **non validé** |
+| 2014/15 | LVA-L1 | FC Daugava | **non validé** |
+| 2014/15 | LVA-L1 | FC Jūrmala | **non validé** |
+| 2014/15 | LVA-L1 | FK Daugava (2003) | **non validé** |
+| 2014/15 | LVA-L1 | FK Jelgava | **non validé** |
+| 2014/15 | LVA-L1 | FK Liepāja | **non validé** |
+| 2014/15 | LVA-L1 | FK Metta | **non validé** |
+| 2014/15 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2014/15 | LVA-L1 | FK Ventspils | **non validé** |
+| 2014/15 | LVA-L1 | Skonto FC | **non validé** |
+| 2014/15 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2014/15 | MDA-L1 | FC Bălți | **non validé** |
+| 2014/15 | MDA-L1 | FC Costuleni | **non validé** |
+| 2014/15 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2014/15 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2014/15 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2014/15 | MDA-L1 | FC Saksan | **non validé** |
+| 2014/15 | MDA-L1 | FC Tiraspol | **non validé** |
+| 2014/15 | MDA-L1 | FC Veris Chișinău | **non validé** |
+| 2014/15 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2014/15 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2014/15 | MKD-L1 | FK Horizont Turnovo | **non validé** |
+| 2014/15 | MKD-L1 | FK Metalurg Skopje | **non validé** |
+| 2014/15 | MKD-L1 | FK Pelister | **non validé** |
+| 2014/15 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2014/15 | MKD-L1 | FK Sileks | **non validé** |
+| 2014/15 | MKD-L1 | FK Teteks | **non validé** |
+| 2014/15 | MKD-L1 | KF Renova | **non validé** |
+| 2014/15 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2014/15 | NLD-ED | ADO Den Haag | **non validé** |
 | 2014/15 | NLD-ED | FC Twente | **non validé** |
 | 2014/15 | NLD-ED | Go Ahead Eagles | **non validé** |
@@ -313,6 +4430,29 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2014/15 | NLD-ED | PEC Zwolle | **non validé** |
 | 2014/15 | NLD-ED | SC Heerenveen | **non validé** |
 | 2014/15 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2014/15 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2014/15 | NOR-L1 | FK Haugesund | **non validé** |
+| 2014/15 | NOR-L1 | IK Start | **non validé** |
+| 2014/15 | NOR-L1 | Odds BK | **non validé** |
+| 2014/15 | NOR-L1 | Sandnes Ulf | **non validé** |
+| 2014/15 | NOR-L1 | Sogndal Fotball | **non validé** |
+| 2014/15 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2014/15 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2014/15 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2014/15 | POL-L1 | GKS Bełchatów | **non validé** |
+| 2014/15 | POL-L1 | GKS Górnik Łęczna | **non validé** |
+| 2014/15 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2014/15 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2014/15 | POL-L1 | KS Cracovia | **non validé** |
+| 2014/15 | POL-L1 | Korona Kielce | **non validé** |
+| 2014/15 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2014/15 | POL-L1 | Piast Gliwice | **non validé** |
+| 2014/15 | POL-L1 | Podbeskidzie Bielsko-Biała | **non validé** |
+| 2014/15 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2014/15 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2014/15 | POL-L1 | Wisła Kraków | **non validé** |
+| 2014/15 | POL-L1 | Zawisza Bydgoszcz | **non validé** |
+| 2014/15 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2014/15 | PRT-PL | Boavista F.C. | **non validé** |
 | 2014/15 | PRT-PL | C.D. Nacional | **non validé** |
 | 2014/15 | PRT-PL | C.F. Os Belenenses | **non validé** |
@@ -325,6 +4465,89 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2014/15 | PRT-PL | Rio Ave F.C. | **non validé** |
 | 2014/15 | PRT-PL | S.C. Braga | **non validé** |
 | 2014/15 | PRT-PL | Vitória F.C. | **non validé** |
+| 2014/15 | ROU-L1 | ASA 2013 Târgu Mureș | **non validé** |
+| 2014/15 | ROU-L1 | CFR Cluj | **non validé** |
+| 2014/15 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2014/15 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2014/15 | ROU-L1 | CS Pandurii Târgu Jiu | **non validé** |
+| 2014/15 | ROU-L1 | CS Universitatea Craiova | **non validé** |
+| 2014/15 | ROU-L1 | CSM Ceahlăul Piatra Neamț | **non validé** |
+| 2014/15 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2014/15 | ROU-L1 | FC Botoșani | **non validé** |
+| 2014/15 | ROU-L1 | FC Brașov (1936) | **non validé** |
+| 2014/15 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2014/15 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2014/15 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2014/15 | ROU-L1 | FC Rapid București | **non validé** |
+| 2014/15 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2014/15 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2014/15 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2014/15 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2014/15 | RUS-L1 | FC Arsenal Tula | **non validé** |
+| 2014/15 | RUS-L1 | FC Mordovia Saransk | **non validé** |
+| 2014/15 | RUS-L1 | FC Torpedo Moscow | **non validé** |
+| 2014/15 | RUS-L1 | FC Ufa | **non validé** |
+| 2014/15 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2014/15 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Partick Thistle F.C. | **non validé** |
+| 2014/15 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2014/15 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2014/15 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2014/15 | SRB-L1 | FK Borac 1926 | **non validé** |
+| 2014/15 | SRB-L1 | FK Donji Srem 2015 | **non validé** |
+| 2014/15 | SRB-L1 | FK Jagodina | **non validé** |
+| 2014/15 | SRB-L1 | FK Mladost Lučani | **non validé** |
+| 2014/15 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2014/15 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2014/15 | SRB-L1 | FK Rad | **non validé** |
+| 2014/15 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2014/15 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2014/15 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2014/15 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2014/15 | SRB-L1 | FK Voždovac | **non validé** |
+| 2014/15 | SRB-L1 | FK Čukarički | **non validé** |
+| 2014/15 | SRB-L1 | OFK Beograd | **non validé** |
+| 2014/15 | SVK-L1 | AS Trenčín | **non validé** |
+| 2014/15 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2014/15 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2014/15 | SVK-L1 | FC VSS Košice | **non validé** |
+| 2014/15 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2014/15 | SVK-L1 | FK Senica | **non validé** |
+| 2014/15 | SVK-L1 | FK Železiarne Podbrezová | **non validé** |
+| 2014/15 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2014/15 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2014/15 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2014/15 | SVK-L1 | Spartak Myjava | **non validé** |
+| 2014/15 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2014/15 | SVN-L1 | FC Koper | **non validé** |
+| 2014/15 | SVN-L1 | ND Gorica | **non validé** |
+| 2014/15 | SVN-L1 | NK Celje | **non validé** |
+| 2014/15 | SVN-L1 | NK Domžale | **non validé** |
+| 2014/15 | SVN-L1 | NK Krka | **non validé** |
+| 2014/15 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2014/15 | SVN-L1 | NK Radomlje | **non validé** |
+| 2014/15 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2014/15 | SVN-L1 | NK Zavrč | **non validé** |
+| 2014/15 | SWE-L1 | BK Häcken | **non validé** |
+| 2014/15 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2014/15 | SWE-L1 | Falkenbergs FF | **non validé** |
+| 2014/15 | SWE-L1 | Gefle IF | **non validé** |
+| 2014/15 | SWE-L1 | Halmstads BK | **non validé** |
+| 2014/15 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2014/15 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2014/15 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2014/15 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2014/15 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2014/15 | SWE-L1 | Kalmar FF | **non validé** |
+| 2014/15 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2014/15 | SWE-L1 | Åtvidabergs FF | **non validé** |
+| 2014/15 | SWE-L1 | Örebro SK | **non validé** |
 | 2014/15 | TUR-SL | Akhisarspor | **non validé** |
 | 2014/15 | TUR-SL | Balıkesirspor | **non validé** |
 | 2014/15 | TUR-SL | Bursaspor | **non validé** |
@@ -338,6 +4561,49 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2014/15 | TUR-SL | Sivasspor | **non validé** |
 | 2014/15 | TUR-SL | Çaykur Rizespor | **non validé** |
 | 2014/15 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
+| 2014/15 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2014/15 | UKR-L1 | FC Hoverla Uzhhorod | **non validé** |
+| 2014/15 | UKR-L1 | FC Mariupol | **non validé** |
+| 2014/15 | UKR-L1 | FC Metalist Kharkiv | **non validé** |
+| 2014/15 | UKR-L1 | FC Metalurh Donetsk | **non validé** |
+| 2014/15 | UKR-L1 | FC Metalurh Zaporizhzhia | **non validé** |
+| 2014/15 | UKR-L1 | FC Olimpik Donetsk | **non validé** |
+| 2014/15 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2014/15 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2014/15 | USA-MLS | C.D. Chivas USA | **non validé** |
+| 2014/15 | USA-MLS | CF Montréal | **non validé** |
+| 2013/14 | ALB-L1 | FK Kukësi | **non validé** |
+| 2013/14 | ALB-L1 | FK Partizani Tirana | **non validé** |
+| 2013/14 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2013/14 | ALB-L1 | KF Besa Kavajë | **non validé** |
+| 2013/14 | ALB-L1 | KF Bylis | **non validé** |
+| 2013/14 | ALB-L1 | KF Laçi | **non validé** |
+| 2013/14 | ALB-L1 | KF Teuta | **non validé** |
+| 2013/14 | ALB-L1 | KF Tirana | **non validé** |
+| 2013/14 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2013/14 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2013/14 | ALB-L1 | KS Lushnja | **non validé** |
+| 2013/14 | ARM-L1 | FC Alashkert | **non validé** |
+| 2013/14 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2013/14 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2013/14 | ARM-L1 | FC Mika | **non validé** |
+| 2013/14 | ARM-L1 | FC Pyunik | **non validé** |
+| 2013/14 | ARM-L1 | FC Urartu | **non validé** |
+| 2013/14 | ARM-L1 | Shirak SC | **non validé** |
+| 2013/14 | ARM-L1 | Ulisses FC | **non validé** |
+| 2013/14 | AUT-L1 | 1. Wiener Neustädter SC | **non validé** |
+| 2013/14 | AUT-L1 | Admira Wacker | **non validé** |
+| 2013/14 | AUT-L1 | FC Wacker Innsbruck (2002) | **non validé** |
+| 2013/14 | AUT-L1 | SV Grödig | **non validé** |
+| 2013/14 | AUT-L1 | SV Ried | **non validé** |
+| 2013/14 | AUT-L1 | Wolfsberger AC | **non validé** |
+| 2013/14 | AZE-L1 | AZAL PFK | **non validé** |
+| 2013/14 | AZE-L1 | Baku FC | **non validé** |
+| 2013/14 | AZE-L1 | Khazar Lankaran FK | **non validé** |
+| 2013/14 | AZE-L1 | Ravan Baku FK | **non validé** |
+| 2013/14 | AZE-L1 | Simurq PIK | **non validé** |
+| 2013/14 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2013/14 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2013/14 | BEL-PL | Cercle Brugge KSV | **non validé** |
 | 2013/14 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
 | 2013/14 | BEL-PL | KV Kortrijk | **non validé** |
@@ -348,7 +4614,204 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2013/14 | BEL-PL | Royal Charleroi SC | **non validé** |
 | 2013/14 | BEL-PL | SK Beveren | **non validé** |
 | 2013/14 | BEL-PL | SV Zulte Waregem | **non validé** |
+| 2013/14 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2013/14 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2013/14 | BGR-L1 | FC Lyubimets | **non validé** |
+| 2013/14 | BGR-L1 | FC Pirin Gotse Delchev | **non validé** |
+| 2013/14 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2013/14 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2013/14 | BGR-L1 | PFC Litex Lovech | **non validé** |
+| 2013/14 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2013/14 | BGR-L1 | PFC Neftochimic Burgas | **non validé** |
+| 2013/14 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2013/14 | BGR-L1 | PSFC Chernomorets Burgas | **non validé** |
+| 2013/14 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2013/14 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2013/14 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2013/14 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2013/14 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2013/14 | BLR-L1 | FC Gomel | **non validé** |
+| 2013/14 | BLR-L1 | FC Minsk | **non validé** |
+| 2013/14 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2013/14 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2013/14 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2013/14 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2013/14 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2013/14 | CHE-L1 | FC Aarau | **non validé** |
+| 2013/14 | CHE-L1 | FC Luzern | **non validé** |
+| 2013/14 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2013/14 | CYP-L1 | AEK Kouklia | **non validé** |
+| 2013/14 | CYP-L1 | AEL Limassol | **non validé** |
+| 2013/14 | CYP-L1 | Alki Larnaca F.C. | **non validé** |
+| 2013/14 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2013/14 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2013/14 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2013/14 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2013/14 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2013/14 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2013/14 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2013/14 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2013/14 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2013/14 | CZE-L1 | 1. SC Znojmo FK | **non validé** |
+| 2013/14 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2013/14 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2013/14 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2013/14 | CZE-L1 | FC Vysočina Jihlava | **non validé** |
+| 2013/14 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2013/14 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2013/14 | CZE-L1 | FK Jablonec | **non validé** |
+| 2013/14 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2013/14 | CZE-L1 | FK Příbram | **non validé** |
+| 2013/14 | CZE-L1 | FK Teplice | **non validé** |
+| 2013/14 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2013/14 | CZE-L1 | SK Slavia Prague | **non validé** |
+| 2013/14 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2013/14 | DNK-L1 | Brøndby IF | **non validé** |
+| 2013/14 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2013/14 | DNK-L1 | FC Midtjylland | **non validé** |
+| 2013/14 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2013/14 | DNK-L1 | FC Vestsjælland | **non validé** |
+| 2013/14 | DNK-L1 | Randers FC | **non validé** |
+| 2013/14 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2013/14 | DNK-L1 | Viborg FF | **non validé** |
 | 2013/14 | ESP-LL | Granada CF | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
+| 2013/14 | ESP-SD | AD Alcorcón | **non validé** |
+| 2013/14 | ESP-SD | Deportivo Alavés | **non validé** |
+| 2013/14 | ESP-SD | FC Barcelona Atlètic | **non validé** |
+| 2013/14 | ESP-SD | Girona FC | **non validé** |
+| 2013/14 | ESP-SD | Hércules CF | **non validé** |
+| 2013/14 | ESP-SD | Real Jaén | **non validé** |
+| 2013/14 | ESP-SD | Real Murcia CF | **non validé** |
+| 2013/14 | ESP-SD | SD Eibar | **non validé** |
+| 2013/14 | ESP-SD | SD Ponferradina | **non validé** |
+| 2013/14 | FIN-L1 | FC Honka | **non validé** |
+| 2013/14 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2013/14 | FIN-L1 | FC Lahti | **non validé** |
+| 2013/14 | FIN-L1 | FF Jaro | **non validé** |
+| 2013/14 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2013/14 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2013/14 | FIN-L1 | JJK Jyväskylä | **non validé** |
+| 2013/14 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2013/14 | FIN-L1 | Myllykosken Pallo −47 | **non validé** |
+| 2013/14 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2013/14 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2013/14 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2013/14 | FRA-L2 | Clermont Foot | **non validé** |
+| 2013/14 | FRA-L2 | Le Havre AC | **non validé** |
+| 2013/14 | FRA-L2 | Union Sportive Créteil Football | **non validé** |
+| 2013/14 | GRC-L1 | AEL Kalloni F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Apollon Smyrnis F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Ergotelis F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2013/14 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2013/14 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Panthrakikos F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Platanias F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Veria F.C. | **non validé** |
+| 2013/14 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2013/14 | HRV-L1 | NK Hrvatski Dragovoljac | **non validé** |
+| 2013/14 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2013/14 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2013/14 | HRV-L1 | NK Osijek | **non validé** |
+| 2013/14 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2013/14 | HRV-L1 | NK Zadar | **non validé** |
+| 2013/14 | HRV-L1 | RNK Split | **non validé** |
+| 2013/14 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2013/14 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2013/14 | HUN-L1 | Kaposvári Rákóczi FC | **non validé** |
+| 2013/14 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2013/14 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2013/14 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2013/14 | HUN-L1 | Mezőkövesdi SE | **non validé** |
+| 2013/14 | HUN-L1 | Paksi FC | **non validé** |
+| 2013/14 | HUN-L1 | Puskás Akadémia FC | **non validé** |
+| 2013/14 | HUN-L1 | Pápai FC | **non validé** |
+| 2013/14 | HUN-L1 | Pécsi MFC | **non validé** |
+| 2013/14 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2013/14 | HUN-L1 | Újpest FC | **non validé** |
+| 2013/14 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Dundalk F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Limerick F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2013/14 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2013/14 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2013/14 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2013/14 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Nir Ramat HaSharon F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Ra'anana A.F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2013/14 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2013/14 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2013/14 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2013/14 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2013/14 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2013/14 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2013/14 | KAZ-L1 | FC Taraz | **non validé** |
+| 2013/14 | KAZ-L1 | FC Tobol | **non validé** |
+| 2013/14 | KAZ-L1 | FC Vostok | **non validé** |
+| 2013/14 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2013/14 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2013/14 | LUX-L1 | CS Grevenmacher | **non validé** |
+| 2013/14 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2013/14 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2013/14 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2013/14 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2013/14 | LUX-L1 | FC Jeunesse Canach | **non validé** |
+| 2013/14 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2013/14 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2013/14 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2013/14 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2013/14 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2013/14 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2013/14 | LUX-L1 | US Rumelange | **non validé** |
+| 2013/14 | LVA-L1 | Augšdaugavas NSS | **non validé** |
+| 2013/14 | LVA-L1 | FC Daugava | **non validé** |
+| 2013/14 | LVA-L1 | FC Jūrmala | **non validé** |
+| 2013/14 | LVA-L1 | FK Daugava (2003) | **non validé** |
+| 2013/14 | LVA-L1 | FK Jelgava | **non validé** |
+| 2013/14 | LVA-L1 | FK Liepājas Metalurgs | **non validé** |
+| 2013/14 | LVA-L1 | FK Metta | **non validé** |
+| 2013/14 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2013/14 | LVA-L1 | FK Ventspils | **non validé** |
+| 2013/14 | LVA-L1 | Skonto FC | **non validé** |
+| 2013/14 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2013/14 | MDA-L1 | FC Bălți | **non validé** |
+| 2013/14 | MDA-L1 | FC Costuleni | **non validé** |
+| 2013/14 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2013/14 | MDA-L1 | FC Dinamo-Auto Tiraspol | **non validé** |
+| 2013/14 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2013/14 | MDA-L1 | FC Rapid Ghidighici | **non validé** |
+| 2013/14 | MDA-L1 | FC Speranța Crihana Veche | **non validé** |
+| 2013/14 | MDA-L1 | FC Tiraspol | **non validé** |
+| 2013/14 | MDA-L1 | FC Veris Chișinău | **non validé** |
+| 2013/14 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2013/14 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2013/14 | MKD-L1 | FK Gorno Lisiče | **non validé** |
+| 2013/14 | MKD-L1 | FK Horizont Turnovo | **non validé** |
+| 2013/14 | MKD-L1 | FK Makedonija G.P. | **non validé** |
+| 2013/14 | MKD-L1 | FK Metalurg Skopje | **non validé** |
+| 2013/14 | MKD-L1 | FK Napredok | **non validé** |
+| 2013/14 | MKD-L1 | FK Pelister | **non validé** |
+| 2013/14 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2013/14 | MKD-L1 | KF Gostivari | **non validé** |
+| 2013/14 | MKD-L1 | KF Renova | **non validé** |
+| 2013/14 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2013/14 | NLD-ED | ADO Den Haag | **non validé** |
 | 2013/14 | NLD-ED | FC Groningen | **non validé** |
 | 2013/14 | NLD-ED | FC Utrecht | **non validé** |
@@ -356,6 +4819,30 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2013/14 | NLD-ED | PEC Zwolle | **non validé** |
 | 2013/14 | NLD-ED | SC Cambuur | **non validé** |
 | 2013/14 | NLD-ED | SC Heerenveen | **non validé** |
+| 2013/14 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2013/14 | NOR-L1 | FK Haugesund | **non validé** |
+| 2013/14 | NOR-L1 | Hønefoss BK | **non validé** |
+| 2013/14 | NOR-L1 | IK Start | **non validé** |
+| 2013/14 | NOR-L1 | Odds BK | **non validé** |
+| 2013/14 | NOR-L1 | Sandnes Ulf | **non validé** |
+| 2013/14 | NOR-L1 | Sogndal Fotball | **non validé** |
+| 2013/14 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2013/14 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2013/14 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2013/14 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2013/14 | POL-L1 | KS Cracovia | **non validé** |
+| 2013/14 | POL-L1 | Korona Kielce | **non validé** |
+| 2013/14 | POL-L1 | Lech Poznań | **non validé** |
+| 2013/14 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2013/14 | POL-L1 | Piast Gliwice | **non validé** |
+| 2013/14 | POL-L1 | Podbeskidzie Bielsko-Biała | **non validé** |
+| 2013/14 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2013/14 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2013/14 | POL-L1 | Widzew Łódź | **non validé** |
+| 2013/14 | POL-L1 | Wisła Kraków | **non validé** |
+| 2013/14 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2013/14 | POL-L1 | Zawisza Bydgoszcz | **non validé** |
+| 2013/14 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2013/14 | PRT-PL | C.D. Nacional | **non validé** |
 | 2013/14 | PRT-PL | C.F. Os Belenenses | **non validé** |
 | 2013/14 | PRT-PL | C.S. Marítimo | **non validé** |
@@ -367,6 +4854,85 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2013/14 | PRT-PL | S.C. Braga | **non validé** |
 | 2013/14 | PRT-PL | S.C. Olhanense | **non validé** |
 | 2013/14 | PRT-PL | Vitória S.C. | **non validé** |
+| 2013/14 | ROU-L1 | ACS Poli Timișoara | **non validé** |
+| 2013/14 | ROU-L1 | AFC Săgeata Năvodari | **non validé** |
+| 2013/14 | ROU-L1 | CFR Cluj | **non validé** |
+| 2013/14 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2013/14 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2013/14 | ROU-L1 | CSM Ceahlăul Piatra Neamț | **non validé** |
+| 2013/14 | ROU-L1 | CSM Corona Brașov (football) | **non validé** |
+| 2013/14 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2013/14 | ROU-L1 | FC Botoșani | **non validé** |
+| 2013/14 | ROU-L1 | FC Brașov (1936) | **non validé** |
+| 2013/14 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2013/14 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2013/14 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2013/14 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2013/14 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2013/14 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2013/14 | RUS-L1 | FC Tom Tomsk | **non validé** |
+| 2013/14 | RUS-L1 | FC Ural Yekaterinburg | **non validé** |
+| 2013/14 | RUS-L1 | FC Volga Nizhny Novgorod | **non validé** |
+| 2013/14 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2013/14 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Partick Thistle F.C. | **non validé** |
+| 2013/14 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2013/14 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2013/14 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2013/14 | SRB-L1 | FK Donji Srem 2015 | **non validé** |
+| 2013/14 | SRB-L1 | FK Jagodina | **non validé** |
+| 2013/14 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2013/14 | SRB-L1 | FK Napredak Kruševac | **non validé** |
+| 2013/14 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2013/14 | SRB-L1 | FK Rad | **non validé** |
+| 2013/14 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2013/14 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2013/14 | SRB-L1 | FK Sloboda Užice | **non validé** |
+| 2013/14 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2013/14 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2013/14 | SRB-L1 | FK Voždovac | **non validé** |
+| 2013/14 | SRB-L1 | FK Čukarički | **non validé** |
+| 2013/14 | SRB-L1 | OFK Beograd | **non validé** |
+| 2013/14 | SVK-L1 | AS Trenčín | **non validé** |
+| 2013/14 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2013/14 | SVK-L1 | FC Nitra | **non validé** |
+| 2013/14 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2013/14 | SVK-L1 | FC VSS Košice | **non validé** |
+| 2013/14 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2013/14 | SVK-L1 | FK Senica | **non validé** |
+| 2013/14 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2013/14 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2013/14 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2013/14 | SVK-L1 | Spartak Myjava | **non validé** |
+| 2013/14 | SVN-L1 | FC Koper | **non validé** |
+| 2013/14 | SVN-L1 | ND Gorica | **non validé** |
+| 2013/14 | SVN-L1 | NK Celje | **non validé** |
+| 2013/14 | SVN-L1 | NK Domžale | **non validé** |
+| 2013/14 | SVN-L1 | NK Krka | **non validé** |
+| 2013/14 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2013/14 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2013/14 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2013/14 | SVN-L1 | NK Zavrč | **non validé** |
+| 2013/14 | SWE-L1 | BK Häcken | **non validé** |
+| 2013/14 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2013/14 | SWE-L1 | Gefle IF | **non validé** |
+| 2013/14 | SWE-L1 | Halmstads BK | **non validé** |
+| 2013/14 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2013/14 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2013/14 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2013/14 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2013/14 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2013/14 | SWE-L1 | Kalmar FF | **non validé** |
+| 2013/14 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2013/14 | SWE-L1 | Syrianska FC | **non validé** |
+| 2013/14 | SWE-L1 | Åtvidabergs FF | **non validé** |
+| 2013/14 | SWE-L1 | Östers IF | **non validé** |
 | 2013/14 | TUR-SL | Akhisarspor | **non validé** |
 | 2013/14 | TUR-SL | Antalyaspor | **non validé** |
 | 2013/14 | TUR-SL | Bursaspor | **non validé** |
@@ -380,6 +4946,55 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2013/14 | TUR-SL | Kayserispor | **non validé** |
 | 2013/14 | TUR-SL | Konyaspor | **non validé** |
 | 2013/14 | TUR-SL | Çaykur Rizespor | **non validé** |
+| 2013/14 | UKR-L1 | FC Arsenal Kyiv | **non validé** |
+| 2013/14 | UKR-L1 | FC Hoverla Uzhhorod | **non validé** |
+| 2013/14 | UKR-L1 | FC Mariupol | **non validé** |
+| 2013/14 | UKR-L1 | FC Metalurh Donetsk | **non validé** |
+| 2013/14 | UKR-L1 | FC Metalurh Zaporizhzhia | **non validé** |
+| 2013/14 | UKR-L1 | FC Sevastopol | **non validé** |
+| 2013/14 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2013/14 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2013/14 | UKR-L1 | SC Tavriya Simferopol | **non validé** |
+| 2013/14 | USA-MLS | C.D. Chivas USA | **non validé** |
+| 2013/14 | USA-MLS | CF Montréal | **non validé** |
+| 2013/14 | USA-MLS | FC Dallas | **non validé** |
+| 2012/13 | ALB-L1 | FK Apolonia | **non validé** |
+| 2012/13 | ALB-L1 | FK Kukësi | **non validé** |
+| 2012/13 | ALB-L1 | FK Tomori | **non validé** |
+| 2012/13 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2012/13 | ALB-L1 | KF Besa Kavajë | **non validé** |
+| 2012/13 | ALB-L1 | KF Bylis | **non validé** |
+| 2012/13 | ALB-L1 | KF Laçi | **non validé** |
+| 2012/13 | ALB-L1 | KF Shkumbini | **non validé** |
+| 2012/13 | ALB-L1 | KF Teuta | **non validé** |
+| 2012/13 | ALB-L1 | KF Tirana | **non validé** |
+| 2012/13 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2012/13 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2012/13 | ALB-L1 | Luftëtari FC | **non validé** |
+| 2012/13 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2012/13 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2012/13 | ARM-L1 | FC Mika | **non validé** |
+| 2012/13 | ARM-L1 | FC Pyunik | **non validé** |
+| 2012/13 | ARM-L1 | FC Urartu | **non validé** |
+| 2012/13 | ARM-L1 | Impuls FC Dilijan | **non validé** |
+| 2012/13 | ARM-L1 | Shirak SC | **non validé** |
+| 2012/13 | ARM-L1 | Ulisses FC | **non validé** |
+| 2012/13 | AUT-L1 | 1. Wiener Neustädter SC | **non validé** |
+| 2012/13 | AUT-L1 | Admira Wacker | **non validé** |
+| 2012/13 | AUT-L1 | FC Wacker Innsbruck (2002) | **non validé** |
+| 2012/13 | AUT-L1 | SK Sturm Graz | **non validé** |
+| 2012/13 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2012/13 | AUT-L1 | SV Ried | **non validé** |
+| 2012/13 | AUT-L1 | Wolfsberger AC | **non validé** |
+| 2012/13 | AZE-L1 | AZAL PFK | **non validé** |
+| 2012/13 | AZE-L1 | Baku FC | **non validé** |
+| 2012/13 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2012/13 | AZE-L1 | Khazar Lankaran FK | **non validé** |
+| 2012/13 | AZE-L1 | Ravan Baku FK | **non validé** |
+| 2012/13 | AZE-L1 | Simurq PIK | **non validé** |
+| 2012/13 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2012/13 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2012/13 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2012/13 | BEL-PL | Beerschot A.C. | **non validé** |
 | 2012/13 | BEL-PL | Cercle Brugge KSV | **non validé** |
 | 2012/13 | BEL-PL | Club Brugge KV | **non validé** |
@@ -391,9 +5006,200 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | BEL-PL | Royal Charleroi SC | **non validé** |
 | 2012/13 | BEL-PL | SK Beveren | **non validé** |
 | 2012/13 | BEL-PL | SV Zulte Waregem | **non validé** |
+| 2012/13 | BGR-L1 | Botev Plovdiv | **non validé** |
+| 2012/13 | BGR-L1 | FC Etar 1924 Veliko Tarnovo | **non validé** |
+| 2012/13 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2012/13 | BGR-L1 | FC Minyor Pernik | **non validé** |
+| 2012/13 | BGR-L1 | FC Pirin Gotse Delchev | **non validé** |
+| 2012/13 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2012/13 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2012/13 | BGR-L1 | PFC Litex Lovech | **non validé** |
+| 2012/13 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2012/13 | BGR-L1 | PFC Montana | **non validé** |
+| 2012/13 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2012/13 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2012/13 | BGR-L1 | PSFC Chernomorets Burgas | **non validé** |
+| 2012/13 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2012/13 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2012/13 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2012/13 | BLR-L1 | FC Gomel | **non validé** |
+| 2012/13 | BLR-L1 | FC Minsk | **non validé** |
+| 2012/13 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2012/13 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2012/13 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2012/13 | BLR-L1 | FC Slavia Mozyr | **non validé** |
+| 2012/13 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2012/13 | CHE-L1 | FC Luzern | **non validé** |
+| 2012/13 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2012/13 | CYP-L1 | AEL Limassol | **non validé** |
+| 2012/13 | CYP-L1 | AEP Paphos FC | **non validé** |
+| 2012/13 | CYP-L1 | Alki Larnaca F.C. | **non validé** |
+| 2012/13 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2012/13 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2012/13 | CYP-L1 | Ayia Napa FC | **non validé** |
+| 2012/13 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2012/13 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2012/13 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2012/13 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2012/13 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2012/13 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2012/13 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2012/13 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2012/13 | CZE-L1 | FC Vysočina Jihlava | **non validé** |
+| 2012/13 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2012/13 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2012/13 | CZE-L1 | FK Jablonec | **non validé** |
+| 2012/13 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2012/13 | CZE-L1 | FK Příbram | **non validé** |
+| 2012/13 | CZE-L1 | FK Teplice | **non validé** |
+| 2012/13 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2012/13 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2012/13 | CZE-L1 | SK Slavia Prague | **non validé** |
+| 2012/13 | DNK-L1 | AC Horsens | **non validé** |
+| 2012/13 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2012/13 | DNK-L1 | Brøndby IF | **non validé** |
+| 2012/13 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2012/13 | DNK-L1 | FC Midtjylland | **non validé** |
+| 2012/13 | DNK-L1 | Randers FC | **non validé** |
+| 2012/13 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2012/13 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
 | 2012/13 | ESP-LL | Getafe CF | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
 | 2012/13 | ESP-LL | Granada CF | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
 | 2012/13 | ESP-LL | Rayo Vallecano | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
+| 2012/13 | ESP-SD | AD Alcorcón | **non validé** |
+| 2012/13 | ESP-SD | CD Lugo | **non validé** |
+| 2012/13 | ESP-SD | Girona FC | **non validé** |
+| 2012/13 | ESP-SD | Hércules CF | **non validé** |
+| 2012/13 | ESP-SD | Racing de Santander | **non validé** |
+| 2012/13 | ESP-SD | SD Ponferradina | **non validé** |
+| 2012/13 | ESP-SD | Xerez CD | **non validé** |
+| 2012/13 | FIN-L1 | FC Haka | **non validé** |
+| 2012/13 | FIN-L1 | FC Honka | **non validé** |
+| 2012/13 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2012/13 | FIN-L1 | FC Lahti | **non validé** |
+| 2012/13 | FIN-L1 | FF Jaro | **non validé** |
+| 2012/13 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2012/13 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2012/13 | FIN-L1 | JJK Jyväskylä | **non validé** |
+| 2012/13 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2012/13 | FIN-L1 | Myllykosken Pallo −47 | **non validé** |
+| 2012/13 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2012/13 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2012/13 | GRC-L1 | A.O. Kerkyra | **non validé** |
+| 2012/13 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2012/13 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2012/13 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Panthrakikos F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Platanias F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Veria F.C. | **non validé** |
+| 2012/13 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2012/13 | HRV-L1 | HNK Cibalia | **non validé** |
+| 2012/13 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2012/13 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2012/13 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2012/13 | HRV-L1 | NK Osijek | **non validé** |
+| 2012/13 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2012/13 | HRV-L1 | NK Zadar | **non validé** |
+| 2012/13 | HRV-L1 | NK Zagreb | **non validé** |
+| 2012/13 | HRV-L1 | RNK Split | **non validé** |
+| 2012/13 | HUN-L1 | BFC Siófok | **non validé** |
+| 2012/13 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2012/13 | HUN-L1 | Egri FC | **non validé** |
+| 2012/13 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2012/13 | HUN-L1 | Kaposvári Rákóczi FC | **non validé** |
+| 2012/13 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2012/13 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2012/13 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2012/13 | HUN-L1 | Paksi FC | **non validé** |
+| 2012/13 | HUN-L1 | Pápai FC | **non validé** |
+| 2012/13 | HUN-L1 | Pécsi MFC | **non validé** |
+| 2012/13 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2012/13 | HUN-L1 | Újpest FC | **non validé** |
+| 2012/13 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Cork City F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Dundalk F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Monaghan United F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Shamrock Rovers F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Shelbourne F.C. | **non validé** |
+| 2012/13 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2012/13 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2012/13 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2012/13 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2012/13 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Hapoel Nir Ramat HaSharon F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Hapoel Ramat Gan Givatayim F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2012/13 | ISR-L1 | Maccabi Tel Aviv F.C. | **non validé** |
+| 2012/13 | ITA-SB | LR Vicenza | **non validé** |
+| 2012/13 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2012/13 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2012/13 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2012/13 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2012/13 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2012/13 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2012/13 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2012/13 | KAZ-L1 | FC Sunkar | **non validé** |
+| 2012/13 | KAZ-L1 | FC Taraz | **non validé** |
+| 2012/13 | KAZ-L1 | FC Tobol | **non validé** |
+| 2012/13 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2012/13 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2012/13 | LUX-L1 | CS Grevenmacher | **non validé** |
+| 2012/13 | LUX-L1 | CS Pétange | **non validé** |
+| 2012/13 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2012/13 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2012/13 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2012/13 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2012/13 | LUX-L1 | FC Jeunesse Canach | **non validé** |
+| 2012/13 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2012/13 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2012/13 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2012/13 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2012/13 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2012/13 | LUX-L1 | Union 05 Kayl-Tétange | **non validé** |
+| 2012/13 | LVA-L1 | FB Gulbene | **non validé** |
+| 2012/13 | LVA-L1 | FC Daugava | **non validé** |
+| 2012/13 | LVA-L1 | FC Jūrmala | **non validé** |
+| 2012/13 | LVA-L1 | FK Daugava (2003) | **non validé** |
+| 2012/13 | LVA-L1 | FK Jelgava | **non validé** |
+| 2012/13 | LVA-L1 | FK Liepājas Metalurgs | **non validé** |
+| 2012/13 | LVA-L1 | FK Metta | **non validé** |
+| 2012/13 | LVA-L1 | FK Spartaks Jūrmala | **non validé** |
+| 2012/13 | LVA-L1 | FK Ventspils | **non validé** |
+| 2012/13 | LVA-L1 | Skonto FC | **non validé** |
+| 2012/13 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2012/13 | MDA-L1 | FC Bălți | **non validé** |
+| 2012/13 | MDA-L1 | FC Costuleni | **non validé** |
+| 2012/13 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2012/13 | MDA-L1 | FC Iskra-Stal | **non validé** |
+| 2012/13 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2012/13 | MDA-L1 | FC Nistru Otaci | **non validé** |
+| 2012/13 | MDA-L1 | FC Rapid Ghidighici | **non validé** |
+| 2012/13 | MDA-L1 | FC Speranța Crihana Veche | **non validé** |
+| 2012/13 | MDA-L1 | FC Tiraspol | **non validé** |
+| 2012/13 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2012/13 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2012/13 | MKD-L1 | FK Horizont Turnovo | **non validé** |
+| 2012/13 | MKD-L1 | FK Metalurg Skopje | **non validé** |
+| 2012/13 | MKD-L1 | FK Napredok | **non validé** |
+| 2012/13 | MKD-L1 | FK Pelister | **non validé** |
+| 2012/13 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2012/13 | MKD-L1 | FK Sileks | **non validé** |
+| 2012/13 | MKD-L1 | FK Teteks | **non validé** |
+| 2012/13 | MKD-L1 | KF Drita Bogovinë | **non validé** |
+| 2012/13 | MKD-L1 | KF Renova | **non validé** |
+| 2012/13 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2012/13 | NLD-ED | ADO Den Haag | **non validé** |
 | 2012/13 | NLD-ED | AZ Alkmaar | **non validé** |
 | 2012/13 | NLD-ED | FC Groningen | **non validé** |
@@ -404,6 +5210,32 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | NLD-ED | PEC Zwolle | **non validé** |
 | 2012/13 | NLD-ED | SC Heerenveen | **non validé** |
 | 2012/13 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2012/13 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2012/13 | NOR-L1 | FK Haugesund | **non validé** |
+| 2012/13 | NOR-L1 | Fredrikstad FK | **non validé** |
+| 2012/13 | NOR-L1 | Hønefoss BK | **non validé** |
+| 2012/13 | NOR-L1 | Odds BK | **non validé** |
+| 2012/13 | NOR-L1 | Sandnes Ulf | **non validé** |
+| 2012/13 | NOR-L1 | Sogndal Fotball | **non validé** |
+| 2012/13 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2012/13 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2012/13 | NOR-L1 | Viking FK | **non validé** |
+| 2012/13 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2012/13 | POL-L1 | GKS Bełchatów | **non validé** |
+| 2012/13 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2012/13 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2012/13 | POL-L1 | Korona Kielce | **non validé** |
+| 2012/13 | POL-L1 | Lech Poznań | **non validé** |
+| 2012/13 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2012/13 | POL-L1 | Piast Gliwice | **non validé** |
+| 2012/13 | POL-L1 | Podbeskidzie Bielsko-Biała | **non validé** |
+| 2012/13 | POL-L1 | Pogoń Szczecin | **non validé** |
+| 2012/13 | POL-L1 | Polonia Warsaw | **non validé** |
+| 2012/13 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2012/13 | POL-L1 | Widzew Łódź | **non validé** |
+| 2012/13 | POL-L1 | Wisła Kraków | **non validé** |
+| 2012/13 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2012/13 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2012/13 | PRT-PL | C.D. Nacional | **non validé** |
 | 2012/13 | PRT-PL | C.S. Marítimo | **non validé** |
 | 2012/13 | PRT-PL | F.C. Paços de Ferreira | **non validé** |
@@ -414,6 +5246,86 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | PRT-PL | S.C. Olhanense | **non validé** |
 | 2012/13 | PRT-PL | Vitória F.C. | **non validé** |
 | 2012/13 | PRT-PL | Vitória S.C. | **non validé** |
+| 2012/13 | ROU-L1 | ACF Gloria Bistrița | **non validé** |
+| 2012/13 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2012/13 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2012/13 | ROU-L1 | CS Pandurii Târgu Jiu | **non validé** |
+| 2012/13 | ROU-L1 | CS Turnu Severin | **non validé** |
+| 2012/13 | ROU-L1 | CSM Ceahlăul Piatra Neamț | **non validé** |
+| 2012/13 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2012/13 | ROU-L1 | FC Brașov (1936) | **non validé** |
+| 2012/13 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2012/13 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2012/13 | ROU-L1 | FC Politehnica Iași (2010) | **non validé** |
+| 2012/13 | ROU-L1 | FC Rapid București | **non validé** |
+| 2012/13 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2012/13 | ROU-L1 | FC Viitorul Constanța | **non validé** |
+| 2012/13 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2012/13 | RUS-L1 | FC Alania Vladikavkaz | **non validé** |
+| 2012/13 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2012/13 | RUS-L1 | FC Mordovia Saransk | **non validé** |
+| 2012/13 | RUS-L1 | FC Volga Nizhny Novgorod | **non validé** |
+| 2012/13 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2012/13 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Dundee F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2012/13 | SCO-L1 | Ross County F.C. | **non validé** |
+| 2012/13 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2012/13 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2012/13 | SRB-L1 | FK BSK Borča | **non validé** |
+| 2012/13 | SRB-L1 | FK Donji Srem 2015 | **non validé** |
+| 2012/13 | SRB-L1 | FK Hajduk Kula | **non validé** |
+| 2012/13 | SRB-L1 | FK Jagodina | **non validé** |
+| 2012/13 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2012/13 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2012/13 | SRB-L1 | FK Rad | **non validé** |
+| 2012/13 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2012/13 | SRB-L1 | FK Radnički Niš | **non validé** |
+| 2012/13 | SRB-L1 | FK Sloboda Užice | **non validé** |
+| 2012/13 | SRB-L1 | FK Smederevo 1924 | **non validé** |
+| 2012/13 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2012/13 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2012/13 | SRB-L1 | OFK Beograd | **non validé** |
+| 2012/13 | SVK-L1 | 1. FC Tatran Prešov | **non validé** |
+| 2012/13 | SVK-L1 | AS Trenčín | **non validé** |
+| 2012/13 | SVK-L1 | FC Nitra | **non validé** |
+| 2012/13 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2012/13 | SVK-L1 | FC VSS Košice | **non validé** |
+| 2012/13 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2012/13 | SVK-L1 | FK Senica | **non validé** |
+| 2012/13 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2012/13 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2012/13 | SVK-L1 | MŠK Žilina | **non validé** |
+| 2012/13 | SVK-L1 | Spartak Myjava | **non validé** |
+| 2012/13 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2012/13 | SVN-L1 | FC Koper | **non validé** |
+| 2012/13 | SVN-L1 | ND Gorica | **non validé** |
+| 2012/13 | SVN-L1 | ND Mura 05 | **non validé** |
+| 2012/13 | SVN-L1 | NK Aluminij | **non validé** |
+| 2012/13 | SVN-L1 | NK Celje | **non validé** |
+| 2012/13 | SVN-L1 | NK Domžale | **non validé** |
+| 2012/13 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2012/13 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2012/13 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2012/13 | SWE-L1 | BK Häcken | **non validé** |
+| 2012/13 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2012/13 | SWE-L1 | GAIS | **non validé** |
+| 2012/13 | SWE-L1 | GIF Sundsvall | **non validé** |
+| 2012/13 | SWE-L1 | Gefle IF | **non validé** |
+| 2012/13 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2012/13 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2012/13 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2012/13 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2012/13 | SWE-L1 | Kalmar FF | **non validé** |
+| 2012/13 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2012/13 | SWE-L1 | Syrianska FC | **non validé** |
+| 2012/13 | SWE-L1 | Åtvidabergs FF | **non validé** |
+| 2012/13 | SWE-L1 | Örebro SK | **non validé** |
 | 2012/13 | TUR-SL | Antalyaspor | **non validé** |
 | 2012/13 | TUR-SL | Bursaspor | **non validé** |
 | 2012/13 | TUR-SL | Elazığspor | **non validé** |
@@ -426,6 +5338,56 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | TUR-SL | Orduspor | **non validé** |
 | 2012/13 | TUR-SL | Sivasspor | **non validé** |
 | 2012/13 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
+| 2012/13 | UKR-L1 | FC Arsenal Kyiv | **non validé** |
+| 2012/13 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2012/13 | UKR-L1 | FC Hoverla Uzhhorod | **non validé** |
+| 2012/13 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2012/13 | UKR-L1 | FC Mariupol | **non validé** |
+| 2012/13 | UKR-L1 | FC Metalurh Donetsk | **non validé** |
+| 2012/13 | UKR-L1 | FC Metalurh Zaporizhzhia | **non validé** |
+| 2012/13 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2012/13 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2012/13 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2012/13 | UKR-L1 | SC Tavriya Simferopol | **non validé** |
+| 2012/13 | USA-MLS | C.D. Chivas USA | **non validé** |
+| 2012/13 | USA-MLS | CF Montréal | **non validé** |
+| 2012/13 | USA-MLS | FC Dallas | **non validé** |
+| 2011/12 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2011/12 | ALB-L1 | FC Kamza | **non validé** |
+| 2011/12 | ALB-L1 | FK Apolonia | **non validé** |
+| 2011/12 | ALB-L1 | FK Tomori | **non validé** |
+| 2011/12 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2011/12 | ALB-L1 | KF Bylis | **non validé** |
+| 2011/12 | ALB-L1 | KF Laçi | **non validé** |
+| 2011/12 | ALB-L1 | KF Shkumbini | **non validé** |
+| 2011/12 | ALB-L1 | KF Teuta | **non validé** |
+| 2011/12 | ALB-L1 | KF Tirana | **non validé** |
+| 2011/12 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2011/12 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2011/12 | ALB-L1 | KS Pogradeci | **non validé** |
+| 2011/12 | ARM-L1 | FC Ararat Yerevan | **non validé** |
+| 2011/12 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2011/12 | ARM-L1 | FC Mika | **non validé** |
+| 2011/12 | ARM-L1 | FC Pyunik | **non validé** |
+| 2011/12 | ARM-L1 | FC Urartu | **non validé** |
+| 2011/12 | ARM-L1 | Impuls FC Dilijan | **non validé** |
+| 2011/12 | ARM-L1 | Shirak SC | **non validé** |
+| 2011/12 | ARM-L1 | Ulisses FC | **non validé** |
+| 2011/12 | AUT-L1 | 1. Wiener Neustädter SC | **non validé** |
+| 2011/12 | AUT-L1 | Admira Wacker | **non validé** |
+| 2011/12 | AUT-L1 | FC Wacker Innsbruck (2002) | **non validé** |
+| 2011/12 | AUT-L1 | Kapfenberger SV | **non validé** |
+| 2011/12 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2011/12 | AUT-L1 | SV Ried | **non validé** |
+| 2011/12 | AZE-L1 | AZAL PFK | **non validé** |
+| 2011/12 | AZE-L1 | Baku FC | **non validé** |
+| 2011/12 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2011/12 | AZE-L1 | Khazar Lankaran FK | **non validé** |
+| 2011/12 | AZE-L1 | Ravan Baku FK | **non validé** |
+| 2011/12 | AZE-L1 | Simurq PIK | **non validé** |
+| 2011/12 | AZE-L1 | Sumgayit FK | **non validé** |
+| 2011/12 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2011/12 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2011/12 | BEL-PL | Beerschot A.C. | **non validé** |
 | 2011/12 | BEL-PL | Cercle Brugge KSV | **non validé** |
 | 2011/12 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
@@ -435,8 +5397,214 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | BEL-PL | Lierse S.K. (1906) | **non validé** |
 | 2011/12 | BEL-PL | RAEC Mons (1910) | **non validé** |
 | 2011/12 | BEL-PL | SV Zulte Waregem | **non validé** |
+| 2011/12 | BGR-L1 | FC Kaliakra Kavarna | **non validé** |
+| 2011/12 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2011/12 | BGR-L1 | FC Minyor Pernik | **non validé** |
+| 2011/12 | BGR-L1 | FC Sevlievo | **non validé** |
+| 2011/12 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2011/12 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2011/12 | BGR-L1 | PFC Litex Lovech | **non validé** |
+| 2011/12 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2011/12 | BGR-L1 | PFC Montana | **non validé** |
+| 2011/12 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2011/12 | BGR-L1 | PFK Svetkavitsa 1922 | **non validé** |
+| 2011/12 | BGR-L1 | POFC Botev Vratsa | **non validé** |
+| 2011/12 | BGR-L1 | PSFC Chernomorets Burgas | **non validé** |
+| 2011/12 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2011/12 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2011/12 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2011/12 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2011/12 | BLR-L1 | FC Gomel | **non validé** |
+| 2011/12 | BLR-L1 | FC Minsk | **non validé** |
+| 2011/12 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2011/12 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2011/12 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2011/12 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2011/12 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2011/12 | CHE-L1 | FC Luzern | **non validé** |
+| 2011/12 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2011/12 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
+| 2011/12 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2011/12 | CYP-L1 | AEL Limassol | **non validé** |
+| 2011/12 | CYP-L1 | Alki Larnaca F.C. | **non validé** |
+| 2011/12 | CYP-L1 | Anagennisi Deryneia FC | **non validé** |
+| 2011/12 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2011/12 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2011/12 | CYP-L1 | Aris Limassol FC | **non validé** |
+| 2011/12 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2011/12 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2011/12 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2011/12 | CYP-L1 | Nea Salamis Famagusta FC | **non validé** |
+| 2011/12 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2011/12 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2011/12 | CZE-L1 | AC Sparta Prague | **non validé** |
+| 2011/12 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2011/12 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2011/12 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2011/12 | CZE-L1 | FK Dukla Prague | **non validé** |
+| 2011/12 | CZE-L1 | FK Jablonec | **non validé** |
+| 2011/12 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2011/12 | CZE-L1 | FK Příbram | **non validé** |
+| 2011/12 | CZE-L1 | FK Teplice | **non validé** |
+| 2011/12 | CZE-L1 | FK Viktoria Žižkov | **non validé** |
+| 2011/12 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2011/12 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2011/12 | CZE-L1 | SK Slavia Prague | **non validé** |
+| 2011/12 | DNK-L1 | AC Horsens | **non validé** |
+| 2011/12 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
+| 2011/12 | DNK-L1 | Brøndby IF | **non validé** |
+| 2011/12 | DNK-L1 | HB Køge | **non validé** |
+| 2011/12 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2011/12 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2011/12 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2011/12 | ENG-CH | Coventry City F.C. | **non validé** |
 | 2011/12 | ESP-LL | CA Osasuna | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
 | 2011/12 | ESP-LL | RCD Espanyol | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
+| 2011/12 | ESP-SD | AD Alcorcón | **non validé** |
+| 2011/12 | ESP-SD | CD Alcoyano | **non validé** |
+| 2011/12 | ESP-SD | CD Numancia | **non validé** |
+| 2011/12 | ESP-SD | Celta de Vigo | **non validé** |
+| 2011/12 | ESP-SD | Deportivo de La Coruña | **non validé** |
+| 2011/12 | ESP-SD | FC Cartagena | **non validé** |
+| 2011/12 | ESP-SD | Girona FC | **non validé** |
+| 2011/12 | ESP-SD | Hércules CF | **non validé** |
+| 2011/12 | ESP-SD | Real Murcia CF | **non validé** |
+| 2011/12 | ESP-SD | Recreativo de Huelva | **non validé** |
+| 2011/12 | ESP-SD | UD Las Palmas | **non validé** |
+| 2011/12 | ESP-SD | Villarreal CF B | **non validé** |
+| 2011/12 | ESP-SD | Xerez CD | **non validé** |
+| 2011/12 | FIN-L1 | FC Haka | **non validé** |
+| 2011/12 | FIN-L1 | FC Honka | **non validé** |
+| 2011/12 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2011/12 | FIN-L1 | FF Jaro | **non validé** |
+| 2011/12 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2011/12 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2011/12 | FIN-L1 | JJK Jyväskylä | **non validé** |
+| 2011/12 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2011/12 | FIN-L1 | Myllykosken Pallo −47 | **non validé** |
+| 2011/12 | FIN-L1 | Rovaniemen Palloseura | **non validé** |
+| 2011/12 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2011/12 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2011/12 | FRA-L2 | En Avant de Guingamp | **non validé** |
+| 2011/12 | FRA-L2 | FC Metz | **non validé** |
+| 2011/12 | FRA-L2 | Le Havre AC | **non validé** |
+| 2011/12 | FRA-L2 | Tours FC | **non validé** |
+| 2011/12 | FRA-L2 | Troyes AC | **non validé** |
+| 2011/12 | FRA-L2 | US Boulogne | **non validé** |
+| 2011/12 | GRC-L1 | A.O. Kerkyra | **non validé** |
+| 2011/12 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2011/12 | GRC-L1 | Doxa Drama F.C. | **non validé** |
+| 2011/12 | GRC-L1 | Ergotelis F.C. | **non validé** |
+| 2011/12 | GRC-L1 | Levadiakos F.C. | **non validé** |
+| 2011/12 | GRC-L1 | OFI Crete F.C. | **non validé** |
+| 2011/12 | GRC-L1 | PAS Giannina F.C. | **non validé** |
+| 2011/12 | GRC-L1 | Panetolikos F.C. | **non validé** |
+| 2011/12 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2011/12 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2011/12 | HRV-L1 | HNK Cibalia | **non validé** |
+| 2011/12 | HRV-L1 | HNK Rijeka | **non validé** |
+| 2011/12 | HRV-L1 | HNK Šibenik | **non validé** |
+| 2011/12 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2011/12 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2011/12 | HRV-L1 | NK Karlovac | **non validé** |
+| 2011/12 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2011/12 | HRV-L1 | NK Lučko | **non validé** |
+| 2011/12 | HRV-L1 | NK Osijek | **non validé** |
+| 2011/12 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2011/12 | HRV-L1 | NK Varaždin (1931–2015) | **non validé** |
+| 2011/12 | HRV-L1 | NK Zadar | **non validé** |
+| 2011/12 | HRV-L1 | NK Zagreb | **non validé** |
+| 2011/12 | HRV-L1 | RNK Split | **non validé** |
+| 2011/12 | HUN-L1 | BFC Siófok | **non validé** |
+| 2011/12 | HUN-L1 | Diósgyőri VTK | **non validé** |
+| 2011/12 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2011/12 | HUN-L1 | Kaposvári Rákóczi FC | **non validé** |
+| 2011/12 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2011/12 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2011/12 | HUN-L1 | Paksi FC | **non validé** |
+| 2011/12 | HUN-L1 | Pápai FC | **non validé** |
+| 2011/12 | HUN-L1 | Pécsi MFC | **non validé** |
+| 2011/12 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2011/12 | HUN-L1 | Vasas SC | **non validé** |
+| 2011/12 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2011/12 | HUN-L1 | Újpest FC | **non validé** |
+| 2011/12 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2011/12 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2011/12 | IRL-L1 | Derry City F.C. | **non validé** |
+| 2011/12 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2011/12 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2011/12 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2011/12 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2011/12 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2011/12 | ISR-L1 | 2011-12 Maccabi Haifa F.C. season | **non validé** |
+| 2011/12 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2011/12 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Nir Ramat HaSharon F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Petah Tikva F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Hapoel Rishon LeZion F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2011/12 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2011/12 | ITA-SB | LR Vicenza | **non validé** |
+| 2011/12 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2011/12 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2011/12 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2011/12 | KAZ-L1 | FC Kaisar | **non validé** |
+| 2011/12 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2011/12 | KAZ-L1 | FC Taraz | **non validé** |
+| 2011/12 | KAZ-L1 | FC Tobol | **non validé** |
+| 2011/12 | KAZ-L1 | FC Vostok | **non validé** |
+| 2011/12 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2011/12 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2011/12 | LUX-L1 | CS Grevenmacher | **non validé** |
+| 2011/12 | LUX-L1 | CS Pétange | **non validé** |
+| 2011/12 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2011/12 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2011/12 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2011/12 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2011/12 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2011/12 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2011/12 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2011/12 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2011/12 | LUX-L1 | US Hostert | **non validé** |
+| 2011/12 | LUX-L1 | US Rumelange | **non validé** |
+| 2011/12 | LUX-L1 | Union 05 Kayl-Tétange | **non validé** |
+| 2011/12 | LVA-L1 | FB Gulbene | **non validé** |
+| 2011/12 | LVA-L1 | FC Daugava | **non validé** |
+| 2011/12 | LVA-L1 | FC Jūrmala | **non validé** |
+| 2011/12 | LVA-L1 | FK Daugava (2003) | **non validé** |
+| 2011/12 | LVA-L1 | FK Jelgava | **non validé** |
+| 2011/12 | LVA-L1 | FK Liepājas Metalurgs | **non validé** |
+| 2011/12 | LVA-L1 | FK Ventspils | **non validé** |
+| 2011/12 | LVA-L1 | JFK Olimps/RFS | **non validé** |
+| 2011/12 | LVA-L1 | Skonto FC | **non validé** |
+| 2011/12 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2011/12 | MDA-L1 | FC Bălți | **non validé** |
+| 2011/12 | MDA-L1 | FC Costuleni | **non validé** |
+| 2011/12 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2011/12 | MDA-L1 | FC Iskra-Stal | **non validé** |
+| 2011/12 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2011/12 | MDA-L1 | FC Nistru Otaci | **non validé** |
+| 2011/12 | MDA-L1 | FC Rapid Ghidighici | **non validé** |
+| 2011/12 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2011/12 | MDA-L1 | FC Tiraspol | **non validé** |
+| 2011/12 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2011/12 | MKD-L1 | FK 11 Oktomvri | **non validé** |
+| 2011/12 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2011/12 | MKD-L1 | FK Horizont Turnovo | **non validé** |
+| 2011/12 | MKD-L1 | FK Metalurg Skopje | **non validé** |
+| 2011/12 | MKD-L1 | FK Napredok | **non validé** |
+| 2011/12 | MKD-L1 | FK Ohrid | **non validé** |
+| 2011/12 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2011/12 | MKD-L1 | FK Sileks | **non validé** |
+| 2011/12 | MKD-L1 | FK Teteks | **non validé** |
+| 2011/12 | MKD-L1 | KF Renova | **non validé** |
+| 2011/12 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2011/12 | NLD-ED | ADO Den Haag | **non validé** |
 | 2011/12 | NLD-ED | De Graafschap | **non validé** |
 | 2011/12 | NLD-ED | Excelsior Rotterdam | **non validé** |
@@ -448,6 +5616,33 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | NLD-ED | NEC Nijmegen | **non validé** |
 | 2011/12 | NLD-ED | RKC Waalwijk | **non validé** |
 | 2011/12 | NLD-ED | SC Heerenveen | **non validé** |
+| 2011/12 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2011/12 | NOR-L1 | FK Haugesund | **non validé** |
+| 2011/12 | NOR-L1 | Fredrikstad FK | **non validé** |
+| 2011/12 | NOR-L1 | IK Start | **non validé** |
+| 2011/12 | NOR-L1 | Odds BK | **non validé** |
+| 2011/12 | NOR-L1 | Rosenborg BK | **non validé** |
+| 2011/12 | NOR-L1 | Sarpsborg 08 FF | **non validé** |
+| 2011/12 | NOR-L1 | Sogndal Fotball | **non validé** |
+| 2011/12 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2011/12 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2011/12 | NOR-L1 | Tromsø IL | **non validé** |
+| 2011/12 | NOR-L1 | Viking FK | **non validé** |
+| 2011/12 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2011/12 | POL-L1 | GKS Bełchatów | **non validé** |
+| 2011/12 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2011/12 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2011/12 | POL-L1 | KS Cracovia | **non validé** |
+| 2011/12 | POL-L1 | Korona Kielce | **non validé** |
+| 2011/12 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2011/12 | POL-L1 | Podbeskidzie Bielsko-Biała | **non validé** |
+| 2011/12 | POL-L1 | Polonia Warsaw | **non validé** |
+| 2011/12 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2011/12 | POL-L1 | Widzew Łódź | **non validé** |
+| 2011/12 | POL-L1 | Wisła Kraków | **non validé** |
+| 2011/12 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2011/12 | POL-L1 | ŁKS Łódź | **non validé** |
+| 2011/12 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2011/12 | PRT-PL | Académica de Coimbra (football) | **non validé** |
 | 2011/12 | PRT-PL | C.D. Feirense | **non validé** |
 | 2011/12 | PRT-PL | C.D. Nacional | **non validé** |
@@ -460,6 +5655,85 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | PRT-PL | U.D. Leiria | **non validé** |
 | 2011/12 | PRT-PL | Vitória F.C. | **non validé** |
 | 2011/12 | PRT-PL | Vitória S.C. | **non validé** |
+| 2011/12 | ROU-L1 | ASA 2013 Târgu Mureș | **non validé** |
+| 2011/12 | ROU-L1 | CFR Cluj | **non validé** |
+| 2011/12 | ROU-L1 | CS Concordia Chiajna | **non validé** |
+| 2011/12 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2011/12 | ROU-L1 | CS Mioveni | **non validé** |
+| 2011/12 | ROU-L1 | CS Pandurii Târgu Jiu | **non validé** |
+| 2011/12 | ROU-L1 | CSM Ceahlăul Piatra Neamț | **non validé** |
+| 2011/12 | ROU-L1 | CSU Voința Sibiu | **non validé** |
+| 2011/12 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2011/12 | ROU-L1 | FC Brașov (1936) | **non validé** |
+| 2011/12 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2011/12 | ROU-L1 | FC Petrolul Ploiești | **non validé** |
+| 2011/12 | ROU-L1 | FC Rapid București | **non validé** |
+| 2011/12 | ROU-L1 | FC Sportul Studențesc București | **non validé** |
+| 2011/12 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2011/12 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2011/12 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2011/12 | RUS-L1 | FC Tom Tomsk | **non validé** |
+| 2011/12 | RUS-L1 | FC Volga Nizhny Novgorod | **non validé** |
+| 2011/12 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2011/12 | RUS-L1 | PFC Spartak Nalchik | **non validé** |
+| 2011/12 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Dunfermline Athletic F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2011/12 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2011/12 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2011/12 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2011/12 | SRB-L1 | FK BSK Borča | **non validé** |
+| 2011/12 | SRB-L1 | FK Borac 1926 | **non validé** |
+| 2011/12 | SRB-L1 | FK Hajduk Kula | **non validé** |
+| 2011/12 | SRB-L1 | FK Jagodina | **non validé** |
+| 2011/12 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2011/12 | SRB-L1 | FK Metalac Gornji Milanovac | **non validé** |
+| 2011/12 | SRB-L1 | FK Novi Pazar | **non validé** |
+| 2011/12 | SRB-L1 | FK Rad | **non validé** |
+| 2011/12 | SRB-L1 | FK Radnički 1923 | **non validé** |
+| 2011/12 | SRB-L1 | FK Sloboda Užice | **non validé** |
+| 2011/12 | SRB-L1 | FK Smederevo 1924 | **non validé** |
+| 2011/12 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2011/12 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2011/12 | SRB-L1 | OFK Beograd | **non validé** |
+| 2011/12 | SVK-L1 | 1. FC Tatran Prešov | **non validé** |
+| 2011/12 | SVK-L1 | AS Trenčín | **non validé** |
+| 2011/12 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2011/12 | SVK-L1 | FC Nitra | **non validé** |
+| 2011/12 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2011/12 | SVK-L1 | FC VSS Košice | **non validé** |
+| 2011/12 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2011/12 | SVK-L1 | FK Senica | **non validé** |
+| 2011/12 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2011/12 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2011/12 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2011/12 | SVN-L1 | FC Koper | **non validé** |
+| 2011/12 | SVN-L1 | ND Gorica | **non validé** |
+| 2011/12 | SVN-L1 | ND Mura 05 | **non validé** |
+| 2011/12 | SVN-L1 | NK Celje | **non validé** |
+| 2011/12 | SVN-L1 | NK Domžale | **non validé** |
+| 2011/12 | SVN-L1 | NK Nafta Lendava | **non validé** |
+| 2011/12 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2011/12 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2011/12 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2011/12 | SWE-L1 | BK Häcken | **non validé** |
+| 2011/12 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2011/12 | SWE-L1 | GAIS | **non validé** |
+| 2011/12 | SWE-L1 | Gefle IF | **non validé** |
+| 2011/12 | SWE-L1 | Halmstads BK | **non validé** |
+| 2011/12 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2011/12 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2011/12 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2011/12 | SWE-L1 | IFK Norrköping | **non validé** |
+| 2011/12 | SWE-L1 | Kalmar FF | **non validé** |
+| 2011/12 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2011/12 | SWE-L1 | Syrianska FC | **non validé** |
+| 2011/12 | SWE-L1 | Trelleborgs FF | **non validé** |
+| 2011/12 | SWE-L1 | Örebro SK | **non validé** |
 | 2011/12 | TUR-SL | Antalyaspor | **non validé** |
 | 2011/12 | TUR-SL | Bursaspor | **non validé** |
 | 2011/12 | TUR-SL | Eskişehirspor | **non validé** |
@@ -473,6 +5747,54 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2011/12 | TUR-SL | Samsunspor | **non validé** |
 | 2011/12 | TUR-SL | Sivasspor | **non validé** |
 | 2011/12 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
+| 2011/12 | UKR-L1 | FC Arsenal Kyiv | **non validé** |
+| 2011/12 | UKR-L1 | FC Chornomorets Odesa | **non validé** |
+| 2011/12 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2011/12 | UKR-L1 | FC Mariupol | **non validé** |
+| 2011/12 | UKR-L1 | FC Metalurh Donetsk | **non validé** |
+| 2011/12 | UKR-L1 | FC Obolon Kyiv | **non validé** |
+| 2011/12 | UKR-L1 | FC Oleksandriya | **non validé** |
+| 2011/12 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2011/12 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2011/12 | UKR-L1 | SC Tavriya Simferopol | **non validé** |
+| 2011/12 | USA-MLS | C.D. Chivas USA | **non validé** |
+| 2011/12 | USA-MLS | LA Galaxy | **non validé** |
+| 2010/11 | ALB-L1 | FC Dinamo City | **non validé** |
+| 2010/11 | ALB-L1 | Flamurtari FC | **non validé** |
+| 2010/11 | ALB-L1 | KF Besa Kavajë | **non validé** |
+| 2010/11 | ALB-L1 | KF Bylis | **non validé** |
+| 2010/11 | ALB-L1 | KF Elbasani | **non validé** |
+| 2010/11 | ALB-L1 | KF Laçi | **non validé** |
+| 2010/11 | ALB-L1 | KF Shkumbini | **non validé** |
+| 2010/11 | ALB-L1 | KF Teuta | **non validé** |
+| 2010/11 | ALB-L1 | KF Tirana | **non validé** |
+| 2010/11 | ALB-L1 | KF Vllaznia | **non validé** |
+| 2010/11 | ALB-L1 | KS Kastrioti | **non validé** |
+| 2010/11 | ARM-L1 | FC Gandzasar Kapan | **non validé** |
+| 2010/11 | ARM-L1 | FC Mika | **non validé** |
+| 2010/11 | ARM-L1 | FC Pyunik | **non validé** |
+| 2010/11 | ARM-L1 | FC Urartu | **non validé** |
+| 2010/11 | ARM-L1 | Impuls FC Dilijan | **non validé** |
+| 2010/11 | ARM-L1 | Kilikia F.C. | **non validé** |
+| 2010/11 | ARM-L1 | Shirak SC | **non validé** |
+| 2010/11 | ARM-L1 | Ulisses FC | **non validé** |
+| 2010/11 | AUT-L1 | 1. Wiener Neustädter SC | **non validé** |
+| 2010/11 | AUT-L1 | FC Red Bull Salzburg | **non validé** |
+| 2010/11 | AUT-L1 | FC Wacker Innsbruck (2002) | **non validé** |
+| 2010/11 | AUT-L1 | FK Austria Wien | **non validé** |
+| 2010/11 | AUT-L1 | Kapfenberger SV | **non validé** |
+| 2010/11 | AUT-L1 | SK Sturm Graz | **non validé** |
+| 2010/11 | AUT-L1 | SV Mattersburg | **non validé** |
+| 2010/11 | AUT-L1 | SV Ried | **non validé** |
+| 2010/11 | AZE-L1 | AZAL PFK | **non validé** |
+| 2010/11 | AZE-L1 | Baku FC | **non validé** |
+| 2010/11 | AZE-L1 | FK Mughan | **non validé** |
+| 2010/11 | AZE-L1 | Kapaz PFK | **non validé** |
+| 2010/11 | AZE-L1 | Khazar Lankaran FK | **non validé** |
+| 2010/11 | AZE-L1 | MOIK Baku | **non validé** |
+| 2010/11 | AZE-L1 | Simurq PIK | **non validé** |
+| 2010/11 | AZE-L1 | Turan Tovuz | **non validé** |
+| 2010/11 | AZE-L1 | Şamaxı FK | **non validé** |
 | 2010/11 | BEL-PL | Beerschot A.C. | **non validé** |
 | 2010/11 | BEL-PL | Cercle Brugge KSV | **non validé** |
 | 2010/11 | BEL-PL | K.S.C. Lokeren Oost-Vlaanderen | **non validé** |
@@ -483,10 +5805,242 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | BEL-PL | Lierse S.K. (1906) | **non validé** |
 | 2010/11 | BEL-PL | Royal Charleroi SC | **non validé** |
 | 2010/11 | BEL-PL | SV Zulte Waregem | **non validé** |
+| 2010/11 | BGR-L1 | FC Kaliakra Kavarna | **non validé** |
+| 2010/11 | BGR-L1 | FC Lokomotiv Sofia | **non validé** |
+| 2010/11 | BGR-L1 | FC Minyor Pernik | **non validé** |
+| 2010/11 | BGR-L1 | FC Sevlievo | **non validé** |
+| 2010/11 | BGR-L1 | FC Sliven | **non validé** |
+| 2010/11 | BGR-L1 | PFC Akademik Sofia | **non validé** |
+| 2010/11 | BGR-L1 | PFC Beroe Stara Zagora | **non validé** |
+| 2010/11 | BGR-L1 | PFC Cherno More Varna | **non validé** |
+| 2010/11 | BGR-L1 | PFC Litex Lovech | **non validé** |
+| 2010/11 | BGR-L1 | PFC Lokomotiv Plovdiv | **non validé** |
+| 2010/11 | BGR-L1 | PFC Montana | **non validé** |
+| 2010/11 | BGR-L1 | PFC Pirin Blagoevgrad | **non validé** |
+| 2010/11 | BGR-L1 | PFC Slavia Sofia | **non validé** |
+| 2010/11 | BGR-L1 | PSFC Chernomorets Burgas | **non validé** |
+| 2010/11 | BLR-L1 | FC BATE Borisov | **non validé** |
+| 2010/11 | BLR-L1 | FC Belshina Bobruisk | **non validé** |
+| 2010/11 | BLR-L1 | FC Dinamo Minsk | **non validé** |
+| 2010/11 | BLR-L1 | FC Dnepr Mogilev | **non validé** |
+| 2010/11 | BLR-L1 | FC Dynamo Brest | **non validé** |
+| 2010/11 | BLR-L1 | FC Minsk | **non validé** |
+| 2010/11 | BLR-L1 | FC Naftan Novopolotsk | **non validé** |
+| 2010/11 | BLR-L1 | FC Neman Grodno | **non validé** |
+| 2010/11 | BLR-L1 | FC Partizan Minsk | **non validé** |
+| 2010/11 | BLR-L1 | FC Shakhtyor Soligorsk | **non validé** |
+| 2010/11 | BLR-L1 | FC Torpedo-BelAZ Zhodino | **non validé** |
+| 2010/11 | BLR-L1 | FC Vitebsk | **non validé** |
+| 2010/11 | CHE-L1 | AC Bellinzona | **non validé** |
+| 2010/11 | CHE-L1 | FC Luzern | **non validé** |
+| 2010/11 | CHE-L1 | Grasshopper Club Zurich | **non validé** |
+| 2010/11 | CHE-L1 | Neuchâtel Xamax FCS | **non validé** |
+| 2010/11 | CYP-L1 | AC Omonia | **non validé** |
+| 2010/11 | CYP-L1 | AEK Larnaca FC | **non validé** |
+| 2010/11 | CYP-L1 | AEL Limassol | **non validé** |
+| 2010/11 | CYP-L1 | AEP Paphos FC | **non validé** |
+| 2010/11 | CYP-L1 | APOP Kinyras Peyias FC | **non validé** |
+| 2010/11 | CYP-L1 | Alki Larnaca F.C. | **non validé** |
+| 2010/11 | CYP-L1 | Anorthosis Famagusta FC | **non validé** |
+| 2010/11 | CYP-L1 | Apollon Limassol FC | **non validé** |
+| 2010/11 | CYP-L1 | Doxa Katokopias FC | **non validé** |
+| 2010/11 | CYP-L1 | Enosis Neon Paralimni FC | **non validé** |
+| 2010/11 | CYP-L1 | Ermis Aradippou FC | **non validé** |
+| 2010/11 | CYP-L1 | Ethnikos Achna FC | **non validé** |
+| 2010/11 | CYP-L1 | Olympiakos Nicosia | **non validé** |
+| 2010/11 | CZE-L1 | 1. FC Slovácko | **non validé** |
+| 2010/11 | CZE-L1 | Bohemians 1905 | **non validé** |
+| 2010/11 | CZE-L1 | FC Baník Ostrava | **non validé** |
+| 2010/11 | CZE-L1 | FC Hradec Králové | **non validé** |
+| 2010/11 | CZE-L1 | FC Slovan Liberec | **non validé** |
+| 2010/11 | CZE-L1 | FC Zbrojovka Brno | **non validé** |
+| 2010/11 | CZE-L1 | FK Jablonec | **non validé** |
+| 2010/11 | CZE-L1 | FK Mladá Boleslav | **non validé** |
+| 2010/11 | CZE-L1 | FK Příbram | **non validé** |
+| 2010/11 | CZE-L1 | FK Teplice | **non validé** |
+| 2010/11 | CZE-L1 | FK Viagem Ústí nad Labem | **non validé** |
+| 2010/11 | CZE-L1 | SK Dynamo České Budějovice | **non validé** |
+| 2010/11 | CZE-L1 | SK Sigma Olomouc | **non validé** |
+| 2010/11 | CZE-L1 | SK Slavia Prague | **non validé** |
+| 2010/11 | DNK-L1 | AC Horsens | **non validé** |
+| 2010/11 | DNK-L1 | AaB Fodbold | **non validé** |
+| 2010/11 | DNK-L1 | Brøndby IF | **non validé** |
+| 2010/11 | DNK-L1 | Esbjerg fB | **non validé** |
+| 2010/11 | DNK-L1 | FC Nordsjælland | **non validé** |
+| 2010/11 | DNK-L1 | Lyngby Boldklub | **non validé** |
+| 2010/11 | DNK-L1 | Randers FC | **non validé** |
+| 2010/11 | DNK-L1 | Silkeborg IF | **non validé** |
+| 2010/11 | DNK-L1 | Sønderjyske Fodbold | **non validé** |
+| 2010/11 | ENG-CH | Coventry City F.C. | **non validé** |
+| 2010/11 | ENG-CH | Preston North End F.C. | **non validé** |
 | 2010/11 | ESP-LL | CA Osasuna | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
 | 2010/11 | ESP-LL | Getafe CF | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
 | 2010/11 | ESP-LL | Levante UD | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
 | 2010/11 | ESP-LL | Málaga CF | validé : page Wikipedia de la saison sans effectif (en/fr/it, HTML rendu vérifié) ; aucune autre source libre trouvée |
+| 2010/11 | ESP-SD | AD Alcorcón | **non validé** |
+| 2010/11 | ESP-SD | Albacete Balompié | **non validé** |
+| 2010/11 | ESP-SD | CD Tenerife | **non validé** |
+| 2010/11 | ESP-SD | Celta de Vigo | **non validé** |
+| 2010/11 | ESP-SD | Córdoba CF | **non validé** |
+| 2010/11 | ESP-SD | Elche CF | **non validé** |
+| 2010/11 | ESP-SD | FC Cartagena | **non validé** |
+| 2010/11 | ESP-SD | Girona FC | **non validé** |
+| 2010/11 | ESP-SD | Rayo Vallecano | **non validé** |
+| 2010/11 | ESP-SD | SD Ponferradina | **non validé** |
+| 2010/11 | ESP-SD | UD Las Palmas | **non validé** |
+| 2010/11 | ESP-SD | UD Salamanca | **non validé** |
+| 2010/11 | ESP-SD | Villarreal CF B | **non validé** |
+| 2010/11 | ESP-SD | Xerez CD | **non validé** |
+| 2010/11 | FIN-L1 | AC Oulu | **non validé** |
+| 2010/11 | FIN-L1 | FC Haka | **non validé** |
+| 2010/11 | FIN-L1 | FC Honka | **non validé** |
+| 2010/11 | FIN-L1 | FC Inter Turku | **non validé** |
+| 2010/11 | FIN-L1 | FC Lahti | **non validé** |
+| 2010/11 | FIN-L1 | FF Jaro | **non validé** |
+| 2010/11 | FIN-L1 | Helsingin Jalkapalloklubi | **non validé** |
+| 2010/11 | FIN-L1 | IFK Mariehamn | **non validé** |
+| 2010/11 | FIN-L1 | JJK Jyväskylä | **non validé** |
+| 2010/11 | FIN-L1 | Kuopion Palloseura | **non validé** |
+| 2010/11 | FIN-L1 | Myllykosken Pallo −47 | **non validé** |
+| 2010/11 | FIN-L1 | Tampere United | **non validé** |
+| 2010/11 | FIN-L1 | Turun Palloseura | **non validé** |
+| 2010/11 | FIN-L1 | Vaasan Palloseura | **non validé** |
+| 2010/11 | FRA-L2 | CS Sedan Ardennes | **non validé** |
+| 2010/11 | FRA-L2 | Dijon FCO | **non validé** |
+| 2010/11 | FRA-L2 | Evian Thonon Gaillard FC | **non validé** |
+| 2010/11 | FRA-L2 | FC Metz | **non validé** |
+| 2010/11 | FRA-L2 | Grenoble Foot 38 | **non validé** |
+| 2010/11 | FRA-L2 | Istres FC | **non validé** |
+| 2010/11 | FRA-L2 | LB Châteauroux | **non validé** |
+| 2010/11 | FRA-L2 | Le Havre AC | **non validé** |
+| 2010/11 | FRA-L2 | Stade Lavallois | **non validé** |
+| 2010/11 | FRA-L2 | Stade de Reims | **non validé** |
+| 2010/11 | FRA-L2 | Troyes AC | **non validé** |
+| 2010/11 | FRA-L2 | US Boulogne | **non validé** |
+| 2010/11 | GRC-L1 | A.O. Kerkyra | **non validé** |
+| 2010/11 | GRC-L1 | Asteras Tripolis F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Athlitiki Enosi Larissa F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Atromitos F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Ergotelis F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Iraklis F.C. (Thessaloniki) | **non validé** |
+| 2010/11 | GRC-L1 | Kavala F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Olympiacos Volos F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Panionios F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Panserraikos F.C. | **non validé** |
+| 2010/11 | GRC-L1 | Xanthi F.C. | **non validé** |
+| 2010/11 | HRV-L1 | HNK Cibalia | **non validé** |
+| 2010/11 | HRV-L1 | HNK Rijeka | **non validé** |
+| 2010/11 | HRV-L1 | HNK Šibenik | **non validé** |
+| 2010/11 | HRV-L1 | NK Hrvatski Dragovoljac | **non validé** |
+| 2010/11 | HRV-L1 | NK Inter Zaprešić | **non validé** |
+| 2010/11 | HRV-L1 | NK Istra 1961 | **non validé** |
+| 2010/11 | HRV-L1 | NK Karlovac | **non validé** |
+| 2010/11 | HRV-L1 | NK Lokomotiva Zagreb | **non validé** |
+| 2010/11 | HRV-L1 | NK Osijek | **non validé** |
+| 2010/11 | HRV-L1 | NK Slaven Belupo | **non validé** |
+| 2010/11 | HRV-L1 | NK Varaždin (1931–2015) | **non validé** |
+| 2010/11 | HRV-L1 | NK Zadar | **non validé** |
+| 2010/11 | HRV-L1 | NK Zagreb | **non validé** |
+| 2010/11 | HRV-L1 | RNK Split | **non validé** |
+| 2010/11 | HUN-L1 | BFC Siófok | **non validé** |
+| 2010/11 | HUN-L1 | Győri ETO FC | **non validé** |
+| 2010/11 | HUN-L1 | Kaposvári Rákóczi FC | **non validé** |
+| 2010/11 | HUN-L1 | Kecskeméti TE | **non validé** |
+| 2010/11 | HUN-L1 | Kispest-Honvéd FC | **non validé** |
+| 2010/11 | HUN-L1 | MTK Budapest FC | **non validé** |
+| 2010/11 | HUN-L1 | Paksi FC | **non validé** |
+| 2010/11 | HUN-L1 | Pápai FC | **non validé** |
+| 2010/11 | HUN-L1 | Szolnoki MÁV FC | **non validé** |
+| 2010/11 | HUN-L1 | Szombathelyi Haladás | **non validé** |
+| 2010/11 | HUN-L1 | Vasas SC | **non validé** |
+| 2010/11 | HUN-L1 | Zalaegerszegi TE | **non validé** |
+| 2010/11 | HUN-L1 | Újpest FC | **non validé** |
+| 2010/11 | IRL-L1 | Bohemian F.C. | **non validé** |
+| 2010/11 | IRL-L1 | Bray Wanderers F.C. | **non validé** |
+| 2010/11 | IRL-L1 | Drogheda United F.C. | **non validé** |
+| 2010/11 | IRL-L1 | Dundalk F.C. | **non validé** |
+| 2010/11 | IRL-L1 | Galway United F.C. | **non validé** |
+| 2010/11 | IRL-L1 | Sligo Rovers F.C. | **non validé** |
+| 2010/11 | IRL-L1 | Sporting Fingal F.C. | **non validé** |
+| 2010/11 | IRL-L1 | St Patrick's Athletic F.C. | **non validé** |
+| 2010/11 | IRL-L1 | University College Dublin A.F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Beitar Jerusalem F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Bnei Sakhnin F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Bnei Yehuda Tel Aviv F.C. | **non validé** |
+| 2010/11 | ISR-L1 | F.C. Ashdod | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Acre F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Ashkelon F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Be'er Sheva F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Haifa F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Ironi Kiryat Shmona F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Petah Tikva F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Ramat Gan Givatayim F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Hapoel Tel Aviv F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Maccabi Haifa F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Maccabi Netanya F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Maccabi Petah Tikva F.C. | **non validé** |
+| 2010/11 | ISR-L1 | Maccabi Tel Aviv F.C. | **non validé** |
+| 2010/11 | ITA-SB | LR Vicenza | **non validé** |
+| 2010/11 | KAZ-L1 | FC Aktobe | **non validé** |
+| 2010/11 | KAZ-L1 | FC Akzhayik | **non validé** |
+| 2010/11 | KAZ-L1 | FC Astana | **non validé** |
+| 2010/11 | KAZ-L1 | FC Atyrau | **non validé** |
+| 2010/11 | KAZ-L1 | FC Irtysh Pavlodar | **non validé** |
+| 2010/11 | KAZ-L1 | FC Kairat | **non validé** |
+| 2010/11 | KAZ-L1 | FC Okzhetpes | **non validé** |
+| 2010/11 | KAZ-L1 | FC Ordabasy | **non validé** |
+| 2010/11 | KAZ-L1 | FC Taraz | **non validé** |
+| 2010/11 | KAZ-L1 | FC Tobol | **non validé** |
+| 2010/11 | KAZ-L1 | FC Zhetysu | **non validé** |
+| 2010/11 | LUX-L1 | CS Fola Esch | **non validé** |
+| 2010/11 | LUX-L1 | CS Grevenmacher | **non validé** |
+| 2010/11 | LUX-L1 | CS Pétange | **non validé** |
+| 2010/11 | LUX-L1 | F.C. Luxembourg City | **non validé** |
+| 2010/11 | LUX-L1 | F91 Dudelange | **non validé** |
+| 2010/11 | LUX-L1 | FC Differdange 03 | **non validé** |
+| 2010/11 | LUX-L1 | FC Etzella Ettelbruck | **non validé** |
+| 2010/11 | LUX-L1 | FC Jeunesse Canach | **non validé** |
+| 2010/11 | LUX-L1 | FC Progrès Niederkorn | **non validé** |
+| 2010/11 | LUX-L1 | FC Swift Hesperange | **non validé** |
+| 2010/11 | LUX-L1 | FC Wiltz 71 | **non validé** |
+| 2010/11 | LUX-L1 | Jeunesse Esch | **non validé** |
+| 2010/11 | LUX-L1 | Racing FC Union Luxembourg | **non validé** |
+| 2010/11 | LUX-L1 | UN Käerjéng 97 | **non validé** |
+| 2010/11 | LVA-L1 | FC Daugava | **non validé** |
+| 2010/11 | LVA-L1 | FC Tranzit | **non validé** |
+| 2010/11 | LVA-L1 | FK Daugava (2003) | **non validé** |
+| 2010/11 | LVA-L1 | FK Jaunība Rīga | **non validé** |
+| 2010/11 | LVA-L1 | FK Jelgava | **non validé** |
+| 2010/11 | LVA-L1 | FK Liepājas Metalurgs | **non validé** |
+| 2010/11 | LVA-L1 | FK Ventspils | **non validé** |
+| 2010/11 | LVA-L1 | JFK Olimps/RFS | **non validé** |
+| 2010/11 | LVA-L1 | SK Blāzma | **non validé** |
+| 2010/11 | LVA-L1 | Skonto FC | **non validé** |
+| 2010/11 | MDA-L1 | CF Univer Comrat | **non validé** |
+| 2010/11 | MDA-L1 | FC Academia Chișinău | **non validé** |
+| 2010/11 | MDA-L1 | FC Bălți | **non validé** |
+| 2010/11 | MDA-L1 | FC Costuleni | **non validé** |
+| 2010/11 | MDA-L1 | FC Dacia Chișinău | **non validé** |
+| 2010/11 | MDA-L1 | FC Iskra-Stal | **non validé** |
+| 2010/11 | MDA-L1 | FC Milsami Orhei | **non validé** |
+| 2010/11 | MDA-L1 | FC Nistru Otaci | **non validé** |
+| 2010/11 | MDA-L1 | FC Rapid Ghidighici | **non validé** |
+| 2010/11 | MDA-L1 | FC Sfîntul Gheorghe | **non validé** |
+| 2010/11 | MDA-L1 | FC Tighina | **non validé** |
+| 2010/11 | MDA-L1 | FC Tiraspol | **non validé** |
+| 2010/11 | MDA-L1 | FC Zimbru Chișinău | **non validé** |
+| 2010/11 | MKD-L1 | FK Bregalnica Štip | **non validé** |
+| 2010/11 | MKD-L1 | FK Horizont Turnovo | **non validé** |
+| 2010/11 | MKD-L1 | FK Metalurg Skopje | **non validé** |
+| 2010/11 | MKD-L1 | FK Napredok | **non validé** |
+| 2010/11 | MKD-L1 | FK Pelister | **non validé** |
+| 2010/11 | MKD-L1 | FK Rabotnicki | **non validé** |
+| 2010/11 | MKD-L1 | FK Sileks | **non validé** |
+| 2010/11 | MKD-L1 | FK Skopje | **non validé** |
+| 2010/11 | MKD-L1 | FK Teteks | **non validé** |
+| 2010/11 | MKD-L1 | FK Vardar | **non validé** |
+| 2010/11 | MKD-L1 | KF Renova | **non validé** |
+| 2010/11 | MKD-L1 | KF Shkëndija | **non validé** |
 | 2010/11 | NLD-ED | AZ Alkmaar | **non validé** |
 | 2010/11 | NLD-ED | De Graafschap | **non validé** |
 | 2010/11 | NLD-ED | Excelsior Rotterdam | **non validé** |
@@ -499,6 +6053,33 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | NLD-ED | SBV Vitesse | **non validé** |
 | 2010/11 | NLD-ED | SC Heerenveen | **non validé** |
 | 2010/11 | NLD-ED | Willem II Tilburg | **non validé** |
+| 2010/11 | NOR-L1 | Aalesunds FK | **non validé** |
+| 2010/11 | NOR-L1 | FK Haugesund | **non validé** |
+| 2010/11 | NOR-L1 | Hønefoss BK | **non validé** |
+| 2010/11 | NOR-L1 | IK Start | **non validé** |
+| 2010/11 | NOR-L1 | Kongsvinger IL Toppfotball | **non validé** |
+| 2010/11 | NOR-L1 | Odds BK | **non validé** |
+| 2010/11 | NOR-L1 | Sandefjord Fotball | **non validé** |
+| 2010/11 | NOR-L1 | Stabæk Fotball | **non validé** |
+| 2010/11 | NOR-L1 | Strømsgodset Toppfotball | **non validé** |
+| 2010/11 | NOR-L1 | Tromsø IL | **non validé** |
+| 2010/11 | NOR-L1 | Viking FK | **non validé** |
+| 2010/11 | NOR-L1 | Vålerenga Fotball | **non validé** |
+| 2010/11 | POL-L1 | Arka Gdynia | **non validé** |
+| 2010/11 | POL-L1 | GKS Bełchatów | **non validé** |
+| 2010/11 | POL-L1 | Górnik Zabrze | **non validé** |
+| 2010/11 | POL-L1 | Jagiellonia Białystok | **non validé** |
+| 2010/11 | POL-L1 | KS Cracovia | **non validé** |
+| 2010/11 | POL-L1 | Korona Kielce | **non validé** |
+| 2010/11 | POL-L1 | Lechia Gdańsk | **non validé** |
+| 2010/11 | POL-L1 | Legia Warsaw | **non validé** |
+| 2010/11 | POL-L1 | Polonia Bytom | **non validé** |
+| 2010/11 | POL-L1 | Polonia Warsaw | **non validé** |
+| 2010/11 | POL-L1 | Ruch Chorzów | **non validé** |
+| 2010/11 | POL-L1 | Widzew Łódź | **non validé** |
+| 2010/11 | POL-L1 | Wisła Kraków | **non validé** |
+| 2010/11 | POL-L1 | Zagłębie Lubin | **non validé** |
+| 2010/11 | POL-L1 | Śląsk Wrocław | **non validé** |
 | 2010/11 | PRT-PL | Académica de Coimbra (football) | **non validé** |
 | 2010/11 | PRT-PL | Associação Naval 1º de Maio | **non validé** |
 | 2010/11 | PRT-PL | C.D. Nacional | **non validé** |
@@ -511,6 +6092,87 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | PRT-PL | U.D. Leiria | **non validé** |
 | 2010/11 | PRT-PL | Vitória F.C. | **non validé** |
 | 2010/11 | PRT-PL | Vitória S.C. | **non validé** |
+| 2010/11 | ROU-L1 | ACF Gloria Bistrița | **non validé** |
+| 2010/11 | ROU-L1 | ASA 2013 Târgu Mureș | **non validé** |
+| 2010/11 | ROU-L1 | CS Gaz Metan Mediaș | **non validé** |
+| 2010/11 | ROU-L1 | CS Pandurii Târgu Jiu | **non validé** |
+| 2010/11 | ROU-L1 | FC Astra Giurgiu | **non validé** |
+| 2010/11 | ROU-L1 | FC Brașov (1936) | **non validé** |
+| 2010/11 | ROU-L1 | FC Dinamo București | **non validé** |
+| 2010/11 | ROU-L1 | FC Politehnica Timișoara | **non validé** |
+| 2010/11 | ROU-L1 | FC Rapid București | **non validé** |
+| 2010/11 | ROU-L1 | FC Sportul Studențesc București | **non validé** |
+| 2010/11 | ROU-L1 | FC U Craiova 1948 | **non validé** |
+| 2010/11 | ROU-L1 | FC Unirea Urziceni | **non validé** |
+| 2010/11 | ROU-L1 | FC Universitatea Cluj | **non validé** |
+| 2010/11 | ROU-L1 | FC Victoria Brănești | **non validé** |
+| 2010/11 | RUS-L1 | FC Akhmat Grozny | **non validé** |
+| 2010/11 | RUS-L1 | FC Alania Vladikavkaz | **non validé** |
+| 2010/11 | RUS-L1 | FC Amkar Perm | **non validé** |
+| 2010/11 | RUS-L1 | FC Dynamo Moscow | **non validé** |
+| 2010/11 | RUS-L1 | FC Saturn Ramenskoye | **non validé** |
+| 2010/11 | RUS-L1 | FC Sibir Novosibirsk | **non validé** |
+| 2010/11 | RUS-L1 | FC Tom Tomsk | **non validé** |
+| 2010/11 | RUS-L1 | PFC Krylia Sovetov Samara | **non validé** |
+| 2010/11 | RUS-L1 | PFC Spartak Nalchik | **non validé** |
+| 2010/11 | SCO-L1 | Aberdeen F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Dundee United F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Hamilton Academical F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Heart of Midlothian F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Hibernian F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Inverness Caledonian Thistle F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Kilmarnock F.C. | **non validé** |
+| 2010/11 | SCO-L1 | Motherwell F.C. | **non validé** |
+| 2010/11 | SCO-L1 | St Johnstone F.C. | **non validé** |
+| 2010/11 | SCO-L1 | St Mirren F.C. | **non validé** |
+| 2010/11 | SRB-L1 | FK BSK Borča | **non validé** |
+| 2010/11 | SRB-L1 | FK Borac 1926 | **non validé** |
+| 2010/11 | SRB-L1 | FK Hajduk Kula | **non validé** |
+| 2010/11 | SRB-L1 | FK Inđija | **non validé** |
+| 2010/11 | SRB-L1 | FK Jagodina | **non validé** |
+| 2010/11 | SRB-L1 | FK Javor Ivanjica | **non validé** |
+| 2010/11 | SRB-L1 | FK Metalac Gornji Milanovac | **non validé** |
+| 2010/11 | SRB-L1 | FK Rad | **non validé** |
+| 2010/11 | SRB-L1 | FK Sloboda Užice | **non validé** |
+| 2010/11 | SRB-L1 | FK Smederevo 1924 | **non validé** |
+| 2010/11 | SRB-L1 | FK Spartak Subotica | **non validé** |
+| 2010/11 | SRB-L1 | FK Vojvodina | **non validé** |
+| 2010/11 | SRB-L1 | FK Čukarički | **non validé** |
+| 2010/11 | SRB-L1 | OFK Beograd | **non validé** |
+| 2010/11 | SVK-L1 | 1. FC Tatran Prešov | **non validé** |
+| 2010/11 | SVK-L1 | FC DAC 1904 Dunajská Streda | **non validé** |
+| 2010/11 | SVK-L1 | FC Nitra | **non validé** |
+| 2010/11 | SVK-L1 | FC Spartak Trnava | **non validé** |
+| 2010/11 | SVK-L1 | FC VSS Košice | **non validé** |
+| 2010/11 | SVK-L1 | FC ViOn Zlaté Moravce | **non validé** |
+| 2010/11 | SVK-L1 | FK Senica | **non validé** |
+| 2010/11 | SVK-L1 | FK Spartak Dubnica nad Váhom | **non validé** |
+| 2010/11 | SVK-L1 | MFK Dukla Banská Bystrica | **non validé** |
+| 2010/11 | SVK-L1 | MFK Ružomberok | **non validé** |
+| 2010/11 | SVK-L1 | ŠK Slovan Bratislava | **non validé** |
+| 2010/11 | SVN-L1 | FC Koper | **non validé** |
+| 2010/11 | SVN-L1 | ND Gorica | **non validé** |
+| 2010/11 | SVN-L1 | NK Celje | **non validé** |
+| 2010/11 | SVN-L1 | NK Domžale | **non validé** |
+| 2010/11 | SVN-L1 | NK Nafta Lendava | **non validé** |
+| 2010/11 | SVN-L1 | NK Olimpija Ljubljana | **non validé** |
+| 2010/11 | SVN-L1 | NK Primorje | **non validé** |
+| 2010/11 | SVN-L1 | NK Rudar Velenje | **non validé** |
+| 2010/11 | SVN-L1 | NK Triglav Kranj | **non validé** |
+| 2010/11 | SWE-L1 | BK Häcken | **non validé** |
+| 2010/11 | SWE-L1 | Djurgårdens IF Fotboll | **non validé** |
+| 2010/11 | SWE-L1 | GAIS | **non validé** |
+| 2010/11 | SWE-L1 | Gefle IF | **non validé** |
+| 2010/11 | SWE-L1 | Halmstads BK | **non validé** |
+| 2010/11 | SWE-L1 | Helsingborgs IF | **non validé** |
+| 2010/11 | SWE-L1 | IF Brommapojkarna | **non validé** |
+| 2010/11 | SWE-L1 | IF Elfsborg | **non validé** |
+| 2010/11 | SWE-L1 | IFK Göteborg | **non validé** |
+| 2010/11 | SWE-L1 | Kalmar FF | **non validé** |
+| 2010/11 | SWE-L1 | Mjällby AIF | **non validé** |
+| 2010/11 | SWE-L1 | Trelleborgs FF | **non validé** |
+| 2010/11 | SWE-L1 | Åtvidabergs FF | **non validé** |
+| 2010/11 | SWE-L1 | Örebro SK | **non validé** |
 | 2010/11 | TUR-SL | Bucaspor | **non validé** |
 | 2010/11 | TUR-SL | Eskişehirspor | **non validé** |
 | 2010/11 | TUR-SL | Gençlerbirliği S.K. | **non validé** |
@@ -521,30 +6183,44 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | TUR-SL | Manisaspor | **non validé** |
 | 2010/11 | TUR-SL | Sivasspor | **non validé** |
 | 2010/11 | TUR-SL | İstanbul Başakşehir F.K. | **non validé** |
+| 2010/11 | UKR-L1 | FC Arsenal Kyiv | **non validé** |
+| 2010/11 | UKR-L1 | FC Kryvbas Kryvyi Rih | **non validé** |
+| 2010/11 | UKR-L1 | FC Mariupol | **non validé** |
+| 2010/11 | UKR-L1 | FC Metalurh Donetsk | **non validé** |
+| 2010/11 | UKR-L1 | FC Metalurh Zaporizhzhia | **non validé** |
+| 2010/11 | UKR-L1 | FC Obolon Kyiv | **non validé** |
+| 2010/11 | UKR-L1 | FC Sevastopol | **non validé** |
+| 2010/11 | UKR-L1 | FC Volyn Lutsk | **non validé** |
+| 2010/11 | UKR-L1 | FC Vorskla Poltava | **non validé** |
+| 2010/11 | UKR-L1 | FC Zorya Luhansk | **non validé** |
+| 2010/11 | UKR-L1 | SC Tavriya Simferopol | **non validé** |
+| 2010/11 | USA-MLS | C.D. Chivas USA | **non validé** |
+| 2010/11 | USA-MLS | Chicago Fire FC | **non validé** |
+| 2010/11 | USA-MLS | LA Galaxy | **non validé** |
 
 ## Manques : données joueurs et clubs
 
 | Donnée | Manquants | Sur |
 |---|---|---|
-| Joueurs sans identité Wikidata (QID) | 5693 | 26993 |
-| Joueurs sans carrière (infobox) | 6124 | 26993 |
-| Joueurs sans date de naissance au jour près | 5913 | 26993 |
-| Lignes d'effectif sans nationalité | 1895 | 86385 |
-| Lignes d'effectif sans poste | 910 | 86385 |
-| Lignes d'effectif à statut inconnu (prêt/transfert) | 69416 | 86385 |
-| Clubs à effectifs sans logo | 6 | 339 |
-| Clubs à effectifs sans page Wikipedia française | 1 | 339 |
+| Joueurs sans identité Wikidata (QID) | 15948 | 55070 |
+| Joueurs sans carrière (infobox) | 16593 | 55070 |
+| Joueurs sans date de naissance au jour près | 16424 | 55070 |
+| Lignes d'effectif sans nationalité | 4389 | 201068 |
+| Lignes d'effectif sans poste | 1284 | 201068 |
+| Lignes d'effectif à statut inconnu (prêt/transfert) | 165408 | 201068 |
+| Clubs à effectifs sans logo | 127 | 1401 |
+| Clubs à effectifs sans page Wikipedia française | 83 | 1401 |
 
 ## Clubs du monde (fiches club)
 
 | Donnée | Clubs | Sur |
 |---|---|---|
-| Clubs au total (table `club`) | 42863 | 42863 |
-| … dont avec effectifs détaillés | 339 | 42863 |
-| … avec un logo (infobox ou Commons) | 17815 | 42863 |
-| … avec stade | 9886 | 42863 |
-| … avec date de fondation | 23588 | 42863 |
-| … avec page Wikipedia anglaise | 25613 | 42863 |
+| Clubs au total (table `club`) | 44372 | 44372 |
+| … dont avec effectifs détaillés | 1401 | 44372 |
+| … avec un logo (infobox ou Commons) | 17941 | 44372 |
+| … avec stade | 9886 | 44372 |
+| … avec date de fondation | 23588 | 44372 |
+| … avec page Wikipedia anglaise | 27122 | 44372 |
 
 ## À faire
 

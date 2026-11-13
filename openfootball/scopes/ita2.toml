@@ -1,0 +1,24 @@
+# Deuxième division : même pays que la première (fichier voisin), autre compétition de niveau 2.
+code = "ITA"
+name_en = "Italy"
+name_fr = "Italie"
+
+langs = ["it", "en", "fr"]
+
+[competition]
+code = "ITA-SB"
+name_en = "Serie B"
+name_fr = "Serie B"
+level = 2
+
+[[team_count]]
+from = 2010
+n = 22
+
+[[team_count]]
+from = 2018
+n = 19
+
+[[team_count]]
+from = 2019
+n = 20

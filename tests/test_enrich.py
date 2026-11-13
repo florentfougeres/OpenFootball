@@ -167,3 +167,23 @@ def test_career_club_titles_are_resolved_to_qids_once(con):
     assert enrich_career_clubs(con, Wp(), log=lambda *_: None) == 1                      # « Olympique… » est déjà un club connu
     assert con.execute("SELECT link_title, qid FROM club_link_qid ORDER BY 1").fetchall() == [("Nowhere FC", None), ("Paris Saint-Germain FC", "Q483020")]
     assert enrich_career_clubs(con, Wp(), log=lambda *_: None) == 0 and Wp.calls == 1     # rien de redemandé
+
+
+def test_add_career_clubs_inserts_missing_club(tmp_path):
+    import duckdb
+    from openfootball.db import migrate
+    from openfootball.enrich import add_career_clubs
+    con = duckdb.connect(str(tmp_path / "t.duckdb")); migrate(con)
+    con.execute("INSERT INTO player (id, name) VALUES (1, 'X')")
+    con.execute("INSERT INTO player_career (id, player_id, seq, club_name, club_link, source_lang, source_title) VALUES (1, 1, 1, 'Boca Juniors', 'Boca Juniors', 'en', 'X')")
+    con.execute("INSERT INTO club_link_qid VALUES ('Boca Juniors', 'Q170703')")
+
+    class WD:
+        def entities(self, qids, props, languages=None, sitefilter=None):
+            return {"Q170703": {"labels": {"en": {"value": "Boca Juniors"}, "fr": {"value": "Boca Juniors"}},
+                                "sitelinks": {"enwiki": {"title": "Boca Juniors"}},
+                                "claims": {"P154": [{"mainsnak": {"datavalue": {"value": "Boca Juniors logo.svg"}}}]}}}
+    assert add_career_clubs(con, WD(), log=lambda m: None) == 1
+    assert con.execute("SELECT wikipedia_title, logo_commons_url FROM club WHERE wikidata_qid = 'Q170703'").fetchone() == (
+        "Boca Juniors", "https://commons.wikimedia.org/wiki/Special:FilePath/Boca_Juniors_logo.svg")
+    assert add_career_clubs(con, WD(), log=lambda m: None) == 0

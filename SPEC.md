@@ -1,6 +1,6 @@
 # OpenFootballBase — Spécification
 
-> Statut : **v0.29** (2026-11-12) — pipeline et site implémentés en local pour 5 championnats (2010/11 → 2026/27) ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D12 et les résultats mesurés (§9ter et suivants) font foi.
+> Statut : **v0.30** (2026-11-12) — pipeline et site implémentés en local pour 9 championnats (2010/11 → 2026/27) et les participants de la Ligue des champions ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D14 et les résultats mesurés (§9ter et suivants) font foi.
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -9,6 +9,7 @@
 > v0.7 : stockage et exécution tranchés (D8).
 > v0.8 : résultats du sondage de couverture M0(a) sur les 4 championnats × 2010–2025 (§9ter).
 > v0.9 → v0.27 : backfills, identité par QID, carrières, Bundesliga, clubs du monde, logos (§9quater à §9duodecies).
+> v0.30 : Belgique, Portugal, Pays-Bas, Turquie ; langues nl et tr (HTML rendu) ; effectif de la saison en cours depuis la page du club ; coupes d'Europe (D14) ; prêtés ailleurs exclus des gros effectifs ; page Couverture par pays.
 > v0.29 : transferts en cours de saison et cohérence des prêts (D13), identification Wikidata, licence MIT.
 > v0.28 : langue locale d'abord (D10), union des sources (D12), prêts hors de l'effectif d'origine (D11), sélections, identité par infobox, textes non latins, site Svelte à navigation par pays (§9terdecies).
 
@@ -402,6 +403,23 @@ Une page « saison du club » est un instantané ; les sections *Transfers in/ou
 - **Cohérence entre clubs** : (1) un prêt classé « transfert » par le prêteur et « prêt » par le receveur (même joueur, même saison, dates à 3 jours) est un prêt des deux côtés (Disasi, Chelsea → Crystal Palace) ; (2) un club qui « sort » et « reçoit en prêt » le même joueur le même jour est le prêteur (Fati) ; (3) un joueur prêté à A « depuis B » n'est pas dans l'effectif de B (D11). Un joueur dans deux clubs la même saison avec un mouvement dans chacun est marqué, même un 31 août (Ronaldo 2021).
 - **Mesuré** : joueurs dans deux clubs sans statut dans aucun : ≈ 1 255 → ≈ 400 ; ≈ 1 000 conflits de statut restent, faute de mouvement lu (pages non anglaises, noms de clubs écrits autrement).
 - **Identification Wikidata** (`reconcile --wikidata`) : même nom, footballeur, clubs P54 contenant tous nos club-saisons, candidat unique : +33 QID, 163 fusions ; 3 117 joueurs restent sans QID (surtout des jeunes sans fiche).
+
+### D14 — Coupes d'Europe : participation, championnat national et clubs du pays (2026-11-12)
+**Besoin** : voir, pour chaque saison, les clubs de Ligue des champions (puis Ligue Europa et Conférence) — y compris ceux dont le
+championnat n'est pas dans le périmètre (Grèce, Danemark, Norvège…) — et retrouver leur pays et leur championnat dans l'application.
+- **Source unique** : la page anglaise `<saison> UEFA Champions League` et ses sous-pages ; **phase de groupes** (jusqu'en 2023/24, 32 clubs) ou
+  **phase de ligue** (depuis 2024/25, 36 clubs). Tours préliminaires et barrages ignorés. Nombre de clubs vérifié (`Cup.sizes`) : un écart arrête la saison.
+- **Une compétition par club-saison** (contrainte unique) : la participation à une coupe est une table à part, `competition_entry`
+  (migration 0013), exportée avec les championnats dans `competition_club`. Un club du périmètre garde son championnat.
+- **Club hors périmètre** : créé avec le pays de son drapeau ; rattaché au **championnat de son pays**, créé au premier club vu
+  (`<ISO3>-L1`, nom lu sur la page la plus récente) ; son effectif est lu avec la même logique que les autres clubs
+  (`fill_club_season`, toutes langues, mêmes secours).
+- **Championnats nationaux complets** : pour chaque pays créé et chaque saison demandée, tous les clubs de la page de la ligue sont inscrits,
+  **avec ou sans effectif** (club-saison vide, listé en trou dans la couverture). Aucun effectif n'est inventé.
+- **Pseudo-pays `EUR`** porte les coupes ; les pages pays, compétitions, effectif et couverture lisent ces tables sans cas particulier.
+- **Mesuré** (Ligue des champions 2010/11–2026/27) : 148 clubs étrangers, 144 avec effectif ; 4 sans page lisible. Ligue Europa et Ligue Conférence :
+  participants vérifiés sur 2010-2026, effectifs **non lus**.
+- **Rejouable** : `openfootball uefa --cup UCL|UEL|UECL --season …` ; guide dans [docs/coupes-d-europe.md](docs/coupes-d-europe.md).
 
 ### Limites connues restantes
 ≈ 3 100 joueurs sans QID (jeunes sans fiche) ; transferts lus sur les pages anglaises et, en complément, françaises (≈ 23 % des pages anglaises sans tableau, ≈ 1 000 conflits de statut entre clubs) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; données publiées : `data-v2` (sans transferts).

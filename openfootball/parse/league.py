@@ -47,14 +47,15 @@ def season_label(start_year: int) -> str:
     return f"{start_year}–{str(start_year + 1)[2:]}"
 
 
-def league_teams_html(html: str, expected: int) -> list[str]:
+def league_teams_html(html: str, expected: int | None) -> list[str]:
     """Clubs depuis le HTML rendu du classement (colonnes « Team »/« Club » et « Pts »).
     Secours quand le wikitexte ne nomme pas chaque club (le modèle de tableau connaît les clubs courants
-    par code : cas de la Bundesliga). Rend [] si aucun tableau n'a exactement `expected` équipes."""
+    par code : cas de la Bundesliga). Rend [] si aucun tableau n'a exactement `expected` équipes (`expected=None` : le plus grand tableau trouvé)."""
     from openfootball.parse.squad_html import _Collector, _txt
 
     col = _Collector()
     col.feed(html)
+    best: list[str] = []                # expected=None : le plus grand tableau de classement (au moins 6 équipes)
     for _, rows in col.tables:
         header, teams = None, []
         for row in rows:
@@ -69,6 +70,8 @@ def league_teams_html(html: str, expected: int) -> list[str]:
             title = next((t for t, shown in row[header].links if shown), None)
             if title:
                 teams.append(title)
-        if len(teams) == expected:
+        if expected is not None and len(teams) == expected:
             return list(dict.fromkeys(teams))
-    return []
+        if expected is None and len(teams) >= 6 and len(teams) > len(best):
+            best = list(dict.fromkeys(teams))
+    return best

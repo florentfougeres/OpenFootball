@@ -1,0 +1,20 @@
+# Arabie saoudite : lue seulement depuis 2022-23 (arrivée des grandes vedettes) ; les saisons antérieures ne sont volontairement pas lues.
+code = "SAU"
+name_en = "Saudi Arabia"
+name_fr = "Arabie saoudite"
+
+langs = ["en", "fr"]
+
+[competition]
+code = "SAU-PL"
+name_en = "Saudi Pro League"
+name_fr = "Saudi Pro League"
+level = 1
+
+[[team_count]]
+from = 2022
+n = 16
+
+[[team_count]]
+from = 2023
+n = 18

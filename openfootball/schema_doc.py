@@ -119,7 +119,6 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "logo_url": "Miniature du logo du championnat lue dans l'infobox de sa page Wikipedia (hébergée par Wikimedia). Souvent **non libre** : voir `logo_license`.",
             "logo_license": "Licence du fichier logo (`Public domain`, `Fair use`…).",
             "wikidata_qid": "QID Wikidata du championnat, s'il est renseigné.",
-            "partial": "`true` pour un championnat hors périmètre, créé pour rattacher les clubs vus en coupe d'Europe : il ne contient QUE ces clubs.",
         },
     ),
     "country": (

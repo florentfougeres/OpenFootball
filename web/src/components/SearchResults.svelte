@@ -2,9 +2,10 @@
   import { app, href, enc, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
-  import { clubName, clubOf, countryName } from "../lib/format";
+  import { clubName, clubOf, commonsLogo, countryName } from "../lib/format";
   import ClubChip from "./ClubChip.svelte";
   import Flag from "./Flag.svelte";
+  import Logo from "./Logo.svelte";
   import Spinner from "./Spinner.svelte";
 
   let { term }: { term: string } = $props();
@@ -18,7 +19,7 @@
       q(`SELECT any_value(player) AS player, COALESCE(player_qid, 'name:' || player) AS key, any_value(link_title) AS link_title,
            any_value(nat_flag) AS flag, any_value(nationality) AS nat, count(DISTINCT season) AS n, min(season) AS first, max(season) AS last FROM squad
          WHERE strip_accents(player) ILIKE strip_accents(?) GROUP BY COALESCE(player_qid, 'name:' || player) ORDER BY n DESC, player LIMIT 30`, [like]),
-      q(`SELECT wikidata_qid AS qid, name_local, name_en, country_iso, city FROM club
+      q(`SELECT wikidata_qid AS qid, name_local, name_en, country_iso, city, logo_url, logo_commons_url, colors_hex FROM club
          WHERE NOT has_squads AND (strip_accents(name_local) ILIKE strip_accents(?) OR strip_accents(coalesce(name_en, '')) ILIKE strip_accents(?))
          ORDER BY coalesce(wikipedia_count, 0) DESC LIMIT 25`, [like, like]),
     ]);
@@ -66,6 +67,7 @@
           <ul class="card divide-y divide-line">
             {#each world as c (c.qid)}
               <li class="flex items-center gap-3 px-4 py-2.5">
+                <Logo club={{ logo_url: c.logo_url || commonsLogo(c.logo_commons_url), colors_hex: c.colors_hex, name_en: c.name_en, name_local: c.name_local }} size={28} />
                 <Flag code={c.country_iso ? c.country_iso.toLowerCase() : null} label={c.country_iso ? countryName(c.country_iso) : ""} />
                 <a class="link" href={href("club", c.qid)}>{app.lang === "fr" ? c.name_local : c.name_en || c.name_local}</a>
                 {#if c.city}<span class="ml-auto text-xs text-muted">{c.city}</span>{/if}

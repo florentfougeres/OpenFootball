@@ -34,8 +34,8 @@ Pipeline Python local (DuckDB) qui lit Wikipedia et Wikidata, exporte des fichie
 
 ## Capabilities and Constraints
 
-- Cinq championnats de première division : Premier League, La Liga, Serie A, Bundesliga, Ligue 1, de 2010/11 à 2026/27 (la saison en cours est « open »). Extensible à d'autres pays par un fichier de configuration.
-- Pages : accueil (recherche, pays), pays, championnat (par saison), club, effectif (changement de saison), joueur (carrière, sélections), couverture des données, à propos.
+- Neuf championnats de première division (Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Pro League belge, Primeira Liga, Eredivisie, Süper Lig) de 2010/11 à 2026/27 (la saison en cours est « open »), plus les participants de la Ligue des champions et les championnats de leurs pays (clubs listés, effectifs quand les pages existent). Extensible à d'autres pays et coupes par un fichier de configuration.
+- Pages : accueil (recherche, pays), pays, tous les clubs, compétitions, championnat/coupe (par saison), club, effectif (changement de saison), joueur (carrière, sélections), couverture des données (détail par pays), à propos.
 - **Contraintes confirmées** : site statique sans backend, sans compte ni suivi ; accessibilité WCAG 2.2 AA ; parité complète français / anglais.
 - Sources limitées à Wikipedia et Wikidata (Transfermarkt n'est pas utilisé : données non libres).
 - Limites de fond à ne pas masquer : un effectif est un instantané de pages Wikipedia, plusieurs pages peuvent être fusionnées ; les matchs, buts et sélections sont ceux de Wikipedia, non vérifiés ; des club-saisons n'ont pas d'effectif (trous listés).

@@ -96,15 +96,16 @@ class WikipediaClient:
 
     def _cache_get(self, title: str) -> Page | None:
         path = self._cache_path(title)
-        if not path.exists():
+        try:
+            return Page(**json.loads(path.read_text(encoding="utf-8")))
+        except (FileNotFoundError, json.JSONDecodeError):      # absent, ou écriture d'un autre processus en cours : on relit le réseau
             return None
-        d = json.loads(path.read_text(encoding="utf-8"))
-        return Page(**d)
 
     def _cache_put(self, page: Page) -> None:
-        self._cache_path(page.title).write_text(
-            json.dumps(page.__dict__, ensure_ascii=False), encoding="utf-8"
-        )
+        path = self._cache_path(page.title)
+        tmp = path.with_suffix(f".{os.getpid()}.tmp")           # écriture atomique : jamais de fichier à moitié écrit
+        tmp.write_text(json.dumps(page.__dict__, ensure_ascii=False), encoding="utf-8")
+        os.replace(tmp, path)
 
     # ---------------------------------------------------------------- réseau
     def _http_transport(self, params: dict) -> dict:

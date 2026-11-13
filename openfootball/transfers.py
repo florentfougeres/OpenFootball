@@ -227,3 +227,25 @@ def apply_transfers(con: duckdb.DuckDBPyConnection, wp, *, fr_wp=None, start_yea
     reconcile_loans(con)
     lender_is_not_a_member(con)
     return report
+
+
+def drop_stale_current_rows(con: duckdb.DuckDBPyConnection) -> int:
+    """Saison EN COURS : retire un joueur qu'un club ne liste plus dans sa source principale (page anglaise de l'effectif)
+    mais que seule une autre langue, plus lente à jour, liste encore, quand ce même joueur figure dans la source principale
+    d'un autre club la même saison (Martinelli : parti à Al Hilal, encore dans l'effectif italien d'Arsenal).
+    Une saison passée n'est pas touchée : un joueur y a pu réellement jouer dans les deux clubs."""
+    rows = con.execute("""
+        SELECT pcs.id, pcs.club_season_id, pcs.player_id
+        FROM player_club_season pcs
+        JOIN club_season cs ON cs.id = pcs.club_season_id JOIN season s ON s.id = cs.season_id
+        WHERE s.status = 'open' AND cs.source_lang IS NOT NULL
+          AND EXISTS (SELECT 1 FROM squad_row_source r WHERE r.club_season_id = cs.id AND r.player_id = pcs.player_id)
+          AND NOT EXISTS (SELECT 1 FROM squad_row_source r WHERE r.club_season_id = cs.id AND r.player_id = pcs.player_id
+                          AND r.source_lang = cs.source_lang)
+          AND EXISTS (SELECT 1 FROM player_club_season o JOIN club_season ocs ON ocs.id = o.club_season_id
+                      JOIN squad_row_source ro ON ro.club_season_id = ocs.id AND ro.player_id = o.player_id AND ro.source_lang = ocs.source_lang
+                      WHERE o.player_id = pcs.player_id AND ocs.season_id = cs.season_id AND ocs.id <> cs.id)""").fetchall()
+    for pcs_id, cs_id, player_id in rows:
+        con.execute("DELETE FROM squad_row_source WHERE club_season_id = ? AND player_id = ?", [cs_id, player_id])
+        con.execute("DELETE FROM player_club_season WHERE id = ?", [pcs_id])
+    return len(rows)

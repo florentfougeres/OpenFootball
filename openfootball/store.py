@@ -1,6 +1,7 @@
 """Couche d'écriture : toute écriture passe ici, et refuse une saison figée (SPEC §5bis, L9)."""
 from __future__ import annotations
 
+import dataclasses
 import hashlib
 import re
 
@@ -70,6 +71,10 @@ def stint_of(entry: SquadEntry) -> str:
 
 
 def _upsert_player(con, e: SquadEntry, lang: str) -> int:
+    if not e.link:                                               # rustine : la page du joueur est connue (table `player_alias`)
+        alias = con.execute("SELECT link_lang, link_title FROM player_alias WHERE name = ?", [e.name]).fetchone()
+        if alias:
+            lang, e = alias[0], dataclasses.replace(e, link=alias[1])
     if e.link:
         row = con.execute("SELECT player_id FROM player_link WHERE link_lang = ? AND link_title = ?", [lang, e.link]).fetchone()
         if row is None:

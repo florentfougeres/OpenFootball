@@ -1,0 +1,63 @@
+code = "USA"
+name_en = "United States"
+name_fr = "États-Unis"
+
+langs = ["en", "es", "fr"]
+
+[competition]
+code = "USA-MLS"
+name_en = "Major League Soccer"
+name_fr = "Major League Soccer"
+level = 1
+# Saison en année civile : « 2025 Major League Soccer season » (pas « 2025–26 … »).
+page_format = "{year} {name} season"
+
+# Les franchises canadiennes (Toronto, Vancouver, Montréal) sont rangées aux États-Unis : c'est un championnat américain.
+
+[[team_count]]
+from = 2010
+n = 16
+
+[[team_count]]
+from = 2011
+n = 18
+
+[[team_count]]
+from = 2012
+n = 19
+
+[[team_count]]
+from = 2015
+n = 20
+
+[[team_count]]
+from = 2017
+n = 22
+
+[[team_count]]
+from = 2018
+n = 23
+
+[[team_count]]
+from = 2019
+n = 24
+
+[[team_count]]
+from = 2020
+n = 26
+
+[[team_count]]
+from = 2021
+n = 27
+
+[[team_count]]
+from = 2022
+n = 28
+
+[[team_count]]
+from = 2023
+n = 29
+
+[[team_count]]
+from = 2025
+n = 30

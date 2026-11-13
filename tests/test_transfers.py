@@ -191,3 +191,23 @@ def test_loan_return_rows_are_not_loan_arrivals(arsenal):
 |}"""
     got = parse_transfers(wt)
     assert [t.name for t in got] == ["Real Loan"] and got[0].kind == "loan"
+
+
+def test_open_season_drops_player_listed_only_by_a_lagging_language():
+    from openfootball.transfers import drop_stale_current_rows
+    c = duckdb.connect(":memory:")
+    migrate(c)
+    c.execute("INSERT INTO country VALUES ('ENG', 'England', 'Angleterre')")
+    c.execute("INSERT INTO competition (id, code, name_en, name_fr, country_code, level) VALUES (1, 'ENG-PL', 'Premier League', 'Premier League', 'ENG', 1)")
+    c.execute("INSERT INTO season (id, start_year, label, status) VALUES (1, 2026, '2026/27', 'open')")
+    for cid, title in ((1, "Arsenal F.C."), (2, "Al Hilal SFC")):
+        c.execute("INSERT INTO club (id, name_en, country_code, wikipedia_title) VALUES (?, ?, 'ENG', ?)", [cid, title, title])
+        c.execute("INSERT INTO club_season (id, club_id, season_id, competition_id, source_lang, source_title, source_revid, retrieved_at) "
+                  "VALUES (?, ?, 1, 1, 'en', ?, 1, now())", [cid, cid, title])
+    c.execute("INSERT INTO player (id, name) VALUES (1, 'Gabriel Martinelli')")
+    for pcs, cs in ((1, 1), (2, 2)):
+        c.execute("INSERT INTO player_club_season (id, player_id, club_season_id, confidence, source) VALUES (?, 1, ?, 'attested', 'wikipedia_season')", [pcs, cs])
+    c.execute("INSERT INTO squad_row_source VALUES (1, 1, 'it'), (2, 1, 'en')")      # Arsenal : seule l'italienne le liste encore
+    assert drop_stale_current_rows(c) == 1
+    assert [r[0] for r in c.execute("SELECT club_season_id FROM player_club_season").fetchall()] == [2]
+    assert drop_stale_current_rows(c) == 0
