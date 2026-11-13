@@ -1,7 +1,9 @@
 # Coupes continentales hors Europe (Copa Libertadores, Ligues des champions CAF et AFC)
 
+[English](../en/continental-cups.md)
+
 Participants de la **phase de groupes** (ou de **ligue** pour l'AFC depuis 2024-25), de 2010 à 2026. **Liste seulement** : pas d'effectifs,
-pas de championnat national créé pour les clubs vus. Pour l'Europe, voir [coupes-d-europe.md](coupes-d-europe.md).
+pas de championnat national créé pour les clubs vus. Pour l'Europe, voir [european-cups.md](european-cups.md).
 
 ```bash
 export OPENFOOTBALL_CONTACT="https://github.com/vous/votre-depot"

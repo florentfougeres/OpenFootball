@@ -1,7 +1,9 @@
 # Coupes d'Europe (Ligue des champions, Ligue Europa, Ligue Conférence)
 
+[English](../en/european-cups.md)
+
 Ce guide explique comment la base reçoit les participants d'une coupe d'Europe, ce qui est créé automatiquement, et
-comment rejouer l'opération (autre saison, autre coupe). Décision de fond : [SPEC.md](../SPEC.md), D14.
+comment rejouer l'opération (autre saison, autre coupe). Décision de fond : [SPEC.md](spec.md), D14.
 
 ## Ce que fait la commande
 
@@ -25,7 +27,7 @@ Pour **chaque participant** :
    `backfill` du championnat.
 4. **Sinon** : le club est rattaché au **championnat de son pays**, créé à ce moment (code `GRC-L1`, nom lu sur la page :
    « Super League Greece »), et son effectif est lu comme celui de n'importe quel club (toutes les langues lisibles,
-   mêmes secours, voir [ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md)).
+   mêmes secours, voir [adding-clubs-and-seasons.md](adding-clubs-and-seasons.md)).
 
 **Passe finale « championnats nationaux »** (dans la même commande, après toutes les saisons demandées) : pour chaque
 championnat créé à l'étape 4 et chaque saison demandée, la commande lit la page de la ligue (`2024–25 Super League Greece`,
@@ -58,7 +60,7 @@ Idempotent ; une erreur réseau sur un club est écrite (`ERREUR`) et le club es
 | Clubs du pays | `club`, `club_season` | Un club-saison par club et saison, rattaché au championnat national. |
 
 À l'export, `competition_club (season, competition, club)` réunit les clubs d'un championnat **et** les participants d'une
-coupe : c'est ce que lit la page d'une compétition. Voir le dictionnaire : [modele-de-donnees.md](modele-de-donnees.md).
+coupe : c'est ce que lit la page d'une compétition. Voir le dictionnaire : [data-model.md](data-model.md).
 
 ## Pas à pas
 
@@ -94,7 +96,7 @@ refusée.
 
 ## Ajouter une autre coupe
 
-Une coupe est une entrée de `CUPS` dans [openfootball/uefa.py](../openfootball/uefa.py) :
+Une coupe est une entrée de `CUPS` dans [openfootball/uefa.py](../../openfootball/uefa.py) :
 
 ```python
 "UEL": Cup("UEL", "UEFA-EL", "UEFA Europa League", "Ligue Europa de l'UEFA",
@@ -148,7 +150,7 @@ saison) et donc un premier passage long ; environ la moitié des clubs de petits
 Un pays d'abord vu par une coupe (Grèce) a déjà un championnat `GRC-L1` rempli de clubs. Pour le couvrir complètement :
 créez `openfootball/scopes/grc.toml` avec `code = "GRC"` et, **dans `[competition]`, `code = "GRC-L1"`** : la compétition
 existante est réutilisée (son nom est mis à jour depuis le fichier), aucun doublon. Renseignez `team_count`, puis
-`backfill` ([ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md), §2).
+`backfill` ([adding-clubs-and-seasons.md](adding-clubs-and-seasons.md), §2).
 
 ## Limites connues
 

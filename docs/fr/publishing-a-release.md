@@ -1,5 +1,7 @@
 # Publier une release (données + site)
 
+[English](../en/publishing-a-release.md)
+
 Le site (GitHub Pages) est reconstruit **à partir des données de la dernière release GitHub**. Publier = exporter,
 créer la release, déclencher le déploiement. Dépôt : `florentfougeres/OpenFootballBase`, site :
 `https://florentfougeres.github.io/OpenFootballBase/`.
@@ -23,7 +25,7 @@ openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz 
 ```
 
 - `--previous` : l'export est **refusé** si une saison figée a changé ou disparu (seule une procédure d'amendement l'autorise).
-- L'archive contient les fichiers Parquet, `manifest.json` et `SCHEMA.md` (le dictionnaire de données, [modele-de-donnees.md](modele-de-donnees.md)).
+- L'archive contient les fichiers Parquet, `manifest.json` et le dictionnaire de données en deux langues, `SCHEMA.md` (anglais) et `SCHEMA.fr.md` (français), voir [data-model.md](data-model.md).
 - Première release : pas de `--previous`.
 
 ## 2. Créer la release
@@ -47,15 +49,15 @@ gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main \
 ```
 
 Facultatif : joindre la base complète en asset (`gh release upload data-1.10.0 data/work/openfootball.duckdb`) pour permettre
-à quelqu'un de repartir de votre base sans tout reconstruire (≈ 60 Mo).
+à quelqu'un de repartir de votre base sans tout reconstruire (≈ 200 Mo).
 
 ## 3. Déployer le site
 
-Le workflow *Deploy site* télécharge l'archive de la **dernière** release, construit le site (`web/`) et publie.
+Le workflow *Deploy site* télécharge l'archive de **la release qui l'a déclenché** (la dernière, quand on le lance à la main ou par un push de code), construit le site (`web/`) et publie.
 
 - **Déclenchement par la release** : l'environnement GitHub `github-pages` doit autoriser les tags `data-*` (sinon le
-  déploiement échoue : « Tag "data-vN" is not allowed to deploy to github-pages »). **La règle est en place sur ce dépôt**
-  (ajoutée le 2026-11-12) : publier une release `data-vN` déploie donc le site toute seule. Pour la recréer sur un autre
+  déploiement échoue : « Tag "data-X.Y.Z" is not allowed to deploy to github-pages »). **La règle est en place sur ce dépôt**
+  (ajoutée le 2026-11-12) : publier une release `data-X.Y.Z` déploie donc le site toute seule. Pour la recréer sur un autre
   dépôt : *Settings → Environments → github-pages → Deployment branches and tags → Add deployment branch or tag rule →
   type « Tag », motif `data-*`*.
 - **Un seul déploiement à la fois** : le workflow annule le déploiement en cours quand un autre démarre. Un *push* de code

@@ -9,7 +9,7 @@ from datetime import date
 
 import duckdb
 
-# Ce qui reste à faire et qui ne se lit pas dans la base. À tenir à jour avec SPEC.md.
+# Ce qui reste à faire et qui ne se lit pas dans la base. À tenir à jour avec docs/fr/spec.md.
 TODO = [
     "Geler les saisons terminées (`freeze`) : décision manuelle, aucune saison n'est figée à ce jour.",
     "Parser les tableaux de transferts : statuts « arrivé / parti en cours de saison » (≈ 1 250 joueurs présents dans deux clubs avec statut inconnu).",

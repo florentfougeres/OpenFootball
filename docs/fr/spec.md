@@ -1,6 +1,8 @@
 # OpenFootballBase — Spécification
 
-> Statut : **v0.30** (2026-11-12) — pipeline et site implémentés en local pour 9 championnats (2010/11 → 2026/27) et les participants de la Ligue des champions ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D14 et les résultats mesurés (§9ter et suivants) font foi.
+[English](../en/spec.md)
+
+> Statut : **v0.30** (2026-11-12) — pipeline et site implémentés en local pour 9 championnats (2010/11 → 2026/27) et les participants de la Ligue des champions ; **prêt pour la publication v1** (§9terdecies). Les sections 1 à 8 décrivent la conception initiale ; les décisions D1–D15 et les résultats mesurés (§9ter et suivants) font foi. C'est un journal de conception : l'état à jour des données est dans [PROGRESS.md](../../PROGRESS.md), les changements dans [changelog.md](changelog.md), la suite dans [roadmap.md](roadmap.md).
 > v0.2 : recentrage sur **l'effectif d'un club pour une saison donnée** ; les stats (apps/buts) sont reportées après la v1.
 > v0.3 : **cycle de vie incrémental** — une saison terminée est validée puis **figée** ; on ne reconstruit jamais la base (§5bis).
 > v0.4 : **départ de zéro** — la base, le script et le schéma du premier draft sont supprimés ; leurs défauts deviennent des exigences (§2).
@@ -418,11 +420,18 @@ championnat n'est pas dans le périmètre (Grèce, Danemark, Norvège…) — et
   **avec ou sans effectif** (club-saison vide, listé en trou dans la couverture). Aucun effectif n'est inventé.
 - **Pseudo-pays `EUR`** porte les coupes ; les pages pays, compétitions, effectif et couverture lisent ces tables sans cas particulier.
 - **Mesuré** (Ligue des champions 2010/11–2026/27) : 148 clubs étrangers, 144 avec effectif ; 4 sans page lisible. Ligue Europa et Ligue Conférence :
-  participants vérifiés sur 2010-2026, effectifs **non lus**.
-- **Rejouable** : `openfootball uefa --cup UCL|UEL|UECL --season …` ; guide dans [docs/coupes-d-europe.md](docs/coupes-d-europe.md).
+  participants vérifiés sur 2010-2026, effectifs **non lus** *(faits depuis : voir [european-cups.md](european-cups.md))*.
+- **Rejouable** : `openfootball uefa --cup UCL|UEL|UECL --season …` ; guide dans [european-cups.md](european-cups.md).
+- **Extension (2026-11-13)** : le même mécanisme, **participants seulement**, sert la Copa Libertadores, la Ligue des champions de la CAF et celle de l'AFC (`openfootball continental`, pseudo-pays `SAM`, `AFR`, `ASI`) : voir [continental-cups.md](continental-cups.md).
+
+### D15 — Distribution et durcissement du déploiement (2026-11-13)
+- **Les releases** s'appellent `Data X.Y.Z`, tag `data-X.Y.Z` (voir [publishing-a-release.md](publishing-a-release.md)).
+- **`restore-db`** vérifie le SHA-256 de chaque fichier du manifeste et refuse les chemins qui sortent du dossier de la release.
+- **Le déploiement** télécharge la release qui a déclenché le workflow (pas « la dernière », qui peut être en retard), refuse les archives à chemins absolus ou `..`, et les actions GitHub sont figées par SHA de commit ; Dependabot, l'analyse de secrets et la protection au push sont activés.
+- **Site** : une politique de sécurité de contenu (CSP) limite ce que la page peut charger (sa propre origine, jsDelivr pour le moteur DuckDB avec contrôle d'empreinte SHA-384 calculée au build, Wikimedia pour les images). L'extension Parquet de DuckDB est hébergée avec le site (`web/public/duckdb-ext/`) au lieu d'être téléchargée depuis `extensions.duckdb.org` à chaque visite.
 
 ### Limites connues restantes
-≈ 3 100 joueurs sans QID (jeunes sans fiche) ; transferts lus sur les pages anglaises et, en complément, françaises (≈ 23 % des pages anglaises sans tableau, ≈ 1 000 conflits de statut entre clubs) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; données publiées : `data-1.1.0` (sans transferts).
+≈ 3 100 joueurs sans QID (jeunes sans fiche) ; transferts lus sur les pages anglaises et, en complément, françaises (≈ 23 % des pages anglaises sans tableau, ≈ 1 000 conflits de statut entre clubs) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; données publiées : `data-1.1.0` (sans transferts) *(cette ligne date des premières releases ; voir [changelog.md](changelog.md) pour les actuelles)*.
 
 ## 10. Jalons proposés
 
@@ -432,16 +441,16 @@ championnat n'est pas dans le périmètre (Grèce, Danemark, Norvège…) — et
 4. **M3 — Extension pays** : 2ᵉ pays via `scopes/*.toml` sans changement de code (valide l'extensibilité).
 5. **M4 — Publication** : licences, à propos, hébergement, procédure de retrait.
 
-**État au 2026-11-12** : M0 à M3 faits (5 pays, site, extension validée par un fichier TOML) ; **M4 reste à faire** : dépôt distant, release `data-1.0.0`, activation de Pages, procédure de retrait.
+**État au 2026-11-12** : M0 à M3 faits (5 pays, site, extension validée par un fichier TOML) ; **M4 restait à faire** : dépôt distant, release `data-1.0.0`, activation de Pages, procédure de retrait *(fait depuis : voir [changelog.md](changelog.md))*.
 
 ### Pistes ultérieures (feuille de route, 2026-11-12)
 Non décidées, à reprendre quand les cinq pays seront jugés complets.
-- **Site sans DuckDB-WASM.** Le moteur (≈ 8 Mo compressés, téléchargé depuis jsDelivr) pèse plus que les données qu'il interroge (≈ 54 000 lignes d'effectifs, ≈ 122 000 de carrière, ≈ 16 000 joueurs). Remplacer par des JSON statiques pré-calculés à l'export : un fichier par saison pour les effectifs, un par club, un index de recherche (≈ 300 Ko, chargé à la demande), des carrières découpées en tranches de joueurs. Les Parquet restent publiés en téléchargement. Gains : accueil et pages instantanés à froid, plus de dépendance à un CDN tiers, fonctionnement hors connexion. Coûts : ≈ 20 requêtes à réécrire (Joueur 5, Effectif 4, Club 3, Recherche 3…), recherche en JavaScript, découpage à prévoir quand les pays se multiplieront. Étape 1 : accueil, clubs, effectifs (déjà amorcé par `home.json`) ; étape 2 : recherche et fiches joueur ; garder DuckDB en secours jusqu'à la fin de la migration.
+- **Site sans DuckDB-WASM.** Le moteur (≈ 5 à 8 Mo compressés, téléchargé depuis jsDelivr) pèse plus que les données qu'il interroge (≈ 54 000 lignes d'effectifs, ≈ 122 000 de carrière, ≈ 16 000 joueurs). Remplacer par des JSON statiques pré-calculés à l'export : un fichier par saison pour les effectifs, un par club, un index de recherche (≈ 300 Ko, chargé à la demande), des carrières découpées en tranches de joueurs. Les Parquet restent publiés en téléchargement. Gains : accueil et pages instantanés à froid, plus de dépendance à un CDN tiers, fonctionnement hors connexion. Coûts : ≈ 20 requêtes à réécrire (Joueur 5, Effectif 4, Club 3, Recherche 3…), recherche en JavaScript, découpage à prévoir quand les pays se multiplieront. Étape 1 : accueil, clubs, effectifs (déjà amorcé par `home.json`) ; étape 2 : recherche et fiches joueur ; garder DuckDB en secours jusqu'à la fin de la migration.
 - **Transferts des pages non anglaises** (italien, espagnol) : formats hétérogènes, gain attendu faible (voir D13).
 - **Gel des saisons** et contrôle de qualité face aux sources avant gel.
 
 ### Palmarès et statistiques (feuille de route, 2026-11-13)
-Décidé, dans cet ordre. Rien n'est commencé. Les autres idées (carte, jeu, résultats de matchs, application iOS, deux dépôts) sont dans [ROADMAP.md](ROADMAP.md).
+Décidé, dans cet ordre. Rien n'est commencé. Les autres idées (carte, jeu, résultats de matchs, application iOS, deux dépôts) sont dans [ROADMAP.md](roadmap.md).
 1. **Vainqueurs des compétitions (Wikidata), puis palmarès des clubs et page « Palmarès » sur chaque championnat.**
    - Source : la propriété Wikidata « winner » (P1346) des éléments « saison d'une compétition » (championnats, Ligue des champions, Ligue Europa, Ligue Conférence). **À vérifier d'abord** : la couverture réelle sur nos 18 championnats et sur les coupes d'Europe, depuis 2010, avant de rien promettre.
    - Palmarès d'un club = ses titres **depuis 2010**, dans les compétitions que nous couvrons (à dire clairement sur la page). Page « Palmarès » d'une compétition = la liste des vainqueurs saison par saison.

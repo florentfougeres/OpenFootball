@@ -550,7 +550,7 @@ def fix_player_cmd(args: argparse.Namespace) -> int:
 
 
 def restore_db_cmd(args: argparse.Namespace) -> int:
-    """Reconstitue une base DuckDB de travail depuis une release de données (voir docs/reconstituer-une-base.md)."""
+    """Reconstitue une base DuckDB de travail depuis une release de données (voir docs/fr/restoring-a-database.md)."""
     import tempfile
     from openfootball.restore import compare_with_release, download_release, extract_archive, restore_database
     if Path(args.db).exists():
@@ -566,7 +566,7 @@ def restore_db_cmd(args: argparse.Namespace) -> int:
         if args.verify:
             diffs = compare_with_release(args.db, data)
             print("vérification : la base restaurée, ré-exportée, redonne les mêmes fichiers" if not diffs
-                  else "vérification : petits écarts attendus (joueurs sans équipe exportée, doublons de nom ; voir docs/reconstituer-une-base.md)")
+                  else "vérification : petits écarts attendus (joueurs sans équipe exportée, doublons de nom ; voir docs/fr/restoring-a-database.md)")
             for d in diffs:
                 print("  ", d)
     return 0
@@ -576,8 +576,14 @@ def schema_cmd(args: argparse.Namespace) -> int:
     """Écrit le dictionnaire de données (Markdown) d'un export existant."""
     data = Path(args.data)
     manifest = json.loads((data / "manifest.json").read_text(encoding="utf-8"))
-    Path(args.out).write_text(build_schema_doc(data, manifest), encoding="utf-8")
-    print(f"dictionnaire de données écrit dans {args.out}")
+    out = Path(args.out)
+    for lang, path in (("fr", out), ("en", out.parent.parent / "en" / out.name)):       # docs/fr/data-model.md et docs/en/data-model.md
+        path.parent.mkdir(parents=True, exist_ok=True)
+        text = build_schema_doc(data, manifest, lang)
+        # Dans la release, les deux dictionnaires sont voisins (`SCHEMA.md` / `SCHEMA.fr.md`) ; dans la documentation, ils sont dans docs/fr et docs/en.
+        text = text.replace("(SCHEMA.fr.md)", "(../fr/data-model.md)").replace("(SCHEMA.md)", "(../en/data-model.md)")
+        path.write_text(text, encoding="utf-8")
+        print(f"dictionnaire de données ({lang}) écrit dans {path}")
     return 0
 
 
@@ -724,7 +730,7 @@ def main(argv: list[str] | None = None) -> int:
     fp.set_defaults(func=fix_player_cmd)
     sc_ = sub.add_parser("schema", help="écrit le dictionnaire de données des Parquet (Markdown) depuis un export")
     sc_.add_argument("--data", default="dist/data", help="dossier d'export (avec manifest.json)")
-    sc_.add_argument("--out", default="docs/modele-de-donnees.md")
+    sc_.add_argument("--out", default="docs/fr/data-model.md")
     sc_.set_defaults(func=schema_cmd)
     wc = sub.add_parser("import-world-clubs", help="importe le CSV des clubs du monde (fiches club)")
     wc.add_argument("--db", default=DB_DEFAULT)

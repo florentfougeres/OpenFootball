@@ -1,9 +1,7 @@
 // DuckDB-WASM lit les fichiers Parquet de data/ directement dans le navigateur (requêtes HTTP par plages).
 import * as duckdb from "@duckdb/duckdb-wasm";
 import { app, type Row } from "./app.svelte";
-// Moteur hébergé avec le site (même origine) : aucun script ni wasm chargé depuis un CDN tiers. Seul le paquet « eh » (navigateurs récents) est livré.
-import wasmUrl from "@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url";
-import workerUrl from "@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url";
+declare const __DUCKDB__: { version: string; wasm: string; worker: string };   // injecté par vite.config.ts : version du paquet et empreintes SHA-384
 
 let conn: duckdb.AsyncDuckDBConnection | null = null;
 
@@ -11,10 +9,18 @@ const seasonSlug = (label: string) => label.replace("/", "-");
 
 /** Télécharge et instancie le moteur : lancé en parallèle du manifeste, puisqu'il n'en dépend pas. */
 export async function openDb() {
-  const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(new URL(workerUrl, location.href)));
+  // Moteur servi par jsDelivr, à la version exacte du paquet. Chaque fichier est d'abord téléchargé avec l'empreinte attendue (`integrity`) : si le CDN
+  // en servait un autre, le navigateur le refuserait. Le worker est exécuté depuis le blob vérifié ; le wasm est ensuite donné au moteur par son
+  // adresse (le moteur reconnaît son paquet à ce nom, et le navigateur le relit dans son cache : un seul téléchargement).
+  const base = `https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@${__DUCKDB__.version}/dist/`;
+  const checked = (file: string, integrity: string) => fetch(base + file, { integrity, credentials: "omit" }).then((r) => r.arrayBuffer());
+  const [worker] = await Promise.all([checked("duckdb-browser-eh.worker.js", __DUCKDB__.worker), checked("duckdb-eh.wasm", __DUCKDB__.wasm)]);
+  const workerUrl = URL.createObjectURL(new Blob([worker], { type: "text/javascript" }));
+  const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
   performance.mark("db:bundle");
-  await db.instantiate(new URL(wasmUrl, location.href).href);
+  await db.instantiate(base + "duckdb-eh.wasm");
   performance.mark("db:instantiated");
+  URL.revokeObjectURL(workerUrl);
   return db;
 }
 
@@ -34,13 +40,16 @@ export async function loadData(db: duckdb.AsyncDuckDB, manifest: any, base: URL)
   await Promise.all(pending);
   performance.mark("db:registered");
   conn = await db.connect();
+  // L'extension Parquet (≈ 2,8 Mo) est servie par le site plutôt que par extensions.duckdb.org (tiers, sans cache, ≈ 2 s à chaque visite).
+  await conn.query(`SET custom_extension_repository = '${new URL(import.meta.env.BASE_URL + "duckdb-ext", location.href).href}'`);
   const list = (a: string[]) => "[" + a.map((x) => `'${x}'`).join(",") + "]";
-  await conn.query(`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`);
-  await conn.query(`CREATE VIEW club_season AS SELECT * FROM read_parquet(${list(clubSeason)}, union_by_name=true)`);
+  const views = [`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`,
+                 `CREATE VIEW club_season AS SELECT * FROM read_parquet(${list(clubSeason)}, union_by_name=true)`];
   for (const n of ["club", "competition", "competition_club", "season", "known_gap", "country", "career", "national", "player_profile", "squad_source", "birth", "entity_wiki"]) {
-    if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
+    if (files[n]) views.push(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     app.has[n] = Boolean(files[n]);
   }
+  for (const v of views) await conn.query(v);
   performance.mark("db:views");
   const squadCols = (await conn.query(`DESCRIBE squad`)).toArray().map((r: any) => r.toJSON().column_name);
   app.squadHasMoves = squadCols.includes("stint_date");

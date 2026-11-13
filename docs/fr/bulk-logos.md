@@ -1,5 +1,7 @@
 # Récupérer en masse les logos de club manquants
 
+[English](../en/bulk-logos.md)
+
 Principe : le logo d'un club = le champ `image` de l'**infobox** de sa page Wikipedia **anglaise** (jamais « l'image
 principale de la page » : montage, stade ou personne). La licence du fichier est lue en même temps
 (`logo_license` : `CC BY-SA`, `non-free`, `unknown`…). Un club sans page anglaise, ou dont l'infobox n'a pas de
@@ -29,7 +31,7 @@ openfootball enrich --what logos --refresh-logos       # efface puis refait les 
   ```
   (Rappel : une seule commande en écriture à la fois sur la base ; ne lancez pas de backfill pendant ce temps.)
 - `--refresh-logos` **écrase aussi vos corrections manuelles**
-  (voir [club-logo-et-infos-manuel.md](club-logo-et-infos-manuel.md)). À réserver à une correction de la
+  (voir [manual-club-logo-and-info.md](manual-club-logo-and-info.md)). À réserver à une correction de la
   méthode de lecture (ex. bug d'infobox), jamais en routine.
 
 ## Mesurer l'avancement

@@ -1,0 +1,70 @@
+# Changelog
+
+[Français](../fr/changelog.md)
+
+Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
+
+## Data 1.10.0 — 2026-11-13
+- **New competitions**: Copa Libertadores, CAF Champions League and AFC Champions League, participants of the group / league stage from 2010 to 2026 (list only; [guide](continental-cups.md)).
+- **Fix**: pool championships were undercounted (China 2020 and 2021, Tunisia 2012, 2016 and 2021, Egypt 2012 and 2013): the group tables are now merged.
+
+## Data 1.9.0 — 2026-11-13
+- **20 countries in "list only" mode**: Mexico, Japan, Australia, China, South Korea, Colombia, Ecuador, Chile, Egypt, Peru, Morocco, South Africa, Qatar, United Arab Emirates, Paraguay, Uruguay, Bolivia, Algeria, Vietnam, Tunisia. First-division league and clubs of each season since 2010, no squads yet. For the open season without a season page, the league's generic page is read.
+
+## Data 1.8.0 — 2026-11-13
+- **UEFA Conference League**: participants and squads from 2021/22 to 2026/27, with the national leagues of its clubs. About half of the clubs of small countries have no "club season" page and stay "Without squad".
+
+## Data 1.7.0 — 2026-11-13
+- **New leagues**: Brazil (Série A) and Argentina (Primera División) from 2010 to 2026, squads read in English, Portuguese and Spanish (partial coverage: many clubs have no "club season" page).
+- Summer departures removed from squads; player profiles (birthplace, height, photo).
+
+## Data 1.6.1 — 2026-11-13
+- **Squad fixes**: a player who left a club in the summer window (before 2 September) and is present in another club the same season is no longer listed in the former club (Lewandowski and Ferran Torres at Barça 2026/27; 1,003 rows over 17 seasons).
+
+## Data 1.6.0 — 2026-11-13
+- **Player profiles**: birthplace, height, full name, death and infobox photo (new table `player_profile`).
+
+## Data 1.5.1 — 2026-11-13
+- Removed the wrong logo of Athletic Newham (Wikipedia showed Atlético de Madrid's there).
+
+## Data 1.5.0 — 2026-11-13
+- **New**: Europa League, second divisions (ENG/ESP/FRA/DEU/ITA), MLS and Saudi Pro League, every club of the national leagues seen in a European cup, career clubs added.
+- Squad fixes (Roster, current season, Jr/Junior duplicates).
+
+## Data 1.4.0 — 2026-11-12
+- `home.json` (instant home page), league logos in the competition table, loan statuses only for real loans (loan returns are no longer labelled loans), cross-club loan consistency.
+
+## Data 1.3.0 — 2026-11-12
+- Same content as 1.2.0; the `club` table is now ordered with squad clubs first in small row groups, so the site reads about 170 KB instead of 3.2 MB at start-up.
+
+## Data 1.2.0 — 2026-11-12
+- Squads are the union of all language pages; loans cross-checked between clubs (a loaned player is not listed by the lender); players absent from a squad page are never added; Wikidata identification of players without links; dated movements published in `squad_movement`. Data dictionary `SCHEMA.md` in the archive.
+
+## Data 1.1.0 — 2026-11-12
+- Squads are the union of every language page of the country (main source first), with provenance (`squad_source`, `squad.listed_in`).
+- Fixed players merged by mistake (`sortname` `dab=` parameter), e.g. Schalke 04 2026/27 / Diogo Leite.
+- Loaned-out players no longer in their parent club's squad.
+- International caps and goals; club logos (17,000+); English names for non-Latin stadiums, leagues and cities; country reference with es/it/de names (flags).
+- `SCHEMA.md`: data dictionary of the Parquet files.
+
+## Data 1.0.0 — 2026-11-12
+- **First public release**: 5 leagues (Premier League, La Liga, Serie A, Bundesliga, Ligue 1), seasons 2010/11 to 2026/27 (open), built from Wikipedia and Wikidata only. Parquet files + `manifest.json`; the site is deployed from this release.
+
+## Site and tooling
+
+### 2026-11-13
+- **Security and speed**: Content-Security-Policy; the DuckDB engine is verified by a SHA-384 integrity hash and its Parquet extension is hosted with the site (see [security.md](security.md), [website.md](website.md)); `restore-db` verifies every file's SHA-256; deployment downloads the release that triggered it; GitHub Actions pinned by SHA; Dependabot, secret scanning and push protection enabled.
+- **Releases renamed** `Data X.Y.Z` with tag `data-X.Y.Z` (they used to be `data-v1` … `data-v13` with names like "Data v1.10.0 (date)").
+- **Bilingual data dictionary** (`SCHEMA.md` in English, `SCHEMA.fr.md` in French) and bilingual documentation under `docs/fr/` and `docs/en/`; bilingual README.
+- **Competitions page**: uniform grid grouped by confederation; continental cups appear under their confederation.
+- **Site**: Players section (filters, CSV download), league trends dashboard, career timeline, club movements between seasons, unified club + squad page, coverage heat map.
+- **Tooling**: `openfootball restore-db`, `openfootball continental`, `--fresh` mode and `tools/refresh.sh --fresh` for the transfer window.
+
+### 2026-11-12
+- Site rebuilt with Svelte 5 + Vite + Tailwind 4 (dark app style), generic navigation by country, fast home page, beta notice.
+- Mid-season transfers and loan consistency (D13), Wikidata identification of players without links, MIT licence.
+- Belgium, Portugal, Netherlands and Türkiye (nl and tr parsers on rendered HTML); current-season squad from the club page; Champions League participants (D14).
+- Project renamed OpenFootballBase; first deployment to GitHub Pages.
+
+### 2026-11-11
+- Project started from zero (see [spec.md](spec.md), §2): pipeline, declarative scopes, frozen seasons, identity by Wikidata QID, careers from infoboxes, world clubs, logos.

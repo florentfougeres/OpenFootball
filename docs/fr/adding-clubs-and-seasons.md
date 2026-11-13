@@ -1,5 +1,7 @@
 # Ajouter des clubs, des saisons, un championnat
 
+[English](../en/adding-clubs-and-seasons.md)
+
 Le périmètre est **déclaratif** : un fichier TOML par pays dans `openfootball/scopes/`. Un club n'est jamais
 ajouté « à la main » dans un championnat : il entre dans la base parce qu'il figure dans le **classement de la
 page championnat** de la saison (`2025–26 Ligue 1`, etc.). Ajouter un club = ajouter la saison/le championnat
@@ -24,7 +26,7 @@ openfootball status --season 2026                    # invariants, trous, taille
 - `--league FRA ITA` limite à certains pays ; sans option, tous les pays déclarés dans `scopes/`.
 - Le backfill lit, pour chaque club-saison, **toutes les langues du pays** (`langs` du TOML : `fr` d'abord pour la France,
   `it` pour l'Italie, `en` pour l'Angleterre…, puis les autres) et fait l'**union** des effectifs trouvés, pour être le
-  plus complet possible (D12). La première langue qui répond est la source principale ; les pages suivantes n'ajoutent que
+  plus complet possible (D12, voir [spec.md](spec.md)). La première langue qui répond est la source principale ; les pages suivantes n'ajoutent que
   les joueurs absents. Si une page n'est lisible que rendue (HTML), elle l'est avant de passer à la langue suivante ;
   si aucune langue ne marche : sources manuelles (§4). Un effectif n'est **attesté** que s'il passe les invariants
   (≥ 11 joueurs dont un gardien). Les sources utilisées sont visibles sur la page effectif du site (table `squad_source`).
@@ -42,7 +44,7 @@ openfootball status --season 2026                    # invariants, trous, taille
 1. Cherchez une cause : titre de page différent, page absente, effectif incomplet. Si une page existe sous un
    autre titre, ajoutez une source manuelle (§4) et relancez `backfill --season …`.
    Pour la **saison en cours** (`backfill --open`), la page du club elle-même est lue en dernier recours si elle cite
-   la saison (SPEC, « Saison en cours : la page du club »).
+   la saison ([spec.md](spec.md), « Saison en cours : la page du club »).
 2. Si Wikipedia n'a vraiment rien, **validez explicitement** le trou (jamais silencieux) :
    ```bash
    openfootball known-gap --season 2012 --club "AS Nancy" --reason "page saison inexistante sur en/fr/it"
@@ -59,7 +61,7 @@ Une fois figée, la saison ne bougera plus. Ne figez que ce que vous avez relu.
 ## 2. Ajouter un championnat / un pays
 
 Exemples réels : la Belgique, les Pays-Bas, le Portugal et la Turquie ont été ajoutés ainsi (`openfootball/scopes/bel.toml`,
-`nld.toml`, `prt.toml`, `tur.toml`). Pour une **coupe d'Europe**, voir [coupes-d-europe.md](coupes-d-europe.md).
+`nld.toml`, `prt.toml`, `tur.toml`). Pour une **coupe d'Europe**, voir [european-cups.md](european-cups.md).
 
 1. **Créez `openfootball/scopes/<iso3>.toml`** (copiez `bel.toml`, le plus complet) :
    ```toml
@@ -243,7 +245,7 @@ réduites, lancez `pytest -q`, mettez la langue dans `langs` du TOML du pays et 
   `reconcile` apprend ensuite leur QID, et les prochains `backfill` rejouent la rustine. Le nom vaut pour tous les clubs et toutes
   les saisons : évitez un nom porté par plusieurs joueurs. Pour la lister : `duckdb -readonly data/work/openfootball.duckdb "SELECT * FROM player_alias"`.
 - Page Wikipedia corrigée à la source (c'est la vérité) → relancer `backfill` sur la saison (si non figée).
-- Saison figée à rectifier → procédure d'amendement de la SPEC (§5bis) : jamais d'édition silencieuse.
+- Saison figée à rectifier → procédure d'amendement de la [spec](spec.md) (§5bis) : jamais d'édition silencieuse.
 
 ## 7. Publier
-Voir le README (`export`, `--previous`, release GitHub). Avant : `openfootball progress`, `pytest -q`.
+Voir [publishing-a-release.md](publishing-a-release.md) (`export`, `--previous`, release GitHub). Avant : `openfootball progress`, `pytest -q`.

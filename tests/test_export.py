@@ -96,12 +96,22 @@ def test_release_ships_a_data_dictionary_covering_every_exported_column(con, tmp
     import tarfile
     from openfootball.export import pack
     m = export_all(con, tmp_path)
-    doc = (tmp_path / "SCHEMA.md").read_text(encoding="utf-8")
-    assert m["docs"] == {"schema": "SCHEMA.md"}
+    doc = (tmp_path / "SCHEMA.fr.md").read_text(encoding="utf-8")
+    en = (tmp_path / "SCHEMA.md").read_text(encoding="utf-8")
+    assert "undocumented" not in en and "# OpenFootballBase — data dictionary" in en
+    assert m["docs"] == {"schema": "SCHEMA.md", "schema_fr": "SCHEMA.fr.md"}
     assert "non documentée" not in doc, [l for l in doc.splitlines() if "non documentée" in l]     # une colonne sans description
     assert "### `squad`" in doc and "| `player_qid` | VARCHAR |" in doc and "club_season" in doc
     with tarfile.open(pack(tmp_path, tmp_path / "x.tar.gz")) as tar:
-        assert "SCHEMA.md" in tar.getnames()
+        assert {"SCHEMA.md", "SCHEMA.fr.md"} <= set(tar.getnames())
+
+
+def test_both_data_dictionaries_describe_the_same_tables_and_columns():
+    from openfootball.schema_doc import TABLES
+    from openfootball.schema_doc_en import TABLES_EN
+    assert TABLES.keys() == TABLES_EN.keys()
+    for name, (_role, _key, cols) in TABLES.items():
+        assert cols.keys() == TABLES_EN[name][2].keys(), name
 
 
 def test_restore_rebuilds_a_database_that_exports_the_same_release(con, tmp_path):

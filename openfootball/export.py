@@ -207,8 +207,9 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         JOIN club cl ON cl.id = e.club_id
         ORDER BY 1, 2, 3""", out, "competition_club", "competition_club")
     manifest["home"] = _write_home(con, out, manifest)
-    (out / "SCHEMA.md").write_text(build_schema_doc(out, manifest), encoding="utf-8")      # dictionnaire de données, joint à la release
-    manifest["docs"] = {"schema": "SCHEMA.md"}
+    (out / "SCHEMA.md").write_text(build_schema_doc(out, manifest, "en"), encoding="utf-8")      # dictionnaire de données, joint à la release
+    (out / "SCHEMA.fr.md").write_text(build_schema_doc(out, manifest, "fr"), encoding="utf-8")
+    manifest["docs"] = {"schema": "SCHEMA.md", "schema_fr": "SCHEMA.fr.md"}
     (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     return manifest
 

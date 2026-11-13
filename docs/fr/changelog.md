@@ -1,0 +1,70 @@
+# Journal des changements
+
+[English](../en/changelog.md)
+
+Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
+
+## Data 1.10.0 — 2026-11-13
+- **Nouvelles compétitions** : Copa Libertadores, Ligue des champions de la CAF et Ligue des champions de l'AFC, participants de la phase de groupes ou de ligue de 2010 à 2026 (liste seulement ; [guide](continental-cups.md)).
+- **Correction** : les championnats à poules étaient sous-comptés (Chine 2020 et 2021, Tunisie 2012, 2016 et 2021, Égypte 2012 et 2013) : les tableaux de poules sont maintenant fusionnés.
+
+## Data 1.9.0 — 2026-11-13
+- **Vingt pays en « liste seulement »** : Mexique, Japon, Australie, Chine, Corée du Sud, Colombie, Équateur, Chili, Égypte, Pérou, Maroc, Afrique du Sud, Qatar, Émirats arabes unis, Paraguay, Uruguay, Bolivie, Algérie, Vietnam, Tunisie. Championnat de première division et clubs de chaque saison depuis 2010, sans effectifs pour le moment. Pour la saison en cours sans page de saison, la page générique du championnat est lue.
+
+## Data 1.8.0 — 2026-11-13
+- **Ligue Conférence de l'UEFA** : participants et effectifs de 2021/22 à 2026/27, avec les championnats nationaux de ses clubs. Environ la moitié des clubs de petits pays n'ont pas de page « saison du club » et restent « Sans effectif ».
+
+## Data 1.7.0 — 2026-11-13
+- **Nouveaux championnats** : Brésil (Série A) et Argentine (Primera División) de 2010 à 2026, effectifs lus en anglais, portugais et espagnol (couverture partielle : beaucoup de clubs n'ont pas de page « saison du club »).
+- Départs d'été retirés des effectifs ; profils de joueurs (lieu de naissance, taille, photo).
+
+## Data 1.6.1 — 2026-11-13
+- **Corrections d'effectifs** : un joueur parti d'un club dans la fenêtre d'été (avant le 2 septembre) et présent dans un autre club la même saison n'est plus listé dans l'ancien club (Lewandowski et Ferran Torres au Barça 2026/27 ; 1 003 lignes sur 17 saisons).
+
+## Data 1.6.0 — 2026-11-13
+- **Profils des joueurs** : lieu de naissance, taille, nom complet, décès et photo d'infobox (nouvelle table `player_profile`).
+
+## Data 1.5.1 — 2026-11-13
+- Retrait du logo erroné d'Athletic Newham (Wikipedia y affichait celui de l'Atlético de Madrid).
+
+## Data 1.5.0 — 2026-11-13
+- **Nouveau** : Ligue Europa, deuxièmes divisions (ENG/ESP/FRA/DEU/ITA), MLS et Saudi Pro League, tous les clubs des championnats nationaux vus en coupe d'Europe, clubs de carrière ajoutés.
+- Corrections d'effectifs (Roster, saison en cours, doublons Jr/Junior).
+
+## Data 1.4.0 — 2026-11-12
+- `home.json` (accueil instantané), logos de championnats dans la table des compétitions, statuts de prêt seulement pour les vrais prêts (un retour de prêt n'est plus un prêt), cohérence des prêts entre clubs.
+
+## Data 1.3.0 — 2026-11-12
+- Même contenu que la 1.2.0 ; la table `club` est ordonnée avec les clubs à effectifs d'abord, en petits groupes de lignes : le site lit environ 170 Ko au lieu de 3,2 Mo au démarrage.
+
+## Data 1.2.0 — 2026-11-12
+- Effectifs = union de toutes les langues du pays ; prêts recoupés entre clubs (un prêté n'est pas listé par le prêteur) ; un joueur absent d'une page d'effectif n'est jamais ajouté ; identification Wikidata des joueurs sans lien ; mouvements datés publiés dans `squad_movement`. Dictionnaire de données `SCHEMA.md` dans l'archive.
+
+## Data 1.1.0 — 2026-11-12
+- Effectifs = union de toutes les langues du pays (source principale d'abord), avec provenance (`squad_source`, `squad.listed_in`).
+- Joueurs fusionnés par erreur corrigés (paramètre `dab=` de `sortname`), ex. Schalke 04 2026/27 / Diogo Leite.
+- Prêtés hors de l'effectif d'origine.
+- Sélections et buts internationaux ; logos de clubs (17 000+) ; noms anglais pour les stades, championnats et villes en alphabet non latin ; référentiel de pays avec noms es/it/de (drapeaux).
+- `SCHEMA.md` : dictionnaire de données des fichiers Parquet.
+
+## Data 1.0.0 — 2026-11-12
+- **Première publication** : 5 championnats (Premier League, La Liga, Serie A, Bundesliga, Ligue 1), saisons 2010/11 à 2026/27 (en cours), issues de Wikipedia et Wikidata uniquement. Fichiers Parquet + `manifest.json` ; le site est déployé à partir de cette release.
+
+## Site et outils
+
+### 2026-11-13
+- **Sécurité et vitesse** : politique de sécurité de contenu (CSP) ; le moteur DuckDB est vérifié par une empreinte SHA-384 et son extension Parquet est hébergée avec le site (voir [security.md](security.md), [website.md](website.md)) ; `restore-db` vérifie le SHA-256 de chaque fichier ; le déploiement télécharge la release qui l'a déclenché ; actions GitHub figées par SHA ; Dependabot, analyse de secrets et protection au push activés.
+- **Releases renommées** `Data X.Y.Z` avec le tag `data-X.Y.Z` (elles s'appelaient `data-v1` … `data-v13`, avec des noms comme « Data v1.10.0 (date) »).
+- **Dictionnaire de données bilingue** (`SCHEMA.md` en anglais, `SCHEMA.fr.md` en français) et documentation bilingue sous `docs/fr/` et `docs/en/` ; README bilingue.
+- **Page Compétitions** : grille uniforme groupée par confédération ; les coupes continentales apparaissent dans leur confédération.
+- **Site** : section Joueurs (filtres, téléchargement CSV), tableau de bord des tendances d'un championnat, frise de carrière, mouvements d'un club d'une saison à l'autre, page club + effectif unifiée, couverture en grille de chaleur.
+- **Outils** : `openfootball restore-db`, `openfootball continental`, mode `--fresh` et `tools/refresh.sh --fresh` pour le mercato.
+
+### 2026-11-12
+- Site refait en Svelte 5 + Vite + Tailwind 4 (style d'application sombre), navigation générique par pays, accueil rapide, bandeau bêta.
+- Transferts en cours de saison et cohérence des prêts (D13), identification Wikidata des joueurs sans lien, licence MIT.
+- Belgique, Portugal, Pays-Bas et Turquie (analyseurs nl et tr sur le HTML rendu) ; effectif de la saison en cours depuis la page du club ; participants de la Ligue des champions (D14).
+- Projet renommé OpenFootballBase ; premier déploiement sur GitHub Pages.
+
+### 2026-11-11
+- Projet démarré de zéro (voir [spec.md](spec.md), §2) : pipeline, périmètres déclaratifs, saisons figées, identité par QID Wikidata, carrières depuis les infoboxes, clubs du monde, logos.

@@ -1,6 +1,8 @@
 # Mettre à jour parcours, matchs, buts et sélections des joueurs
 
-> Pour la mise à jour **courante** (mercato, joueurs non retraités), lisez d'abord [mettre-a-jour-saison-en-cours.md](mettre-a-jour-saison-en-cours.md) :
+[English](../en/update-players.md)
+
+> Pour la mise à jour **courante** (mercato, joueurs non retraités), lisez d'abord [update-current-season.md](update-current-season.md) :
 > `careers --active --fresh` relit seulement les joueurs en activité et contourne le cache. Cette page détaille la lecture complète.
 
 Source : l'**infobox** de la page Wikipedia **anglaise** de chaque joueur (`Infobox football biography`).

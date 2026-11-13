@@ -1,4 +1,4 @@
-"""Dictionnaire de données des fichiers Parquet publiés (joint à chaque release sous le nom `SCHEMA.md`).
+"""Dictionnaire de données des fichiers Parquet publiés (joint à chaque release : `SCHEMA.md` en anglais, `SCHEMA.fr.md` en français).
 
 Les TYPES et les nombres de lignes sont lus dans les fichiers réellement exportés ; les DESCRIPTIONS sont écrites ici.
 Un test échoue si une colonne exportée n'a pas de description : la documentation ne peut pas dériver du schéma.
@@ -233,6 +233,7 @@ INTRO = """# OpenFootballBase — dictionnaire de données
 
 Effectifs de clubs de football par saison, construits **uniquement** à partir de Wikipedia (CC BY-SA 4.0) et Wikidata (CC0).
 Ce fichier décrit les fichiers Parquet de cette release ; il est généré à l'export, à partir des fichiers eux-mêmes.
+[English version: `SCHEMA.md`](SCHEMA.md).
 
 ## Organisation de la release
 
@@ -292,27 +293,33 @@ def _describe(path: Path) -> list[tuple[str, str]]:
     return [(r[0], r[1]) for r in rows]
 
 
-def build_schema_doc(data_dir: str | Path, manifest: dict) -> str:
-    """Markdown du dictionnaire : types et volumes lus dans les fichiers exportés, descriptions tirées de TABLES."""
+LABELS_FR = {"tables": "Tables", "files": "Fichiers", "rows": "lignes", "key": "Clé", "col": "Colonne", "type": "Type",
+             "desc": "Description", "undoc": "**(non documentée)**", "perseason": "fichiers (un par saison), ex."}
+
+
+def build_schema_doc(data_dir: str | Path, manifest: dict, lang: str = "fr") -> str:
+    """Markdown du dictionnaire (`lang` : `fr` ou `en`) : types et volumes lus dans les fichiers exportés, descriptions tirées de TABLES."""
+    from openfootball.schema_doc_en import INTRO_EN, LABELS_EN, TABLES_EN
+    tables, intro, lab = (TABLES_EN, INTRO_EN, LABELS_EN) if lang == "en" else (TABLES, INTRO, LABELS_FR)
     root = Path(data_dir)
-    out = [INTRO, "\n## Tables\n"]
+    out = [intro, f"\n## {lab['tables']}\n"]
     for name in ORDER:
-        role, key, cols = TABLES[name]
+        role, key, cols = tables[name]
         if name in ("squad", "club_season"):
             files = [s["files"][name] for s in manifest["seasons"].values()]
             example = files[-1]["path"] if files else ""
             rows = sum(f["rows"] for f in files)
-            where = f"{len(files)} fichiers (un par saison), ex. `{example}`"
+            where = f"{len(files)} {lab['perseason']} `{example}`"
         else:
             entry = manifest["tables"].get(name)
             if not entry:
                 continue
             example, rows, where = entry["path"], entry["rows"], f"`{entry['path']}`"
         nb = f"{rows:,}".replace(",", "\u202f")                      # séparateur de milliers (espace fine insécable)
-        out.append(f"### `{name}`\n\n{role}\n\n- Fichiers : {where} — **{nb} lignes**")
-        out.append(f"- Clé : {key}\n")
-        out.append("| Colonne | Type | Description |\n|---|---|---|")
+        out.append(f"### `{name}`\n\n{role}\n\n- {lab['files']} : {where} — **{nb} {lab['rows']}**")
+        out.append(f"- {lab['key']} : {key}\n")
+        out.append(f"| {lab['col']} | {lab['type']} | {lab['desc']} |\n|---|---|---|")
         for col, typ in _describe(root / example):
-            out.append(f"| `{col}` | {typ} | {cols.get(col, '**(non documentée)**')} |")
+            out.append(f"| `{col}` | {typ} | {cols.get(col, lab['undoc'])} |")
         out.append("")
     return "\n".join(out) + "\n"

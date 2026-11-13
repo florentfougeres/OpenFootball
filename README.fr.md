@@ -56,7 +56,7 @@ Tous les championnats n'ont pas la même profondeur. Il y a trois niveaux, et le
 | **Effectifs des clubs européens** | Effectifs de tous les clubs vus en Ligue des champions, Ligue Europa ou Ligue Conférence, et liste complète des clubs de leur championnat national | une quarantaine de pays de plus |
 | **Listes de clubs seulement** | La première division et ses clubs pour chaque saison depuis 2010, sans effectifs pour le moment | 20 pays : Mexique, Japon, Australie, Chine, Corée du Sud, Colombie, Équateur, Chili, Égypte, Pérou, Maroc, Afrique du Sud, Qatar, Émirats arabes unis, Paraguay, Uruguay, Bolivie, Algérie, Vietnam, Tunisie |
 
-**Coupes continentales** (phase de groupes ou de ligue, depuis 2010) : Ligue des champions et Ligue Europa de l'UEFA avec effectifs, Ligue Conférence depuis 2021 avec effectifs, et **Copa Libertadores**, **Ligue des champions de la CAF** et **Ligue des champions de l'AFC** avec les participants seulement ([guide](docs/coupes-continentales.md)).
+**Coupes continentales** (phase de groupes ou de ligue, depuis 2010) : Ligue des champions et Ligue Europa de l'UEFA avec effectifs, Ligue Conférence depuis 2021 avec effectifs, et **Copa Libertadores**, **Ligue des champions de la CAF** et **Ligue des champions de l'AFC** avec les participants seulement ([guide](docs/fr/continental-cups.md)).
 
 <details>
 <summary><strong>Les 18 championnats à effectifs complets</strong></summary>
@@ -85,7 +85,7 @@ Tous les championnats n'ont pas la même profondeur. Il y a trois niveaux, et le
 « Effectifs » compte les club-saisons pour lesquelles au moins une page Wikipedia a donné un effectif ; les autres sont listées « Sans effectif » dans la page *Couverture* du site.
 </details>
 
-Un effectif est **l'union des instantanés publiés sur les pages Wikipedia** d'une saison de club, dans toutes les langues du pays, pour être le plus complet possible. Les prêts, les dates limites et les licences sont expliqués dans le [dictionnaire de données](docs/modele-de-donnees.md) et sur la page *À propos* du site.
+Un effectif est **l'union des instantanés publiés sur les pages Wikipedia** d'une saison de club, dans toutes les langues du pays, pour être le plus complet possible. Les prêts, les dates limites et les licences sont expliqués dans le [dictionnaire de données](docs/fr/data-model.md) et sur la page *À propos* du site.
 
 ## Utiliser les données
 
@@ -106,9 +106,9 @@ WHERE club = 'Arsenal F.C.'
 ORDER BY shirt_number;
 ```
 
-Tables principales : `club`, `competition`, `competition_club`, `season`, `country`, `squad` (un fichier par saison), `club_season`, `career`, `national`, `player_profile`, `birth`, `known_gap`. Colonnes, clés et précautions : [docs/modele-de-donnees.md](docs/modele-de-donnees.md).
+Tables principales : `club`, `competition`, `competition_club`, `season`, `country`, `squad` (un fichier par saison), `club_season`, `career`, `national`, `player_profile`, `birth`, `known_gap`. Colonnes, clés et précautions : [docs/fr/data-model.md](docs/fr/data-model.md).
 
-Pour reconstituer la base DuckDB de travail complète depuis une release, sans relancer le pipeline : `openfootball restore-db --release latest` ([guide](docs/reconstituer-une-base.md)).
+Pour reconstituer la base DuckDB de travail complète depuis une release, sans relancer le pipeline : `openfootball restore-db --release latest` ([guide](docs/fr/restoring-a-database.md)).
 
 ## Lancer le pipeline
 
@@ -131,7 +131,7 @@ tools/refresh.sh --open-season 2026 2026
 # 2. Voir le résultat en local
 cd web && npm install && npm run dev            # http://localhost:5173, lit web/public/data
 
-# 3. Publier les données et le site — voir docs/publier-une-release.md
+# 3. Publier les données et le site — voir docs/fr/publishing-a-release.md
 openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous manifest-precedent.json
 gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main --title "Data 1.10.1" --notes "…"
 ```
@@ -146,16 +146,17 @@ Un site statique [Svelte](https://svelte.dev) : tableaux de bord par championnat
 
 | Je veux… | Guide |
 |---|---|
-| Ajouter une saison, un championnat ou un pays, valider un trou, figer une saison | [ajouter-clubs-et-saisons.md](docs/ajouter-clubs-et-saisons.md) |
-| Ajouter des coupes d'Europe ou des coupes continentales | [coupes-d-europe.md](docs/coupes-d-europe.md) · [coupes-continentales.md](docs/coupes-continentales.md) |
-| Mettre à jour carrières et sélections des joueurs | [mettre-a-jour-joueurs.md](docs/mettre-a-jour-joueurs.md) |
-| Mettre à jour la saison en cours (mercato) | [mettre-a-jour-saison-en-cours.md](docs/mettre-a-jour-saison-en-cours.md) |
-| Connaître toutes les commandes | [commandes.md](docs/commandes.md) |
-| Publier une release et déployer le site | [publier-une-release.md](docs/publier-une-release.md) |
-| Comprendre les tables Parquet | [modele-de-donnees.md](docs/modele-de-donnees.md) |
-| Résoudre un problème | [depannage.md](docs/depannage.md) |
+| Commencer, quel que soit mon objectif | [getting-started.md](docs/fr/getting-started.md) |
+| Ajouter une saison, un championnat ou un pays, valider un trou, figer une saison | [ajouter-clubs-et-saisons.md](docs/fr/adding-clubs-and-seasons.md) |
+| Ajouter des coupes d'Europe ou des coupes continentales | [coupes-d-europe.md](docs/fr/european-cups.md) · [coupes-continentales.md](docs/fr/continental-cups.md) |
+| Mettre à jour carrières et sélections des joueurs | [mettre-a-jour-joueurs.md](docs/fr/update-players.md) |
+| Mettre à jour la saison en cours (mercato) | [mettre-a-jour-saison-en-cours.md](docs/fr/update-current-season.md) |
+| Connaître toutes les commandes | [commandes.md](docs/fr/commands.md) |
+| Publier une release et déployer le site | [publier-une-release.md](docs/fr/publishing-a-release.md) |
+| Comprendre les tables Parquet | [modele-de-donnees.md](docs/fr/data-model.md) |
+| Résoudre un problème | [depannage.md](docs/fr/troubleshooting.md) |
 
-Décisions de conception et résultats mesurés : [SPEC.md](SPEC.md) · Avancement : [PROGRESS.md](PROGRESS.md) · Feuille de route : [ROADMAP.md](ROADMAP.md).
+Voir aussi : [prise en main](docs/fr/getting-started.md) · [architecture](docs/fr/architecture.md) · [FAQ](docs/fr/faq.md) · [sécurité](docs/fr/security.md) · [journal de conception](docs/fr/spec.md) · [feuille de route](docs/fr/roadmap.md) · [journal des changements](docs/fr/changelog.md) · [PROGRESS.md](PROGRESS.md) (état généré).
 
 ## Organisation du dépôt
 
@@ -177,4 +178,4 @@ docs/           guides d'exploitation         tests/  tests et fixtures wikitext
 
 ## Contribuer
 
-Les issues et pull requests sont les bienvenues, surtout pour de nouveaux pays (un périmètre est un petit fichier TOML, voir [le guide](docs/ajouter-clubs-et-saisons.md)), des corrections d'analyseurs pour de nouvelles mises en page, et des corrections de données (à faire de préférence à la source, sur Wikipedia ou Wikidata). Lancez `pytest -q` et `npm run check` avant d'ouvrir une pull request.
+Les issues et pull requests sont les bienvenues, surtout pour de nouveaux pays (un périmètre est un petit fichier TOML, voir [le guide](docs/fr/adding-clubs-and-seasons.md)), des corrections d'analyseurs pour de nouvelles mises en page, et des corrections de données (à faire de préférence à la source, sur Wikipedia ou Wikidata). Lancez `pytest -q` et `npm run check` avant d'ouvrir une pull request. Toute modification de la documentation se fait en **anglais et en français** ([guide de contribution](docs/fr/contributing.md)).

@@ -4,9 +4,9 @@
 #   tools/refresh.sh 2026                      # relit la saison 2026/27
 #   tools/refresh.sh --open-season 2026 2026   # idem, et la marque « en cours »
 #   tools/refresh.sh 2025 2026 --infobox       # + identification des joueurs sans lien par l'infobox (LONG)
-#   tools/refresh.sh --cup UCL --cup UEL 2025 2026   # + participants et clubs des coupes d'Europe (docs/coupes-d-europe.md)
+#   tools/refresh.sh --cup UCL --cup UEL 2025 2026   # + participants et clubs des coupes d'Europe (docs/fr/european-cups.md)
 #   tools/refresh.sh --fresh --open-season 2026 2026 # MERCATO : relit les pages (cache ignoré), les clubs étrangers de la saison et les
-#                                                    # chiffres d'infobox des joueurs non retraités (docs/mettre-a-jour-saison-en-cours.md)
+#                                                    # chiffres d'infobox des joueurs non retraités (docs/fr/update-current-season.md)
 #
 # Prérequis : environnement installé (README), `export OPENFOOTBALL_CONTACT="votre-contact"`.
 # Une sauvegarde de la base est faite avant toute écriture. Ne lancez pas une autre commande openfootball en parallèle.
@@ -49,4 +49,4 @@ done
 "$OF" enrich --what players careerclubs labels       # liens, âges, clubs des carrières, libellés anglais
 "$OF" progress                                       # PROGRESS.md
 "$OF" export --out web/public/data                   # données du site (hors git)
-echo "terminé : vérifiez PROGRESS.md puis, pour publier, docs/publier-une-release.md"
+echo "terminé : vérifiez PROGRESS.md puis, pour publier, docs/fr/publishing-a-release.md"

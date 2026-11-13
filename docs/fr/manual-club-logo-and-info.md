@@ -1,5 +1,7 @@
 # Mettre à jour à la main le logo et les infos d'un club
 
+[English](../en/manual-club-logo-and-info.md)
+
 Tout est dans la table `club` (une ligne par club, identifiée par son **QID Wikidata** `wikidata_qid` et/ou le
 titre de sa page anglaise `wikipedia_title`). Il n'y a pas (encore) de commande dédiée : on utilise DuckDB
 directement. **Fermez tout autre processus openfootball avant** (un seul écrivain), et sauvegardez :

@@ -56,7 +56,7 @@ Not every league has the same depth. Coverage comes in three levels, and the sit
 | **Squads of European clubs** | Squads for every club seen in the Champions League, Europa League or Conference League, plus the complete club list of their national league | about 40 more countries |
 | **Club lists only** | The first division and its clubs for each season since 2010, no squads yet | 20 countries: Mexico, Japan, Australia, China, South Korea, Colombia, Ecuador, Chile, Egypt, Peru, Morocco, South Africa, Qatar, United Arab Emirates, Paraguay, Uruguay, Bolivia, Algeria, Vietnam, Tunisia |
 
-**Continental cups** (group or league stage, 2010 →): UEFA Champions League and Europa League with squads, UEFA Conference League from 2021 with squads, and the **Copa Libertadores**, **CAF Champions League** and **AFC Champions League** with participants only ([guide](docs/coupes-continentales.md)).
+**Continental cups** (group or league stage, 2010 →): UEFA Champions League and Europa League with squads, UEFA Conference League from 2021 with squads, and the **Copa Libertadores**, **CAF Champions League** and **AFC Champions League** with participants only ([guide](docs/en/continental-cups.md)).
 
 <details>
 <summary><strong>The 18 leagues with full squads</strong></summary>
@@ -85,7 +85,7 @@ Not every league has the same depth. Coverage comes in three levels, and the sit
 "Squads" counts the club-seasons for which at least one Wikipedia page gave a squad; the rest are listed as *without squad* on the site's Coverage page.
 </details>
 
-A squad is **the union of the snapshots published on the Wikipedia pages** of a club's season, in every language of the country, to be as complete as possible. Loans, cut-off dates and licences are explained in the [data dictionary](docs/modele-de-donnees.md) and on the site's *About* page.
+A squad is **the union of the snapshots published on the Wikipedia pages** of a club's season, in every language of the country, to be as complete as possible. Loans, cut-off dates and licences are explained in the [data dictionary](docs/en/data-model.md) and on the site's *About* page.
 
 ## Use the data
 
@@ -106,9 +106,9 @@ WHERE club = 'Arsenal F.C.'
 ORDER BY shirt_number;
 ```
 
-Main tables: `club`, `competition`, `competition_club`, `season`, `country`, `squad` (one file per season), `club_season`, `career`, `national`, `player_profile`, `birth`, `known_gap`. Columns, keys and caveats: [docs/modele-de-donnees.md](docs/modele-de-donnees.md).
+Main tables: `club`, `competition`, `competition_club`, `season`, `country`, `squad` (one file per season), `club_season`, `career`, `national`, `player_profile`, `birth`, `known_gap`. Columns, keys and caveats: [docs/en/data-model.md](docs/en/data-model.md).
 
-To rebuild the full working DuckDB database from a release instead of running the pipeline: `openfootball restore-db --release latest` ([guide](docs/reconstituer-une-base.md)).
+To rebuild the full working DuckDB database from a release instead of running the pipeline: `openfootball restore-db --release latest` ([guide](docs/en/restoring-a-database.md)).
 
 ## Run the pipeline
 
@@ -131,7 +131,7 @@ tools/refresh.sh --open-season 2026 2026
 # 2. Browse the result locally
 cd web && npm install && npm run dev            # http://localhost:5173, reads web/public/data
 
-# 3. Publish data and site — see docs/publier-une-release.md
+# 3. Publish data and site — see docs/en/publishing-a-release.md
 openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous previous-manifest.json
 gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main --title "Data 1.10.1" --notes "…"
 ```
@@ -144,20 +144,21 @@ A static [Svelte](https://svelte.dev) site: league dashboards, club pages with s
 
 ## Documentation
 
-The guides are written in French for now.
+The documentation is available in English and French ([index](docs/en/README.md)). Every page exists in both languages.
 
 | I want to… | Guide |
 |---|---|
-| Add a season, a league or a country, validate a gap, freeze a season | [ajouter-clubs-et-saisons.md](docs/ajouter-clubs-et-saisons.md) |
-| Add European cups or continental cups | [coupes-d-europe.md](docs/coupes-d-europe.md) · [coupes-continentales.md](docs/coupes-continentales.md) |
-| Update players' careers and caps | [mettre-a-jour-joueurs.md](docs/mettre-a-jour-joueurs.md) |
-| Update the current season (transfer windows) | [mettre-a-jour-saison-en-cours.md](docs/mettre-a-jour-saison-en-cours.md) |
-| See every command | [commandes.md](docs/commandes.md) |
-| Publish a release and deploy the site | [publier-une-release.md](docs/publier-une-release.md) |
-| Understand the Parquet tables | [modele-de-donnees.md](docs/modele-de-donnees.md) |
-| Fix a problem | [depannage.md](docs/depannage.md) |
+| Get started, whatever my goal | [getting-started.md](docs/en/getting-started.md) |
+| Add a season, a league or a country, validate a gap, freeze a season | [ajouter-clubs-et-saisons.md](docs/en/adding-clubs-and-seasons.md) |
+| Add European cups or continental cups | [coupes-d-europe.md](docs/en/european-cups.md) · [coupes-continentales.md](docs/en/continental-cups.md) |
+| Update players' careers and caps | [mettre-a-jour-joueurs.md](docs/en/update-players.md) |
+| Update the current season (transfer windows) | [mettre-a-jour-saison-en-cours.md](docs/en/update-current-season.md) |
+| See every command | [commandes.md](docs/en/commands.md) |
+| Publish a release and deploy the site | [publier-une-release.md](docs/en/publishing-a-release.md) |
+| Understand the Parquet tables | [modele-de-donnees.md](docs/en/data-model.md) |
+| Fix a problem | [depannage.md](docs/en/troubleshooting.md) |
 
-Design decisions and measured results: [SPEC.md](SPEC.md) · Progress: [PROGRESS.md](PROGRESS.md) · Roadmap: [ROADMAP.md](ROADMAP.md).
+Also: [getting started](docs/en/getting-started.md) · [architecture](docs/en/architecture.md) · [FAQ](docs/en/faq.md) · [security](docs/en/security.md) · [design log](docs/en/spec.md) · [roadmap](docs/en/roadmap.md) · [changelog](docs/en/changelog.md) · [PROGRESS.md](PROGRESS.md) (generated status).
 
 ## Repository layout
 
@@ -179,4 +180,4 @@ docs/           how-to guides         tests/  tests and wikitext fixtures
 
 ## Contributing
 
-Issues and pull requests are welcome, especially for new countries (a scope is one small TOML file, see [the guide](docs/ajouter-clubs-et-saisons.md)), parser fixes for new page layouts, and data corrections (which are best made upstream on Wikipedia or Wikidata). Please run `pytest -q` and `npm run check` before opening a pull request.
+Issues and pull requests are welcome, especially for new countries (a scope is one small TOML file, see [the guide](docs/en/adding-clubs-and-seasons.md)), parser fixes for new page layouts, and data corrections (which are best made upstream on Wikipedia or Wikidata). Please run `pytest -q` and `npm run check` before opening a pull request. Documentation changes must be made in **both English and French** ([contributing guide](docs/en/contributing.md)).

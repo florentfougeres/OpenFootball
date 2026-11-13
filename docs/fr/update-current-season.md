@@ -1,5 +1,7 @@
 # Mettre à jour la saison en cours (mercato) et les chiffres des joueurs
 
+[English](../en/update-current-season.md)
+
 Deux besoins distincts, une seule procédure :
 
 1. **Les effectifs de la saison en cours** (2026/27 : « en cours » dans la base) changent à chaque mercato : arrivées,
@@ -41,7 +43,7 @@ Ce qu'elle fait, dans l'ordre (la base est sauvegardée avant) :
 | 7 | `enrich --what players careerclubs labels` | âges, liens par langue, clubs cités dans les carrières |
 | 8 | `progress`, `export` | `PROGRESS.md`, Parquet du site |
 
-Puis, pour mettre en ligne : [publier-une-release.md](publier-une-release.md).
+Puis, pour mettre en ligne : [publishing-a-release.md](publishing-a-release.md).
 
 **Durée** : l'étape 1 relit des centaines de pages par langue, comptez de 30 minutes à 2 heures selon les 429 de Wikipedia
 (le programme ralentit seul, puis réaccélère). L'étape 6 relit quelques dizaines de milliers de joueurs par lots de 50. Tout est
@@ -61,13 +63,13 @@ openfootball careers --active --fresh --limit 200                       # essai 
 - **Saison figée** : refusée (garde). Seules les saisons « backfill » ou « en cours » sont relues. Figer une saison est manuel.
 - **Un joueur parti** : s'il est encore listé par une seule langue en retard alors que la page principale du club ne le liste
   plus et qu'un autre club le liste, il est retiré de la saison **en cours** (étape `transfers`). Les saisons passées ne sont pas touchées.
-- **Joueur dont la page du club est mal orthographiée** : voir `fix-player` dans [ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md) (§6).
+- **Joueur dont la page du club est mal orthographiée** : voir `fix-player` dans [adding-clubs-and-seasons.md](adding-clubs-and-seasons.md) (§6).
 - **Chiffres d'un retraité** : ils ne sont relus qu'avec `careers --refresh` (tous les joueurs, cache déplacé), voir
-  [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md), à faire rarement (fin de saison).
+  [update-players.md](update-players.md), à faire rarement (fin de saison).
 - Wikipedia reste la source : si une page est fausse ou en retard, la base l'est aussi (corrigez-la à la source, ou posez une rustine).
 
 ## Quand le faire
 
 - **Après le mercato d'hiver** (fin février) puis **fin de saison** (juin) et **après le mercato d'été** (septembre) : la procédure
-  ci-dessus, puis une release `data-vN`.
+  ci-dessus, puis une release `data-X.Y.Z`.
 - Entre deux : `transfers --fresh` seul suffit pour les mouvements, sans tout relire.
