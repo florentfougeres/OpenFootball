@@ -41,7 +41,7 @@
   {:else if !app.ready}
     <div class="mx-auto max-w-6xl px-4"><Spinner /><p class="text-sm text-muted">{t("loading")}</p></div>
   {:else}
-    <div class="mx-auto px-4 py-8 {head === 'competition' ? 'max-w-[88rem]' : 'max-w-6xl'}">
+    <div class="mx-auto px-4 py-8 {head === 'competition' || head === 'competitions' ? 'max-w-[88rem]' : 'max-w-6xl'}">
       {#if head === "club" && route.parts[2]}
         <Squad title={route.parts[1]} slug={route.parts[2]} />
       {:else if head === "club"}
