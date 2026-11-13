@@ -8,6 +8,7 @@
   import Logo from "../components/Logo.svelte";
   import Spinner from "../components/Spinner.svelte";
     import Badge from "../components/Badge.svelte";
+  import LeagueTrends from "../components/LeagueTrends.svelte";
 
   let { code, slug }: { code: string; slug?: string } = $props();
   const comp = $derived(app.comps.get(code));
@@ -76,6 +77,7 @@
           </li>
         {/each}
       </ul>
+      {#if comp.country_code !== "EUR"}<LeagueTrends {code} season={label} />{/if}
     {/if}
   {/if}
 {/if}

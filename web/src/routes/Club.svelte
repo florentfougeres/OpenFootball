@@ -2,7 +2,8 @@
   import { app, countryOf, href, enc, seasonSlug, t, type Row } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
-  import { clubName, commonsLogo, compName, countryName, fmtFounded, hostLang, seasonAge, wikiUrl } from "../lib/format";
+  import { downloadCsv, RELEASES_URL } from "../lib/download";
+  import { clubName, clubOf, commonsLogo, compName, countryName, fmtFounded, hostLang, seasonAge, wikiUrl } from "../lib/format";
   import Badge from "../components/Badge.svelte";
   import Crumbs from "../components/Crumbs.svelte";
   import Flag from "../components/Flag.svelte";
@@ -78,6 +79,31 @@
   });
   const squad = $derived(sq.data);
 
+  // Mouvements : on compare l'effectif de la saison à celui de la précédente (aucun tableau de transferts requis).
+  let view: "squad" | "moves" = $state("squad");
+  $effect(() => { label; view = view === "moves" ? "moves" : "squad"; });
+  const moves = resource(async () => {
+    const tt = title, lbl = label, prev = older;
+    if (view !== "moves" || !tt || !lbl || !prev?.players || !squad) return null;
+    const keyOf = `COALESCE(player_qid, 'name:' || player)`;
+    const before = await q(`SELECT ${keyOf} AS key, player, nationality, nat_flag, position FROM squad WHERE club = ? AND season = ?`, [tt, prev.season]);
+    const nowKeys = new Set(squad.rows.map((r: Row) => r.key));
+    const beforeKeys = new Set(before.map((r: Row) => r.key));
+    const arrivals = squad.rows.filter((r: Row) => !beforeKeys.has(r.key));
+    const departures = before.filter((r: Row) => !nowKeys.has(r.key));
+    const kept = squad.rows.length - arrivals.length;
+    // D'où viennent les arrivées (leur club la saison précédente), où vont les départs (leur club cette saison), quand nous les connaissons.
+    const where = async (keys: string[], season: string) => {
+      if (!keys.length) return new Map<string, Row>();
+      const rows = await q(`SELECT ${keyOf} AS key, club, competition FROM squad WHERE season = ? AND club <> ? AND ${keyOf} IN (${keys.map(() => "?").join(",")})`, [season, tt, ...keys]);
+      return new Map(rows.map((r: Row) => [r.key as string, r]));
+    };
+    const from = await where(arrivals.map((r: Row) => r.key), prev.season);
+    const dest = await where(departures.map((r: Row) => r.key as string), lbl);
+    return { prev: prev.season, arrivals, departures, kept, from, dest };
+  });
+  const mv = $derived(moves.data);
+
   // Filtres de l'effectif (remis à zéro quand on change de saison).
   const POS = ["GK", "DF", "MF", "FW", null] as const;
   let fPos: string | null = $state(null);
@@ -117,6 +143,9 @@
     label; seasonList.length;
     bar?.querySelector("[aria-current=true]")?.scrollIntoView({ inline: "center", block: "nearest" });
   });
+  const exportCsv = () => downloadCsv(`${seasonSlug(label ?? "")}-${(title ?? key).replace(/[^\w]+/g, "-")}.csv`,
+    ["season", "club", "shirt_number", "player", "player_qid", "position", "nationality", "age"],
+    shown.map((r) => [label, title, r.shirt_number, r.player, String(r.key).startsWith("name:") ? "" : r.key, r.position, r.nationality, ageOf(r)]));
   /** Page Wikipedia à créer ou compléter quand la saison n'a pas d'effectif : la recherche de la page de la saison du club. */
   const fillUrl = $derived(label && title ? `https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(`${label.replace("/", "–")} ${title.replace(/ F\.C\.$/, "")} season`)}` : null);
 
@@ -214,6 +243,48 @@
           {#if r.stint === "loan_in"}<Badge kind="info">{t("loan_in")}</Badge>{/if}
         {/snippet}
 
+        <div class="mb-4 inline-flex rounded-lg border border-line bg-surface p-0.5" role="tablist" aria-label={t("sqTabs")}>
+          {#each [["squad", "sqTab"], ["moves", "mvTab"]] as [v, k]}
+            <button type="button" role="tab" aria-selected={view === v} class="rounded-md px-4 py-1.5 text-sm font-semibold transition {view === v ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}"
+              onclick={() => (view = v as typeof view)}>{t(k)}</button>
+          {/each}
+        </div>
+
+        {#if view === "moves"}
+          {#if !older?.players}
+            <p class="card p-4 text-muted">{t("mvNoPrev")}</p>
+          {:else if moves.loading && !mv}
+            <Spinner />
+          {:else if mv}
+            {#snippet person(r: Row, other: Row | undefined, rel: string)}
+              <li class="grid grid-cols-[1fr_auto] items-center gap-3 py-1.5">
+                <span class="flex min-w-0 items-center gap-2">
+                  <Flag code={r.nat_flag} label={r.nationality} />
+                  <a class="truncate font-medium hover:text-accent hover:underline" href={href("player", enc(r.key))}>{r.player}</a>
+                  {#if r.position}<span class="shrink-0 text-xs text-muted">{r.position}</span>{/if}
+                </span>
+                {#if other}
+                  <span class="flex min-w-0 items-center gap-1.5 text-sm text-muted"><span class="hidden sm:inline">{rel}</span><Logo club={clubOf(other.club)} size={18} />
+                    <a class="truncate hover:text-accent hover:underline" href={href("club", enc(other.club), seasonSlug(rel === t("mvFrom") ? mv.prev : label ?? ""))}>{clubName(clubOf(other.club))}</a></span>
+                {/if}
+              </li>
+            {/snippet}
+            <p class="text-sm text-muted">{mv.prev} → {label} · <strong class="text-fg">{mv.kept}</strong> {t("mvKept")}</p>
+            <div class="mt-3 grid gap-4 xl:grid-cols-2">
+              <section class="card p-4" aria-labelledby="mv-in">
+                <h2 id="mv-in" class="mb-1 flex items-baseline gap-2 border-b border-line pb-1 text-lg font-bold text-accent">{t("mvArrivals")} <span class="display text-base font-semibold">{mv.arrivals.length}</span></h2>
+                {#if mv.arrivals.length}<ul class="divide-y divide-line/60">{#each mv.arrivals as r (r.key)}{@render person(r, mv.from.get(r.key), t("mvFrom"))}{/each}</ul>
+                {:else}<p class="py-2 text-sm text-muted">{t("mvNone")}</p>{/if}
+              </section>
+              <section class="card p-4" aria-labelledby="mv-out">
+                <h2 id="mv-out" class="mb-1 flex items-baseline gap-2 border-b border-line pb-1 text-lg font-bold text-warn">{t("mvDepartures")} <span class="display text-base font-semibold">{mv.departures.length}</span></h2>
+                {#if mv.departures.length}<ul class="divide-y divide-line/60">{#each mv.departures as r (r.key)}{@render person(r, mv.dest.get(r.key), t("mvTo"))}{/each}</ul>
+                {:else}<p class="py-2 text-sm text-muted">{t("mvNone")}</p>{/if}
+              </section>
+            </div>
+            <p class="mt-3 text-sm text-muted">{t("mvNote")}</p>
+          {/if}
+        {:else}
         <!-- Chiffres de l'effectif -->
         <dl class="flex flex-wrap gap-x-8 gap-y-3">
           <div><dd class="display text-3xl font-bold leading-none tabular-nums">{stats.n}</dd><dt class="mt-1 text-xs text-muted">{t("srcPlayers")}</dt></div>
@@ -304,6 +375,13 @@
             {/each}
           </div>
         {/if}
+
+        {/if}
+
+        <p class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+          <button type="button" class="link" onclick={exportCsv}>{t("dlCsv")} ({shown.length})</button>
+          <a class="link" href={RELEASES_URL} target="_blank" rel="noopener">{t("dlAll")}</a>
+        </p>
 
         <!-- Sources de cet effectif -->
         {#if squad.sources.length || squad.cs?.source_lang}

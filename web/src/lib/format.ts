@@ -82,3 +82,10 @@ export function nationalTeam(teamName: string): { flag: string | null; name: str
   }
   return { flag: null, name: raw };
 }
+
+/** Nom d'une nationalité dans la langue de l'app d'après son code de drapeau (« fr », « gb-eng »…) ; sinon le texte publié. */
+export function natLabel(flag: string, fallback: string): string {
+  if (/^[a-z]{2}$/.test(flag)) return countryName(flag.toUpperCase());
+  const uk: Record<string, string> = { "gb-eng": "England", "gb-sct": "Scotland", "gb-wls": "Wales", "gb-nir": "Northern Ireland" };
+  return uk[flag] ? nationalTeam(uk[flag]).name : fallback;
+}

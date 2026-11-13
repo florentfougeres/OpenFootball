@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { downloadCsv } from "../lib/download";
   import { app, countryOf, href, enc, route, seasonSlug, t, type Row } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
-  import { clubName, clubOf, compName, countryName, seasonAge } from "../lib/format";
+  import { clubName, clubOf, compName, natLabel, seasonAge } from "../lib/format";
   import Crumbs from "../components/Crumbs.svelte";
   import Flag from "../components/Flag.svelte";
   import Logo from "../components/Logo.svelte";
@@ -46,8 +47,6 @@
   });
   const all = $derived((data.data ?? []) as Row[]);
 
-  /** Code de drapeau (« fr ») -> nom de pays dans la langue de l'app ; les drapeaux sans code ISO (Angleterre…) gardent le texte publié. */
-  const natName = (flag: string, fallback: string) => /^[a-z]{2}$/.test(flag) ? countryName(flag.toUpperCase()) : fallback;
   const homeFlag = (r: Row) => { const c = app.clubs.get(r.club)?.country_code; return c ? countryOf(c).flag : null; };
   const age = (r: Row) => (season ? seasonAge(r.birth_date, r.precision, season) : null);
 
@@ -63,7 +62,7 @@
 
   const natOptions = $derived.by(() => {
     const m = new Map<string, { label: string; n: number }>();
-    for (const r of all) if (r.nat_flag) m.set(r.nat_flag, { label: natName(r.nat_flag, r.nationality), n: (m.get(r.nat_flag)?.n ?? 0) + 1 });
+    for (const r of all) if (r.nat_flag) m.set(r.nat_flag, { label: natLabel(r.nat_flag, r.nationality), n: (m.get(r.nat_flag)?.n ?? 0) + 1 });
     return [...m.entries()].map(([flag, v]) => ({ flag, ...v })).sort((a, b) => a.label.localeCompare(b.label, app.lang));
   });
   // Répartition par championnat (sans le filtre de championnat lui-même, pour pouvoir en changer d'un clic).
@@ -74,6 +73,9 @@
   });
   const maxComp = $derived(byComp[0]?.n ?? 1);
   const filtered = $derived(Boolean(nat || pos || comp || ageMin || ageMax || abroad));
+  const exportCsv = () => downloadCsv(`players-${season.replace("/", "-")}.csv`,
+    ["season", "club", "competition", "shirt_number", "player", "player_qid", "position", "nationality", "age"],
+    sorted.map((r) => [season, r.club, r.competition, r.shirt_number, r.player, String(r.key).startsWith("name:") ? "" : r.key, r.position, r.nationality, age(r)]));
   const reset = () => { nat = ""; pos = ""; comp = ""; ageMin = ""; ageMax = ""; abroad = false; };
 </script>
 
@@ -168,6 +170,7 @@
             </li>
           {/each}
         </ul>
+        <p class="mt-3 text-sm"><button type="button" class="link" onclick={exportCsv}>{t("dlCsv")} ({sorted.length.toLocaleString(app.lang)})</button></p>
         {#if sorted.length > limit}
           <p class="mt-3"><button type="button" class="btn-ghost" onclick={() => (limit += 200)}>{t("showMore")} ({(sorted.length - limit).toLocaleString(app.lang)})</button></p>
         {/if}

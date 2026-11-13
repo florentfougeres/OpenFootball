@@ -20,7 +20,7 @@
     if (!p || !p.name) return null;
     let birth: any = null;
     if (p.qid && app.has.birth) birth = (await q(`SELECT birth_date, precision FROM birth WHERE player_qid = ?`, [p.qid]))[0] ?? null;
-    const career = app.has.career ? await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title, w.wikidata_qid AS club_qid, w.logo_url AS club_logo, w.colors_hex AS club_colors
+    const career = app.has.career ? await q(`SELECT c.seq, c.start_year, c.end_year, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title, w.wikidata_qid AS club_qid, w.logo_url AS club_logo, w.colors_hex AS club_colors
         FROM career c LEFT JOIN club w ON ${app.careerHasClubQid ? "w.wikidata_qid = c.club_qid" : "w.wikipedia_title = c.club_link"} WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]) : [];
     const profile = app.has.player_profile
       ? (await q(`SELECT full_name, birth_place, height_cm, photo_caption, photo_url, photo_page, photo_license, photo_author FROM player_profile
@@ -49,6 +49,28 @@
   });
   // Sélection A uniquement (les équipes de jeunes ont leurs propres lignes dans le tableau).
   const senior = $derived(d?.national.find((r) => !/\bU\d{2}\b|under/i.test(r.team_name)) ?? null);
+  // Frise : une barre par passage, positionnée sur l'axe des années ; les passages simultanés (prêt, équipe réserve) passent sur une autre ligne.
+  const timeline = $derived.by(() => {
+    // Les années de l'infobox sont des années de calendrier : « 2018–2024 » = de l'été 2018 à l'été 2024, soit 6 ans ; un passage d'une seule année vaut 1 an.
+    const spells = (d?.career ?? []).filter((r: any) => r.start_year != null).map((r: any) => ({ ...r, dur: Math.max(1, (r.end_year ?? new Date().getFullYear()) - r.start_year) }));
+    if (spells.length < 2) return null;
+    const min = Math.min(...spells.map((r: any) => r.start_year)), max = Math.max(...spells.map((r: any) => r.start_year + r.dur));
+    const span = Math.max(1, max - min);
+    const lanes: number[] = [];                                   // fin du dernier passage de chaque ligne
+    const bars = [...spells].sort((a: any, b: any) => a.start_year - b.start_year || a.dur - b.dur).map((r: any) => {
+      let lane = lanes.findIndex((e) => e <= r.start_year);
+      if (lane < 0) { lane = lanes.length; lanes.push(0); }
+      lanes[lane] = r.start_year + r.dur;
+      return { ...r, lane, left: (100 * (r.start_year - min)) / span, width: Math.max(3, (100 * r.dur) / span) };
+    });
+    const step = span > 14 ? 5 : span > 8 ? 2 : 1;
+    const ticks = Array.from({ length: Math.ceil(span / step) + 1 }, (_, i) => min + i * step).filter((y) => y <= max).map((y) => ({ y, left: (100 * (y - min)) / span }));
+    return { bars, lanes: lanes.length, ticks };
+  });
+  // Vue du parcours : tableau (par défaut) ou frise, au choix du visiteur, mémorisée dans son navigateur.
+  const VIEW_KEY = "openfootballbase.careerView";
+  let careerView: "table" | "timeline" = $state((() => { try { return localStorage.getItem(VIEW_KEY) === "timeline" ? "timeline" : "table"; } catch { return "table"; } })());
+  const setCareerView = (v: "table" | "timeline") => { careerView = v; try { localStorage.setItem(VIEW_KEY, v); } catch { /* stockage indisponible */ } };
   const sum = (rows: any[], k: "apps" | "goals") => rows.reduce((n, r) => n + (r[k] ?? 0), 0);
   // Résumé de carrière : clubs (toutes les lignes de l'infobox, prêts compris) + sélection A. Pas de passes : Wikipedia ne les publie pas.
   const totals = $derived.by(() => {
@@ -100,7 +122,34 @@
 
   {#if d.career.length}
     <section class="card mt-6 overflow-hidden">
-      <h2 class="px-5 pt-4 text-lg font-bold">{t("careerFull")}</h2>
+      <div class="flex flex-wrap items-center justify-between gap-3 px-5 pt-4">
+        <h2 class="text-lg font-bold">{t("careerFull")}</h2>
+        {#if timeline}
+          <div class="inline-flex rounded-lg border border-line bg-surface p-0.5" role="group" aria-label={t("viewMode")}>
+            {#each [["table", "tlTable"], ["timeline", "tlTimeline"]] as [v, k]}
+              <button type="button" class="rounded-md px-3 py-1 text-sm font-medium transition {careerView === v ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}"
+                aria-pressed={careerView === v} onclick={() => setCareerView(v as "table" | "timeline")}>{t(k)}</button>
+            {/each}
+          </div>
+        {/if}
+      </div>
+      {#if timeline && careerView === "timeline"}
+        <div class="px-5 pb-3 pt-4">
+        <div class="relative" style:height="{timeline.lanes * 2.75 + 1.5}rem" role="list">
+        {#each timeline.ticks as tk}<span class="absolute top-0 h-full border-l border-dashed border-line" style:left="{tk.left}%" aria-hidden="true"></span>{/each}
+        {#each timeline.bars as b (b.seq)}
+          <div role="listitem" class="absolute flex h-10 items-center gap-1.5 overflow-hidden rounded-lg border px-1.5 text-sm font-medium {b.loan ? 'border-dashed border-info bg-info-soft' : 'border-accent/50 bg-accent-soft'}"
+            style:left="{b.left}%" style:width="{b.width}%" style:top="{b.lane * 2.75}rem" title="{b.club_name} · {b.years_raw}{b.loan ? ' (' + t('tlLoan') + ')' : ''}">
+            <Logo club={{ logo_url: b.club_logo, colors_hex: b.club_colors, club_name: b.club_name }} size={22} />
+            <span class="truncate">{b.club_name}</span>
+          </div>
+        {/each}
+      </div>
+      <div class="relative mt-1 h-5 text-xs text-muted tabular-nums" aria-hidden="true">
+        {#each timeline.ticks as tk}<span class="absolute -translate-x-1/2" style:left="{tk.left}%">{tk.y}</span>{/each}
+      </div>
+        </div>
+      {:else}
       <div class="overflow-x-auto">
         <table class="tbl mt-2">
           <thead><tr><th>{t("colYears")}</th><th>{t("club")}</th><th class="num">{t("colApps")}</th><th class="num">{t("colGoals")}</th></tr></thead>
@@ -124,6 +173,7 @@
           </tbody>
         </table>
       </div>
+      {/if}
       <p class="border-t border-line px-5 py-3 text-xs text-muted">{t("careerFullNote")}
         <a class="link" href={wikiUrl("en", d.career[0].source_title)} hreflang="en" target="_blank" rel="noopener">{t("careerSrc")}</a></p>
     </section>
