@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import hashlib
 import tarfile
 import tempfile
 from pathlib import Path
@@ -59,6 +60,35 @@ def extract_archive(archive: Path, dest: Path) -> Path:
     return manifest.parent
 
 
+def _manifest_files(node) -> list[dict]:
+    """Toutes les entrées `{path, sha256, …}` du manifeste, où qu'elles soient (tables, saisons)."""
+    if isinstance(node, dict):
+        found = [node] if "path" in node and "sha256" in node else []
+        return found + [f for v in node.values() for f in _manifest_files(v)]
+    if isinstance(node, list):
+        return [f for v in node for f in _manifest_files(v)]
+    return []
+
+
+def verify_manifest(data_dir: str | Path, manifest: dict) -> int:
+    """Contrôle que chaque fichier du manifeste existe, reste dans le dossier de la release et a bien le SHA-256 annoncé.
+    Une archive altérée ou tronquée est refusée avant toute lecture. Rend le nombre de fichiers contrôlés."""
+    data = Path(data_dir).resolve()
+    bad = []
+    files = _manifest_files(manifest)
+    for entry in files:
+        path = (data / entry["path"]).resolve()
+        if data not in path.parents:
+            bad.append(f"{entry['path']} (chemin hors de la release)")
+        elif not path.is_file():
+            bad.append(f"{entry['path']} (absent)")
+        elif hashlib.sha256(path.read_bytes()).hexdigest() != entry["sha256"]:
+            bad.append(f"{entry['path']} (SHA-256 différent)")
+    if bad:
+        raise RuntimeError("release altérée ou incomplète : " + ", ".join(bad[:5]) + (f" … ({len(bad)} fichiers)" if len(bad) > 5 else ""))
+    return len(files)
+
+
 def _paths(data: Path, files: list[str]) -> str:
     return "[" + ", ".join("'" + (data / f).as_posix().replace("'", "''") + "'" for f in files) + "]"
 
@@ -69,6 +99,7 @@ def restore_database(data_dir: str | Path, db_path: str | Path, *, log: Callable
     if db_path.exists():
         raise FileExistsError(f"{db_path} existe déjà : choisissez un autre chemin (ou déplacez l'ancienne base)")
     manifest = json.loads((data / "manifest.json").read_text(encoding="utf-8"))
+    log(f"{verify_manifest(data, manifest)} fichiers vérifiés (SHA-256)")
     tables = {name: info["path"] for name, info in manifest["tables"].items()}
     seasons = manifest["seasons"]
     con = connect(db_path)

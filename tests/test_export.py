@@ -112,3 +112,13 @@ def test_restore_rebuilds_a_database_that_exports_the_same_release(con, tmp_path
     assert compare_with_release(tmp_path / "restored.duckdb", tmp_path / "release") == []
     with pytest.raises(FileExistsError):
         restore_database(tmp_path / "release", tmp_path / "restored.duckdb", log=lambda s: None)
+
+
+def test_restore_refuses_a_release_whose_file_was_altered(con, tmp_path):
+    from openfootball.restore import restore_database
+    export_all(con, tmp_path / "release")
+    victim = next((tmp_path / "release" / "squad").glob("*.parquet"))
+    victim.write_bytes(victim.read_bytes() + b"x")
+    with pytest.raises(RuntimeError, match="altérée"):
+        restore_database(tmp_path / "release", tmp_path / "restored.duckdb", log=lambda s: None)
+    assert not (tmp_path / "restored.duckdb").exists()

@@ -27,18 +27,23 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Download data from the latest release
         env:
           GH_TOKEN: ${{ github.token }}
+          # Déclenché par une release : on prend CETTE release (« la dernière » peut ne pas encore être celle qui vient d'être publiée).
+          # Lancé à la main ou par un push : la dernière release.
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          gh release download --repo "$GITHUB_REPOSITORY" --pattern "*-data.tar.gz" --dir "$RUNNER_TEMP"
+          gh release download ${RELEASE_TAG:+"$RELEASE_TAG"} --repo "$GITHUB_REPOSITORY" --pattern "*-data.tar.gz" --dir "$RUNNER_TEMP"
+          archive=$(ls "$RUNNER_TEMP"/*-data.tar.gz)
+          if tar -tzf "$archive" | grep -Eq '(^/|(^|/)\.\.(/|$))'; then echo "archive suspecte (chemin absolu ou « .. »)"; exit 1; fi
           mkdir -p web/public/data
-          tar -xzf "$RUNNER_TEMP"/*-data.tar.gz -C web/public/data
+          tar -xzf "$archive" --no-same-owner -C web/public/data
           test -s web/public/data/manifest.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # v4
         with:
           node-version: 22
           cache: npm
@@ -50,9 +55,9 @@ jobs:
           npm run check
           npm run build
 
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b  # v5
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3
         with:
           path: web/dist
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4

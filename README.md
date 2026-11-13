@@ -1,111 +1,182 @@
-<p><img src="docs/images/logo.svg" alt="" width="72" align="right"></p>
+<p align="center"><img src="docs/images/logo.svg" alt="OpenFootballBase" width="88"></p>
 
-# OpenFootballBase
+<h1 align="center">OpenFootballBase</h1>
 
-Effectifs des clubs de football **saison par saison**, construits uniquement à partir de **Wikipedia** (CC BY-SA 4.0)
-et **Wikidata** (CC0) : qui jouait dans quel club, avec quel numéro, à quel âge, avec la carrière et les sélections
-de chaque joueur. Une base ouverte (fichiers Parquet), un pipeline Python et un site statique bilingue fr/en.
+<p align="center">
+  <strong>An open database of football club squads, season by season, built only from Wikipedia and Wikidata.</strong><br>
+  Who played for which club, with which shirt number, at what age — plus every player's career and caps.
+</p>
 
-- **Site** : https://florentfougeres.github.io/OpenFootballBase/
-- **Données** : [releases GitHub](https://github.com/florentfougeres/OpenFootballBase/releases) (archive `openfootballbase-data.tar.gz` : fichiers Parquet, `manifest.json`, `SCHEMA.md`)
-- **Dictionnaire de données** (tables et colonnes des Parquet) : [docs/modele-de-donnees.md](docs/modele-de-donnees.md)
-- **Décisions et résultats mesurés** : [SPEC.md](SPEC.md) · **Avancement** : [PROGRESS.md](PROGRESS.md) · **Feuille de route** : [ROADMAP.md](ROADMAP.md)
+<p align="center">
+  <a href="https://florentfougeres.github.io/OpenFootballBase/">Website</a> ·
+  <a href="https://github.com/florentfougeres/OpenFootballBase/releases/latest">Download the data</a> ·
+  <a href="docs/README.md">Documentation</a> ·
+  <a href="README.fr.md">Français</a>
+</p>
 
-## Championnats et saisons disponibles
+<p align="center">
+  <a href="https://github.com/florentfougeres/OpenFootballBase/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/florentfougeres/OpenFootballBase/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="LICENSE"><img alt="Code: MIT" src="https://img.shields.io/badge/code-MIT-blue.svg"></a>
+  <img alt="Data: CC BY-SA 4.0" src="https://img.shields.io/badge/data-CC%20BY--SA%204.0-lightgrey.svg">
+  <img alt="Python 3.11+" src="https://img.shields.io/badge/python-3.11%2B-3776ab.svg">
+</p>
 
-Dix-huit championnats (premières et deuxièmes divisions), de **2010/11 à 2026/27** (2026/27 est « en cours » : elle change à chaque release),
-plus les participants de la Ligue des champions et de la Ligue Europa (2010 →) et de la Ligue Conférence (2021 →).
-Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
+---
 
-| Championnat | Pays | Saisons | Effectifs établis / club-saisons |
+## Highlights
+
+- **Squads, season by season, 2010/11 → 2026/27**, with shirt number, position, nationality and age, for 18 top-flight and second-tier leagues and the UEFA club competitions.
+- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place.
+- **Open, reusable data**: Parquet files published with every [release](https://github.com/florentfougeres/OpenFootballBase/releases), queryable with DuckDB, pandas, Polars or any Parquet reader.
+- **Traceable**: every squad cites the Wikipedia page and revision it came from. Nothing is invented; a missing squad stays missing and is shown as such.
+- **A bilingual static website** (English / French) that queries the Parquet files directly in the browser with DuckDB-WASM — no server, no analytics, no cookies.
+- **A reproducible Python pipeline** that rebuilds everything from Wikipedia and Wikidata.
+
+## The data at a glance
+
+| | |
+|---|---|
+| Seasons | 17 (2010/11 → 2026/27, the current season is updated at each release) |
+| Clubs with seasons | 2,286 (and 44,455 club records worldwide, with logo, stadium and colours from Wikidata) |
+| Club-seasons | 18,582 |
+| Players | 61,701 |
+| Squad entries | 219,248 |
+| Career rows | 337,981 |
+| Competitions | 87 (leagues and continental cups) |
+
+Figures as of 2026-11-13. The live status of every league and season is in [PROGRESS.md](PROGRESS.md).
+
+## Coverage
+
+Not every league has the same depth. Coverage comes in three levels, and the site always says which one applies.
+
+| Level | What you get | Where |
+|---|---|---|
+| **Full squads** | Squads read from Wikipedia "club season" pages, in the country's language first, then English, Italian, German…; loans cross-checked between clubs | 18 leagues, listed below |
+| **Squads of European clubs** | Squads for every club seen in the Champions League, Europa League or Conference League, plus the complete club list of their national league | about 40 more countries |
+| **Club lists only** | The first division and its clubs for each season since 2010, no squads yet | 20 countries: Mexico, Japan, Australia, China, South Korea, Colombia, Ecuador, Chile, Egypt, Peru, Morocco, South Africa, Qatar, United Arab Emirates, Paraguay, Uruguay, Bolivia, Algeria, Vietnam, Tunisia |
+
+**Continental cups** (group or league stage, 2010 →): UEFA Champions League and Europa League with squads, UEFA Conference League from 2021 with squads, and the **Copa Libertadores**, **CAF Champions League** and **AFC Champions League** with participants only ([guide](docs/coupes-continentales.md)).
+
+<details>
+<summary><strong>The 18 leagues with full squads</strong></summary>
+
+| League | Country | Seasons | Squads / club-seasons |
 |---|---|---|---|
-| Premier League (`ENG-PL`) | Angleterre | 2010/11 → 2026/27 | 340 / 340 |
-| Championship (`ENG-CH`) | Angleterre | 2010/11 → 2026/27 | 403 / 408 |
-| La Liga (`ESP-LL`) | Espagne | 2010/11 → 2026/27 | 330 / 340 |
-| Segunda División (`ESP-SD`) | Espagne | 2010/11 → 2026/27 | 278 / 374 |
-| Serie A (`ITA-SA`) | Italie | 2010/11 → 2026/27 | 340 / 340 |
-| Serie B (`ITA-SB`) | Italie | 2010/11 → 2026/27 | 349 / 355 |
-| Bundesliga (`DEU-BL`) | Allemagne | 2010/11 → 2026/27 | 304 / 306 |
-| 2. Bundesliga (`DEU-B2`) | Allemagne | 2010/11 → 2026/27 | 282 / 306 |
+| Premier League (`ENG-PL`) | England | 2010/11 → 2026/27 | 340 / 340 |
+| Championship (`ENG-CH`) | England | 2010/11 → 2026/27 | 403 / 408 |
+| La Liga (`ESP-LL`) | Spain | 2010/11 → 2026/27 | 330 / 340 |
+| Segunda División (`ESP-SD`) | Spain | 2010/11 → 2026/27 | 278 / 374 |
+| Serie A (`ITA-SA`) | Italy | 2010/11 → 2026/27 | 340 / 340 |
+| Serie B (`ITA-SB`) | Italy | 2010/11 → 2026/27 | 349 / 355 |
+| Bundesliga (`DEU-BL`) | Germany | 2010/11 → 2026/27 | 304 / 306 |
+| 2. Bundesliga (`DEU-B2`) | Germany | 2010/11 → 2026/27 | 282 / 306 |
 | Ligue 1 (`FRA-L1`) | France | 2010/11 → 2026/27 | 332 / 332 |
 | Ligue 2 (`FRA-L2`) | France | 2010/11 → 2026/27 | 270 / 334 |
-| Pro League (`BEL-PL`) | Belgique | 2010/11 → 2026/27 | 187 / 280 |
+| Pro League (`BEL-PL`) | Belgium | 2010/11 → 2026/27 | 187 / 280 |
 | Primeira Liga (`PRT-PL`) | Portugal | 2010/11 → 2026/27 | 145 / 298 |
-| Eredivisie (`NLD-ED`) | Pays-Bas | 2010/11 → 2026/27 | 214 / 306 |
-| Süper Lig (`TUR-SL`) | Turquie | 2010/11 → 2026/27 | 178 / 315 |
-| MLS (`USA-MLS`) | États-Unis (clubs canadiens inclus) | 2010 → 2026 | 368 / 399 |
-| Saudi Pro League (`SAU-PL`) | Arabie saoudite | 2022/23 → 2026/27 | 88 / 88 |
-| Série A (`BRA-SA`) | Brésil | 2010 → 2026 | 168 / 340 |
-| Primera División (`ARG-PD`) | Argentine | 2010 → 2026 | 164 / 433 |
+| Eredivisie (`NLD-ED`) | Netherlands | 2010/11 → 2026/27 | 214 / 306 |
+| Süper Lig (`TUR-SL`) | Türkiye | 2010/11 → 2026/27 | 178 / 315 |
+| MLS (`USA-MLS`) | United States (Canadian clubs included) | 2010 → 2026 | 368 / 399 |
+| Saudi Pro League (`SAU-PL`) | Saudi Arabia | 2022/23 → 2026/27 | 88 / 88 |
+| Série A (`BRA-SA`) | Brazil | 2010 → 2026 | 168 / 340 |
+| Primera División (`ARG-PD`) | Argentina | 2010 → 2026 | 164 / 433 |
 
-**Vingt pays supplémentaires en « liste seulement »** (championnat de première division et clubs par saison depuis 2010, sans effectifs) : Mexique, Japon, Australie, Chine, Corée du Sud, Colombie, Équateur, Chili, Égypte, Pérou, Maroc, Afrique du Sud, Qatar, Émirats arabes unis, Paraguay, Uruguay, Bolivie, Algérie, Vietnam, Tunisie.
+"Squads" counts the club-seasons for which at least one Wikipedia page gave a squad; the rest are listed as *without squad* on the site's Coverage page.
+</details>
 
-**Total : 2 286 clubs, 18 582 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
-pays (liste complète des clubs, avec ou sans effectif) ; ceux sans page « saison du club » lisible restent « Sans effectif »
-(page *Couverture* du site). Les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
+A squad is **the union of the snapshots published on the Wikipedia pages** of a club's season, in every language of the country, to be as complete as possible. Loans, cut-off dates and licences are explained in the [data dictionary](docs/modele-de-donnees.md) and on the site's *About* page.
 
-**Coupes continentales hors Europe, participants seulement** depuis 2010 : Copa Libertadores, Ligue des champions de la CAF, Ligue des champions de l'AFC (phase de groupes ou de ligue ; [guide](docs/coupes-continentales.md)).
+## Use the data
 
-Un effectif est **l'union des instantanés publiés sur les pages Wikipedia** « saison du club » de toutes les langues du pays (langue du pays d'abord, puis anglais, italien…), pour être le plus complet possible ;
-les prêts, les limites et les licences sont expliqués dans le dictionnaire de données et sur la page *À propos* du site.
-
-## Installation
-
-Prérequis : **Python ≥ 3.11**, **Node.js ≥ 22** (pour le site), **git**, et la CLI **`gh`** pour publier.
+Every release ships one archive, `openfootballbase-data.tar.gz`, containing Parquet files, a `manifest.json` (with a SHA-256 for each file) and `SCHEMA.md`, the data dictionary.
 
 ```bash
-git clone git@github.com:florentfougeres/OpenFootballBase.git && cd OpenFootballBase
-python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
-source .venv/bin/activate                              # puis la commande `openfootball` est disponible
-export OPENFOOTBALL_CONTACT="votre-contact"            # ajouté au User-Agent envoyé à Wikipedia/Wikidata (obligatoire)
-pytest -q                                              # les tests passent
+gh release download --repo florentfougeres/OpenFootballBase --pattern "*-data.tar.gz"
+mkdir data && tar -xzf openfootballbase-data.tar.gz -C data
 ```
 
-La base de travail est `data/work/openfootball.duckdb` (locale, **hors git**, ≈ 60 Mo) ; les caches de téléchargement sont
-dans `cache/` (hors git, à conserver : ils rendent les relances rapides). Pour repartir d'une base existante, copiez-la à cet endroit.
+Query it with DuckDB:
 
-## Les trois gestes courants
+```sql
+-- Arsenal's 2024/25 squad
+SELECT shirt_number, player, position, nationality
+FROM read_parquet('data/squad/2024-25.*.parquet')
+WHERE club = 'Arsenal F.C.'
+ORDER BY shirt_number;
+```
+
+Main tables: `club`, `competition`, `competition_club`, `season`, `country`, `squad` (one file per season), `club_season`, `career`, `national`, `player_profile`, `birth`, `known_gap`. Columns, keys and caveats: [docs/modele-de-donnees.md](docs/modele-de-donnees.md).
+
+To rebuild the full working DuckDB database from a release instead of running the pipeline: `openfootball restore-db --release latest` ([guide](docs/reconstituer-une-base.md)).
+
+## Run the pipeline
+
+Requirements: **Python ≥ 3.11**, **Node.js ≥ 22** (website), **git**, and the `gh` CLI to publish.
 
 ```bash
-# 1. Mettre à jour la saison en cours (ou ajouter une saison) — sauvegarde, backfill, rattachement, carrières, âges, export
+git clone https://github.com/florentfougeres/OpenFootballBase.git && cd OpenFootballBase
+python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
+source .venv/bin/activate                       # exposes the `openfootball` command
+export OPENFOOTBALL_CONTACT="https://github.com/you/your-fork"   # added to the User-Agent sent to Wikipedia/Wikidata (required)
+pytest -q
+```
+
+The working database is `data/work/openfootball.duckdb` (local, not in git, about 200 MB). Download caches live in `cache/` (not in git; keep them, they make reruns fast).
+
+```bash
+# 1. Update the current season (or add one): backup, backfill, matching, careers, ages, export
 tools/refresh.sh --open-season 2026 2026
 
-# 2. Voir le résultat en local
-cd web && npm install && npm run dev                   # http://localhost:5173 (lit web/public/data, créé par l'export)
+# 2. Browse the result locally
+cd web && npm install && npm run dev            # http://localhost:5173, reads web/public/data
 
-# 3. Publier (données + site) — voir docs/publier-une-release.md
-openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous manifest-precedent.json
-gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main --title "Data 1.10.1" --notes "…"   # tag data-X.Y.Z, nom « Data X.Y.Z » (docs/publier-une-release.md)
-gh workflow run deploy.yml --ref main
+# 3. Publish data and site — see docs/publier-une-release.md
+openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous previous-manifest.json
+gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main --title "Data 1.10.1" --notes "…"
 ```
 
-Détails, options et cas particuliers : [docs/](docs/README.md).
+Releases are named `Data X.Y.Z` and tagged `data-X.Y.Z` ([semantic versioning](https://semver.org): a new league or table is a minor version, a data fix a patch, an incompatible schema change a major). The website is deployed from the latest release by GitHub Actions.
+
+## The website
+
+A static [Svelte](https://svelte.dev) site: league dashboards, club pages with squad and movements between seasons, player pages with career timeline, a coverage heat map, a player search with filters and CSV export. DuckDB-WASM reads the Parquet files over HTTP range requests, so there is no backend. The DuckDB engine is served from the site itself, and a Content-Security-Policy restricts what the page can load.
 
 ## Documentation
 
-| Je veux… | Guide |
+The guides are written in French for now.
+
+| I want to… | Guide |
 |---|---|
-| Ajouter une saison, un championnat/pays, une langue ; valider un trou ; figer une saison | [docs/ajouter-clubs-et-saisons.md](docs/ajouter-clubs-et-saisons.md) |
-| Mettre à jour carrières, matchs, buts et sélections des joueurs | [docs/mettre-a-jour-joueurs.md](docs/mettre-a-jour-joueurs.md) |
-| Changer à la main le logo ou les infos d'un club | [docs/club-logo-et-infos-manuel.md](docs/club-logo-et-infos-manuel.md) |
-| Récupérer en masse les logos manquants | [docs/logos-en-masse.md](docs/logos-en-masse.md) |
-| Connaître toutes les commandes | [docs/commandes.md](docs/commandes.md) |
-| Publier une release et déployer le site | [docs/publier-une-release.md](docs/publier-une-release.md) |
-| Comprendre les fichiers Parquet (tables, colonnes, clés) | [docs/modele-de-donnees.md](docs/modele-de-donnees.md) |
-| Résoudre un problème | [docs/depannage.md](docs/depannage.md) |
+| Add a season, a league or a country, validate a gap, freeze a season | [ajouter-clubs-et-saisons.md](docs/ajouter-clubs-et-saisons.md) |
+| Add European cups or continental cups | [coupes-d-europe.md](docs/coupes-d-europe.md) · [coupes-continentales.md](docs/coupes-continentales.md) |
+| Update players' careers and caps | [mettre-a-jour-joueurs.md](docs/mettre-a-jour-joueurs.md) |
+| Update the current season (transfer windows) | [mettre-a-jour-saison-en-cours.md](docs/mettre-a-jour-saison-en-cours.md) |
+| See every command | [commandes.md](docs/commandes.md) |
+| Publish a release and deploy the site | [publier-une-release.md](docs/publier-une-release.md) |
+| Understand the Parquet tables | [modele-de-donnees.md](docs/modele-de-donnees.md) |
+| Fix a problem | [depannage.md](docs/depannage.md) |
 
-## Organisation du dépôt
+Design decisions and measured results: [SPEC.md](SPEC.md) · Progress: [PROGRESS.md](PROGRESS.md) · Roadmap: [ROADMAP.md](ROADMAP.md).
+
+## Repository layout
 
 ```
-openfootball/   pipeline Python : sources/ (Wikipedia, Wikidata), parse/ (analyseurs), scopes/ (un TOML par pays),
-                migrations/ (schéma DuckDB), backfill, reconcile, careers, enrich, export, cli…
-web/            site Svelte + Vite + Tailwind (DuckDB-WASM lit les Parquet dans le navigateur)
-tools/          refresh.sh (mise à jour complète) ; world_clubs/ (extraction Wikidata des clubs du monde)
-data/source/    clubs_football.csv (clubs du monde, importé dans la base)
-docs/           guides d'exploitation       tests/  tests et fixtures wikitext
+openfootball/   Python pipeline: sources/ (Wikipedia, Wikidata), parse/ (parsers), scopes/ (one TOML per country),
+                migrations/ (DuckDB schema), backfill, reconcile, careers, enrich, export, CLI
+web/            Svelte + Vite + Tailwind website (DuckDB-WASM)
+tools/          refresh.sh (full update); world_clubs/ (Wikidata extraction of the world's clubs)
+data/source/    clubs_football.csv (world clubs imported into the database)
+docs/           how-to guides         tests/  tests and wikitext fixtures
 ```
 
-## Licences
+## Sources, licences and limits
 
-**Code : licence MIT** (fichier [LICENSE](LICENSE)). **Données** : texte Wikipedia sous CC BY-SA 4.0 (chaque effectif cite sa page et sa révision), Wikidata
-sous CC0. Les logos de clubs sont des images Wikimedia, souvent non libres, affichées à titre d'illustration.
+- **Sources**: [Wikipedia](https://www.wikipedia.org) (text under CC BY-SA 4.0; each squad cites its page and revision) and [Wikidata](https://www.wikidata.org) (CC0). Nothing else.
+- **Code**: [MIT](LICENSE). **Data**: derived from Wikipedia, so shared under **CC BY-SA 4.0** with attribution to Wikipedia contributors.
+- **Club logos** are Wikimedia images, often not free, displayed for illustration only; they are not part of the data licence.
+- **Limits**: squads are as good as the Wikipedia pages they come from. Coverage varies by league and year, early seasons of smaller leagues are thinner, and the current season changes with the transfer window. Gaps are reported, never filled with guesses.
+
+## Contributing
+
+Issues and pull requests are welcome, especially for new countries (a scope is one small TOML file, see [the guide](docs/ajouter-clubs-et-saisons.md)), parser fixes for new page layouts, and data corrections (which are best made upstream on Wikipedia or Wikidata). Please run `pytest -q` and `npm run check` before opening a pull request.

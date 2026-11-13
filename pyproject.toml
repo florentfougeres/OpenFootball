@@ -1,7 +1,7 @@
 [project]
 name = "openfootball"
 version = "0.1.0"
-description = "Effectifs de clubs de football par saison, à partir de Wikipedia et Wikidata."
+description = "Football club squads by season, built from Wikipedia and Wikidata."
 requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE"]
