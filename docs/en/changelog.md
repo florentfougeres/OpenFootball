@@ -4,6 +4,11 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.10.1 — 2026-11-13
+- **Fix**: status icons written as images (`[[File:Injury icon 2.svg|15px]]`) were read as players named "15px" or "14px" and hid the real player (Maccabi Haifa 2025/26-2026/27, San Lorenzo 2022/23-2024/25, Palmeiras 2014/15-2016/17, Santos 2016/17); the affected seasons were re-read.
+- **Fix**: a surname written as a piped link is shown with the full page title ("Lloris" → "Hugo Lloris"); first names and nicknames are left as written.
+- **Fix**: "Abou Kanté" (Stade Lavallois 2026/27) is linked to his page "Aboubakary Kanté".
+
 ## Data 1.10.0 — 2026-11-13
 - **New competitions**: Copa Libertadores, CAF Champions League and AFC Champions League, participants of the group / league stage from 2010 to 2026 (list only; [guide](continental-cups.md)).
 - **Fix**: pool championships were undercounted (China 2020 and 2021, Tunisia 2012, 2016 and 2021, Egypt 2012 and 2013): the group tables are now merged.

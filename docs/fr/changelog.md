@@ -4,6 +4,11 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.10.1 — 2026-11-13
+- **Correction** : les icônes de statut écrites comme des images (`[[File:Injury icon 2.svg|15px]]`) étaient lues comme des joueurs nommés « 15px » ou « 14px » et masquaient le vrai joueur (Maccabi Haifa 2025/26-2026/27, San Lorenzo 2022/23-2024/25, Palmeiras 2014/15-2016/17, Santos 2016/17) ; les saisons concernées ont été relues.
+- **Correction** : un nom de famille écrit comme lien avec texte affiché est présenté avec le titre complet de la page (« Lloris » → « Hugo Lloris ») ; prénoms et surnoms restent tels qu'écrits.
+- **Correction** : « Abou Kanté » (Stade Lavallois 2026/27) est relié à sa page « Aboubakary Kanté ».
+
 ## Data 1.10.0 — 2026-11-13
 - **Nouvelles compétitions** : Copa Libertadores, Ligue des champions de la CAF et Ligue des champions de l'AFC, participants de la phase de groupes ou de ligue de 2010 à 2026 (liste seulement ; [guide](continental-cups.md)).
 - **Correction** : les championnats à poules étaient sous-comptés (Chine 2020 et 2021, Tunisie 2012, 2016 et 2021, Égypte 2012 et 2013) : les tableaux de poules sont maintenant fusionnés.
