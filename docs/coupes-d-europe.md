@@ -127,8 +127,10 @@ E
 ```
 
 Chaque saison doit afficher `N / N` et aucun club sans drapeau. Les trois coupes actuelles ont été vérifiées ainsi sur
-2010-2026. Pour la Ligue Europa et la Ligue Conférence, **les effectifs n'ont pas été lus** (seule la Ligue des
-champions l'a été) : prévoyez beaucoup plus de clubs étrangers (jusqu'à 48 par saison) et donc un premier passage long.
+2010-2026. Les effectifs des trois coupes ont été lus : Ligue des champions et Ligue Europa de 2010 à 2026, Ligue Conférence de sa création
+(2021/22) à 2026/27. Pour une nouvelle coupe ou une nouvelle série de saisons, prévoyez beaucoup de clubs étrangers (jusqu'à 48 par
+saison) et donc un premier passage long ; environ la moitié des clubs de petits pays (Kosovo, Malte, Gibraltar…) n'ont aucune page
+« saison du club » lisible et restent « Sans effectif ».
 
 ## Comment les participants sont trouvés
 

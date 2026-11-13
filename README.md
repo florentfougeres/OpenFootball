@@ -14,7 +14,7 @@ de chaque joueur. Une base ouverte (fichiers Parquet), un pipeline Python et un 
 ## Championnats et saisons disponibles
 
 Dix-huit championnats (premières et deuxièmes divisions), de **2010/11 à 2026/27** (2026/27 est « en cours » : elle change à chaque release),
-plus les participants de la Ligue des champions et de la Ligue Europa sur la même période.
+plus les participants de la Ligue des champions et de la Ligue Europa (2010 →) et de la Ligue Conférence (2021 →).
 Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 
 | Championnat | Pays | Saisons | Effectifs établis / club-saisons |
@@ -38,7 +38,7 @@ Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 | Série A (`BRA-SA`) | Brésil | 2010 → 2026 | 168 / 340 |
 | Primera División (`ARG-PD`) | Argentine | 2010 → 2026 | 164 / 433 |
 
-**Total : 1 485 clubs, 12 692 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
+**Total : 1 660 clubs, 13 360 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
 pays (liste complète des clubs, avec ou sans effectif) ; ceux sans page « saison du club » lisible restent « Sans effectif »
 (page *Couverture* du site). Les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
 
