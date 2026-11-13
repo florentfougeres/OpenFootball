@@ -242,7 +242,8 @@ def run_cup(con, cup: Cup, start_year: int, *, wp, lang_clients: dict, wd, qid_l
 
 def national_leagues(con) -> list[tuple[int, str, str, str]]:
     """Championnats créés pour les clubs vus en coupe d'Europe : (id, code, nom anglais, pays). Hors périmètre, hors coupe."""
-    scoped = {sc.competition_code for sc in load_scopes()} | {c.code for c in CUPS.values()}
+    from openfootball.continental import CODES as CONTINENTAL
+    scoped = {sc.competition_code for sc in load_scopes()} | {c.code for c in CUPS.values()} | CONTINENTAL
     return [r for r in con.execute("SELECT id, code, name_en, country_code FROM competition WHERE level = 1 ORDER BY code").fetchall()
             if r[1] not in scoped]
 

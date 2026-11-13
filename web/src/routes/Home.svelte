@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, href, t } from "../lib/app.svelte";
+  import { app, areaFlag, href, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import Flag from "../components/Flag.svelte";
@@ -48,7 +48,7 @@
     return FEATURED.filter((c) => app.comps.has(c)).map((c) => {
       const x = app.comps.get(c)!;
       return { code: c, name_en: x.name_en as string, name_fr: x.name_fr as string, country_code: x.country_code as string, logo_url: (x.logo_url as string | null) ?? null,
-               flag: x.country_code === "EUR" ? "europe" : ((app.countries.get(x.country_code)?.flag as string | null) ?? null) };
+               flag: areaFlag(x.country_code) ?? ((app.countries.get(x.country_code)?.flag as string | null) ?? null) };
     });
   });
   const countries = $derived((data.data?.countries ?? []).map((c) => ({ ...c, name: app.lang === "fr" ? c.name_fr : c.name_en }))
@@ -118,7 +118,7 @@
         <p class="mt-1 text-sm text-muted">{t("byCountryLead")}</p>
         <ul class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {#each countries as c (c.code)}
-            <li><CountryTile code={c.code} name={c.name} flag={c.code === "EUR" ? "europe" : c.flag} comps={c.comps} clubs={c.clubs} /></li>
+            <li><CountryTile code={c.code} name={c.name} flag={areaFlag(c.code) ?? c.flag} comps={c.comps} clubs={c.clubs} /></li>
           {/each}
         </ul>
       </section>

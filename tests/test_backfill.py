@@ -424,3 +424,17 @@ def test_current_season_without_a_season_page_reads_the_generic_league_page():
     html = f'<table><tr><th>Club</th><th>City</th></tr>{rows}</table>'
     assert league_teams_html(html, None, need_points=False) == [f"Club {i}" for i in range(8)]
     assert league_teams_html(html, None) == []                       # sans « Pts », ce n'est pas un classement
+
+
+def test_league_teams_html_merges_group_tables_but_not_a_small_playoff_table():
+    from openfootball.parse.league import league_teams_html
+
+    def table(names):
+        rows = "".join(f'<tr><td><a href="/wiki/{n}" title="{n}">{n}</a></td><td>10</td></tr>' for n in names)
+        return f'<table><tr><th>Team</th><th>Pts</th></tr>{rows}</table>'
+    a = [f"A{i}" for i in range(8)]
+    b = [f"B{i}" for i in range(8)]
+    assert league_teams_html(table(a) + table(b), None) == a + b                      # deux poules de 8 : 16 clubs
+    assert league_teams_html(table(a) + table(["X1", "X2", "X3", "X4"]), None) == a    # un tableau de barrage plus petit n'est pas une poule
+    assert league_teams_html(table(a) + table(b) + table(a[:4] + b[:4]), None) == a + b   # phase finale (mêmes clubs) après les poules : ignorée
+    assert league_teams_html(table(a) + table(a), None) == a                           # deux fois les mêmes clubs (Apertura/Clausura) : pas de fusion

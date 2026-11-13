@@ -286,6 +286,26 @@ def uefa_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def continental_cmd(args: argparse.Namespace) -> int:
+    """Participants (phase de groupes ou de ligue) de la Copa Libertadores, de la Ligue des champions CAF ou AFC : liste seulement."""
+    from openfootball.continental import CUPS, run_cup as run_cup_continental
+    con = connect(args.db)
+    migrate(con)
+    wp = WikipediaClient(args.cache)
+    for key in args.cup:
+        cup = CUPS[key]
+        for year in args.season:
+            try:
+                n = run_cup_continental(con, cup, year, wp=wp, qid_lookup=lambda ts: club_qids(wp, ts))
+            except SeasonFrozen as exc:
+                raise SystemExit(f"refusé : {exc}")
+            except Exception as exc:                  # exécution longue : on note l'édition en échec et on continue
+                print(f"{cup.name_en} {year}/{str(year + 1)[2:]} : ECHEC {type(exc).__name__}: {str(exc)[:140]}")
+                continue
+            print(f"{cup.name_en} {year}/{str(year + 1)[2:]} : {n} participants")
+    return 0
+
+
 def complete_clubs_cmd(args: argparse.Namespace) -> int:
     """Lit l'effectif de TOUTES les saisons en première division des clubs étrangers déjà vus en coupe d'Europe."""
     from openfootball.uefa import complete_national_clubs
@@ -611,6 +631,12 @@ def main(argv: list[str] | None = None) -> int:
     u.add_argument("--cache", default="cache/wikipedia")
     u.add_argument("--wd-cache", default="cache/wikidata")
     u.set_defaults(func=uefa_cmd)
+    ct = sub.add_parser("continental", help="Copa Libertadores, Ligues des champions CAF et AFC : participants (liste seulement)")
+    ct.add_argument("--db", default=DB_DEFAULT)
+    ct.add_argument("--cup", nargs="+", choices=["LIB", "CAF", "AFC"], default=["LIB", "CAF", "AFC"])
+    ct.add_argument("--season", type=int, nargs="+", required=True)
+    ct.add_argument("--cache", default="cache/wikipedia")
+    ct.set_defaults(func=continental_cmd)
     cc_ = sub.add_parser("complete-clubs", help="effectif de toutes les saisons des clubs étrangers déjà vus en coupe d'Europe")
     cc_.add_argument("--db", default=DB_DEFAULT)
     cc_.add_argument("--season", type=int, nargs="+", required=True)

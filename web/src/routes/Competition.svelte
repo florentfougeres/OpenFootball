@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, countryOf, href, enc, seasonSlug, t, type Row } from "../lib/app.svelte";
+  import { app, countryOf, href, enc, isArea, seasonSlug, t, type Row } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { clubName, clubOf, compName } from "../lib/format";
@@ -44,7 +44,7 @@
     {/if}
     <div class="min-w-0">
       <h1 class="text-3xl font-extrabold leading-none tracking-tight text-balance sm:text-4xl lg:text-5xl">{compName(code)}</h1>
-      <p class="mt-2 flex items-center gap-2 text-sm text-muted">{#if comp.country_code !== "EUR"}<Flag code={country.flag} label={country.name} size={16} />{/if}<span>{country.name}{#if comp.country_code !== "EUR"} · {t("divisionN")} {comp.level}{/if}</span></p>
+      <p class="mt-2 flex items-center gap-2 text-sm text-muted">{#if !isArea(comp.country_code)}<Flag code={country.flag} label={country.name} size={16} />{/if}<span>{country.name}{#if !isArea(comp.country_code)} · {t("divisionN")} {comp.level}{/if}</span></p>
     </div>
   </header>
 
@@ -77,7 +77,7 @@
           </li>
         {/each}
       </ul>
-      {#if comp.country_code !== "EUR"}<LeagueTrends {code} season={label} />{/if}
+      {#if !isArea(comp.country_code)}<LeagueTrends {code} season={label} />{/if}
     {/if}
   {/if}
 {/if}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, countryOf, href, t } from "../lib/app.svelte";
+  import { app, countryOf, href, isArea, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { AREA, CONFS, confOf } from "../lib/confed";
@@ -20,7 +20,7 @@
       comps: comps.sort((a, b) => a.level - b.level || a.code.localeCompare(b.code)) }));
     return CONFS.map((conf) => {
       const list = countries.filter((c) => c.conf === conf)
-        .sort((a, b) => (a.code === "EUR" ? -1 : b.code === "EUR" ? 1 : a.name.localeCompare(b.name, app.lang)));
+        .sort((a, b) => (isArea(a.code) ? -1 : isArea(b.code) ? 1 : a.name.localeCompare(b.name, app.lang)));
       return { conf, area: AREA[conf][app.lang], countries: list, n: list.reduce((s, c) => s + c.comps.length, 0) };
     }).filter((c) => c.countries.length);
   });

@@ -17,10 +17,15 @@ export const app = $state({
   countries: new Map<string, Row>(),
 });
 
+/** Pseudo-pays qui portent les coupes continentales (Europe, Amérique du Sud, Afrique, Asie) et leur emblème. */
+const AREA_FLAG: Record<string, string> = { EUR: "europe", SAM: "world", AFR: "world", ASI: "world" };
+export const isArea = (code?: string | null): boolean => !!code && code in AREA_FLAG;
+export const areaFlag = (code?: string | null): string | null => (code ? AREA_FLAG[code] ?? null : null);
+
 /** Nom du pays dans la langue de l'app, drapeau et code : lus dans la table `country` des données. */
 export const countryOf = (code?: string | null) => {
   const c = code ? app.countries.get(code) : undefined;
-  return { code: code ?? "", flag: code === "EUR" ? "europe" : (c?.flag as string) ?? null, name: c ? (app.lang === "fr" ? c.name_fr : c.name_en) : code ?? "" };
+  return { code: code ?? "", flag: areaFlag(code) ?? (c?.flag as string) ?? null, name: c ? (app.lang === "fr" ? c.name_fr : c.name_en) : code ?? "" };
 };
 
 /** « 1 club » / « 2 clubs » : clés `<k>N1` (singulier) et `<k>N` (pluriel). */

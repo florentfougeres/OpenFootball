@@ -6,6 +6,7 @@ Dernière mise à jour : 2026-11-13. Taille : **S** (quelques heures), **M** (un
 ## Fait récemment
 
 - 18 championnats (premières et deuxièmes divisions de 5 pays, Belgique, Portugal, Pays-Bas, Turquie, MLS, Arabie saoudite, Brésil, Argentine), 2010 → 2026.
+- Coupes continentales hors Europe, participants seulement, 2010 → 2026 : Copa Libertadores, Ligues des champions CAF et AFC.
 - Coupes d'Europe : participants et effectifs (Ligue des champions, Ligue Europa) ; clubs des championnats nationaux complétés.
 - Site : fiche club et effectif en une page, mouvements d'une saison à l'autre, tableau de bord par championnat, section Joueurs, couverture en grille de chaleur, frise de carrière, téléchargement CSV.
 - **Reconstituer une base DuckDB à partir d'une release** : `openfootball restore-db` ([guide](docs/reconstituer-une-base.md)).

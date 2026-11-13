@@ -56,6 +56,7 @@ def league_teams_html(html: str, expected: int | None, *, need_points: bool = Tr
 
     col = _Collector()
     col.feed(html)
+    groups: list[list[str]] = []        # un par tableau de classement (poules)
     best: list[str] = []                # expected=None : le plus grand tableau de classement (au moins 6 équipes)
     for _, rows in col.tables:
         header, teams = None, []
@@ -75,4 +76,16 @@ def league_teams_html(html: str, expected: int | None, *, need_points: bool = Tr
             return list(dict.fromkeys(teams))
         if expected is None and len(teams) >= 6 and len(teams) > len(best):
             best = list(dict.fromkeys(teams))
+        if expected is None and len(teams) >= 4:
+            groups.append(list(dict.fromkeys(teams)))
+    # Championnat à POULES (Chine 2020-2021 : deux groupes de 8 ; Tunisie : groupes A et B) : les tableaux de poules se suivent dans la page, de taille
+    # voisine et sans club commun ; les tableaux suivants (phase finale, même clubs) s'arrêtent là. La réunion doit faire un championnat plausible.
+    if expected is None and len(groups) >= 2:
+        merged: list[str] = []
+        for g in groups:
+            if any(t in merged for t in g) or (merged and abs(len(g) - len(groups[0])) > 2):
+                break
+            merged += g
+        if 10 <= len(merged) <= 24 and len(merged) > len(best):
+            return merged
     return best

@@ -40,9 +40,11 @@ Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 
 **Vingt pays supplémentaires en « liste seulement »** (championnat de première division et clubs par saison depuis 2010, sans effectifs) : Mexique, Japon, Australie, Chine, Corée du Sud, Colombie, Équateur, Chili, Égypte, Pérou, Maroc, Afrique du Sud, Qatar, Émirats arabes unis, Paraguay, Uruguay, Bolivie, Algérie, Vietnam, Tunisie.
 
-**Total : 1 660 clubs, 13 360 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
+**Total : 2 286 clubs, 18 582 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
 pays (liste complète des clubs, avec ou sans effectif) ; ceux sans page « saison du club » lisible restent « Sans effectif »
 (page *Couverture* du site). Les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.
+
+**Coupes continentales hors Europe, participants seulement** depuis 2010 : Copa Libertadores, Ligue des champions de la CAF, Ligue des champions de l'AFC (phase de groupes ou de ligue ; [guide](docs/coupes-continentales.md)).
 
 Un effectif est **l'union des instantanés publiés sur les pages Wikipedia** « saison du club » de toutes les langues du pays (langue du pays d'abord, puis anglais, italien…), pour être le plus complet possible ;
 les prêts, les limites et les licences sont expliqués dans le dictionnaire de données et sur la page *À propos* du site.
