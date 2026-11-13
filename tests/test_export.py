@@ -102,3 +102,13 @@ def test_release_ships_a_data_dictionary_covering_every_exported_column(con, tmp
     assert "### `squad`" in doc and "| `player_qid` | VARCHAR |" in doc and "club_season" in doc
     with tarfile.open(pack(tmp_path, tmp_path / "x.tar.gz")) as tar:
         assert "SCHEMA.md" in tar.getnames()
+
+
+def test_restore_rebuilds_a_database_that_exports_the_same_release(con, tmp_path):
+    from openfootball.restore import compare_with_release, restore_database
+    export_all(con, tmp_path / "release")
+    counts = restore_database(tmp_path / "release", tmp_path / "restored.duckdb", log=lambda s: None)
+    assert counts["club_season"] == 18 and counts["player_club_season"] == 17 * 14
+    assert compare_with_release(tmp_path / "restored.duckdb", tmp_path / "release") == []
+    with pytest.raises(FileExistsError):
+        restore_database(tmp_path / "release", tmp_path / "restored.duckdb", log=lambda s: None)

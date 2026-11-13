@@ -11,6 +11,7 @@ Guides pas à pas pour faire vivre la base. Les décisions de fond sont dans [..
 | Changer à la main le logo ou les infos d'un club | [club-logo-et-infos-manuel.md](club-logo-et-infos-manuel.md) |
 | Récupérer en masse les logos manquants | [logos-en-masse.md](logos-en-masse.md) |
 | Connaître toutes les commandes et leurs options | [commandes.md](commandes.md) |
+| Reconstituer une base DuckDB à partir d'une release (autre machine, base perdue) | [reconstituer-une-base.md](reconstituer-une-base.md) |
 | Publier une release (données + site) | [publier-une-release.md](publier-une-release.md) |
 | Comprendre les fichiers Parquet publiés (tables, colonnes, clés) | [modele-de-donnees.md](modele-de-donnees.md) |
 | Résoudre un problème (verrou, 429, déploiement refusé…) | [depannage.md](depannage.md) |

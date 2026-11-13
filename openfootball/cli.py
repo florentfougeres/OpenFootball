@@ -529,6 +529,29 @@ def fix_player_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def restore_db_cmd(args: argparse.Namespace) -> int:
+    """Reconstitue une base DuckDB de travail depuis une release de données (voir docs/reconstituer-une-base.md)."""
+    import tempfile
+    from openfootball.restore import compare_with_release, download_release, extract_archive, restore_database
+    if Path(args.db).exists():
+        raise SystemExit(f"refusé : {args.db} existe déjà. Choisissez un autre chemin avec --db (ou déplacez l'ancienne base).")
+    with tempfile.TemporaryDirectory() as tmp:
+        if args.data:
+            data = Path(args.data)
+        else:
+            archive = Path(args.archive) if args.archive else download_release(args.release, Path(tmp))
+            data = extract_archive(archive, Path(tmp) / "data")
+        counts = restore_database(data, args.db)
+        print("base reconstituée : " + ", ".join(f"{n} {t}" for t, n in counts.items()))
+        if args.verify:
+            diffs = compare_with_release(args.db, data)
+            print("vérification : la base restaurée, ré-exportée, redonne les mêmes fichiers" if not diffs
+                  else "vérification : petits écarts attendus (joueurs sans équipe exportée, doublons de nom ; voir docs/reconstituer-une-base.md)")
+            for d in diffs:
+                print("  ", d)
+    return 0
+
+
 def schema_cmd(args: argparse.Namespace) -> int:
     """Écrit le dictionnaire de données (Markdown) d'un export existant."""
     data = Path(args.data)
@@ -636,6 +659,14 @@ def main(argv: list[str] | None = None) -> int:
     ca.add_argument("--limit", type=int, help="n'importe que N joueurs (essai)")
     ca.add_argument("--wd-cache", default="cache/wikidata")
     ca.set_defaults(func=careers_cmd)
+    rd = sub.add_parser("restore-db", help="reconstitue une base DuckDB de travail depuis une release de données")
+    src = rd.add_mutually_exclusive_group(required=True)
+    src.add_argument("--release", help="tag de la release à télécharger (data-v9) ou « latest »")
+    src.add_argument("--archive", help="archive *-data.tar.gz déjà téléchargée")
+    src.add_argument("--data", help="dossier déjà extrait (avec manifest.json)")
+    rd.add_argument("--db", default=DB_DEFAULT, help="base à créer (ne doit pas exister)")
+    rd.add_argument("--verify", action="store_true", help="ré-exporte la base restaurée et compare le nombre de lignes à la release")
+    rd.set_defaults(func=restore_db_cmd)
     pf = sub.add_parser("profiles", help="profil des joueurs (lieu de naissance, taille, photo) depuis l'infobox")
     pf.add_argument("--db", default=DB_DEFAULT)
     pf.add_argument("--offline", action="store_true", help="cache seulement : aucune requête Wikipedia")
