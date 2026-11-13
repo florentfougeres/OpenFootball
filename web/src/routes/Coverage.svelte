@@ -7,6 +7,7 @@
   import Crumbs from "../components/Crumbs.svelte";
   import Flag from "../components/Flag.svelte";
   import Spinner from "../components/Spinner.svelte";
+  import { AREA, CONFS, confOf } from "../lib/confed";
 
   let { slug }: { slug?: string } = $props();
 
@@ -32,6 +33,29 @@
       .sort((a, b) => b.missing.length - a.missing.length || a.country.name.localeCompare(b.country.name));
   });
   const season = $derived(label ? app.manifest.seasons[label] : null);
+
+  // Grille de chaleur : championnats en lignes (par confédération), saisons en colonnes (de la plus ancienne à la plus récente).
+  const grid = resource(async () => {
+    const rows = await q(`SELECT competition, season, count(*) AS n, count(*) FILTER (WHERE players > 0) AS ok FROM club_season GROUP BY competition, season`);
+    return new Map(rows.map((r) => [`${r.competition}|${r.season}`, { n: Number(r.n), ok: Number(r.ok) }]));
+  });
+  const cols = $derived(Object.keys(app.manifest.seasons).sort());
+  const heat = $derived.by(() => {
+    const data = grid.data;
+    if (!data) return [];
+    const withClubs = new Set([...data.keys()].map((k) => k.split("|")[0]));
+    const byCountry = new Map<string, any[]>();
+    for (const c of app.comps.values()) if (withClubs.has(c.code)) byCountry.set(c.country_code, [...(byCountry.get(c.country_code) ?? []), c]);
+    const countries = [...byCountry.entries()].map(([code, comps]) => ({ ...countryOf(code), code, conf: confOf(code), comps: comps.sort((a, b) => a.level - b.level || a.code.localeCompare(b.code)) }))
+      .sort((a, b) => a.name.localeCompare(b.name, app.lang));
+    return CONFS.map((conf) => ({ conf, area: AREA[conf][app.lang], rows: countries.filter((c) => c.conf === conf).flatMap((c) => c.comps.map((x) => ({ comp: x, country: c }))) }))
+      .filter((g) => g.rows.length);
+  });
+  const cell = (code: string, s: string) => grid.data?.get(`${code}|${s}`);
+  const total = (s: string) => { let n = 0, ok = 0; for (const [k, v] of grid.data ?? []) if (k.endsWith(`|${s}`)) { n += v.n; ok += v.ok; } return { n, ok }; };
+  /** Remplissage d'une case : plus l'effectif est complet, plus la case est verte ; le texte change de couleur pour rester lisible. */
+  const fill = (n: number, ok: number) => (n ? `color-mix(in oklab, var(--accent) ${Math.round((100 * ok) / n)}%, var(--surface-2))` : "transparent");
+  const ink = (n: number, ok: number) => (n && (100 * ok) / n >= 68 ? "var(--accent-fg)" : "var(--fg)");
 </script>
 
 <Crumbs trail={label ? [{ label: t("covTitle"), to: href("coverage") }] : []} />
@@ -93,25 +117,56 @@
   <h1 class="text-3xl font-extrabold tracking-tight">{t("covTitle")}</h1>
   <p class="mt-2 max-w-2xl text-muted">{t("covLead")}</p>
 
-  <section class="card mt-6 overflow-hidden">
-    <div class="overflow-x-auto">
-      <table class="tbl">
-        <thead><tr><th>{t("season")}</th><th class="num">{t("covSquads")}</th><th class="min-w-32"></th><th class="num">{t("covGaps")}</th><th class="num">{t("covOpen")}</th><th></th></tr></thead>
-        <tbody>
-          {#each seasons as [l, s]}
-            {@const c = s.coverage}
-            <tr>
-              <td class="font-semibold"><a class="link" href={href("coverage", seasonSlug(l))}>{l}</a></td>
-              <td class="num">{c.with_squad} / {c.club_seasons} <span class="text-muted">({pct(c.with_squad, c.club_seasons)} %)</span></td>
-              <td><div class="h-2 w-full overflow-hidden rounded-full bg-surface-2"><div class="h-full rounded-full bg-accent" style:width="{pct(c.with_squad, c.club_seasons)}%"></div></div></td>
-              <td class="num">{c.known_gaps}</td>
-              <td class="num">{c.club_seasons - c.with_squad - c.known_gaps}</td>
-              <td class="num"><a class="link whitespace-nowrap" href={href("coverage", seasonSlug(l))}>{t("covDetail")} ›</a></td>
-            </tr>
-          {/each}
-        </tbody>
+  {#if grid.loading && !grid.data}
+    <Spinner />
+  {:else if grid.data}
+    <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted" aria-hidden="true">
+      <span>{t("covLegend")}</span>
+      <span class="flex items-center gap-1">0 %<span class="h-3 w-24 rounded-sm border border-line" style="background: linear-gradient(to right, var(--surface-2), var(--accent))"></span>100 %</span>
+    </div>
+    <div class="card mt-3 overflow-x-auto">
+      <table class="w-full border-separate border-spacing-0 text-xs tabular-nums">
+        <thead>
+          <tr>
+            <th class="sticky left-0 z-10 min-w-48 bg-surface px-3 py-2 text-left font-semibold">{t("covRow")}</th>
+            {#each cols as s}
+              <th class="px-0.5 py-2 text-center font-semibold"><a class="link block rounded px-1 py-0.5" href={href("coverage", seasonSlug(s))} title="{t('covDetail')} {s}">{s.slice(2, 4)}<span class="block text-[0.6rem] font-normal text-muted">{s.slice(5)}</span></a></th>
+            {/each}
+          </tr>
+          <tr>
+            <th class="sticky left-0 z-10 bg-surface px-3 pb-2 text-left font-medium text-muted">{t("covAll")}</th>
+            {#each cols as s}
+              {@const tt = total(s)}
+              <td class="px-0.5 pb-2"><a class="block rounded px-1 py-1.5 text-center font-semibold no-underline" style:background={fill(tt.n, tt.ok)} style:color={ink(tt.n, tt.ok)}
+                href={href("coverage", seasonSlug(s))} title="{s} : {tt.ok} / {tt.n} {t('covSquads').toLowerCase()}">{tt.n ? pct(tt.ok, tt.n) : "–"}</a></td>
+            {/each}
+          </tr>
+        </thead>
+        {#each heat as g (g.conf)}
+          <tbody>
+            <tr><th colspan={cols.length + 1} class="sticky left-0 border-t border-line bg-surface-2/60 px-3 py-1.5 text-left text-sm font-bold">{g.conf} <span class="font-normal text-muted">· {g.area}</span></th></tr>
+            {#each g.rows as { comp, country } (comp.code)}
+              <tr>
+                <th class="sticky left-0 z-10 bg-surface px-3 py-0.5 text-left font-medium">
+                  <a class="flex items-center gap-2 whitespace-nowrap no-underline hover:text-accent" href={href("competition", comp.code)}><Flag code={country.flag} label={country.name} size={16} /><span class="truncate">{compName(comp.code)}</span></a>
+                </th>
+                {#each cols as s}
+                  {@const c = cell(comp.code, s)}
+                  <td class="px-0.5 py-0.5">
+                    {#if c}
+                      <a class="block rounded px-1 py-1.5 text-center no-underline transition hover:ring-2 hover:ring-accent" style:background={fill(c.n, c.ok)} style:color={ink(c.n, c.ok)}
+                        href={href("competition", comp.code, seasonSlug(s))} title="{compName(comp.code)} · {s} : {c.ok} / {c.n} {t('covSquads').toLowerCase()}">{pct(c.ok, c.n)}</a>
+                    {:else}
+                      <span class="block px-1 py-1.5 text-center text-muted/50" aria-hidden="true">·</span>
+                    {/if}
+                  </td>
+                {/each}
+              </tr>
+            {/each}
+          </tbody>
+        {/each}
       </table>
     </div>
-  </section>
+  {/if}
   <p class="mt-3 text-sm text-muted">{t("covHint")}</p>
 {/if}

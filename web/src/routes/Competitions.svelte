@@ -3,6 +3,7 @@
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { compName } from "../lib/format";
+  import { AREA, CONFS, confOf } from "../lib/confed";
   import Crumbs from "../components/Crumbs.svelte";
   import Flag from "../components/Flag.svelte";
   import Spinner from "../components/Spinner.svelte";
@@ -12,27 +13,11 @@
       JOIN (SELECT competition, max(season) AS season FROM club_season GROUP BY competition) m
         ON m.competition = cs.competition AND m.season = cs.season GROUP BY cs.competition, cs.season`)).map((r) => [r.competition, r])));
 
-  // Confédération de chaque pays : l'Europe est le cas général (la base est surtout européenne), les autres sont listées.
-  const OUTSIDE: Record<string, string> = {};
-  for (const [conf, codes] of Object.entries({
-    CONMEBOL: "ARG BOL BRA CHL COL ECU PRY PER URY VEN",
-    CONCACAF: "USA CAN MEX CRC HND PAN SLV GTM JAM HTI TTO CUB",
-    AFC: "SAU JPN KOR CHN AUS QAT ARE IRN IRQ UZB THA IND IDN",
-    CAF: "EGY MAR DZA TUN ZAF NGA GHA CIV SEN CMR",
-    OFC: "NZL",
-  })) for (const c of codes.split(" ")) OUTSIDE[c] = conf;
-  const CONFS = ["UEFA", "CONMEBOL", "CONCACAF", "AFC", "CAF", "OFC"];
-  const AREA: Record<string, { fr: string; en: string }> = {
-    UEFA: { fr: "Europe", en: "Europe" }, CONMEBOL: { fr: "Amérique du Sud", en: "South America" },
-    CONCACAF: { fr: "Amérique du Nord, centrale et Caraïbes", en: "North and Central America, Caribbean" },
-    AFC: { fr: "Asie", en: "Asia" }, CAF: { fr: "Afrique", en: "Africa" }, OFC: { fr: "Océanie", en: "Oceania" },
-  };
-
   // Confédération -> pays (les coupes d'Europe, pays « Europe », d'abord) -> championnats.
   const confs = $derived.by(() => {
     const byCountry = new Map<string, any[]>();
     for (const c of app.comps.values()) byCountry.set(c.country_code, [...(byCountry.get(c.country_code) ?? []), c]);
-    const countries = [...byCountry.entries()].map(([code, comps]) => ({ ...countryOf(code), code, conf: OUTSIDE[code] ?? "UEFA",
+    const countries = [...byCountry.entries()].map(([code, comps]) => ({ ...countryOf(code), code, conf: confOf(code),
       comps: comps.sort((a, b) => a.level - b.level || a.code.localeCompare(b.code)) }));
     return CONFS.map((conf) => {
       const list = countries.filter((c) => c.conf === conf)

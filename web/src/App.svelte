@@ -15,7 +15,7 @@
   import Coverage from "./routes/Coverage.svelte";
   import Home from "./routes/Home.svelte";
   import Player from "./routes/Player.svelte";
-  import Squad from "./routes/Squad.svelte";
+  import Players from "./routes/Players.svelte";
 
   readRoute();
   applyTheme();
@@ -41,11 +41,9 @@
   {:else if !app.ready}
     <div class="mx-auto max-w-6xl px-4"><Spinner /><p class="text-sm text-muted">{t("loading")}</p></div>
   {:else}
-    <div class="mx-auto px-4 py-8 {head === 'competition' || head === 'competitions' ? 'max-w-[88rem]' : 'max-w-6xl'}">
-      {#if head === "club" && route.parts[2]}
-        <Squad title={route.parts[1]} slug={route.parts[2]} />
-      {:else if head === "club"}
-        <Club key={route.parts[1]} />
+    <div class="mx-auto px-4 py-8 {head === 'competition' || head === 'competitions' || head === 'club' || head === 'coverage' || head === 'players' ? 'max-w-[88rem]' : 'max-w-6xl'}">
+      {#if head === "club"}
+        <Club key={route.parts[1]} slug={route.parts[2]} />
       {:else if head === "clubs"}
         <Clubs />
       {:else if head === "country"}
@@ -54,6 +52,8 @@
         <Competitions />
       {:else if head === "competition"}
         <Competition code={route.parts[1]} slug={route.parts[2]} />
+      {:else if head === "players"}
+        <Players />
       {:else if head === "player"}
         <Player key={route.parts[1]} />
       {:else if head === "coverage"}

@@ -8,11 +8,12 @@
   const links = $derived([
     { key: "home", label: t("home"), to: href("") },
     { key: "clubs", label: t("clubs"), to: href("clubs") },
+    { key: "players", label: t("players"), to: href("players") },
     { key: "competitions", label: t("allComps"), to: href("competitions") },
     { key: "coverage", label: t("coverage"), to: href("coverage") },
     { key: "about", label: t("about"), to: href("about") },
   ]);
-  const active = (k: string) => (k === "competitions" ? ["competitions", "competition"].includes(current) : k === "clubs" ? ["clubs", "club", "player"].includes(current) : k === "home" ? ["home", "country"].includes(current) : current === k);
+  const active = (k: string) => (k === "competitions" ? ["competitions", "competition"].includes(current) : k === "clubs" ? ["clubs", "club"].includes(current) : k === "players" ? ["players", "player"].includes(current) : k === "home" ? ["home", "country"].includes(current) : current === k);
   $effect(() => { route.parts; open = false; });
 </script>
 
