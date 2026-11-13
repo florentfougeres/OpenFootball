@@ -18,3 +18,13 @@ def fold(text: str) -> str:
     """« Vinícius Jr. » (fr) et « Vinícius Júnior » (es) : `jr` / `sr` valent `junior` / `senior`."""
     t = unicodedata.normalize("NFD", text.translate(_SPECIAL).lower()).encode("ascii", "ignore").decode()
     return _SUFFIX.sub(lambda m: "junior" if m.group(1) == "jr" else "senior", t)
+
+
+def full_name(shown: str, target: str | None) -> str:
+    """Nom à afficher d'un joueur dont le lien est `[[Hugo Lloris|Lloris]]` : le titre de la page (sans « (footballeur, né en 1986) »)
+    quand le nom écrit en est la FIN (le nom de famille : « Lloris », « Kanté »). Un surnom ou un prénom (« Jean » pour Jean Paulo Fernandes Filho, « Gabriel », « Rodri », « Vini Jr. ») reste tel quel."""
+    if not target:
+        return shown
+    title = re.sub(r"\s*\([^)]*\)\s*$", "", target).strip()
+    sw, tw = fold(shown).split(), fold(title).split()
+    return title if sw and len(tw) > len(sw) and tw[-len(sw):] == sw else shown

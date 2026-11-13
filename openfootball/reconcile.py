@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 
 import duckdb
 
-from openfootball.names import fold
+from openfootball.names import fold, full_name
 from openfootball.sources.wikidata import club_qids   # titre Wikipedia -> QID (valable pour tout titre)
 
 
@@ -51,6 +51,18 @@ def _merge(con, keep: int, dup: int) -> None:
     con.execute("UPDATE player_link SET player_id = ? WHERE player_id = ?", [keep, dup])
     con.execute("DELETE FROM player_wikidata WHERE player_id = ?", [dup])
     con.execute("DELETE FROM player WHERE id = ?", [dup])
+
+
+def normalize_player_names(con: duckdb.DuckDBPyConnection) -> int:
+    """« Lloris » (écrit `[[Hugo Lloris|Lloris]]` sur la page de l'équipe) devient « Hugo Lloris » : le nom d'un joueur lié est le titre de sa page
+    quand le nom lu n'en est qu'une partie. Rend le nombre de noms modifiés."""
+    changed = 0
+    for pid, name, title in con.execute("SELECT id, name, link_title FROM player WHERE link_title IS NOT NULL").fetchall():
+        full = full_name(name, title)
+        if full != name:
+            con.execute("UPDATE player SET name = ? WHERE id = ?", [full, pid])
+            changed += 1
+    return changed
 
 
 def apply_player_aliases(con: duckdb.DuckDBPyConnection) -> int:

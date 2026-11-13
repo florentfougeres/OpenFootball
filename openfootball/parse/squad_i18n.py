@@ -64,7 +64,7 @@ def parse_squad_fr(wikitext: str) -> list[SquadEntry]:
 
 def parse_squad_it(wikitext: str) -> list[SquadEntry]:
     def build(p: dict, section: str) -> SquadEntry | None:
-        name, link = _name_and_link(p.get("nome", ""))
+        name, link = _name_and_link(p.get("nome", ""), full=True)
         if not name:
             return None
         role = (p.get("ruolo") or "").strip()
@@ -79,7 +79,7 @@ def parse_squad_it(wikitext: str) -> list[SquadEntry]:
 
 def parse_squad_es(wikitext: str) -> list[SquadEntry]:
     def build(p: dict, section: str) -> SquadEntry | None:
-        name, link = _name_and_link(p.get("nombre", ""))
+        name, link = _name_and_link(p.get("nombre", ""), full=True)
         if not name:
             return None
         pos_raw = (p.get("pos") or "").strip()
@@ -92,7 +92,7 @@ def parse_squad_es(wikitext: str) -> list[SquadEntry]:
 
     def build_simple(p: dict, section: str) -> SquadEntry | None:
         # {{Jugador de fútbol |no=1 |nat=Argentina |name=[[Francisco Gómez]] |pos=POR}} ou {{Jugador de fútbol | nombre=[[Franco Armani]] | num=1 | pos=ARQ | nac=Argentina}}
-        name, link = _name_and_link(p.get("nombre") or p.get("name") or "")
+        name, link = _name_and_link(p.get("nombre") or p.get("name") or "", full=True)
         if not name:
             return None
         pos_raw = (p.get("pos") or "").strip()

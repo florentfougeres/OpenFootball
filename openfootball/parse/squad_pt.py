@@ -25,7 +25,7 @@ _NOTE = re.compile(r"[¹²³⁴⁵⁶⁷⁸⁹*†]+|''+")
 def _player(raw: str, number: str | None, position: str | None, fmt: str) -> SquadEntry | None:
     flag = _FLAG.search(raw or "")
     text = _NOTE.sub("", re.sub(r"\{\{[^{}]*\}\}", "", raw or ""))
-    name, link = _name_and_link(text)
+    name, link = _name_and_link(text, full=True)
     if not name:
         return None
     pos_raw = (position or "").strip() or None

@@ -137,3 +137,23 @@ def test_es_reads_the_plain_jugador_de_futbol_template_in_both_parameter_styles(
     assert (got["Francisco Gómez"].shirt_number, got["Francisco Gómez"].position, got["Francisco Gómez"].link) == (1, "GK", "Francisco Gómez (futbolista)")
     assert (got["Franco Armani"].shirt_number, got["Franco Armani"].position, got["Franco Armani"].nationality) == (2, "GK", "Argentina")
     assert got["Sin Enlace"].position == "FW" and got["Sin Enlace"].link is None
+
+
+def test_status_icons_are_not_taken_for_players_or_their_links():
+    """`[[File:Injury icon 2.svg|15px]]` devant le nom d'un joueur donnait un « joueur » 15px (et perdait le vrai nom)."""
+    from openfootball.parse.squad import _name_and_link
+    assert _name_and_link("[[File:Injury icon 2.svg|15px]] [[Eran Zahavi]]") == ("Eran Zahavi", "Eran Zahavi")
+    assert _name_and_link("[[Archivo:Green Arrow Up.svg|14px]] [[Ezequiel Cerutti]]") == ("Ezequiel Cerutti", "Ezequiel Cerutti")
+    assert _name_and_link("[[Ficheiro:Farm-Fresh award star silver 2.png|15px|Prata da casa]] [[Dudu]]") == ("Dudu", "Dudu")
+    assert _name_and_link("[[File:Injury icon 2.svg|15px]]") == (None, None)
+
+
+def test_a_surname_written_as_a_piped_link_is_shown_with_the_full_page_title():
+    from openfootball.names import full_name
+    from openfootball.parse.squad import _name_and_link
+    assert _name_and_link("[[Hugo Lloris|Lloris]]", full=True) == ("Hugo Lloris", "Hugo Lloris")
+    assert _name_and_link("[[Rodri (footballer, born 1996)|Rodri]]", full=True) == ("Rodri", "Rodri (footballer, born 1996)")
+    assert _name_and_link("[[Chelsea F.C.|Chelsea]]") == ("Chelsea", "Chelsea F.C.")      # un club garde le texte écrit
+    assert full_name("Vini Jr.", "Vinícius Júnior") == "Vini Jr."
+    assert full_name("Gabriel", "Gabriel Magalhães") == "Gabriel"                  # prénom ou surnom : inchangé
+    assert full_name("Kanté", "N'Golo Kanté") == "N'Golo Kanté"

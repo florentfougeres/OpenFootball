@@ -11,6 +11,8 @@ déduise le `stint` (D6) : prêt, parti, réserve… Rien n'est deviné ici.
 from __future__ import annotations
 
 import re
+
+from openfootball.names import full_name
 import dataclasses
 from dataclasses import dataclass
 
@@ -34,6 +36,8 @@ _REF = re.compile(r"<ref\b[^>/]*?/>|<ref\b.*?</ref>", re.S | re.I)
 _COMMENT = re.compile(r"<!--.*?-->", re.S)
 _HEADING = re.compile(r"^(={2,6})\s*=?\s*(.*?)\s*=?\s*\1\s*$", re.M)
 _LINK = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]*))?\]\]")
+# Icône de statut (blessé, flèche, étoile) écrite `[[File:Injury icon 2.svg|15px]]` : ce n'est ni un joueur ni son lien, dans toutes les langues du wiki.
+_IMAGE_LINK = re.compile(r"\[\[\s*(?:file|image|archivo|ficheiro|imagem|fichier|datei|bestand|immagine|dosya|plik|fil|файл)\s*:[^\]]*\]\]", re.I)
 _PLAYERS_START = re.compile(
     r"^(players?(?!\s+(?:movement|transfers?))|squads?|rosters?|first[- ]team|current squad|senior squad|playing (staff|squad)|team)\b", re.I)
 _REGION_END = re.compile(
@@ -49,7 +53,7 @@ _EXCLUDED_SECTION = re.compile(
 
 _NO_LETTERS = re.compile(r"^[^A-Za-zÀ-ÿ]*$")
 _DATE = re.compile(r"^\d{1,2}\s+[A-Za-zÀ-ÿ]+\s+\d{4}$")
-_NOT_A_PLAYER = re.compile(r"^\W*(totals?|own goals?|opponents?|o\.?g\.?|n/?a|vacant)\W*$", re.I)
+_NOT_A_PLAYER = re.compile(r"^\W*(totals?|own goals?|opponents?|o\.?g\.?|n/?a|vacant|\d+\s*px(?:\|.*)?)\W*$", re.I)
 _TEMPLATES = ("Fs player", "Efs player", "Football squad player",
               "Extended football squad player", "Fb si player")
 
@@ -122,8 +126,9 @@ def clean_name(name: str) -> str:
     return strip_sort_key(n.strip())
 
 
-def _name_and_link(raw: str) -> tuple[str | None, str | None]:
-    raw = raw.strip()
+def _name_and_link(raw: str, full: bool = False) -> tuple[str | None, str | None]:
+    """`full` : nom de JOUEUR (complété par le titre de sa page) ; sans lui, le texte tel qu'écrit (clubs des tableaux de transferts)."""
+    raw = _IMAGE_LINK.sub("", raw).strip()
     m = re.search(r"\{\{\s*sortname\s*\|(.*?)\}\}", raw, re.I | re.S)
     if m:
         parts = split_top_level(m.group(1))
@@ -148,7 +153,8 @@ def _name_and_link(raw: str) -> tuple[str | None, str | None]:
     m = _LINK.search(raw)
     if m:
         target, shown = m.group(1).strip(), (m.group(2) or m.group(1)).strip()
-        return clean_name(shown), target
+        name = clean_name(shown)
+        return (full_name(name, target) if full else name), target
     plain = clean_name(re.sub(r"\{\{.*?\}\}|<[^>]+>", "", raw).strip())
     return (plain or None), None
 
@@ -285,7 +291,7 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
                 continue
             if "name" not in cols or len(cells) <= cols["name"]:
                 continue
-            name, link = _name_and_link(cells[cols["name"]][1])
+            name, link = _name_and_link(cells[cols["name"]][1], full=True)
             if not name or _NOT_A_PLAYER.match(name) or _NO_LETTERS.match(name) or _DATE.match(name):
                 continue
             nat = None
@@ -314,7 +320,7 @@ def _entries_from_templates(block: str, section: str, first_only: bool = False) 
     for tpl, body in iter_templates(block, _TEMPLATES):
         p = _params(body)
         if tpl != "fb si player":
-            name, link = _name_and_link(p.get("name", ""))
+            name, link = _name_and_link(p.get("name", ""), full=True)
             num, pos_raw, nat = _int(p.get("no")), p.get("pos"), p.get("nat")
             note, fmt = p.get("other"), "fs_player"
         else:

@@ -17,7 +17,7 @@ from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
 from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
-from openfootball.reconcile import apply_player_aliases, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
+from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
 from openfootball.store import FreezeRefused, SeasonFrozen, freeze
@@ -424,6 +424,9 @@ def reconcile_cmd(args: argparse.Namespace) -> int:
     aliased = apply_player_aliases(con)
     if aliased:
         print(f"{aliased} joueurs rattachés à leur page (table `player_alias`)")
+    renamed = normalize_player_names(con)
+    if renamed:
+        print(f"{renamed} noms de joueurs complétés d'après le titre de leur page (« Lloris » -> « Hugo Lloris »)")
     before = con.execute("SELECT count(*) FROM player").fetchone()[0]
     r = reconcile_players(con, clients)
     after = con.execute("SELECT count(*) FROM player").fetchone()[0]

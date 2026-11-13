@@ -24,19 +24,28 @@ export async function openDb() {
   return db;
 }
 
+// Fichiers lus EN ENTIER au démarrage, en parallèle (≈ 8 Mo) plutôt que par requêtes à plages : DuckDB ouvrait ~45 fichiers un par un, chaque ouverture coûtant
+// plusieurs allers-retours réseau (≈ 27 s à froid sur GitHub Pages). Les gros fichiers lus par quelques lignes (clubs, carrières, profils) restent en lecture à plages.
+const PRELOAD = new Set(["competition", "competition_club", "season", "known_gap", "country", "squad_source", "birth", "entity_wiki", "national"]);
+
 export async function loadData(db: duckdb.AsyncDuckDB, manifest: any, base: URL) {
   const pending: Promise<void>[] = [];       // enregistrements lancés ensemble, attendus avant la première requête
-  const register = (name: string, path: string) => {
-    pending.push(db.registerFileURL(name, new URL(path, base).href, duckdb.DuckDBDataProtocol.HTTP, false));
+  const register = (name: string, path: string, preload = false) => {
+    const url = new URL(path, base).href;
+    const byUrl = () => db.registerFileURL(name, url, duckdb.DuckDBDataProtocol.HTTP, false);
+    pending.push(preload
+      ? fetch(url).then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(String(r.status)))))
+          .then((buf) => db.registerFileBuffer(name, new Uint8Array(buf)), byUrl)     // repli : lecture à plages si le téléchargement échoue
+      : byUrl());
     return name;
   };
   const squad: string[] = [], clubSeason: string[] = [], files: Record<string, string> = {};
   for (const [label, s] of Object.entries<any>(manifest.seasons)) {
     const sl = seasonSlug(label);
-    squad.push(register(`squad_${sl}.parquet`, s.files.squad.path));
-    clubSeason.push(register(`cs_${sl}.parquet`, s.files.club_season.path));
+    squad.push(register(`squad_${sl}.parquet`, s.files.squad.path, true));
+    clubSeason.push(register(`cs_${sl}.parquet`, s.files.club_season.path, true));
   }
-  for (const [name, tbl] of Object.entries<any>(manifest.tables)) files[name] = register(`${name}.parquet`, tbl.path);
+  for (const [name, tbl] of Object.entries<any>(manifest.tables)) files[name] = register(`${name}.parquet`, tbl.path, PRELOAD.has(name));
   await Promise.all(pending);
   performance.mark("db:registered");
   conn = await db.connect();
