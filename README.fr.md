@@ -25,7 +25,7 @@
 
 ## En bref
 
-- **Des effectifs saison par saison, de 2010/11 à 2026/27**, avec numéro, poste, nationalité et âge, pour 18 championnats de première et deuxième division et les coupes d'Europe de clubs.
+- **Des effectifs saison par saison, de 2000/01 à 2026/27** (5 grands championnats dès 2000/01, les autres dès 2010/11), avec numéro, poste, nationalité et âge, pour 18 championnats de première et deuxième division et les coupes d'Europe de clubs.
 - **Des fiches joueur** : frise de carrière, clubs, prêts, sélections nationales, date et lieu de naissance.
 - **Des données ouvertes et réutilisables** : fichiers Parquet publiés à chaque [release](https://github.com/florentfougeres/OpenFootballBase/releases), lisibles avec DuckDB, pandas, Polars ou tout lecteur Parquet.
 - **Traçables** : chaque effectif cite la page Wikipedia et la révision d'où il vient. Rien n'est inventé ; un effectif absent reste absent et est signalé comme tel.
@@ -36,12 +36,12 @@
 
 | | |
 |---|---|
-| Saisons | 17 (2010/11 → 2026/27, la saison en cours est mise à jour à chaque release) |
-| Clubs avec saisons | 2 286 (et 44 455 fiches de clubs du monde, avec logo, stade et couleurs issus de Wikidata) |
-| Club-saisons | 18 582 |
-| Joueurs | 61 701 |
-| Lignes d'effectif | 219 248 |
-| Lignes de carrière | 337 981 |
+| Saisons | 27 (2000/01 → 2026/27, la saison en cours est mise à jour à chaque release) |
+| Clubs avec saisons | 2 291 (et 44 523 fiches de clubs du monde, avec logo, stade et couleurs issus de Wikidata) |
+| Club-saisons | 19 514 |
+| Joueurs | 65 742 |
+| Lignes d'effectif | 245 578 |
+| Lignes de carrière | 355 832 |
 | Compétitions | 87 (championnats et coupes continentales) |
 
 Chiffres au 2026-11-13. L'état à jour de chaque championnat et de chaque saison est dans [PROGRESS.md](PROGRESS.md).
@@ -63,15 +63,15 @@ Tous les championnats n'ont pas la même profondeur. Il y a trois niveaux, et le
 
 | Championnat | Pays | Saisons | Effectifs / club-saisons |
 |---|---|---|---|
-| Premier League (`ENG-PL`) | Angleterre | 2010/11 → 2026/27 | 340 / 340 |
+| Premier League (`ENG-PL`) | Angleterre | 2000/01 → 2026/27 | 540 / 540 |
 | Championship (`ENG-CH`) | Angleterre | 2010/11 → 2026/27 | 403 / 408 |
-| La Liga (`ESP-LL`) | Espagne | 2010/11 → 2026/27 | 330 / 340 |
+| La Liga (`ESP-LL`) | Espagne | 2000/01 → 2026/27 | 451 / 540 |
 | Segunda División (`ESP-SD`) | Espagne | 2010/11 → 2026/27 | 278 / 374 |
-| Serie A (`ITA-SA`) | Italie | 2010/11 → 2026/27 | 340 / 340 |
+| Serie A (`ITA-SA`) | Italie | 2000/01 → 2026/27 | 495 / 496 |
 | Serie B (`ITA-SB`) | Italie | 2010/11 → 2026/27 | 349 / 355 |
-| Bundesliga (`DEU-BL`) | Allemagne | 2010/11 → 2026/27 | 304 / 306 |
+| Bundesliga (`DEU-BL`) | Allemagne | 2000/01 → 2026/27 | 485 / 486 |
 | 2. Bundesliga (`DEU-B2`) | Allemagne | 2010/11 → 2026/27 | 282 / 306 |
-| Ligue 1 (`FRA-L1`) | France | 2010/11 → 2026/27 | 332 / 332 |
+| Ligue 1 (`FRA-L1`) | France | 2000/01 → 2026/27 | 466 / 528 |
 | Ligue 2 (`FRA-L2`) | France | 2010/11 → 2026/27 | 270 / 334 |
 | Pro League (`BEL-PL`) | Belgique | 2010/11 → 2026/27 | 187 / 280 |
 | Primeira Liga (`PRT-PL`) | Portugal | 2010/11 → 2026/27 | 145 / 298 |

@@ -16,6 +16,7 @@ from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
+from openfootball.reconstruct import reconstruct
 from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -540,6 +541,15 @@ def transfers_cmd(args: argparse.Namespace) -> int:
     return 0
 
 
+def reconstruct_cmd(args: argparse.Namespace) -> int:
+    """Effectif reconstitué (saison d'avant − sortants + arrivants) pour des club-saisons sans effectif ; lignes marquées « inferred »."""
+    con = connect(args.db)
+    migrate(con)
+    n = reconstruct(con, WikipediaClient(args.cache), args.season, args.club)
+    print(f"{n} club-saisons reconstituées")
+    return 0
+
+
 def fix_player_cmd(args: argparse.Namespace) -> int:
     """Rustine : le joueur que la page du club nomme `name` (sans lien) est celui dont la page Wikipedia est `--page`."""
     con = connect(args.db)
@@ -725,6 +735,12 @@ def main(argv: list[str] | None = None) -> int:
     tr.add_argument("--season", type=int, help="une seule saison (année de début) ; par défaut toutes les saisons non figées")
     tr.add_argument("--cache", default="cache/wikipedia")
     tr.set_defaults(func=transfers_cmd)
+    rc = sub.add_parser("reconstruct", help="effectif reconstitué (saison d'avant − sortants + arrivants) pour des club-saisons sans effectif")
+    rc.add_argument("--db", default=DB_DEFAULT)
+    rc.add_argument("--season", type=int, required=True)
+    rc.add_argument("--club", nargs="+", required=True, help="titres Wikipedia des clubs")
+    rc.add_argument("--cache", default="cache/wikipedia")
+    rc.set_defaults(func=reconstruct_cmd)
     fp = sub.add_parser("fix-player", help="rustine : relie le nom écrit sur une page de club (sans lien) à la page Wikipedia du joueur")
     fp.add_argument("name", help="le nom tel qu'écrit sur la page du club, ex. \"Joseph Layousse\"")
     fp.add_argument("--lang", required=True, help="langue de la page du joueur, ex. fr")

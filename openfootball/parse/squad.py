@@ -243,7 +243,8 @@ def _row_cells(row: str) -> list[tuple[str, str]]:
 def _header_columns(cells: list[tuple[str, str]]) -> dict[str, int]:
     labels = [re.sub(r"[^a-z# ]+", " ", c[1].lower()).strip() for c in cells]
     is_num = lambda l: bool(re.search(r"(^|\s)(no|number|#)(\s|$)", l)) and "nat" not in l
-    if not (any(is_num(l) for l in labels)
+    has_pos = any(re.search(r"(^|\s)pos", l) for l in labels)          # « Name | Age | Position » sans colonne « No. » (Blackburn 2008/09)
+    if not ((any(is_num(l) for l in labels) or has_pos)
             and any("name" in l or l == "player" for l in labels)):
         return {}
     cols: dict[str, int] = {}
@@ -295,6 +296,9 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
             if not name or _NOT_A_PLAYER.match(name) or _NO_LETTERS.match(name) or _DATE.match(name):
                 continue
             nat = None
+            for c in cells[:cols["name"]]:                    # colonnes d'avant le nom sans titre : drapeau et numéro, reconnus à leur contenu
+                if "nat" not in cols and nat is None:
+                    nat = _flag_from(c[1])
             if "nat" in cols and len(cells) > cols["nat"]:
                 nat = _flag_from(cells[cols["nat"]][1])
             if nat is None:                                    # drapeau dans la cellule du nom (ex. Arsenal 2025/26)
@@ -305,6 +309,8 @@ def _table_entries(block: str, section: str) -> list[SquadEntry]:
             if not normalize_position(pos_raw) and group:
                 pos_raw = group
             num = _int(cells[cols["num"]][1]) if "num" in cols and len(cells) > cols["num"] else None
+            if "num" not in cols:
+                num = next((n for n in (_int(c[1]) for c in cells[:cols["name"]] if not _flag_from(c[1])) if n is not None), None)
             # « on loan from X » écrit dans la cellule « Signed from » : joueur prêté REÇU
             note = next((re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", c[1]).strip() for c in cells
                          if re.search(r"on loan from", c[1], re.I)), None)

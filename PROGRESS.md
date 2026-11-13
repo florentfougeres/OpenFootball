@@ -10,7 +10,7 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026/27 | open | — | 2/10 ⚠ | 1/1 ✓ | 0/14 ⚠ | 30/30 ✓ | 4/12 ⚠ | 0/12 ⚠ | 6/12 ⚠ | 4/12 ⚠ | 18/18 ✓ | 3/14 ⚠ | 2/10 ⚠ | 1/16 ⚠ | 0/16 ⚠ | 20/20 ✓ | — | 10/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/20 ⚠ | — | 5/14 ⚠ | 5/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/20 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 1/10 ⚠ | 2/12 ⚠ | 18/18 ✓ | 18/18 ✓ | 1/10 ⚠ | 1/11 ⚠ | 7/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 3/10 ⚠ | — | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/20 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 0/16 ⚠ | 2/10 ⚠ | 0/16 ⚠ | 1/8 ⚠ | 0/18 ⚠ | 1/10 ⚠ | 1/12 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/16 ⚠ | 0/18 ⚠ | 4/18 ⚠ | 1/1 ✓ | 18/18 ✓ | 0/12 ⚠ | 0/12 ⚠ | 4/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 4/12 ⚠ | 3/14 ⚠ | 2/12 ⚠ | 3/10 ⚠ | 5/16 ⚠ | 0/16 ⚠ | 18/18 ✓ | — | — | — | 6/17 ⚠ | 0/16 ⚠ | 30/30 ✓ | 0/14 ⚠ | 0/16 ⚠ | 1/10 ⚠ | 0/16 ⚠ |
 | 2025/26 | backfill | — | 0/10 ⚠ | 0/10 ⚠ | 0/14 ⚠ | 19/30 ⚠ | 4/10 ⚠ | 0/12 ⚠ | 5/12 ⚠ | 4/12 ⚠ | 12/16 ⚠ | 3/16 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 18/20 ⚠ | — | 4/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/20 ⚠ | — | 2/14 ⚠ | 3/16 ⚠ | 7/18 ⚠ | 18/18 ✓ | 5/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/21 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 5/22 ⚠ | 1/10 ⚠ | 2/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 0/10 ⚠ | 1/12 ⚠ | 5/14 ⚠ | 2/10 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 1/12 ⚠ | 4/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/20 ⚠ | 2/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/8 ⚠ | 0/18 ⚠ | 0/12 ⚠ | 1/1 ✓ | 0/12 ⚠ | 10/18 ⚠ | 6/16 ⚠ | 0/19 ⚠ | 2/18 ⚠ | — | 5/18 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 4/16 ⚠ | 0/16 ⚠ | 18/18 ✓ | 4/12 ⚠ | 2/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 5/16 ⚠ | 0/16 ⚠ | 3/18 ⚠ | — | — | — | 3/16 ⚠ | 0/16 ⚠ | 29/30 ⚠ | 0/14 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 0/16 ⚠ |
-| 2024/25 | backfill | — | 0/10 ⚠ | 0/10 ⚠ | 0/14 ⚠ | 5/28 ⚠ | 4/11 ⚠ | 0/13 ⚠ | 6/12 ⚠ | 3/10 ⚠ | 13/16 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 13/20 ⚠ | — | 3/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/20 ⚠ | — | 1/14 ⚠ | 2/16 ⚠ | 5/18 ⚠ | 16/18 ⚠ | 3/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/18 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 15/22 ⚠ | 1/10 ⚠ | 2/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 0/10 ⚠ | 0/11 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 2/10 ⚠ | 1/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/20 ⚠ | 3/13 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/10 ⚠ | 0/16 ⚠ | 1/8 ⚠ | 0/18 ⚠ | 0/12 ⚠ | — | 0/12 ⚠ | 9/18 ⚠ | 8/16 ⚠ | 0/18 ⚠ | 2/18 ⚠ | — | 7/18 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 2/16 ⚠ | 7/16 ⚠ | 18/18 ✓ | 4/12 ⚠ | 1/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 4/16 ⚠ | 0/16 ⚠ | 17/19 ⚠ | — | — | — | 4/16 ⚠ | 0/16 ⚠ | 26/29 ⚠ | 0/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ |
+| 2024/25 | backfill | — | 0/10 ⚠ | 0/10 ⚠ | 0/14 ⚠ | 5/28 ⚠ | 4/11 ⚠ | 0/13 ⚠ | 6/12 ⚠ | 3/10 ⚠ | 13/16 ⚠ | 3/16 ⚠ | 0/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 13/20 ⚠ | — | 3/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/20 ⚠ | — | 1/14 ⚠ | 2/16 ⚠ | 5/18 ⚠ | 18/18 ✓ | 3/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/18 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 15/22 ⚠ | 1/10 ⚠ | 2/12 ⚠ | 18/18 ✓ | 8/18 ⚠ | 0/10 ⚠ | 0/11 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 2/10 ⚠ | 1/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/20 ⚠ | 3/13 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/10 ⚠ | 0/16 ⚠ | 1/8 ⚠ | 0/18 ⚠ | 0/12 ⚠ | — | 0/12 ⚠ | 9/18 ⚠ | 8/16 ⚠ | 0/18 ⚠ | 2/18 ⚠ | — | 7/18 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 2/16 ⚠ | 7/16 ⚠ | 18/18 ✓ | 4/12 ⚠ | 1/16 ⚠ | 2/12 ⚠ | 0/10 ⚠ | 4/16 ⚠ | 0/16 ⚠ | 17/19 ⚠ | — | — | — | 4/16 ⚠ | 0/16 ⚠ | 26/29 ⚠ | 0/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ |
 | 2023/24 | backfill | — | 0/10 ⚠ | 0/10 ⚠ | 0/14 ⚠ | 5/28 ⚠ | 4/10 ⚠ | 0/12 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 16/16 ✓ | 3/16 ⚠ | 1/12 ⚠ | 1/15 ⚠ | 0/17 ⚠ | 14/20 ⚠ | — | 7/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/20 ⚠ | — | 3/14 ⚠ | 5/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 6/13 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/18 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 1/10 ⚠ | 1/12 ⚠ | 18/18 ✓ | 20/20 ✓ | 0/10 ⚠ | 0/11 ⚠ | 5/14 ⚠ | 3/10 ⚠ | 2/12 ⚠ | 2/10 ⚠ | 1/6 ⚠ | 3/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/18 ⚠ | 2/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/8 ⚠ | 0/18 ⚠ | 0/12 ⚠ | — | 0/12 ⚠ | 18/18 ✓ | 8/16 ⚠ | 0/19 ⚠ | 3/18 ⚠ | — | 17/18 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 3/16 ⚠ | 8/16 ⚠ | 18/18 ✓ | 4/12 ⚠ | 4/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 3/16 ⚠ | 0/14 ⚠ | 20/20 ✓ | — | — | — | 4/16 ⚠ | 0/16 ⚠ | 29/29 ✓ | 0/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ |
 | 2022/23 | backfill | — | 0/10 ⚠ | 0/8 ⚠ | 0/14 ⚠ | 5/28 ⚠ | 4/10 ⚠ | 0/12 ⚠ | 6/12 ⚠ | 4/10 ⚠ | 18/18 ✓ | 3/16 ⚠ | 0/12 ⚠ | 1/16 ⚠ | 0/16 ⚠ | 10/20 ⚠ | — | 8/11 ⚠ | 0/16 ⚠ | 0/18 ⚠ | 0/20 ⚠ | — | 3/14 ⚠ | 5/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 0/16 ⚠ | 0/16 ⚠ | 0/18 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 20/22 ⚠ | 1/10 ⚠ | 1/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/10 ⚠ | 0/11 ⚠ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 2/10 ⚠ | — | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/18 ⚠ | 2/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/1 ✓ | 0/18 ⚠ | 0/12 ⚠ | — | 0/12 ⚠ | 18/18 ✓ | 7/16 ⚠ | 0/19 ⚠ | 4/18 ⚠ | — | 18/18 ✓ | 0/12 ⚠ | 0/12 ⚠ | 3/16 ⚠ | 6/16 ⚠ | 16/16 ✓ | 4/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 0/10 ⚠ | 4/16 ⚠ | 0/16 ⚠ | 19/19 ✓ | — | — | — | 2/16 ⚠ | 0/16 ⚠ | 27/28 ⚠ | 0/13 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ |
 | 2021/22 | backfill | — | 0/10 ⚠ | 0/8 ⚠ | 0/14 ⚠ | 4/26 ⚠ | 4/10 ⚠ | 0/12 ⚠ | 6/12 ⚠ | 4/8 ⚠ | 18/18 ✓ | 3/14 ⚠ | 0/12 ⚠ | 1/16 ⚠ | 0/16 ⚠ | 11/20 ⚠ | — | 8/10 ⚠ | 0/17 ⚠ | 0/16 ⚠ | 0/21 ⚠ | — | 2/12 ⚠ | 5/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 0/18 ⚠ | 0/16 ⚠ | 0/18 ⚠ | 24/24 ✓ | 20/20 ✓ | 20/20 ✓ | 22/22 ✓ | 1/10 ⚠ | 1/12 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/10 ⚠ | 0/11 ⚠ | 6/14 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 2/10 ⚠ | 1/12 ⚠ | 2/14 ⚠ | 20/20 ✓ | 20/20 ✓ | 0/20 ⚠ | 3/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/9 ⚠ | 0/16 ⚠ | 1/8 ⚠ | 0/18 ⚠ | 0/12 ⚠ | 1/12 ⚠ | 0/12 ⚠ | 18/18 ✓ | 8/16 ⚠ | 0/18 ⚠ | 3/18 ⚠ | — | 18/18 ✓ | 0/10 ⚠ | 0/12 ⚠ | 2/16 ⚠ | 8/16 ⚠ | — | 4/12 ⚠ | 3/16 ⚠ | 2/12 ⚠ | 1/10 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 11/20 ⚠ | — | — | — | 2/16 ⚠ | 0/16 ⚠ | 24/27 ⚠ | 0/14 ⚠ | 0/12 ⚠ | 0/10 ⚠ | 0/16 ⚠ |
@@ -25,8 +25,18 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2012/13 | backfill | — | 1/14 ⚠ | — | 0/14 ⚠ | 4/20 ⚠ | 0/8 ⚠ | 0/11 ⚠ | 3/10 ⚠ | 3/12 ⚠ | 5/16 ⚠ | 3/16 ⚠ | — | 1/11 ⚠ | 0/12 ⚠ | 9/20 ⚠ | — | 8/10 ⚠ | 0/18 ⚠ | 0/16 ⚠ | 0/18 ⚠ | — | 3/14 ⚠ | 3/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 4/12 ⚠ | 0/16 ⚠ | 0/12 ⚠ | 0/18 ⚠ | 24/24 ✓ | 20/20 ✓ | 17/20 ⚠ | 15/22 ⚠ | — | 1/12 ⚠ | 20/20 ✓ | 20/20 ✓ | — | — | 5/16 ⚠ | 3/12 ⚠ | 3/16 ⚠ | 1/12 ⚠ | — | 2/14 ⚠ | 20/20 ✓ | 21/22 ⚠ | 0/18 ⚠ | 3/14 ⚠ | 0/16 ⚠ | — | 0/14 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/12 ⚠ | 0/18 ⚠ | 1/12 ⚠ | — | — | 8/18 ⚠ | 6/16 ⚠ | 0/16 ⚠ | 1/16 ⚠ | — | 6/16 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 4/18 ⚠ | 10/16 ⚠ | — | 3/12 ⚠ | 2/16 ⚠ | 0/12 ⚠ | 1/10 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 6/18 ⚠ | — | — | — | 5/16 ⚠ | 0/16 ⚠ | 16/19 ⚠ | 0/14 ⚠ | — | — | 0/16 ⚠ |
 | 2011/12 | backfill | — | 1/14 ⚠ | — | 0/12 ⚠ | 3/20 ⚠ | 0/8 ⚠ | 0/11 ⚠ | 4/10 ⚠ | 3/12 ⚠ | 7/16 ⚠ | 3/16 ⚠ | — | 1/12 ⚠ | 0/12 ⚠ | 5/20 ⚠ | — | 7/10 ⚠ | 0/18 ⚠ | 0/16 ⚠ | 0/18 ⚠ | — | 2/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 5/12 ⚠ | 0/16 ⚠ | 0/12 ⚠ | 0/19 ⚠ | 23/24 ⚠ | 20/20 ✓ | 18/20 ⚠ | 9/22 ⚠ | — | 0/12 ⚠ | 20/20 ✓ | 14/20 ⚠ | — | — | 6/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 2/10 ⚠ | — | 3/17 ⚠ | 20/20 ✓ | 21/22 ⚠ | 0/18 ⚠ | 3/12 ⚠ | 0/16 ⚠ | — | 0/14 ⚠ | 0/9 ⚠ | 0/16 ⚠ | 1/12 ⚠ | 0/18 ⚠ | 1/12 ⚠ | — | — | 7/18 ⚠ | 7/16 ⚠ | 0/16 ⚠ | 2/16 ⚠ | — | 4/16 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 3/18 ⚠ | 10/16 ⚠ | — | 4/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 3/16 ⚠ | 0/16 ⚠ | 5/18 ⚠ | — | — | — | 6/16 ⚠ | 0/16 ⚠ | 16/18 ⚠ | 0/14 ⚠ | — | — | 0/16 ⚠ |
 | 2010/11 | backfill | — | 1/12 ⚠ | — | 0/12 ⚠ | 1/20 ⚠ | 0/8 ⚠ | 0/12 ⚠ | 2/10 ⚠ | 3/12 ⚠ | 6/16 ⚠ | 2/16 ⚠ | — | 0/12 ⚠ | 0/12 ⚠ | 6/20 ⚠ | — | 7/11 ⚠ | 0/18 ⚠ | 0/16 ⚠ | 0/18 ⚠ | — | 1/14 ⚠ | 2/16 ⚠ | 18/18 ✓ | 18/18 ✓ | 3/12 ⚠ | 0/16 ⚠ | 0/12 ⚠ | 0/16 ⚠ | 22/24 ⚠ | 20/20 ✓ | 16/20 ⚠ | 8/22 ⚠ | — | 1/14 ⚠ | 20/20 ✓ | 8/20 ⚠ | — | — | 5/16 ⚠ | 2/16 ⚠ | 3/16 ⚠ | 2/10 ⚠ | — | 0/16 ⚠ | 20/20 ✓ | 21/22 ⚠ | 0/18 ⚠ | 2/12 ⚠ | 0/15 ⚠ | — | 0/14 ⚠ | 0/10 ⚠ | 0/16 ⚠ | 1/14 ⚠ | 0/18 ⚠ | 0/12 ⚠ | — | — | 6/18 ⚠ | 6/16 ⚠ | 0/16 ⚠ | 1/16 ⚠ | — | 4/16 ⚠ | 0/12 ⚠ | 0/12 ⚠ | 4/18 ⚠ | 8/16 ⚠ | — | 4/12 ⚠ | 2/16 ⚠ | 1/12 ⚠ | 1/10 ⚠ | 3/16 ⚠ | 0/14 ⚠ | 8/18 ⚠ | — | — | — | 5/16 ⚠ | 0/16 ⚠ | 13/16 ⚠ | 0/14 ⚠ | — | — | 0/16 ⚠ |
+| 2009/10 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 14/20 ⚠ | — | — | — | 18/20 ⚠ | — | — | — | — | — | — | — | — | — | 20/20 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2008/09 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 12/20 ⚠ | — | — | — | 17/20 ⚠ | — | — | — | — | — | — | — | — | — | 20/20 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2007/08 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 14/20 ⚠ | — | — | — | 11/20 ⚠ | — | — | — | — | — | — | — | — | — | 20/20 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2006/07 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 12/20 ⚠ | — | — | — | 15/20 ⚠ | — | — | — | — | — | — | — | — | — | 20/20 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2005/06 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 14/20 ⚠ | — | — | — | 11/20 ⚠ | — | — | — | — | — | — | — | — | — | 20/20 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2004/05 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 17/18 ⚠ | — | — | — | — | — | 20/20 ✓ | 10/20 ⚠ | — | — | — | 16/20 ⚠ | — | — | — | — | — | — | — | — | — | 20/20 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2003/04 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 11/20 ⚠ | — | — | — | 12/20 ⚠ | — | — | — | — | — | — | — | — | — | 17/18 ⚠ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2002/03 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 13/20 ⚠ | — | — | — | 12/20 ⚠ | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2001/02 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 10/20 ⚠ | — | — | — | 11/18 ⚠ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| 2000/01 | backfill | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | 18/18 ✓ | — | — | — | — | — | 20/20 ✓ | 11/20 ⚠ | — | — | — | 11/18 ⚠ | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
 
-**Total : 6286 / 18582 effectifs (33.8 %).**
+**Total : 7077 / 19514 effectifs (36.3 %).**
 
 ## Manques : club-saisons sans effectif
 
@@ -1834,8 +1844,6 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2024/25 | DEU-B2 | SSV Ulm 1846 | **non validé** |
 | 2024/25 | DEU-B2 | SV Darmstadt 98 | **non validé** |
 | 2024/25 | DEU-B2 | SV Elversberg | **non validé** |
-| 2024/25 | DEU-BL | Holstein Kiel | validé : page anglaise de la saison sans section d'effectif (transferts et matchs seulement) ; aucune autre source libre trouvée |
-| 2024/25 | DEU-BL | VfL Bochum | validé : page anglaise de la saison sans section d'effectif (transferts et matchs seulement) ; aucune autre source libre trouvée |
 | 2024/25 | DNK-L1 | AaB Fodbold | **non validé** |
 | 2024/25 | DNK-L1 | Aarhus Gymnastikforening | **non validé** |
 | 2024/25 | DNK-L1 | Brøndby IF | **non validé** |
@@ -12328,30 +12336,173 @@ Chaque case : effectifs établis / clubs du championnat. `⚠` = au moins un tro
 | 2010/11 | ZAF-L1 | Santos F.C. (South Africa) | **non validé** |
 | 2010/11 | ZAF-L1 | SuperSport United F.C. | **non validé** |
 | 2010/11 | ZAF-L1 | Vasco da Gama F.C. | **non validé** |
+| 2009/10 | ESP-LL | CA Osasuna | **non validé** |
+| 2009/10 | ESP-LL | CD Tenerife | **non validé** |
+| 2009/10 | ESP-LL | Getafe CF | **non validé** |
+| 2009/10 | ESP-LL | Málaga CF | **non validé** |
+| 2009/10 | ESP-LL | RCD Mallorca | **non validé** |
+| 2009/10 | ESP-LL | Racing de Santander | **non validé** |
+| 2009/10 | FRA-L1 | Le Mans FC | **non validé** |
+| 2009/10 | FRA-L1 | US Boulogne | **non validé** |
+| 2008/09 | ESP-LL | CA Osasuna | **non validé** |
+| 2008/09 | ESP-LL | CD Numancia | **non validé** |
+| 2008/09 | ESP-LL | Getafe CF | **non validé** |
+| 2008/09 | ESP-LL | Málaga CF | **non validé** |
+| 2008/09 | ESP-LL | RCD Mallorca | **non validé** |
+| 2008/09 | ESP-LL | Racing de Santander | **non validé** |
+| 2008/09 | ESP-LL | Real Valladolid | **non validé** |
+| 2008/09 | ESP-LL | Recreativo de Huelva | **non validé** |
+| 2008/09 | FRA-L1 | FC Lorient | **non validé** |
+| 2008/09 | FRA-L1 | Le Mans FC | **non validé** |
+| 2008/09 | FRA-L1 | Stade Malherbe Caen | **non validé** |
+| 2007/08 | ESP-LL | CA Osasuna | **non validé** |
+| 2007/08 | ESP-LL | Levante UD | **non validé** |
+| 2007/08 | ESP-LL | RCD Mallorca | **non validé** |
+| 2007/08 | ESP-LL | Real Murcia CF | **non validé** |
+| 2007/08 | ESP-LL | Real Valladolid | **non validé** |
+| 2007/08 | ESP-LL | Recreativo de Huelva | **non validé** |
+| 2007/08 | FRA-L1 | AS Nancy | **non validé** |
+| 2007/08 | FRA-L1 | FC Girondins de Bordeaux | **non validé** |
+| 2007/08 | FRA-L1 | FC Lorient | **non validé** |
+| 2007/08 | FRA-L1 | FC Metz | **non validé** |
+| 2007/08 | FRA-L1 | FC Sochaux-Montbéliard | **non validé** |
+| 2007/08 | FRA-L1 | Le Mans FC | **non validé** |
+| 2007/08 | FRA-L1 | Racing Club de Strasbourg Alsace | **non validé** |
+| 2007/08 | FRA-L1 | Stade Malherbe Caen | **non validé** |
+| 2007/08 | FRA-L1 | Toulouse FC | **non validé** |
+| 2006/07 | ESP-LL | CA Osasuna | **non validé** |
+| 2006/07 | ESP-LL | Getafe CF | **non validé** |
+| 2006/07 | ESP-LL | Gimnàstic de Tarragona | **non validé** |
+| 2006/07 | ESP-LL | Levante UD | **non validé** |
+| 2006/07 | ESP-LL | RCD Mallorca | **non validé** |
+| 2006/07 | ESP-LL | Racing de Santander | **non validé** |
+| 2006/07 | ESP-LL | Real Sociedad | **non validé** |
+| 2006/07 | ESP-LL | Recreativo de Huelva | **non validé** |
+| 2006/07 | FRA-L1 | CS Sedan Ardennes | **non validé** |
+| 2006/07 | FRA-L1 | FC Lorient | **non validé** |
+| 2006/07 | FRA-L1 | FC Sochaux-Montbéliard | **non validé** |
+| 2006/07 | FRA-L1 | Le Mans FC | **non validé** |
+| 2006/07 | FRA-L1 | Toulouse FC | **non validé** |
+| 2005/06 | ESP-LL | Getafe CF | **non validé** |
+| 2005/06 | ESP-LL | Málaga CF | **non validé** |
+| 2005/06 | ESP-LL | RCD Espanyol | **non validé** |
+| 2005/06 | ESP-LL | RCD Mallorca | **non validé** |
+| 2005/06 | ESP-LL | Racing de Santander | **non validé** |
+| 2005/06 | ESP-LL | Real Sociedad | **non validé** |
+| 2005/06 | FRA-L1 | AC Ajaccio | **non validé** |
+| 2005/06 | FRA-L1 | AJ Auxerre | **non validé** |
+| 2005/06 | FRA-L1 | AS Nancy | **non validé** |
+| 2005/06 | FRA-L1 | FC Metz | **non validé** |
+| 2005/06 | FRA-L1 | FC Sochaux-Montbéliard | **non validé** |
+| 2005/06 | FRA-L1 | Le Mans FC | **non validé** |
+| 2005/06 | FRA-L1 | Lille OSC | **non validé** |
+| 2005/06 | FRA-L1 | Racing Club de Strasbourg Alsace | **non validé** |
+| 2005/06 | FRA-L1 | Troyes AC | **non validé** |
+| 2004/05 | DEU-BL | SC Freiburg | **non validé** |
+| 2004/05 | ESP-LL | CA Osasuna | **non validé** |
+| 2004/05 | ESP-LL | CD Numancia | **non validé** |
+| 2004/05 | ESP-LL | Getafe CF | **non validé** |
+| 2004/05 | ESP-LL | Levante UD | **non validé** |
+| 2004/05 | ESP-LL | Málaga CF | **non validé** |
+| 2004/05 | ESP-LL | RCD Mallorca | **non validé** |
+| 2004/05 | ESP-LL | Racing de Santander | **non validé** |
+| 2004/05 | ESP-LL | Real Sociedad | **non validé** |
+| 2004/05 | ESP-LL | Sevilla FC | **non validé** |
+| 2004/05 | ESP-LL | Villarreal CF | **non validé** |
+| 2004/05 | FRA-L1 | AC Ajaccio | **non validé** |
+| 2004/05 | FRA-L1 | Racing Club de Strasbourg Alsace | **non validé** |
+| 2004/05 | FRA-L1 | Stade Malherbe Caen | **non validé** |
+| 2004/05 | FRA-L1 | Stade Rennais F.C. | **non validé** |
+| 2003/04 | ESP-LL | CA Osasuna | **non validé** |
+| 2003/04 | ESP-LL | Málaga CF | **non validé** |
+| 2003/04 | ESP-LL | RCD Mallorca | **non validé** |
+| 2003/04 | ESP-LL | Racing de Santander | **non validé** |
+| 2003/04 | ESP-LL | Real Murcia CF | **non validé** |
+| 2003/04 | ESP-LL | Real Sociedad | **non validé** |
+| 2003/04 | ESP-LL | Real Valladolid | **non validé** |
+| 2003/04 | ESP-LL | Sevilla FC | **non validé** |
+| 2003/04 | ESP-LL | Villarreal CF | **non validé** |
+| 2003/04 | FRA-L1 | AC Ajaccio | **non validé** |
+| 2003/04 | FRA-L1 | AJ Auxerre | **non validé** |
+| 2003/04 | FRA-L1 | En Avant de Guingamp | **non validé** |
+| 2003/04 | FRA-L1 | FC Metz | **non validé** |
+| 2003/04 | FRA-L1 | Le Mans FC | **non validé** |
+| 2003/04 | FRA-L1 | Racing Club de Strasbourg Alsace | **non validé** |
+| 2003/04 | FRA-L1 | SC Bastia | **non validé** |
+| 2003/04 | FRA-L1 | Stade Rennais F.C. | **non validé** |
+| 2003/04 | ITA-SA | AC Ancona | **non validé** |
+| 2002/03 | ESP-LL | RCD Mallorca | **non validé** |
+| 2002/03 | ESP-LL | Racing de Santander | **non validé** |
+| 2002/03 | ESP-LL | Rayo Vallecano | **non validé** |
+| 2002/03 | ESP-LL | Real Valladolid | **non validé** |
+| 2002/03 | ESP-LL | Recreativo de Huelva | **non validé** |
+| 2002/03 | ESP-LL | Sevilla FC | **non validé** |
+| 2002/03 | ESP-LL | Villarreal CF | **non validé** |
+| 2002/03 | FRA-L1 | AC Ajaccio | **non validé** |
+| 2002/03 | FRA-L1 | CS Sedan Ardennes | **non validé** |
+| 2002/03 | FRA-L1 | En Avant de Guingamp | **non validé** |
+| 2002/03 | FRA-L1 | FC Girondins de Bordeaux | **non validé** |
+| 2002/03 | FRA-L1 | Le Havre AC | **non validé** |
+| 2002/03 | FRA-L1 | Racing Club de Strasbourg Alsace | **non validé** |
+| 2002/03 | FRA-L1 | Stade Rennais F.C. | **non validé** |
+| 2002/03 | FRA-L1 | Troyes AC | **non validé** |
+| 2001/02 | ESP-LL | CA Osasuna | **non validé** |
+| 2001/02 | ESP-LL | CD Tenerife | **non validé** |
+| 2001/02 | ESP-LL | Deportivo Alavés | **non validé** |
+| 2001/02 | ESP-LL | RCD Mallorca | **non validé** |
+| 2001/02 | ESP-LL | Rayo Vallecano | **non validé** |
+| 2001/02 | ESP-LL | Real Betis | **non validé** |
+| 2001/02 | ESP-LL | Real Sociedad | **non validé** |
+| 2001/02 | ESP-LL | Sevilla FC | **non validé** |
+| 2001/02 | ESP-LL | UD Las Palmas | **non validé** |
+| 2001/02 | ESP-LL | Villarreal CF | **non validé** |
+| 2001/02 | FRA-L1 | CS Sedan Ardennes | **non validé** |
+| 2001/02 | FRA-L1 | En Avant de Guingamp | **non validé** |
+| 2001/02 | FRA-L1 | FC Girondins de Bordeaux | **non validé** |
+| 2001/02 | FRA-L1 | FC Lorient | **non validé** |
+| 2001/02 | FRA-L1 | FC Sochaux-Montbéliard | **non validé** |
+| 2001/02 | FRA-L1 | Stade Rennais F.C. | **non validé** |
+| 2001/02 | FRA-L1 | Troyes AC | **non validé** |
+| 2000/01 | ESP-LL | CA Osasuna | **non validé** |
+| 2000/01 | ESP-LL | CD Numancia | **non validé** |
+| 2000/01 | ESP-LL | Málaga CF | **non validé** |
+| 2000/01 | ESP-LL | Racing de Santander | **non validé** |
+| 2000/01 | ESP-LL | Real Oviedo | **non validé** |
+| 2000/01 | ESP-LL | Real Sociedad | **non validé** |
+| 2000/01 | ESP-LL | Real Valladolid | **non validé** |
+| 2000/01 | ESP-LL | UD Las Palmas | **non validé** |
+| 2000/01 | ESP-LL | Villarreal CF | **non validé** |
+| 2000/01 | FRA-L1 | AJ Auxerre | **non validé** |
+| 2000/01 | FRA-L1 | CS Sedan Ardennes | **non validé** |
+| 2000/01 | FRA-L1 | En Avant de Guingamp | **non validé** |
+| 2000/01 | FRA-L1 | FC Girondins de Bordeaux | **non validé** |
+| 2000/01 | FRA-L1 | Stade Rennais F.C. | **non validé** |
+| 2000/01 | FRA-L1 | Toulouse FC | **non validé** |
+| 2000/01 | FRA-L1 | Troyes AC | **non validé** |
 
 ## Manques : données joueurs et clubs
 
 | Donnée | Manquants | Sur |
 |---|---|---|
-| Joueurs sans identité Wikidata (QID) | 18216 | 61684 |
-| Joueurs sans carrière (infobox) | 18976 | 61684 |
-| Joueurs sans date de naissance au jour près | 18795 | 61684 |
-| Lignes d'effectif sans nationalité | 4512 | 219272 |
-| Lignes d'effectif sans poste | 1344 | 219272 |
-| Lignes d'effectif à statut inconnu (prêt/transfert) | 181766 | 219272 |
-| Clubs à effectifs sans logo | 227 | 2286 |
-| Clubs à effectifs sans page Wikipedia française | 166 | 2286 |
+| Joueurs sans identité Wikidata (QID) | 16480 | 65742 |
+| Joueurs sans carrière (infobox) | 21042 | 65742 |
+| Joueurs sans date de naissance au jour près | 17088 | 65742 |
+| Lignes d'effectif sans nationalité | 4830 | 245578 |
+| Lignes d'effectif sans poste | 1384 | 245578 |
+| Lignes d'effectif à statut inconnu (prêt/transfert) | 221128 | 245578 |
+| Clubs à effectifs sans logo | 228 | 2291 |
+| Clubs à effectifs sans page Wikipedia française | 171 | 2291 |
 
 ## Clubs du monde (fiches club)
 
 | Donnée | Clubs | Sur |
 |---|---|---|
-| Clubs au total (table `club`) | 44455 | 44455 |
-| … dont avec effectifs détaillés | 2286 | 44455 |
-| … avec un logo (infobox ou Commons) | 17949 | 44455 |
-| … avec stade | 9886 | 44455 |
-| … avec date de fondation | 23588 | 44455 |
-| … avec page Wikipedia anglaise | 27205 | 44455 |
+| Clubs au total (table `club`) | 44523 | 44523 |
+| … dont avec effectifs détaillés | 2291 | 44523 |
+| … avec un logo (infobox ou Commons) | 17955 | 44523 |
+| … avec stade | 9886 | 44523 |
+| … avec date de fondation | 23588 | 44523 |
+| … avec page Wikipedia anglaise | 27273 | 44523 |
 
 ## À faire
 

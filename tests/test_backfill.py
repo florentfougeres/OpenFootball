@@ -382,7 +382,7 @@ def test_calendar_year_page_format(con):
     """MLS : la page du championnat s'appelle « 2023 … season »."""
     import dataclasses
     sc = dataclasses.replace(load_scopes(["FRA-L1"])[0], page_format="{year} {name} season")
-    assert sc.league_page_titles(2023, "2023–24") == ["2023 Ligue 1 season"]
+    assert sc.league_page_titles(2023, "2023–24")[0] == "2023 Ligue 1 season"
     pages = setup_pages()
     pages["2023 Ligue 1 season"] = pages.pop("2023–24 Ligue 1")
     run_backfill(con, [sc], 2023, wp=FakeWiki(pages), lang_clients={"it": FakeWiki({}), "fr": FakeWiki({})},

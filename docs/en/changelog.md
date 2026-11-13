@@ -4,6 +4,11 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.11.0 — 2026-11-13
+- **Seasons 2000/01 to 2009/10 for the five major leagues** (Premier League, La Liga, Serie A, Bundesliga, Ligue 1): 10 more seasons, 932 club-seasons, 789 squads read. Without a "club season" page on Wikipedia the squad stays empty and is listed as such (mostly La Liga and Ligue 1 before 2005).
+- **Reconstructed squads** (new command `reconstruct`): when a club-season has no squad but its page lists transfers in and out, the squad is rebuilt as the previous season's squad minus departures plus arrivals. Rows are marked `inferred` (never `attested`) and the gap stays documented. First use: Holstein Kiel and VfL Bochum 2024/25.
+- **Fix**: squad tables without a "No." column (Blackburn Rovers 2008/09) are now read.
+
 ## Data 1.10.1 — 2026-11-13
 - **Fix**: status icons written as images (`[[File:Injury icon 2.svg|15px]]`) were read as players named "15px" or "14px" and hid the real player (Maccabi Haifa 2025/26-2026/27, San Lorenzo 2022/23-2024/25, Palmeiras 2014/15-2016/17, Santos 2016/17); the affected seasons were re-read.
 - **Fix**: a surname written as a piped link is shown with the full page title ("Lloris" → "Hugo Lloris"); first names and nicknames are left as written.

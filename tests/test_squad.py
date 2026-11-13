@@ -352,3 +352,30 @@ def test_roster_section_before_player_movement():
 == Competitions ==
 """
     assert {e.name for e in parse_squad(wt)} == {"Evan Louro", "Alvas Powell"}
+
+
+def test_table_without_number_column():
+    """Blackburn 2008/09 : « Name | Age | Position », drapeau et numéro dans des colonnes sans titre."""
+    wt = """==First-team squad==
+{| class="wikitable"
+|-
+!!!
+!Name
+!Age
+!Position
+|-
+|align=center|{{flagicon|England}}
+|align=center|1
+|align=center|[[Paul Robinson (footballer, born 1979)|Paul Robinson]]
+|align=center|{{birth date and age2|df=yes|2009|05|31|1979|10|15}}
+|align=center|Goalkeeper
+|-
+|align=center|{{flagicon|Netherlands}}
+|align=center|2
+|align=center|[[André Ooijer]]
+|align=center|{{birth date and age2|df=yes|2009|05|31|1974|07|11}}
+|align=center|Defender
+|}
+"""
+    es = parse_squad(wt)
+    assert [(e.shirt_number, e.name, e.position, e.nationality) for e in es] == [(1, "Paul Robinson", "GK", "England"), (2, "André Ooijer", "DF", "Netherlands")]

@@ -13,5 +13,13 @@ name_fr = "Serie A"
 level = 1
 
 [[team_count]]
+from = 2000
+n = 18
+
+[[team_count]]
+from = 2004
+n = 20
+
+[[team_count]]
 from = 2010
 n = 20

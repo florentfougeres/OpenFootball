@@ -13,5 +13,9 @@ name_fr = "Premier League"
 level = 1
 
 [[team_count]]
+from = 2000
+n = 20
+
+[[team_count]]
 from = 2010
 n = 20

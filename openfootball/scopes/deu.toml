@@ -13,5 +13,9 @@ name_fr = "Bundesliga"
 level = 1
 
 [[team_count]]
+from = 2000
+n = 18
+
+[[team_count]]
 from = 2010
 n = 18

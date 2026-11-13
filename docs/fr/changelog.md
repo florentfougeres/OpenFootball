@@ -4,6 +4,11 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.11.0 — 2026-11-13
+- **Saisons 2000/01 à 2009/10 pour les cinq grands championnats** (Premier League, Liga, Serie A, Bundesliga, Ligue 1) : 10 saisons de plus, 932 club-saisons, 789 effectifs lus. Sans page « saison du club » sur Wikipedia, l'effectif reste vide et est listé comme tel (surtout Liga et Ligue 1 avant 2005).
+- **Effectifs reconstitués** (nouvelle commande `reconstruct`) : quand un club-saison n'a pas d'effectif mais que sa page liste les transferts, l'effectif est reconstruit comme celui de la saison précédente, moins les départs, plus les arrivées. Les lignes sont marquées `inferred` (jamais `attested`) et le trou reste documenté. Premier usage : Holstein Kiel et VfL Bochum 2024/25.
+- **Correction** : les tableaux d'effectif sans colonne « No. » (Blackburn Rovers 2008/09) sont maintenant lus.
+
 ## Data 1.10.1 — 2026-11-13
 - **Correction** : les icônes de statut écrites comme des images (`[[File:Injury icon 2.svg|15px]]`) étaient lues comme des joueurs nommés « 15px » ou « 14px » et masquaient le vrai joueur (Maccabi Haifa 2025/26-2026/27, San Lorenzo 2022/23-2024/25, Palmeiras 2014/15-2016/17, Santos 2016/17) ; les saisons concernées ont été relues.
 - **Correction** : un nom de famille écrit comme lien avec texte affiché est présenté avec le titre complet de la page (« Lloris » → « Hugo Lloris ») ; prénoms et surnoms restent tels qu'écrits.
