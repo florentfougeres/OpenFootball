@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 const DUCK = "node_modules/@duckdb/duckdb-wasm";
 const sri = (file: string) => "sha384-" + createHash("sha384").update(readFileSync(`${DUCK}/dist/${file}`)).digest("base64");
 // L'extension Parquet hébergée dans public/duckdb-ext/ correspond à cette version du moteur (voir public/duckdb-ext/README.md).
-const EXTENSIONS_FOR = "1.29.0";
+const EXTENSIONS_FOR = "1.32.0";
 const DUCKDB = {
   version: JSON.parse(readFileSync(`${DUCK}/package.json`, "utf8")).version as string,
   wasm: sri("duckdb-eh.wasm"),
