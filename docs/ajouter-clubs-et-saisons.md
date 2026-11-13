@@ -139,6 +139,14 @@ Exemples réels : la Belgique, les Pays-Bas, le Portugal et la Turquie ont été
    Une année sans `[[season_page]]` garde le titre construit (`<saison> <nom>`). Voir `openfootball/scopes/arg.toml`. Pour trouver
    les titres et le bon `n`, essayez `_league_teams` (`openfootball/backfill.py`) sur chaque année sans rien écrire.
 
+   **Championnat « liste seulement »** (créer le championnat et ses clubs par saison, **sans effectifs**, pour lire les effectifs plus tard) :
+   dans `[competition]`, `squads = false` ; pas de `[[team_count]]` (le nombre de clubs est libre, de 6 à 24 : une saison hors de cette
+   plage est ignorée avec un message). Les titres essayés pour la page de la ligue sont les quatre combinaisons année civile / saison à
+   cheval sur deux années, avec ou sans « season », pour chaque nom de `page_names`. **Saison en cours sans page de saison** : le programme
+   lit alors la page générique du championnat (« Chilean Primera División ») et son tableau « Clubs / Teams ». Les clubs ont leur pays,
+   leur QID, un club-saison par saison, et apparaissent « Sans effectif » dans la page Couverture ; `squads = true` (ou retirer la ligne)
+   et un `backfill` lisent leurs effectifs. Exemples : `openfootball/scopes/mex.toml`, `chl.toml`…
+
    **Pays dont les pages « saison du club » sont surtout en portugais** (Brésil) : `langs = ["en", "pt"]`. Wikidata ne relie pas ces
    pages ; le programme les cherche sous « Temporada do / da / de <titre pt du club> de <année> » (`_pt_season_titles`). Peu de
    clubs ont une telle page (une dizaine par an en tout, Flamengo, São Paulo…) : beaucoup de club-saisons resteront « Sans effectif ».

@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "ECU"
+name_en = "Ecuador"
+name_fr = "Équateur"
+
+[competition]
+code = "ECU-L1"
+name_en = "LigaPro Serie A"
+name_fr = "LigaPro Serie A"
+level = 1
+squads = false
+page_names = ["Ecuadorian Serie A", "Campeonato Ecuatoriano de Fútbol Serie A"]

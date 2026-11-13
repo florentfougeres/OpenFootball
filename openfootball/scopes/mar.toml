@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "MAR"
+name_en = "Morocco"
+name_fr = "Maroc"
+
+[competition]
+code = "MAR-L1"
+name_en = "Botola Pro"
+name_fr = "Botola Pro"
+level = 1
+squads = false
+page_names = ["Botola", "Botola Pro 1"]

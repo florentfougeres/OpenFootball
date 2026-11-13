@@ -93,7 +93,7 @@ Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'u
 
 Une ligne = **un club dans un championnat pour une saison** (avec ou sans effectif). Un fichier par saison (`club_season/<saison>.<sha8>.parquet`).
 
-- Fichiers : 17 fichiers (un par saison), ex. `club_season/2026-27.c8b93405.parquet` — **13 360 lignes**
+- Fichiers : 17 fichiers (un par saison), ex. `club_season/2026-27.46b4c9b1.parquet` — **18 522 lignes**
 - Clé : (season, club)
 
 | Colonne | Type | Description |
@@ -130,7 +130,7 @@ Les pages « saison du club » dont l'effectif est l'**union** : un effectif est
 
 Tous les clubs de football connus (≈ 43 000, source : Wikidata). `has_squads` distingue les clubs dont on a les effectifs.
 
-- Fichiers : `club/club.a286b465.parquet` — **44 444 lignes**
+- Fichiers : `club/club.7ed115bc.parquet` — **44 455 lignes**
 - Clé : wikidata_qid (wikipedia_title est aussi unique quand il existe)
 
 | Colonne | Type | Description |
@@ -171,7 +171,7 @@ Tous les clubs de football connus (≈ 43 000, source : Wikidata). `has_squads` 
 
 Les compétitions couvertes : championnats du périmètre, championnats partiels de pays hors périmètre, et coupes d'Europe (`UEFA-CL`).
 
-- Fichiers : `competition/competition.ff0a74dc.parquet` — **64 lignes**
+- Fichiers : `competition/competition.bc8308fc.parquet` — **84 lignes**
 - Clé : code
 
 | Colonne | Type | Description |
@@ -190,7 +190,7 @@ Les compétitions couvertes : championnats du périmètre, championnats partiels
 
 Les pays couverts par `competition`.
 
-- Fichiers : `country/country.f2b22a4a.parquet` — **56 lignes**
+- Fichiers : `country/country.41587bd1.parquet` — **76 lignes**
 - Clé : code
 
 | Colonne | Type | Description |
@@ -218,7 +218,7 @@ Les saisons présentes et leur état.
 
 Clubs participant à une compétition, par saison : les clubs du championnat (d'après `club_season`) **et** ceux qui y participent en plus de leur championnat (Ligue des champions, table `competition_entry`).
 
-- Fichiers : `competition_club/competition_club.70538f57.parquet` — **14 852 lignes**
+- Fichiers : `competition_club/competition_club.5dd44965.parquet` — **20 014 lignes**
 - Clé : (season, competition, club)
 
 | Colonne | Type | Description |

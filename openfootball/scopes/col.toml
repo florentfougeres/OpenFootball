@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "COL"
+name_en = "Colombia"
+name_fr = "Colombie"
+
+[competition]
+code = "COL-L1"
+name_en = "Categoría Primera A"
+name_fr = "Categoría Primera A"
+level = 1
+squads = false
+

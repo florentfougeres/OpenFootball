@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "TUN"
+name_en = "Tunisia"
+name_fr = "Tunisie"
+
+[competition]
+code = "TUN-L1"
+name_en = "Tunisian Ligue Professionnelle 1"
+name_fr = "Ligue 1 (Tunisie)"
+level = 1
+squads = false
+

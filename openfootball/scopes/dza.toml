@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "DZA"
+name_en = "Algeria"
+name_fr = "Algérie"
+
+[competition]
+code = "DZA-L1"
+name_en = "Algerian Ligue Professionnelle 1"
+name_fr = "Ligue 1 (Algérie)"
+level = 1
+squads = false
+

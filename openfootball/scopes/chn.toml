@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "CHN"
+name_en = "China"
+name_fr = "Chine"
+
+[competition]
+code = "CHN-L1"
+name_en = "Chinese Super League"
+name_fr = "Super League chinoise"
+level = 1
+squads = false
+

@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "MEX"
+name_en = "Mexico"
+name_fr = "Mexique"
+
+[competition]
+code = "MEX-L1"
+name_en = "Liga MX"
+name_fr = "Liga MX"
+level = 1
+squads = false
+page_names = ["Mexican Primera División"]

@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "VNM"
+name_en = "Vietnam"
+name_fr = "Vietnam"
+
+[competition]
+code = "VNM-L1"
+name_en = "V.League 1"
+name_fr = "V.League 1"
+level = 1
+squads = false
+page_names = ["V.League", "V-League"]

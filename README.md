@@ -38,6 +38,8 @@ Chiffres au 2026-11-13 (état à jour : [PROGRESS.md](PROGRESS.md)).
 | Série A (`BRA-SA`) | Brésil | 2010 → 2026 | 168 / 340 |
 | Primera División (`ARG-PD`) | Argentine | 2010 → 2026 | 164 / 433 |
 
+**Vingt pays supplémentaires en « liste seulement »** (championnat de première division et clubs par saison depuis 2010, sans effectifs) : Mexique, Japon, Australie, Chine, Corée du Sud, Colombie, Équateur, Chili, Égypte, Pérou, Maroc, Afrique du Sud, Qatar, Émirats arabes unis, Paraguay, Uruguay, Bolivie, Algérie, Vietnam, Tunisie.
+
 **Total : 1 660 clubs, 13 360 club-saisons.** Les clubs étrangers vus en coupe d'Europe sont rattachés au championnat de leur
 pays (liste complète des clubs, avec ou sans effectif) ; ceux sans page « saison du club » lisible restent « Sans effectif »
 (page *Couverture* du site). Les ≈ 43 000 clubs du monde (fiches : logo, stade, couleurs…) viennent de Wikidata, mais sans effectifs.

@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "CHL"
+name_en = "Chile"
+name_fr = "Chili"
+
+[competition]
+code = "CHL-L1"
+name_en = "Chilean Primera División"
+name_fr = "Primera División (Chili)"
+level = 1
+squads = false
+

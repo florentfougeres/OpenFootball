@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "KOR"
+name_en = "South Korea"
+name_fr = "Corée du Sud"
+
+[competition]
+code = "KOR-L1"
+name_en = "K League 1"
+name_fr = "K League 1"
+level = 1
+squads = false
+page_names = ["K League Classic", "K-League"]

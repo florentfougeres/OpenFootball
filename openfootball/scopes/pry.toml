@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "PRY"
+name_en = "Paraguay"
+name_fr = "Paraguay"
+
+[competition]
+code = "PRY-L1"
+name_en = "Paraguayan Primera División"
+name_fr = "Primera División (Paraguay)"
+level = 1
+squads = false
+

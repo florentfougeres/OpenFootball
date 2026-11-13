@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "QAT"
+name_en = "Qatar"
+name_fr = "Qatar"
+
+[competition]
+code = "QAT-L1"
+name_en = "Qatar Stars League"
+name_fr = "Qatar Stars League"
+level = 1
+squads = false
+

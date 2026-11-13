@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "BOL"
+name_en = "Bolivia"
+name_fr = "Bolivie"
+
+[competition]
+code = "BOL-L1"
+name_en = "Bolivian Primera División"
+name_fr = "Primera División (Bolivie)"
+level = 1
+squads = false
+page_names = ["División Profesional", "Liga de Fútbol Profesional Boliviano"]

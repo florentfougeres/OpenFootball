@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "PER"
+name_en = "Peru"
+name_fr = "Pérou"
+
+[competition]
+code = "PER-L1"
+name_en = "Peruvian Primera División"
+name_fr = "Liga 1 (Pérou)"
+level = 1
+squads = false
+page_names = ["Peruvian Liga 1", "Liga 1 (Peru)", "Torneo Descentralizado"]

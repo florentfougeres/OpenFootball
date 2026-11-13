@@ -47,10 +47,11 @@ def season_label(start_year: int) -> str:
     return f"{start_year}–{str(start_year + 1)[2:]}"
 
 
-def league_teams_html(html: str, expected: int | None) -> list[str]:
+def league_teams_html(html: str, expected: int | None, *, need_points: bool = True) -> list[str]:
     """Clubs depuis le HTML rendu du classement (colonnes « Team »/« Club » et « Pts »).
     Secours quand le wikitexte ne nomme pas chaque club (le modèle de tableau connaît les clubs courants
-    par code : cas de la Bundesliga). Rend [] si aucun tableau n'a exactement `expected` équipes (`expected=None` : le plus grand tableau trouvé)."""
+    par code : cas de la Bundesliga). Rend [] si aucun tableau n'a exactement `expected` équipes (`expected=None` : le plus grand tableau trouvé).
+    `need_points=False` : page GÉNÉRIQUE du championnat (« Chilean Primera División »), dont un tableau « Clubs / Teams » liste les participants actuels."""
     from openfootball.parse.squad_html import _Collector, _txt
 
     col = _Collector()
@@ -62,7 +63,7 @@ def league_teams_html(html: str, expected: int | None) -> list[str]:
             labels = [_txt(c).lower() for c in row]
             if row and all(c.header for c in row):
                 idx = next((i for i, l in enumerate(labels) if l.startswith(("team", "club"))), None)
-                if idx is not None and any(l.startswith("pts") or l == "points" for l in labels):
+                if idx is not None and (not need_points or any(l.startswith("pts") or l == "points" for l in labels)):
                     header, teams = idx, []
                 continue
             if header is None or len(row) <= header:

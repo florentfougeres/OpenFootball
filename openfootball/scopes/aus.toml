@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "AUS"
+name_en = "Australia"
+name_fr = "Australie"
+
+[competition]
+code = "AUS-L1"
+name_en = "A-League Men"
+name_fr = "A-League Men"
+level = 1
+squads = false
+page_names = ["A-League"]

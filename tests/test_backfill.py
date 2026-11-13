@@ -1,3 +1,5 @@
+import dataclasses
+
 import duckdb
 import pytest
 
@@ -70,7 +72,8 @@ def run(con, wp, it=None, fr=None, qids=None):
 
 
 def test_scope_files_load():
-    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR", "USA", "SAU", "BRA", "ARG"}
+    assert {s.code for s in load_scopes()} == {"ENG", "FRA", "ITA", "ESP", "DEU", "BEL", "PRT", "NLD", "TUR", "USA", "SAU", "BRA", "ARG",
+                                                      "MEX", "JPN", "AUS", "CHN", "KOR", "COL", "ECU", "CHL", "EGY", "PER", "MAR", "ZAF", "QAT", "ARE", "PRY", "URY", "BOL", "DZA", "VNM", "TUN"}
     fra = load_scopes(["FRA-L1"])[0]
     assert (fra.expected_teams(2022), fra.expected_teams(2023)) == (20, 18)
 
@@ -401,3 +404,23 @@ def test_guess_season_titles_for_pt_and_es():
         "Anexo:Temporada 2023 del Club Atlético River Plate", "Anexo:Temporada 2023 de Club Atlético River Plate",
         "Anexo:Temporada 2023-24 del Club Atlético River Plate", "Anexo:Temporada 2023-24 de Club Atlético River Plate"]
     assert _guess_season_titles(WD(), "Q1", "fr", 2019) == []
+
+
+def test_listing_only_scope_creates_the_league_and_its_clubs_without_squads():
+    c = duckdb.connect(":memory:")
+    migrate(c)
+    sc = load_scopes(["FRA-L1"])[0]
+    sc = dataclasses.replace(sc, squads=False, team_counts=(), code="FRA", page_format="")
+    res = run_backfill(c, [sc], 2023, wp=FakeWiki(setup_pages()), lang_clients={}, wd=FakeWikidata({}),
+                       qid_lookup=lambda ts: {t: None for t in ts}, log=lambda s: None)
+    assert res == []                                                       # aucun effectif lu
+    assert c.execute("SELECT count(*) FROM club_season").fetchone()[0] == 18          # mais les 18 clubs de la saison sont listés
+    assert c.execute("SELECT count(*) FROM player_club_season").fetchone()[0] == 0
+
+
+def test_current_season_without_a_season_page_reads_the_generic_league_page():
+    from openfootball.parse.league import league_teams_html
+    rows = "".join(f'<tr><td><a href="/wiki/Club_{i}" title="Club {i}">Club {i}</a></td><td>City</td></tr>' for i in range(8))
+    html = f'<table><tr><th>Club</th><th>City</th></tr>{rows}</table>'
+    assert league_teams_html(html, None, need_points=False) == [f"Club {i}" for i in range(8)]
+    assert league_teams_html(html, None) == []                       # sans « Pts », ce n'est pas un classement

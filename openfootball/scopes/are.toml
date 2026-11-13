@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "ARE"
+name_en = "United Arab Emirates"
+name_fr = "Émirats arabes unis"
+
+[competition]
+code = "ARE-L1"
+name_en = "UAE Pro League"
+name_fr = "UAE Pro League"
+level = 1
+squads = false
+page_names = ["UAE Arabian Gulf League", "Arabian Gulf League"]

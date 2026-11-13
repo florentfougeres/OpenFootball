@@ -317,7 +317,7 @@ def fill_club_season(con, cs_id: int, team: str, qid: str | None, en_page, *, co
     return chosen or ClubResult(country_code, team, None, 0, None)
 
 
-def _league_teams(wp, sc: Scope, start_year: int, label: str, want: int) -> list[str]:
+def _league_teams(wp, sc: Scope, start_year: int, label: str, want: int | None, *, current: bool = False) -> list[str]:
     """Clubs de la saison. Titre construit (`league_page_titles`, premier qui existe : une ligue renommée), ou pages indiquées à la main
     (`[[season_page]]` du fichier du pays : formats irréguliers comme l'Argentine) dont les clubs sont fusionnés."""
     override = sc.season_override(start_year)
@@ -335,6 +335,12 @@ def _league_teams(wp, sc: Scope, start_year: int, label: str, want: int) -> list
         for t in found:
             if t not in teams:
                 teams.append(t)
+    if not teams and current and want is None and getattr(wp, "render", None):
+        # Saison en cours sans page de saison (pas encore créée) : la page GÉNÉRIQUE du championnat liste les participants actuels.
+        for title in dict.fromkeys((sc.competition_en, *sc.page_names)):
+            found = league_teams_html(wp.render(title).wikitext, None, need_points=False)
+            if 6 <= len(found) <= 24:
+                return found
     return teams
 
 
@@ -355,10 +361,19 @@ def run_backfill(
     for sc in scopes:
         competition_id = _ensure_scope_rows(con, sc)
         want = sc.expected_teams(start_year)
-        teams = _league_teams(wp, sc, start_year, label, want)
-        if len(teams) != want:
+        teams = _league_teams(wp, sc, start_year, label, want, current=current)
+        if want is None:                          # nombre de clubs libre (championnat « liste seulement ») : une plausibilité suffit
+            if not 6 <= len(teams) <= 24:
+                log(f"  {sc.code} {label}: {len(teams)} clubs trouvés (page de la ligue introuvable ou illisible), saison ignorée")
+                continue
+        elif len(teams) != want:
             raise EnumerationError(f"{sc.code} {label}: {len(teams)} clubs trouvés, {want} attendus")
         qids = qid_lookup(teams)
+        if not sc.squads:                         # championnat « liste seulement » : le championnat et ses clubs, pas d'effectifs
+            for team in teams:
+                _ensure_club_season(con, _ensure_club(con, team, sc.code, qids.get(team)), season_id, competition_id)
+            log(f"  {sc.code} {label}: {len(teams)} clubs listés")
+            continue
         en_pages = wp.get_pages([f"{label} {t} season" for t in teams])
 
         for team, en_page in zip(teams, en_pages):

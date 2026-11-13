@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "URY"
+name_en = "Uruguay"
+name_fr = "Uruguay"
+
+[competition]
+code = "URY-L1"
+name_en = "Uruguayan Primera División"
+name_fr = "Primera División (Uruguay)"
+level = 1
+squads = false
+

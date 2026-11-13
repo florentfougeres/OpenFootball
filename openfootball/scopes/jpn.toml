@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "JPN"
+name_en = "Japan"
+name_fr = "Japon"
+
+[competition]
+code = "JPN-L1"
+name_en = "J1 League"
+name_fr = "J1 League"
+level = 1
+squads = false
+page_names = ["J.League Division 1"]

@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "ZAF"
+name_en = "South Africa"
+name_fr = "Afrique du Sud"
+
+[competition]
+code = "ZAF-L1"
+name_en = "South African Premiership"
+name_fr = "Premiership (Afrique du Sud)"
+level = 1
+squads = false
+page_names = ["South African Premier Division", "Premier Soccer League"]

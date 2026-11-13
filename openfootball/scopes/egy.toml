@@ -1,0 +1,12 @@
+# Championnat de première division en « liste seulement » : le championnat et ses clubs par saison, SANS effectifs (à lire plus tard).
+code = "EGY"
+name_en = "Egypt"
+name_fr = "Égypte"
+
+[competition]
+code = "EGY-L1"
+name_en = "Egyptian Premier League"
+name_fr = "Championnat d'Égypte"
+level = 1
+squads = false
+

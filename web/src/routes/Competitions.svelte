@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { app, countryOf, href, plural, t } from "../lib/app.svelte";
+  import { app, countryOf, href, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
-  import { compName } from "../lib/format";
   import { AREA, CONFS, confOf } from "../lib/confed";
   import Crumbs from "../components/Crumbs.svelte";
-  import Flag from "../components/Flag.svelte";
+  import CompetitionCard from "../components/CompetitionCard.svelte";
   import Spinner from "../components/Spinner.svelte";
   import ErrorBox from "../components/ErrorBox.svelte";
 
@@ -54,33 +53,14 @@
         <span class="display text-3xl font-extrabold tracking-tight">{c.conf}</span>
         <span class="text-base text-muted">{c.area}</span>
       </h2>
-      <div class="gap-4 sm:columns-2 lg:columns-3 xl:columns-4 min-[1536px]:columns-5">
+      <!-- Une carte par championnat, toutes de même taille et alignées en lignes : le pays est dans le sous-titre, les divisions d'un même pays se suivent. -->
+      <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-[1536px]:grid-cols-5">
         {#each c.countries as g (g.code)}
-          <div class="card mb-4 break-inside-avoid p-3">
-            <a class="mb-1 flex items-center gap-2.5 rounded-lg px-1.5 py-1 text-lg font-bold no-underline hover:bg-surface-2" href={href("country", g.code)}>
-              <Flag code={g.flag} label={g.name} size={22} /><span class="min-w-0 truncate">{g.name}</span>
-            </a>
-            <ul>
-              {#each g.comps as x (x.code)}
-                {@const info = latest.data?.[x.code]}
-                <li>
-                  <a class="group flex items-center gap-3 rounded-lg px-1.5 py-2 no-underline transition hover:bg-surface-2" href={href("competition", x.code)}>
-                    {#if x.logo_url}
-                      <span class="block size-10 shrink-0 overflow-hidden rounded-md bg-white p-1"><img class="size-full object-contain" src={x.logo_url} alt="" loading="lazy" /></span>
-                    {:else}
-                      <span class="grid size-10 shrink-0 place-items-center rounded-md bg-surface-2"><Flag code={g.flag} size={22} /></span>
-                    {/if}
-                    <span class="min-w-0 flex-1">
-                      <span class="block text-sm font-semibold leading-snug text-balance group-hover:text-accent">{compName(x.code)}</span>
-                      <span class="block truncate text-xs text-muted">{[info?.clubs ? plural(info.clubs, "clubsN") : "", info?.season].filter(Boolean).join(" · ")}</span>
-                    </span>
-                  </a>
-                </li>
-              {/each}
-            </ul>
-          </div>
+          {#each g.comps as x (x.code)}
+            <li><CompetitionCard code={x.code} countryCode={g.code} logo={x.logo_url} clubs={latest.data?.[x.code]?.clubs} season={latest.data?.[x.code]?.season} /></li>
+          {/each}
         {/each}
-      </div>
+      </ul>
     </section>
   {/each}
 {/if}
