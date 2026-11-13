@@ -174,6 +174,8 @@ def club_qids(wp: WikipediaClient, titles: list[str]) -> dict[str, str | None]:
 
 
 _YEARS = re.compile(r"(\d{4})\s*[-–/_]\s*(\d{2,4})")
+# Saison en année civile (Argentine, Brésil, MLS, Norvège…) : « 2023 Club Atlético Boca Juniors season », « Anexo:Temporada 2023 del … », « … de 2023 ».
+_CALENDAR_YEAR = re.compile(r"(?:^|[ :])(?:Temporada |temporada |stagione |saison |season )?((?:19|20)\d{2})(?![\d–/-])")
 
 
 def season_articles(rows: list[dict]) -> dict[tuple[int, str], str]:
@@ -189,6 +191,8 @@ def season_articles(rows: list[dict]) -> dict[tuple[int, str], str]:
         m = _YEARS.search(title)
         if m:
             out[(int(m.group(1)), lang)] = title
+        elif (c := _CALENDAR_YEAR.search(title)):
+            out.setdefault((int(c.group(1)), lang), title)
     return out
 
 
