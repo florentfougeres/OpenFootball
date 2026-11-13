@@ -213,6 +213,11 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
     return manifest
 
 
+# Compétitions à la une de l'accueil (code, dans cet ordre) et échange de club : l'Atlético de Madrid prend la place de Naples.
+HOME_COMPETITIONS = ("ENG-PL", "UEFA-CL", "UEFA-EL", "DEU-BL", "ESP-LL", "ITA-SA", "FRA-L1", "USA-MLS")
+_HOME_OUT, _HOME_IN = "Q2641", "Q8701"
+
+
 def _write_home(con, out: Path, manifest: dict) -> dict:
     """`home.<sha8>.json` : de quoi afficher l'accueil sans attendre le moteur de requêtes (DuckDB-WASM, ≈ 8 Mo)."""
     squads = ", ".join(f"'{(out / s['files']['squad']['path']).as_posix()}'" for s in manifest["seasons"].values())
@@ -232,9 +237,18 @@ def _write_home(con, out: Path, manifest: dict) -> dict:
         LEFT JOIN entity_label le ON le.qid = c.wikidata_qid AND le.lang = 'en'
         LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr'
         WHERE EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id AND EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id))
-        ORDER BY c.wikipedia_count DESC NULLS LAST, c.wikipedia_title LIMIT 12""").fetchall()]
+          AND c.wikidata_qid IS DISTINCT FROM ?
+        ORDER BY CASE WHEN c.wikidata_qid = ? THEN (SELECT x.wikipedia_count FROM club x WHERE x.wikidata_qid = ?) ELSE c.wikipedia_count END DESC NULLS LAST,
+                 c.wikipedia_title LIMIT 12""", [_HOME_OUT, _HOME_IN, _HOME_OUT]).fetchall()]
+    marks = ", ".join("?" for _ in HOME_COMPETITIONS)
+    by_code = {r[0]: {"code": r[0], "name_en": r[1], "name_fr": r[2], "country_code": r[3], "logo_url": r[4], "flag": r[5]}
+               for r in con.execute(f"""SELECT co.code, co.name_en, co.name_fr, co.country_code, i.logo_url, ce.flag
+                                        FROM competition co LEFT JOIN competition_info i ON i.code = co.code
+                                        LEFT JOIN country_export ce ON ce.code = co.country_code
+                                        WHERE co.code IN ({marks})""", list(HOME_COMPETITIONS)).fetchall()}
+    competitions = [by_code[c] for c in HOME_COMPETITIONS if c in by_code]
     body = json.dumps({"stats": {"clubs": con.execute("SELECT count(*) FROM club").fetchone()[0], "players": players},
-                       "countries": countries, "clubs": clubs}, ensure_ascii=False, separators=(",", ":"))
+                       "countries": countries, "clubs": clubs, "competitions": competitions}, ensure_ascii=False, separators=(",", ":"))
     digest = hashlib.sha256(body.encode()).hexdigest()
     path = out / "home" / f"home.{digest[:8]}.json"
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -2,6 +2,7 @@
   import { app, href, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
+  import Flag from "../components/Flag.svelte";
   import ClubChip from "../components/ClubChip.svelte";
   import CountryTile from "../components/CountryTile.svelte";
   import SearchResults from "../components/SearchResults.svelte";
@@ -18,7 +19,8 @@
   const seasonsN = $derived(Object.keys(app.manifest.seasons).length);
 
   type HomeData = { stats: { clubs: number; players: number }; countries: { code: string; name_en: string; name_fr: string; flag: string | null; comps: number; clubs: number }[];
-    clubs: { wikipedia_title: string; name_en: string; name_fr: string | null; logo_url: string | null; colors_hex: string | null; season: string }[] };
+    clubs: { wikipedia_title: string; name_en: string; name_fr: string | null; logo_url: string | null; colors_hex: string | null; season: string }[];
+    competitions?: { code: string; name_en: string; name_fr: string; country_code: string; logo_url: string | null; flag: string | null }[] };
 
   // L'accueil s'affiche sans attendre DuckDB-WASM : un petit JSON (`home`) est publié avec les données. Anciens exports : requêtes DuckDB.
   const data = resource(async (): Promise<HomeData | null> => {
@@ -36,7 +38,13 @@
     const last = Object.fromEntries((await q(`SELECT club, max(season) AS season FROM club_season WHERE players > 0 GROUP BY club`)).map((r) => [r.club, r.season as string]));
     const clubs = squadClubs.filter((c) => last[c.wikipedia_title]).sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0)).slice(0, 12)
       .map((c) => ({ wikipedia_title: c.wikipedia_title, name_en: c.name_en, name_fr: c.name_fr, logo_url: c.logo_url, colors_hex: c.colors_hex, season: last[c.wikipedia_title] }));
-    return { stats: { clubs: stats.clubs, players: stats.players }, countries, clubs };
+    const FEATURED = ["ENG-PL", "UEFA-CL", "UEFA-EL", "DEU-BL", "ESP-LL", "ITA-SA", "FRA-L1", "USA-MLS"];          // anciens exports : pas de liste dans le JSON
+    const competitions = FEATURED.filter((c) => app.comps.has(c)).map((c) => {
+      const x = app.comps.get(c)!;
+      return { code: c, name_en: x.name_en as string, name_fr: x.name_fr as string, country_code: x.country_code as string, logo_url: (x.logo_url as string | null) ?? null,
+               flag: x.country_code === "EUR" ? "europe" : ((app.countries.get(x.country_code)?.flag as string | null) ?? null) };
+    });
+    return { stats: { clubs: stats.clubs, players: stats.players }, countries, clubs, competitions };
   });
   const countries = $derived((data.data?.countries ?? []).map((c) => ({ ...c, name: app.lang === "fr" ? c.name_fr : c.name_en }))
     .sort((a, b) => a.name.localeCompare(b.name, app.lang)));
@@ -78,6 +86,26 @@
         {#each data.data.clubs as x (x.wikipedia_title)}<li><ClubChip club={x} season={x.season} /></li>{/each}
       </ul>
     </section>
+
+    {#if data.data.competitions?.length}
+      <section class="mt-8" aria-labelledby="feat-comps">
+        <h2 id="feat-comps" class="mb-3 text-2xl font-bold">{t("featuredComps")}</h2>
+        <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {#each data.data.competitions as c (c.code)}
+            <li>
+              <a class="tile group" href={href("competition", c.code)}>
+                {#if c.logo_url}
+                  <span class="block size-12 shrink-0 overflow-hidden rounded-lg bg-white p-1.5"><img class="size-full object-contain" src={c.logo_url} alt="" loading="lazy" /></span>
+                {:else}
+                  <span class="grid size-12 shrink-0 place-items-center rounded-lg bg-surface-2"><Flag code={c.flag} size={28} /></span>
+                {/if}
+                <span class="min-w-0 flex-1"><span class="block truncate text-sm font-semibold group-hover:text-accent">{app.lang === "fr" ? c.name_fr : c.name_en}</span></span>
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </section>
+    {/if}
 
     <div class="mt-8">
       <section class="card p-5" aria-labelledby="by-country">
