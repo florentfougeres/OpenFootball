@@ -177,3 +177,41 @@ def test_active_only_skips_retired_players_but_keeps_open_careers():
 
     import_careers(con, Client(), refresh=True, active_only=True, log=lambda m: None)
     assert asked == ["Active"]
+
+
+def test_profile_is_read_from_the_infobox():
+    from openfootball.parse.infobox import parse_profile
+    wt = """{{Infobox football biography
+| name = A B
+| image = File:A B 2020.jpg
+| caption = A in [[Paris]]
+| full_name = Aaa Bbb<ref>x</ref>
+| birth_place = [[Roehampton]], England
+| height = {{convert|1.75|m|order=flip}}
+}}"""
+    p = parse_profile(wt)
+    assert (p.full_name, p.birth_place, p.height_cm, p.image_file, p.image_caption) == (
+        "Aaa Bbb", "Roehampton, England", 175, "A B 2020.jpg", "A in Paris")
+    assert parse_profile("pas d'infobox") is None
+
+
+@pytest.mark.parametrize("raw,cm", [("{{convert|5|ft|11|in|m}}", 180), ("1.82 m", 182), ("{{height|ft=6|in=2}}", 188), ("{{convert|175|cm}}", 175), ("12 m", None)])
+def test_height_formats(raw, cm):
+    from openfootball.parse.infobox import _height_cm
+    assert _height_cm(raw) == cm
+
+
+def test_profiles_are_written_and_a_new_photo_resets_its_license():
+    from openfootball.careers import import_profiles
+    con = duckdb.connect(":memory:"); migrate(con)
+    con.execute("INSERT INTO player (id, name, link_lang, link_title) VALUES (1, 'A B', 'en', 'A B')")
+    con.execute("INSERT INTO player_career (id, player_id, seq, years_raw, club_name, source_lang, source_title) VALUES (1, 1, 1, '2020–', 'X', 'en', 'A B')")
+    page = "{{Infobox football biography\n| image = A.jpg\n| birth_place = Paris, France\n| height = 1.80 m\n}}"
+
+    class Client:
+        def get_pages(self, titles):
+            return [Page(title=t, exists=True, wikitext=page) for t in titles]
+
+    assert import_profiles(con, Client(), log=lambda m: None) == 1
+    assert con.execute("SELECT birth_place, height_cm, image_file FROM player_profile").fetchone() == ("Paris, France", 180, "A.jpg")
+    assert import_profiles(con, Client(), log=lambda m: None) == 0           # déjà écrit : pas relu

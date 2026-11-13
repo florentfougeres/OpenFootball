@@ -11,10 +11,10 @@ from pathlib import Path
 from openfootball.backfill import run_backfill
 from openfootball.checks import run_checks
 from openfootball.db import connect, migrate
-from openfootball.enrich import add_career_clubs, enrich_birth_dates, enrich_career_clubs, enrich_context_labels, enrich_league_logos, enrich_logos, enrich_wiki_links
+from openfootball.enrich import add_career_clubs, enrich_player_photos, enrich_birth_dates, enrich_career_clubs, enrich_context_labels, enrich_league_logos, enrich_logos, enrich_wiki_links
 from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
-from openfootball.careers import import_careers, import_careers_by_qid, prune_after_career_end
+from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
 from openfootball.transfers import apply_transfers, drop_stale_current_rows
 from openfootball.reconcile import apply_player_aliases, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
@@ -450,6 +450,18 @@ def careers_cmd(args: argparse.Namespace) -> int:
     print(f"par QID/sitelink : {r2.players} joueurs lus : {r2.with_career} avec carrière ({r2.rows} lignes), "
           f"{r2.no_infobox} sans infobox exploitable, {r2.missing_page} sans page anglaise")
     print(f"{prune_after_career_end(con)} ligne(s) d'effectif retirée(s) : carrière terminée avant la saison")
+    print(f"{import_profiles(con, client)} profil(s) lus (lieu de naissance, taille, photo)")
+    return 0
+
+
+def profiles_cmd(args: argparse.Namespace) -> int:
+    """Profil des joueurs (lieu de naissance, taille, photo…) depuis les pages d'introduction ; `--offline` : cache seulement, aucune requête."""
+    if args.offline:
+        os.environ["OPENFOOTBALL_OFFLINE"] = "1"
+    con = connect(args.db)
+    migrate(con)
+    client = WikipediaClient("cache/wikipedia_en_lead", lang="en", lead_only=True, batch_size=50)
+    print(f"{import_profiles(con, client)} profil(s) lus")
     return 0
 
 
@@ -458,7 +470,7 @@ def enrich_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     wd, wp = WikidataClient(args.wd_cache), WikipediaClient(args.cache)
-    what = set(args.what or ["clubs", "players", "logos", "leaguelogos", "labels", "careerclubs"])
+    what = set(args.what or ["clubs", "players", "logos", "leaguelogos", "labels", "careerclubs", "photos"])
     if "clubs" in what:
         qids = [r[0] for r in con.execute("SELECT wikidata_qid FROM club WHERE wikidata_qid IS NOT NULL AND EXISTS "
                                           "(SELECT 1 FROM club_season cs WHERE cs.club_id = club.id)").fetchall()]
@@ -467,6 +479,8 @@ def enrich_cmd(args: argparse.Namespace) -> int:
         qids = [r[0] for r in con.execute("SELECT qid FROM player_wikidata").fetchall()]
         enrich_wiki_links(con, wd, qids, ("en", "fr"))
         enrich_birth_dates(con, wd)
+    if "photos" in what:
+        enrich_player_photos(con, wp)
     if "careerclubs" in what:
         enrich_career_clubs(con, wp)
         add_career_clubs(con, wd)
@@ -619,9 +633,13 @@ def main(argv: list[str] | None = None) -> int:
     ca.add_argument("--limit", type=int, help="n'importe que N joueurs (essai)")
     ca.add_argument("--wd-cache", default="cache/wikidata")
     ca.set_defaults(func=careers_cmd)
+    pf = sub.add_parser("profiles", help="profil des joueurs (lieu de naissance, taille, photo) depuis l'infobox")
+    pf.add_argument("--db", default=DB_DEFAULT)
+    pf.add_argument("--offline", action="store_true", help="cache seulement : aucune requête Wikipedia")
+    pf.set_defaults(func=profiles_cmd)
     en = sub.add_parser("enrich", help="liens wiki par langue, noms fr, dates de naissance, logos")
     en.add_argument("--db", default=DB_DEFAULT)
-    en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos", "leaguelogos", "labels", "careerclubs"])
+    en.add_argument("--what", nargs="*", choices=["clubs", "players", "logos", "leaguelogos", "labels", "careerclubs", "photos"])
     en.add_argument("--refresh-logos", action="store_true", help="efface puis refait tous les logos")
     en.add_argument("--logo-limit", type=int, help="ne traite que N clubs (les plus notoires d'abord)")
     en.add_argument("--all-clubs", action="store_true", help="logos de TOUS les clubs ayant une page anglaise (sinon : clubs à effectifs)")

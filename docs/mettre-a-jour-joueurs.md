@@ -13,6 +13,26 @@ On y lit :
 Ces chiffres sont **publiés tels quels, non vérifiés** (le site le dit). Une valeur non numérique donne `NULL`
 (on ne devine rien). Les lignes « youth » et les totaux (« Total ») sont ignorés.
 
+## Profil et photo des joueurs
+
+La même infobox donne aussi le **nom complet**, le **lieu de naissance**, la **taille**, le **décès** et le nom du fichier de la
+**photo** (table `player_profile`, exportée en `player_profile`). Ils sont lus par `careers` (nouveaux joueurs, et relecture avec
+`--refresh` / `--active`) ou seuls par :
+
+```bash
+openfootball profiles --offline        # profils des joueurs qui n'en ont pas encore, depuis le cache : AUCUNE requête
+```
+
+**Photos.** Sans requête, l'export publie l'adresse Wikipedia du fichier (`Special:FilePath/<fichier>?width=300`) pour les joueurs
+**en vie**, avec un lien vers la page du fichier (licence et auteur). Pour afficher l'auteur et la licence sous la photo, et retirer
+toute photo non libre :
+
+```bash
+openfootball enrich --what photos      # ≈ 900 requêtes (licence, auteur, miniature) ; relit seulement les fichiers non vérifiés
+```
+
+Pas de « pied fort » : ni l'infobox anglaise ni Wikidata ne le publient de façon exploitable.
+
 ## Comment ça marche
 
 | Étape | Commande | Effet |

@@ -89,6 +89,8 @@ class WikipediaClient:
         # Mode « frais » (OPENFOOTBALL_FRESH=1, option `--fresh` des commandes) : le cache ne périme jamais, ce mode le contourne.
         # Chaque page est relue UNE fois par processus (puis remise en cache), pas à chaque appel.
         self._fresh = bool(os.environ.get("OPENFOOTBALL_FRESH"))
+        # Mode hors ligne (OPENFOOTBALL_OFFLINE=1) : aucune requête ; une page absente du cache est traitée comme introuvable.
+        self._offline = bool(os.environ.get("OPENFOOTBALL_OFFLINE"))
         self._refetched: set[Path] = set()
         self._session = requests.Session()
         self._session.headers["User-Agent"] = _default_user_agent()
@@ -158,6 +160,8 @@ class WikipediaClient:
             cached = self._cache_get(t)
             if cached is not None:
                 found[t] = cached
+            elif self._offline:
+                found[t] = Page(title=t, exists=False)
             else:
                 todo.append(t)
         for i in range(0, len(todo), self.batch_size):

@@ -37,7 +37,7 @@ export async function loadData(db: duckdb.AsyncDuckDB, manifest: any, base: URL)
   const list = (a: string[]) => "[" + a.map((x) => `'${x}'`).join(",") + "]";
   await conn.query(`CREATE VIEW squad AS SELECT * FROM read_parquet(${list(squad)}, union_by_name=true)`);
   await conn.query(`CREATE VIEW club_season AS SELECT * FROM read_parquet(${list(clubSeason)}, union_by_name=true)`);
-  for (const n of ["club", "competition", "competition_club", "season", "known_gap", "country", "career", "national", "squad_source", "birth", "entity_wiki"]) {
+  for (const n of ["club", "competition", "competition_club", "season", "known_gap", "country", "career", "national", "player_profile", "squad_source", "birth", "entity_wiki"]) {
     if (files[n]) await conn.query(`CREATE VIEW ${n} AS SELECT * FROM read_parquet('${files[n]}')`);
     app.has[n] = Boolean(files[n]);
   }

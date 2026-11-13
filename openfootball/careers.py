@@ -11,7 +11,7 @@ from typing import Callable
 
 import duckdb
 
-from openfootball.parse.infobox import parse_career, parse_national
+from openfootball.parse.infobox import parse_career, parse_national, parse_profile
 
 CHUNK = 200
 
@@ -25,6 +25,25 @@ def _write_national(con, pid: int, wikitext: str, next_id: int, report: CareerRe
         next_id += 1
         report.national_rows += 1
     return next_id
+
+
+def _write_profile(con, pid: int, wikitext: str) -> bool:
+    """Écrit (ou met à jour) le profil d'infobox d'un joueur. Une photo qui change efface son adresse et sa licence (relues par `enrich --what photos`)."""
+    prof = parse_profile(wikitext)
+    if prof is None:
+        return False
+    old = con.execute("SELECT image_file FROM player_profile WHERE player_id = ?", [pid]).fetchone()
+    if old is None:
+        con.execute("INSERT INTO player_profile (player_id, full_name, birth_place, height_cm, death_date, image_file, image_caption)"
+                    " VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    [pid, prof.full_name, prof.birth_place, prof.height_cm, prof.death_date, prof.image_file, prof.image_caption])
+    else:
+        con.execute("UPDATE player_profile SET full_name = ?, birth_place = ?, height_cm = ?, death_date = ?, image_file = ?, image_caption = ? "
+                    "WHERE player_id = ?", [prof.full_name, prof.birth_place, prof.height_cm, prof.death_date, prof.image_file, prof.image_caption, pid])
+        if old[0] != prof.image_file:
+            con.execute("UPDATE player_profile SET image_url = NULL, image_page = NULL, image_license = NULL, image_author = NULL, image_free = NULL "
+                        "WHERE player_id = ?", [pid])
+    return True
 
 
 def prune_after_career_end(con: duckdb.DuckDBPyConnection, log=print) -> int:
@@ -111,6 +130,7 @@ def import_careers_by_qid(con: duckdb.DuckDBPyConnection, client, wd, *,
                     next_id += 1
                     report.rows += 1
                 nat_id = _write_national(con, pid, page.wikitext or "", nat_id, report)
+                _write_profile(con, pid, page.wikitext or "")
             con.execute("COMMIT")
         except Exception:
             con.execute("ROLLBACK")
@@ -168,3 +188,20 @@ def import_careers(con: duckdb.DuckDBPyConnection, client, *, refresh: bool = Fa
             raise
         log(f"  {min(i + CHUNK, len(todo))}/{len(todo)} joueurs")
     return report
+
+
+def import_profiles(con: duckdb.DuckDBPyConnection, client, *, log: Callable[[str], None] = print) -> int:
+    """Profil (nom complet, lieu de naissance, taille, nom du fichier photo, décès) des joueurs qui ont une carrière et pas encore de
+    profil. Lit les pages d'introduction déjà en cache (aucun appel réseau pour les joueurs déjà importés). Rend le nombre de profils écrits."""
+    todo = con.execute("""SELECT c.player_id, any_value(c.source_title) FROM player_career c
+        WHERE NOT EXISTS (SELECT 1 FROM player_profile pp WHERE pp.player_id = c.player_id) GROUP BY c.player_id ORDER BY c.player_id""").fetchall()
+    written = 0
+    for i in range(0, len(todo), CHUNK):
+        chunk = todo[i:i + CHUNK]
+        pages = client.get_pages([t for _, t in chunk])
+        con.execute("BEGIN")
+        for (pid, _), page in zip(chunk, pages):
+            written += _write_profile(con, pid, page.wikitext or "") if page.exists else 0
+        con.execute("COMMIT")
+        log(f"  profils : {min(i + CHUNK, len(todo))}/{len(todo)} joueurs")
+    return written

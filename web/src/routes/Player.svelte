@@ -3,6 +3,7 @@
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { ageAt, countryName, isOngoing, nationalTeam, wikiUrl } from "../lib/format";
+  import { fold } from "../lib/fold";
   import Badge from "../components/Badge.svelte";
   import Crumbs from "../components/Crumbs.svelte";
   import ErrorBox from "../components/ErrorBox.svelte";
@@ -21,12 +22,15 @@
     if (p.qid && app.has.birth) birth = (await q(`SELECT birth_date, precision FROM birth WHERE player_qid = ?`, [p.qid]))[0] ?? null;
     const career = app.has.career ? await q(`SELECT c.seq, c.years_raw, c.club_name, c.club_link, c.loan, c.apps, c.goals, c.source_title, w.wikidata_qid AS club_qid, w.logo_url AS club_logo, w.colors_hex AS club_colors
         FROM career c LEFT JOIN club w ON ${app.careerHasClubQid ? "w.wikidata_qid = c.club_qid" : "w.wikipedia_title = c.club_link"} WHERE COALESCE(c.player_qid, 'name:' || c.player) = ? ORDER BY c.seq`, [key]) : [];
+    const profile = app.has.player_profile
+      ? (await q(`SELECT full_name, birth_place, height_cm, death_date, photo_caption, photo_url, photo_page, photo_license, photo_author FROM player_profile
+          WHERE COALESCE(player_qid, 'name:' || player) = ?`, [key]))[0] ?? null : null;
     const national = app.has.national ? await q(`SELECT years_raw, team_name, team_link, caps, goals FROM national
         WHERE COALESCE(player_qid, 'name:' || player) = ? ORDER BY seq`, [key]) : [];
     const urls: Record<string, string> = {};
     if (p.qid && app.has.entity_wiki) for (const r of await q(`SELECT lang, title FROM entity_wiki WHERE qid = ?`, [p.qid])) urls[r.lang] = wikiUrl(r.lang, r.title);
     if (!urls.en && p.link_title) urls.en = wikiUrl("en", p.link_title);
-    return { p, birth, career, national, urls };
+    return { p, birth, profile, career, national, urls };
   });
   const d = $derived(res.data);
 
@@ -63,11 +67,24 @@
 {:else if !d}
   <p class="text-warn">{t("noResult")}</p>
 {:else}
-  <header class="card p-6">
+  <header class="card flex flex-col gap-5 p-6 sm:flex-row sm:items-start">
+    {#if d.profile?.photo_url}
+      <figure class="shrink-0 sm:w-40">
+        <img class="aspect-[4/5] w-32 rounded-xl border border-line bg-surface-2 object-cover sm:w-40" src={d.profile.photo_url} alt={d.profile.photo_caption || d.p.name} loading="lazy" width="160" height="200" />
+        <figcaption class="mt-1.5 text-[0.7rem] leading-snug text-muted">
+          <a class="link" href={d.profile.photo_page} target="_blank" rel="noopener">{t("photoBy")} : {d.profile.photo_author || "Wikipedia / Commons"}{d.profile.photo_license ? ` · ${d.profile.photo_license}` : ""}</a>
+        </figcaption>
+      </figure>
+    {/if}
+    <div class="min-w-0 flex-1">
     <h1 class="text-3xl font-extrabold tracking-tight">{d.p.name}</h1>
+    {#if d.profile?.full_name && fold(d.profile.full_name) !== fold(d.p.name)}<p class="mt-1 text-sm text-muted">{d.profile.full_name}</p>{/if}
     <p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
       {#if d.p.flag || d.p.nat}<span class="flex items-center gap-2"><Flag code={d.p.flag} label={d.p.nat} /><span>{natLabel}</span></span>{/if}
       {#if born}<span>{born}</span>{/if}
+      {#if d.profile?.birth_place}<span>{t("birthPlace")} : {d.profile.birth_place}</span>{/if}
+      {#if d.profile?.height_cm}<span>{t("heightLabel")} : {(d.profile.height_cm / 100).toLocaleString(app.lang, { minimumFractionDigits: 2 })} m</span>{/if}
+      {#if d.profile?.death_date}<span>{t("diedOn")} {d.profile.death_date.length === 10 ? new Date(d.profile.death_date + "T00:00:00").toLocaleDateString(app.lang, { day: "numeric", month: "long", year: "numeric" }) : d.profile.death_date}</span>{/if}
     </p>
     {#if totals}
       <ul class="mt-4 flex flex-wrap gap-3">
@@ -79,6 +96,7 @@
       </p>
     {/if}
     <div class="mt-4 flex flex-wrap items-center gap-2"><WikiButton urls={d.urls} kind="wikiPlayer" /></div>
+    </div>
   </header>
 
   {#if d.career.length}

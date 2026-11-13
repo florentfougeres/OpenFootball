@@ -190,6 +190,24 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "goals": "Buts en sélection, **tels que publiés, non vérifiés**.",
         },
     ),
+    "player_profile": (
+        "Profil lu dans l'infobox Wikipedia anglaise : nom complet, lieu de naissance, taille, décès et **photo** (une ligne par joueur "
+        "ayant au moins une de ces informations). Valeurs **publiées telles quelles par Wikipedia, non vérifiées**.",
+        "(player_qid ou player)",
+        {
+            "player_qid": "QID Wikidata du joueur (clé de jointure avec `squad.player_qid`).",
+            "player": "Nom du joueur (repli de clé : `'name:' || player` quand `player_qid` est vide).",
+            "full_name": "Nom complet (`full_name` de l'infobox).",
+            "birth_place": "Lieu de naissance, en texte (ville, région, pays).",
+            "height_cm": "Taille en cm (entre 140 et 220, sinon vide).",
+            "death_date": "Date de décès `YYYY-MM-DD` (ou l'année seule) ; vide pour un joueur en vie.",
+            "photo_caption": "Légende de la photo dans l'infobox.",
+            "photo_url": "Miniature (300 px) de la photo d'infobox, pour un joueur en vie ; retirée si la licence du fichier est non libre (`enrich --what photos`).",
+            "photo_page": "Page du fichier sur Wikipedia / Wikimedia Commons (attribution et licence complète).",
+            "photo_license": "Licence de la photo (`CC BY-SA 4.0`…) ; vide tant qu'elle n'a pas été vérifiée.",
+            "photo_author": "Auteur de la photo, tel que déclaré sur la page du fichier ; vide tant qu'il n'a pas été vérifié.",
+        },
+    ),
     "birth": (
         "Dates de naissance (Wikidata P569) des joueurs identifiés.", "player_qid",
         {
@@ -209,7 +227,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
     ),
 }
 
-ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "birth", "entity_wiki"]
+ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "player_profile", "birth", "entity_wiki"]
 
 INTRO = """# OpenFootballBase — dictionnaire de données
 

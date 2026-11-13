@@ -187,3 +187,16 @@ def test_add_career_clubs_inserts_missing_club(tmp_path):
     assert con.execute("SELECT wikipedia_title, logo_commons_url FROM club WHERE wikidata_qid = 'Q170703'").fetchone() == (
         "Boca Juniors", "https://commons.wikimedia.org/wiki/Special:FilePath/Boca_Juniors_logo.svg")
     assert add_career_clubs(con, WD(), log=lambda m: None) == 0
+
+
+def test_parse_imageinfo_reads_license_author_and_non_free():
+    from openfootball.enrich import parse_imageinfo
+    q = {"normalized": [{"from": "File:A_b.jpg", "to": "File:A b.jpg"}],
+         "pages": [{"title": "File:A b.jpg", "imageinfo": [{"thumburl": "https://x/300px-A.jpg", "descriptionurl": "https://x/File:A_b.jpg",
+                    "extmetadata": {"LicenseShortName": {"value": "CC BY-SA 4.0"}, "Artist": {"value": "<a href='#'>Jean Dupont</a>"}}}]},
+                   {"title": "File:Fair.jpg", "imageinfo": [{"url": "https://x/Fair.jpg", "descriptionurl": "https://x/File:Fair.jpg",
+                    "extmetadata": {"LicenseShortName": {"value": "Fair use"}}}]},
+                   {"title": "File:Gone.jpg", "missing": True}]}
+    got = parse_imageinfo(q, ["A_b.jpg", "Fair.jpg", "Gone.jpg"])
+    assert got["A_b.jpg"] == {"url": "https://x/300px-A.jpg", "page": "https://x/File:A_b.jpg", "license": "CC BY-SA 4.0", "author": "Jean Dupont", "free": True}
+    assert got["Fair.jpg"]["free"] is False and "Gone.jpg" not in got

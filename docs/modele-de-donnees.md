@@ -130,7 +130,7 @@ Les pages « saison du club » dont l'effectif est l'**union** : un effectif est
 
 Tous les clubs de football connus (≈ 43 000, source : Wikidata). `has_squads` distingue les clubs dont on a les effectifs.
 
-- Fichiers : `club/club.8c43a95e.parquet` — **44 372 lignes**
+- Fichiers : `club/club.523e4421.parquet` — **44 372 lignes**
 - Clé : wikidata_qid (wikipedia_title est aussi unique quand il existe)
 
 | Colonne | Type | Description |
@@ -282,6 +282,27 @@ Sélections en équipe nationale (jeunes comprises), lues dans l'infobox : **une
 | `team_link` | VARCHAR | Titre de la page Wikipedia de l'équipe. |
 | `caps` | INTEGER | Sélections, **telles que publiées, non vérifiées**. |
 | `goals` | INTEGER | Buts en sélection, **tels que publiés, non vérifiés**. |
+
+### `player_profile`
+
+Profil lu dans l'infobox Wikipedia anglaise : nom complet, lieu de naissance, taille, décès et **photo** (une ligne par joueur ayant au moins une de ces informations). Valeurs **publiées telles quelles par Wikipedia, non vérifiées**.
+
+- Fichiers : `player_profile/player_profile.4444dd6f.parquet` — **36 471 lignes**
+- Clé : (player_qid ou player)
+
+| Colonne | Type | Description |
+|---|---|---|
+| `player_qid` | VARCHAR | QID Wikidata du joueur (clé de jointure avec `squad.player_qid`). |
+| `player` | VARCHAR | Nom du joueur (repli de clé : `'name:' || player` quand `player_qid` est vide). |
+| `full_name` | VARCHAR | Nom complet (`full_name` de l'infobox). |
+| `birth_place` | VARCHAR | Lieu de naissance, en texte (ville, région, pays). |
+| `height_cm` | INTEGER | Taille en cm (entre 140 et 220, sinon vide). |
+| `death_date` | VARCHAR | Date de décès `YYYY-MM-DD` (ou l'année seule) ; vide pour un joueur en vie. |
+| `photo_caption` | VARCHAR | Légende de la photo dans l'infobox. |
+| `photo_url` | VARCHAR | Miniature (300 px) de la photo d'infobox, pour un joueur en vie ; retirée si la licence du fichier est non libre (`enrich --what photos`). |
+| `photo_page` | VARCHAR | Page du fichier sur Wikipedia / Wikimedia Commons (attribution et licence complète). |
+| `photo_license` | VARCHAR | Licence de la photo (`CC BY-SA 4.0`…) ; vide tant qu'elle n'a pas été vérifiée. |
+| `photo_author` | VARCHAR | Auteur de la photo, tel que déclaré sur la page du fichier ; vide tant qu'il n'a pas été vérifié. |
 
 ### `birth`
 

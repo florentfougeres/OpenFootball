@@ -139,6 +139,62 @@ def add_career_clubs(con: duckdb.DuckDBPyConnection, wd, *, log: Callable[[str],
     return added
 
 
+def _file_title(name: str) -> str:
+    return "File:" + name.replace("_", " ")
+
+
+def parse_imageinfo(q: dict, wanted: list[str]) -> dict[str, dict]:
+    """Réponse `prop=imageinfo` -> {nom de fichier demandé: {url, page, license, author, free}}. Fichier absent : pas d'entrée."""
+    to_title: dict[str, str] = {}
+    for key in ("normalized", "redirects"):
+        for m in q.get(key, []):
+            to_title[m["from"]] = m["to"]
+    by_title = {pg["title"]: pg for pg in q.get("pages", []) if pg.get("imageinfo")}
+    out: dict[str, dict] = {}
+    for name in wanted:
+        t = _file_title(name)
+        for _ in range(3):                           # normalisation puis redirection éventuelle
+            t = to_title.get(t, t)
+        pg = by_title.get(t)
+        if not pg:
+            continue
+        ii = pg["imageinfo"][0]
+        meta = ii.get("extmetadata", {})
+        license_ = (meta.get("LicenseShortName") or {}).get("value")
+        author = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", (meta.get("Artist") or {}).get("value") or "")).strip() or None
+        nonfree = str((meta.get("NonFree") or {}).get("value", "")).lower() == "true" or bool(re.search(r"fair use|non-free", license_ or "", re.I))
+        out[name] = {"url": ii.get("thumburl") or ii.get("url"), "page": ii.get("descriptionurl"), "license": license_,
+                     "author": author, "free": bool(license_) and not nonfree}
+    return out
+
+
+def enrich_player_photos(con: duckdb.DuckDBPyConnection, wp, *, limit: int | None = None, log: Callable[[str], None] = print) -> int:
+    """Adresse (miniature 300 px), page du fichier, licence et auteur des photos d'infobox, pour les profils qui n'ont pas encore
+    ces informations. Un fichier introuvable est marqué `image_free = false` (jamais publié) pour ne pas être redemandé."""
+    todo = [r[0] for r in con.execute("""SELECT DISTINCT image_file FROM player_profile
+        WHERE image_file IS NOT NULL AND image_free IS NULL ORDER BY image_file""").fetchall()]
+    if limit:
+        todo = todo[:limit]
+    done = 0
+    for chunk in _chunks(todo, BATCH):
+        data = wp._call({"action": "query", "titles": "|".join(_file_title(n) for n in chunk), "prop": "imageinfo",
+                         "iiurlwidth": 300, "iiextmetadatafilter": "LicenseShortName|Artist|NonFree", "iiprop": "url|extmetadata",
+                         "redirects": 1})
+        info = parse_imageinfo(data.get("query", {}), chunk)
+        con.execute("BEGIN")
+        for name in chunk:
+            r = info.get(name)
+            con.execute("UPDATE player_profile SET image_url = ?, image_page = ?, image_license = ?, image_author = ?, image_free = ? "
+                        "WHERE image_file = ?",
+                        [r["url"], r["page"], r["license"], r["author"], r["free"], name] if r else [None, None, None, None, False, name])
+            done += 1
+        con.execute("COMMIT")
+        if done % 1000 < BATCH:
+            log(f"  photos : {done}/{len(todo)} fichiers")
+    log(f"  photos : {done} fichiers lus")
+    return done
+
+
 def parse_birth(rows: list[dict]) -> dict[str, tuple[date, int]]:
     """Lignes SPARQL (?p ?dob ?prec) -> {qid: (date, précision)} ; si plusieurs, la plus précise."""
     best: dict[str, tuple[date, int]] = {}

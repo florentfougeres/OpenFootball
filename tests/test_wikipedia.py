@@ -102,3 +102,10 @@ def test_fresh_mode_refetches_once_then_uses_the_cache(tmp_path, monkeypatch):
     assert p.revid == 2 and len(calls2) == 1                       # cache contourné : la nouvelle révision est lue
     c2.get_pages(["A"])
     assert len(calls2) == 1                                         # mais une seule fois par processus
+
+
+def test_offline_mode_never_calls_the_network(tmp_path, monkeypatch):
+    monkeypatch.setenv("OPENFOOTBALL_OFFLINE", "1")
+    c, calls, _ = make_client(tmp_path, [])
+    [p] = c.get_pages(["Absente du cache"])
+    assert not p.exists and calls == []

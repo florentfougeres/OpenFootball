@@ -69,6 +69,21 @@ LEFT JOIN club cl ON cl.wikipedia_title = c.club_link
 LEFT JOIN club_link_qid m ON m.link_title = c.club_link
 ORDER BY coalesce(w.qid, 'name:' || p.name), c.seq"""
 
+# Profil d'infobox. Photo : tant que la licence n'est pas vérifiée (`enrich --what photos`), on publie l'adresse Wikipedia du fichier
+# (miniature 300 px) pour un joueur en vie, avec un lien vers la page du fichier ; une licence non libre la retire (`image_free` faux).
+_PHOTO_URL = ("CASE WHEN pp.image_free IS FALSE THEN NULL WHEN pp.image_url IS NOT NULL THEN pp.image_url "
+              "WHEN pp.image_file IS NOT NULL AND pp.death_date IS NULL "
+              "THEN 'https://en.wikipedia.org/wiki/Special:FilePath/' || url_encode(pp.image_file) || '?width=300' END")
+_PROFILE = f"""
+SELECT w.qid AS player_qid, p.name AS player, pp.full_name, pp.birth_place, pp.height_cm, pp.death_date,
+       pp.image_caption AS photo_caption, {_PHOTO_URL} AS photo_url,
+       CASE WHEN pp.image_free IS FALSE THEN NULL WHEN {_PHOTO_URL} IS NULL THEN NULL
+            ELSE coalesce(pp.image_page, 'https://en.wikipedia.org/wiki/File:' || url_encode(replace(pp.image_file, ' ', '_'))) END AS photo_page,
+       CASE WHEN pp.image_free THEN pp.image_license END AS photo_license, CASE WHEN pp.image_free THEN pp.image_author END AS photo_author
+FROM player_profile pp JOIN player p ON p.id = pp.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
+WHERE pp.full_name IS NOT NULL OR pp.birth_place IS NOT NULL OR pp.height_cm IS NOT NULL OR pp.death_date IS NOT NULL OR pp.image_file IS NOT NULL
+ORDER BY coalesce(w.qid, 'name:' || p.name)"""
+
 _NATIONAL = """
 SELECT w.qid AS player_qid, p.name AS player, n.seq, n.years_raw, n.team_name, n.team_link, n.caps, n.goals
 FROM player_national n JOIN player p ON p.id = n.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
@@ -175,6 +190,7 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
         manifest["tables"][name] = _write(con, sql, out, name, name)
     manifest["tables"]["career"] = _write(con, _CAREER, out, "career", "career")
     manifest["tables"]["national"] = _write(con, _NATIONAL, out, "national", "national")
+    manifest["tables"]["player_profile"] = _write(con, _PROFILE, out, "player_profile", "player_profile")
     manifest["tables"]["squad_source"] = _write(con, _SQUAD_SOURCE, out, "squad_source", "squad_source")
     manifest["tables"]["known_gap"] = _write(con, """
         SELECT s.label AS season, cl.wikipedia_title AS club, k.reason

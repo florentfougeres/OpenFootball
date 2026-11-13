@@ -115,3 +115,82 @@ def parse_career(wikitext: str) -> list[CareerSpell]:
                 loan=bool(_LOAN.search(club_raw)), apps=_int(p.get(f"caps{i}")), goals=_int(p.get(f"goals{i}"))))
         return out
     return []
+
+
+# ----------------------------------------------------------------------------------------------- profil du joueur
+@dataclass(frozen=True)
+class Profile:
+    full_name: str | None
+    birth_place: str | None
+    height_cm: int | None
+    image_file: str | None        # nom du fichier (sans « File: »), hébergé sur Wikipedia ou Wikimedia Commons
+    image_caption: str | None
+    death_date: str | None        # AAAA-MM-JJ, ou AAAA si seule l'année est connue
+
+
+_PLACEHOLDER_IMAGE = re.compile(r"replace this image|no[ _]image|placeholder|\.svg$", re.I)
+
+
+def _plain(raw: str | None) -> str | None:
+    """Texte brut d'une valeur d'infobox : liens réduits à leur libellé, modèles et balises retirés."""
+    t = re.sub(r"<br\s*/?>", ", ", raw or "", flags=re.I)
+    t = re.sub(r"\[\[(?:[^|\]]*\|)?([^\]]*)\]\]", r"\1", t)
+    for _ in range(3):                                               # modèles imbriqués : de l'intérieur vers l'extérieur
+        t = re.sub(r"\{\{[^{}]*\}\}", "", t)
+    t = re.sub(r"<[^>]+>|'''?", "", t)
+    t = re.sub(r"\s+", " ", t).strip(" ,;")
+    return t or None
+
+
+def _height_cm(raw: str | None) -> int | None:
+    """Taille en cm : `{{convert|1.75|m}}`, `{{convert|5|ft|11|in}}`, `{{height|m=1.75}}`, « 1.75 m », « 175 cm ». Hors 140-220 cm : ignorée."""
+    t = raw or ""
+    cm: float | None = None
+    m = re.search(r"\{\{\s*convert\s*\|\s*([\d.,]+)\s*\|\s*(cm|m)\b", t, re.I)
+    if m:
+        v = float(m.group(1).replace(",", "."))
+        cm = v if m.group(2).lower() == "cm" else v * 100
+    if cm is None:
+        m = re.search(r"\{\{\s*(?:convert|height)\s*\|\s*(?:ft\s*=\s*)?(\d)\s*\|\s*(?:ft\s*\|\s*)?(?:in\s*=\s*)?(\d{1,2})(?:\.\d+)?\s*\|?\s*(?:in)?", t, re.I)
+        if m:
+            cm = (int(m.group(1)) * 12 + int(m.group(2))) * 2.54
+    if cm is None:
+        m = re.search(r"\{\{\s*height\s*\|\s*m\s*=\s*([\d.,]+)", t, re.I)
+        if m:
+            cm = float(m.group(1).replace(",", ".")) * 100
+    if cm is None:
+        plain = re.sub(r"\{\{[^{}]*\}\}", "", t)
+        m = re.search(r"(\d[\d.,]*)\s*(cm|m)\b", plain, re.I)
+        if m:
+            v = float(m.group(1).replace(",", "."))
+            cm = v if m.group(2).lower() == "cm" else v * 100
+        else:
+            m = re.search(r"(\d)\s*(?:ft|′|')\s*(\d{1,2})", plain, re.I)
+            if m:
+                cm = (int(m.group(1)) * 12 + int(m.group(2))) * 2.54
+    return round(cm) if cm is not None and 140 <= cm <= 220 else None
+
+
+def _image_file(raw: str | None) -> str | None:
+    t = re.sub(r"<!--.*?-->", "", raw or "")
+    m = re.search(r"(?:\[\[)?\s*(?:file|image)\s*:\s*([^|\]\n]+)", t, re.I) or re.match(r"\s*([^|\]\n{<]+\.(?:jpe?g|png|gif|webp|tiff?))", t, re.I)
+    name = re.sub(r"\s+", " ", m.group(1)).strip().replace("_", " ") if m else None
+    return None if not name or _PLACEHOLDER_IMAGE.search(name) else name
+
+
+def _death_date(raw: str | None) -> str | None:
+    m = re.search(r"\{\{\s*(?:death[ _]date(?:[ _]and[ _]age)?|dda)\s*\|\s*(?:df\s*=\s*\w+\s*\|\s*)?(\d{4})(?:\s*\|\s*(\d{1,2})\s*\|\s*(\d{1,2}))?", raw or "", re.I)
+    if m:
+        return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m.group(2) else m.group(1)
+    y = re.search(r"\b(1[89]\d{2}|20\d{2})\b", _plain(raw) or "")
+    return y.group(1) if y else None
+
+
+def parse_profile(wikitext: str) -> Profile | None:
+    """Nom complet, lieu de naissance, taille, photo (nom de fichier) et décès de l'infobox ; None sans infobox. Rien n'est deviné."""
+    p = _infobox(wikitext)
+    if p is None:
+        return None
+    return Profile(full_name=_plain(p.get("full_name")), birth_place=_plain(p.get("birth_place")), height_cm=_height_cm(p.get("height")),
+                   image_file=_image_file(p.get("image")), image_caption=_plain(p.get("caption")),
+                   death_date=_death_date(p.get("death_date")) if p.get("death_date") else None)
