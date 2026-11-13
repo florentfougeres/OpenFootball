@@ -107,6 +107,36 @@
     }
     return [...m.values()].sort((a, b) => a.order - b.order);
   });
+  let teamSel = $state(0);
+  const cur = $derived(natTeams[Math.min(teamSel, natTeams.length - 1)]);
+  /** Total d'une année : somme des groupes officiels / amicaux quand la page les distingue, sinon la colonne « Total ». */
+  const yearTotal = (by: Record<string, Cell>): Cell => {
+    const ks = Object.keys(by).filter((k) => k !== "Total");
+    return ks.length ? ks.reduce<Cell>((a, k) => add(a, by[k]), none()) : by.Total ?? none();
+  };
+  /** Années de l'équipe choisie, sans trou (une année sans match reste visible) quand la page donne des années entières. */
+  type YearRow = { y: string; start: number; c: Cell; by: Record<string, Cell>; gap?: boolean };
+  const curYears: YearRow[] = $derived.by(() => {
+    if (!cur) return [];
+    const rows: YearRow[] = [...cur.years].map(([y, by]: [string, Record<string, Cell>]) => ({ y, start: +y.slice(0, 4), c: yearTotal(by), by }));
+    if (!rows.every((r) => /^\d{4}$/.test(r.y))) return rows;
+    const m = new Map(rows.map((r) => [r.start, r]));
+    const lo = Math.min(...rows.map((r) => r.start)), hi = Math.max(...rows.map((r) => r.start));
+    return Array.from({ length: hi - lo + 1 }, (_, i): YearRow => m.get(lo + i) ?? { y: String(lo + i), start: lo + i, c: none(), by: {}, gap: true });
+  });
+  const maxYear = $derived(Math.max(1, ...curYears.map((r) => r.c.apps ?? 0)));
+  const labelEvery = $derived(Math.max(1, Math.ceil(curYears.length / 10)));
+  const bestYear = $derived(curYears.reduce<(typeof curYears)[number] | null>((b, r) => ((r.c.goals ?? -1) > (b?.c.goals ?? -1) ? r : b), null));
+  const busiest = $derived(curYears.reduce<(typeof curYears)[number] | null>((b, r) => ((r.c.apps ?? -1) > (b?.c.apps ?? -1) ? r : b), null));
+  const curSplit = $derived(["Competitive", "Friendly"].map((g) => ({ g, ...curYears.reduce<Cell>((a, r) => (r.by[g] ? add(a, r.by[g]) : a), none()) })).filter((x) => x.apps != null || x.goals != null));
+  const NAT_COLOR: Record<string, string> = { Competitive: "var(--accent)", Friendly: "var(--info)" };
+  /** Libellé court d'une équipe : « A », « U21 » ; avec le pays quand le joueur a porté plusieurs maillots. */
+  const countries = $derived(new Set(natTeams.map((e) => e.team.replace(/\s*\bU\s?\d{2}\b.*$/i, "").replace(/\s*\b(under|olympic).*$/i, "").trim())));
+  const short = (team: string) => {
+    const u = /\bU\s?(\d{2})\b/i.exec(team);
+    const base = team.replace(/\s*\bU\s?\d{2}\b.*$/i, "").trim();
+    return countries.size > 1 ? (u ? `${nationalTeam(base).name} U${u[1]}` : nationalTeam(team).name) : u ? `U${u[1]}` : t("statsSenior");
+  };
   const natGroups = $derived(["Competitive", "Friendly", "Total"].filter((g) => national.some((r) => r.competition_group === g)));
   const cell = (c?: Cell) => (c && (c.apps != null || c.goals != null) ? `${num(c.apps) || "–"} / ${num(c.goals) || "–"}` : "");
   const VIEWS: [View, string][] = [["club", "statsByClub"], ["season", "statsBySeason"], ["comp", "statsByComp"], ["nat", "statsNat"]];
@@ -246,36 +276,92 @@
         </tbody>
       </table>
     </div>
-  {:else if view === "nat"}
-    <ul class="mt-3 divide-y divide-line border-t border-line">
-      {#each natTeams as e, i (e.team)}
-        {@const nt = nationalTeam(e.team)}
-        <li>
-          <details open={i === 0} class="group">
-            <summary class="flex cursor-pointer list-none items-center gap-3 px-5 py-3 hover:bg-surface-2 [&::-webkit-details-marker]:hidden">
-              <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-surface-2">{#if nt.flag}<Flag code={nt.flag} label={nt.name} size={22} />{/if}</span>
-              <span class="min-w-0 flex-1">
-                <span class="block truncate font-semibold">{#if e.link}<a class="link" href={wikiUrl("en", e.link)} hreflang="en" target="_blank" rel="noopener">{nt.name}</a>{:else}{nt.name}{/if}</span>
-                <span class="text-xs tabular-nums text-muted">{e.years.size} {e.years.size > 1 ? t("statsYears") : t("statsYear1")}</span>
-              </span>
-              <span class="tabular-nums"><strong class="text-lg text-accent">{num(e.total.goals) || "–"}</strong> <span class="text-xs text-muted">{t("goalsLc")}</span></span>
-              <span class="hidden text-sm tabular-nums text-muted sm:inline">{num(e.total.apps) || "–"} {t("capsLc")}</span>
-              <span class="text-muted transition group-open:rotate-90" aria-hidden="true">›</span>
-            </summary>
-            <div class="overflow-x-auto bg-surface-2/40 px-5 pb-3">
-              <table class="tbl">
-                <thead><tr><th>{t("statsYear")}</th>{#each natGroups as g}<th class="num whitespace-nowrap">{label(g)}</th>{/each}</tr></thead>
-                <tbody>
-                  {#each [...e.years] as [year, by] (year)}
-                    <tr><td class="tabular-nums">{year}</td>{#each natGroups as g}<td class="num whitespace-nowrap">{cell(by[g])}</td>{/each}</tr>
-                  {/each}
-                </tbody>
-              </table>
-            </div>
-          </details>
-        </li>
-      {/each}
-    </ul>
+  {:else if view === "nat" && cur}
+    {@const nt = nationalTeam(cur.team)}
+    {#if natTeams.length > 1}
+      <!-- Parcours : une pastille par équipe (la A d'abord), la sélection change le détail ci-dessous. -->
+      <div class="-mx-0 mt-3 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label={t("statsNat")}>
+        {#each natTeams as e, i (e.team)}
+          {@const x = nationalTeam(e.team)}
+          <button type="button" aria-pressed={i === teamSel}
+            class="flex shrink-0 items-center gap-2 rounded-xl border px-3 py-1.5 text-left transition {i === teamSel ? 'border-accent bg-accent-soft' : 'border-line bg-surface hover:bg-surface-2'}" onclick={() => (teamSel = i)}>
+            {#if x.flag}<Flag code={x.flag} label={x.name} size={18} />{/if}
+            <span><span class="block text-sm font-semibold leading-tight">{short(e.team)}</span>
+              <span class="block text-[0.7rem] tabular-nums leading-tight text-muted">{num(e.total.apps) || "–"} · {num(e.total.goals) || "–"} {t("goalsLc")}</span></span>
+          </button>
+        {/each}
+      </div>
+    {/if}
+
+    <div class="px-5 pb-1 pt-4">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+        <div class="flex items-center gap-3">
+          <span class="grid size-12 shrink-0 place-items-center rounded-xl bg-surface-2">{#if nt.flag}<Flag code={nt.flag} label={nt.name} size={30} />{/if}</span>
+          <div class="min-w-0">
+            <h3 class="text-xl font-extrabold leading-tight tracking-tight">{#if cur.link}<a class="link" href={wikiUrl("en", cur.link)} hreflang="en" target="_blank" rel="noopener">{cur.team}</a>{:else}{cur.team}{/if}</h3>
+            <p class="text-xs tabular-nums text-muted">{curYears[0]?.y}{curYears.length > 1 ? ` → ${curYears[curYears.length - 1].y}` : ""} · {cur.years.size} {cur.years.size > 1 ? t("statsYears") : t("statsYear1")}</p>
+          </div>
+        </div>
+        <dl class="flex flex-wrap items-baseline gap-x-6 gap-y-2 sm:ml-auto">
+          <div><dd class="text-3xl font-extrabold tabular-nums leading-none">{cur.total.apps ?? "–"}</dd><dt class="mt-1 text-xs text-muted">{t("colCaps")}</dt></div>
+          <div><dd class="text-3xl font-extrabold tabular-nums leading-none text-accent">{cur.total.goals ?? "–"}</dd><dt class="mt-1 text-xs text-muted">{t("colGoals")}</dt></div>
+          {#if ratio({ apps: cur.total.apps, goals: cur.total.goals })}<div><dd class="text-3xl font-extrabold tabular-nums leading-none">{ratio(cur.total)}</dd><dt class="mt-1 text-xs text-muted">{t("statsPerCap")}</dt></div>{/if}
+        </dl>
+      </div>
+
+      {#if curSplit.length > 1}
+        <div class="mt-4">
+          <div class="flex h-2 overflow-hidden rounded-full bg-surface-2" role="img" aria-label={curSplit.map((c) => `${label(c.g)} ${c.apps ?? 0}`).join(", ")}>
+            {#each curSplit as c (c.g)}<span style:width="{(100 * (c.apps ?? 0)) / Math.max(1, cur.total.apps ?? 1)}%" style:background={NAT_COLOR[c.g]}></span>{/each}
+          </div>
+          <ul class="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs">
+            {#each curSplit as c (c.g)}
+              <li class="flex items-center gap-1.5"><span class="size-2 rounded-full" style:background={NAT_COLOR[c.g]} aria-hidden="true"></span>{label(c.g)}
+                <span class="tabular-nums text-muted">{num(c.apps) || "–"} {t("capsLc")} · {num(c.goals) || "–"} {t("goalsLc")}</span></li>
+            {/each}
+          </ul>
+        </div>
+      {/if}
+
+      {#if curYears.length > 1}
+        <!-- Année par année : la barre claire donne les sélections, la barre verte dedans les buts (même échelle). -->
+        <figure class="mt-5">
+          <div class="flex h-28 items-end gap-[3px]" role="img" aria-label={curYears.map((r) => `${r.y} : ${r.c.apps ?? 0} ${t("capsLc")}, ${r.c.goals ?? 0} ${t("goalsLc")}`).join(" ; ")}>
+            {#each curYears as r (r.y)}
+              <div class="group/col relative flex h-full min-w-0 flex-1 flex-col justify-end" title="{r.y} : {r.c.apps ?? 0} {t('capsLc')} · {r.c.goals ?? 0} {t('goalsLc')}">
+                {#if r.c.goals}<span class="mb-0.5 text-center text-[0.65rem] font-semibold leading-none tabular-nums text-accent opacity-0 transition group-hover/col:opacity-100 sm:opacity-100">{r.c.goals}</span>{/if}
+                <div class="relative w-full overflow-hidden rounded-t-[3px] {r.gap ? 'border-t border-dashed border-line' : 'bg-fg/15 group-hover/col:bg-fg/25'}" style:height="{(100 * (r.c.apps ?? 0)) / maxYear}%">
+                  <span class="absolute inset-x-0 bottom-0 bg-accent" style:height="{r.c.apps ? Math.min(100, (100 * (r.c.goals ?? 0)) / r.c.apps) : 0}%"></span>
+                </div>
+              </div>
+            {/each}
+          </div>
+          <div class="mt-1 flex gap-[3px] text-[0.65rem] tabular-nums text-muted" aria-hidden="true">
+            {#each curYears as r, i (r.y)}<span class="min-w-0 flex-1 overflow-visible whitespace-nowrap text-center">{i % labelEvery === 0 ? (r.y.length === 4 ? "’" + r.y.slice(2) : r.y.slice(2, 4) + "–" + r.y.slice(-2)) : ""}</span>{/each}
+          </div>
+          <figcaption class="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted">
+            {#if busiest?.c.apps}<span>{t("statsBusiest")} : <strong class="text-fg tabular-nums">{busiest.y}</strong> · {busiest.c.apps} {t("capsLc")}</span>{/if}
+            {#if bestYear?.c.goals}<span>{t("statsBestYear")} : <strong class="text-fg tabular-nums">{bestYear.y}</strong> · {bestYear.c.goals} {t("goalsLc")}</span>{/if}
+          </figcaption>
+        </figure>
+      {/if}
+    </div>
+
+    <details class="group mt-3 border-t border-line">
+      <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-sm font-medium hover:bg-surface-2 [&::-webkit-details-marker]:hidden">
+        <span>{t("statsYearTable")}</span><span class="text-muted transition group-open:rotate-90" aria-hidden="true">›</span>
+      </summary>
+      <div class="overflow-x-auto bg-surface-2/40 px-5 pb-3">
+        <table class="tbl">
+          <thead><tr><th>{t("statsYear")}</th>{#each natGroups as g}<th class="num whitespace-nowrap">{#if NAT_COLOR[g]}<span class="mr-1 inline-block size-2 rounded-full" style:background={NAT_COLOR[g]} aria-hidden="true"></span>{/if}{label(g)}</th>{/each}</tr></thead>
+          <tbody>
+            {#each curYears.filter((r) => !r.gap) as r (r.y)}
+              <tr><td class="tabular-nums">{r.y}</td>{#each natGroups as g}<td class="num whitespace-nowrap">{cell(r.by[g])}</td>{/each}</tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    </details>
   {/if}
   <p class="border-t border-line px-5 py-3 text-xs text-muted">{t("statsNote")}
     {#if source}<a class="link" href={wikiUrl("en", source)} hreflang="en" target="_blank" rel="noopener">{t("statsSrc")}</a>{/if}
