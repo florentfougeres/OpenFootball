@@ -27,7 +27,7 @@ REPO = "florentfougeres/OpenFootballBase"
 
 
 def download_release(tag: str, dest: Path, *, repo: str = REPO, log: Callable[[str], None] = print) -> Path:
-    """Télécharge l'archive `*-data.tar.gz` d'une release publique (`tag` : `data-v9`, ou `latest`). Aucune authentification."""
+    """Télécharge l'archive `*-data.tar.gz` d'une release publique (`tag` : `data-1.10.0`, ou `latest`). Aucune authentification."""
     api = f"https://api.github.com/repos/{repo}/releases/" + ("latest" if tag == "latest" else f"tags/{tag}")
     r = requests.get(api, timeout=60, headers={"Accept": "application/vnd.github+json"})
     r.raise_for_status()

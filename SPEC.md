@@ -422,7 +422,7 @@ championnat n'est pas dans le périmètre (Grèce, Danemark, Norvège…) — et
 - **Rejouable** : `openfootball uefa --cup UCL|UEL|UECL --season …` ; guide dans [docs/coupes-d-europe.md](docs/coupes-d-europe.md).
 
 ### Limites connues restantes
-≈ 3 100 joueurs sans QID (jeunes sans fiche) ; transferts lus sur les pages anglaises et, en complément, françaises (≈ 23 % des pages anglaises sans tableau, ≈ 1 000 conflits de statut entre clubs) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; données publiées : `data-v2` (sans transferts).
+≈ 3 100 joueurs sans QID (jeunes sans fiche) ; transferts lus sur les pages anglaises et, en complément, françaises (≈ 23 % des pages anglaises sans tableau, ≈ 1 000 conflits de statut entre clubs) ; trous de 2026/27 non validés ; analyseur allemand absent ; saisons non figées ; données publiées : `data-1.1.0` (sans transferts).
 
 ## 10. Jalons proposés
 
@@ -432,7 +432,7 @@ championnat n'est pas dans le périmètre (Grèce, Danemark, Norvège…) — et
 4. **M3 — Extension pays** : 2ᵉ pays via `scopes/*.toml` sans changement de code (valide l'extensibilité).
 5. **M4 — Publication** : licences, à propos, hébergement, procédure de retrait.
 
-**État au 2026-11-12** : M0 à M3 faits (5 pays, site, extension validée par un fichier TOML) ; **M4 reste à faire** : dépôt distant, release `data-v1`, activation de Pages, procédure de retrait.
+**État au 2026-11-12** : M0 à M3 faits (5 pays, site, extension validée par un fichier TOML) ; **M4 reste à faire** : dépôt distant, release `data-1.0.0`, activation de Pages, procédure de retrait.
 
 ### Pistes ultérieures (feuille de route, 2026-11-12)
 Non décidées, à reprendre quand les cinq pays seront jugés complets.

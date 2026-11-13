@@ -687,7 +687,7 @@ def main(argv: list[str] | None = None) -> int:
     ca.set_defaults(func=careers_cmd)
     rd = sub.add_parser("restore-db", help="reconstitue une base DuckDB de travail depuis une release de données")
     src = rd.add_mutually_exclusive_group(required=True)
-    src.add_argument("--release", help="tag de la release à télécharger (data-v9) ou « latest »")
+    src.add_argument("--release", help="tag de la release à télécharger (data-1.10.0) ou « latest »")
     src.add_argument("--archive", help="archive *-data.tar.gz déjà téléchargée")
     src.add_argument("--data", help="dossier déjà extrait (avec manifest.json)")
     rd.add_argument("--db", default=DB_DEFAULT, help="base à créer (ne doit pas exister)")

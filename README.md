@@ -75,7 +75,7 @@ cd web && npm install && npm run dev                   # http://localhost:5173 (
 
 # 3. Publier (données + site) — voir docs/publier-une-release.md
 openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous manifest-precedent.json
-gh release create data-v8 dist/openfootballbase-data.tar.gz --target main --title "Data v1.6.0 (date)" --notes "…"   # tag = compteur, nom = semver (docs/publier-une-release.md)
+gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main --title "Data 1.10.1" --notes "…"   # tag data-X.Y.Z, nom « Data X.Y.Z » (docs/publier-une-release.md)
 gh workflow run deploy.yml --ref main
 ```
 

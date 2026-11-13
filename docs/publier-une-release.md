@@ -16,7 +16,7 @@ pytest -q                                   # les tests passent
 
 ```bash
 # manifeste de la release précédente (pour la garde de continuité des saisons figées)
-mkdir -p /tmp/prev && gh release download data-v1 --pattern "*-data.tar.gz" --dir /tmp/prev --clobber
+mkdir -p /tmp/prev && gh release download data-1.9.0 --pattern "*-data.tar.gz" --dir /tmp/prev --clobber
 tar -xzOf /tmp/prev/*-data.tar.gz manifest.json > /tmp/prev/manifest.json
 
 openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz --previous /tmp/prev/manifest.json
@@ -28,9 +28,9 @@ openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz 
 
 ## 2. Créer la release
 
-Le **nom** de la release suit [semver](https://semver.org/lang/fr/) : `Data vMAJEUR.MINEUR.PATCH (date)`. Le **tag** reste un
-compteur technique `data-vN` (le tag **doit** commencer par `data-`, c'est la règle de déploiement de GitHub Pages) ; il ne
-change jamais une fois créé.
+Le **nom** de la release est `Data MAJEUR.MINEUR.PATCH` ([semver](https://semver.org/lang/fr/)), sans « v » ni date, et le **tag** est
+`data-MAJEUR.MINEUR.PATCH` (le tag **doit** commencer par `data-` : c'est la règle de déploiement de GitHub Pages). Exemple :
+tag `data-1.10.0`, nom `Data 1.10.0`.
 
 | Quoi | Quand | Exemple |
 |---|---|---|
@@ -38,17 +38,15 @@ change jamais une fois créé.
 | **MINEUR** | de nouvelles données : championnat, pays, coupe, saisons, tables ou colonnes **ajoutées** | `1.5.0` |
 | **PATCH** | corrections de données sans changer leur forme (effectifs, noms, logos, doublons) | `1.5.1` |
 
-Historique : `data-v1` à `data-v5` = 1.0.0 à 1.4.0, `data-v6` = 1.5.0 (Ligue Europa, deuxièmes divisions, MLS, Arabie
-saoudite), `data-v7` = 1.5.1 (logo). Le numéro de schéma est dans `manifest.json` (`schema_version`) : s'il change de façon
-incompatible, c'est une version MAJEURE.
+Le numéro de schéma est dans `manifest.json` (`schema_version`) : s'il change de façon incompatible, c'est une version MAJEURE.
 
 ```bash
-# prochaine release : data-v8 (compteur du tag), version 1.6.0 (nom)
-gh release create data-v8 dist/openfootballbase-data.tar.gz --target main \
-  --title "Data v1.6.0 ($(date +%F))" --notes "Ce qui change : …"
+# prochaine release : 1.10.1, par exemple
+gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main \
+  --title "Data 1.10.1" --notes "Ce qui change : …"
 ```
 
-Facultatif : joindre la base complète en asset (`gh release upload data-v2 data/work/openfootball.duckdb`) pour permettre
+Facultatif : joindre la base complète en asset (`gh release upload data-1.10.0 data/work/openfootball.duckdb`) pour permettre
 à quelqu'un de repartir de votre base sans tout reconstruire (≈ 60 Mo).
 
 ## 3. Déployer le site
@@ -79,7 +77,7 @@ fiche club, un effectif, une fiche joueur (carrière, sélections), la page *Cou
 ## Retour arrière
 
 Le site suit la dernière release. Pour revenir à la précédente : supprimer la release défectueuse
-(`gh release delete data-v2 --cleanup-tag --yes`, qui supprime aussi le tag) puis relancer
+(`gh release delete data-1.10.0 --cleanup-tag --yes`, qui supprime aussi le tag) puis relancer
 `gh workflow run deploy.yml --ref main`.
 
 ## Publier uniquement du code (site)

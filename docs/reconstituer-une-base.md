@@ -15,7 +15,7 @@ openfootball restore-db --release latest --db data/work/openfootball.duckdb --ve
 
 | Option | Rôle |
 |---|---|
-| `--release data-v9` ou `latest` | télécharge l'archive `*-data.tar.gz` de cette release publique (aucune authentification, pas besoin de `gh`) |
+| `--release data-1.10.0` ou `latest` | télécharge l'archive `*-data.tar.gz` de cette release publique (aucune authentification, pas besoin de `gh`) |
 | `--archive chemin.tar.gz` | utilise une archive déjà téléchargée (hors ligne) |
 | `--data dossier/` | utilise un dossier déjà extrait (celui qui contient `manifest.json`, par exemple `web/public/data`) |
 | `--db chemin.duckdb` | base à créer (défaut `data/work/openfootball.duckdb`). **Elle ne doit pas exister** : la commande refuse d'écraser. Déplacez l'ancienne base avant |
@@ -62,7 +62,7 @@ la base restaurée a le même schéma que la base d'origine (migrations appliqu�
 
 ## Pour aller plus vite : joindre la vraie base à la release (facultatif)
 
-`gh release upload data-v9 data/work/openfootball.duckdb` ajoute la base complète en asset (≈ 180 Mo). Elle contient tout ce
+`gh release upload data-1.10.0 data/work/openfootball.duckdb` ajoute la base complète en asset (≈ 180 Mo). Elle contient tout ce
 que `restore-db` ne peut pas retrouver (identifiants, `player_alias`, mouvements, libellés). Pour s'en servir : téléchargez-la
 et copiez-la à `data/work/openfootball.duckdb` (il faut alors la **version du code** correspondante : les migrations s'appliquent
 au démarrage).

@@ -1,6 +1,9 @@
 // DuckDB-WASM lit les fichiers Parquet de data/ directement dans le navigateur (requêtes HTTP par plages).
 import * as duckdb from "@duckdb/duckdb-wasm";
 import { app, type Row } from "./app.svelte";
+// Moteur hébergé avec le site (même origine) : aucun script ni wasm chargé depuis un CDN tiers. Seul le paquet « eh » (navigateurs récents) est livré.
+import wasmUrl from "@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url";
+import workerUrl from "@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url";
 
 let conn: duckdb.AsyncDuckDBConnection | null = null;
 
@@ -8,13 +11,10 @@ const seasonSlug = (label: string) => label.replace("/", "-");
 
 /** Télécharge et instancie le moteur : lancé en parallèle du manifeste, puisqu'il n'en dépend pas. */
 export async function openDb() {
-  const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
-  const workerUrl = URL.createObjectURL(new Blob([`importScripts("${bundle.mainWorker}");`], { type: "text/javascript" }));
-  const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
+  const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(new URL(workerUrl, location.href)));
   performance.mark("db:bundle");
-  await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  await db.instantiate(new URL(wasmUrl, location.href).href);
   performance.mark("db:instantiated");
-  URL.revokeObjectURL(workerUrl);
   return db;
 }
 
