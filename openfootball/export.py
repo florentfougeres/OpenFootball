@@ -213,9 +213,11 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
     return manifest
 
 
-# Compétitions à la une de l'accueil (code, dans cet ordre) et échange de club : l'Atlético de Madrid prend la place de Naples.
+# À la une de l'accueil : listes FIXES (QID Wikidata, dans l'ordre d'affichage), pas un classement : un classement par notoriété
+# laissait entrer n'importe quel club ajouté plus tard (Coritiba avec le Brésil).
 HOME_COMPETITIONS = ("ENG-PL", "UEFA-CL", "UEFA-EL", "DEU-BL", "ESP-LL", "ITA-SA", "FRA-L1", "USA-MLS")
-_HOME_OUT, _HOME_IN = "Q2641", "Q8701"
+HOME_CLUBS = ("Q7156", "Q18656", "Q8682", "Q1130849", "Q9616", "Q1422", "Q9617", "Q1543", "Q631", "Q15789", "Q8701", "Q50602")
+# Barcelone, Manchester United, Real Madrid, Liverpool, Chelsea, Juventus, Arsenal, AC Milan, Inter, Bayern, Atlético de Madrid, Manchester City
 
 
 def _write_home(con, out: Path, manifest: dict) -> dict:
@@ -229,7 +231,7 @@ def _write_home(con, out: Path, manifest: dict) -> dict:
                (SELECT count(*) FROM club c WHERE c.country_code = ce.code AND EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id))
         FROM country_export ce ORDER BY ce.code""").fetchall() if comps]
     clubs = [{"wikipedia_title": t, "name_en": en, "name_fr": fr, "logo_url": logo, "colors_hex": colors, "season": season}
-             for t, en, fr, logo, colors, season in con.execute("""
+             for t, en, fr, logo, colors, season in con.execute(f"""
         SELECT c.wikipedia_title, coalesce(le.label, c.name_en), coalesce(lf.label, c.name_fr), c.logo_url, c.colors_hex,
                (SELECT max(s.label) FROM club_season cs JOIN season s ON s.id = cs.season_id
                 WHERE cs.club_id = c.id AND EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id))
@@ -237,9 +239,8 @@ def _write_home(con, out: Path, manifest: dict) -> dict:
         LEFT JOIN entity_label le ON le.qid = c.wikidata_qid AND le.lang = 'en'
         LEFT JOIN entity_label lf ON lf.qid = c.wikidata_qid AND lf.lang = 'fr'
         WHERE EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id AND EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id))
-          AND c.wikidata_qid IS DISTINCT FROM ?
-        ORDER BY CASE WHEN c.wikidata_qid = ? THEN (SELECT x.wikipedia_count FROM club x WHERE x.wikidata_qid = ?) ELSE c.wikipedia_count END DESC NULLS LAST,
-                 c.wikipedia_title LIMIT 12""", [_HOME_OUT, _HOME_IN, _HOME_OUT]).fetchall()]
+          AND c.wikidata_qid IN ({", ".join("?" for _ in HOME_CLUBS)})
+        ORDER BY list_position(?, c.wikidata_qid)""", [*HOME_CLUBS, list(HOME_CLUBS)]).fetchall()]
     marks = ", ".join("?" for _ in HOME_COMPETITIONS)
     by_code = {r[0]: {"code": r[0], "name_en": r[1], "name_fr": r[2], "country_code": r[3], "logo_url": r[4], "flag": r[5]}
                for r in con.execute(f"""SELECT co.code, co.name_en, co.name_fr, co.country_code, i.logo_url, ce.flag
