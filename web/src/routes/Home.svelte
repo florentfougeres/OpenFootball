@@ -38,13 +38,18 @@
     const last = Object.fromEntries((await q(`SELECT club, max(season) AS season FROM club_season WHERE players > 0 GROUP BY club`)).map((r) => [r.club, r.season as string]));
     const clubs = squadClubs.filter((c) => last[c.wikipedia_title]).sort((a, b) => (b.wikipedia_count ?? 0) - (a.wikipedia_count ?? 0)).slice(0, 12)
       .map((c) => ({ wikipedia_title: c.wikipedia_title, name_en: c.name_en, name_fr: c.name_fr, logo_url: c.logo_url, colors_hex: c.colors_hex, season: last[c.wikipedia_title] }));
-    const FEATURED = ["ENG-PL", "UEFA-CL", "UEFA-EL", "DEU-BL", "ESP-LL", "ITA-SA", "FRA-L1", "USA-MLS"];          // anciens exports : pas de liste dans le JSON
-    const competitions = FEATURED.filter((c) => app.comps.has(c)).map((c) => {
+    return { stats: { clubs: stats.clubs, players: stats.players }, countries, clubs };
+  });
+  // Compétitions à la une : liste publiée avec l'accueil ; un export plus ancien n'en a pas, on la compose dès que DuckDB est prêt.
+  const FEATURED = ["ENG-PL", "UEFA-CL", "UEFA-EL", "DEU-BL", "ESP-LL", "ITA-SA", "FRA-L1", "USA-MLS"];
+  const featuredComps = $derived.by(() => {
+    if (data.data?.competitions?.length) return data.data.competitions;
+    if (!app.ready) return [];
+    return FEATURED.filter((c) => app.comps.has(c)).map((c) => {
       const x = app.comps.get(c)!;
       return { code: c, name_en: x.name_en as string, name_fr: x.name_fr as string, country_code: x.country_code as string, logo_url: (x.logo_url as string | null) ?? null,
                flag: x.country_code === "EUR" ? "europe" : ((app.countries.get(x.country_code)?.flag as string | null) ?? null) };
     });
-    return { stats: { clubs: stats.clubs, players: stats.players }, countries, clubs, competitions };
   });
   const countries = $derived((data.data?.countries ?? []).map((c) => ({ ...c, name: app.lang === "fr" ? c.name_fr : c.name_en }))
     .sort((a, b) => a.name.localeCompare(b.name, app.lang)));
@@ -87,11 +92,11 @@
       </ul>
     </section>
 
-    {#if data.data.competitions?.length}
+    {#if featuredComps.length}
       <section class="mt-8" aria-labelledby="feat-comps">
         <h2 id="feat-comps" class="mb-3 text-2xl font-bold">{t("featuredComps")}</h2>
         <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {#each data.data.competitions as c (c.code)}
+          {#each featuredComps as c (c.code)}
             <li>
               <a class="tile group" href={href("competition", c.code)}>
                 {#if c.logo_url}
