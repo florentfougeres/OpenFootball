@@ -45,8 +45,44 @@ Le numéro de schéma est dans `manifest.json` (`schema_version`) : s'il change 
 ```bash
 # prochaine release : 1.10.1, par exemple
 gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main \
-  --title "Data 1.10.1" --notes "Ce qui change : …"
+  --title "Data 1.10.1" --notes-file notes.md
 ```
+
+### Notes de release (même structure à chaque fois, anglais puis français)
+
+Les notes de chaque release suivent le même modèle, **en anglais d'abord, puis en français**, séparés par `---`. Les sections sont toujours présentes, avec `- —` quand elles sont vides ; les entrées restent cohérentes avec le [journal des changements](changelog.md) (dans les deux langues).
+
+```markdown
+# Data X.Y.Z — YYYY-MM-DD
+**Short title**
+Type: Minor release (new data)        <!-- Major release | Minor release (new data) | Patch release (data fixes) -->
+
+## Added
+- …
+## Changed
+- …
+## Fixed
+- …
+
+## Files and sources
+- `openfootballbase-data.tar.gz`: Parquet files, `manifest.json` (SHA-256 of every file), data dictionary `SCHEMA.md` (English) and `SCHEMA.fr.md` (French).
+- Sources: Wikipedia (CC BY-SA 4.0) and Wikidata (CC0).
+- Changelog: https://github.com/florentfougeres/OpenFootballBase/blob/main/docs/en/changelog.md
+
+---
+
+# Data X.Y.Z — YYYY-MM-DD
+**Titre court**
+Type : Version mineure (nouvelles données)   <!-- Version majeure | Version mineure (nouvelles données) | Correctif (corrections de données) -->
+
+## Ajouté / ## Modifié / ## Corrigé          (mêmes puces, en français)
+
+## Fichiers et sources
+- … (même contenu, en français)
+- Journal des changements : https://github.com/florentfougeres/OpenFootballBase/blob/main/docs/fr/changelog.md
+```
+
+Écrivez le fichier, puis `gh release create data-X.Y.Z … --title "Data X.Y.Z" --notes-file notes.md`. Une release existante se corrige avec `gh release edit data-X.Y.Z --notes-file notes.md`.
 
 Facultatif : joindre la base complète en asset (`gh release upload data-1.10.0 data/work/openfootball.duckdb`) pour permettre
 à quelqu'un de repartir de votre base sans tout reconstruire (≈ 200 Mo).

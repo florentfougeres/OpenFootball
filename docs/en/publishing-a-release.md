@@ -45,8 +45,44 @@ The schema number is in `manifest.json` (`schema_version`): if it changes incomp
 ```bash
 # next release: 1.10.1, for example
 gh release create data-1.10.1 dist/openfootballbase-data.tar.gz --target main \
-  --title "Data 1.10.1" --notes "What changes: …"
+  --title "Data 1.10.1" --notes-file notes.md
 ```
+
+### Release notes (same structure every time, English then French)
+
+Every release's notes follow the same template, in **English first, then French**, separated by `---`. Sections are always present, with `- —` when empty; keep the entries consistent with the [changelog](changelog.md) (both languages).
+
+```markdown
+# Data X.Y.Z — YYYY-MM-DD
+**Short title**
+Type: Minor release (new data)        <!-- Major release | Minor release (new data) | Patch release (data fixes) -->
+
+## Added
+- …
+## Changed
+- …
+## Fixed
+- …
+
+## Files and sources
+- `openfootballbase-data.tar.gz`: Parquet files, `manifest.json` (SHA-256 of every file), data dictionary `SCHEMA.md` (English) and `SCHEMA.fr.md` (French).
+- Sources: Wikipedia (CC BY-SA 4.0) and Wikidata (CC0).
+- Changelog: https://github.com/florentfougeres/OpenFootballBase/blob/main/docs/en/changelog.md
+
+---
+
+# Data X.Y.Z — YYYY-MM-DD
+**Titre court**
+Type : Version mineure (nouvelles données)   <!-- Version majeure | Version mineure (nouvelles données) | Correctif (corrections de données) -->
+
+## Ajouté / ## Modifié / ## Corrigé          (mêmes puces, en français)
+
+## Fichiers et sources
+- … (même contenu, en français)
+- Journal des changements : https://github.com/florentfougeres/OpenFootballBase/blob/main/docs/fr/changelog.md
+```
+
+Write the file, then `gh release create data-X.Y.Z … --title "Data X.Y.Z" --notes-file notes.md`. An existing release is fixed with `gh release edit data-X.Y.Z --notes-file notes.md`.
 
 Optional: attach the full database as an asset (`gh release upload data-1.10.0 data/work/openfootball.duckdb`) so that
 someone can start from your database without rebuilding everything (≈ 200 MB).
