@@ -9,7 +9,7 @@ de chaque joueur. Une base ouverte (fichiers Parquet), un pipeline Python et un 
 - **Site** : https://florentfougeres.github.io/OpenFootballBase/
 - **Données** : [releases GitHub](https://github.com/florentfougeres/OpenFootballBase/releases) (archive `openfootballbase-data.tar.gz` : fichiers Parquet, `manifest.json`, `SCHEMA.md`)
 - **Dictionnaire de données** (tables et colonnes des Parquet) : [docs/modele-de-donnees.md](docs/modele-de-donnees.md)
-- **Décisions et résultats mesurés** : [SPEC.md](SPEC.md) · **Avancement** : [PROGRESS.md](PROGRESS.md)
+- **Décisions et résultats mesurés** : [SPEC.md](SPEC.md) · **Avancement** : [PROGRESS.md](PROGRESS.md) · **Feuille de route** : [ROADMAP.md](ROADMAP.md)
 
 ## Championnats et saisons disponibles
 
