@@ -90,7 +90,9 @@
   };
   const best = (g: G) => { let top: Season | null = null; for (const s of seasons) if ((s.by[g]?.goals ?? -1) > (top?.by[g]?.goals ?? -1)) top = s; return top; };
 
+  // Passages dépliés par défaut ; un choix du visiteur (clic sur un passage, « Tout replier ») n'est pas écrasé.
   let open = $state<Record<string, boolean>>({});
+  $effect(() => { for (const s of stints) if (!(s.key in open)) open[s.key] = true; });
   const allOpen = $derived(stints.length > 0 && stints.every((s) => open[s.key]));
   const toggleAll = () => { const v = !allOpen; open = Object.fromEntries(stints.map((s) => [s.key, v])); };
 
