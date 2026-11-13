@@ -124,6 +124,18 @@
     const lo = Math.min(...rows.map((r) => r.start)), hi = Math.max(...rows.map((r) => r.start));
     return Array.from({ length: hi - lo + 1 }, (_, i): YearRow => m.get(lo + i) ?? { y: String(lo + i), start: lo + i, c: none(), by: {}, gap: true });
   });
+  /** Cumul de sélections et de buts à la fin de chaque année ; `mark` = palier de 50 sélections franchi cette année-là. */
+  const running = $derived.by(() => {
+    let caps = 0, goals = 0;
+    return curYears.map((r) => {
+      const before = caps;
+      caps += r.c.apps ?? 0; goals += r.c.goals ?? 0;
+      const mark = Math.floor(caps / 50) > Math.floor(before / 50) ? Math.floor(caps / 50) * 50 : null;
+      return { ...r, capsCum: caps, goalsCum: goals, mark };
+    });
+  });
+  let newestFirst = $state(true);
+  const ordered = $derived(newestFirst ? [...running].reverse() : running);
   const maxYear = $derived(Math.max(1, ...curYears.map((r) => r.c.apps ?? 0)));
   const labelEvery = $derived(Math.max(1, Math.ceil(curYears.length / 10)));
   const bestYear = $derived(curYears.reduce<(typeof curYears)[number] | null>((b, r) => ((r.c.goals ?? -1) > (b?.c.goals ?? -1) ? r : b), null));
@@ -347,21 +359,60 @@
       {/if}
     </div>
 
-    <details class="group mt-3 border-t border-line">
-      <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-sm font-medium hover:bg-surface-2 [&::-webkit-details-marker]:hidden">
-        <span>{t("statsYearTable")}</span><span class="text-muted transition group-open:rotate-90" aria-hidden="true">›</span>
-      </summary>
-      <div class="overflow-x-auto bg-surface-2/40 px-5 pb-3">
+    <div class="mt-3 border-t border-line">
+      <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 pb-1 pt-3">
+        <h4 class="text-sm font-semibold">{t("statsYearTable")}</h4>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+          <span class="flex items-center gap-1.5"><span class="h-2 w-4 rounded-sm bg-fg/55" aria-hidden="true"></span>{label("Competitive")}</span>
+          <span class="flex items-center gap-1.5"><span class="h-2 w-4 rounded-sm bg-fg/20" aria-hidden="true"></span>{label("Friendly")}</span>
+          <button type="button" class="link" onclick={() => (newestFirst = !newestFirst)}>{newestFirst ? t("statsOldest") : t("statsNewest")}</button>
+        </div>
+      </div>
+      <div class="max-h-[28rem] overflow-auto">
         <table class="tbl">
-          <thead><tr><th>{t("statsYear")}</th>{#each natGroups as g}<th class="num whitespace-nowrap">{#if NAT_COLOR[g]}<span class="mr-1 inline-block size-2 rounded-full" style:background={NAT_COLOR[g]} aria-hidden="true"></span>{/if}{label(g)}</th>{/each}</tr></thead>
+          <thead class="sticky top-0 z-10 bg-surface">
+            <tr><th>{t("statsYear")}</th><th class="w-[38%]">{t("colCaps")}</th><th class="w-[30%]">{t("colGoals")}</th><th class="num hidden sm:table-cell">{t("statsPerCap")}</th><th class="num hidden md:table-cell">{t("statsCumul")}</th></tr>
+          </thead>
           <tbody>
-            {#each curYears.filter((r) => !r.gap) as r (r.y)}
-              <tr><td class="tabular-nums">{r.y}</td>{#each natGroups as g}<td class="num whitespace-nowrap">{cell(r.by[g])}</td>{/each}</tr>
+            {#each ordered as r (r.y)}
+              {@const comp = r.by.Competitive?.apps ?? 0}
+              {@const fr = r.by.Friendly?.apps ?? 0}
+              {@const split = r.by.Competitive || r.by.Friendly}
+              <tr class={r.gap ? "text-muted/70" : ""}>
+                <td class="whitespace-nowrap tabular-nums font-medium">{r.y}</td>
+                {#if r.gap}
+                  <td colspan="2" class="text-xs italic">{t("statsNoCap")}</td>
+                {:else}
+                  <td>
+                    <div class="flex items-center gap-2.5">
+                      <span class="w-6 text-right font-semibold tabular-nums">{num(r.c.apps) || "–"}</span>
+                      <div class="flex h-2 overflow-hidden rounded-full bg-surface-2" style:width="{(100 * (r.c.apps ?? 0)) / maxYear}%" style:min-width="2px" aria-hidden="true">
+                        {#if split}
+                          <span class="bg-fg/55" style:width="{(100 * comp) / Math.max(1, comp + fr)}%"></span><span class="bg-fg/20" style:width="{(100 * fr) / Math.max(1, comp + fr)}%"></span>
+                        {:else}<span class="w-full bg-fg/40"></span>{/if}
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="flex items-center gap-2.5">
+                      <span class="w-6 text-right font-semibold tabular-nums {r.c.goals ? 'text-accent' : 'text-muted'}">{num(r.c.goals) || "–"}</span>
+                      <div class="h-2 rounded-full bg-accent" style:width="{(100 * (r.c.goals ?? 0)) / Math.max(1, ...curYears.map((x) => x.c.goals ?? 0))}%" aria-hidden="true"></div>
+                    </div>
+                  </td>
+                {/if}
+                <td class="num hidden text-muted sm:table-cell">{r.gap ? "" : ratio(r.c)}</td>
+                <td class="hidden whitespace-nowrap md:table-cell">
+                  <span class="flex items-center justify-end gap-2">
+                    {#if r.mark}<span class="rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent">{t("statsCapMark")}{r.mark}</span>{/if}
+                    <span class="w-20 text-right tabular-nums text-muted">{r.capsCum} · {r.goalsCum}</span>
+                  </span>
+                </td>
+              </tr>
             {/each}
           </tbody>
         </table>
       </div>
-    </details>
+    </div>
   {/if}
   <p class="border-t border-line px-5 py-3 text-xs text-muted">{t("statsNote")}
     {#if source}<a class="link" href={wikiUrl("en", source)} hreflang="en" target="_blank" rel="noopener">{t("statsSrc")}</a>{/if}
