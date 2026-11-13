@@ -160,3 +160,20 @@ def test_career_pruning_needs_strong_evidence(career, status):
     con = _squad_db(career, status)
     assert prune_after_career_end(con, log=lambda s: None) == 0
     assert con.execute("SELECT count(*) FROM player_club_season").fetchone()[0] == 1
+
+
+def test_active_only_skips_retired_players_but_keeps_open_careers():
+    con = duckdb.connect(":memory:"); migrate(con)
+    for pid, title in ((1, "Retired"), (2, "Active")):
+        con.execute("INSERT INTO player (id, name, link_lang, link_title) VALUES (?, ?, 'en', ?)", [pid, title, title])
+    con.execute("INSERT INTO player_career (id, player_id, seq, years_raw, club_name, source_lang, source_title) VALUES "
+                "(1, 1, 1, '2001–2010', 'X', 'en', 'Retired'), (2, 2, 1, '2020–', 'Y', 'en', 'Active')")
+    asked = []
+
+    class Client:
+        def get_pages(self, titles):
+            asked.extend(titles)
+            return [Page(title=t, exists=False) for t in titles]
+
+    import_careers(con, Client(), refresh=True, active_only=True, log=lambda m: None)
+    assert asked == ["Active"]

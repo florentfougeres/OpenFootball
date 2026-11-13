@@ -9,9 +9,10 @@ Rappel : `export OPENFOOTBALL_CONTACT="votre-contact"` avant toute commande qui 
 
 | Commande | À quoi elle sert | Options utiles |
 |---|---|---|
-| `backfill --season Y` | Construit (ou relit) les effectifs de la saison Y/Y+1 pour tous les championnats déclarés dans `openfootball/scopes/`. Refusé si la saison est figée. | `--league FRA ITA` (limiter), `--open` (marque la saison « en cours ») |
+| `backfill --season Y` | Construit (ou relit) les effectifs de la saison Y/Y+1 pour tous les championnats déclarés dans `openfootball/scopes/`. Refusé si la saison est figée. | `--league FRA ITA` (limiter), `--open` (marque la saison « en cours »), `--fresh` (ignore le cache : mise à jour du mercato) |
 | `uefa --cup UCL --season Y …` | Participants de la **phase de groupes / de ligue** d'une coupe d'Europe (`UCL` Ligue des champions, `UEL` Ligue Europa, `UECL` Ligue Conférence) : inscrit la participation (`competition_entry`), crée les clubs étrangers, leur championnat national et leur effectif, puis liste **tous** les clubs de ces championnats nationaux (avec ou sans effectif). Plusieurs saisons en une commande, de la plus récente à la plus ancienne. À lancer **après** `backfill`. Voir [coupes-d-europe.md](coupes-d-europe.md). | `--cup UCL|UEL|UECL` (défaut `UCL`) |
-| `complete-clubs --season Y …` | Lit l'effectif de **toutes les saisons en première division** des clubs étrangers déjà vus en coupe d'Europe (au moins un effectif quelque part). À lancer après `uefa`. Voir [coupes-d-europe.md](coupes-d-europe.md). | |
+| `complete-clubs --season Y …` | Lit l'effectif de **toutes les saisons en première division** des clubs étrangers déjà vus en coupe d'Europe (au moins un effectif quelque part). À lancer après `uefa`. Voir [coupes-d-europe.md](coupes-d-europe.md). | `--refresh` (relit aussi ceux qui ont déjà un effectif), `--fresh` (ignore le cache) |
+| `fix-player "nom" --lang fr --page "Titre"` | Rustine : relie le nom écrit sur une page de club (sans lien) à la page Wikipedia du joueur (table `player_alias`). Voir [ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md) §6. | |
 | `transfers` | Lit les tableaux de transferts des pages « saison du club » : enregistre les mouvements datés (`squad_movement`), pose `loan_in` / `loan_out`, recoupe les prêts entre clubs et tranche les joueurs présents dans deux clubs la même saison. N'ajoute jamais de joueur. **À lancer après chaque `backfill`** (il relit le cache, rapide). | `--season Y` (une saison) |
 | `status --season Y` | État d'une saison : effectifs attestés, trous, invariants, avertissements. | |
 | `known-gap --season Y --reason "…"` | Valide **explicitement** des club-saisons sans effectif (la source n'existe pas). | `--club "Nom"` (un club), `--all-unresolved` (tous les trous non validés) |
@@ -25,7 +26,7 @@ Rappel : `export OPENFOOTBALL_CONTACT="votre-contact"` avant toute commande qui 
 | `reconcile --names` | Rattache les joueurs **sans lien** à un joueur identifié de même nom, seulement si sa carrière contient les mêmes club-saisons. **À lancer après chaque `backfill`.** | |
 | `reconcile --wikidata` | Pour un joueur sans lien : cherche dans Wikidata un footballeur de même nom dont les clubs (P54) contiennent tous nos club-saisons ; retenu seulement s'il est unique. Rapide (quelques minutes). | |
 | `reconcile --infobox` | Cherche la page anglaise des joueurs sans lien et la valide par son infobox. **Long** (plusieurs centaines de requêtes, de l'ordre de l'heure) et peu rentable en relance : à lancer ponctuellement. | |
-| `careers` | Importe carrière **et sélections** (infobox anglaise) des joueurs qui n'en ont pas encore. | `--refresh` (relit tout, depuis le cache : voir [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md)), `--limit N` (essai) |
+| `careers` | Importe carrière **et sélections** (infobox anglaise) des joueurs qui n'en ont pas encore. | `--refresh` (relit tout, depuis le cache : voir [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md)), `--active` (joueurs non retraités), `--fresh` (ignore le cache), `--limit N` (essai) |
 | `enrich --what players` | Liens Wikipedia par langue et dates de naissance (donc les âges). | |
 | `enrich --what clubs` | Liens Wikipedia et noms français des clubs à effectifs. | |
 | `enrich --what careerclubs` | Relie les clubs cités dans les carrières à leur fiche (QID). | |

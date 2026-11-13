@@ -86,6 +86,10 @@ class WikipediaClient:
         self._sleep = sleep
         self._min_interval = min_interval_s
         self._last_call = 0.0
+        # Mode « frais » (OPENFOOTBALL_FRESH=1, option `--fresh` des commandes) : le cache ne périme jamais, ce mode le contourne.
+        # Chaque page est relue UNE fois par processus (puis remise en cache), pas à chaque appel.
+        self._fresh = bool(os.environ.get("OPENFOOTBALL_FRESH"))
+        self._refetched: set[Path] = set()
         self._session = requests.Session()
         self._session.headers["User-Agent"] = _default_user_agent()
 
@@ -96,6 +100,8 @@ class WikipediaClient:
 
     def _cache_get(self, title: str) -> Page | None:
         path = self._cache_path(title)
+        if self._fresh and path not in self._refetched:
+            return None
         try:
             return Page(**json.loads(path.read_text(encoding="utf-8")))
         except (FileNotFoundError, json.JSONDecodeError):      # absent, ou écriture d'un autre processus en cours : on relit le réseau
@@ -106,6 +112,7 @@ class WikipediaClient:
         tmp = path.with_suffix(f".{os.getpid()}.tmp")           # écriture atomique : jamais de fichier à moitié écrit
         tmp.write_text(json.dumps(page.__dict__, ensure_ascii=False), encoding="utf-8")
         os.replace(tmp, path)
+        self._refetched.add(path)
 
     # ---------------------------------------------------------------- réseau
     def _http_transport(self, params: dict) -> dict:

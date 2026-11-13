@@ -301,11 +301,12 @@ def fill_national_leagues(con, start_year: int, *, wp, qid_lookup: Callable[[lis
 
 
 def complete_national_clubs(con, start_year: int, *, wp, lang_clients: dict, wd, qid_lookup: Callable[[list[str]], dict],
-                            log: Callable[[str], None] = print) -> list:
+                            refresh: bool = False, log: Callable[[str], None] = print) -> list:
     """Compléter les années manquantes des clubs vus en coupe d'Europe : pour chaque club d'un championnat national (hors périmètre)
     qui a au moins UN effectif dans une autre saison, lit l'effectif de cette saison s'il manque. Un club vu deux fois en
     Ligue des champions a ainsi son effectif de toutes ses saisons en première division. Les saisons où il joue en division
-    inférieure ne sont pas couvertes (aucun championnat inférieur n'est lu). Idempotent ; un club sans page reste vide."""
+    inférieure ne sont pas couvertes (aucun championnat inférieur n'est lu). Idempotent ; un club sans page reste vide.
+    `refresh` : relit AUSSI les clubs qui ont déjà un effectif (mise à jour de la saison en cours, avec `--fresh`)."""
     season_id = ensure_season(con, start_year)
     status = con.execute("SELECT status FROM season WHERE id = ?", [season_id]).fetchone()[0]
     if status == "frozen":
@@ -319,7 +320,7 @@ def complete_national_clubs(con, start_year: int, *, wp, lang_clients: dict, wd,
         SELECT cs.id, c.wikipedia_title, c.wikidata_qid, co.country_code
         FROM club_season cs JOIN club c ON c.id = cs.club_id JOIN competition co ON co.id = cs.competition_id
         WHERE cs.season_id = ? AND co.id IN ({marks})
-          AND NOT EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id)
+          {"" if refresh else "AND NOT EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id)"}
           AND EXISTS (SELECT 1 FROM club_season o JOIN player_club_season q ON q.club_season_id = o.id WHERE o.club_id = c.id)
         ORDER BY c.wikipedia_title""", [season_id, *comp_ids]).fetchall()
     if not rows:

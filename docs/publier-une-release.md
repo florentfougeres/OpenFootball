@@ -28,11 +28,24 @@ openfootball export --out dist/data --archive dist/openfootballbase-data.tar.gz 
 
 ## 2. Créer la release
 
-Les versions de données se nomment `data-vN` (ex. `data-v5`). Le tag **doit** commencer par `data-`.
+Le **nom** de la release suit [semver](https://semver.org/lang/fr/) : `Data vMAJEUR.MINEUR.PATCH (date)`. Le **tag** reste un
+compteur technique `data-vN` (le tag **doit** commencer par `data-`, c'est la règle de déploiement de GitHub Pages) ; il ne
+change jamais une fois créé.
+
+| Quoi | Quand | Exemple |
+|---|---|---|
+| **MAJEUR** | le schéma des tables change de façon incompatible (colonne retirée ou renommée, table supprimée) : le site et les utilisateurs doivent s'adapter | `2.0.0` |
+| **MINEUR** | de nouvelles données : championnat, pays, coupe, saisons, tables ou colonnes **ajoutées** | `1.5.0` |
+| **PATCH** | corrections de données sans changer leur forme (effectifs, noms, logos, doublons) | `1.5.1` |
+
+Historique : `data-v1` à `data-v5` = 1.0.0 à 1.4.0, `data-v6` = 1.5.0 (Ligue Europa, deuxièmes divisions, MLS, Arabie
+saoudite), `data-v7` = 1.5.1 (logo). Le numéro de schéma est dans `manifest.json` (`schema_version`) : s'il change de façon
+incompatible, c'est une version MAJEURE.
 
 ```bash
-gh release create data-v2 dist/openfootballbase-data.tar.gz --target main \
-  --title "Data v2 ($(date +%F))" --notes "Ce qui change : …"
+# prochaine release : data-v8 (compteur du tag), version 1.6.0 (nom)
+gh release create data-v8 dist/openfootballbase-data.tar.gz --target main \
+  --title "Data v1.6.0 ($(date +%F))" --notes "Ce qui change : …"
 ```
 
 Facultatif : joindre la base complète en asset (`gh release upload data-v2 data/work/openfootball.duckdb`) pour permettre

@@ -6,6 +6,7 @@ Guides pas à pas pour faire vivre la base. Les décisions de fond sont dans [..
 |---|---|
 | Ajouter un championnat/pays, une langue, une nouvelle saison, ou corriger l'effectif d'un club | [ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md) |
 | Ajouter une coupe d'Europe (Ligue des champions, Europa League…) et rejouer les saisons | [coupes-d-europe.md](coupes-d-europe.md) |
+| Mettre à jour la saison en cours (mercato) et les chiffres des joueurs non retraités | [mettre-a-jour-saison-en-cours.md](mettre-a-jour-saison-en-cours.md) |
 | Mettre à jour les parcours, matchs, buts et sélections des joueurs (infobox) | [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md) |
 | Changer à la main le logo ou les infos d'un club | [club-logo-et-infos-manuel.md](club-logo-et-infos-manuel.md) |
 | Récupérer en masse les logos manquants | [logos-en-masse.md](logos-en-masse.md) |

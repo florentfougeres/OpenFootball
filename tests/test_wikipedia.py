@@ -91,3 +91,14 @@ def test_cache_survives_missing_or_half_written_file(tmp_path):
     assert c._cache_get("A") is None                                   # à moitié écrit
     c._cache_put(Page(title="A", exists=True, wikitext="x"))
     assert c._cache_get("A").wikitext == "x" and not list(tmp_path.glob("*.tmp"))
+
+
+def test_fresh_mode_refetches_once_then_uses_the_cache(tmp_path, monkeypatch):
+    c, calls, _ = make_client(tmp_path, [{"query": {"pages": [page("A", 1, "x")]}}])
+    c.get_pages(["A"])                                              # remplit le cache
+    monkeypatch.setenv("OPENFOOTBALL_FRESH", "1")
+    c2, calls2, _ = make_client(tmp_path, [{"query": {"pages": [page("A", 2, "y")]}}])
+    [p] = c2.get_pages(["A"])
+    assert p.revid == 2 and len(calls2) == 1                       # cache contourné : la nouvelle révision est lue
+    c2.get_pages(["A"])
+    assert len(calls2) == 1                                         # mais une seule fois par processus

@@ -56,7 +56,8 @@ function nationByName(): Map<string, string> {
   const names = new Intl.DisplayNames(["en"], { type: "region" });
   for (let a = 65; a <= 90; a++) for (let b = 65; b <= 90; b++) {
     const code = String.fromCharCode(a, b);
-    try { const n = names.of(code); if (n && n !== code) nationIndex.set(n.toLowerCase(), code); } catch { /* code inexistant */ }
+    // Le premier nom gagne : « France » reste FR et ne devient pas FX (ancien code de la France métropolitaine, sans drapeau).
+    try { const n = names.of(code); if (n && n !== code && !nationIndex.has(n.toLowerCase())) nationIndex.set(n.toLowerCase(), code); } catch { /* code inexistant */ }
   }
   return nationIndex;
 }

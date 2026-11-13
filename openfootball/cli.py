@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 from collections import Counter
 from pathlib import Path
 
@@ -296,7 +297,7 @@ def complete_clubs_cmd(args: argparse.Namespace) -> int:
     for year in args.season:
         print(f"=== Clubs européens à compléter {year}/{str(year + 1)[2:]} ===")
         try:
-            res = complete_national_clubs(con, year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts))
+            res = complete_national_clubs(con, year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts), refresh=args.refresh)
         except SeasonFrozen as exc:
             raise SystemExit(f"refusé : {exc}")
         except Exception as exc:
@@ -442,7 +443,7 @@ def careers_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     client = WikipediaClient("cache/wikipedia_en_lead", lang="en", lead_only=True, batch_size=50)
-    r = import_careers(con, client, refresh=args.refresh, limit=args.limit)
+    r = import_careers(con, client, refresh=args.refresh or args.active, active_only=args.active, limit=args.limit)
     print(f"{r.players} joueurs lus : {r.with_career} avec carrière ({r.rows} lignes), "
           f"{r.no_infobox} sans infobox exploitable, {r.missing_page} pages absentes")
     r2 = import_careers_by_qid(con, client, WikidataClient(args.wd_cache))
@@ -558,6 +559,7 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("backfill", help="construit une saison (une seule fois), sans la figer")
     common(b)
     b.add_argument("--league", nargs="*", choices=LEAGUE_CHOICES)
+    b.add_argument("--fresh", action="store_true", help="ignore le cache Wikipedia : relit les pages (mise à jour de la saison en cours)")
     b.add_argument("--open", action="store_true", help="marque la saison comme « en cours » (saison courante)")
     b.add_argument("--cache", default="cache/wikipedia")
     b.add_argument("--wd-cache", default="cache/wikidata")
@@ -572,6 +574,8 @@ def main(argv: list[str] | None = None) -> int:
     cc_ = sub.add_parser("complete-clubs", help="effectif de toutes les saisons des clubs étrangers déjà vus en coupe d'Europe")
     cc_.add_argument("--db", default=DB_DEFAULT)
     cc_.add_argument("--season", type=int, nargs="+", required=True)
+    cc_.add_argument("--refresh", action="store_true", help="relit aussi les clubs qui ont déjà un effectif (avec --fresh : mise à jour de la saison en cours)")
+    cc_.add_argument("--fresh", action="store_true", help="ignore le cache Wikipedia : relit les pages")
     cc_.add_argument("--cache", default="cache/wikipedia")
     cc_.add_argument("--wd-cache", default="cache/wikidata")
     cc_.set_defaults(func=complete_clubs_cmd)
@@ -609,6 +613,9 @@ def main(argv: list[str] | None = None) -> int:
     ca = sub.add_parser("careers", help="importe la carrière (infobox Wikipedia) des joueurs")
     ca.add_argument("--db", default=DB_DEFAULT)
     ca.add_argument("--refresh", action="store_true", help="relit aussi les joueurs déjà importés")
+    ca.add_argument("--active", action="store_true",
+                    help="relit les joueurs NON RETRAITÉS (effectif de la saison en cours ou carrière encore ouverte) ; avec --fresh : chiffres à jour")
+    ca.add_argument("--fresh", action="store_true", help="ignore le cache Wikipedia (relit les pages)")
     ca.add_argument("--limit", type=int, help="n'importe que N joueurs (essai)")
     ca.add_argument("--wd-cache", default="cache/wikidata")
     ca.set_defaults(func=careers_cmd)
@@ -627,6 +634,7 @@ def main(argv: list[str] | None = None) -> int:
     pr.set_defaults(func=progress_cmd)
     tr = sub.add_parser("transfers", help="statuts datés (arrivé/parti en cours de saison, prêts) depuis les tableaux de transferts")
     tr.add_argument("--db", default=DB_DEFAULT)
+    tr.add_argument("--fresh", action="store_true", help="ignore le cache Wikipedia : relit les pages de transferts")
     tr.add_argument("--season", type=int, help="une seule saison (année de début) ; par défaut toutes les saisons non figées")
     tr.add_argument("--cache", default="cache/wikipedia")
     tr.set_defaults(func=transfers_cmd)
@@ -646,6 +654,8 @@ def main(argv: list[str] | None = None) -> int:
     wc.set_defaults(func=import_world_clubs_cmd)
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(message)s")
+    if getattr(args, "fresh", False):
+        os.environ["OPENFOOTBALL_FRESH"] = "1"            # lu par WikipediaClient à sa création : cache contourné
     return args.func(args)
 
 

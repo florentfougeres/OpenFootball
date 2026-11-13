@@ -1,5 +1,8 @@
 # Mettre à jour parcours, matchs, buts et sélections des joueurs
 
+> Pour la mise à jour **courante** (mercato, joueurs non retraités), lisez d'abord [mettre-a-jour-saison-en-cours.md](mettre-a-jour-saison-en-cours.md) :
+> `careers --active --fresh` relit seulement les joueurs en activité et contourne le cache. Cette page détaille la lecture complète.
+
 Source : l'**infobox** de la page Wikipedia **anglaise** de chaque joueur (`Infobox football biography`).
 On y lit :
 - **Carrière senior** (`years1`, `clubs1`, `caps1`, `goals1`…) → table `player_career` ;
@@ -16,6 +19,7 @@ Ces chiffres sont **publiés tels quels, non vérifiés** (le site le dit). Une 
 |---|---|---|
 | Importer les nouveaux joueurs | `openfootball careers` | ne traite que les joueurs **sans carrière** : ceux liés à une page anglaise, puis ceux retrouvés par QID Wikidata (sitelink anglais) |
 | Tout relire | `openfootball careers --refresh` | efface puis réécrit carrière **et** sélections de tous les joueurs liés à une page anglaise |
+| Joueurs non retraités | `openfootball careers --active --fresh` | relit, sans le cache, ceux de la saison en cours ou dont la carrière est ouverte |
 | Essai | `openfootball careers --limit 50` | seulement 50 joueurs |
 
 Un joueur n'a un parcours que s'il est **lié** : page anglaise connue (`link_lang = 'en'`) ou QID Wikidata avec

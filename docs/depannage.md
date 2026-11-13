@@ -8,7 +8,7 @@
 | `refusé : saison … figée` | La saison est figée (immuable). | C'est voulu. Pour corriger une saison figée : procédure d'amendement (SPEC §5bis), jamais à la main. |
 | `EnumerationError … clubs trouvés, … attendus` | La page du championnat n'a pas le bon nombre d'équipes (ou `team_count` du fichier `scopes/*.toml` est faux). | Vérifier le `[[team_count]]` du pays pour cette saison ; vérifier la page `<saison> <championnat>` sur Wikipedia. |
 | Un club a `TROU` après `backfill` | Pas de page « saison du club » exploitable. | Voir [ajouter-clubs-et-saisons.md](ajouter-clubs-et-saisons.md) (§ Trous) : source manuelle ou `known-gap`. |
-| Des chiffres de carrière ne changent pas après `careers --refresh` | Le cache Wikipedia ne périme jamais. | Déplacer `cache/wikipedia_en_lead` avant (voir [mettre-a-jour-joueurs.md](mettre-a-jour-joueurs.md)). |
+| Des chiffres de carrière ou un effectif ne changent pas après une relance | Le cache Wikipedia ne périme jamais. | Ajouter `--fresh` (ou `OPENFOOTBALL_FRESH=1`) : voir [mettre-a-jour-saison-en-cours.md](mettre-a-jour-saison-en-cours.md). |
 | Après un `backfill`, des joueurs n'ont plus d'âge ni de carrière | Le backfill recrée les joueurs sans lien. | `openfootball reconcile --names`, puis `careers` et `enrich --what players`. |
 | Le site local affiche « Impossible de charger les données » | Pas de données dans `web/public/data`, ou export trop ancien pour le code du site. | `openfootball export --out web/public/data`, puis recharger (Cmd+Maj+R). |
 | Le site local est vide / bloqué au chargement | DuckDB-WASM est chargé depuis jsDelivr : pas d'Internet, ou bloqueur de contenu. | Vérifier la connexion ; ouvrir la console du navigateur. |

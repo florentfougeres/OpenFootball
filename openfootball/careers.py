@@ -119,10 +119,18 @@ def import_careers_by_qid(con: duckdb.DuckDBPyConnection, client, wd, *,
     return report
 
 
-def import_careers(con: duckdb.DuckDBPyConnection, client, *, refresh: bool = False,
+# Joueurs « pas encore retraités » : présents dans un effectif de la saison EN COURS, ou dont la dernière ligne de carrière est ouverte (« 2023– »).
+_ACTIVE = """AND p.id IN (
+    SELECT pcs.player_id FROM player_club_season pcs JOIN club_season cs ON cs.id = pcs.club_season_id
+      JOIN season s ON s.id = cs.season_id WHERE s.status = 'open'
+    UNION SELECT player_id FROM player_career WHERE regexp_matches(years_raw, '[–-]\\s*$'))"""
+
+
+def import_careers(con: duckdb.DuckDBPyConnection, client, *, refresh: bool = False, active_only: bool = False,
                    limit: int | None = None, log: Callable[[str], None] = print) -> CareerReport:
-    """`client` : WikipediaClient(lang='en', lead_only=True)."""
+    """`client` : WikipediaClient(lang='en', lead_only=True). `active_only` : ne relit que les joueurs non retraités (avec `refresh`)."""
     where = "" if refresh else "AND NOT EXISTS (SELECT 1 FROM player_career c WHERE c.player_id = p.id)"
+    where += _ACTIVE if active_only else ""
     todo = con.execute(f"SELECT p.id, p.link_title FROM player p WHERE p.link_lang = 'en' "
                        f"AND p.link_title IS NOT NULL {where} ORDER BY p.id" + (f" LIMIT {int(limit)}" if limit else "")).fetchall()
     report = CareerReport()
