@@ -26,7 +26,7 @@
 ## Highlights
 
 - **Squads, season by season, 2000/01 → 2026/27** (the 5 major leagues from 2000/01, the others from 2010/11), with shirt number, position, nationality and age, for 18 top-flight and second-tier leagues and the UEFA club competitions.
-- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place, and — for about 24,000 players — **career statistics** by club, season, competition and national team.
+- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place, and — for about 26,000 players — **career statistics** by club, season, competition and national team.
 - **Open, reusable data**: Parquet files published with every [release](https://github.com/florentfougeres/OpenFootballBase/releases), queryable with DuckDB, pandas, Polars or any Parquet reader.
 - **Traceable**: every squad cites the Wikipedia page and revision it came from. Nothing is invented; a missing squad stays missing and is shown as such.
 - **A bilingual static website** (English / French) that queries the Parquet files directly in the browser with DuckDB-WASM — no server, no analytics, no cookies.
@@ -37,12 +37,12 @@
 | | |
 |---|---|
 | Seasons | 27 (2000/01 → 2026/27, the current season is updated at each release) |
-| Clubs with seasons | 2,761 (and 44,881 club records worldwide, with logo, stadium and colours from Wikidata) |
-| Club-seasons | 25,506 |
-| Players | 73,292 |
-| Squad entries | 259,346 |
-| Career rows | 450,858 |
-| Competitions | 127 (leagues and continental cups) |
+| Clubs with seasons | 2,822 (and 44,970 club records worldwide, with logo, stadium and colours from Wikidata) |
+| Club-seasons | 26,674 |
+| Players | 84,679 |
+| Squad entries | 326,072 |
+| Career rows | 477,819 |
+| Competitions | 129 (leagues and continental cups) |
 
 Figures as of 2026-11-14. The live status of every league and season is in [PROGRESS.md](PROGRESS.md).
 

@@ -4,6 +4,13 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.14.0 — 2026-11-14
+- **UEFA Cup from 2000/01 to 2008/09 and Europa League 2009/10** (new option `uefa --cup UC`): the 32 clubs of the round of 32 up to 2002/03 and 2003/04, the 40-club group stage from 2004/05, then the 48 clubs of the 2009/10 Europa League (328 UEFA Cup participations, 48 Europa League ones).
+- **Second divisions from 2000/01 to 2009/10** for England, France, Germany, Spain and Italy: 915 of 1,055 club-seasons with a squad.
+- **Partial squads built from the players' careers** (`reconstruct --from-careers`): for 969 club-seasons without a Wikipedia page (Liga, Ligue 1, Süper Lig, Eredivisie, Primeira Liga, Belgian league, second divisions, continental cup clubs), the players whose statistics table or infobox places them at the club that season (at least 10 players). 18,061 rows, all marked `inferred`; the club-season keeps its documented gap.
+- **Career statistics for 26,099 players**; the database now holds 84,679 players and 326,072 squad entries.
+- **Fix**: the 2000-2003 English second division (then "Football League First Division"), the French "Division 2" before 2002 and the size of the Serie B (20, 24, then 22 clubs) are now recognised.
+
 ## Data 1.13.0 — 2026-11-14
 - **UEFA Champions League from 2000/01 to 2009/10**: participants of the group stage (320 participations, 299 with a squad) and the squads of the clubs from every country, with the other top-flight seasons of the clubs already seen (`complete-clubs`). The Portugal, Netherlands, Belgium and Türkiye leagues are read back to 2000/01 (Türkiye 2000/01 has no page on Wikipedia).
 - **Squads of the continental cup clubs** (new option `continental --squads`): Copa Libertadores 263 of 544 participations with a squad, CAF Champions League 103 of 226, AFC Champions League 339 of 552 (2010 → 2026). Clubs without a season page stay empty and are listed as gaps.

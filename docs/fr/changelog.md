@@ -4,6 +4,13 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.14.0 — 2026-11-14
+- **Coupe UEFA de 2000/01 à 2008/09 et Ligue Europa 2009/10** (nouvelle option `uefa --cup UC`) : les 32 clubs des seizièmes de finale jusqu'en 2002/03 et 2003/04, la phase de groupes à 40 clubs dès 2004/05, puis les 48 clubs de la Ligue Europa 2009/10 (328 participations en Coupe UEFA, 48 en Ligue Europa).
+- **Deuxièmes divisions de 2000/01 à 2009/10** pour l'Angleterre, la France, l'Allemagne, l'Espagne et l'Italie : 915 club-saisons sur 1 055 avec un effectif.
+- **Effectifs partiels construits d'après les carrières des joueurs** (`reconstruct --from-careers`) : pour 969 club-saisons sans page Wikipedia (Liga, Ligue 1, Süper Lig, Eredivisie, Primeira Liga, championnat belge, deuxièmes divisions, clubs de coupes continentales), les joueurs dont le tableau de statistiques ou l'infobox les place dans le club cette saison (10 joueurs au moins). 18 061 lignes, toutes marquées `inferred` ; la club-saison garde son trou documenté.
+- **Statistiques de carrière pour 26 099 joueurs** ; la base compte maintenant 84 679 joueurs et 326 072 lignes d'effectif.
+- **Correction** : la D2 anglaise de 2000 à 2003 (alors « Football League First Division »), la « Division 2 » française avant 2002 et la taille de la Serie B (20, 24, puis 22 clubs) sont maintenant reconnues.
+
 ## Data 1.13.0 — 2026-11-14
 - **Ligue des champions de l'UEFA de 2000/01 à 2009/10** : participants de la phase de groupes (320 participations, 299 avec un effectif) et effectifs des clubs de tous les pays, avec les autres saisons de première division des clubs déjà vus (`complete-clubs`). Les championnats du Portugal, des Pays-Bas, de la Belgique et de la Turquie sont lus jusqu'à 2000/01 (Turquie 2000/01 : pas de page sur Wikipedia).
 - **Effectifs des clubs des coupes continentales** (nouvelle option `continental --squads`) : Copa Libertadores 263 participations sur 544 avec un effectif, Ligue des champions CAF 103 sur 226, Ligue des champions AFC 339 sur 552 (2010 → 2026). Un club sans page de saison reste vide et est listé comme trou.
