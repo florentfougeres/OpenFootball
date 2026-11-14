@@ -217,8 +217,9 @@ def resolve_batch(titles: list[str], q: dict) -> list[Page]:
             out.append(Page(title=t, exists=False))
             continue
         rev = (p.get("revisions") or [None])[0]
-        if rev is None:
-            raise WikipediaError(f"page {final!r} sans révision")
+        if rev is None:                  # titre défectueux (« Rodr%C3%ADguez » : adresse encodée deux fois) : page traitée comme absente, le lot continue
+            out.append(Page(title=t, exists=False))
+            continue
         out.append(Page(
             title=t, exists=True, resolved_title=final, revid=rev["revid"],
             wikitext=rev["slots"]["main"]["content"],

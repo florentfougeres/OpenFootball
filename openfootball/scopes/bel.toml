@@ -14,7 +14,11 @@ level = 1
 page_names = ["Belgian First Division A", "Belgian First Division"]
 
 [[team_count]]
-from = 2010
+from = 2000
+n = 18
+
+[[team_count]]
+from = 2009
 n = 16
 
 [[team_count]]

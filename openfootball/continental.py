@@ -172,3 +172,59 @@ def run_cup(con, cup: Cup, start_year: int, *, wp, qid_lookup: Callable[[list[st
         con.execute("INSERT INTO competition_entry VALUES (?, ?, ?) ON CONFLICT DO NOTHING", [cup_id, season_id, club_id])
         n += 1
     return n
+
+
+def run_squads(con, start_year: int, *, wp, lang_clients: dict, wd, qid_lookup: Callable[[list[str]], dict],
+               log: Callable[[str], None] = print) -> list:
+    """Effectif des clubs qui ont disputé la phase de groupes ou de ligue d'une coupe continentale cette saison.
+
+    Un club sans club-saison est rattaché au championnat de son pays (celui du périmètre s'il existe, sinon créé comme pour la
+    Ligue des champions) ; un club-saison déjà listé mais vide (pays « liste seulement ») est rempli. Même lecture que partout
+    ailleurs : toutes les langues utiles, union des pages, rien d'inventé ; un club sans page reste vide et le trou est affiché.
+    Idempotent : un club qui a déjà un effectif n'est pas relu."""
+    from openfootball.backfill import ClubResult, _ensure_club_season, fill_club_season
+    from openfootball.parse.league import season_label
+    from openfootball.parse.squad_i18n import PARSERS
+    from openfootball.scopes import load_overrides
+    from openfootball.uefa import _ensure_domestic
+    season_id = ensure_season(con, start_year)
+    status = con.execute("SELECT status FROM season WHERE id = ?", [season_id]).fetchone()[0]
+    if status == "frozen":
+        raise SeasonFrozen(f"saison {start_year} figée : écriture refusée")
+    label = season_label(start_year)
+    marks = ",".join("?" for _ in CODES)
+    clubs = con.execute(f"""
+        SELECT DISTINCT c.id, c.wikipedia_title, c.wikidata_qid, c.country_code
+        FROM competition_entry e JOIN competition co ON co.id = e.competition_id AND co.code IN ({marks})
+        JOIN club c ON c.id = e.club_id WHERE e.season_id = ? AND c.country_code IS NOT NULL AND c.wikipedia_title IS NOT NULL
+        ORDER BY c.wikipedia_title""", [*sorted(CODES), season_id]).fetchall()
+    todo = []
+    for club_id, title, qid, iso in clubs:
+        cs = con.execute("""SELECT cs.id, EXISTS (SELECT 1 FROM player_club_season p WHERE p.club_season_id = cs.id)
+                            FROM club_season cs WHERE cs.club_id = ? AND cs.season_id = ?""", [club_id, season_id]).fetchone()
+        if cs and cs[1]:
+            continue                                            # a déjà un effectif
+        if cs is None:
+            comp = con.execute("SELECT id FROM competition WHERE country_code = ? AND level = 1 AND code NOT LIKE '%-CL' ORDER BY code LIMIT 1", [iso]).fetchone()
+            if comp is None:
+                names = con.execute("SELECT name_en, name_fr FROM country WHERE code = ?", [iso]).fetchone() or (iso, iso)
+                comp = (_ensure_domestic(con, iso, None, names[0], names[1]),)
+            cs = (_ensure_club_season(con, club_id, season_id, comp[0]), False)
+        todo.append((cs[0], title, qid, iso))
+    if not todo:
+        return []
+    qids = qid_lookup([t[1] for t in todo])
+    en_pages = wp.get_pages([f"{label} {t[1]} season" for t in todo])
+    overrides = load_overrides()
+    langs = ("en", *PARSERS)
+    results = []
+    for (cs_id, title, _q, iso), en_page in zip(todo, en_pages):
+        try:
+            res = fill_club_season(con, cs_id, title, qids.get(title), en_page, country_code=iso, start_year=start_year, label=label,
+                                   langs=langs, wp=wp, lang_clients=lang_clients, wd=wd, overrides=overrides, current=(status == "open"))
+        except Exception as exc:                                # une panne sur UN club ne doit pas arrêter une longue exécution
+            log(f"  {iso} {title[:34]:34} -> ERREUR {type(exc).__name__}: {str(exc)[:80]}")
+            res = ClubResult(iso, title, None, 0, None)
+        results.append(res)
+        log(f"  {iso} {title[:34]:34} -> {res.lang or 'TROU':4} {res.players:3} joueurs")
+    return results

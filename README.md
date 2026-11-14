@@ -26,7 +26,7 @@
 ## Highlights
 
 - **Squads, season by season, 2000/01 → 2026/27** (the 5 major leagues from 2000/01, the others from 2010/11), with shirt number, position, nationality and age, for 18 top-flight and second-tier leagues and the UEFA club competitions.
-- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place, and — for the players of Champions League clubs from the 7 major countries — **career statistics** by club, season, competition and national team.
+- **Player pages**: career timeline, clubs, loans, national-team appearances, birth date and place, and — for about 24,000 players — **career statistics** by club, season, competition and national team.
 - **Open, reusable data**: Parquet files published with every [release](https://github.com/florentfougeres/OpenFootballBase/releases), queryable with DuckDB, pandas, Polars or any Parquet reader.
 - **Traceable**: every squad cites the Wikipedia page and revision it came from. Nothing is invented; a missing squad stays missing and is shown as such.
 - **A bilingual static website** (English / French) that queries the Parquet files directly in the browser with DuckDB-WASM — no server, no analytics, no cookies.
@@ -37,14 +37,14 @@
 | | |
 |---|---|
 | Seasons | 27 (2000/01 → 2026/27, the current season is updated at each release) |
-| Clubs with seasons | 2,291 (and 44,523 club records worldwide, with logo, stadium and colours from Wikidata) |
-| Club-seasons | 19,514 |
-| Players | 65,742 |
-| Squad entries | 245,578 |
-| Career rows | 355,832 |
-| Competitions | 87 (leagues and continental cups) |
+| Clubs with seasons | 2,761 (and 44,881 club records worldwide, with logo, stadium and colours from Wikidata) |
+| Club-seasons | 25,506 |
+| Players | 73,292 |
+| Squad entries | 259,346 |
+| Career rows | 450,858 |
+| Competitions | 127 (leagues and continental cups) |
 
-Figures as of 2026-11-13. The live status of every league and season is in [PROGRESS.md](PROGRESS.md).
+Figures as of 2026-11-14. The live status of every league and season is in [PROGRESS.md](PROGRESS.md).
 
 ## Coverage
 
@@ -56,7 +56,7 @@ Not every league has the same depth. Coverage comes in three levels, and the sit
 | **Squads of European clubs** | Squads for every club seen in the Champions League, Europa League or Conference League, plus the complete club list of their national league | about 40 more countries |
 | **Club lists only** | The first division and its clubs for each season since 2010, no squads yet | 20 countries: Mexico, Japan, Australia, China, South Korea, Colombia, Ecuador, Chile, Egypt, Peru, Morocco, South Africa, Qatar, United Arab Emirates, Paraguay, Uruguay, Bolivia, Algeria, Vietnam, Tunisia |
 
-**Continental cups** (group or league stage, 2010 →): UEFA Champions League and Europa League with squads, UEFA Conference League from 2021 with squads, and the **Copa Libertadores**, **CAF Champions League** and **AFC Champions League** with participants only ([guide](docs/en/continental-cups.md)).
+**Continental cups** (group or league stage, 2010 →): UEFA Champions League and Europa League with squads, UEFA Conference League from 2021 with squads, and the **Copa Libertadores**, **CAF Champions League** and **AFC Champions League** with participants and, for about half of the clubs, squads ([guide](docs/en/continental-cups.md)). The UEFA Champions League goes back to **2000/01**.
 
 <details>
 <summary><strong>The 18 leagues with full squads</strong></summary>

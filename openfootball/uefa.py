@@ -50,7 +50,7 @@ class Cup:
 
 
 CUPS = {
-    "UCL": Cup("UCL", "UEFA-CL", "UEFA Champions League", "Ligue des champions de l'UEFA", ((2010, 32), (2024, 36))),
+    "UCL": Cup("UCL", "UEFA-CL", "UEFA Champions League", "Ligue des champions de l'UEFA", ((2000, 32), (2024, 36))),
     "UEL": Cup("UEL", "UEFA-EL", "UEFA Europa League", "Ligue Europa de l'UEFA", ((2010, 48), (2021, 32), (2024, 36))),
     "UECL": Cup("UECL", "UEFA-ECL", "UEFA Conference League", "Ligue Conférence de l'UEFA", ((2021, 32), (2024, 36)),
                    aliases=("UEFA Europa Conference League",)),

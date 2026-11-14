@@ -44,6 +44,11 @@ def select_players(con: duckdb.DuckDBPyConnection, *, since: int = 2010, countri
         ORDER BY p.id""", [since, *countries]).fetchall()
 
 
+def select_all_players(con: duckdb.DuckDBPyConnection) -> list[tuple[int, str]]:
+    """[(id joueur, titre de sa page anglaise)] de tous les joueurs qui ont une page Wikipedia anglaise."""
+    return con.execute("SELECT id, link_title FROM player WHERE link_lang = 'en' AND link_title IS NOT NULL ORDER BY id").fetchall()
+
+
 def import_stats(con: duckdb.DuckDBPyConnection, client: WikipediaClient, players: list[tuple[int, str]], *,
                  log: Callable[[str], None] = print) -> tuple[int, int, int]:
     """Lit et écrit les statistiques de `players`. Idempotent (remplace les lignes du joueur).
@@ -51,7 +56,16 @@ def import_stats(con: duckdb.DuckDBPyConnection, client: WikipediaClient, player
     read = with_table = rows = 0
     for i in range(0, len(players), 200):
         chunk = players[i:i + 200]
-        pages = client.get_pages([t for _, t in chunk])
+        try:
+            pages = client.get_pages([t for _, t in chunk])
+        except Exception:                                    # un titre défectueux (« Rodr%C3%ADguez ») ne doit pas arrêter les autres
+            pages = []
+            for _, t in chunk:
+                try:
+                    pages.append(client.get_pages([t])[0])
+                except Exception as e:
+                    log(f"  ignoré : {t} ({str(e)[:60]})")
+                    pages.append(Page(title=t, exists=False))
         con.execute("BEGIN")
         try:
             for (pid, title), page in zip(chunk, pages):

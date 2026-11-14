@@ -26,7 +26,7 @@
 ## En bref
 
 - **Des effectifs saison par saison, de 2000/01 à 2026/27** (5 grands championnats dès 2000/01, les autres dès 2010/11), avec numéro, poste, nationalité et âge, pour 18 championnats de première et deuxième division et les coupes d'Europe de clubs.
-- **Des fiches joueur** : frise de carrière, clubs, prêts, sélections nationales, date et lieu de naissance, et — pour les joueurs des clubs de Ligue des champions des 7 grands pays — des **statistiques de carrière** par club, saison, compétition et sélection.
+- **Des fiches joueur** : frise de carrière, clubs, prêts, sélections nationales, date et lieu de naissance, et — pour environ 24 000 joueurs — des **statistiques de carrière** par club, saison, compétition et sélection.
 - **Des données ouvertes et réutilisables** : fichiers Parquet publiés à chaque [release](https://github.com/florentfougeres/OpenFootballBase/releases), lisibles avec DuckDB, pandas, Polars ou tout lecteur Parquet.
 - **Traçables** : chaque effectif cite la page Wikipedia et la révision d'où il vient. Rien n'est inventé ; un effectif absent reste absent et est signalé comme tel.
 - **Un site statique bilingue** (français / anglais) qui interroge les fichiers Parquet directement dans le navigateur avec DuckDB-WASM — sans serveur, sans analytique, sans cookies.
@@ -37,14 +37,14 @@
 | | |
 |---|---|
 | Saisons | 27 (2000/01 → 2026/27, la saison en cours est mise à jour à chaque release) |
-| Clubs avec saisons | 2 291 (et 44 523 fiches de clubs du monde, avec logo, stade et couleurs issus de Wikidata) |
-| Club-saisons | 19 514 |
-| Joueurs | 65 742 |
-| Lignes d'effectif | 245 578 |
-| Lignes de carrière | 355 832 |
-| Compétitions | 87 (championnats et coupes continentales) |
+| Clubs avec saisons | 2 761 (et 44 881 fiches de clubs du monde, avec logo, stade et couleurs issus de Wikidata) |
+| Club-saisons | 25 506 |
+| Joueurs | 73 292 |
+| Lignes d'effectif | 259 346 |
+| Lignes de carrière | 450 858 |
+| Compétitions | 127 (championnats et coupes continentales) |
 
-Chiffres au 2026-11-13. L'état à jour de chaque championnat et de chaque saison est dans [PROGRESS.md](PROGRESS.md).
+Chiffres au 2026-11-14. L'état à jour de chaque championnat et de chaque saison est dans [PROGRESS.md](PROGRESS.md).
 
 ## Couverture
 
@@ -56,7 +56,7 @@ Tous les championnats n'ont pas la même profondeur. Il y a trois niveaux, et le
 | **Effectifs des clubs européens** | Effectifs de tous les clubs vus en Ligue des champions, Ligue Europa ou Ligue Conférence, et liste complète des clubs de leur championnat national | une quarantaine de pays de plus |
 | **Listes de clubs seulement** | La première division et ses clubs pour chaque saison depuis 2010, sans effectifs pour le moment | 20 pays : Mexique, Japon, Australie, Chine, Corée du Sud, Colombie, Équateur, Chili, Égypte, Pérou, Maroc, Afrique du Sud, Qatar, Émirats arabes unis, Paraguay, Uruguay, Bolivie, Algérie, Vietnam, Tunisie |
 
-**Coupes continentales** (phase de groupes ou de ligue, depuis 2010) : Ligue des champions et Ligue Europa de l'UEFA avec effectifs, Ligue Conférence depuis 2021 avec effectifs, et **Copa Libertadores**, **Ligue des champions de la CAF** et **Ligue des champions de l'AFC** avec les participants seulement ([guide](docs/fr/continental-cups.md)).
+**Coupes continentales** (phase de groupes ou de ligue, depuis 2010) : Ligue des champions et Ligue Europa de l'UEFA avec effectifs, Ligue Conférence depuis 2021 avec effectifs, et **Copa Libertadores**, **Ligue des champions de la CAF** et **Ligue des champions de l'AFC** avec les participants et, pour environ la moitié des clubs, les effectifs ([guide](docs/fr/continental-cups.md)). La Ligue des champions de l'UEFA remonte à **2000/01**.
 
 <details>
 <summary><strong>Les 18 championnats à effectifs complets</strong></summary>

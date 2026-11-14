@@ -2,8 +2,8 @@
 
 [English](../en/continental-cups.md)
 
-Participants de la **phase de groupes** (ou de **ligue** pour l'AFC depuis 2024-25), de 2010 à 2026. **Liste seulement** : pas d'effectifs,
-pas de championnat national créé pour les clubs vus. Pour l'Europe, voir [european-cups.md](european-cups.md).
+Participants de la **phase de groupes** (ou de **ligue** pour l'AFC depuis 2024-25), de 2010 à 2026. Par défaut la commande liste
+seulement les participants ; avec `--squads` elle lit aussi les **effectifs** des clubs participants (voir plus bas). Pour l'Europe, voir [european-cups.md](european-cups.md).
 
 ```bash
 export OPENFOOTBALL_CONTACT="https://github.com/vous/votre-depot"
@@ -35,3 +35,16 @@ Relancer une saison remplace la liste de cette saison.
 - **CAF 2018** : deux éditions se chevauchent (l'édition `2018` en année civile, puis `2018–19`) ; la saison « 2018/19 » contient donc leur union (26 clubs).
 - Les clubs sans championnat dans la base (≈ 100) n'ont ni club-saison ni effectif : la fiche du club existe, la coupe les liste.
 - Les 3 coupes sont des pseudo-pays (`SAM`, `AFR`, `ASI`) comme `EUR` pour l'Europe ; le site les range dans leur confédération.
+
+## Effectifs des clubs participants
+
+```bash
+openfootball continental --squads --season 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010
+```
+
+Pour chaque club qui a disputé la phase de groupes ou de ligue d'une des trois coupes cette saison-là, la commande lit la page « saison du club » dans toutes les langues
+lisibles, comme pour n'importe quel effectif (union des pages, rien d'inventé). Un club qui n'a pas de club-saison est rattaché au championnat de son pays (celui de
+`openfootball/scopes/` s'il existe, sinon créé comme pour la Ligue des champions) ; un club déjà listé mais vide (pays en mode « liste seulement » : Mexique, Japon, Corée,
+Chine…) est rempli. Un club qui a déjà un effectif n'est pas relu, et un club sans page de saison reste vide et apparaît comme trou sur la page Couverture. Résultat dans la base
+actuelle : environ la moitié des participations ont un effectif (Copa Libertadores 263 / 544, CAF 103 / 226, AFC 339 / 552).
+

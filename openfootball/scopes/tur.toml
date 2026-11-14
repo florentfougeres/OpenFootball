@@ -11,7 +11,7 @@ name_fr = "Süper Lig"
 level = 1
 
 [[team_count]]
-from = 2010
+from = 2000
 n = 18
 
 [[team_count]]

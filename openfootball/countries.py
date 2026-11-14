@@ -97,6 +97,39 @@ _CODE_ALIASES = {
     "LIT": "lt", "CUR": "cw", "BOS": "ba", "FAR": "fo", "COS": "cr", "ICE": "is", "MLD": "md", "SAF": "za",
     "ROK": "kr", "CAP": "cv", "NZ": "nz",
 }
+# Adjectifs de nationalité (pages anglaises : « German », « Swiss »…) -> drapeau.
+_DEMONYMS = {
+    "german": "de", "swiss": "ch", "croatian": "hr", "brazilian": "br", "argentinian": "ar", "argentine": "ar", "argentinean": "ar", "czech": "cz",
+    "swedish": "se", "senegalese": "sn", "montenegrin": "me", "montenegrian": "me", "serbian": "rs", "venezuelan": "ve", "ukrainian": "ua",
+    "hungarian": "hu", "austrian": "at", "kosovar": "xk", "kosovan": "xk", "french": "fr", "albanian": "al", "spanish": "es", "polish": "pl",
+    "pole": "pl", "ghanaian": "gh", "ghanan": "gh", "turkish": "tr", "kazakhstani": "kz", "kazakh": "kz", "dutch": "nl", "russian": "ru",
+    "greek": "gr", "peruvian": "pe", "south korean": "kr", "chilean": "cl", "bosnian": "ba", "portuguese": "pt", "cameroonian": "cm",
+    "slovak": "sk", "finnish": "fi", "zambian": "zm", "canadian": "ca", "ivorian": "ci", "congolese": "cg", "italian": "it", "english": "gb-eng",
+    "scottish": "gb-sct", "welsh": "gb-wls", "irish": "ie", "belgian": "be", "danish": "dk", "norwegian": "no", "romanian": "ro",
+    "bulgarian": "bg", "slovenian": "si", "japanese": "jp", "chinese": "cn", "american": "us", "mexican": "mx", "colombian": "co",
+    "uruguayan": "uy", "paraguayan": "py", "ecuadorian": "ec", "bolivian": "bo", "nigerian": "ng", "moroccan": "ma", "algerian": "dz",
+    "tunisian": "tn", "egyptian": "eg", "malian": "ml", "guinean": "gn", "gabonese": "ga", "angolan": "ao", "iranian": "ir", "israeli": "il",
+    "australian": "au", "new zealander": "nz", "icelandic": "is", "estonian": "ee", "latvian": "lv", "lithuanian": "lt", "georgian": "ge",
+    "armenian": "am", "azerbaijani": "az", "uzbek": "uz", "macedonian": "mk", "luxembourgish": "lu", "maltese": "mt", "cypriot": "cy",
+    "jamaican": "jm", "haitian": "ht", "costa rican": "cr", "honduran": "hn", "panamanian": "pa", "salvadoran": "sv", "guatemalan": "gt",
+}
+# Noms écrits dans d'autres langues (nl, tr, it…) et formes qui manquent au référentiel Wikidata.
+_MORE_NAMES = {
+    "nederland": "nl", "holland": "nl", "hollanda": "nl", "paesi bassi": "nl", "niederlande": "nl", "belgen": "be", "belgie": "be", "belgium": "be",
+    "groot brittannie": "gb", "ingiltere": "gb-eng", "iskocya": "gb-sct", "schotland": "gb-sct", "ierland": "ie",
+    "yesil burun adalari": "cv", "kongo cumhuriyeti": "cg", "cote d ivoire": "ci", "georgia country": "ge", "trinidad": "tt",
+    "bosnia herzegovina": "ba", "bosnia and herzegovina": "ba", "bosnia": "ba", "chine": "cn", "china": "cn", "united states of america": "us",
+    "abd": "us", "ile maurice": "mu", "korea": "kr", "republic of macedonia": "mk", "burkina": "bf", "zanzibar": "tz", "libia": "ly",
+    "macedonie": "mk", "servie": "rs", "oekraine": "ua", "yesil burun adalar": "cv", "cote divoire": "ci", "libia": "ly", "catalonia": "es-ct", "scotland": "gb-sct",
+}
+# Pays qui n'existent plus (ou noms de transition) : un drapeau dédié, dessiné dans web/public/flags/ (jamais celui d'un autre pays).
+_HISTORIC_NAMES = {
+    "serbia and montenegro": "scg", "serbie et montenegro": "scg", "serbia e montenegro": "scg", "servie en montenegro": "scg", "state union of serbia and montenegro": "scg",
+    "fr yugoslavia": "yug", "federal republic of yugoslavia": "yug", "rf yougoslavie": "yug", "joegoslavie": "yug", "yugoslavia": "yug",
+    "socialist federal republic of yugoslavia": "sfry", "czechoslovakia": "csk", "tchecoslovaquie": "csk", "soviet union": "urs",
+    "east germany": "gdr", "german democratic republic": "gdr", "west germany": "de",
+}
+_HISTORIC_CODES = {"SCG": "scg", "SMN": "scg", "SMA": "scg", "FRY": "yug", "YUG": "yug", "SFRY": "sfry", "PRC": "cn", "JER": "je", "EIR": "ie", "SCT": "gb-sct", "TAH": "pf", "CSK": "csk", "TCH": "csk", "URS": "urs", "GDR": "gdr", "FRG": "de", "BRD": "de"}
 _NAME_ALIASES = {"macedonia": "mk", "republique tcheque": "cz", "tahiti": "pf", "democratic republic of congo": "cd",
                  "centrafrique": "cf", "pays bas": "nl", "netherlands": "nl", "the netherlands": "nl",
                  "paises bajos": "nl", "holanda": "nl", "bosnia": "ba", "macedoine": "mk"}
@@ -122,7 +155,7 @@ def _index() -> tuple[dict[str, str], dict[str, str]]:
     return codes, names
 
 
-_PREFIX = re.compile(r"^(?:drapeau\s+(?:de\s+la|de\s+l|du|des|de|d)\s*|flag\s+of\s+(?:the\s+)?|vlag\s+van\s+(?:de\s+|het\s+)?)", re.I)
+_PREFIX = re.compile(r"^(?:drapeau\s+(?:de\s+la|de\s+l|du|des|de|d)\s*|flag\s+of\s+(?:the\s+)?|vlag\s+(?:van\s+)?(?:de\s+|het\s+)?)", re.I)
 
 
 def flag_code(raw: str | None) -> str | None:
@@ -135,7 +168,22 @@ def flag_code(raw: str | None) -> str | None:
     codes, names = _index()
     if re.fullmatch(r"[A-Za-z]{2,3}", text) and text.upper() in codes:
         return codes[text.upper()]
-    return names.get(_key(text))
+    text = re.sub(r"\s+\d{4}\s*[-–]\s*\d{4}\s*$", "", text)                       # « Libia 1977-2011 » : la période ne change pas le pays
+    key = _key(re.sub(r"\s*\(.*?\)\s*$", "", text) or text)                    # « Vlag van Joegoslavië (1992-2003) » : la précision entre parenthèses ne change pas le pays
+    if re.fullmatch(r"[A-Za-z]{2,3}", text) and text.upper() in _HISTORIC_CODES:
+        return _HISTORIC_CODES[text.upper()]
+    if re.fullmatch(r"[A-Za-z]{2}", text) and text.lower() in _known_flags() and text.upper() != "SA":       # code ISO 3166-1 alpha-2 (« AR », « NL ») : le drapeau porte le même code
+        return text.lower()
+    for table in (_HISTORIC_NAMES, names, _MORE_NAMES, _DEMONYMS):
+        hit = table.get(key) or table.get(_key(text))
+        if hit:
+            return hit
+    return None
+
+
+@lru_cache(maxsize=1)
+def _known_flags() -> frozenset[str]:
+    return frozenset(e["flag"] for e in json.loads((resources.files("openfootball.data") / "countries.json").read_text(encoding="utf-8")) if e["flag"])
 
 
 def country_of_fifa(code: str) -> tuple[str | None, str | None, str | None]:

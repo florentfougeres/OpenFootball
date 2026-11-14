@@ -11,5 +11,5 @@ name_fr = "Eredivisie"
 level = 1
 
 [[team_count]]
-from = 2010
+from = 2000
 n = 18

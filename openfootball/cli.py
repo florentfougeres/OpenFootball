@@ -17,7 +17,7 @@ from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
 from openfootball.reconstruct import reconstruct
-from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_players
+from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_all_players, select_players
 from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -294,6 +294,22 @@ def continental_cmd(args: argparse.Namespace) -> int:
     con = connect(args.db)
     migrate(con)
     wp = WikipediaClient(args.cache)
+    if args.squads:                                   # effectifs des clubs participants (au lieu de la liste des participants)
+        from openfootball.continental import run_squads
+        langs = {l: WikipediaClient(f"cache/wikipedia_{l}", lang=l) for l in PARSERS}
+        wd = WikidataClient(args.wd_cache)
+        for year in args.season:
+            print(f"=== Coupes continentales : effectifs {year}/{str(year + 1)[2:]} ===")
+            try:
+                res = run_squads(con, year, wp=wp, lang_clients=langs, wd=wd, qid_lookup=lambda ts: club_qids(wp, ts))
+            except SeasonFrozen as exc:
+                raise SystemExit(f"refusé : {exc}")
+            except Exception as exc:
+                print(f"  ECHEC saison {year}: {type(exc).__name__}: {str(exc)[:120]}")
+                continue
+            gaps = [r for r in res if r.lang is None]
+            print(f"  {len(res) - len(gaps)}/{len(res)} clubs avec effectif ; {len(gaps)} sans effectif")
+        return 0
     for key in args.cup:
         cup = CUPS[key]
         for year in args.season:
@@ -555,7 +571,7 @@ def stats_cmd(args: argparse.Namespace) -> int:
     """Statistiques de carrière (section « Career statistics ») des joueurs d'un club de Ligue des champions des pays choisis."""
     con = connect(args.db)
     migrate(con)
-    players = select_players(con, since=args.since, countries=tuple(args.country))
+    players = select_all_players(con) if args.all else select_players(con, since=args.since, countries=tuple(args.country))
     if args.limit:
         players = players[:args.limit]
     print(f"{len(players)} joueurs à lire")
@@ -668,6 +684,8 @@ def main(argv: list[str] | None = None) -> int:
     ct.add_argument("--db", default=DB_DEFAULT)
     ct.add_argument("--cup", nargs="+", choices=["LIB", "CAF", "AFC"], default=["LIB", "CAF", "AFC"])
     ct.add_argument("--season", type=int, nargs="+", required=True)
+    ct.add_argument("--wd-cache", default="cache/wikidata")
+    ct.add_argument("--squads", action="store_true", help="lit l'effectif des clubs participants (au lieu de la liste des participants)")
     ct.add_argument("--cache", default="cache/wikipedia")
     ct.set_defaults(func=continental_cmd)
     cc_ = sub.add_parser("complete-clubs", help="effectif de toutes les saisons des clubs étrangers déjà vus en coupe d'Europe")
@@ -759,6 +777,7 @@ def main(argv: list[str] | None = None) -> int:
     st.add_argument("--db", default=DB_DEFAULT)
     st.add_argument("--since", type=int, default=2010, help="première saison de Ligue des champions prise en compte (année de début)")
     st.add_argument("--country", nargs="+", default=list(COUNTRIES), help="pays des clubs (codes de la base)")
+    st.add_argument("--all", action="store_true", help="tous les joueurs qui ont une page anglaise (sinon : clubs de Ligue des champions des pays choisis)")
     st.add_argument("--limit", type=int, help="seulement les N premiers joueurs (essai)")
     st.add_argument("--cache", default="cache/wikipedia_stats")
     st.set_defaults(func=stats_cmd)

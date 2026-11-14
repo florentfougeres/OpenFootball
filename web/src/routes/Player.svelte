@@ -2,7 +2,7 @@
   import { app, href, enc, t } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
-  import { ageAt, countryName, isOngoing, nationalTeam, wikiUrl } from "../lib/format";
+  import { ageAt, isOngoing, natLabel as libNatLabel, nationalTeam, wikiUrl } from "../lib/format";
   import { fold } from "../lib/fold";
   import Badge from "../components/Badge.svelte";
   import Crumbs from "../components/Crumbs.svelte";
@@ -40,9 +40,11 @@
     return { p, birth, profile, career, national, statClub, statNat, statSource, urls };
   });
   const d = $derived(res.data);
+  $effect(() => { d?.profile?.photo_url; tallPhoto = false; });       // chaque photo est mesurée à son chargement : pas d'héritage de la fiche précédente
+  let tallPhoto = $state(false);        // photo d'infobox en pied : plus haute que 1,45 fois sa largeur (le cadre est à 1,25)
 
   // Nationalité : nom du pays dans la langue de l'app quand le drapeau est un code ISO (sinon le texte publié).
-  const natLabel = $derived(d?.p.flag && /^[a-z]{2}$/.test(d.p.flag) ? countryName(d.p.flag.toUpperCase()) : d?.p.nat ?? "");
+  const natLabel = $derived(d?.p.flag ? libNatLabel(d.p.flag, d.p.nat ?? "") : d?.p.nat ?? "");
   const born = $derived.by(() => {
     const b = d?.birth;
     if (!b) return "";
@@ -101,7 +103,9 @@
   <header class="card flex flex-col gap-5 p-6 sm:flex-row sm:items-start">
     {#if d.profile?.photo_url}
       <figure class="shrink-0 sm:w-40">
-        <img class="aspect-[4/5] w-32 rounded-xl border border-line bg-surface-2 object-cover sm:w-40" src={d.profile.photo_url} alt={d.profile.photo_caption || d.p.name} loading="lazy" width="160" height="200" />
+        <!-- Cadre 4/5 recadré au centre ; une photo en pied (bien plus haute que le cadre) est calée sur le haut pour garder le visage. -->
+        <img class="aspect-[4/5] w-32 rounded-xl border border-line bg-surface-2 object-cover sm:w-40" style:object-position={tallPhoto ? "50% 6%" : "50% 50%"} src={d.profile.photo_url} alt={d.profile.photo_caption || d.p.name} loading="lazy" width="160" height="200"
+          onload={(e) => { const i = e.currentTarget as HTMLImageElement; tallPhoto = i.naturalHeight / Math.max(1, i.naturalWidth) > 1.45; }} />
         <figcaption class="mt-1.5 text-[0.7rem] leading-snug text-muted">
           <a class="link" href={d.profile.photo_page} target="_blank" rel="noopener">{t("photoBy")} : {d.profile.photo_author || "Wikipedia / Commons"}{d.profile.photo_license ? ` · ${d.profile.photo_license}` : ""}</a>
         </figcaption>
