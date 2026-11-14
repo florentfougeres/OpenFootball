@@ -10,8 +10,8 @@ code = "ENG-CH"
 name_en = "EFL Championship"
 name_fr = "Championship"
 level = 2
-page_names = ["Football League Championship"]   # nom avant le renommage de la ligue
+page_names = ["Football League Championship", "Football League First Division"]   # nom avant le renommage de la ligue
 
 [[team_count]]
-from = 2010
+from = 2000
 n = 24

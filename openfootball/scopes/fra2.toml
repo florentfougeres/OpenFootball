@@ -10,9 +10,10 @@ code = "FRA-L2"
 name_en = "Ligue 2"
 name_fr = "Ligue 2"
 level = 2
+page_names = ["French Division 2"]   # nom avant 2002
 
 [[team_count]]
-from = 2010
+from = 2000
 n = 20
 
 [[team_count]]

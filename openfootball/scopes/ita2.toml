@@ -12,7 +12,15 @@ name_fr = "Serie B"
 level = 2
 
 [[team_count]]
-from = 2010
+from = 2000
+n = 20
+
+[[team_count]]
+from = 2003
+n = 24
+
+[[team_count]]
+from = 2004
 n = 22
 
 [[team_count]]

@@ -51,7 +51,9 @@ class Cup:
 
 CUPS = {
     "UCL": Cup("UCL", "UEFA-CL", "UEFA Champions League", "Ligue des champions de l'UEFA", ((2000, 32), (2024, 36))),
-    "UEL": Cup("UEL", "UEFA-EL", "UEFA Europa League", "Ligue Europa de l'UEFA", ((2010, 48), (2021, 32), (2024, 36))),
+    "UEL": Cup("UEL", "UEFA-EL", "UEFA Europa League", "Ligue Europa de l'UEFA", ((2009, 48), (2021, 32), (2024, 36))),
+    # Coupe UEFA : phase de groupes (40 clubs) de 2004-05 à 2008-09 ; avant, élimination directe : les 32 clubs des seizièmes (3e tour).
+    "UC": Cup("UC", "UEFA-UC", "UEFA Cup", "Coupe UEFA", ((2000, 32), (2004, 40))),
     "UECL": Cup("UECL", "UEFA-ECL", "UEFA Conference League", "Ligue Conférence de l'UEFA", ((2021, 32), (2024, 36)),
                    aliases=("UEFA Europa Conference League",)),
 }
@@ -89,11 +91,26 @@ def _names(text: str) -> list[str]:
     return _teams(text)[0]
 
 
+# Coupe UEFA 2000-2003 : « <saison> UEFA Cup final phase », section R3 : `|[[Club]]|ITA|2–1|[[Autre]]|ENG|…` (seizièmes de finale).
+_R3 = re.compile(r"<section begin=R3\s*/>(.*?)<section end=R3\s*/>", re.S)
+_SERIES_TEAM = re.compile(r"\[\[([^\]|#]+)(?:\|[^\]]*)?\]\]\|([A-Z]{3})(?:\+\d+)?\|")
+
+
+def _round_of_32(wp, main: str) -> tuple[list[str], dict[str, str]]:
+    page = wp.get_pages([f"{main} final phase"])[0]
+    pairs = [p for body in _R3.findall(page.wikitext or "") for p in _SERIES_TEAM.findall(body)] if page.exists else []   # la section R3 est posée deux fois
+    teams = list(dict.fromkeys(t.strip() for t, _ in pairs))
+    return teams, {t.strip(): c for t, c in pairs}
+
+
 def find_participants(wp, label: str, want: int, page_name: str = "UEFA Champions League") -> tuple[list[str], dict[str, str]]:
     """(participants, titre -> code pays). Les groupes sont inclus depuis une sous-page (« … group stage » avant 2024,
     « … league phase » ensuite) : on essaie la page elle-même puis ces sous-pages ; le drapeau du paramètre
     `name_XXX` donne le pays, complété par les drapeaux du tableau des équipes qualifiées de la page principale."""
     main = f"{label} {page_name}"
+    if page_name == "UEFA Cup" and int(label[:4]) < 2004:
+        teams, flags = _round_of_32(wp, main)
+        return (teams, flags) if len(teams) == want else ([], flags)
     pages = wp.get_pages([main, f"{main} group stage", f"{main} league phase", f"Template:{main} group tables"])
     flags = flags_of(pages[0].wikitext or "") if pages[0].exists else {}
     for page, sub in zip(pages, (False, True, True, True)):

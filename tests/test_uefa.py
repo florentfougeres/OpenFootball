@@ -177,3 +177,12 @@ def test_leagues_of_ignores_domestic_cup():
     from openfootball.uefa import leagues_of
     wt = "[[Wigan Athletic F.C.|Wigan]] {{small|([[2012–13 FA Cup|FA Cup]])}} [[Olympiacos F.C.]] ([[2024–25 Super League Greece|1st]])"
     assert "Wigan Athletic F.C." not in leagues_of(wt)
+
+
+def test_coupe_uefa_seizièmes_depuis_la_section_r3():
+    from openfootball.uefa import _R3, _SERIES_TEAM
+    text = ("<section begin=R3 />x<section end=R3 />\n<section begin=R3 />{{#invoke:Sports series|main|generate_links=y\n"
+            "|[[Hertha BSC]]|GER|2–1|[[Fulham F.C.|Fulham]]|ENG|2–1|0–0\n"
+            "|[[Paris Saint-Germain FC|PSG]]|FRA+1974|2–2 (a)|[[Boavista F.C.|Boavista]]|POR|2–1|0–1\n}}<section end=R3 />")
+    pairs = [p for body in _R3.findall(text) for p in _SERIES_TEAM.findall(body)]
+    assert pairs == [("Hertha BSC", "GER"), ("Fulham F.C.", "ENG"), ("Paris Saint-Germain FC", "FRA"), ("Boavista F.C.", "POR")]

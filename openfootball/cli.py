@@ -16,7 +16,7 @@ from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
-from openfootball.reconstruct import reconstruct
+from openfootball.reconstruct import reconstruct, reconstruct_from_careers
 from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_all_players, select_players
 from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
@@ -562,7 +562,10 @@ def reconstruct_cmd(args: argparse.Namespace) -> int:
     """Effectif reconstitué (saison d'avant − sortants + arrivants) pour des club-saisons sans effectif ; lignes marquées « inferred »."""
     con = connect(args.db)
     migrate(con)
-    n = reconstruct(con, WikipediaClient(args.cache), args.season, args.club)
+    if args.from_careers:
+        n = sum(reconstruct_from_careers(con, y, args.league, min_players=args.min_players) for y in args.season)
+    else:
+        n = sum(reconstruct(con, WikipediaClient(args.cache), y, args.club) for y in args.season)
     print(f"{n} club-saisons reconstituées")
     return 0
 
@@ -676,7 +679,7 @@ def main(argv: list[str] | None = None) -> int:
     u = sub.add_parser("uefa", help="Ligue des champions : participants (phase de groupes/ligue) et effectifs des clubs manquants")
     u.add_argument("--db", default=DB_DEFAULT)
     u.add_argument("--season", type=int, nargs="+", required=True)
-    u.add_argument("--cup", choices=["UCL", "UEL", "UECL"], default="UCL", help="UCL = Ligue des champions (défaut), UEL = Ligue Europa, UECL = Ligue Conférence")
+    u.add_argument("--cup", choices=["UCL", "UEL", "UECL", "UC"], default="UCL", help="UCL = Ligue des champions (défaut), UEL = Ligue Europa, UECL = Ligue Conférence, UC = Coupe UEFA (2004-2008)")
     u.add_argument("--cache", default="cache/wikipedia")
     u.add_argument("--wd-cache", default="cache/wikidata")
     u.set_defaults(func=uefa_cmd)
@@ -769,8 +772,11 @@ def main(argv: list[str] | None = None) -> int:
     tr.set_defaults(func=transfers_cmd)
     rc = sub.add_parser("reconstruct", help="effectif reconstitué (saison d'avant − sortants + arrivants) pour des club-saisons sans effectif")
     rc.add_argument("--db", default=DB_DEFAULT)
-    rc.add_argument("--season", type=int, required=True)
-    rc.add_argument("--club", nargs="+", required=True, help="titres Wikipedia des clubs")
+    rc.add_argument("--season", type=int, nargs="+", required=True)
+    rc.add_argument("--club", nargs="+", default=[], help="titres Wikipedia des clubs")
+    rc.add_argument("--from-careers", action="store_true", help="effectif partiel d'après les carrières des joueurs (club-saisons sans page) ; avec --league")
+    rc.add_argument("--league", nargs="+", default=[], help="codes de compétition (ESP-LL, FRA-L1…) pour --from-careers")
+    rc.add_argument("--min-players", type=int, default=10, help="--from-careers : nombre minimal de joueurs trouvés pour retenir le club-saison")
     rc.add_argument("--cache", default="cache/wikipedia")
     rc.set_defaults(func=reconstruct_cmd)
     st = sub.add_parser("stats", help="statistiques de carrière (matchs, buts par club, saison, compétition, sélection) depuis la page du joueur")
