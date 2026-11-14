@@ -379,3 +379,21 @@ def test_table_without_number_column():
 """
     es = parse_squad(wt)
     assert [(e.shirt_number, e.name, e.position, e.nationality) for e in es] == [(1, "Paul Robinson", "GK", "England"), (2, "André Ooijer", "DF", "Netherlands")]
+
+
+def test_html_neerlandais_tableau_sans_numero():
+    from openfootball.parse.squad_html import parse_squad_html
+    html = ("<table><tr><th>Pos.</th><th>Nat.</th><th>Spelersnaam</th><th>W</th></tr>"
+            "<tr><td>D</td><td><img alt='Vlag van Montenegro'></td><td><a href='/wiki/Dragoslav_Jevri%C4%87' title='Dragoslav Jevrić'>Dragoslav Jevrić</a></td><td>17</td></tr>"
+            "<tr><td>V</td><td><img alt='Vlag van Nederland'></td><td><a href='/wiki/Peter_van_den_Berg' title='Peter van den Berg'>Peter van den Berg</a></td><td>30</td></tr></table>")
+    got = parse_squad_html(html, "nl")
+    assert [(e.name, e.position) for e in got] == [("Dragoslav Jevrić", "GK"), ("Peter van den Berg", "DF")]
+    assert parse_squad_html(html, "en") == []                      # sans numéro de maillot, seul le néerlandais accepte ce tableau
+
+
+def test_html_neerlandais_ignore_partis_arrives_et_jeunes():
+    from openfootball.parse.squad_html import parse_squad_html
+    table = ("<table><tr><th>Pos.</th><th>Nat.</th><th>Spelersnaam</th></tr><tr><td>A</td><td></td><td><a title='X Y'>X Y</a></td></tr></table>")
+    html = ("<h2>Eerste Elftal</h2>" + table + "<h2>Vertrokken</h2>" + table.replace("X Y", "Parti Un")
+            + "<h2>Aangetrokken</h2>" + table.replace("X Y", "Arrive Deux") + "<h2>A-Jeugd</h2>" + table.replace("X Y", "Jeune Trois"))
+    assert [e.name for e in parse_squad_html(html, "nl")] == ["X Y"]

@@ -215,7 +215,7 @@ def _guess_season_titles(wd, qid: str, lang: str, start_year: int) -> list[str]:
     """Titres possibles de la page « saison du club » quand Wikidata ne la relie pas au club (pt : la plupart des clubs brésiliens ; es : beaucoup
     de clubs argentins). pt : « Temporada do/da/de <titre pt du club> de 2019 » (année civile). es : « Anexo:Temporada 2023 del <titre es du club> »
     ou « Anexo:Temporada 2019-20 del … ». Le titre du club dans cette langue vient de ses liens Wikidata."""
-    if lang not in ("pt", "es"):
+    if lang not in ("pt", "es", "nl"):
         return []
     if (qid, lang) not in _CLUB_TITLE:
         ent = wd.entities([qid], props="sitelinks", sitefilter=f"{lang}wiki").get(qid, {})
@@ -225,6 +225,9 @@ def _guess_season_titles(wd, qid: str, lang: str, start_year: int) -> list[str]:
         return []
     if lang == "pt":
         return [f"Temporada {art} {club} de {start_year}" for art in ("do", "da", "de")]
+    if lang == "nl":                                  # « Vitesse in het seizoen 2004/05 » (« … (mannen) » pour les clubs qui ont aussi une section féminine)
+        season = f"{start_year}/{(start_year + 1) % 100:02d}"
+        return [f"{club} in het seizoen {season}", f"{club} in het seizoen {season} (mannen)"]
     periods = (str(start_year), f"{start_year}-{(start_year + 1) % 100:02d}")
     return [f"Anexo:Temporada {period} {art} {club}" for period in periods for art in ("del", "de")]
 

@@ -15,7 +15,7 @@ from html.parser import HTMLParser
 from openfootball.parse.positions import normalize_position
 from openfootball.parse.squad import SquadEntry, _DATE, _NO_LETTERS, _NOT_A_PLAYER, _dedupe
 
-_SKIP_HEADING = re.compile(r"transfer|signings|departures|arrivals|kit|sponsor|krallığı|asist|hat-?trick|topscorer|doelpunt", re.I)
+_SKIP_HEADING = re.compile(r"transfer|signings|departures|arrivals|kit|sponsor|krallığı|asist|hat-?trick|topscorer|doelpunt|vertrokken|aangetrokken|a-jeugd|mutaties|\bjong\b", re.I)
 
 
 class _Cell:
@@ -89,21 +89,27 @@ def _txt(cell: _Cell) -> str:
 # En-têtes de colonnes, toutes langues du périmètre (en, fr, it, es, de).
 _NUM = re.compile(r"(^|\s)(no|n|nr|nº|n°|num|numero|number|numéro|numero|nummer|#)(\s|$)")
 _NAME = ("name", "nom", "joueur", "player", "nome", "nombre", "spieler", "giocatore", "jugador", "naam", "speler",
-         "oyuncu", "futbolcu", "isim", "jogador", "atleta")
+         "oyuncu", "futbolcu", "isim", "jogador", "atleta", "spelersnaam")
 _NAT = ("nat", "pays", "country", "nation", "paese", "ülke", "uyruk")
 _POS = ("pos", "ruolo", "role", "rôle", "puesto", "position", "poz", "mevki")
 # Postes en une lettre : propres à la langue de la page (« D » = défenseur en fr/it, « C » = milieu en it…).
 _LETTERS = {"fr": {"G": "GK", "D": "DF", "M": "MF", "A": "FW"}, "it": {"P": "GK", "D": "DF", "C": "MF", "A": "FW"},
             "pt": {"G": "GK", "Z": "DF", "LD": "DF", "LE": "DF", "L": "DF", "V": "MF", "M": "MF", "A": "FW"},
             "es": {"P": "GK", "D": "DF", "C": "MF", "M": "MF", "A": "FW", "D.": "DF"},
-            "tr": {"KL": "GK", "DF": "DF", "OS": "MF", "FV": "FW"}}
+            "tr": {"KL": "GK", "DF": "DF", "OS": "MF", "FV": "FW"},
+            "nl": {"D": "GK", "K": "GK", "V": "DF", "M": "MF", "A": "FW"}}          # Doelman, Keeper, Verdediger, Middenvelder, Aanvaller
 
 
-def _columns(row: list[_Cell]) -> dict[str, int]:
+_NL_GROUP = {"doel": "GK", "doelmannen": "GK", "keepers": "GK", "verdediging": "DF", "verdedigers": "DF", "middenveld": "MF", "middenvelders": "MF",
+             "aanval": "FW", "aanvallers": "FW", "spitsen": "FW"}          # titres de groupe des tableaux néerlandais (la lettre « DM » du modèle est ambiguë)
+
+
+def _columns(row: list[_Cell], lang: str | None = None) -> dict[str, int]:
     labels = [re.sub(r"[^a-zà-ÿ# ]+", " ", _txt(c).lower()).strip() for c in row]
     is_num = lambda l: bool(_NUM.search(l)) and not l.startswith(_NAT)
     is_name = lambda l: any(l == w or l.startswith(w + " ") for w in _NAME)
-    if not (any(is_num(l) for l in labels) and any(is_name(l) for l in labels)):
+    has_pos = lang == "nl" and any(l.startswith(_POS) for l in labels)          # tableaux néerlandais de statistiques : Pos. | Nat. | Spelersnaam, sans numéro
+    if not ((any(is_num(l) for l in labels) or has_pos) and any(is_name(l) for l in labels)):
         return {}
     cols: dict[str, int] = {}
     for i, l in enumerate(labels):
@@ -129,7 +135,7 @@ def parse_squad_html(html: str, lang: str | None = None) -> list[SquadEntry]:
         cols: dict[str, int] = {}
         group = ""                                              # ligne de groupe (« Keepers », « Verdedigers »…)
         for row in rows:
-            hdr = _columns(row) if row else {}
+            hdr = _columns(row, lang) if row else {}
             if hdr and (all(c.header for c in row) or not cols):   # en-tête en <th>, ou en <td> gras (ex. Nancy)
                 cols, group = hdr, ""
                 continue
@@ -163,7 +169,7 @@ def parse_squad_html(html: str, lang: str | None = None) -> list[SquadEntry]:
             entries.append(SquadEntry(
                 name=name, link=link, shirt_number=int(m.group(0)) if m else None,
                 position_raw=pos_raw or None,
-                position=normalize_position(group) or normalize_position(pos_raw)
+                position=_NL_GROUP.get(group.lower()) or normalize_position(group) or normalize_position(pos_raw)
                 or _LETTERS.get(lang or "", {}).get((pos_raw or "").strip().upper()),
                 nationality=nat,
                 section=section, note=note, fmt="html_table"))
