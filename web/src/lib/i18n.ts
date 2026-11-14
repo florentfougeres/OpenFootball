@@ -20,7 +20,7 @@ export const T: Record<Lang, Record<string, string>> = {
     number: "N°", player: "Joueur", nationality: "Nationalité", age: "Âge", ageTip: "Âge au 1er août de la saison",
     competition: "Compétition", size: "Joueurs", source: "Source", sourceLabel: "Source de l'effectif", changeSeason: "Changer de saison", prevSeason: "Saison précédente", nextSeason: "Saison suivante", sourcesLabel: "Sources de l'effectif", srcAdded: "ajoutés", srcPlayers: "joueurs", position: "Poste",
     club: "Club", country: "Pays",
-    GK: "Gardiens", DF: "Défenseurs", MF: "Milieux", FW: "Attaquants", unknownPos: "Poste non précisé",
+    GK: "Gardiens", DF: "Défenseurs", MF: "Milieux", FW: "Attaquants", GKs: "Gard.", DFs: "Déf.", MFs: "Mil.", FWs: "Att.", unknownPos: "Poste non précisé",
     loan_in: "Prêt", loan_out: "Prêté", arrived_mid: "Arrivé", left_mid: "Parti", fromClub: "depuis", toClub: "vers", winter: "hiver",
    
     noSquad: "Aucun effectif n'a pu être établi pour ce club cette saison.",
@@ -65,7 +65,7 @@ export const T: Record<Lang, Record<string, string>> = {
     number: "No.", player: "Player", nationality: "Nationality", age: "Age", ageTip: "Age on 1 August of the season",
     competition: "Competition", size: "Players", source: "Source", sourceLabel: "Squad source", changeSeason: "Change season", prevSeason: "Previous season", nextSeason: "Next season", sourcesLabel: "Squad sources", srcAdded: "added", srcPlayers: "players", position: "Position",
     club: "Club", country: "Country",
-    GK: "Goalkeepers", DF: "Defenders", MF: "Midfielders", FW: "Forwards", unknownPos: "Position not given",
+    GK: "Goalkeepers", DF: "Defenders", MF: "Midfielders", FW: "Forwards", GKs: "GK", DFs: "DF", MFs: "MF", FWs: "FW", unknownPos: "Position not given",
     loan_in: "On loan", loan_out: "Loaned out", arrived_mid: "Joined", left_mid: "Left", fromClub: "from", toClub: "to", winter: "winter",
    
     noSquad: "No squad could be established for this club this season.",

@@ -285,40 +285,44 @@
             <p class="mt-3 text-sm text-muted">{t("mvNote")}</p>
           {/if}
         {:else}
-        <!-- Chiffres de l'effectif -->
-        <dl class="flex flex-wrap gap-x-8 gap-y-3">
-          <div><dd class="display text-3xl font-bold leading-none tabular-nums">{stats.n}</dd><dt class="mt-1 text-xs text-muted">{t("srcPlayers")}</dt></div>
-          {#if stats.age != null}<div><dd class="display text-3xl font-bold leading-none tabular-nums">{stats.age.toLocaleString(app.lang, { maximumFractionDigits: 1 })}</dd><dt class="mt-1 text-xs text-muted">{t("sqAge")}</dt></div>{/if}
-          {#if stats.foreignPct != null}<div><dd class="display text-3xl font-bold leading-none tabular-nums">{stats.foreignPct} %</dd><dt class="mt-1 text-xs text-muted" title={t("sqForeignTip")}>{t("sqForeign")}</dt></div>{/if}
-          {#if stats.nats}<div><dd class="display text-3xl font-bold leading-none tabular-nums">{stats.nats}</dd><dt class="mt-1 text-xs text-muted">{t("sqNats")}</dt></div>{/if}
+        <!-- Chiffres de l'effectif : quatre colonnes égales sur mobile, alignées à gauche sur la même ligne de base -->
+        <dl class="grid grid-flow-col auto-cols-fr gap-x-3 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
+          <div><dd class="display text-2xl font-bold leading-none tabular-nums sm:text-3xl">{stats.n}</dd><dt class="mt-1.5 text-xs leading-tight text-muted">{t("srcPlayers")}</dt></div>
+          {#if stats.age != null}<div><dd class="display text-2xl font-bold leading-none tabular-nums sm:text-3xl">{stats.age.toLocaleString(app.lang, { maximumFractionDigits: 1 })}</dd><dt class="mt-1.5 text-xs leading-tight text-muted">{t("sqAge")}</dt></div>{/if}
+          {#if stats.foreignPct != null}<div><dd class="display text-2xl font-bold leading-none tabular-nums sm:text-3xl">{stats.foreignPct} %</dd><dt class="mt-1.5 text-xs leading-tight text-muted" title={t("sqForeignTip")}>{t("sqForeign")}</dt></div>{/if}
+          {#if stats.nats}<div><dd class="display text-2xl font-bold leading-none tabular-nums sm:text-3xl">{stats.nats}</dd><dt class="mt-1.5 text-xs leading-tight text-muted">{t("sqNats")}</dt></div>{/if}
         </dl>
 
-        <!-- Filtres et mode d'affichage -->
-        <div class="mt-5 flex flex-wrap items-center gap-2">
-          <div class="flex flex-wrap gap-1.5" role="group" aria-label={t("sqFilterPos")}>
-            {#each [[null, t("sqAllPos")], ["GK", t("GK")], ["DF", t("DF")], ["MF", t("MF")], ["FW", t("FW")]] as [p, text]}
-              <button type="button" class="rounded-full border px-3 py-1 text-sm font-medium transition {fPos === p ? 'border-accent bg-accent text-accent-fg' : 'border-line bg-surface hover:bg-surface-2'}"
-                aria-pressed={fPos === p} onclick={() => (fPos = p)}>{text}</button>
+        <!-- Filtres et mode d'affichage : sur mobile, postes sur une ligne (sélecteur segmenté), puis nationalité + affichage, puis prêtés ; sur écran large, une seule rangée -->
+        <div class="mt-5 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-2.5 sm:flex sm:flex-wrap sm:gap-2">
+          <div class="col-span-2 grid grid-cols-5 gap-1 rounded-xl border border-line bg-surface p-1 sm:flex sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:gap-1.5" role="group" aria-label={t("sqFilterPos")}>
+            {#each [[null, "sqAllPos", "sqAllPos"], ["GK", "GK", "GKs"], ["DF", "DF", "DFs"], ["MF", "MF", "MFs"], ["FW", "FW", "FWs"]] as [p, full, short]}
+              <button type="button" aria-label={t(full ?? "")} aria-pressed={fPos === p} onclick={() => (fPos = p)}
+                class="min-h-9 rounded-lg px-1 text-center text-[13px] font-medium transition sm:min-h-0 sm:rounded-full sm:border sm:px-3 sm:py-1 sm:text-sm
+                  {fPos === p ? 'bg-accent text-accent-fg sm:border-accent' : 'text-fg hover:bg-surface-2 sm:border-line sm:bg-surface'}">
+                <span class="sm:hidden">{t(short ?? "")}</span><span class="hidden sm:inline">{t(full ?? "")}</span></button>
             {/each}
           </div>
           {#if natOptions.length > 1}
-            <select class="rounded-lg border border-line bg-surface px-3 py-1.5 text-sm" bind:value={fNat} aria-label={t("sqFilterNat")}>
+            <select class="h-10 min-w-0 rounded-lg border border-line bg-surface px-3 text-sm sm:h-auto sm:py-1.5" bind:value={fNat} aria-label={t("sqFilterNat")}>
               <option value="">{t("sqAllNats")}</option>
               {#each natOptions as n (n.label)}<option value={n.label}>{n.label} ({n.n})</option>{/each}
             </select>
-          {/if}
-          {#if hasLoans}
-            <label class="flex items-center gap-2 text-sm"><input type="checkbox" bind:checked={fLoan} class="size-4" /> {t("sqLoanOnly")}</label>
-          {/if}
-          {#if filtered}<button type="button" class="text-sm text-muted underline hover:text-fg" onclick={() => { fPos = null; fNat = ""; fLoan = false; }}>{t("sqReset")}</button>{/if}
-          <div class="ml-auto inline-flex rounded-lg border border-line bg-surface p-0.5" role="group" aria-label={t("viewMode")}>
+          {:else}<span class="sm:hidden"></span>{/if}
+          <div class="inline-flex h-10 rounded-lg border border-line bg-surface p-0.5 sm:order-last sm:ml-auto sm:h-auto" role="group" aria-label={t("viewMode")}>
             {#each [["list", "viewList"], ["cards", "viewCards"]] as [m, k]}
-              <button type="button" class="rounded-md px-3 py-1 text-sm font-medium transition {mode === m ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}"
+              <button type="button" class="flex items-center rounded-md px-3 text-sm font-medium transition sm:py-1 {mode === m ? 'bg-accent text-accent-fg' : 'text-muted hover:text-fg'}"
                 aria-pressed={mode === m} onclick={() => setMode(m as "list" | "cards")}>{t(k)}</button>
             {/each}
           </div>
+          {#if hasLoans || filtered}
+            <div class="col-span-2 flex min-h-8 items-center justify-between gap-4 sm:contents">
+              {#if hasLoans}<label class="flex items-center gap-2 text-sm"><input type="checkbox" bind:checked={fLoan} class="size-5 sm:size-4" /> {t("sqLoanOnly")}</label>{:else}<span class="text-sm text-muted sm:hidden">{shown.length} / {rows.length} {t("srcPlayers")}</span>{/if}
+              {#if filtered}<button type="button" class="text-sm text-muted underline hover:text-fg" onclick={() => { fPos = null; fNat = ""; fLoan = false; }}>{t("sqReset")}</button>{/if}
+            </div>
+          {/if}
         </div>
-        {#if filtered}<p class="mt-2 text-sm text-muted">{shown.length} / {rows.length} {t("srcPlayers")}</p>{/if}
+        {#if filtered}<p class="mt-2 text-sm text-muted {hasLoans ? '' : 'hidden sm:block'}">{shown.length} / {rows.length} {t("srcPlayers")}</p>{/if}
 
         {#if !shown.length}
           <p class="card mt-4 p-4 text-muted">{t("sqNoMatch")}</p>
