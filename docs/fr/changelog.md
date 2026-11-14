@@ -4,6 +4,11 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.14.2 — 2026-11-14
+- **Effectifs de l'Eredivisie depuis Wikipedia en néerlandais** (`<club> in het seizoen YYYY/YY`) : 32 effectifs lus de plus (241 → 273 sur 469 club-saisons), l'équipe première seulement (les tableaux des partants, des arrivants, des jeunes et de l'équipe réserve sont écartés).
+- **Effectifs partiels d'après les carrières** étendus à la Primeira Liga, à la Liga et à la Ligue 1 (+3, +1, +5 club-saisons). La Primeira Liga n'a presque aucune page « saison du club » en portugais (2 sur 292 manquantes).
+- La base compte maintenant 84 899 joueurs, 326 795 lignes d'effectif et 478 872 lignes de carrière.
+
 ## Data 1.14.1 — 2026-11-14
 - **Statistiques de carrière pour 26 835 joueurs** (736 de plus) et 911 338 lignes de club : les tableaux coupés par une balise de référence mal formée (`<ref name="14/15"/>`), les pages qui écrivent les colonnes dans un autre ordre que leur en-tête (Sergei Ignashevich) et celles qui titrent la section « Statistics » ou « Club statistics » sont maintenant lues.
 - **Correction** : drapeaux. L'ex-Yougoslavie écrite « YUG 1992-2003 » et la RDA écrite « RDA » ne retombent plus sur un code sans drapeau ; les drapeaux de l'Union soviétique, de la RDA, de la Corse, de la Bretagne, des Antilles néerlandaises et de Guam sont ajoutés au site.

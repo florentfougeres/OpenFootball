@@ -39,9 +39,9 @@
 | Seasons | 27 (2000/01 → 2026/27, the current season is updated at each release) |
 | Clubs with seasons | 2,822 (and 44,970 club records worldwide, with logo, stadium and colours from Wikidata) |
 | Club-seasons | 26,674 |
-| Players | 84,679 |
-| Squad entries | 326,072 |
-| Career rows | 477,819 |
+| Players | 84,899 |
+| Squad entries | 326,795 |
+| Career rows | 478,872 |
 | Competitions | 129 (leagues and continental cups) |
 
 Figures as of 2026-11-14. The live status of every league and season is in [PROGRESS.md](PROGRESS.md).

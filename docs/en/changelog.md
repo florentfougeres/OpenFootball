@@ -4,6 +4,11 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.14.2 — 2026-11-14
+- **Eredivisie squads from the Dutch Wikipedia** (`<club> in het seizoen YYYY/YY`): 32 more squads read (241 → 273 of 469 club-seasons), the first team only (departures, arrivals, youth and reserve-team tables are left out).
+- **Partial squads from careers** extended to the Primeira Liga, La Liga and Ligue 1 (+3, +1, +5 club-seasons). The Primeira Liga has almost no club-season pages in Portuguese (2 of 292 missing).
+- The database now holds 84,899 players, 326,795 squad entries and 478,872 career rows.
+
 ## Data 1.14.1 — 2026-11-14
 - **Career statistics for 26,835 players** (736 more) and 911,338 club rows: tables cut short by a malformed reference tag (`<ref name="14/15"/>`), pages that write the columns in another order than their header (Sergei Ignashevich) and pages that title the section "Statistics" or "Club statistics" are now read.
 - **Fix**: flags. Former Yugoslavia written "YUG 1992-2003" and East Germany "RDA" no longer fall back to a code without a flag; the flags of the Soviet Union, East Germany, Corsica, Brittany, the Netherlands Antilles and Guam are added to the site.

@@ -39,9 +39,9 @@
 | Saisons | 27 (2000/01 → 2026/27, la saison en cours est mise à jour à chaque release) |
 | Clubs avec saisons | 2 822 (et 44 970 fiches de clubs du monde, avec logo, stade et couleurs issus de Wikidata) |
 | Club-saisons | 26 674 |
-| Joueurs | 84 679 |
-| Lignes d'effectif | 326 072 |
-| Lignes de carrière | 477 819 |
+| Joueurs | 84 899 |
+| Lignes d'effectif | 326 795 |
+| Lignes de carrière | 478 872 |
 | Compétitions | 129 (championnats et coupes continentales) |
 
 Chiffres au 2026-11-14. L'état à jour de chaque championnat et de chaque saison est dans [PROGRESS.md](PROGRESS.md).
