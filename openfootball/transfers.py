@@ -93,6 +93,41 @@ def mark_moves_between_clubs(con: duckdb.DuckDBPyConnection) -> int:
     return n
 
 
+_FROM_CAREERS = """
+WITH two AS (                       -- joueurs présents dans exactement deux clubs la même saison, sans aucun mouvement noté
+  SELECT p.player_id, cs.season_id FROM player_club_season p JOIN club_season cs ON cs.id = p.club_season_id
+  JOIN season s ON s.id = cs.season_id AND s.status <> 'frozen'
+  WHERE p.confidence = 'attested' GROUP BY 1, 2
+  HAVING count(DISTINCT cs.club_id) = 2 AND bool_and(p.stint = 'unknown')),
+rows_ AS (
+  SELECT p.id AS pcs_id, p.player_id, s.start_year AS y, c.wikipedia_title AS title
+  FROM two JOIN club_season cs ON cs.season_id = two.season_id
+  JOIN player_club_season p ON p.club_season_id = cs.id AND p.player_id = two.player_id
+  JOIN season s ON s.id = cs.season_id JOIN club c ON c.id = cs.club_id),
+oriented AS (
+  SELECT CASE WHEN ca.seq < cb.seq THEN a.pcs_id ELSE b.pcs_id END AS left_id,
+         CASE WHEN ca.seq < cb.seq THEN b.pcs_id ELSE a.pcs_id END AS arrived_id
+  FROM rows_ a JOIN rows_ b ON a.player_id = b.player_id AND a.y = b.y AND a.pcs_id < b.pcs_id
+  JOIN player_career ca ON ca.player_id = a.player_id AND ca.club_link = a.title AND NOT ca.loan
+  JOIN player_career cb ON cb.player_id = b.player_id AND cb.club_link = b.title AND NOT cb.loan
+  WHERE abs(ca.seq - cb.seq) = 1
+    AND (CASE WHEN ca.seq < cb.seq THEN ca.end_year IN (a.y, a.y + 1) AND cb.start_year IN (a.y, a.y + 1)
+              ELSE cb.end_year IN (a.y, a.y + 1) AND ca.start_year IN (a.y, a.y + 1) END))
+SELECT DISTINCT left_id, arrived_id FROM oriented
+"""
+
+
+def mark_moves_from_careers(con: duckdb.DuckDBPyConnection) -> int:
+    """Joueur présent dans DEUX clubs la même saison, sans mouvement noté (pas de tableau de transferts) : l'ordre chronologique de sa
+    carrière (infobox) dit lequel est le club d'avant. Le premier passe `left_mid`, le second `arrived_mid`. Rien n'est deviné quand
+    l'ordre n'est pas adjacent, que les années ne collent pas, ou qu'un des passages est un prêt."""
+    pairs = con.execute(_FROM_CAREERS).fetchall()
+    for left_id, arrived_id in pairs:
+        con.execute("UPDATE player_club_season SET stint = 'left_mid' WHERE id = ? AND stint = 'unknown'", [left_id])
+        con.execute("UPDATE player_club_season SET stint = 'arrived_mid' WHERE id = ? AND stint = 'unknown'", [arrived_id])
+    return len(pairs)
+
+
 _LOANS = """
 CREATE TEMP TABLE _loan_pairs AS
 SELECT a.club_season_id AS out_cs, b.club_season_id AS in_cs, a.player_id

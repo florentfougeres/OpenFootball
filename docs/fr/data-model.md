@@ -62,7 +62,7 @@ squad.player_qid ──< career.player_qid, national.player_qid, birth.player_qi
 
 Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'un club cette saison**. Un fichier par saison (`squad/<saison>.<sha8>.parquet`). Les joueurs prêtés ailleurs (`loan_out`) n'y figurent pas.
 
-- Fichiers : 27 fichiers (un par saison), ex. `squad/2026-27.4c3ab2af.parquet` — **259 346 lignes**
+- Fichiers : 27 fichiers (un par saison), ex. `squad/2026-27.d67c81a8.parquet` — **303 137 lignes**
 - Clé : (season, club, player_qid ou player)
 
 | Colonne | Type | Description |
@@ -94,7 +94,7 @@ Effectif d'un club pour une saison : **une ligne = un joueur dans l'effectif d'u
 
 Une ligne = **un club dans un championnat pour une saison** (avec ou sans effectif). Un fichier par saison (`club_season/<saison>.<sha8>.parquet`).
 
-- Fichiers : 27 fichiers (un par saison), ex. `club_season/2026-27.2bec7d95.parquet` — **25 506 lignes**
+- Fichiers : 27 fichiers (un par saison), ex. `club_season/2026-27.dcfcdcfc.parquet` — **26 674 lignes**
 - Clé : (season, club)
 
 | Colonne | Type | Description |
@@ -112,7 +112,7 @@ Une ligne = **un club dans un championnat pour une saison** (avec ou sans effect
 
 Les pages « saison du club » dont l'effectif est l'**union** : un effectif est lu sur toutes les langues du pays (langue du pays d'abord, puis anglais, italien…) pour être le plus complet possible. **Une ligne = une page utilisée.**
 
-- Fichiers : `squad_source/squad_source.03dbb023.parquet` — **12 253 lignes**
+- Fichiers : `squad_source/squad_source.09a9582a.parquet` — **13 125 lignes**
 - Clé : (season, club, source_lang)
 
 | Colonne | Type | Description |
@@ -131,7 +131,7 @@ Les pages « saison du club » dont l'effectif est l'**union** : un effectif est
 
 Tous les clubs de football connus (≈ 43 000, source : Wikidata). `has_squads` distingue les clubs dont on a les effectifs.
 
-- Fichiers : `club/club.49bdc334.parquet` — **44 881 lignes**
+- Fichiers : `club/club.e96b131f.parquet` — **44 970 lignes**
 - Clé : wikidata_qid (wikipedia_title est aussi unique quand il existe)
 
 | Colonne | Type | Description |
@@ -172,7 +172,7 @@ Tous les clubs de football connus (≈ 43 000, source : Wikidata). `has_squads` 
 
 Les compétitions couvertes : championnats du périmètre, championnats partiels de pays hors périmètre, et coupes d'Europe (`UEFA-CL`).
 
-- Fichiers : `competition/competition.441d25ce.parquet` — **127 lignes**
+- Fichiers : `competition/competition.642aa784.parquet` — **129 lignes**
 - Clé : code
 
 | Colonne | Type | Description |
@@ -219,7 +219,7 @@ Les saisons présentes et leur état.
 
 Clubs participant à une compétition, par saison : les clubs du championnat (d'après `club_season`) **et** ceux qui y participent en plus de leur championnat (Ligue des champions, table `competition_entry`).
 
-- Fichiers : `competition_club/competition_club.ef4f15bc.parquet` — **28 640 lignes**
+- Fichiers : `competition_club/competition_club.4fb79ec7.parquet` — **30 184 lignes**
 - Clé : (season, competition, club)
 
 | Colonne | Type | Description |
@@ -232,7 +232,7 @@ Clubs participant à une compétition, par saison : les clubs du championnat (d'
 
 Effectifs introuvables dont l'absence a été **validée explicitement** (la source n'existe pas).
 
-- Fichiers : `known_gap/known_gap.81a53e27.parquet` — **12 lignes**
+- Fichiers : `known_gap/known_gap.82d48a15.parquet` — **997 lignes**
 - Clé : (season, club)
 
 | Colonne | Type | Description |
@@ -245,7 +245,7 @@ Effectifs introuvables dont l'absence a été **validée explicitement** (la sou
 
 Carrière senior d'un joueur, lue dans l'infobox de sa page Wikipedia **anglaise** : **une ligne = un passage dans un club**.
 
-- Fichiers : `career/career.8e7eb8c8.parquet` — **450 858 lignes**
+- Fichiers : `career/career.610d22a7.parquet` — **479 110 lignes**
 - Clé : (player_qid ou player, seq)
 
 | Colonne | Type | Description |
@@ -270,7 +270,7 @@ Carrière senior d'un joueur, lue dans l'infobox de sa page Wikipedia **anglaise
 
 Sélections en équipe nationale (jeunes comprises), lues dans l'infobox : **une ligne = une équipe**.
 
-- Fichiers : `national/national.e63b3ded.parquet` — **88 036 lignes**
+- Fichiers : `national/national.282c935f.parquet` — **89 931 lignes**
 - Clé : (player_qid ou player, seq)
 
 | Colonne | Type | Description |
@@ -288,7 +288,7 @@ Sélections en équipe nationale (jeunes comprises), lues dans l'infobox : **une
 
 Statistiques de carrière **par club, saison et compétition**, lues dans la section « Career statistics » de la page Wikipedia anglaise du joueur (joueurs de clubs de Ligue des champions des 7 grands pays, depuis 2010). **Une ligne = un club, une saison, un groupe de compétition.** Valeurs **publiées telles quelles, non vérifiées** ; une cellule vide ou « — » est vide, pas zéro.
 
-- Fichiers : `stat_club/stat_club.61e7e4f5.parquet` — **797 717 lignes**
+- Fichiers : `stat_club/stat_club.836ae4f0.parquet` — **911 346 lignes**
 - Clé : (player_qid ou player, seq)
 
 | Colonne | Type | Description |
@@ -310,7 +310,7 @@ Statistiques de carrière **par club, saison et compétition**, lues dans la sec
 
 Statistiques en sélection **par équipe nationale et année**, lues dans la section « Career statistics » (même périmètre que `stat_club`). Valeurs **publiées telles quelles, non vérifiées**.
 
-- Fichiers : `stat_national/stat_national.cb5acc05.parquet` — **45 534 lignes**
+- Fichiers : `stat_national/stat_national.29b483bf.parquet` — **49 546 lignes**
 - Clé : (player_qid ou player, seq)
 
 | Colonne | Type | Description |
@@ -329,7 +329,7 @@ Statistiques en sélection **par équipe nationale et année**, lues dans la sec
 
 Provenance des statistiques : la page lue pour chaque joueur (une ligne par joueur lu, même sans tableau).
 
-- Fichiers : `stat_source/stat_source.038acba4.parquet` — **42 740 lignes**
+- Fichiers : `stat_source/stat_source.f9af8ccd.parquet` — **49 525 lignes**
 - Clé : (player_qid ou player)
 
 | Colonne | Type | Description |
@@ -341,11 +341,27 @@ Provenance des statistiques : la page lue pour chaque joueur (une ligne par joue
 | `club_rows` | INTEGER | Lignes lues dans `stat_club`. |
 | `national_rows` | INTEGER | Lignes lues dans `stat_national`. |
 
+### `winner`
+
+Palmarès : le vainqueur de chaque saison d'une compétition, d'après Wikidata (une ligne par vainqueur ; un co-vainqueur donne deux lignes).
+
+- Fichiers : `winner/winner.d14534d6.parquet` — **3 730 lignes**
+- Clé : (competition, season_start, winner_qid)
+
+| Colonne | Type | Description |
+|---|---|---|
+| `competition` | VARCHAR | Code de la compétition (`FRA-L1`, `UEFA-CL`…). |
+| `season_start` | INTEGER | Année de début de la saison (`2003` pour 2003/04 ; l'année civile pour un championnat qui se joue sur l'année). |
+| `winner_name` | VARCHAR | Libellé anglais Wikidata du vainqueur. |
+| `winner_qid` | VARCHAR | QID Wikidata du vainqueur. |
+| `club` | VARCHAR | Titre de la page Wikipedia du club dans `club`, quand le vainqueur y figure ; vide sinon. |
+| `season_qid` | VARCHAR | QID Wikidata de la saison (la source de la ligne). |
+
 ### `player_profile`
 
 Profil lu dans l'infobox Wikipedia anglaise : nom complet, lieu de naissance, taille, décès et **photo** (une ligne par joueur ayant au moins une de ces informations). Valeurs **publiées telles quelles par Wikipedia, non vérifiées**.
 
-- Fichiers : `player_profile/player_profile.9b35dfcb.parquet` — **56 690 lignes**
+- Fichiers : `player_profile/player_profile.22615009.parquet` — **59 703 lignes**
 - Clé : (player_qid ou player)
 
 | Colonne | Type | Description |
@@ -366,7 +382,7 @@ Profil lu dans l'infobox Wikipedia anglaise : nom complet, lieu de naissance, ta
 
 Dates de naissance (Wikidata P569) des joueurs identifiés.
 
-- Fichiers : `birth/birth.0d314144.parquet` — **58 784 lignes**
+- Fichiers : `birth/birth.699629f9.parquet` — **62 371 lignes**
 - Clé : player_qid
 
 | Colonne | Type | Description |
@@ -379,7 +395,7 @@ Dates de naissance (Wikidata P569) des joueurs identifiés.
 
 Page Wikipedia d'un club ou d'un joueur dans chaque langue (en, fr, it, de, es pour les clubs ; en, fr pour les joueurs).
 
-- Fichiers : `entity_wiki/entity_wiki.900ceb59.parquet` — **95 709 lignes**
+- Fichiers : `entity_wiki/entity_wiki.d4260a9a.parquet` — **99 695 lignes**
 - Clé : (qid, lang)
 
 | Colonne | Type | Description |

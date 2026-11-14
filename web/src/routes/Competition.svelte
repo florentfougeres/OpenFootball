@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { app, countryOf, href, enc, isArea, seasonSlug, t, type Row } from "../lib/app.svelte";
+  import { app, countryOf, href, enc, isArea, seasonSlug, startYear, t, type Row } from "../lib/app.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import { clubName, clubOf, compName } from "../lib/format";
@@ -7,6 +7,7 @@
   import Flag from "../components/Flag.svelte";
   import Logo from "../components/Logo.svelte";
   import Spinner from "../components/Spinner.svelte";
+  import Trophy from "../components/Trophy.svelte";
     import Badge from "../components/Badge.svelte";
   import LeagueTrends from "../components/LeagueTrends.svelte";
 
@@ -29,6 +30,25 @@
           LEFT JOIN club_season cs ON cs.club = cc.club AND cs.season = cc.season WHERE cc.competition = ? AND cc.season = ?`, [code, lbl])
       : await q(`SELECT club, players, known_gap_reason FROM club_season WHERE competition = ? AND season = ?`, [code, lbl]);
     return rows.map((r): Row => ({ ...r, c: clubOf(r.club) })).sort((a, b) => clubName(a.c).localeCompare(clubName(b.c)));
+  });
+
+  // Palmarès : vainqueur de chaque saison (Wikidata). Les co-vainqueurs donnent plusieurs lignes ; un club est compté une fois par saison.
+  const winners = resource(async () => {
+    if (!app.has.winner) return [] as Row[];
+    const rows = await q(`SELECT season_start, winner_name, winner_qid, club FROM winner WHERE competition = ? ORDER BY season_start DESC, winner_name`, [code]);
+    return rows.map((r): Row => ({ ...r, c: r.club ? clubOf(r.club) : null, key: (r.club as string | null) ?? (r.winner_name as string) }));
+  });
+  const seasonName = (y: number) => seasons.data?.find((s) => startYear(s) === y) ?? `${y}/${String(y + 1).slice(2)}`;
+  const winnersOfSeason = $derived(label ? (winners.data ?? []).filter((w) => w.season_start === startYear(label)) : []);
+  /** Clubs les plus titrés : nombre de saisons gagnées (une seule fois par saison), puis la plus récente. */
+  const ranking = $derived.by(() => {
+    const by = new Map<string, { key: string; c: Row | null; name: string; years: number[] }>();
+    for (const w of winners.data ?? []) {
+      const g = by.get(w.key) ?? { key: w.key, c: w.c, name: w.winner_name, years: [] as number[] };
+      if (!g.years.includes(w.season_start)) g.years.push(w.season_start);
+      by.set(w.key, g);
+    }
+    return [...by.values()].sort((a, b) => b.years.length - a.years.length || Math.max(...b.years) - Math.max(...a.years));
   });
 </script>
 
@@ -59,6 +79,15 @@
       {/each}
     </div>
 
+    {#if winnersOfSeason.length}
+      <p class="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-line bg-accent-soft px-4 py-3">
+        <span class="flex items-center gap-1.5 text-sm font-semibold text-accent"><Trophy size={18} />{t("honoursWinner")} {label}</span>
+        {#each winnersOfSeason as w, i}{#if i}<span class="text-muted">·</span>{/if}
+          {#if w.club}<a class="flex items-center gap-2 font-semibold no-underline hover:text-accent" href={href("club", enc(w.club))}><Logo club={w.c} size={22} />{clubName(w.c)}</a>
+          {:else}<span class="font-semibold">{w.winner_name}</span>{/if}
+        {/each}
+      </p>
+    {/if}
     <h2 class="mt-7 mb-3 text-xl font-bold">{t("clubsOfSeason")} {label}</h2>
     {#if clubs.loading && !clubs.data}
       <Spinner />
@@ -78,6 +107,40 @@
         {/each}
       </ul>
       {#if !isArea(comp.country_code)}<LeagueTrends {code} season={label} />{/if}
+    {/if}
+
+    {#if winners.data?.length}
+      <section class="mt-10" aria-labelledby="honours-h">
+        <h2 id="honours-h" class="mb-3 text-xl font-bold">{t("honours")}</h2>
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+          <div class="card p-4">
+            <h3 class="mb-2 text-sm font-semibold text-muted">{t("honoursBest")}</h3>
+            <ol class="divide-y divide-line/60">
+              {#each ranking.slice(0, 10) as g, i (g.key)}
+                <li class="flex items-center gap-3 py-2">
+                  <span class="w-5 text-right text-sm tabular-nums text-muted">{i + 1}</span>
+                  {#if g.c}<Logo club={g.c} size={26} />{:else}<span class="size-[26px]"></span>{/if}
+                  <span class="min-w-0 flex-1 truncate font-medium">{#if g.c}<a class="no-underline hover:text-accent" href={href("club", enc(g.key))}>{clubName(g.c)}</a>{:else}{g.name}{/if}</span>
+                  <span class="display text-lg font-bold tabular-nums">{g.years.length}</span>
+                </li>
+              {/each}
+            </ol>
+          </div>
+          <div class="card p-4">
+            <h3 class="mb-2 text-sm font-semibold text-muted">{t("honoursBySeason")}</h3>
+            <ul class="max-h-[28rem] divide-y divide-line/60 overflow-y-auto pr-1">
+              {#each winners.data as w (w.season_start + w.winner_qid)}
+                <li class="flex items-center gap-3 py-1.5 {winnersOfSeason.includes(w) ? 'font-semibold' : ''}">
+                  <a class="w-16 shrink-0 text-sm tabular-nums text-muted no-underline hover:text-accent" href={href("competition", code, seasonSlug(seasonName(w.season_start)))}>{seasonName(w.season_start)}</a>
+                  {#if w.c}<Logo club={w.c} size={22} />{:else}<span class="size-[22px]"></span>{/if}
+                  <span class="min-w-0 flex-1 truncate">{#if w.club}<a class="no-underline hover:text-accent" href={href("club", enc(w.club))}>{clubName(w.c)}</a>{:else}{w.winner_name}{/if}</span>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-muted">{t("honoursSource")}</p>
+      </section>
     {/if}
   {/if}
 {/if}

@@ -4,6 +4,13 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.15.0 — 2026-11-14
+- **Honours** (new table `winner`, new command `honours`): the winner of each season of 69 competitions, from Wikidata (3,730 winners): the main leagues back to their first seasons (Serie A from 1898, La Liga from 1929, Ligue 1 from 1932, Bundesliga from 1963, Eredivisie from 1888, Primeira Liga from 1934) and the Champions League from 1955. Seasons whose winner Wikidata does not record are absent (for example Ligue 1 2024/25). The site shows the winner of the season and the most successful clubs on each competition page, and the titles of a club on its page.
+- **Dutch Wikipedia squads**: 11 more Eredivisie squads read (273 → 284 of 469 club-seasons), from the tables "Naam | Duels" as well; titles guessed even when Wikidata links another page.
+- **Mid-season moves**: for 2,368 more squad rows, the club a player left and the club he joined in mid-season are marked (`left_mid` / `arrived_mid`), deduced from the chronological order of his career.
+- **Site**: reconstructed squads (deduced from careers, not read from a page) carry a notice on the club page.
+- 85,099 players, 327,375 squad entries and 479,110 career rows in total.
+
 ## Data 1.14.2 — 2026-11-14
 - **Eredivisie squads from the Dutch Wikipedia** (`<club> in het seizoen YYYY/YY`): 32 more squads read (241 → 273 of 469 club-seasons), the first team only (departures, arrivals, youth and reserve-team tables are left out).
 - **Partial squads from careers** extended to the Primeira Liga, La Liga and Ligue 1 (+3, +1, +5 club-seasons). The Primeira Liga has almost no club-season pages in Portuguese (2 of 292 missing).

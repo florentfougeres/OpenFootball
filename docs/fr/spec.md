@@ -451,7 +451,7 @@ Non décidées, à reprendre quand les cinq pays seront jugés complets.
 
 ### Palmarès et statistiques (feuille de route, 2026-11-13)
 Décidé, dans cet ordre. Rien n'est commencé. Les autres idées (carte, jeu, résultats de matchs, application iOS, deux dépôts) sont dans [ROADMAP.md](roadmap.md).
-1. **Vainqueurs des compétitions (Wikidata), puis palmarès des clubs et page « Palmarès » sur chaque championnat.**
+1. **Vainqueurs des compétitions (Wikidata), puis palmarès des clubs et page « Palmarès » sur chaque championnat.** **Fait dans Data 1.15.0** : couverture mesurée, 69 compétitions et 3 730 vainqueurs ; le site montre toutes les saisons que Wikidata renseigne (pas seulement depuis 2010) et le dit sur la page. Commande `honours`, table `winner`.
    - Source : la propriété Wikidata « winner » (P1346) des éléments « saison d'une compétition » (championnats, Ligue des champions, Ligue Europa, Ligue Conférence). **À vérifier d'abord** : la couverture réelle sur nos 18 championnats et sur les coupes d'Europe, depuis 2010, avant de rien promettre.
    - Palmarès d'un club = ses titres **depuis 2010**, dans les compétitions que nous couvrons (à dire clairement sur la page). Page « Palmarès » d'une compétition = la liste des vainqueurs saison par saison.
 2. **Titres des joueurs, dérivés des effectifs.** Un joueur est crédité du titre d'un club s'il figure dans l'effectif listé de ce club champion cette saison-là. C'est une approximation (il a pu partir en cours de saison ou ne jamais jouer) : à afficher comme « titre avec l'effectif listé », jamais comme un fait établi. Les distinctions individuelles (Ballon d'or, meilleur buteur… ; Wikidata « award received ») sont un chantier à part, non planifié.

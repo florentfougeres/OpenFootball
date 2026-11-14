@@ -450,7 +450,7 @@ Not decided, to be taken up when the five countries are judged complete.
 
 ### Honours and statistics (roadmap, 2026-11-13)
 Decided, in this order. Nothing is started. The other ideas (map, game, match results, iOS app, two repositories) are in [roadmap.md](roadmap.md).
-1. **Winners of competitions (Wikidata), then club honours and a "Honours" page on each league.**
+1. **Winners of competitions (Wikidata), then club honours and a "Honours" page on each league.** **Done in Data 1.15.0**: coverage measured, 69 competitions and 3,730 winners; the site shows every season Wikidata records (not only since 2010) and says so on the page. Command `honours`, table `winner`.
    - Source: the Wikidata property "winner" (P1346) of "season of a competition" items (leagues, Champions League, Europa League, Conference League). **To check first**: the real coverage on our 18 leagues and on the European cups, since 2010, before promising anything.
    - A club's honours = its titles **since 2010**, in the competitions we cover (to be stated clearly on the page). A competition's "Honours" page = the list of winners season by season.
 2. **Players' titles, derived from squads.** A player is credited with a club's title if he is in the listed squad of that champion club that season. It is an approximation (he may have left mid-season or never played): to be displayed as "title with the listed squad", never as an established fact. Individual awards (Ballon d'Or, top scorer…; Wikidata "award received") are a separate, unplanned workstream.

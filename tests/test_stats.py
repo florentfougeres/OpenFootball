@@ -95,3 +95,9 @@ def test_balise_ref_avec_barre_dans_le_nom():
     from openfootball.parse.squad import clean
     text = 'a<ref name="14/15"/>b\n{|\n|x\n|}\nc<ref>note</ref>d<ref name=y>z</ref>'
     assert clean(text) == "ab\n{|\n|x\n|}\ncd"
+
+
+def test_annee_de_saison_du_palmares():
+    from openfootball.honours import season_start
+    assert season_start("2003–04 Ligue 1") == 2003 and season_start("2019 Campeonato Brasileiro Série A") == 2019
+    assert season_start("1970–71 European Cup") == 1970 and season_start("Ligue 1") is None

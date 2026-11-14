@@ -261,7 +261,9 @@ def fill_club_season(con, cs_id: int, team: str, qid: str | None, en_page, *, co
             parse = parse_squad
         else:
             title = articles().get((start_year, lang))
-            titles = [title] if title else (_guess_season_titles(wd, qid, lang, start_year) if qid else [])
+            titles = [title] if title else []
+            if qid and (not titles or lang == "nl"):           # nl : le titre de Wikidata mène parfois à une page d'homonymie (« (mannen) » / « (vrouwen) »)
+                titles += [g for g in _guess_season_titles(wd, qid, lang, start_year) if g not in titles]
             if not titles:
                 return None
             pages = lang_clients[lang].get_pages(titles)

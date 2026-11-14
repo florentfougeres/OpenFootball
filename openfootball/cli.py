@@ -16,9 +16,10 @@ from openfootball.progress import build_progress
 from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
+from openfootball.honours import import_winners, resolve_competition_qids
 from openfootball.reconstruct import reconstruct, reconstruct_from_careers
 from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_all_players, select_players, select_without_stats
-from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
+from openfootball.transfers import mark_moves_from_careers, apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
 from openfootball.scopes import load_scopes
@@ -546,6 +547,9 @@ def transfers_cmd(args: argparse.Namespace) -> int:
     """Statuts datés (arrivé/parti en cours de saison, prêts) d'après les tableaux de transferts des pages anglaises."""
     con = connect(args.db)
     migrate(con)
+    if args.from_careers:
+        print(f"{mark_moves_from_careers(con)} transferts en cours de saison déduits de l'ordre des carrières")
+        return 0
     r = apply_transfers(con, WikipediaClient(args.cache), fr_wp=WikipediaClient("cache/wikipedia_fr", lang="fr"), start_year=args.season)
     summer = drop_summer_departures(con)
     if summer:
@@ -580,6 +584,15 @@ def stats_cmd(args: argparse.Namespace) -> int:
     print(f"{len(players)} joueurs à lire")
     read, with_table, rows = import_stats(con, StatsClient(args.cache), players)
     print(f"{read} pages lues, {with_table} avec un tableau club, {rows} lignes")
+    return 0
+
+
+def honours_cmd(args: argparse.Namespace) -> int:
+    """Palmarès : le vainqueur de chaque saison de chaque compétition, d'après Wikidata."""
+    con = connect(args.db)
+    migrate(con)
+    resolve_competition_qids(con, WikipediaClient(args.cache))
+    import_winners(con, WikidataClient(args.wd_cache))
     return 0
 
 
@@ -767,6 +780,7 @@ def main(argv: list[str] | None = None) -> int:
     tr = sub.add_parser("transfers", help="statuts datés (arrivé/parti en cours de saison, prêts) depuis les tableaux de transferts")
     tr.add_argument("--db", default=DB_DEFAULT)
     tr.add_argument("--fresh", action="store_true", help="ignore le cache Wikipedia : relit les pages de transferts")
+    tr.add_argument("--from-careers", action="store_true", help="seulement : déduit left_mid / arrived_mid des joueurs vus dans deux clubs la même saison, d'après l'ordre de leur carrière")
     tr.add_argument("--season", type=int, help="une seule saison (année de début) ; par défaut toutes les saisons non figées")
     tr.add_argument("--cache", default="cache/wikipedia")
     tr.set_defaults(func=transfers_cmd)
@@ -779,6 +793,11 @@ def main(argv: list[str] | None = None) -> int:
     rc.add_argument("--min-players", type=int, default=10, help="--from-careers : nombre minimal de joueurs trouvés pour retenir le club-saison")
     rc.add_argument("--cache", default="cache/wikipedia")
     rc.set_defaults(func=reconstruct_cmd)
+    ho = sub.add_parser("honours", help="palmarès : vainqueur de chaque saison de chaque compétition (Wikidata)")
+    ho.add_argument("--db", default=DB_DEFAULT)
+    ho.add_argument("--cache", default="cache/wikipedia")
+    ho.add_argument("--wd-cache", default="cache/wikidata")
+    ho.set_defaults(func=honours_cmd)
     st = sub.add_parser("stats", help="statistiques de carrière (matchs, buts par club, saison, compétition, sélection) depuis la page du joueur")
     st.add_argument("--db", default=DB_DEFAULT)
     st.add_argument("--since", type=int, default=2010, help="première saison de Ligue des champions prise en compte (année de début)")

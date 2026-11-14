@@ -109,7 +109,7 @@ def restore_database(data_dir: str | Path, db_path: str | Path, *, log: Callable
         con.execute(f"CREATE TEMP VIEW {view} AS SELECT * FROM read_parquet({_paths(data, files)}, union_by_name = true)")
 
     for name in ("club", "competition", "country", "season", "career", "national", "birth", "entity_wiki", "player_profile",
-                 "squad_source", "known_gap", "competition_club", "stat_club", "stat_national", "stat_source"):
+                 "squad_source", "known_gap", "competition_club", "stat_club", "stat_national", "stat_source", "winner"):
         if name in tables:
             stage(f"x_{name}", [tables[name]])
     stage("x_squad", [s["files"]["squad"]["path"] for s in seasons.values()])
@@ -152,6 +152,10 @@ def restore_database(data_dir: str | Path, db_path: str | Path, *, log: Callable
                        SELECT DISTINCT co.id, s.id, c.id FROM x_competition_club x JOIN season s ON s.label = x.season
                        JOIN competition co ON co.code = x.competition JOIN club c ON c.wikipedia_title = x.club
                        WHERE NOT EXISTS (SELECT 1 FROM club_season cs WHERE cs.club_id = c.id AND cs.season_id = s.id AND cs.competition_id = co.id)""")
+        if "winner" in tables:
+            con.execute("""INSERT INTO competition_winner (competition_id, season_start, winner_qid, winner_name, club_id, season_qid)
+                           SELECT co.id, w.season_start, w.winner_qid, w.winner_name, c.id, w.season_qid FROM x_winner w
+                           JOIN competition co ON co.code = w.competition LEFT JOIN club c ON c.wikipedia_title = w.club""")
         con.execute("""INSERT INTO squad_source (club_season_id, rank, source_lang, source_title, source_revid, players_read, players_added)
                        SELECT cs.id, x.rank, x.source_lang, x.source_title, x.source_revid, x.players_read, x.players_added
                        FROM x_squad_source x JOIN season s ON s.label = x.season JOIN club c ON c.wikipedia_title = x.club

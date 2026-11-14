@@ -97,6 +97,11 @@ SELECT w.qid AS player_qid, p.name AS player, n.seq, n.team, n.team_link, n.year
 FROM player_stat_national n JOIN player p ON p.id = n.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
 ORDER BY coalesce(w.qid, 'name:' || p.name), n.seq"""
 
+_WINNER = """
+SELECT co.code AS competition, w.season_start, w.winner_name, w.winner_qid, cl.wikipedia_title AS club, w.season_qid
+FROM competition_winner w JOIN competition co ON co.id = w.competition_id LEFT JOIN club cl ON cl.id = w.club_id
+ORDER BY co.code, w.season_start, w.winner_name"""
+
 _STAT_SOURCE = """
 SELECT w.qid AS player_qid, p.name AS player, s.source_title, s.source_revid, s.club_rows, s.national_rows
 FROM player_stat_source s JOIN player p ON p.id = s.player_id LEFT JOIN player_wikidata w ON w.player_id = p.id
@@ -211,6 +216,8 @@ def export_all(con: duckdb.DuckDBPyConnection, out_dir: str | Path) -> dict:
     for name, sql in (("stat_club", _STAT_CLUB), ("stat_national", _STAT_NATIONAL), ("stat_source", _STAT_SOURCE)):
         if con.execute(f"SELECT count(*) FROM player_{name}").fetchone()[0]:           # table publiée seulement si `stats` a été lancé
             manifest["tables"][name] = _write(con, sql, out, name, name)
+    if con.execute("SELECT count(*) FROM competition_winner").fetchone()[0]:               # palmarès : publié seulement si `honours` a été lancé
+        manifest["tables"]["winner"] = _write(con, _WINNER, out, "winner", "winner")
     manifest["tables"]["player_profile"] = _write(con, _PROFILE, out, "player_profile", "player_profile")
     manifest["tables"]["squad_source"] = _write(con, _SQUAD_SOURCE, out, "squad_source", "squad_source")
     manifest["tables"]["known_gap"] = _write(con, """

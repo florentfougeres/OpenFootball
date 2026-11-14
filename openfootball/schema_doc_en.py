@@ -232,6 +232,17 @@ TABLES_EN: dict[str, tuple[str, str, dict[str, str]]] = {
             "national_rows": "Rows read into `stat_national`.",
         },
     ),
+    "winner": (
+        "Honours: the winner of each season of a competition, from Wikidata (one row per winner; joint winners give two rows).", "(competition, season_start, winner_qid)",
+        {
+            "competition": "Competition code (`FRA-L1`, `UEFA-CL`…).",
+            "season_start": "Start year of the season (`2003` for 2003/04; the calendar year for a league played over one year).",
+            "winner_name": "English Wikidata label of the winner.",
+            "winner_qid": "Wikidata QID of the winner.",
+            "club": "Title of the club's Wikipedia page in `club` when the winner is there; empty otherwise.",
+            "season_qid": "Wikidata QID of the season (the row's source).",
+        },
+    ),
     "player_profile": (
         "Profile read from the English Wikipedia infobox: full name, birthplace, height, death and **photo** (one row per player "
         "with at least one of these). Values **published as is by Wikipedia, unverified**.",

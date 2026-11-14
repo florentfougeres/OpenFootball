@@ -4,6 +4,13 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.15.0 — 2026-11-14
+- **Palmarès** (nouvelle table `winner`, nouvelle commande `honours`) : le vainqueur de chaque saison de 69 compétitions, d'après Wikidata (3 730 vainqueurs) : les grands championnats depuis leurs premières saisons (Serie A depuis 1898, Liga depuis 1929, Ligue 1 depuis 1932, Bundesliga depuis 1963, Eredivisie depuis 1888, Primeira Liga depuis 1934) et la Ligue des champions depuis 1955. Les saisons dont Wikidata ne renseigne pas le vainqueur sont absentes (par exemple la Ligue 1 2024/25). Le site affiche le vainqueur de la saison et les clubs les plus titrés sur la page de chaque compétition, et les titres d'un club sur sa page.
+- **Effectifs depuis Wikipedia en néerlandais** : 11 effectifs d'Eredivisie lus de plus (273 → 284 sur 469 club-saisons), y compris depuis les tableaux « Naam | Duels » ; les titres sont devinés même quand Wikidata relie une autre page.
+- **Mouvements en cours de saison** : pour 2 368 lignes d'effectif de plus, le club quitté et le club rejoint en cours de saison sont marqués (`left_mid` / `arrived_mid`), déduits de l'ordre chronologique de la carrière du joueur.
+- **Site** : les effectifs reconstitués (déduits des carrières, non lus sur une page) portent un avis sur la page du club.
+- 85 099 joueurs, 327 375 lignes d'effectif et 479 110 lignes de carrière au total.
+
 ## Data 1.14.2 — 2026-11-14
 - **Effectifs de l'Eredivisie depuis Wikipedia en néerlandais** (`<club> in het seizoen YYYY/YY`) : 32 effectifs lus de plus (241 → 273 sur 469 club-saisons), l'équipe première seulement (les tableaux des partants, des arrivants, des jeunes et de l'équipe réserve sont écartés).
 - **Effectifs partiels d'après les carrières** étendus à la Primeira Liga, à la Liga et à la Ligue 1 (+3, +1, +5 club-saisons). La Primeira Liga n'a presque aucune page « saison du club » en portugais (2 sur 292 manquantes).

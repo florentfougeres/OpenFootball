@@ -18,7 +18,7 @@ Dernière mise à jour : 2026-11-13. Taille : **S** (quelques heures), **M** (un
 
 ## Décidé, dans cet ordre
 
-1. **Palmarès : vainqueurs des compétitions, palmarès des clubs, page « Palmarès » par championnat.** Source : Wikidata (« winner »). Vérifier d'abord la couverture réelle. **M.**
+1. **Palmarès : vainqueurs des compétitions, titres des clubs, palmarès sur la page de chaque compétition.** **Fait** (Data 1.15.0) : « winner » de Wikidata pour 69 compétitions, 3 730 vainqueurs ; les saisons sans vainqueur renseigné sont absentes.
 2. **Titres des joueurs, dérivés des effectifs** (approximation à afficher comme telle). **S** après le point 1.
 3. **Statistiques par joueur, saison et compétition**, depuis les tableaux « Statistics » des pages anglaises (couverture partielle, à annoncer). **L.**
 

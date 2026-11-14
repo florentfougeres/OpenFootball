@@ -237,6 +237,17 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
             "national_rows": "Lignes lues dans `stat_national`.",
         },
     ),
+    "winner": (
+        "Palmarès : le vainqueur de chaque saison d'une compétition, d'après Wikidata (une ligne par vainqueur ; un co-vainqueur donne deux lignes).", "(competition, season_start, winner_qid)",
+        {
+            "competition": "Code de la compétition (`FRA-L1`, `UEFA-CL`…).",
+            "season_start": "Année de début de la saison (`2003` pour 2003/04 ; l'année civile pour un championnat qui se joue sur l'année).",
+            "winner_name": "Libellé anglais Wikidata du vainqueur.",
+            "winner_qid": "QID Wikidata du vainqueur.",
+            "club": "Titre de la page Wikipedia du club dans `club`, quand le vainqueur y figure ; vide sinon.",
+            "season_qid": "QID Wikidata de la saison (la source de la ligne).",
+        },
+    ),
     "player_profile": (
         "Profil lu dans l'infobox Wikipedia anglaise : nom complet, lieu de naissance, taille, décès et **photo** (une ligne par joueur "
         "ayant au moins une de ces informations). Valeurs **publiées telles quelles par Wikipedia, non vérifiées**.",
@@ -274,7 +285,7 @@ TABLES: dict[str, tuple[str, str, dict[str, str]]] = {
     ),
 }
 
-ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "stat_club", "stat_national", "stat_source", "player_profile", "birth", "entity_wiki"]
+ORDER = ["squad", "club_season", "squad_source", "club", "competition", "country", "season", "competition_club", "known_gap", "career", "national", "stat_club", "stat_national", "stat_source", "winner", "player_profile", "birth", "entity_wiki"]
 
 INTRO = """# OpenFootballBase — dictionnaire de données
 

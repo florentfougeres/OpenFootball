@@ -108,7 +108,8 @@ def _columns(row: list[_Cell], lang: str | None = None) -> dict[str, int]:
     labels = [re.sub(r"[^a-zà-ÿ# ]+", " ", _txt(c).lower()).strip() for c in row]
     is_num = lambda l: bool(_NUM.search(l)) and not l.startswith(_NAT)
     is_name = lambda l: any(l == w or l.startswith(w + " ") for w in _NAME)
-    has_pos = lang == "nl" and any(l.startswith(_POS) for l in labels)          # tableaux néerlandais de statistiques : Pos. | Nat. | Spelersnaam, sans numéro
+    # Tableaux néerlandais de statistiques, sans numéro : « Pos. | Nat. | Spelersnaam | W… » ou « Naam | Min. | Duels | … » (les joueurs qui ont joué).
+    has_pos = lang == "nl" and (any(l.startswith(_POS) for l in labels) or any(l in ("duels", "wedstr", "wedstrijden") for l in labels))
     if not ((any(is_num(l) for l in labels) or has_pos) and any(is_name(l) for l in labels)):
         return {}
     cols: dict[str, int] = {}

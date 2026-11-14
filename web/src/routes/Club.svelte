@@ -4,6 +4,7 @@
   import { resource } from "../lib/resource.svelte";
   import { downloadCsv, RELEASES_URL } from "../lib/download";
   import { clubName, clubOf, commonsLogo, compName, countryName, fmtFounded, hostLang, seasonAge, wikiUrl } from "../lib/format";
+  import Trophy from "../components/Trophy.svelte";
   import Badge from "../components/Badge.svelte";
   import Crumbs from "../components/Crumbs.svelte";
   import Flag from "../components/Flag.svelte";
@@ -33,6 +34,16 @@
   });
 
   const d = $derived(res.data);
+
+  // Titres : les compétitions que le club a gagnées (palmarès Wikidata), regroupées par compétition.
+  const honours = resource(async () => {
+    const tt = title;
+    if (!tt || !app.has.winner) return [] as { code: string; years: number[] }[];
+    const rows = await q(`SELECT competition, season_start FROM winner WHERE club = ? ORDER BY competition, season_start DESC`, [tt]);
+    const by = new Map<string, number[]>();
+    for (const r of rows) by.set(r.competition, [...(by.get(r.competition) ?? []), r.season_start as number]);
+    return [...by.entries()].map(([code, years]) => ({ code, years })).sort((a, b) => b.years.length - a.years.length);
+  });
   const title = $derived(d?.ours?.wikipedia_title as string | undefined);
   const iso = $derived(d?.w?.country_iso ? String(d.w.country_iso).toLowerCase() : null);
   const flag = $derived(d?.ours ? countryOf(d.ours.country_code).flag : iso);
@@ -66,7 +77,7 @@
   const sq = resource(async () => {
     const lbl = label, tt = title;
     if (!lbl || !tt) return null;
-    const rows = await q(`SELECT s.player, COALESCE(s.player_qid, 'name:' || s.player) AS key, s.shirt_number, s.position, s.nationality, s.nat_flag, s.stint,
+    const rows = await q(`SELECT s.player, COALESCE(s.player_qid, 'name:' || s.player) AS key, s.shirt_number, s.position, s.nationality, s.nat_flag, s.stint, s.confidence,
         ${app.squadHasMoves ? "s.stint_date, s.stint_window, s.stint_other_club" : "NULL AS stint_date, NULL AS stint_window, NULL AS stint_other_club"},
         ${app.has.birth ? "b.birth_date, b.precision" : "NULL AS birth_date, NULL AS precision"}
       FROM squad s ${app.has.birth ? "LEFT JOIN birth b ON b.player_qid = s.player_qid" : ""}
@@ -78,6 +89,8 @@
     return { rows, cs, sources };
   });
   const squad = $derived(sq.data);
+  /** Effectif déduit (carrières, saison précédente + transferts) et non lu sur une page : à signaler, il peut être incomplet. */
+  const partial = $derived(!!squad?.rows.length && squad.rows.filter((r: Row) => r.confidence === "inferred").length * 2 > squad.rows.length);
 
   // Mouvements : on compare l'effectif de la saison à celui de la précédente (aucun tableau de transferts requis).
   let view: "squad" | "moves" = $state("squad");
@@ -285,6 +298,9 @@
             <p class="mt-3 text-sm text-muted">{t("mvNote")}</p>
           {/if}
         {:else}
+        {#if partial}
+          <p class="mb-4 rounded-lg border border-line bg-surface-2 px-4 py-3 text-sm" role="note"><strong>{t("partialTitle")}</strong> {t("partialBody")}</p>
+        {/if}
         <!-- Chiffres de l'effectif : quatre colonnes égales sur mobile, alignées à gauche sur la même ligne de base -->
         <dl class="grid grid-flow-col auto-cols-fr gap-x-3 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
           <div><dd class="display text-2xl font-bold leading-none tabular-nums sm:text-3xl">{stats.n}</dd><dt class="mt-1.5 text-xs leading-tight text-muted">{t("srcPlayers")}</dt></div>
@@ -404,6 +420,23 @@
 
     <!-- À propos du club -->
     <aside class="min-w-0 lg:sticky lg:top-20 lg:self-start" aria-labelledby="about-club">
+      {#if honours.data?.length}
+        <h2 class="mb-2 flex items-center gap-2 text-xl font-bold"><Trophy size={20} />{t("honoursTitles")}</h2>
+        <ul class="card mb-6 divide-y divide-line/60 px-4 py-1">
+          {#each honours.data as h (h.code)}
+            <li class="py-2">
+              <details>
+                <summary class="flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
+                  <span class="display w-7 text-xl font-bold tabular-nums">{h.years.length}</span>
+                  <a class="min-w-0 flex-1 truncate font-medium no-underline hover:text-accent" href={href("competition", h.code)}>{compName(h.code)}</a>
+                  <span class="text-muted" aria-hidden="true">›</span>
+                </summary>
+                <p class="mt-1.5 pl-10 text-sm leading-relaxed text-muted">{h.years.map((y) => `${y}/${String(y + 1).slice(2)}`).join(" · ")}</p>
+              </details>
+            </li>
+          {/each}
+        </ul>
+      {/if}
       <h2 id="about-club" class="mb-3 text-xl font-bold">{t("about_club")}</h2>
       {#if info.length || external.length}
         <dl class="space-y-3 text-sm">
