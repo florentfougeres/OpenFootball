@@ -1,6 +1,8 @@
 <script lang="ts">
   import { app, route, href, t } from "../lib/app.svelte";
   import { theme, cycleTheme } from "../lib/theme.svelte";
+  import { focusSearch, searchUi } from "../lib/searchui.svelte";
+  import SearchBox from "./SearchBox.svelte";
   let open = $state(false);
   const other = $derived(app.lang === "fr" ? "en" : "fr");
   const switchHref = $derived(`#/${other}/${route.parts.map(encodeURIComponent).join("/")}`);
@@ -14,8 +16,16 @@
     { key: "about", label: t("about"), to: href("about") },
   ]);
   const active = (k: string) => (k === "competitions" ? ["competitions", "competition"].includes(current) : k === "clubs" ? ["clubs", "club"].includes(current) : k === "players" ? ["players", "player"].includes(current) : k === "home" ? ["home", "country"].includes(current) : current === k);
-  $effect(() => { route.parts; open = false; });
+  $effect(() => { route.parts; open = false; searchUi.bar = false; });
+  // « / » (hors champ de saisie) ou ⌘K / Ctrl+K : va à la recherche.
+  function onKey(e: KeyboardEvent) {
+    const el = e.target as HTMLElement | null;
+    const typing = /^(input|textarea|select)$/i.test(el?.tagName ?? "") || Boolean(el?.isContentEditable);
+    if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing && !e.metaKey && !e.ctrlKey && !e.altKey)) { e.preventDefault(); focusSearch(); }
+  }
 </script>
+
+<svelte:window onkeydown={onKey} />
 
 <header class="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
@@ -24,13 +34,17 @@
       OpenFootballBase
       <span class="rounded-md border border-line px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted" title={t("betaNote")}>{t("beta")}</span>
     </a>
-    <nav class="ml-4 hidden items-center gap-1 md:flex" aria-label="Navigation">
+    <nav class="ml-5 hidden items-center gap-1 md:flex lg:ml-8" aria-label="Navigation">
       {#each links as l}
-        <a class="rounded-lg px-3 py-1.5 text-sm font-semibold no-underline transition hover:bg-surface-2 {active(l.key) ? 'bg-surface-2 text-fg' : 'text-muted'}"
+        <a class="whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold no-underline transition hover:bg-surface-2 {active(l.key) ? 'bg-surface-2 text-fg' : 'text-muted'}"
           href={l.to} aria-current={active(l.key) ? "page" : undefined}>{l.label}</a>
       {/each}
     </nav>
     <div class="ml-auto flex items-center gap-2">
+      <!-- Recherche : un champ dans l'en-tête sur grand écran ; sur mobile, une icône qui déplie une barre sous l'en-tête. « / » et ⌘K y amènent aussi. -->
+      <SearchBox variant="header" />
+      <button class="btn-ghost !px-3 md:hidden" type="button" onclick={() => (searchUi.bar = !searchUi.bar)} aria-expanded={searchUi.bar} aria-label={t("searchTrigger")}>
+        <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg></button>
       <button class="btn-ghost !px-3" type="button" onclick={cycleTheme} title={t("theme")} aria-label={t("theme")}>
         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           {#if theme.value === "dark"}<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" />
@@ -44,6 +58,9 @@
         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
     </div>
   </div>
+  {#if searchUi.bar}
+    <div class="border-t border-line px-4 py-2.5 md:hidden"><SearchBox variant="bar" autofocus onclose={() => (searchUi.bar = false)} /></div>
+  {/if}
   {#if open}
     <nav class="border-t border-line px-4 pb-3 md:hidden" aria-label="Navigation">
       {#each links as l}

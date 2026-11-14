@@ -1,19 +1,17 @@
 <script lang="ts">
-  import { app, areaFlag, href, t } from "../lib/app.svelte";
+  import { app, areaFlag, enc, href, route, seasonSlug, t } from "../lib/app.svelte";
+  import { clubName } from "../lib/format";
+  import SearchBox from "../components/SearchBox.svelte";
   import { q } from "../lib/db";
   import { resource } from "../lib/resource.svelte";
   import Flag from "../components/Flag.svelte";
-  import ClubChip from "../components/ClubChip.svelte";
-  import CountryTile from "../components/CountryTile.svelte";
+  import Logo from "../components/Logo.svelte";
   import SearchResults from "../components/SearchResults.svelte";
   import ErrorBox from "../components/ErrorBox.svelte";
   import Spinner from "../components/Spinner.svelte";
 
-  let input = $state("");
-  let term = $state("");
-  let timer: ReturnType<typeof setTimeout>;
-  const set = () => (term = input.trim().length >= 2 ? input.trim() : "");
-  const onInput = () => { clearTimeout(timer); timer = setTimeout(set, 250); };
+  // « Voir tous les résultats » de la palette arrive ici avec ?q=… : la page affiche alors la liste complète.
+  const urlTerm = $derived(route.query.get("q")?.trim() ?? "");
 
   const nf = (n: number) => n.toLocaleString(app.lang);
   const seasonsN = $derived(Object.keys(app.manifest.seasons).length);
@@ -56,72 +54,96 @@
 </script>
 
 <section class="border-b border-line bg-surface">
-  <div class="mx-auto max-w-6xl px-4 pb-8 pt-10 sm:pb-12 sm:pt-14">
-    <h1 class="max-w-3xl text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl">{t("heroTitle")}</h1>
-    <p class="mt-4 max-w-2xl text-base text-muted sm:text-lg">{t("heroLead")}</p>
-    <form class="mt-6 flex max-w-2xl gap-2" role="search" onsubmit={(e) => { e.preventDefault(); clearTimeout(timer); set(); }}>
-      <div class="relative min-w-0 flex-1">
-        <svg viewBox="0 0 24 24" class="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-muted" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-        <input class="w-full rounded-lg border border-line bg-bg py-3 pl-11 pr-4 text-base text-fg outline-none placeholder:text-muted focus:border-accent focus:ring-2 focus:ring-accent/40"
-          type="search" bind:value={input} oninput={onInput} placeholder={t("searchHint")} aria-label={t("searchPh")} autocomplete="off" />
-      </div>
-      <button class="btn !px-5" type="submit">{t("search")}</button>
-    </form>
+  <div class="mx-auto grid max-w-6xl gap-x-10 gap-y-5 px-4 py-6 sm:py-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+    <div class="min-w-0">
+      <h1 class="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">{t("heroTitle")}</h1>
+      <p class="mt-1.5 max-w-xl text-sm text-muted">{t("heroLead")}</p>
+      <div class="mt-5"><SearchBox variant="hero" /></div>
+    </div>
+    <!-- Les chiffres s'alignent sur le bas du champ de recherche (grand écran) ou le suivent en dessous (mobile). -->
     {#if data.data}
-      <p class="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
-        {#each [[nf(data.data.stats.clubs), t("statClubs")], [nf(data.data.stats.players), t("statPlayers")], [seasonsN, t("statSeasons")], [countries.length, t("countries").toLowerCase()]] as [n, label]}
-          <span><strong class="display text-lg font-bold tabular-nums text-fg">{n}</strong> {label}</span>
+      <dl class="grid grid-cols-4 gap-x-6 lg:pb-1">
+        {#each [[nf(data.data.stats.players), t("statPlayers")], [nf(data.data.stats.clubs), t("statClubs")], [seasonsN, t("statSeasons")], [countries.length, t("countries").toLowerCase()]] as [n, label]}
+          <div><dd class="display text-xl font-bold leading-none tabular-nums">{n}</dd><dt class="mt-1 text-xs text-muted">{label}</dt></div>
         {/each}
-      </p>
+      </dl>
     {/if}
   </div>
 </section>
 
-<div class="mx-auto max-w-6xl px-4 pb-4 pt-2">
-  {#if term && app.ready}<SearchResults {term} />{:else if term}<p class="mt-6 flex items-center gap-3 text-sm text-muted"><Spinner /> {t("searchWaiting")}</p>{/if}
+<div class="mx-auto max-w-6xl px-4 pb-6 pt-4">
+  {#if urlTerm}
+    <div class="mt-2 flex items-baseline justify-between gap-3">
+      <h2 class="text-lg font-bold">{t("spAll").replace(/\s+pour$|\s+for$/, "")} « {urlTerm} »</h2>
+      <a class="link text-sm" href={href("")}>{t("sqReset")}</a>
+    </div>
+    {#if app.ready}<SearchResults term={urlTerm} />{:else}<p class="mt-6 flex items-center gap-3 text-sm text-muted"><Spinner /> {t("searchWaiting")}</p>{/if}
+  {/if}
 
   {#if data.error}
     <div class="mt-10"><ErrorBox message={data.error} /></div>
   {:else if data.loading && !data.data}
     <Spinner />
   {:else if data.data}
-    <section class="mt-8" aria-labelledby="feat-clubs">
-      <h2 id="feat-clubs" class="mb-3 text-2xl font-bold">{t("featuredClubs")}</h2>
-      <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {#each data.data.clubs as x (x.wikipedia_title)}<li><ClubChip club={x} season={x.season} /></li>{/each}
-      </ul>
-    </section>
+    <div class="mt-4 grid gap-4 lg:grid-cols-2">
+      {#if featuredComps.length}
+        <section class="card overflow-hidden" aria-labelledby="feat-comps">
+          <div class="flex items-center justify-between border-b border-line px-4 py-2.5">
+            <h2 id="feat-comps" class="text-sm font-bold">{t("featuredComps")}</h2>
+            <a class="link text-xs" href={href("competitions")}>{t("allComps")} →</a>
+          </div>
+          <ul class="divide-y divide-line/60">
+            {#each featuredComps as c (c.code)}
+              <li>
+                <a class="flex items-center gap-3 px-4 py-2 text-sm no-underline transition hover:bg-surface-2" href={href("competition", c.code)}>
+                  {#if c.logo_url}
+                    <span class="block size-7 shrink-0 overflow-hidden rounded-md bg-white p-0.5"><img class="size-full object-contain" src={c.logo_url} alt="" loading="lazy" /></span>
+                  {:else}
+                    <span class="grid size-7 shrink-0 place-items-center rounded-md bg-surface-2"><Flag code={c.flag} size={18} /></span>
+                  {/if}
+                  <span class="min-w-0 flex-1 truncate font-semibold">{app.lang === "fr" ? c.name_fr : c.name_en}</span>
+                  <span class="shrink-0 text-xs text-muted">{countries.find((x) => x.code === c.country_code)?.name ?? c.country_code}</span>
+                </a>
+              </li>
+            {/each}
+          </ul>
+        </section>
+      {/if}
 
-    {#if featuredComps.length}
-      <section class="mt-8" aria-labelledby="feat-comps">
-        <h2 id="feat-comps" class="mb-3 text-2xl font-bold">{t("featuredComps")}</h2>
-        <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {#each featuredComps as c (c.code)}
+      <section class="card overflow-hidden" aria-labelledby="feat-clubs">
+        <div class="flex items-center justify-between border-b border-line px-4 py-2.5">
+          <h2 id="feat-clubs" class="text-sm font-bold">{t("featuredClubs")}</h2>
+          <a class="link text-xs" href={href("clubs")}>{t("allClubs")} →</a>
+        </div>
+        <ul class="divide-y divide-line/60">
+          {#each data.data.clubs.slice(0, 8) as x (x.wikipedia_title)}
             <li>
-              <a class="tile group" href={href("competition", c.code)}>
-                {#if c.logo_url}
-                  <span class="block size-12 shrink-0 overflow-hidden rounded-lg bg-white p-1.5"><img class="size-full object-contain" src={c.logo_url} alt="" loading="lazy" /></span>
-                {:else}
-                  <span class="grid size-12 shrink-0 place-items-center rounded-lg bg-surface-2"><Flag code={c.flag} size={28} /></span>
-                {/if}
-                <span class="min-w-0 flex-1"><span class="block truncate text-sm font-semibold group-hover:text-accent">{app.lang === "fr" ? c.name_fr : c.name_en}</span></span>
+              <a class="flex items-center gap-3 px-4 py-2 text-sm no-underline transition hover:bg-surface-2" href={href("club", enc(x.wikipedia_title), seasonSlug(x.season))}>
+                <Logo club={x} size={26} />
+                <span class="min-w-0 flex-1 truncate font-semibold">{clubName(x)}</span>
+                <span class="shrink-0 text-xs tabular-nums text-muted">{x.season}</span>
               </a>
             </li>
           {/each}
         </ul>
       </section>
-    {/if}
-
-    <div class="mt-8">
-      <section class="card p-5" aria-labelledby="by-country">
-        <h2 id="by-country" class="text-2xl font-bold">{t("byCountry")}</h2>
-        <p class="mt-1 text-sm text-muted">{t("byCountryLead")}</p>
-        <ul class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {#each countries as c (c.code)}
-            <li><CountryTile code={c.code} name={c.name} flag={areaFlag(c.code) ?? c.flag} comps={c.comps} clubs={c.clubs} /></li>
-          {/each}
-        </ul>
-      </section>
     </div>
+
+    <section class="card mt-4 overflow-hidden" aria-labelledby="by-country">
+      <div class="border-b border-line px-4 py-2.5">
+        <h2 id="by-country" class="text-sm font-bold">{t("byCountry")}</h2>
+      </div>
+      <ul class="grid gap-x-2 gap-y-0.5 p-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {#each countries as c (c.code)}
+          <li>
+            <a class="flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm no-underline transition hover:bg-surface-2" href={href("country", c.code)}>
+              <Flag code={areaFlag(c.code) ?? c.flag} label={c.name} size={20} />
+              <span class="min-w-0 flex-1 truncate font-medium">{c.name}</span>
+              <span class="shrink-0 text-xs tabular-nums text-muted">{c.clubs || ""}</span>
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </section>
   {/if}
 </div>
