@@ -194,10 +194,6 @@
     <p class="mt-6 text-muted">{t("noCareer")}</p>
   {/if}
 
-  {#if d.statClub.length}
-    <PlayerStats club={d.statClub} national={d.statNat} source={d.statSource} />
-  {/if}
-
   {#if d.national.length}
     <section class="card mt-6 overflow-hidden">
       <h2 class="px-5 pt-4 text-lg font-bold">{t("nationalTitle")}</h2>
@@ -218,5 +214,9 @@
         </table>
       </div>
     </section>
+  {/if}
+
+  {#if d.statClub.length}
+    <PlayerStats club={d.statClub} national={d.statNat} source={d.statSource} />
   {/if}
 {/if}
