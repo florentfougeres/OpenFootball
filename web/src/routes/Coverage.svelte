@@ -172,7 +172,7 @@
     {@const nCols = shownCols.length}
     {@const strip = `grid-template-columns: repeat(${nCols}, minmax(0, 1fr))`}
     {@const nums = nCols <= 12}
-    {@const lastOf = (code: string) => { for (let i = shownCols.length - 1; i >= 0; i--) { const c = cell(code, shownCols[i]); if (c) return c; } return null; }}
+    {@const shareOf = (code: string) => { let n = 0, ok = 0; for (const s of shownCols) { const c = cell(code, s); if (c) { n += c.n; ok += c.ok; } } return n ? { n, ok } : null; }}
     <div class="mt-3 md:hidden">
       <div class="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <span class="shrink-0 text-xs text-muted">{t("covDetail")}</span>
@@ -194,12 +194,12 @@
         {#each visible as g (g.conf)}
           {#if !confSel}<div class="bg-surface-2 px-4 py-1.5 text-sm font-bold">{g.conf} <span class="font-normal text-muted">· {g.area}</span></div>{/if}
           {#each g.rows as { comp, country } (comp.code)}
-            {@const last = lastOf(comp.code)}
+            {@const share = shareOf(comp.code)}
             <a class="block px-4 py-3 no-underline active:bg-surface-2" href={href("competition", comp.code)}>
               <span class="flex items-center gap-2.5">
                 <Flag code={country.flag} label={country.name} size={20} />
                 <span class="min-w-0 flex-1 truncate font-semibold">{compName(comp.code)}</span>
-                {#if last}<span class="shrink-0 text-sm font-semibold tabular-nums">{pct(last.ok, last.n)} %</span>{/if}
+                {#if share}<span class="shrink-0 text-sm font-semibold tabular-nums" title={t("covShareTip")}>{pct(share.ok, share.n)} %</span>{/if}
               </span>
               <span class="mt-2 grid gap-[2px]" style={strip} aria-hidden="true">
                 {#each shownCols as s}
