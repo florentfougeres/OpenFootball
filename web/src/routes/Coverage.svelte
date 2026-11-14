@@ -162,13 +162,58 @@
       <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
         <span aria-live="polite">{nRows} {t("compsN").toLowerCase()}</span>{#if onlySquads && hiddenLists}<span>{hiddenLists} {t("covHiddenLists")}</span>{/if}
         {#if filtered}<button type="button" class="link" onclick={reset}>{t("covReset")}</button>{/if}
-        <span class="ml-auto flex items-center gap-1" aria-hidden="true">{t("covLegend")} 0 %<span class="h-3 w-24 rounded-sm border border-line" style="background: linear-gradient(to right, var(--surface-2), var(--accent))"></span>100 %</span>
+        <span class="flex w-full items-center gap-1 sm:ml-auto sm:w-auto" aria-hidden="true">{t("covLegend")} 0 %<span class="h-3 w-24 rounded-sm border border-line" style="background: linear-gradient(to right, var(--surface-2), var(--accent))"></span>100 %</span>
       </div>
     </div>
     {#if !visible.length}
       <p class="card mt-3 px-4 py-6 text-muted">{t("covNoRow")}</p>
     {:else}
-    <div class="card mt-3 max-h-[72vh] overflow-auto">
+    <!-- Mobile : une ligne par championnat, une bande de cases (une par saison) au lieu du tableau, illisible sur un écran étroit -->
+    {@const nCols = shownCols.length}
+    {@const strip = `grid-template-columns: repeat(${nCols}, minmax(0, 1fr))`}
+    {@const nums = nCols <= 12}
+    {@const lastOf = (code: string) => { for (let i = shownCols.length - 1; i >= 0; i--) { const c = cell(code, shownCols[i]); if (c) return c; } return null; }}
+    <div class="mt-3 md:hidden">
+      <div class="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <span class="shrink-0 text-xs text-muted">{t("covDetail")}</span>
+        {#each [...shownCols].reverse() as s}
+          <a class="shrink-0 rounded-full border border-line bg-surface px-3 py-1 text-sm font-semibold no-underline hover:bg-surface-2" href={href("coverage", seasonSlug(s))}>{s}</a>
+        {/each}
+      </div>
+      <div class="card divide-y divide-line overflow-hidden">
+        <div class="px-4 py-3">
+          <div class="flex items-baseline justify-between text-xs text-muted"><span class="font-semibold text-fg">{t("covAll")}</span><span class="tabular-nums">{shownCols[0]} → {shownCols[nCols - 1]}</span></div>
+          <div class="mt-2 grid gap-[2px]" style={strip}>
+            {#each shownCols as s}
+              {@const tt = total(s)}
+              <a class="grid h-6 place-items-center rounded-[3px] text-[10px] font-semibold no-underline" style:background={fill(tt.n, tt.ok)} style:color={ink(tt.n, tt.ok)} href={href("coverage", seasonSlug(s))}
+                aria-label="{s} : {tt.n ? pct(tt.ok, tt.n) : 0} %">{#if nums && tt.n}{pct(tt.ok, tt.n)}{/if}</a>
+            {/each}
+          </div>
+        </div>
+        {#each visible as g (g.conf)}
+          {#if !confSel}<div class="bg-surface-2 px-4 py-1.5 text-sm font-bold">{g.conf} <span class="font-normal text-muted">· {g.area}</span></div>{/if}
+          {#each g.rows as { comp, country } (comp.code)}
+            {@const last = lastOf(comp.code)}
+            <a class="block px-4 py-3 no-underline active:bg-surface-2" href={href("competition", comp.code)}>
+              <span class="flex items-center gap-2.5">
+                <Flag code={country.flag} label={country.name} size={20} />
+                <span class="min-w-0 flex-1 truncate font-semibold">{compName(comp.code)}</span>
+                {#if last}<span class="shrink-0 text-sm font-semibold tabular-nums">{pct(last.ok, last.n)} %</span>{/if}
+              </span>
+              <span class="mt-2 grid gap-[2px]" style={strip} aria-hidden="true">
+                {#each shownCols as s}
+                  {@const c = cell(comp.code, s)}
+                  <span class="grid h-5 place-items-center rounded-[3px] text-[10px] font-semibold {c ? '' : 'bg-surface-2/60'}" style:background={c ? fill(c.n, c.ok) : undefined} style:color={c ? ink(c.n, c.ok) : undefined}>{#if nums && c}{pct(c.ok, c.n)}{/if}</span>
+                {/each}
+              </span>
+            </a>
+          {/each}
+        {/each}
+      </div>
+    </div>
+
+    <div class="card mt-3 hidden max-h-[72vh] overflow-auto md:block">
       <table class="w-full border-separate border-spacing-0 text-xs tabular-nums">
         <thead class="sticky top-0 z-20 bg-surface">
           <tr>
