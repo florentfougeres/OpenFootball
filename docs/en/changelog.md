@@ -4,6 +4,10 @@
 
 Published data releases, newest first. Names follow [semantic versioning](https://semver.org): **major** = incompatible schema change, **minor** = new data (league, country, cup, table, column), **patch** = data fixes. Each release is `Data X.Y.Z` with tag `data-X.Y.Z` ([how to publish](publishing-a-release.md)). Changes to the site and tooling that are not tied to a data release are listed under "Site and tooling".
 
+## Data 1.14.1 — 2026-11-14
+- **Career statistics for 26,835 players** (736 more) and 911,338 club rows: tables cut short by a malformed reference tag (`<ref name="14/15"/>`), pages that write the columns in another order than their header (Sergei Ignashevich) and pages that title the section "Statistics" or "Club statistics" are now read.
+- **Fix**: flags. Former Yugoslavia written "YUG 1992-2003" and East Germany "RDA" no longer fall back to a code without a flag; the flags of the Soviet Union, East Germany, Corsica, Brittany, the Netherlands Antilles and Guam are added to the site.
+
 ## Data 1.14.0 — 2026-11-14
 - **UEFA Cup from 2000/01 to 2008/09 and Europa League 2009/10** (new option `uefa --cup UC`): the 32 clubs of the round of 32 up to 2002/03 and 2003/04, the 40-club group stage from 2004/05, then the 48 clubs of the 2009/10 Europa League (328 UEFA Cup participations, 48 Europa League ones).
 - **Second divisions from 2000/01 to 2009/10** for England, France, Germany, Spain and Italy: 915 of 1,055 club-seasons with a squad.

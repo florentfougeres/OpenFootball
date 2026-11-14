@@ -4,6 +4,10 @@
 
 Les releases de données publiées, la plus récente d'abord. Les noms suivent le [versionnage sémantique](https://semver.org/lang/fr/) : **majeure** = changement de schéma incompatible, **mineure** = nouvelles données (championnat, pays, coupe, table, colonne), **correctif** = corrections de données. Chaque release s'appelle `Data X.Y.Z` avec le tag `data-X.Y.Z` ([comment publier](publishing-a-release.md)). Les changements du site et des outils qui ne sont pas liés à une release de données sont listés sous « Site et outils ».
 
+## Data 1.14.1 — 2026-11-14
+- **Statistiques de carrière pour 26 835 joueurs** (736 de plus) et 911 338 lignes de club : les tableaux coupés par une balise de référence mal formée (`<ref name="14/15"/>`), les pages qui écrivent les colonnes dans un autre ordre que leur en-tête (Sergei Ignashevich) et celles qui titrent la section « Statistics » ou « Club statistics » sont maintenant lues.
+- **Correction** : drapeaux. L'ex-Yougoslavie écrite « YUG 1992-2003 » et la RDA écrite « RDA » ne retombent plus sur un code sans drapeau ; les drapeaux de l'Union soviétique, de la RDA, de la Corse, de la Bretagne, des Antilles néerlandaises et de Guam sont ajoutés au site.
+
 ## Data 1.14.0 — 2026-11-14
 - **Coupe UEFA de 2000/01 à 2008/09 et Ligue Europa 2009/10** (nouvelle option `uefa --cup UC`) : les 32 clubs des seizièmes de finale jusqu'en 2002/03 et 2003/04, la phase de groupes à 40 clubs dès 2004/05, puis les 48 clubs de la Ligue Europa 2009/10 (328 participations en Coupe UEFA, 48 en Ligue Europa).
 - **Deuxièmes divisions de 2000/01 à 2009/10** pour l'Angleterre, la France, l'Allemagne, l'Espagne et l'Italie : 915 club-saisons sur 1 055 avec un effectif.

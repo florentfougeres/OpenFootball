@@ -26,7 +26,7 @@
 ## En bref
 
 - **Des effectifs saison par saison, de 2000/01 à 2026/27** (5 grands championnats dès 2000/01, les autres dès 2010/11), avec numéro, poste, nationalité et âge, pour 18 championnats de première et deuxième division et les coupes d'Europe de clubs.
-- **Des fiches joueur** : frise de carrière, clubs, prêts, sélections nationales, date et lieu de naissance, et — pour environ 26 000 joueurs — des **statistiques de carrière** par club, saison, compétition et sélection.
+- **Des fiches joueur** : frise de carrière, clubs, prêts, sélections nationales, date et lieu de naissance, et — pour environ 27 000 joueurs — des **statistiques de carrière** par club, saison, compétition et sélection.
 - **Des données ouvertes et réutilisables** : fichiers Parquet publiés à chaque [release](https://github.com/florentfougeres/OpenFootballBase/releases), lisibles avec DuckDB, pandas, Polars ou tout lecteur Parquet.
 - **Traçables** : chaque effectif cite la page Wikipedia et la révision d'où il vient. Rien n'est inventé ; un effectif absent reste absent et est signalé comme tel.
 - **Un site statique bilingue** (français / anglais) qui interroge les fichiers Parquet directement dans le navigateur avec DuckDB-WASM — sans serveur, sans analytique, sans cookies.
