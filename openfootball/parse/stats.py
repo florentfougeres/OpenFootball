@@ -166,10 +166,14 @@ def _season(text: str) -> str | None:
     return f"{m.group(1)}–{m.group(2)[-2:]}" if m.group(1) else m.group(3)
 
 
+# Titres sous lesquels les pages rangent le même tableau ; « Career statistics » d'abord, les autres seulement à défaut.
+_HEADINGS = ("Career statistics", "Club statistics", "Playing statistics", "Career stats", "Statistics")
+
+
 def _section(wikitext: str) -> str:
-    """Texte de la section « Career statistics » (jusqu'à la section de même niveau suivante)."""
+    """Texte de la section « Career statistics » ou de ses variantes (jusqu'à la section de même niveau suivante)."""
     text = clean(wikitext)
-    m = re.search(r"^(=+)\s*Career statistics\s*\1\s*$", text, re.M)
+    m = next((m for h in _HEADINGS if (m := re.search(r"^(=+)\s*%s\s*\1\s*$" % re.escape(h), text, re.M | re.I))), None)
     if not m:
         return ""
     level = len(m.group(1))
@@ -195,6 +199,22 @@ def _read(rows, labels, start, subs, make, ncols):
     return out
 
 
+_PURE_SEASON = re.compile(r"\d{4}(?:\s*[–-]\s*\d{2,4})?")
+
+
+def _fix_order(data, ci: int, si: int, di: int | None) -> tuple[int, int, int | None]:
+    """Certaines pages écrivent l'en-tête (Club | Season | Division) dans un ordre et les lignes dans un autre : la colonne qui contient
+    des saisons (« 2008–09 », « 2001 ») dans la majorité des lignes est la saison ; le rôle qu'elle avait cède sa place à l'ancienne."""
+    cols = [i for i in (ci, si, di) if i is not None]
+    score = {i: sum(bool(_PURE_SEASON.fullmatch(cells[i].text)) for cells, _, _ in data if i < len(cells)) for i in cols}
+    best = max(cols, key=lambda i: score[i])
+    if best == si or score[best] <= score[si]:
+        return ci, si, di
+    if best == ci:
+        return si, best, di
+    return ci, best, si
+
+
 def parse_club_stats(wikitext: str) -> list[ClubStat]:
     """Tableau « par club, saison et compétition » de la section Career statistics.
     Les colonnes Club, Season et Division (ou League) sont repérées par leur titre : l'ordre varie d'une page à l'autre."""
@@ -208,7 +228,9 @@ def parse_club_stats(wikitext: str) -> list[ClubStat]:
         first_stat = next((i for i, n in enumerate(names) if n in ("apps", "goals", "assists")), len(names))
         di = next((i for i, n in enumerate(names) if n in ("division", "league") and i < first_stat and i not in (ci, si)), None)
         out = []
-        for cells, grp, v in _read(rows, labels, start, ("apps", "goals", "assists"), None, first_stat):
+        data = list(_read(rows, labels, start, ("apps", "goals", "assists"), None, first_stat))
+        ci, si, di = _fix_order(data, ci, si, di)
+        for cells, grp, v in data:
             season = _season(cells[si].text)
             if season and cells[ci].text:
                 out.append(ClubStat(cells[ci].text, _link(cells[ci].raw), season, cells[di].text if di is not None else None, grp,

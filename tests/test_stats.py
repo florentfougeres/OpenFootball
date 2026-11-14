@@ -81,3 +81,17 @@ def test_import_stats_is_idempotent():
     assert con.execute("SELECT count(*) FROM player_stat_club WHERE player_id = 1").fetchone()[0] == 7
     assert con.execute("SELECT count(*) FROM player_stat_national WHERE player_id = 1").fetchone()[0] == 2
     assert con.execute("SELECT club_rows, national_rows FROM player_stat_source WHERE player_id = 2").fetchone() == (0, 0)
+
+
+def test_section_sous_un_autre_titre():
+    from openfootball.parse.stats import _section
+    page = "==Club career==\ntext\n==Statistics==\n===Club===\n{|\n|a\n|}\n==References==\nx"
+    assert "===Club===" in _section(page) and "References" not in _section(page)
+    both = "==Statistics==\nautre\n==Career statistics==\nbon\n==Honours==\nz"
+    assert _section(both).strip() == "bon"                                # « Career statistics » l'emporte
+
+
+def test_balise_ref_avec_barre_dans_le_nom():
+    from openfootball.parse.squad import clean
+    text = 'a<ref name="14/15"/>b\n{|\n|x\n|}\nc<ref>note</ref>d<ref name=y>z</ref>'
+    assert clean(text) == "ab\n{|\n|x\n|}\ncd"

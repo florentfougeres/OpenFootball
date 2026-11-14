@@ -32,7 +32,7 @@ class SquadEntry:
     fmt: str                  # fs_player | fb_si_player | table
 
 
-_REF = re.compile(r"<ref\b[^>/]*?/>|<ref\b.*?</ref>", re.S | re.I)
+_REF = re.compile(r"<ref\b[^>]*/>|<ref\b[^>]*>.*?</ref>", re.S | re.I)      # `<ref name="14/15"/>` : une barre dans un nom ne ferme pas
 _COMMENT = re.compile(r"<!--.*?-->", re.S)
 _HEADING = re.compile(r"^(={2,6})\s*=?\s*(.*?)\s*=?\s*\1\s*$", re.M)
 _LINK = re.compile(r"\[\[([^\]|]+)(?:\|([^\]]*))?\]\]")

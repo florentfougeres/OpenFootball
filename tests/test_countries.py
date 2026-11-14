@@ -28,3 +28,12 @@ def test_flag_code_forms_seen_in_the_wild():
         assert flag_code(raw) == flag, raw
     for raw in ("Aanvaller", "Middenvelder", "SA", "CAR"):                       # position, ambigu : jamais de drapeau deviné
         assert flag_code(raw) is None, raw
+
+
+def test_drapeaux_pays_disparus_et_regions():
+    from openfootball.countries import flag_code
+    assert flag_code("RDA") == flag_code("East Germany") == "gdr"
+    assert flag_code("URSS") == flag_code("Soviet Union") == "urs"
+    assert flag_code("YUG 1992-2003") == "yug"                           # pas le code ISO « yu », sans drapeau
+    assert flag_code("Corsica") == "cors" and flag_code("Bretagne") == "bzh"
+    assert flag_code("Netherlands Antilles") == "an"

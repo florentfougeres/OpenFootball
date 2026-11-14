@@ -127,9 +127,10 @@ _HISTORIC_NAMES = {
     "serbia and montenegro": "scg", "serbie et montenegro": "scg", "serbia e montenegro": "scg", "servie en montenegro": "scg", "state union of serbia and montenegro": "scg",
     "fr yugoslavia": "yug", "federal republic of yugoslavia": "yug", "rf yougoslavie": "yug", "joegoslavie": "yug", "yugoslavia": "yug",
     "socialist federal republic of yugoslavia": "sfry", "czechoslovakia": "csk", "tchecoslovaquie": "csk", "soviet union": "urs",
-    "east germany": "gdr", "german democratic republic": "gdr", "west germany": "de",
+    "east germany": "gdr", "german democratic republic": "gdr", "west germany": "de", "rda": "gdr", "urss": "urs", "ddr": "gdr",
+    "corsica": "cors", "corse": "cors", "brittany": "bzh", "bretagne": "bzh", "netherlands antilles": "an", "antilles neerlandaises": "an",
 }
-_HISTORIC_CODES = {"SCG": "scg", "SMN": "scg", "SMA": "scg", "FRY": "yug", "YUG": "yug", "SFRY": "sfry", "PRC": "cn", "JER": "je", "EIR": "ie", "SCT": "gb-sct", "TAH": "pf", "CSK": "csk", "TCH": "csk", "URS": "urs", "GDR": "gdr", "FRG": "de", "BRD": "de"}
+_HISTORIC_CODES = {"SCG": "scg", "SMN": "scg", "SMA": "scg", "FRY": "yug", "YUG": "yug", "SFRY": "sfry", "PRC": "cn", "JER": "je", "EIR": "ie", "SCT": "gb-sct", "TAH": "pf", "CSK": "csk", "TCH": "csk", "URS": "urs", "GDR": "gdr", "RDA": "gdr", "DDR": "gdr", "ANT": "an", "FRG": "de", "BRD": "de"}
 _NAME_ALIASES = {"macedonia": "mk", "republique tcheque": "cz", "tahiti": "pf", "democratic republic of congo": "cd",
                  "centrafrique": "cf", "pays bas": "nl", "netherlands": "nl", "the netherlands": "nl",
                  "paises bajos": "nl", "holanda": "nl", "bosnia": "ba", "macedoine": "mk"}
@@ -166,6 +167,8 @@ def flag_code(raw: str | None) -> str | None:
     m = re.match(r"^([A-Za-z]{2,3})\s+\d{4}", text)          # « SYR 1980-2024 » : code suivi d'une période
     text = m.group(1) if m else text
     codes, names = _index()
+    if re.fullmatch(r"[A-Za-z]{2,3}", text) and text.upper() in _HISTORIC_CODES:
+        return _HISTORIC_CODES[text.upper()]
     if re.fullmatch(r"[A-Za-z]{2,3}", text) and text.upper() in codes:
         return codes[text.upper()]
     text = re.sub(r"\s+\d{4}\s*[-–]\s*\d{4}\s*$", "", text)                       # « Libia 1977-2011 » : la période ne change pas le pays

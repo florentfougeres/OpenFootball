@@ -17,7 +17,7 @@ from openfootball.world_clubs import import_world_clubs, purge_non_clubs
 from openfootball.careers import import_profiles, import_careers, import_careers_by_qid, prune_after_career_end
 from openfootball.schema_doc import build_schema_doc
 from openfootball.reconstruct import reconstruct, reconstruct_from_careers
-from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_all_players, select_players
+from openfootball.stats import COUNTRIES, StatsClient, import_stats, select_all_players, select_players, select_without_stats
 from openfootball.transfers import apply_transfers, drop_stale_current_rows, drop_summer_departures
 from openfootball.reconcile import apply_player_aliases, normalize_player_names, reconcile_by_infobox, reconcile_by_name, reconcile_by_wikidata, reconcile_players
 from openfootball.export import export_all, pack, verify_continuity
@@ -574,7 +574,7 @@ def stats_cmd(args: argparse.Namespace) -> int:
     """Statistiques de carrière (section « Career statistics ») des joueurs d'un club de Ligue des champions des pays choisis."""
     con = connect(args.db)
     migrate(con)
-    players = select_all_players(con) if args.all else select_players(con, since=args.since, countries=tuple(args.country))
+    players = select_without_stats(con) if args.missing else select_all_players(con) if args.all else select_players(con, since=args.since, countries=tuple(args.country))
     if args.limit:
         players = players[:args.limit]
     print(f"{len(players)} joueurs à lire")
@@ -784,6 +784,7 @@ def main(argv: list[str] | None = None) -> int:
     st.add_argument("--since", type=int, default=2010, help="première saison de Ligue des champions prise en compte (année de début)")
     st.add_argument("--country", nargs="+", default=list(COUNTRIES), help="pays des clubs (codes de la base)")
     st.add_argument("--all", action="store_true", help="tous les joueurs qui ont une page anglaise (sinon : clubs de Ligue des champions des pays choisis)")
+    st.add_argument("--missing", action="store_true", help="seulement les joueurs déjà lus sans aucune statistique (relire avec un autre --cache)")
     st.add_argument("--limit", type=int, help="seulement les N premiers joueurs (essai)")
     st.add_argument("--cache", default="cache/wikipedia_stats")
     st.set_defaults(func=stats_cmd)

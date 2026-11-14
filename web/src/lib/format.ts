@@ -49,7 +49,8 @@ const NATION_ALIASES: Record<string, string> = {
   "west germany": "DE", "bosnia herzegovina": "BA", "fry": "yug", "scg": "scg", "yugoslavia b": "yug",
   // Pays disparus : un drapeau dédié (web/public/flags), jamais celui d'un autre pays.
   "fr yugoslavia": "yug", "federal republic of yugoslavia": "yug", "yugoslavia": "yug", "sfr yugoslavia": "sfry", "serbia and montenegro": "scg",
-  "czechoslovakia": "csk",
+  "czechoslovakia": "csk", "soviet union": "urs", "ussr": "urs", "east germany": "gdr", "german democratic republic": "gdr",
+  "netherlands antilles": "an", "corsica": "cors", "brittany": "bzh",
   // Équipes régionales.
   "catalonia": "es-ct", "basque country": "es-pv", "galicia": "es-ga",
 };
@@ -104,6 +105,8 @@ export function nationalTeam(teamName: string): { flag: string | null; name: str
 const HISTORIC_LABEL: Record<string, { fr: string; en: string }> = {
   scg: { fr: "Serbie-et-Monténégro", en: "Serbia and Montenegro" }, yug: { fr: "Yougoslavie (RF)", en: "FR Yugoslavia" },
   sfry: { fr: "Yougoslavie (RSF)", en: "SFR Yugoslavia" }, csk: { fr: "Tchécoslovaquie", en: "Czechoslovakia" },
+  urs: { fr: "URSS", en: "Soviet Union" }, gdr: { fr: "RDA", en: "East Germany" }, an: { fr: "Antilles néerlandaises", en: "Netherlands Antilles" },
+  cors: { fr: "Corse", en: "Corsica" }, bzh: { fr: "Bretagne", en: "Brittany" },
   "es-ct": { fr: "Catalogne", en: "Catalonia" }, "es-pv": { fr: "Pays basque", en: "Basque Country" }, "es-ga": { fr: "Galice", en: "Galicia" },
 };
 export function natLabel(flag: string, fallback: string): string {
