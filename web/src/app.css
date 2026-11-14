@@ -65,3 +65,10 @@ input[type="search"]::-webkit-search-cancel-button { filter: grayscale(1); opaci
   .num { @apply text-right tabular-nums; }
   .tile { @apply flex items-center gap-3 rounded-xl border border-line bg-surface px-3.5 py-3 no-underline transition-colors hover:border-accent hover:bg-surface-2; }
 }
+
+/* Esprit application sur mobile : Safari iOS zoome la page quand on touche un champ dont la police est inférieure à 16 px.
+   On fixe 16 px sur petit écran (le zoom du visiteur, lui, reste libre) et on retire le zoom au double-toucher. */
+@media (max-width: 767px) {
+  input, select, textarea { font-size: 16px; }
+}
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }

@@ -29,10 +29,10 @@
 
 <header class="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
-    <a class="display flex items-center gap-2 text-2xl font-extrabold tracking-tight no-underline" href={href("")}>
+    <a class="display flex min-w-0 items-center gap-2 text-xl font-extrabold tracking-tight no-underline sm:text-2xl" href={href("")}>
       <img class="size-9" src={import.meta.env.BASE_URL + "logo.svg"} alt="" width="36" height="36" />
       OpenFootballBase
-      <span class="rounded-md border border-line px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted" title={t("betaNote")}>{t("beta")}</span>
+      <span class="hidden rounded-md border border-line px-1.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-muted sm:inline" title={t("betaNote")}>{t("beta")}</span>
     </a>
     <nav class="ml-5 hidden items-center gap-1 md:flex lg:ml-8" aria-label="Navigation">
       {#each links as l}
@@ -45,7 +45,7 @@
       <SearchBox variant="header" />
       <button class="btn-ghost !px-3 md:hidden" type="button" onclick={() => (searchUi.bar = !searchUi.bar)} aria-expanded={searchUi.bar} aria-label={t("searchTrigger")}>
         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg></button>
-      <button class="btn-ghost !px-3" type="button" onclick={cycleTheme} title={t("theme")} aria-label={t("theme")}>
+      <button class="btn-ghost hidden !px-3 sm:inline-flex" type="button" onclick={cycleTheme} title={t("theme")} aria-label={t("theme")}>
         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           {#if theme.value === "dark"}<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" />
           {:else if theme.value === "light"}<circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
@@ -66,6 +66,9 @@
       {#each links as l}
         <a class="block rounded-lg px-3 py-2.5 text-sm font-medium no-underline {active(l.key) ? 'bg-surface-2' : ''}" href={l.to}>{l.label}</a>
       {/each}
+      <button class="mt-1 flex w-full items-center justify-between rounded-lg border-t border-line px-3 py-2.5 text-left text-sm font-medium sm:hidden" type="button" onclick={cycleTheme}>
+        <span>{t("theme")}</span><span class="text-muted">{theme.value === "dark" ? t("themeDark") : theme.value === "light" ? t("themeLight") : t("themeAuto")}</span>
+      </button>
     </nav>
   {/if}
 </header>
